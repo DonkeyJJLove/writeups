@@ -1,4 +1,3 @@
-```markdown
 # Operacja Cobalt Kitty
 
 Operacja Cobalt Kitty była mistrzowską, długofalową kampanią cyberwywiadowczą, która przez wiele miesięcy precyzyjnie infiltrowała systemy kluczowej korporacji, celując w najbardziej wrażliwe zasoby. Atakujący, wykazując się cierpliwością i zaawansowaną wiedzą techniczną, skoncentrowali swoje działania na pozyskaniu zasobów intelektualnych, planów biznesowych oraz danych finansowych, pozostając przy tym niemal niewidoczni. *Ta operacja, przeprowadzona przez grupę APT32 (OceanLotus), wyznacza nowe standardy w wykorzystaniu technik fileless malware oraz funkcji systemu Windows, by ukryć swoją obecność.*
