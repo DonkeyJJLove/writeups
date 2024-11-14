@@ -1,4 +1,4 @@
-# Złośliwe oprogramowanie bezplikowe w systemach Windows: Analiza techniczna i spostrzeżenia
+# Fileless Malware w systemach Windows: Analiza techniczna i spostrzeżenia
 
 ---
 
@@ -8,7 +8,7 @@
 2. [Zrozumienie złośliwego oprogramowania bezplikowego](#zrozumienie-złośliwego-oprogramowania-bezplikowego)
    - [Definicja i charakterystyka](#definicja-i-charakterystyka)
    - [Powszechnie stosowane techniki](#powszechnie-stosowane-techniki)
-3. [Kluczowe funkcje Windows wykorzystywane przez złośliwe oprogramowanie bezplikowe](#kluczowe-funkcje-windows-wykorzystywane-przez-złośliwe-oprogramowanie-bezplikowe)
+3. [Kluczowe funkcje Windows wykorzystywane przez Fileless Malware](#kluczowe-funkcje-windows-wykorzystywane-przez-fileless-malware)
    - [Funkcje zarządzania pamięcią](#funkcje-zarządzania-pamięcią)
      - [`VirtualAlloc` i `VirtualAllocEx`](#virtualalloc-i-virtualallocex)
      - [`VirtualProtect` i `VirtualProtectEx`](#virtualprotect-i-virtualprotectex)
@@ -19,12 +19,12 @@
    - [PowerShell i platforma .NET](#powershell-i-platforma-net)
 4. [Mechanizmy wykonywania kodu w pamięci](#mechanizmy-wykonywania-kodu-w-pamięci)
    - [Techniki wstrzykiwania kodu](#techniki-wstrzykiwania-kodu)
-     - [Odbiciowe wstrzykiwanie DLL](#odbiciowe-wstrzykiwanie-dll)
+     - [Reflect DLL Injection](#reflect-dll-injection)
      - [Process Hollowing](#process-hollowing)
    - [Wykonywanie za pomocą silników skryptowych](#wykonywanie-za-pomocą-silników-skryptowych)
      - [Skrypty PowerShell](#skrypty-powershell)
      - [Wykonywanie oparte na WMI](#wykonywanie-oparte-na-wmi)
-5. [Studia przypadków złośliwego oprogramowania bezplikowego](#studia-przypadków-złośliwego-oprogramowania-bezplikowego)
+5. [Studia przypadków Fileless Malware](#studia-przypadków-fileless-malware)
    - [Powershell Empire](#powershell-empire)
      - [Mechanizm działania](#mechanizm-działania)
    - [Operacja Cobalt Kitty](#operacja-cobalt-kitty)
@@ -33,7 +33,7 @@
 6. [Związek między funkcjami Windows](#związek-między-funkcjami-windows)
    - [`RtlUserThreadStart` i funkcje alokacji pamięci](#rtluserthreadstart-i-funkcje-alokacji-pamięci)
    - [Implementacja wątków w .NET](#implementacja-wątków-w-net)
-7. [Kompleksowa lista funkcji używanych przez złośliwe oprogramowanie bezplikowe](#kompleksowa-lista-funkcji-używanych-przez-złośliwe-oprogramowanie-bezplikowe)
+7. [Kompleksowa lista funkcji używanych przez Fileless Malware](#kompleksowa-lista-funkcji-używanych-przez-fileless-malware)
 8. [Środki obronne i zalecenia](#środki-obronne-i-zalecenia)
    - [Strategie monitorowania i wykrywania](#strategie-monitorowania-i-wykrywania)
    - [Najlepsze praktyki w zakresie wzmacniania systemu](#najlepsze-praktyki-w-zakresie-wzmacniania-systemu)
@@ -45,19 +45,19 @@
 
 ## Wprowadzenie
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Złośliwe oprogramowanie bezplikowe pojawiło się jako zaawansowane zagrożenie w krajobrazie cyberbezpieczeństwa. W przeciwieństwie do tradycyjnego złośliwego oprogramowania, rezyduje w pamięci systemu, co utrudnia jego wykrycie za pomocą konwencjonalnych rozwiązań antywirusowych. Ten dokument zapewnia kompleksową analizę złośliwego oprogramowania bezplikowego w systemach Windows, badając techniki stosowane przez atakujących, funkcje Windows, które wykorzystują, oraz studia przypadków ilustrujące ich metody.
+Fileless Malware pojawiło się jako zaawansowane zagrożenie w krajobrazie cyberbezpieczeństwa. W przeciwieństwie do tradycyjnego złośliwego oprogramowania, rezyduje w pamięci systemu, co utrudnia jego wykrycie za pomocą konwencjonalnych rozwiązań antywirusowych. Ten dokument zapewnia kompleksową analizę Fileless Malware w systemach Windows, badając techniki stosowane przez atakujących, funkcje Windows, które wykorzystują, oraz studia przypadków ilustrujące ich metody.
 
 ---
 
 ## Zrozumienie złośliwego oprogramowania bezplikowego
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Definicja i charakterystyka
 
-Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. Wykorzystuje legalne narzędzia systemowe i rezyduje w pamięci, korzystając z natywnych funkcjonalności Windows do wykonywania złośliwego kodu.
+Fileless Malware działa bez pozostawiania śladu na dysku. Wykorzystuje legalne narzędzia systemowe i rezyduje w pamięci, korzystając z natywnych funkcjonalności Windows do wykonywania złośliwego kodu.
 
 **Kluczowe cechy:**
 
@@ -73,15 +73,15 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 - **Wstrzykiwanie kodu do pamięci**
 - **Nadużywanie języków skryptowych (np. PowerShell)**
 - **Wykorzystanie Instrumentacji Zarządzania Windows (WMI)**
-- **Odbiciowe wstrzykiwanie DLL**
+- **Reflect DLL Injection**
 
 [Poznaj techniki](#techniki-wstrzykiwania-kodu)
 
 ---
 
-## Kluczowe funkcje Windows wykorzystywane przez złośliwe oprogramowanie bezplikowe
+## Kluczowe funkcje Windows wykorzystywane przez Fileless Malware
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Funkcje zarządzania pamięcią
 
@@ -94,7 +94,7 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 #### `VirtualProtect` i `VirtualProtectEx`
 
-- **Cel:** Zmieniają ochronę na regionie zaangażowanych stron pamięci.
+- **Cel:** Zmieniać ochronę na regionie zaangażowanych stron pamięci.
 - **Wykorzystanie przez złośliwe oprogramowanie:** Modyfikują uprawnienia pamięci do wykonywania kodu w wcześniej niewykonywalnych regionach.
 
 [Szczegółowa analiza](#virtualprotect-i-virtualprotectex)
@@ -133,20 +133,20 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 ## Mechanizmy wykonywania kodu w pamięci
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Techniki wstrzykiwania kodu
 
-#### Odbiciowe wstrzykiwanie DLL
+#### Reflect DLL Injection
 
-- **Koncepcja:** Ładowanie biblioteki DLL z pamięci zamiast z dysku.
+- **Koncepcja:** Reflect DLL Injection to technika polegająca na ładowaniu biblioteki DLL bezpośrednio z pamięci, zamiast z dysku, co utrudnia jej wykrycie. Technika ta została opisana w literaturze fachowej, m.in. w książce "Practical Malware Analysis" autorstwa Michaela Sikorskiego i Andrew Honiga, jako jedna z metod stosowanych do ataków na oprogramowanie poprzez dynamiczne modyfikacje pamięci.
 - **Proces:**
   1. Alokacja pamięci za pomocą `VirtualAlloc`.
   2. Kopiowanie DLL do pamięci.
   3. Dostosowanie ochrony pamięci za pomocą `VirtualProtect`.
-  4. Wykonanie punktu wejścia DLL.
+  4. Wykonanie Entry Point DLL.
 
-[Dowiedz się więcej](#odbiciowe-wstrzykiwanie-dll)
+[Dowiedz się więcej](#reflect-dll-injection)
 
 #### Process Hollowing
 
@@ -182,9 +182,9 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 ---
 
-## Studia przypadków złośliwego oprogramowania bezplikowego
+## Studia przypadków Fileless Malware
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Powershell Empire
 
@@ -212,7 +212,7 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 - **Początkowy wektor infekcji:** E-maile spear-phishingowe z złośliwymi dokumentami.
 - **Użyte techniki:**
-  - Złośliwe oprogramowanie bezplikowe wykonywane za pomocą PowerShell.
+  - Fileless Malware wykonywane za pomocą PowerShell.
   - Wykonywanie kodu w pamięci przy użyciu `VirtualAlloc`.
   - Utrzymanie trwałości poprzez subskrypcje zdarzeń WMI.
 
@@ -222,7 +222,7 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 ## Związek między funkcjami Windows
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### `RtlUserThreadStart` i funkcje alokacji pamięci
 
@@ -241,11 +241,11 @@ Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. 
 
 ---
 
-## Kompleksowa lista funkcji używanych przez złośliwe oprogramowanie bezplikowe
+## Kompleksowa lista funkcji używanych przez Fileless Malware
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez złośliwe oprogramowanie bezplikowe:
+Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez Fileless Malware:
 
 - **Funkcje pamięci:**
   - `VirtualAlloc`, `VirtualAllocEx`
@@ -271,7 +271,7 @@ Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez
 
 ## Środki obronne i zalecenia
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Strategie monitorowania i wykrywania
 
@@ -299,15 +299,15 @@ Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez
 
 ## Wniosek
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Złośliwe oprogramowanie bezplikowe stanowi znaczącą ewolucję w zagrożeniach cybernetycznych, wykorzystując legalne funkcjonalności systemu do potajemnego wykonywania złośliwych działań. Zrozumienie podstawowych funkcji Windows i mechanizmów wykorzystywanych przez takie złośliwe oprogramowanie jest kluczowe dla opracowywania skutecznych strategii obronnych. Poprzez wdrażanie solidnego monitorowania, przestrzeganie najlepszych praktyk i promowanie kultury świadomości bezpieczeństwa, organizacje mogą zmniejszyć ryzyko stwarzane przez te zaawansowane ataki.
+Fileless Malware stanowi znaczącą ewolucję w zagrożeniach cybernetycznych, wykorzystując legalne funkcjonalności systemu do potajemnego wykonywania złośliwych działań. Zrozumienie podstawowych funkcji Windows i mechanizmów wykorzystywanych przez takie złośliwe oprogramowanie jest kluczowe dla opracowywania skutecznych strategii obronnych. Poprzez wdrażanie solidnego monitorowania, przestrzeganie najlepszych praktyk i promowanie kultury świadomości bezpieczeństwa, organizacje mogą zmniejszyć ryzyko stwarzane przez te zaawansowane ataki.
 
 ---
 
 ## Bibliografia
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 1. **Dokumentacja Microsoft:**
    - [Funkcja VirtualAlloc](https://learn.microsoft.com/pl-pl/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)
@@ -323,10 +323,11 @@ Złośliwe oprogramowanie bezplikowe stanowi znaczącą ewolucję w zagrożeniac
 
 ## Zastrzeżenie
 
-[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 Niniejszy dokument jest przeznaczony wyłącznie do celów edukacyjnych i informacyjnych. Analiza technik złośliwego oprogramowania ma na celu poprawę obrony cyberbezpieczeństwa i świadomości. Nieautoryzowane tworzenie, dystrybucja lub użycie złośliwego oprogramowania jest nielegalne i nieetyczne. Zawsze przestrzegaj obowiązujących przepisów prawa i standardów etycznych podczas korzystania z informacji o cyberbezpieczeństwie.
 
 ---
 
-**Uwaga:** Przedstawiona treść jest syntezą dyskusji na temat złośliwego oprogramowania bezplikowego, funkcji systemu Windows wykorzystywanych przez atakujących oraz konkretnych studiów przypadków, takich jak Operacja Cobalt Kitty. Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
+**Uwaga:** Przedstawiona treść jest syntezą dyskusji na temat Fileless Malware, funkcji systemu Windows wykorzystywanych przez atakujących oraz konkretnych studiów przypadków, takich jak Operacja Cobalt Kitty. Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
+
