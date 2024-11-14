@@ -27,9 +27,9 @@
 5. [Studia przypadków Fileless Malware](#studia-przypadków-fileless-malware)
    - [Powershell Empire](#powershell-empire)
      - [Mechanizm działania](#mechanizm-działania)
-   - [Operacja Cobalt Kitty](#operacja-cobalt-kitty)
-     - [Przegląd ataku](#przegląd-ataku)
-     - [Analiza techniczna](#analiza-techniczna)
+   - [Operacja Cobalt Kitty](operacja-cobalt-kitty.md#operacja-cobalt-kitty)
+     - [Przegląd ataku](operacja-cobalt-kitty.md#przegląd-ataku)
+     - [Analiza techniczna](operacja-cobalt-kitty.md#analiza-techniczna)
 6. [Związek między funkcjami Windows](#związek-między-funkcjami-windows)
    - [`RtlUserThreadStart` i funkcje alokacji pamięci](#rtluserthreadstart-i-funkcje-alokacji-pamięci)
    - [Implementacja wątków w .NET](#implementacja-wątków-w-net)
@@ -206,7 +206,7 @@ Fileless Malware działa bez pozostawiania śladu na dysku. Wykorzystuje legalne
 - **Cele:** Przedsiębiorstwa w Azji Południowo-Wschodniej.
 - **Cele ataku:** Długoterminowa działalność szpiegowska i eksfiltracja danych.
 
-[Szczegółowa analiza](#przegląd-ataku)
+[Szczegółowa analiza](operacja-cobalt-kitty.md#przegląd-ataku)
 
 #### Analiza techniczna
 
@@ -216,7 +216,7 @@ Fileless Malware działa bez pozostawiania śladu na dysku. Wykorzystuje legalne
   - Wykonywanie kodu w pamięci przy użyciu `VirtualAlloc`.
   - Utrzymanie trwałości poprzez subskrypcje zdarzeń WMI.
 
-[Dogłębna analiza](#analiza-techniczna)
+[Dogłębna analiza](operacja-cobalt-kitty.md#analiza-techniczna)
 
 ---
 
