@@ -1,332 +1,332 @@
-# Fileless Malware in Windows Systems: Technical Analysis and Insights
+# Złośliwe oprogramowanie bezplikowe w systemach Windows: Analiza techniczna i spostrzeżenia
 
 ---
 
-## Table of Contents
+## Spis treści
 
-1. [Introduction](#introduction)
-2. [Understanding Fileless Malware](#understanding-fileless-malware)
-   - [Definition and Characteristics](#definition-and-characteristics)
-   - [Common Techniques Used](#common-techniques-used)
-3. [Key Windows Functions Exploited by Fileless Malware](#key-windows-functions-exploited-by-fileless-malware)
-   - [Memory Management Functions](#memory-management-functions)
-     - [`VirtualAlloc` and `VirtualAllocEx`](#virtualalloc-and-virtualallocex)
-     - [`VirtualProtect` and `VirtualProtectEx`](#virtualprotect-and-virtualprotectex)
-   - [Thread Management Functions](#thread-management-functions)
-     - [`CreateThread` and `CreateRemoteThread`](#createthread-and-createremotethread)
+1. [Wprowadzenie](#wprowadzenie)
+2. [Zrozumienie złośliwego oprogramowania bezplikowego](#zrozumienie-złośliwego-oprogramowania-bezplikowego)
+   - [Definicja i charakterystyka](#definicja-i-charakterystyka)
+   - [Powszechnie stosowane techniki](#powszechnie-stosowane-techniki)
+3. [Kluczowe funkcje Windows wykorzystywane przez złośliwe oprogramowanie bezplikowe](#kluczowe-funkcje-windows-wykorzystywane-przez-złośliwe-oprogramowanie-bezplikowe)
+   - [Funkcje zarządzania pamięcią](#funkcje-zarządzania-pamięcią)
+     - [`VirtualAlloc` i `VirtualAllocEx`](#virtualalloc-i-virtualallocex)
+     - [`VirtualProtect` i `VirtualProtectEx`](#virtualprotect-i-virtualprotectex)
+   - [Funkcje zarządzania wątkami](#funkcje-zarządzania-wątkami)
+     - [`CreateThread` i `CreateRemoteThread`](#createthread-i-createremotethread)
      - [`RtlUserThreadStart`](#rtluserthreadstart)
-   - [Windows Management Instrumentation (WMI)](#windows-management-instrumentation-wmi)
-   - [PowerShell and .NET Framework](#powershell-and-net-framework)
-4. [Mechanisms of In-Memory Code Execution](#mechanisms-of-in-memory-code-execution)
-   - [Code Injection Techniques](#code-injection-techniques)
-     - [Reflective DLL Injection](#reflective-dll-injection)
+   - [Instrumentacja zarządzania Windows (WMI)](#instrumentacja-zarządzania-windows-wmi)
+   - [PowerShell i platforma .NET](#powershell-i-platforma-net)
+4. [Mechanizmy wykonywania kodu w pamięci](#mechanizmy-wykonywania-kodu-w-pamięci)
+   - [Techniki wstrzykiwania kodu](#techniki-wstrzykiwania-kodu)
+     - [Odbiciowe wstrzykiwanie DLL](#odbiciowe-wstrzykiwanie-dll)
      - [Process Hollowing](#process-hollowing)
-   - [Execution via Scripting Engines](#execution-via-scripting-engines)
-     - [PowerShell Scripts](#powershell-scripts)
-     - [WMI-Based Execution](#wmi-based-execution)
-5. [Case Studies of Fileless Malware](#case-studies-of-fileless-malware)
+   - [Wykonywanie za pomocą silników skryptowych](#wykonywanie-za-pomocą-silników-skryptowych)
+     - [Skrypty PowerShell](#skrypty-powershell)
+     - [Wykonywanie oparte na WMI](#wykonywanie-oparte-na-wmi)
+5. [Studia przypadków złośliwego oprogramowania bezplikowego](#studia-przypadków-złośliwego-oprogramowania-bezplikowego)
    - [Powershell Empire](#powershell-empire)
-     - [Mechanism of Action](#mechanism-of-action)
-   - [Operation Cobalt Kitty](#operation-cobalt-kitty)
-     - [Attack Overview](#attack-overview)
-     - [Technical Analysis](#technical-analysis)
-6. [Relationship Between Windows Functions](#relationship-between-windows-functions)
-   - [`RtlUserThreadStart` and Memory Allocation Functions](#rtluserthreadstart-and-memory-allocation-functions)
-   - [Implementing Threads in .NET](#implementing-threads-in-net)
-7. [Comprehensive List of Functions Used by Fileless Malware](#comprehensive-list-of-functions-used-by-fileless-malware)
-8. [Defensive Measures and Recommendations](#defensive-measures-and-recommendations)
-   - [Monitoring and Detection Strategies](#monitoring-and-detection-strategies)
-   - [Best Practices for System Hardening](#best-practices-for-system-hardening)
-9. [Conclusion](#conclusion)
-10. [References](#references)
-11. [Disclaimer](#disclaimer)
+     - [Mechanizm działania](#mechanizm-działania)
+   - [Operacja Cobalt Kitty](#operacja-cobalt-kitty)
+     - [Przegląd ataku](#przegląd-ataku)
+     - [Analiza techniczna](#analiza-techniczna)
+6. [Związek między funkcjami Windows](#związek-między-funkcjami-windows)
+   - [`RtlUserThreadStart` i funkcje alokacji pamięci](#rtluserthreadstart-i-funkcje-alokacji-pamięci)
+   - [Implementacja wątków w .NET](#implementacja-wątków-w-net)
+7. [Kompleksowa lista funkcji używanych przez złośliwe oprogramowanie bezplikowe](#kompleksowa-lista-funkcji-używanych-przez-złośliwe-oprogramowanie-bezplikowe)
+8. [Środki obronne i zalecenia](#środki-obronne-i-zalecenia)
+   - [Strategie monitorowania i wykrywania](#strategie-monitorowania-i-wykrywania)
+   - [Najlepsze praktyki w zakresie wzmacniania systemu](#najlepsze-praktyki-w-zakresie-wzmacniania-systemu)
+9. [Wniosek](#wniosek)
+10. [Bibliografia](#bibliografia)
+11. [Zastrzeżenie](#zastrzeżenie)
 
 ---
 
-## Introduction
+## Wprowadzenie
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Fileless malware has emerged as a sophisticated threat in the cybersecurity landscape. Unlike traditional malware, it resides in the system's memory, making it challenging to detect using conventional antivirus solutions. This document provides a comprehensive analysis of fileless malware in Windows systems, exploring the techniques used by attackers, the Windows functions they exploit, and case studies that illustrate their methods.
-
----
-
-## Understanding Fileless Malware
-
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
-
-### Definition and Characteristics
-
-Fileless malware operates without leaving a footprint on the disk. It exploits legitimate system tools and resides in the memory, leveraging native Windows functionalities to execute malicious code.
-
-**Key Characteristics:**
-
-- **No Disk Presence:** Avoids writing files to disk.
-- **Uses Legitimate Tools:** Exploits trusted Windows components.
-- **Memory-Resident:** Operates primarily in RAM.
-- **Difficult Detection:** Evades traditional signature-based detection methods.
-
-[Learn More](#mechanisms-of-in-memory-code-execution)
-
-### Common Techniques Used
-
-- **In-Memory Code Injection**
-- **Abuse of Scripting Languages (e.g., PowerShell)**
-- **Exploitation of Windows Management Instrumentation (WMI)**
-- **Reflective DLL Injection**
-
-[Explore Techniques](#code-injection-techniques)
+Złośliwe oprogramowanie bezplikowe pojawiło się jako zaawansowane zagrożenie w krajobrazie cyberbezpieczeństwa. W przeciwieństwie do tradycyjnego złośliwego oprogramowania, rezyduje w pamięci systemu, co utrudnia jego wykrycie za pomocą konwencjonalnych rozwiązań antywirusowych. Ten dokument zapewnia kompleksową analizę złośliwego oprogramowania bezplikowego w systemach Windows, badając techniki stosowane przez atakujących, funkcje Windows, które wykorzystują, oraz studia przypadków ilustrujące ich metody.
 
 ---
 
-## Key Windows Functions Exploited by Fileless Malware
+## Zrozumienie złośliwego oprogramowania bezplikowego
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-### Memory Management Functions
+### Definicja i charakterystyka
 
-#### `VirtualAlloc` and `VirtualAllocEx`
+Złośliwe oprogramowanie bezplikowe działa bez pozostawiania śladu na dysku. Wykorzystuje legalne narzędzia systemowe i rezyduje w pamięci, korzystając z natywnych funkcjonalności Windows do wykonywania złośliwego kodu.
 
-- **Purpose:** Allocate or reserve memory in a process's virtual address space.
-- **Usage by Malware:** Allocate executable memory regions to store and run malicious code.
+**Kluczowe cechy:**
 
-[Detailed Analysis](#virtualalloc-and-virtualallocex)
+- **Brak obecności na dysku:** Unika zapisywania plików na dysku.
+- **Używa legalnych narzędzi:** Wykorzystuje zaufane komponenty Windows.
+- **Rezyduje w pamięci:** Działa głównie w RAM.
+- **Trudne wykrycie:** Unika tradycyjnych metod wykrywania opartych na sygnaturach.
 
-#### `VirtualProtect` and `VirtualProtectEx`
+[Dowiedz się więcej](#mechanizmy-wykonywania-kodu-w-pamięci)
 
-- **Purpose:** Change the protection on a region of committed pages.
-- **Usage by Malware:** Modify memory permissions to execute code in previously non-executable regions.
+### Powszechnie stosowane techniki
 
-[Detailed Analysis](#virtualprotect-and-virtualprotectex)
+- **Wstrzykiwanie kodu do pamięci**
+- **Nadużywanie języków skryptowych (np. PowerShell)**
+- **Wykorzystanie Instrumentacji Zarządzania Windows (WMI)**
+- **Odbiciowe wstrzykiwanie DLL**
 
-### Thread Management Functions
+[Poznaj techniki](#techniki-wstrzykiwania-kodu)
 
-#### `CreateThread` and `CreateRemoteThread`
+---
 
-- **Purpose:** Create a new thread within the calling process or a remote process.
-- **Usage by Malware:** Execute malicious code within a new thread, often in another process.
+## Kluczowe funkcje Windows wykorzystywane przez złośliwe oprogramowanie bezplikowe
 
-[Detailed Analysis](#createthread-and-createremotethread)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+
+### Funkcje zarządzania pamięcią
+
+#### `VirtualAlloc` i `VirtualAllocEx`
+
+- **Cel:** Alokują lub rezerwują pamięć w wirtualnej przestrzeni adresowej procesu.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Alokują obszary pamięci wykonawczej do przechowywania i uruchamiania złośliwego kodu.
+
+[Szczegółowa analiza](#virtualalloc-i-virtualallocex)
+
+#### `VirtualProtect` i `VirtualProtectEx`
+
+- **Cel:** Zmieniają ochronę na regionie zaangażowanych stron pamięci.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Modyfikują uprawnienia pamięci do wykonywania kodu w wcześniej niewykonywalnych regionach.
+
+[Szczegółowa analiza](#virtualprotect-i-virtualprotectex)
+
+### Funkcje zarządzania wątkami
+
+#### `CreateThread` i `CreateRemoteThread`
+
+- **Cel:** Tworzą nowy wątek w obrębie procesu wywołującego lub zdalnego procesu.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Wykonują złośliwy kod w nowym wątku, często w innym procesie.
+
+[Szczegółowa analiza](#createthread-i-createremotethread)
 
 #### `RtlUserThreadStart`
 
-- **Purpose:** Internal function used to start execution of a new thread in user mode.
-- **Usage by Malware:** Indirectly involved when malware creates threads at a lower level.
+- **Cel:** Funkcja wewnętrzna używana do rozpoczęcia wykonywania nowego wątku w trybie użytkownika.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Pośrednio zaangażowana, gdy złośliwe oprogramowanie tworzy wątki na niższym poziomie.
 
-[Detailed Analysis](#rtluserthreadstart)
+[Szczegółowa analiza](#rtluserthreadstart)
 
-### Windows Management Instrumentation (WMI)
+### Instrumentacja zarządzania Windows (WMI)
 
-- **Purpose:** Provides infrastructure for management data and operations on Windows.
-- **Usage by Malware:** Execute code, move laterally within networks, and maintain persistence.
+- **Cel:** Zapewnia infrastrukturę dla danych i operacji zarządzania w Windows.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Wykonuje kod, przemieszcza się lateralnie w sieciach i utrzymuje trwałość.
 
-[Detailed Analysis](#windows-management-instrumentation-wmi)
+[Szczegółowa analiza](#instrumentacja-zarządzania-windows-wmi)
 
-### PowerShell and .NET Framework
+### PowerShell i platforma .NET
 
-- **Purpose:** Scripting language and framework for task automation and configuration.
-- **Usage by Malware:** Execute scripts and commands in memory, download and run code without touching the disk.
+- **Cel:** Język skryptowy i platforma dla automatyzacji zadań i konfiguracji.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Wykonuje skrypty i polecenia w pamięci, pobiera i uruchamia kod bez dotykania dysku.
 
-[Detailed Analysis](#powershell-and-net-framework)
+[Szczegółowa analiza](#powershell-i-platforma-net)
 
 ---
 
-## Mechanisms of In-Memory Code Execution
+## Mechanizmy wykonywania kodu w pamięci
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-### Code Injection Techniques
+### Techniki wstrzykiwania kodu
 
-#### Reflective DLL Injection
+#### Odbiciowe wstrzykiwanie DLL
 
-- **Concept:** Load a DLL from memory rather than disk.
-- **Process:**
-  1. Allocate memory using `VirtualAlloc`.
-  2. Copy DLL into memory.
-  3. Adjust memory protections with `VirtualProtect`.
-  4. Execute the DLL's entry point.
+- **Koncepcja:** Ładowanie biblioteki DLL z pamięci zamiast z dysku.
+- **Proces:**
+  1. Alokacja pamięci za pomocą `VirtualAlloc`.
+  2. Kopiowanie DLL do pamięci.
+  3. Dostosowanie ochrony pamięci za pomocą `VirtualProtect`.
+  4. Wykonanie punktu wejścia DLL.
 
-[Learn More](#reflective-dll-injection)
+[Dowiedz się więcej](#odbiciowe-wstrzykiwanie-dll)
 
 #### Process Hollowing
 
-- **Concept:** Replace the code of a legitimate process with malicious code.
-- **Process:**
-  1. Create a suspended process.
-  2. Unmap the original executable from memory.
-  3. Map malicious code into the process's memory space.
-  4. Resume process execution.
+- **Koncepcja:** Zastąpienie kodu legalnego procesu kodem złośliwym.
+- **Proces:**
+  1. Utworzenie procesu w stanie zawieszonym.
+  2. Odmapowanie oryginalnego pliku wykonywalnego z pamięci.
+  3. Mapowanie złośliwego kodu do przestrzeni pamięci procesu.
+  4. Wznowienie wykonywania procesu.
 
-[Learn More](#process-hollowing)
+[Dowiedz się więcej](#process-hollowing)
 
-### Execution via Scripting Engines
+### Wykonywanie za pomocą silników skryptowych
 
-#### PowerShell Scripts
+#### Skrypty PowerShell
 
-- **Usage:** Run malicious commands and scripts directly in memory.
-- **Techniques:**
-  - Use `Invoke-Expression` to execute code.
-  - Obfuscate scripts to avoid detection.
-  - Load assemblies using `System.Reflection`.
+- **Wykorzystanie:** Uruchamianie złośliwych poleceń i skryptów bezpośrednio w pamięci.
+- **Techniki:**
+  - Używanie `Invoke-Expression` do wykonywania kodu.
+  - Obfuskacja skryptów w celu uniknięcia wykrycia.
+  - Ładowanie zestawów za pomocą `System.Reflection`.
 
-[Learn More](#powershell-scripts)
+[Dowiedz się więcej](#skrypty-powershell)
 
-#### WMI-Based Execution
+#### Wykonywanie oparte na WMI
 
-- **Usage:** Leverage WMI for code execution and persistence.
-- **Techniques:**
-  - Create WMI event subscriptions.
-  - Execute commands on remote systems.
+- **Wykorzystanie:** Wykorzystanie WMI do wykonywania kodu i utrzymywania trwałości.
+- **Techniki:**
+  - Tworzenie subskrypcji zdarzeń WMI.
+  - Wykonywanie poleceń na zdalnych systemach.
 
-[Learn More](#wmi-based-execution)
+[Dowiedz się więcej](#wykonywanie-oparte-na-wmi)
 
 ---
 
-## Case Studies of Fileless Malware
+## Studia przypadków złośliwego oprogramowania bezplikowego
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
 ### Powershell Empire
 
-#### Mechanism of Action
+#### Mechanizm działania
 
-- **Description:** An open-source post-exploitation framework.
-- **Key Features:**
-  - Executes PowerShell agents without needing powershell.exe.
-  - Uses encrypted communications.
-  - Operates in memory, avoiding disk writes.
+- **Opis:** Otwarty framework post-exploitacyjny.
+- **Kluczowe cechy:**
+  - Wykonuje agentów PowerShell bez potrzeby użycia powershell.exe.
+  - Używa zaszyfrowanej komunikacji.
+  - Działa w pamięci, unikając zapisów na dysku.
 
-[Detailed Analysis](#powershell-empire-mechanism)
+[Szczegółowa analiza](#mechanizm-działania)
 
-### Operation Cobalt Kitty
+### Operacja Cobalt Kitty
 
-#### Attack Overview
+#### Przegląd ataku
 
-- **Perpetrators:** APT group known as OceanLotus or APT32.
-- **Targets:** Enterprises in Southeast Asia.
-- **Objectives:** Long-term espionage and data exfiltration.
+- **Sprawcy:** Grupa APT znana jako OceanLotus lub APT32.
+- **Cele:** Przedsiębiorstwa w Azji Południowo-Wschodniej.
+- **Cele ataku:** Długoterminowa działalność szpiegowska i eksfiltracja danych.
 
-[Detailed Analysis](#operation-cobalt-kitty-attack-overview)
+[Szczegółowa analiza](#przegląd-ataku)
 
-#### Technical Analysis
+#### Analiza techniczna
 
-- **Initial Infection Vector:** Spear-phishing emails with malicious documents.
-- **Techniques Used:**
-  - Fileless malware executed via PowerShell.
-  - In-memory code execution using `VirtualAlloc`.
-  - Persistence achieved through WMI event subscriptions.
+- **Początkowy wektor infekcji:** E-maile spear-phishingowe z złośliwymi dokumentami.
+- **Użyte techniki:**
+  - Złośliwe oprogramowanie bezplikowe wykonywane za pomocą PowerShell.
+  - Wykonywanie kodu w pamięci przy użyciu `VirtualAlloc`.
+  - Utrzymanie trwałości poprzez subskrypcje zdarzeń WMI.
 
-[In-Depth Analysis](#operation-cobalt-kitty-technical-analysis)
-
----
-
-## Relationship Between Windows Functions
-
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
-
-### `RtlUserThreadStart` and Memory Allocation Functions
-
-- **Interaction:** While `RtlUserThreadStart` is used internally to start threads, memory allocation functions like `VirtualAlloc` are used to prepare executable memory regions.
-- **Malware Usage:** Attackers may indirectly utilize `RtlUserThreadStart` when creating threads for malicious code execution.
-
-[Explore Relationship](#rtluserthreadstart-and-memory-allocation-functions)
-
-### Implementing Threads in .NET
-
-- **.NET Framework:** Provides managed threading via `System.Threading.Thread`.
-- **Interaction with Windows API:** Under the hood, .NET threads interact with Windows threading mechanisms.
-- **Malware Implications:** Malware exploiting .NET may leverage threading to execute code in memory.
-
-[Detailed Analysis](#implementing-threads-in-net)
+[Dogłębna analiza](#analiza-techniczna)
 
 ---
 
-## Comprehensive List of Functions Used by Fileless Malware
+## Związek między funkcjami Windows
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-A detailed enumeration of Windows API functions commonly exploited by fileless malware:
+### `RtlUserThreadStart` i funkcje alokacji pamięci
 
-- **Memory Functions:**
+- **Interakcja:** Podczas gdy `RtlUserThreadStart` jest używana wewnętrznie do uruchamiania wątków, funkcje alokacji pamięci, takie jak `VirtualAlloc`, są używane do przygotowania regionów pamięci wykonywalnej.
+- **Wykorzystanie przez złośliwe oprogramowanie:** Atakujący mogą pośrednio wykorzystywać `RtlUserThreadStart` podczas tworzenia wątków do wykonywania złośliwego kodu.
+
+[Poznaj związek](#rtluserthreadstart-i-funkcje-alokacji-pamięci)
+
+### Implementacja wątków w .NET
+
+- **Platforma .NET:** Zapewnia zarządzane wątki poprzez `System.Threading.Thread`.
+- **Interakcja z Windows API:** W tle wątki .NET interakcjonują z mechanizmami wątków Windows.
+- **Implikacje dla złośliwego oprogramowania:** Złośliwe oprogramowanie wykorzystujące .NET może korzystać z wątków do wykonywania kodu w pamięci.
+
+[Szczegółowa analiza](#implementacja-wątków-w-net)
+
+---
+
+## Kompleksowa lista funkcji używanych przez złośliwe oprogramowanie bezplikowe
+
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+
+Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez złośliwe oprogramowanie bezplikowe:
+
+- **Funkcje pamięci:**
   - `VirtualAlloc`, `VirtualAllocEx`
   - `VirtualProtect`, `VirtualProtectEx`
-- **Process and Thread Functions:**
+- **Funkcje procesów i wątków:**
   - `CreateThread`, `CreateRemoteThread`
   - `NtCreateThreadEx`
   - `RtlCreateUserThread`
-- **Injection and Execution Functions:**
+- **Funkcje wstrzykiwania i wykonywania:**
   - `WriteProcessMemory`
   - `SetThreadContext`, `GetThreadContext`
   - `QueueUserAPC`
-- **Library Loading Functions:**
+- **Funkcje ładowania bibliotek:**
   - `LoadLibrary`, `LoadLibraryEx`
   - `GetProcAddress`
-- **Scripting and Automation:**
-  - PowerShell cmdlets (e.g., `Invoke-Expression`)
-  - WMI classes and methods (e.g., `Win32_Process`, `__EventFilter`)
+- **Skrypty i automatyzacja:**
+  - Cmdlety PowerShell (np. `Invoke-Expression`)
+  - Klasy i metody WMI (np. `Win32_Process`, `__EventFilter`)
 
-[Full List with Descriptions](#list-of-functions)
-
----
-
-## Defensive Measures and Recommendations
-
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
-
-### Monitoring and Detection Strategies
-
-- **Implement Endpoint Detection and Response (EDR) Tools:**
-  - Monitor memory usage and process behaviors.
-- **Enable PowerShell Logging:**
-  - Track script execution and detect obfuscated commands.
-- **Monitor WMI Activity:**
-  - Detect unusual WMI event subscriptions and remote executions.
-
-[Learn More](#monitoring-and-detection-strategies)
-
-### Best Practices for System Hardening
-
-- **Apply Principle of Least Privilege:**
-  - Restrict user permissions to necessary levels.
-- **Regularly Update Systems:**
-  - Patch vulnerabilities promptly.
-- **Restrict Scripting Engines:**
-  - Limit the use of PowerShell and WMI to authorized personnel.
-
-[Learn More](#best-practices-for-system-hardening)
+[Pełna lista z opisami](#lista-funkcji)
 
 ---
 
-## Conclusion
+## Środki obronne i zalecenia
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Fileless malware represents a significant evolution in cyber threats, leveraging legitimate system functionalities to execute malicious activities stealthily. Understanding the underlying Windows functions and mechanisms exploited by such malware is crucial for developing effective defense strategies. By implementing robust monitoring, adhering to best practices, and fostering a culture of security awareness, organizations can mitigate the risks posed by these sophisticated attacks.
+### Strategie monitorowania i wykrywania
+
+- **Implementacja narzędzi Endpoint Detection and Response (EDR):**
+  - Monitorowanie wykorzystania pamięci i zachowań procesów.
+- **Włączanie logowania PowerShell:**
+  - Śledzenie wykonywania skryptów i wykrywanie obfuskowanych poleceń.
+- **Monitorowanie aktywności WMI:**
+  - Wykrywanie nietypowych subskrypcji zdarzeń WMI i zdalnych wykonań.
+
+[Dowiedz się więcej](#strategie-monitorowania-i-wykrywania)
+
+### Najlepsze praktyki w zakresie wzmacniania systemu
+
+- **Zastosowanie zasady najmniejszych uprawnień:**
+  - Ograniczenie uprawnień użytkowników do niezbędnego minimum.
+- **Regularne aktualizacje systemów:**
+  - Szybkie łatanie podatności.
+- **Ograniczenie silników skryptowych:**
+  - Ograniczenie użycia PowerShell i WMI do uprawnionego personelu.
+
+[Dowiedz się więcej](#najlepsze-praktyki-w-zakresie-wzmacniania-systemu)
 
 ---
 
-## References
+## Wniosek
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-1. **Microsoft Documentation:**
-   - [VirtualAlloc function](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)
-   - [CreateThread function](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread)
-   - [Windows Management Instrumentation](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page)
-2. **Cybereason Labs Analysis:**
+Złośliwe oprogramowanie bezplikowe stanowi znaczącą ewolucję w zagrożeniach cybernetycznych, wykorzystując legalne funkcjonalności systemu do potajemnego wykonywania złośliwych działań. Zrozumienie podstawowych funkcji Windows i mechanizmów wykorzystywanych przez takie złośliwe oprogramowanie jest kluczowe dla opracowywania skutecznych strategii obronnych. Poprzez wdrażanie solidnego monitorowania, przestrzeganie najlepszych praktyk i promowanie kultury świadomości bezpieczeństwa, organizacje mogą zmniejszyć ryzyko stwarzane przez te zaawansowane ataki.
+
+---
+
+## Bibliografia
+
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+
+1. **Dokumentacja Microsoft:**
+   - [Funkcja VirtualAlloc](https://learn.microsoft.com/pl-pl/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)
+   - [Funkcja CreateThread](https://learn.microsoft.com/pl-pl/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread)
+   - [Instrumentacja zarządzania Windows](https://learn.microsoft.com/pl-pl/windows/win32/wmisdk/wmi-start-page)
+2. **Analiza Cybereason Labs:**
    - *Operation Cobalt Kitty - Part 1* [PDF](https://www.cybereason.com/hubfs/Cybereason%20Labs%20Analysis%20Operation%20Cobalt%20Kitty-Part1.pdf)
-3. **Security Research Articles:**
-   - FireEye: *APT32 and the Threat Landscape in Southeast Asia*
-   - Kaspersky Lab: *OceanLotus and the Rise of APT Attacks in Asia*
+3. **Artykuły z badań bezpieczeństwa:**
+   - FireEye: *APT32 i krajobraz zagrożeń w Azji Południowo-Wschodniej*
+   - Kaspersky Lab: *OceanLotus i wzrost ataków APT w Azji*
 
 ---
 
-## Disclaimer
+## Zastrzeżenie
 
-[Back to Top](#fileless-malware-in-windows-systems-technical-analysis-and-insights)
+[Powrót na górę](#złośliwe-oprogramowanie-bezplikowe-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-This document is intended for educational and informational purposes only. The analysis of malware techniques is aimed at improving cybersecurity defenses and awareness. Unauthorized creation, distribution, or use of malware is illegal and unethical. Always comply with applicable laws and ethical standards when handling cybersecurity information.
+Niniejszy dokument jest przeznaczony wyłącznie do celów edukacyjnych i informacyjnych. Analiza technik złośliwego oprogramowania ma na celu poprawę obrony cyberbezpieczeństwa i świadomości. Nieautoryzowane tworzenie, dystrybucja lub użycie złośliwego oprogramowania jest nielegalne i nieetyczne. Zawsze przestrzegaj obowiązujących przepisów prawa i standardów etycznych podczas korzystania z informacji o cyberbezpieczeństwie.
 
 ---
 
-**Note:** The content provided is a synthesis of discussions on fileless malware, Windows system functions exploited by attackers, and specific case studies like Operation Cobalt Kitty. It is structured to facilitate deeper exploration of each topic through hyperlinks and organized sections, enabling readers to navigate from general concepts to detailed technical analyses.
+**Uwaga:** Przedstawiona treść jest syntezą dyskusji na temat złośliwego oprogramowania bezplikowego, funkcji systemu Windows wykorzystywanych przez atakujących oraz konkretnych studiów przypadków, takich jak Operacja Cobalt Kitty. Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
