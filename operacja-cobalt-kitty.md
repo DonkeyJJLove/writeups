@@ -1,8 +1,4 @@
-Poniżej znajduje się kompleksowa analiza **Operacji Cobalt Kitty**, uwzględniająca szczegółowe fazy ataku, metody działania złośliwego oprogramowania, techniki użyte przez grupę APT oraz rekomendacje dotyczące zabezpieczeń.
-
----
-
-# **Operacja Cobalt Kitty: Dogłębna Analiza i Reverse Engineering**
+# **Operacja Cobalt Kitty: Analiza**
 
 **Operacja Cobalt Kitty**, przeprowadzona przez grupę OceanLotus (APT32), stanowi jeden z najbardziej wyrafinowanych przykładów zaawansowanego ataku na globalną korporację. Atak obejmował pełny cykl życia APT, wykorzystując techniki fileless malware, lateral movement oraz złożone mechanizmy persistencji.
 
