@@ -45,14 +45,14 @@ Aby zapobiec tego rodzaju atakom, zaleca się:
 - **Regularne aktualizacje i łatki**: Zapewnienie, że system i oprogramowanie są regularnie aktualizowane.
 - **Edukacja użytkowników**: Szkolenie personelu w zakresie rozpoznawania phishingu i innych zagrożeń socjotechnicznych.
 
+## Podsumowanie
 
+Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fileless malware oraz legalne funkcje systemu Windows, takie jak `VirtualAlloc`, `RtlUserThreadStart`, PowerShell i WMI, do przeprowadzenia skutecznej i trudnej do wykrycia kampanii cybernetycznej. *Atakujący wykazali się głębokim zrozumieniem wewnętrznych mechanizmów systemu Windows i wykorzystali je do unikania tradycyjnych mechanizmów detekcji.*
 
- Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fileless malware oraz legalne funkcje systemu Windows, takie jak `VirtualAlloc`, `RtlUserThreadStart`, PowerShell i WMI, do przeprowadzenia skutecznej i trudnej do wykrycia kampanii cybernetycznej. *Atakujący wykazali się głębokim zrozumieniem wewnętrznych mechanizmów systemu Windows i wykorzystali je do unikania tradycyjnych mechanizmów detekcji.*
-
- **Kluczowe Wnioski**:
- - *Znaczenie Monitorowania Aktywności w Pamięci*: Tradycyjne antywirusy oparte na sygnaturach są niewystarczające wobec fileless malware.
- - *Potrzeba Wielowarstwowych Zabezpieczeń*: Kombinacja różnych technologii i praktyk jest niezbędna do skutecznej ochrony.
- - *Rola Edukacji i Świadomości*: Użytkownicy są często najsłabszym ogniwem, dlatego ich edukacja jest kluczowa.
+**Kluczowe Wnioski**:
+- *Znaczenie Monitorowania Aktywności w Pamięci*: Tradycyjne antywirusy oparte na sygnaturach są niewystarczające wobec fileless malware.
+- *Potrzeba Wielowarstwowych Zabezpieczeń*: Kombinacja różnych technologii i praktyk jest niezbędna do skutecznej ochrony.
+- *Rola Edukacji i Świadomości*: Użytkownicy są często najsłabszym ogniwem, dlatego ich edukacja jest kluczowa.
 
 *Operacja Cobalt Kitty zapisała się w historii jako przykład perfekcyjnie przeprowadzonej kampanii cyberwywiadowczej, w której precyzja, cierpliwość i zaawansowane techniki przeniknęły do wnętrza wielkiej korporacji niczym niewidzialna armia.*
 
@@ -63,4 +63,6 @@ Aby zapobiec tego rodzaju atakom, zaleca się:
 3. Publikacje z zakresu cyberbezpieczeństwa:
    - FireEye: *APT32 and the Threat Landscape in Southeast Asia*
    - Kaspersky Lab: *OceanLotus and the Rise of APT Attacks in Asia*
+
 *Ostrzeżenie*: Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie przez wykwalifikowanych specjalistów w kontrolowanym środowisku. Tworzenie lub wykorzystywanie złośliwego oprogramowania jest nielegalne i nieetyczne. Celem tego artykułu jest edukacja i poprawa bezpieczeństwa systemów informatycznych.
+   
