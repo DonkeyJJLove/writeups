@@ -47,7 +47,7 @@
 
 Fileless Malware pojawiło się jako zaawansowane zagrożenie w krajobrazie cyberbezpieczeństwa. W przeciwieństwie do tradycyjnego złośliwego oprogramowania, rezyduje w pamięci systemu, co utrudnia jego wykrycie za pomocą konwencjonalnych rozwiązań antywirusowych. Ten dokument zapewnia kompleksową analizę Fileless Malware w systemach Windows, badając techniki stosowane przez atakujących, funkcje Windows, które wykorzystują, oraz studia przypadków ilustrujące ich metody.
 
-[Przejdź do sekcji "Zmiany w Taktykach Cyberataków"](malware-evolution.md#zmiany-w-taktykach-cyberataków-analiza-i-refleksje)
+[Zmiany w Taktykach Cyberataków – Analiza i Refleksje](cybersecurity-evolusion.md#zmiany-w-taktykach-cyberataków-analiza-i-refleksje)
 
 
 ---
