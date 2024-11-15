@@ -1,4 +1,4 @@
-# Operacja Cobalt Kitty: Kompleksowa Analiza Techniczna z Warstwą Fabularną
+# Operacja Cobalt Kitty
 
 *W cichym mroku serwerowni globalnej korporacji, niewidzialny przeciwnik rozpoczął swoją misję. Był jak cień, przemieszczający się bezszelestnie między systemami, pozostając niezauważonym przez strażników cyfrowego świata. To była Operacja Cobalt Kitty – mistrzowsko przeprowadzony atak, który miał zmienić zasady gry w cyberbezpieczeństwie.*
 
