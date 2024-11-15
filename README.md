@@ -163,7 +163,7 @@ Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne w
 - **Cel:** Tworzy nowy proces oraz jego główny wątek. Funkcja ta może być użyta do uruchamiania aplikacji z określonymi parametrami.
 - **Wykorzystanie przez złośliwe oprogramowanie:** Atakujący wykorzystują `CreateProcessA` do uruchamiania złośliwych poleceń lub tworzenia harmonogramowanych zadań (scheduled tasks) bez zapisywania plików na dysku.
 
-##### **Przykład Implementacji `CreateProcessA` w Ataku Fileless Malware (Cobalt Kitty)**
+##### **Przykład Implementacji `CreateProcessA` w Ataku Fileless Malware ([Cobalt Kitty](operacja-cobalt-kitty.md))**
 
    ```vb
    Option Explicit
