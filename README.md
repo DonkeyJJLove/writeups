@@ -84,7 +84,7 @@ Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne w
 
      *Przykład*: **EternalBlue**, exploit wykorzystany przez **WannaCry**, umożliwiał zdalne uruchomienie kodu w pamięci systemów Windows. [^1],
 
-[^1]: Ataki kryptokoparek: W 2017 i 2018 roku odnotowano ataki, w których EternalBlue był używany do instalacji kryptokoparek działających bezplikowo. Złośliwe oprogramowanie wydobywało kryptowaluty, wykorzystując zasoby systemu ofiary, a cała operacja odbywała się w pamięci. Ataki na instytucje finansowe: Niektóre zaawansowane grupy cyberprzestępcze wykorzystywały EternalBlue w połączeniu z technikami bezplikowymi do ataków na banki i inne instytucje finansowe, gdzie kradzież danych i pieniędzy odbywała się bez pozostawiania tradycyjnych śladów.
+
 
 
 5. **Persistencja Bezplikowa**
@@ -482,3 +482,4 @@ Niniejszy dokument jest przeznaczony wyłącznie do celów edukacyjnych i inform
 
 **Uwaga:** Przedstawiona treść jest syntezą dyskusji na temat Fileless Malware, funkcji systemu Windows wykorzystywanych przez atakujących oraz konkretnych studiów przypadków, takich jak Operacja Cobalt Kitty. Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
 
+[^1]: Ataki kryptokoparek: W 2017 i 2018 roku odnotowano ataki, w których EternalBlue był używany do instalacji kryptokoparek działających bezplikowo. Złośliwe oprogramowanie wydobywało kryptowaluty, wykorzystując zasoby systemu ofiary, a cała operacja odbywała się w pamięci. Ataki na instytucje finansowe: Niektóre zaawansowane grupy cyberprzestępcze wykorzystywały EternalBlue w połączeniu z technikami bezplikowymi do ataków na banki i inne instytucje finansowe, gdzie kradzież danych i pieniędzy odbywała się bez pozostawiania tradycyjnych śladów.
