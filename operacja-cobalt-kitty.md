@@ -8,7 +8,7 @@ Operacja Cobalt Kitty to skomplikowana kampania ataków przeprowadzona przez Oce
 
 Charakterystyka ataku:
 - **Długotrwała obecność**: Atakujący pozostawali niezauważeni przez wiele miesięcy, stale monitorując i gromadząc dane.
-- **Unikanie wykrycia**: Operacja obejmowała zaawansowane techniki, takie jak fileless malware, które działały wyłącznie w pamięci, wykorzystując legalne funkcje systemu Windows, np. PowerShell oraz Windows Management Instrumentation (WMI).
+- **Unikanie wykrycia**: Operacja obejmowała zaawansowane techniki, takie jak fileless malware, które działały wyłącznie w pamięci, wykorzystując pospolite funkcje systemu Windows, np. PowerShell oraz Windows Management Instrumentation (WMI).
 - **Precyzyjne działania**: Atak był skierowany na kluczowe segmenty infrastruktury organizacji, systematycznie uzyskując dostęp do serwerów i innych urządzeń.
 
 *Operacja ta przypominała precyzyjne polowanie, gdzie łowcy skupili się na wyciągnięciu najbardziej wartościowych informacji bez wszczynania alarmów. Z wykorzystaniem zaawansowanych narzędzi do eksfiltracji, atakujący zdołali niepostrzeżenie wydostać ogromne ilości danych, nie pozostawiając za sobą śladów.*
@@ -33,7 +33,7 @@ Malware wykorzystywał techniki lateral movement, pozwalające na przenoszenie s
 Atakujący stosowali różnorodne techniki ukrywania swojej aktywności:
 - **Bezplikowe działanie**: Złośliwe oprogramowanie działało wyłącznie w pamięci RAM.
 - **Obfuskacja i szyfrowanie**: Kod był dynamicznie generowany i szyfrowany, co uniemożliwiało jego wykrycie przez systemy detekcji oparte na sygnaturach.
-- **Wykorzystanie legalnych funkcji systemowych**: Działania malware wyglądały jak normalne operacje administracyjne, co sprawiało, że nie wzbudzały podejrzeń.
+- **Wykorzystanie pospolitych funkcji systemowych**: Działania malware wyglądały jak normalne operacje administracyjne, co sprawiało, że nie wzbudzały podejrzeń.
 
 *W arsenale Cobalt Kitty znajdowały się najbardziej zaawansowane techniki unikania detekcji, które nie tylko omijały standardowe systemy bezpieczeństwa, ale również adaptowały się do działań obronnych prowadzonych przez zespoły IT.*
 
@@ -47,7 +47,7 @@ Aby zapobiec tego rodzaju atakom, zaleca się:
 
 ## Podsumowanie
 
-Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fileless malware oraz legalne funkcje systemu Windows, takie jak `VirtualAlloc`, `RtlUserThreadStart`, PowerShell i WMI, do przeprowadzenia skutecznej i trudnej do wykrycia kampanii cybernetycznej. *Atakujący wykazali się głębokim zrozumieniem wewnętrznych mechanizmów systemu Windows i wykorzystali je do unikania tradycyjnych mechanizmów detekcji.*
+Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fileless malware oraz pospolite funkcje systemu Windows, takie jak `VirtualAlloc`, `RtlUserThreadStart`, PowerShell i WMI, do przeprowadzenia skutecznej i trudnej do wykrycia kampanii cybernetycznej. *Atakujący wykazali się głębokim zrozumieniem wewnętrznych mechanizmów systemu Windows i wykorzystali je do unikania tradycyjnych mechanizmów detekcji.*
 
 **Kluczowe Wnioski**:
 - *Znaczenie Monitorowania Aktywności w Pamięci*: Tradycyjne antywirusy oparte na sygnaturach są niewystarczające wobec fileless malware.
