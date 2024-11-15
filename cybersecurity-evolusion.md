@@ -70,11 +70,11 @@ W dobie komputerów kwantowych powinniśmy zdawać sobie sprawę, że poprzez da
 
 ## Zagrożenia i Wnioski
 
-> Takim kluczem atakując naszą niedoskonałość i niedbałość, łatwo odciąć nam tlen. To jest takie proste, problemem jest skala. My musimy być doskonali każdy. Oni mogą być terrorystami we trzech i tak zazwyczaj jest. Jest to kwestia możliwości, jakie daje skala i kombinatoryka.
+Takim kluczem atakując naszą niedoskonałość i niedbałość, łatwo odciąć nam tlen. To jest takie proste, problemem jest skala. My musimy być doskonali każdy. Oni mogą być terrorystami we trzech i tak zazwyczaj jest. Jest to kwestia możliwości, jakie daje skala i kombinatoryka.
 
-> *To jest pokłosie podejścia do rozwoju technologii, do rzeczywistości gospodarczej, do polityki światowej – podejścia słusznego w przeszłości, a dziś już zwyczajnie irracjonalnego. Jak cyberantagoniści. Musimy robić to, co robimy, po prostu lepiej, dokładniej, rozsądniej, a będzie bezpieczniej.*
+*To jest pokłosie podejścia do rozwoju technologii, do rzeczywistości gospodarczej, do polityki światowej – podejścia słusznego w przeszłości, a dziś już zwyczajnie irracjonalnego. Jak cyberantagoniści. Musimy robić to, co robimy, po prostu lepiej, dokładniej, rozsądniej, a będzie bezpieczniej.*
 
-> Nie jest, bo nie działamy dokładniej, lepiej czy rozsądniej jako cywilizacja. Działamy na *„odpierdol się”*. No i ta nasza abnegacja, w sumie słuszna, bo dlaczego nie? No nie, bo ktoś to wykorzysta. Nie jesteśmy sami na planecie, nie mamy też mocy boskich.
+Nie jest, bo nie działamy dokładniej, lepiej czy rozsądniej jako cywilizacja. Działamy na *„odpierdol się”*. No i ta nasza abnegacja, w sumie słuszna, bo dlaczego nie? No nie, bo ktoś to wykorzysta. Nie jesteśmy sami na planecie, nie mamy też mocy boskich.
 
 [Powrót do sekcji "Zrozumienie złośliwego oprogramowania bezplikowego"](https://github.com/DonkeyJJLove/writeups/blob/Fileless-Malware/README.md#zrozumienie-złośliwego-oprogramowania-bezplikowego)
 
