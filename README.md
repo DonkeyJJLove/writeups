@@ -286,7 +286,7 @@ Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne w
 - **Cele:** Przedsiębiorstwa w Azji Południowo-Wschodniej.
 - **Cele ataku:** Długoterminowa działalność szpiegowska i eksfiltracja danych.
 
-[Szczegółowa analiza](operacja-cobalt-kitty.md#przegląd-ataku)
+[Szczegółowa analiza](operacja-cobalt-kitty.md)
 
 #### Analiza techniczna
 
