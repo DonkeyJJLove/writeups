@@ -48,6 +48,8 @@
 
 Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne wyzwanie dla współczesnych systemów bezpieczeństwa. W przeciwieństwie do tradycyjnego malware, nie zapisuje swojego kodu na dysku twardym, co utrudnia jego wykrycie przez antywirusy oparte na sygnaturach plików. Zamiast tego, działa bezpośrednio w pamięci operacyjnej (RAM) i często wykorzystuje pospolite narzędzia systemowe do przeprowadzania złośliwych działań.
 
+[Zmiany w Taktykach Cyberataków – Analiza i Refleksje](cybersecurity-evolusion.md#zmiany-w-taktykach-cyberataków-analiza-i-refleksje)
+
 **Mechanizmy Wprowadzania Kodu do Pamięci i Jego Wykonywanie**
 
 1. **Wykorzystanie Wbudowanych Narzędzi Systemowych**
