@@ -65,4 +65,3 @@ Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fi
    - Kaspersky Lab: *OceanLotus and the Rise of APT Attacks in Asia*
 
 > *Ostrzeżenie*: Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie przez wykwalifikowanych specjalistów w kontrolowanym środowisku. Tworzenie lub wykorzystywanie złośliwego oprogramowania jest nielegalne i nieetyczne. Celem tego artykułu jest edukacja i poprawa bezpieczeństwa systemów informatycznych.
-```
