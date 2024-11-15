@@ -300,7 +300,7 @@ Fileless Malware działa bez pozostawiania śladu na dysku. Wykorzystuje legalne
 
 #### Process Hollowing
 
-- **Koncepcja:** Zastąpienie kodu legalnego procesu kodem złośliwym.
+- **Koncepcja:** Zastąpienie pospolitego kodu procesu kodem złośliwym.
 - **Proces:**
   1. Utworzenie procesu w stanie zawieszonym.
   2. Odmapowanie oryginalnego pliku wykonywalnego z pamięci.
@@ -451,7 +451,7 @@ Szczegółowe zestawienie funkcji API Windows powszechnie wykorzystywanych przez
 
 [Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
 
-Fileless Malware stanowi znaczącą ewolucję w zagrożeniach cybernetycznych, wykorzystując legalne funkcjonalności systemu do potajemnego wykonywania złośliwych działań. Zrozumienie podstawowych funkcji Windows i mechanizmów wykorzystywanych przez takie złośliwe oprogramowanie jest kluczowe dla opracowywania skutecznych strategii obronnych. Poprzez wdrażanie solidnego monitorowania, przestrzeganie najlepszych praktyk i promowanie kultury świadomości bezpieczeństwa, organizacje mogą zmniejszyć ryzyko stwarzane przez te zaawansowane ataki.
+Fileless Malware stanowi znaczącą ewolucję w zagrożeniach cybernetycznych, wykorzystując pospolite funkcjonalności systemu do potajemnego wykonywania złośliwych działań. Zrozumienie podstawowych funkcji Windows i mechanizmów wykorzystywanych przez takie złośliwe oprogramowanie jest kluczowe dla opracowywania skutecznych strategii obronnych. Poprzez wdrażanie solidnego monitorowania, przestrzeganie najlepszych praktyk i promowanie kultury świadomości bezpieczeństwa, organizacje mogą zmniejszyć ryzyko stwarzane przez te zaawansowane ataki.
 
 ---
 
