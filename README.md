@@ -175,9 +175,9 @@ Fileless malware stanowi poważne zagrożenie ze względu na trudność w jego w
 
 **Dodatkowe Przykłady i Materiały**
 
-- **Malware **Sorebrect**: Ransomware działający bezplikowo, który szyfruje pliki i usuwa swoje ślady z systemu.
+- **Malware Sorebrect**: Ransomware działający bezplikowo, który szyfruje pliki i usuwa swoje ślady z systemu.
 
-- **Ataki na **POS Systems**: Niektóre malware atakujące systemy punktów sprzedaży działają w pamięci, kradnąc dane kart płatniczych.
+- **Ataki na POS Systems**: Niektóre malware atakujące systemy punktów sprzedaży działają w pamięci, kradnąc dane kart płatniczych.
 
 **Zalecenia dla Specjalistów ds. Bezpieczeństwa**
 
@@ -195,9 +195,6 @@ Fileless malware stanowi poważne zagrożenie ze względu na trudność w jego w
 
 3. **Dokumentacja Microsoftu** dotycząca zabezpieczeń PowerShell i najlepszych praktyk bezpieczeństwa systemu Windows.
 
----
-
-Jeśli masz dodatkowe pytania lub potrzebujesz bardziej szczegółowych informacji na temat konkretnych technik czy przykładów, chętnie pomogę.
 [Zmiany w Taktykach Cyberataków – Analiza i Refleksje](cybersecurity-evolusion.md#zmiany-w-taktykach-cyberataków-analiza-i-refleksje)
 
 
