@@ -45,8 +45,163 @@
 
 ## Wprowadzenie
 
-Fileless Malware pojawiło się jako zaawansowane zagrożenie w krajobrazie cyberbezpieczeństwa. W przeciwieństwie do tradycyjnego złośliwego oprogramowania, rezyduje w pamięci systemu, co utrudnia jego wykrycie za pomocą konwencjonalnych rozwiązań antywirusowych. Ten dokument zapewnia kompleksową analizę Fileless Malware w systemach Windows, badając techniki stosowane przez atakujących, funkcje Windows, które wykorzystują, oraz studia przypadków ilustrujące ich metody.
+Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne wyzwanie dla współczesnych systemów bezpieczeństwa. W przeciwieństwie do tradycyjnego malware, nie zapisuje swojego kodu na dysku twardym, co utrudnia jego wykrycie przez antywirusy oparte na sygnaturach plików. Zamiast tego, działa bezpośrednio w pamięci operacyjnej (RAM) i często wykorzystuje legalne narzędzia systemowe do przeprowadzania złośliwych działań.
 
+**Mechanizmy Wprowadzania Kodu do Pamięci i Jego Wykonywanie**
+
+1. **Wykorzystanie Wbudowanych Narzędzi Systemowych**
+
+   - **PowerShell**: Fileless malware często korzysta z Windows PowerShell, potężnego narzędzia skryptowego wbudowanego w system Windows. Atakujący mogą dostarczyć złośliwe polecenia PowerShell poprzez różne wektory ataku (np. złośliwe dokumenty, skrypty, e-maile), które są następnie uruchamiane w pamięci.
+
+     *Przykład*: Malware **Powershell Empire** wykorzystuje PowerShell do wykonywania złośliwych skryptów bez pozostawiania śladów na dysku.
+
+   - **Windows Management Instrumentation (WMI)**: WMI umożliwia zarządzanie komponentami systemu Windows. Atakujący mogą użyć WMI do uruchamiania złośliwych skryptów w pamięci.
+
+     *Przykład*: **Duqu 2.0** używa WMI do rozprzestrzeniania się po sieci i wykonywania złośliwego kodu w pamięci.
+
+
+2. **Iniekcja Kodu do Pamięci Procesów**
+
+   - **Reflective DLL Injection**: Technika polegająca na wstrzykiwaniu biblioteki DLL bezpośrednio do pamięci procesu, bez zapisywania jej na dysku. Pozwala to na uruchomienie złośliwych funkcji w kontekście legalnego procesu.
+
+     *Przykład*: **Kovter** to malware, które wykorzystuje tę technikę do ukrywania się i unikania detekcji.
+
+   - **Process Hollowing**: Atakujący tworzą nowy proces (np. legalny proces systemowy), a następnie zastępują jego pamięć własnym złośliwym kodem.
+
+     *Przykład*: **Carbanak** używa process hollowing do kradzieży danych finansowych z instytucji bankowych.
+
+
+3. **Wykorzystanie Dokumentów z Makrami**
+
+   - **Złośliwe Makra w Dokumentach Office**: Atakujący mogą osadzić złośliwe makra w dokumentach Microsoft Office, które po otwarciu przez ofiarę uruchamiają kod w pamięci.
+
+     *Przykład*: **Emotet** często dystrybuuje się poprzez zainfekowane dokumenty Word z włączonymi makrami, które pobierają i uruchamiają złośliwy kod w pamięci.
+
+
+4. **Eksploatacja Luk Bezpieczeństwa**
+
+   - **Ataki typu Remote Code Execution (RCE)**: Wykorzystanie podatności w aplikacjach lub systemach operacyjnych pozwala atakującemu na uruchomienie kodu w pamięci bezpośrednio przez sieć.
+
+     *Przykład*: **EternalBlue**, exploit wykorzystany przez **WannaCry**, umożliwiał zdalne uruchomienie kodu w pamięci systemów Windows.
+
+
+5. **Persistencja Bezplikowa**
+
+   - **Rejestr Systemowy**: Złośliwy kod może być przechowywany w kluczach rejestru i uruchamiany przy starcie systemu, bez potrzeby zapisywania na dysku.
+
+     *Przykład*: **Poweliks** przechowuje złośliwy kod w rejestrze, uruchamiając go za pomocą PowerShell przy każdym starcie systemu.
+
+**Przykłady Fileless Malware**
+
+1. **Poweliks**
+
+   - **Opis**: Jeden z pierwszych szeroko znanych fileless malware. Przechowuje złośliwy kod w rejestrze systemowym i używa skryptów PowerShell do jego wykonania.
+
+   - **Mechanizm Działania**:
+     - Dostarczany poprzez złośliwe załączniki e-mail lub exploit kits.
+     - Tworzy klucze rejestru zawierające zakodowany złośliwy kod.
+     - Używa PowerShell do dekodowania i uruchamiania kodu w pamięci.
+
+2. **Kovter**
+
+   - **Opis**: Malware znane z działania bez zapisów na dysku, początkowo jako adware, później ewoluowało do bardziej złośliwych działań.
+
+   - **Mechanizm Działania**:
+     - Wykorzystuje techniki iniekcji kodu i skrypty PowerShell.
+     - Zapisuje złośliwy kod w rejestrze.
+     - Używa scheduled tasks do utrzymania persistencji.
+
+3. **Duqu 2.0**
+
+   - **Opis**: Zaawansowane narzędzie szpiegowskie, przypisywane grupie związanej z państwowym aktorem.
+
+   - **Mechanizm Działania**:
+     - Wykorzystuje exploity zero-day do infekcji systemów.
+     - Nie zapisuje plików na dysku; działa w pamięci.
+     - Używa WMI i RPC do rozprzestrzeniania się i komunikacji.
+
+4. **FIN7/Carbanak**
+
+   - **Opis**: Grupa cyberprzestępcza atakująca instytucje finansowe na całym świecie.
+
+   - **Mechanizm Działania**:
+     - Wykorzystuje złośliwe e-maile z dokumentami zawierającymi makra.
+     - Makra uruchamiają skrypty PowerShell w pamięci.
+     - Używa technik iniekcji kodu i process hollowing.
+
+**Jak Kod Trafia do Pamięci i Jest Wykonywany**
+
+- **Skrypty PowerShell i WMI**: Atakujący dostarczają skrypty, które są uruchamiane przez legalne narzędzia systemowe, ładując złośliwy kod do pamięci.
+
+- **Eksploity**: Wykorzystanie luk bezpieczeństwa pozwala na zdalne wykonanie kodu w pamięci bez interakcji użytkownika.
+
+- **Iniekcja Kodu**: Złośliwy kod jest wstrzykiwany do pamięci istniejących procesów, często tych o podwyższonych uprawnieniach.
+
+- **Użycie Rejestru**: Zamiast zapisywać pliki na dysku, złośliwy kod jest przechowywany w rejestrze i uruchamiany przez skrypty.
+
+**Techniki Unikania Wykrycia**
+
+- **Wykorzystanie Legalnych Narzędzi**: Korzystanie z PowerShell, WMI i innych narzędzi utrudnia wykrycie, ponieważ ich użycie jest normalne w systemie.
+
+- **Szyfrowanie i Obfuskacja**: Kod jest szyfrowany lub zaciemniany, aby utrudnić jego analizę.
+
+- **Dynamiczne Generowanie Kodu**: Kod złośliwy jest generowany w czasie rzeczywistym, co utrudnia jego identyfikację przez sygnatury.
+
+**Metody Wykrywania i Obrony**
+
+1. **Monitorowanie Aktywności w Pamięci**
+
+   - **Narzędzia EDR**: Rozwiązania do wykrywania i reagowania na incydenty na punktach końcowych monitorują aktywność w czasie rzeczywistym.
+
+2. **Ograniczenie Uprawnień**
+
+   - **Zasada Najmniejszych Uprawnień**: Użytkownicy powinni mieć tylko te uprawnienia, które są niezbędne do wykonywania ich pracy.
+
+3. **Kontrola Dostępu do Narzędzi Systemowych**
+
+   - **Ograniczenie PowerShell**: Ustawienie restrykcyjnych polityk wykonania skryptów.
+
+4. **Aktualizacje i Łatki**
+
+   - **Regularne Aktualizacje**: Zapewnienie, że systemy i oprogramowanie są aktualne i zabezpieczone przed znanymi podatnościami.
+
+5. **Edukacja Użytkowników**
+
+   - **Świadomość Zagrożeń**: Szkolenia dotyczące rozpoznawania złośliwych e-maili i załączników.
+
+**Podsumowanie**
+
+Fileless malware stanowi poważne zagrożenie ze względu na trudność w jego wykryciu i usunięciu. Wykorzystując legalne narzędzia systemowe i działając w pamięci, omija tradycyjne mechanizmy bezpieczeństwa. Zrozumienie mechanizmów jego działania oraz implementacja zaawansowanych strategii obrony jest kluczowa dla ochrony systemów przed tego typu atakami.
+
+**Dodatkowe Przykłady i Materiały**
+
+- **Malware **Sorebrect**: Ransomware działający bezplikowo, który szyfruje pliki i usuwa swoje ślady z systemu.
+
+- **Ataki na **POS Systems**: Niektóre malware atakujące systemy punktów sprzedaży działają w pamięci, kradnąc dane kart płatniczych.
+
+**Zalecenia dla Specjalistów ds. Bezpieczeństwa**
+
+- **Implementacja Monitorowania Behawioralnego**: Skupienie się na nietypowych zachowaniach procesów i systemu.
+
+- **Wykorzystanie Threat Intelligence**: Aktualna wiedza o nowych zagrożeniach i technikach ataku.
+
+- **Regularne Audyty Bezpieczeństwa**: Przeprowadzanie testów penetracyjnych i ocen bezpieczeństwa systemów.
+
+**Literatura i Źródła**
+
+1. **Raporty bezpieczeństwa** firm takich jak Symantec, McAfee czy Kaspersky Lab, które regularnie publikują analizy nowych zagrożeń.
+
+2. **Strony i blogi** poświęcone cyberbezpieczeństwu, takie jak **BleepingComputer**, **ThreatPost**, czy **The Hacker News**.
+
+3. **Dokumentacja Microsoftu** dotycząca zabezpieczeń PowerShell i najlepszych praktyk bezpieczeństwa systemu Windows.
+
+**Ostrzeżenie**
+
+Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie w kontrolowanym i izolowanym środowisku laboratoryjnym przez doświadczonych specjalistów. Tworzenie, posiadanie lub dystrybucja złośliwego oprogramowania jest nielegalna i może prowadzić do poważnych konsekwencji prawnych.
+
+---
+
+Jeśli masz dodatkowe pytania lub potrzebujesz bardziej szczegółowych informacji na temat konkretnych technik czy przykładów, chętnie pomogę.
 [Zmiany w Taktykach Cyberataków – Analiza i Refleksje](cybersecurity-evolusion.md#zmiany-w-taktykach-cyberataków-analiza-i-refleksje)
 
 
