@@ -195,10 +195,6 @@ Fileless malware stanowi poważne zagrożenie ze względu na trudność w jego w
 
 3. **Dokumentacja Microsoftu** dotycząca zabezpieczeń PowerShell i najlepszych praktyk bezpieczeństwa systemu Windows.
 
-**Ostrzeżenie**
-
-Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie w kontrolowanym i izolowanym środowisku laboratoryjnym przez doświadczonych specjalistów. Tworzenie, posiadanie lub dystrybucja złośliwego oprogramowania jest nielegalna i może prowadzić do poważnych konsekwencji prawnych.
-
 ---
 
 Jeśli masz dodatkowe pytania lub potrzebujesz bardziej szczegółowych informacji na temat konkretnych technik czy przykładów, chętnie pomogę.
