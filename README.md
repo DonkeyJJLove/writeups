@@ -82,11 +82,9 @@ Fileless malware, czyli złośliwe oprogramowanie bezplikowe, stanowi poważne w
 
    - **Ataki typu Remote Code Execution (RCE)**: Wykorzystanie podatności w aplikacjach lub systemach operacyjnych pozwala atakującemu na uruchomienie kodu w pamięci bezpośrednio przez sieć.
 
-     *Przykład*: **EternalBlue**, exploit wykorzystany przez **WannaCry**, umożliwiał zdalne uruchomienie kodu w pamięci systemów Windows.[^1],
+     *Przykład*: **EternalBlue**, exploit wykorzystany przez **WannaCry**, umożliwiał zdalne uruchomienie kodu w pamięci systemów Windows. [^1],
 
-...
-
-[^1]: Eksploit EternalBlue to luka w protokole SMB systemu Windows, która została ujawniona w 2017 roku.
+[^1]: Ataki kryptokoparek: W 2017 i 2018 roku odnotowano ataki, w których EternalBlue był używany do instalacji kryptokoparek działających bezplikowo. Złośliwe oprogramowanie wydobywało kryptowaluty, wykorzystując zasoby systemu ofiary, a cała operacja odbywała się w pamięci. Ataki na instytucje finansowe: Niektóre zaawansowane grupy cyberprzestępcze wykorzystywały EternalBlue w połączeniu z technikami bezplikowymi do ataków na banki i inne instytucje finansowe, gdzie kradzież danych i pieniędzy odbywała się bez pozostawiania tradycyjnych śladów.
 
 
 5. **Persistencja Bezplikowa**
