@@ -66,3 +66,6 @@ Operacja Cobalt Kitty jest przykładem zaawansowanego ataku wykorzystującego fi
 
 *Ostrzeżenie*: Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie przez wykwalifikowanych specjalistów w kontrolowanym środowisku. Tworzenie lub wykorzystywanie złośliwego oprogramowania jest nielegalne i nieetyczne. Celem tego artykułu jest edukacja i poprawa bezpieczeństwa systemów informatycznych.
    
+[Powrót do sekcji "Studia przypadków Fileless Malware"](README.md#studia-przypadków-fileless-malware)
+
+---
