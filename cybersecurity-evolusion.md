@@ -76,4 +76,6 @@ Takim kluczem atakując naszą niedoskonałość i niedbałość, łatwo odcią�
 
 Nie jest, bo nie działamy dokładniej, lepiej czy rozsądniej jako cywilizacja. Działamy na *„odpierdol się”*. No i ta nasza abnegacja, w sumie słuszna, bo dlaczego nie? No nie, bo ktoś to wykorzysta. Nie jesteśmy sami na planecie, nie mamy też mocy boskich.
 
+[Powrót do sekcji "Zrozumienie złośliwego oprogramowania bezplikowego"](https://github.com/TwojeRepozytorium/README.md#zrozumienie-złośliwego-oprogramowania-bezplikowego)
+
 ---
