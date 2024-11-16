@@ -1,3 +1,7 @@
+---
+** File: README.md**
+---
+
 # Fileless Malware w systemach Windows: Analiza techniczna i spostrzeżenia
 
 ---
@@ -56,6 +60,10 @@ Fileless malware stanowi poważne wyzwanie dla współczesnych systemów bezpiec
 
 W niniejszym dokumencie przeanalizujemy techniki stosowane przez fileless malware w systemach Windows, zrozumiemy, jak wykorzystuje kluczowe funkcje systemowe, oraz przedstawimy studia przypadków takich ataków, w tym [Operację Cobalt Kitty](operacja-cobalt-kitty.md). Przedstawimy również środki obronne i zalecenia, które pomogą w zabezpieczeniu systemów przed tego typu zagrożeniami.
 
+Dodatkowo, omówimy ewolucję malware oraz zmiany w taktykach cyberataków w kontekście wykorzystania nowoczesnych technologii AI, co pozwoli na pełniejsze zrozumienie dynamicznie zmieniającego się krajobrazu cyberzagrożeń:
+
+- [Ewolucja Malware – Od Sygnatur do Adaptacyjnych Technologii AI](malware-evolution.md)
+- [Zmiany w Taktykach Cyberataków – Analiza i Refleksje](cybersecurity-evolusion.md#zmiany-w-taktykach-cyberatakow)
 ---
 
 ## Fileless Malware
