@@ -340,10 +340,4 @@ Zrozumienie mechanizmów działania złośliwego oprogramowania bezplikowego jes
 >
 > **Uwaga**: Przedstawiona treść jest syntezą dyskusji na temat fileless malware, funkcji systemu Windows wykorzystywanych przez atakujących oraz konkretnych studiów przypadków, takich jak [Operacja Cobalt Kitty](operacja-cobalt-kitty.md). Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
 
----
-
-[Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
-
----
-
-**Uwaga:** Warstwa epicka została dodana jako osobna sekcja w celu zapewnienia narracyjnego kontekstu do technicznej analizy. Możesz ją umieścić w `README.md` lub jako oddzielny dokument, w zależności od preferencji.
+> [Powrót na górę](#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)

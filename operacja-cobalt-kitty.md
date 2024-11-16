@@ -614,3 +614,6 @@ W świecie, gdzie informacja jest najcenniejszym zasobem, a granice między pań
 *Ostrzeżenie*: Analiza złośliwego oprogramowania powinna być przeprowadzana wyłącznie przez wykwalifikowanych specjalistów w kontrolowanym środowisku. Prezentowany kod i techniki mają charakter edukacyjny i nie powinny być wykorzystywane do celów niezgodnych z prawem lub etyką. Celem tego artykułu jest edukacja i poprawa bezpieczeństwa systemów informatycznych.
 
 ---
+> [Powrót do głównego dokumentu](README.md#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+>
+> [Powrót na górę](#operacja-cobalt-kitty)

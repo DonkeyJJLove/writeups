@@ -193,8 +193,7 @@ Nie jest, bo nie działamy dokładniej, lepiej czy rozsądniej jako cywilizacja.
 >
 >**Uwaga**: Przedstawiona treść jest syntezą dyskusji na temat zmian w taktykach cyberataków, technik wykorzystywanych przez różne grupy cyberprzestępcze oraz refleksji na temat przyszłości cyberbezpieczeństwa. Jest ona zorganizowana w celu ułatwienia głębszej eksploracji każdego tematu poprzez hiperłącza i uporządkowane sekcje, umożliwiając czytelnikom nawigację od ogólnych pojęć do szczegółowych analiz technicznych.
 
----
-[Powrót do głównego dokumentu](README.md#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
----
-[Powrót na górę](#zmiany-w-taktykach-cyberataków--analiza-i-refleksje)
----
+
+> [Powrót do głównego dokumentu](README.md#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
+>
+> [Powrót na górę](#zmiany-w-taktykach-cyberataków--analiza-i-refleksje)
