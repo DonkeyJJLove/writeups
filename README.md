@@ -5,7 +5,7 @@
 ## Spis treści
 
 1. [Wprowadzenie](#wprowadzenie)
-2. [Zrozumienie złośliwego oprogramowania bezplikowego](#zrozumienie-złośliwego-oprogramowania-bezplikowego)
+2. [Fileless Malware](#zrozumienie-złośliwego-oprogramowania-bezplikowego)
    - [Definicja i charakterystyka](#definicja-i-charakterystyka)
    - [Powszechnie stosowane techniki](#powszechnie-stosowane-techniki)
 3. [Kluczowe funkcje Windows wykorzystywane przez Fileless Malware](#kluczowe-funkcje-windows-wykorzystywane-przez-fileless-malware)
@@ -58,7 +58,7 @@ W niniejszym dokumencie przeanalizujemy techniki stosowane przez fileless malwar
 
 ---
 
-## Zrozumienie złośliwego oprogramowania bezplikowego
+## Fileless Malware
 
 ### Definicja i charakterystyka
 
