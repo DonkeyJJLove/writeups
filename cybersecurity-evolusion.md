@@ -1,6 +1,3 @@
----
-**File: cybersecurity-evolusion.md**
----
 # Zmiany w Taktykach Cyberataków – Analiza i Refleksje
 
 Artykuł opublikowany przez **Sky News** 15 października 2024 roku omawia ewolucję taktyk cyberataków stosowanych przez Rosję, Iran i Koreę Północną w ciągu ostatniego roku, zgodnie z raportem Microsoftu.
@@ -198,7 +195,6 @@ Nie jest, bo nie działamy dokładniej, lepiej czy rozsądniej jako cywilizacja.
 
 ---
 [Powrót do głównego dokumentu](README.md#fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia)
-
 ---
 [Powrót na górę](#zmiany-w-taktykach-cyberataków--analiza-i-refleksje)
 ---
