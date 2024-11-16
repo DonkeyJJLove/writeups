@@ -3,10 +3,6 @@
 <em>
 W sercu metropolii, gdzie szklane wieżowce wznosiły się ku niebu, a globalne korporacje prowadziły swoje interesy w rytmie cyfrowego świata, nikt nie spodziewał się nadchodzącego zagrożenia. W cieniach sieci, niewidzialni aktorzy przygotowywali się do precyzyjnie zaplanowanej operacji. Grupa OceanLotus, znana w kręgach wywiadu jako APT32, rozpoczęła misję, która miała zachwiać poczuciem bezpieczeństwa największych graczy na rynku.</em>
 </p>
-<p>
-<em>
-Operacja Cobalt Kitty nie była zwykłym cyberatakiem. Była to skomplikowana intryga, łącząca zaawansowane techniki infiltracji z precyzją działań wywiadowczych. Atakujący, niczym mistrzowie szpiegostwa, wykorzystali każdą lukę, każdy błąd człowieka, aby przeniknąć do najgłębszych warstw systemów informatycznych korporacji.</em>
-</p>
 
 ---
 
