@@ -1,7 +1,3 @@
----
-** File: README.md**
----
-
 # Fileless Malware w systemach Windows: Analiza techniczna i spostrzeżenia
 
 ---
