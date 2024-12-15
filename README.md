@@ -261,7 +261,7 @@ Najczęściej stosowane techniki to:
   - **Encrypted Channels**: Szyfrowanie danych przesyłanych między zainfekowanymi systemami a serwerem C2, co utrudnia ich wykrycie.
   - **Domain Generation Algorithms (DGA)**: Dynamiczne generowanie domen do komunikacji z serwerem C2, co utrudnia blokowanie serwerów przez systemy bezpieczeństwa.
 
-*Szczegółowa analiza kampanii Yokai Backdoor, w tym mechanizmów technicznych, użytych technik oraz scenariuszy ataku, znajduje się w dokumencie [Kampania Yokai Backdoor](kampania-yokai-backdoor.md).*
+*Szczegółowa analiza kampanii Yokai Backdoor, w tym mechanizmów technicznych, użytych technik oraz scenariuszy ataku, znajduje się w dokumencie [Kampania Yokai Backdoor](campaign-yokai-backdoor.md).*
 
 ---
 
