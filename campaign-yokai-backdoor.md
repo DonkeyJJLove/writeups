@@ -659,8 +659,8 @@ Komunikacja z serwerem C2 jest kluczowym elementem działania backdoora Yokai. W
    - [CVE-2017-11882](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11882)
    - [CVE-2020-0601](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601)
 5. **Publikacje z zakresu cyberbezpieczeństwa**:
-   - FireEye: *Advanced Threats and the Evolution of Cyberattacks*
-   - McAfee Labs: *The Rise of DLL Side-Loading Attacks*
+   - [FireEye: The Evolution of Cyber Attacks and Next Generation Threat Protection](https://pitb.gov.pk/system/files/Ashar_Aziz_FINAL.pdf)
+   - [McAfee Labs: REvil Ransomware Uses DLL Sideloading](https://www.mcafee.com/blogs/other-blogs/mcafee-labs/revil-ransomware-uses-dll-sideloading/)
 6. **Dokumentacja Microsoft**:
    - [VirtualAlloc Function](https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc)
    - [CreateProcessA Function](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa)
