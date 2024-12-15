@@ -650,8 +650,8 @@ Komunikacja z serwerem C2 jest kluczowym elementem działania backdoora Yokai. W
 
 ## Bibliografia
 
-1. **The Hacker News**: *Thai Officials Targeted in Yokai Backdoor Campaign Using DLL Side-Loading Techniques*. [Link do artykułu](https://thehackernews.com/2024/12/thai-officials-targeted-in-yokai-backdoor.html)
-2. **Netskope Security Efficacy Team**: *Yokai Backdoor Analysis Report*. [Link do raportu](https://www.netskope.com/reports/yokai-backdoor)
+1. **The Hacker News**: *Thai Officials Targeted in Yokai Backdoor Campaign Using DLL Side-Loading Techniques*. [Link do artykułu](https://thehackernews.com/2024/12/thai-officials-targeted-in-yokai.html)
+2. **Netskope Security Efficacy Team**: *Yokai Backdoor Analysis Report*. [Link do raportu](https://www.netskope.com/blog/new-yokai-side-loaded-backdoor-targets-thai-officials)
 3. **MITRE ATT&CK Framework**:
    - [DLL Side-Loading Techniques](https://attack.mitre.org/techniques/T1574/)
    - [Command and Control](https://attack.mitre.org/techniques/T1071/)
