@@ -93,27 +93,86 @@ Dla obserwatorów i decydentów wydarzenia te stanowią cenną lekcję. Po pierw
 
 **Konkluzja:** Hipoteza o wystąpieniu punktu zapalnego o charakterze systemowym (fire-sale) znajduje mocne wsparcie w faktach z wiosny 2025 r. – była to złożona sytuacja, w której nałożyły się czynniki makroekonomiczne, polityczne i czysto rynkowe, prowadząc do krótkotrwałego, ale intensywnego zachwiania płynności i korelacji na rynkach. Przypadek ten pokazuje, że współczesny system finansowy wciąż kryje sprzężenia zwrotne mogące zaskoczyć inwestorów i regulatorów. Nawet jeśli tym razem obyło się bez trwałych szkód, sygnał ostrzegawczy został wysłany: **tykająca “bomba obligacyjna” i globalne dźwignie finansowe** pozostają realnym zagrożeniem, które w połączeniu z nieprzewidywalnymi wydarzeniami (jak decyzje geopolityczne czy cyber-incydenty) mogą rozpalić ogień na rynkach w każdej chwili.
 
-**Bibliografia (wybrane źródła):**
+Oto uporządkowana, sformatowana i estetyczna wersja Twojej bibliografii w stylu akademickim – z podziałem na sekcje źródeł profesjonalnych i źródeł blogowo-badawczych:
 
-- Reuters – *US bond rout leaves investors bruised despite Trump pause on tariffs*, 9 IV 2025  ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=April%209%20%28Reuters%29%20,as%20the%20world%E2%80%99s%20safest%20asset)) ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=One%20source%20of%20the%20selling,Treasury%20bonds%20to%20raise%20funds)) ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=As%20Treasuries%20were%20dumped%20this,points%2C%20the%20largest%20on%20record)) ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Trump%E2%80%99s%20tariffs%20are%20changing%20the,and%20Japan%2C%20could%20turn%20sellers)) ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Analysts%20and%20investors%20across%20the,biggest%20economy%20has%20been%20shaken)) ([US bond rout leaves investors bruised despite Trump pause on tariffs | Reuters](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Before%20Trump%27s%20tariffs%20announcement%20on,about%20the%20selloff%20so%20far)).
-- Reuters – *Sharp US bond selloff revives flashbacks of COVID-era 'dash-for-cash'*, 9 IV 2025  ([Sharp US bond selloff revives flashbacks of COVID-era 'dash-for-cash' | Reuters](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=The%20%2429,year%20yields%20in%20two%20decades)) ([Sharp US bond selloff revives flashbacks of COVID-era 'dash-for-cash' | Reuters](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=Some%20market%20participants%20said%20they,curtail%20trading%20using%20borrowed%20cash)) ([Sharp US bond selloff revives flashbacks of COVID-era 'dash-for-cash' | Reuters](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=,TD%20Securities%20in%20New%20York)).
-- CoinDesk – *Bitcoin Longs Could See Wave of Liquidation... as Treasury Basis Trade Unwinds*, 9 IV 2025  ([Next Wave of Bitcoin Long Liquidations Likely Between $73.8K-$74.4K as Treasury Basis Trade Unwind Raises Risk of Deeper Losses](https://www.coindesk.com/markets/2025/04/09/bitcoin-longs-could-see-wave-of-liquidation-between-usd73-8k-usd74-4k-as-treasury-basis-trade-unwinds#:~:text=,pressure)) ([Next Wave of Bitcoin Long Liquidations Likely Between $73.8K-$74.4K as Treasury Basis Trade Unwind Raises Risk of Deeper Losses](https://www.coindesk.com/markets/2025/04/09/bitcoin-longs-could-see-wave-of-liquidation-between-usd73-8k-usd74-4k-as-treasury-basis-trade-unwinds#:~:text=The%20worsening%20of%20the%20risk,by%20analytics%20firm%20Hyblock%20Capital)).
-- CoinJournal – *Bitcoin drops to $77K as bond yields jump on Trump tariff fears*, 11 IV 2025  ([Bitcoin under pressure as Trump tariffs fuel bond market turmoil](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Bitcoin%20slid%20towards%20%2477%2C000%20on,triggered%20concern%20across%20risk%20assets)) ([Bitcoin under pressure as Trump tariffs fuel bond market turmoil](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=He%20suggested%20the%20abrupt%20spike,rather%20than%20natural%20trading%20patterns)) ([Bitcoin under pressure as Trump tariffs fuel bond market turmoil](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Bitcoin%2C%20often%20seen%20as%20a,did%20not%20escape%20the%20fallout)) ([Bitcoin under pressure as Trump tariffs fuel bond market turmoil](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Data%20from%20Coinglass%20shows%20that,a%20cascade%20of%20margin%20calls)).
-- Business Insider PL – *Krach krypto... Bitcoin i inne kryptowaluty ofiarą pesymizmu*, 7 IV 2025  ([Kryptowaluty: krach na rynku. Bitcoin i Ethereum tracą miliardy](https://businessinsider.com.pl/gielda/kryptowaluty/kryptowaluty-krach-na-rynku-bitcoin-i-ethereum-traca-miliardy/pmhegq0#:~:text=News)) ([Kryptowaluty: krach na rynku. Bitcoin i Ethereum tracą miliardy](https://businessinsider.com.pl/gielda/kryptowaluty/kryptowaluty-krach-na-rynku-bitcoin-i-ethereum-traca-miliardy/pmhegq0#:~:text=Kryptowaluty%20ofiar%C4%85%20pesymizmu%20na%20rynkach)).
-- Comparic – *Obligacyjna bomba tyka...*, 13 IV 2025  ([Zbliża się krach? Obligacyjna bomba tyka, Wall Street boi się czegoś większego niż spadki na giełdzie - Comparic](https://comparic.pl/zbliza-sie-krach-obligacyjna-bomba-tyka-wall-street-boi-sie-czegos-wiekszego-niz-spadki-na-gieldzie/#:~:text=Na%20rynku%20tworzy%20si%C4%99%20teraz,zmian%C4%85%20w%20globalnym%20systemie%20finansowym)).
-- DM BOŚ (M. Rogalski) – *Sytuacja na rynkach 9 kwietnia – inwestorzy wyprzedają obligacje*, 9 IV 2025  ([Sytuacja na rynkach 9 kwietnia - inwestorzy wyprzedają amerykańskie obligacje... | Dom Maklerski Banku Ochrony Środowiska](https://bossafx.pl/wiadomosci-i-analizy/marek-rogalski/sytuacja-na-rynkach-9-kwietnia-inwestorzy-wyprzedaja#:~:text=C%C5%82a%20na%20Chiny%20po%20wczorajszej,wobec%20USA%20po%20ostatnich%20ruchach)) ([Sytuacja na rynkach 9 kwietnia - inwestorzy wyprzedają amerykańskie obligacje... | Dom Maklerski Banku Ochrony Środowiska](https://bossafx.pl/wiadomosci-i-analizy/marek-rogalski/sytuacja-na-rynkach-9-kwietnia-inwestorzy-wyprzedaja#:~:text=zatem%20inny%20pow%C3%B3d%20a%20jest,docisn%C4%85%C4%87%20Trumpa)).
-- TradeAlgo – *Phillips Lost $140 Million in April Trading Tudor Bonds*, 12 IV 2025  ([Phillips Lost $140 Million in April Trading Tudor Bonds](https://www.tradealgo.com/news/phillips-lost-140-million-in-april-trading-tudor-bonds#:~:text=Alexander%20Phillips%2C%20a%20trader%20at,Donald%20Trump%E2%80%99s%20aggressive%20tariff%20announcements)) ([Phillips Lost $140 Million in April Trading Tudor Bonds](https://www.tradealgo.com/news/phillips-lost-140-million-in-april-trading-tudor-bonds#:~:text=Despite%20the%20losses%2C%20Phillips%20remains,%E2%80%9D)).
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0aDuKUf51TBPgpxiYv5f8QcM1xUf3nxgYjoKdzqfuMLw7MkyET6cBNFfeeS2P53kal
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0VniJyNfm9GFjnTV6mzvn8tUin9Hbm5KJ4u6g7jSVssDXtBQeNzuYiebuEQXdxLhTl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid03656nE8EEXzuU9KpoXy6NXUP3ZefKmnZn9o1xbrzaj9aWPohrsLU1MnkgDPciLsPzl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02JnVHpzjnA34wGPX3juFKQekuBo5Wfz1vbJGnknKzD3iuTBEsYz8Lw5iRHQZfkDQil
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0mxHJMH4wCJf4Eizm28LkniUxBpTqfzCeEnrzdDf6iQGKkonmU2TzweaLTd3w3SRFl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid03ivAoqsbitFvrZkk8DENgaWTDmdBYT5Hy5Pfq4HxXyZ41vibFgihpSbJ2mzAwMfwl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0kdBN6CE3mRYH7x9toA6W74kf3xn4cTv5QHqsGZLrR4FkFX8mopGgJoGe6RYet1FYl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0qkZMU4NMiYft8cFMsz3sH2LwHx7rStq1vup3mq4NPGw5eCCstZEd3t2vq5eN1rBHl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0Bgsn58QGj3FpwxV2Dbg4KLFFfjx7rhE3URSJsTWecCrX3aoBWg2PT8LrG26vYYpLl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02B5ATrsLuZEaFgfnAnvgdRii7TXsc9YE1LFz3k2vWRL4A2xfUkWCzMKqQcTP9RwsAl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid036rrod3ToXFnofKu6y3PtpvAsQyxTxcwWMkmCdnUhx4o8626oHQNHCPyxbhzVWKRPl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02ReT3LHMRJK3q6fsb4b6DzhJMgPaABqVPAQej8UN83SsYae5XLRGpks4JwiTU4zKrl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid032judUqk26F4hVBZCQ5TkwxR9u8U1Ago3Ds1bMQzZVRbbPdrVDei4bSMWY4XY8Hayl
-- BADANI/BLOG https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02ogyPG9g5ZPThTEFgcNH12j8361mYpST3S7sgkfGhMa4g8WTU4BmcKLbUV3Npf3ksl
+---
+
+## 📚 **Bibliografia (źródła profesjonalne)**
+
+### 🔹 *Reuters*
+
+- *US bond rout leaves investors bruised despite Trump pause on tariffs*, 9 IV 2025  
+  [Link do artykułu](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09)  
+  [Fragmenty cytowane: 1](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=April%209%20%28Reuters%29%20,as%20the%20world%E2%80%99s%20safest%20asset), [2](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=One%20source%20of%20the%20selling,Treasury%20bonds%20to%20raise%20funds), [3](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=As%20Treasuries%20were%20dumped%20this,points%2C%20the%20largest%20on%20record), [4](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Trump%E2%80%99s%20tariffs%20are%20changing%20the,and%20Japan%2C%20could%20turn%20sellers), [5](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Analysts%20and%20investors%20across%20the,biggest%20economy%20has%20been%20shaken), [6](https://www.reuters.com/markets/global-markets-tariffs-bonds-2025-04-09/#:~:text=Before%20Trump%27s%20tariffs%20announcement%20on,about%20the%20selloff%20so%20far)
+
+- *Sharp US bond selloff revives flashbacks of COVID-era 'dash-for-cash'*, 9 IV 2025  
+  [Link do artykułu](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09)  
+  [Fragmenty cytowane: 1](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=The%20%2429,year%20yields%20in%20two%20decades), [2](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=Some%20market%20participants%20said%20they,curtail%20trading%20using%20borrowed%20cash), [3](https://www.reuters.com/markets/rates-bonds/global-markets-tariffs-treasuries-analysis-2025-04-09/#:~:text=,TD%20Securities%20in%20New%20York)
+
+---
+
+### 🔹 *CoinDesk*
+
+- *Bitcoin Longs Could See Wave of Liquidation... as Treasury Basis Trade Unwinds*, 9 IV 2025  
+  [Link 1](https://www.coindesk.com/markets/2025/04/09/bitcoin-longs-could-see-wave-of-liquidation-between-usd73-8k-usd74-4k-as-treasury-basis-trade-unwinds#:~:text=,pressure), [Link 2](https://www.coindesk.com/markets/2025/04/09/bitcoin-longs-could-see-wave-of-liquidation-between-usd73-8k-usd74-4k-as-treasury-basis-trade-unwinds#:~:text=The%20worsening%20of%20the%20risk,by%20analytics%20firm%20Hyblock%20Capital)
+
+---
+
+### 🔹 *CoinJournal*
+
+- *Bitcoin drops to $77K as bond yields jump on Trump tariff fears*, 11 IV 2025  
+  [Link 1](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Bitcoin%20slid%20towards%20%2477%2C000%20on,triggered%20concern%20across%20risk%20assets),  
+  [Link 2](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=He%20suggested%20the%20abrupt%20spike,rather%20than%20natural%20trading%20patterns),  
+  [Link 3](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Bitcoin%2C%20often%20seen%20as%20a,did%20not%20escape%20the%20fallout),  
+  [Link 4](https://coinjournal.net/news/bitcoin-drops-to-77k-as-bond-yields-jump-on-trump-tariff-fears/#:~:text=Data%20from%20Coinglass%20shows%20that,a%20cascade%20of%20margin%20calls)
+
+---
+
+### 🔹 *Business Insider Polska*
+
+- *Krach krypto... Bitcoin i inne kryptowaluty ofiarą pesymizmu*, 7 IV 2025  
+  [Link 1](https://businessinsider.com.pl/gielda/kryptowaluty/kryptowaluty-krach-na-rynku-bitcoin-i-ethereum-traca-miliardy/pmhegq0#:~:text=News),  
+  [Link 2](https://businessinsider.com.pl/gielda/kryptowaluty/kryptowaluty-krach-na-rynku-bitcoin-i-ethereum-traca-miliardy/pmhegq0#:~:text=Kryptowaluty%20ofiar%C4%85%20pesymizmu%20na%20rynkach)
+
+---
+
+### 🔹 *Comparic*
+
+- *Obligacyjna bomba tyka...*, 13 IV 2025  
+  [Zbliża się krach?](https://comparic.pl/zbliza-sie-krach-obligacyjna-bomba-tyka-wall-street-boi-sie-czegos-wiekszego-niz-spadki-na-gieldzie/#:~:text=Na%20rynku%20tworzy%20si%C4%99%20teraz,zmian%C4%85%20w%20globalnym%20systemie%20finansowym)
+
+---
+
+### 🔹 *DM BOŚ – Marek Rogalski*
+
+- *Sytuacja na rynkach 9 kwietnia – inwestorzy wyprzedają obligacje*, 9 IV 2025  
+  [Link 1](https://bossafx.pl/wiadomosci-i-analizy/marek-rogalski/sytuacja-na-rynkach-9-kwietnia-inwestorzy-wyprzedaja#:~:text=C%C5%82a%20na%20Chiny%20po%20wczorajszej,wobec%20USA%20po%20ostatnich%20ruchach),  
+  [Link 2](https://bossafx.pl/wiadomosci-i-analizy/marek-rogalski/sytuacja-na-rynkach-9-kwietnia-inwestorzy-wyprzedaja#:~:text=zatem%20inny%20pow%C3%B3d%20a%20jest,docisn%C4%85%C4%87%20Trumpa)
+
+---
+
+### 🔹 *TradeAlgo*
+
+- *Phillips Lost $140 Million in April Trading Tudor Bonds*, 12 IV 2025  
+  [Link 1](https://www.tradealgo.com/news/phillips-lost-140-million-in-april-trading-tudor-bonds#:~:text=Alexander%20Phillips%2C%20a%20trader%20at,Donald%20Trump%E2%80%99s%20aggressive%20tariff%20announcements),  
+  [Link 2](https://www.tradealgo.com/news/phillips-lost-140-million-in-april-trading-tudor-bonds#:~:text=Despite%20the%20losses%2C%20Phillips%20remains,%E2%80%9D)
+
+---
+
+## 🧠 **Źródła autorskie / Badania własne (profil: RE9OS0VZSkpMT1ZF)**
+
+- [Badanie 1](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0aDuKUf51TBPgpxiYv5f8QcM1xUf3nxgYjoKdzqfuMLw7MkyET6cBNFfeeS2P53kal)  
+- [Badanie 2](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0VniJyNfm9GFjnTV6mzvn8tUin9Hbm5KJ4u6g7jSVssDXtBQeNzuYiebuEQXdxLhTl)  
+- [Badanie 3](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid03656nE8EEXzuU9KpoXy6NXUP3ZefKmnZn9o1xbrzaj9aWPohrsLU1MnkgDPciLsPzl)  
+- [Badanie 4](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02JnVHpzjnA34wGPX3juFKQekuBo5Wfz1vbJGnknKzD3iuTBEsYz8Lw5iRHQZfkDQil)  
+- [Badanie 5](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0mxHJMH4wCJf4Eizm28LkniUxBpTqfzCeEnrzdDf6iQGKkonmU2TzweaLTd3w3SRFl)  
+- [Badanie 6](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid03ivAoqsbitFvrZkk8DENgaWTDmdBYT5Hy5Pfq4HxXyZ41vibFgihpSbJ2mzAwMfwl)  
+- [Badanie 7](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0kdBN6CE3mRYH7x9toA6W74kf3xn4cTv5QHqsGZLrR4FkFX8mopGgJoGe6RYet1FYl)  
+- [Badanie 8](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0qkZMU4NMiYft8cFMsz3sH2LwHx7rStq1vup3mq4NPGw5eCCstZEd3t2vq5eN1rBHl)  
+- [Badanie 9](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid0Bgsn58QGj3FpwxV2Dbg4KLFFfjx7rhE3URSJsTWecCrX3aoBWg2PT8LrG26vYYpLl)  
+- [Badanie 10](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02B5ATrsLuZEaFgfnAnvgdRii7TXsc9YE1LFz3k2vWRL4A2xfUkWCzMKqQcTP9RwsAl)  
+- [Badanie 11](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid036rrod3ToXFnofKu6y3PtpvAsQyxTxcwWMkmCdnUhx4o8626oHQNHCPyxbhzVWKRPl)  
+- [Badanie 12](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02ReT3LHMRJK3q6fsb4b6DzhJMgPaABqVPAQej8UN83SsYae5XLRGpks4JwiTU4zKrl)  
+- [Badanie 13](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid032judUqk26F4hVBZCQ5TkwxR9u8U1Ago3Ds1bMQzZVRbbPdrVDei4bSMWY4XY8Hayl)  
+- [Badanie 14](https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid02ogyPG9g5ZPThTEFgcNH12j8361mYpST3S7sgkfGhMa4g8WTU4BmcKLbUV3Npf3ksl)
+
