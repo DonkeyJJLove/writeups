@@ -93,8 +93,6 @@ Dla obserwatorów i decydentów wydarzenia te stanowią cenną lekcję. Po pierw
 
 **Konkluzja:** Hipoteza o wystąpieniu punktu zapalnego o charakterze systemowym (fire-sale) znajduje mocne wsparcie w faktach z wiosny 2025 r. – była to złożona sytuacja, w której nałożyły się czynniki makroekonomiczne, polityczne i czysto rynkowe, prowadząc do krótkotrwałego, ale intensywnego zachwiania płynności i korelacji na rynkach. Przypadek ten pokazuje, że współczesny system finansowy wciąż kryje sprzężenia zwrotne mogące zaskoczyć inwestorów i regulatorów. Nawet jeśli tym razem obyło się bez trwałych szkód, sygnał ostrzegawczy został wysłany: **tykająca “bomba obligacyjna” i globalne dźwignie finansowe** pozostają realnym zagrożeniem, które w połączeniu z nieprzewidywalnymi wydarzeniami (jak decyzje geopolityczne czy cyber-incydenty) mogą rozpalić ogień na rynkach w każdej chwili.
 
-Oto uporządkowana, sformatowana i estetyczna wersja Twojej bibliografii w stylu akademickim – z podziałem na sekcje źródeł profesjonalnych i źródeł blogowo-badawczych:
-
 ---
 
 ## 📚 **Bibliografia (źródła profesjonalne)**
