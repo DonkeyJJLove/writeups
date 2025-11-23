@@ -1,4 +1,5 @@
-# Ewolucja malware – od sygnatur do adaptacyjnych technologii AI  
+# Ewolucja malware – od sygnatur do adaptacyjnych technologii AI
+
 Fileless, living-off-the-land i współewolucja z systemami detekcji
 
 <p>
@@ -7,32 +8,26 @@ Na poziomie logów i procesów wszystko wygląda prosto: plik, hash, proces, ale
 Ale współczesne malware nie jest już pojedynczym plikiem, tylko <strong>procesem współewolucji</strong> między atakującymi a systemami detekcji.  
 Ten write-up traktuje ewolucję malware jak eksperyment laboratoryjny w skali internetu: od prostych sygnatur, przez robaki pokroju WannaCry, po fileless, living-off-the-land i pierwsze próby użycia AI po obu stronach barykady.
 </em>
-
 </p>
-
----
-
-****ABSOLUTNY REŻIM NAUKOWY****  
-****ABSOLUTNY REŻIM FAKTÓW****  
-****ABSOLUTNY REALIZM****  
 
 ---
 
 ## Spis treści
 
-1. Abstrakt  
-2. Wprowadzenie: od sygnatur do współewolucji  
-3. Studium przypadków: WannaCry, NotPetya, PowerGhost  
-   3.1. WannaCry – ostatni wielki „robak sygnaturowy”  
-   3.2. NotPetya – destrukcja podszyta pod ransomware  
-   3.3. PowerGhost – fileless, koparka i stealth  
-4. Warstwy obserwacji W₁–W₅: jak naprawdę widzimy malware  
-5. Od sygnatur do modeli: AV jako system metryczny  
-6. Malware nowej generacji – adaptacja, fileless, living-off-the-land  
-7. Teza samo-falsyfikująca (M): granice adaptacji malware wobec AI  
-8. Scenariusze rozwoju (1–4)  
-9. Wnioski dla praktyki (blue-team, red-team, SOC)  
-10. Bibliografia  
+1. [Abstrakt](#1-abstrakt)
+2. [Wprowadzenie: od sygnatur do współewolucji](#2-wprowadzenie-od-sygnatur-do-współewolucji)
+3. [Studium przypadków: WannaCry, NotPetya, PowerGhost](#3-studium-przypadków-wannacry-notpetya-powerghost)
+
+   * [WannaCry – ostatni wielki „robak sygnaturowy”](#31-wannacry--ostatni-wielki-robak-sygnaturowy)
+   * [NotPetya – destrukcja podszyta pod ransomware](#32-notpetya--destrukcja-podszyta-pod-ransomware)
+   * [PowerGhost – fileless, koparka i stealth](#33-powerghost--fileless-koparka-i-stealth)
+4. [Warstwy obserwacji W₁–W₅: jak naprawdę widzimy malware](#4-warstwy-obserwacji-w₁w₅-jak-naprawdę-widzimy-malware)
+5. [Od sygnatur do modeli: AV jako system metryczny](#5-od-sygnatur-do-modeli-av-jako-system-metryczny)
+6. [Malware nowej generacji – adaptacja, fileless, living-off-the-land](#6-malware-nowej-generacji--adaptacja-fileless-living-off-the-land)
+7. [Teza samo-falsyfikująca (M): granice adaptacji malware wobec AI](#7-teza-samo-falsyfikująca-m-granice-adaptacji-malware-wobec-ai)
+8. [Scenariusze rozwoju (1–4)](#8-scenariusze-rozwoju-14)
+9. [Wnioski dla praktyki (blue-team, red-team, soc)](#9-wnioski-dla-praktyki-blue-team-red-team-soc)
+10. [Bibliografia](#10-bibliografia)
 
 ---
 
@@ -40,21 +35,21 @@ Ten write-up traktuje ewolucję malware jak eksperyment laboratoryjny w skali in
 
 W artykule traktuję ewolucję malware jako <strong>współewolucję systemu ataku i systemu obserwacji</strong>. Od prostych sygnatur binarnych, przez polimorfizm i packery, po ataki fileless oraz techniki living-off-the-land (LOTL), złośliwe oprogramowanie przesuwa się z warstwy „pliku na dysku” do warstw:
 
-1. <em>procesów w pamięci</em>,  
-2. <em>zachowań w czasie</em>,  
-3. <em>śladów w telemetrii i logach tekstowych</em>,  
+1. <em>procesów w pamięci</em>,
+2. <em>zachowań w czasie</em>,
+3. <em>śladów w telemetrii i logach tekstowych</em>,
 4. <em>anomalii w profilach użytkowników i systemów</em>.
 
 Formułuję <strong>tezę samo-falsyfikującą (M)</strong>:
 
-> **Teza (M)**  
+> **Teza (M)**
 > W systemie, w którym:
-> – telemetria obejmuje warstwy W₁–W₅ (kod, proces, sieć, host, logi/ASCII),  
-> – a modele AI uczą się na iteracyjnie aktualizowanym zestawie tych warstw,  
+> – telemetria obejmuje warstwy W₁–W₅ (kod, proces, sieć, host, logi/ASCII),
+> – a modele AI uczą się na iteracyjnie aktualizowanym zestawie tych warstw,
 > każda <em>długotrwała</em> i <em>utrzymywana w skali</em> kampania malware wymaga:
-> – albo <strong>niszy, w której telemetria jest niepełna</strong>,  
-> – albo <strong>adaptacji po stronie malware do poziomu zbliżonego do AI po stronie obrony</strong>.  
-> 
+> – albo <strong>niszy, w której telemetria jest niepełna</strong>,
+> – albo <strong>adaptacji po stronie malware do poziomu zbliżonego do AI po stronie obrony</strong>.
+>
 > Innymi słowy: w granicy „dobrze zebranych danych i dobrze skolibrowanych modeli” <strong>proste malware bez własnej adaptacji nie ma gdzie uciec</strong> – zostaje mu mikro-nisza, krótkie okno zero-day albo eskalacja w stronę <em>równie adaptacyjnych technik po stronie ataku</em>.
 
 Teza (M) jest samo-falsyfikująca: wystarczy wykazać scenariusz, w którym kampania prostego, nieadaptacyjnego malware utrzymuje się długo i w dużej skali <em>mimo</em> kompletnej, gęstej telemetrii i dobrze działających modeli AI po stronie obrony.
@@ -65,24 +60,24 @@ Teza (M) jest samo-falsyfikująca: wystarczy wykazać scenariusz, w którym kamp
 
 Pierwsze antywirusy traktowały malware jak <strong>skałę z wyrytym podpisem</strong>: jeśli podpis (sygnatura) jest znany, skałę można odrzucić. Wraz z pojawieniem się:
 
-- polimorfizmu,  
-- packerów,  
-- mutujących rodzin malware,
+* polimorfizmu,
+* packerów,
+* mutujących rodzin malware,
 
 ten model się załamał. Sygnatura przestała być stałym podpisem, a zaczęła przypominać <em>rozmytą chmurę punktów</em> w przestrzeni cech.
 
 Równolegle ewoluowało samo środowisko:
 
-- systemy operacyjne zyskały wbudowane mechanizmy bezpieczeństwa,  
-- sieci przedsiębiorstw zaczęły zbierać telemetrię (proxy, IDS/IPS, EDR/XDR),  
-- pojawiły się publiczne taksonomie jak MITRE ATT&CK, które opisują techniki na poziomie <em>zachowań</em>, a nie plików.
+* systemy operacyjne zyskały wbudowane mechanizmy bezpieczeństwa,
+* sieci przedsiębiorstw zaczęły zbierać telemetrię (proxy, IDS/IPS, EDR/XDR),
+* pojawiły się publiczne taksonomie jak MITRE ATT&CK, które opisują techniki na poziomie <em>zachowań</em>, a nie plików.
 
 W efekcie <strong>ewolucja malware stała się ewolucją względem systemu pomiarowego</strong>. To, jak wygląda współczesny atak, jest wprost pochodną tego, co potrafią zmierzyć:
 
-- AV/EDR,  
-- sieć (NetFlow, PCAP),  
-- logi systemowe,  
-- modele ML/AI.
+* AV/EDR,
+* sieć (NetFlow, PCAP),
+* logi systemowe,
+* modele ML/AI.
 
 ---
 
@@ -90,42 +85,42 @@ W efekcie <strong>ewolucja malware stała się ewolucją względem systemu pomia
 
 ### 3.1. WannaCry – ostatni wielki „robak sygnaturowy”
 
-**WannaCry (2017)** wykorzystał exploit <code>EternalBlue</code> na SMBv1 i w kilka dni zainfekował ponad 200 000 komputerów w ponad 150 krajach, szyfrując dane i żądając okupu w bitcoinach.  
+**WannaCry (2017)** wykorzystał exploit <code>EternalBlue</code> na SMBv1 i w kilka dni zainfekował ponad 200 000 komputerów w ponad 150 krajach, szyfrując dane i żądając okupu w bitcoinach.
 To był jeszcze świat, w którym:
 
-- pojedynczy exploit sieciowy mógł wynieść robaka na skalę globalną,  
-- łatanie podatności było opóźnione,  
-- detekcja opierała się głównie na sygnaturach plików i ruchu.
+* pojedynczy exploit sieciowy mógł wynieść robaka na skalę globalną,
+* łatanie podatności było opóźnione,
+* detekcja opierała się głównie na sygnaturach plików i ruchu.
 
 WannaCry jest dobrą ilustracją <strong>końca ery, w której „plik = zagrożenie” było wystarczająco dobrym przybliżeniem</strong>.
 
 ### 3.2. NotPetya – destrukcja podszyta pod ransomware
 
-**NotPetya (2017)**, zaczynając od łańcucha dostaw (zainfekowana aktualizacja oprogramowania księgowego), wykorzystał szereg technik lateral movement i w praktyce działał jak <em>wiper</em>, mimo pozorów ransomware.  
+**NotPetya (2017)**, zaczynając od łańcucha dostaw (zainfekowana aktualizacja oprogramowania księgowego), wykorzystał szereg technik lateral movement i w praktyce działał jak <em>wiper</em>, mimo pozorów ransomware.
 Na poziomie modeli:
 
-- pokazał, że <strong>ontologia „ransomware” była za prosta</strong>,  
-- a ścieżka infekcji (supply-chain, uprzywilejowane konta) jest równie ważna jak końcowy payload.
+* pokazał, że <strong>ontologia „ransomware” była za prosta</strong>,
+* a ścieżka infekcji (supply-chain, uprzywilejowane konta) jest równie ważna jak końcowy payload.
 
 Dla naszej tezy istotne jest, że NotPetya <em>wymusił</em> rozwój:
 
-- telemetrii lateral movement,  
-- korelacji zdarzeń między hostami,  
-- myślenia o kampanii jako o <strong>procesie w czasie</strong>, a nie pojedynczym pliku.
+* telemetrii lateral movement,
+* korelacji zdarzeń między hostami,
+* myślenia o kampanii jako o <strong>procesie w czasie</strong>, a nie pojedynczym pliku.
 
 ### 3.3. PowerGhost – fileless, koparka i stealth
 
 **PowerGhost** (opisany m.in. przez Kaspersky) reprezentuje kolejne przesunięcie: malware, które:
 
-- <strong>działa głównie w pamięci</strong> (fileless),  
-- używa PowerShella i WMI do utrzymania się w systemie,  
-- kopie kryptowalutę, starając się pozostać niezauważonym jak najdłużej.
+* <strong>działa głównie w pamięci</strong> (fileless),
+* używa PowerShella i WMI do utrzymania się w systemie,
+* kopie kryptowalutę, starając się pozostać niezauważonym jak najdłużej.
 
 Tu atak jest już nie plikiem, ale <strong>sekwencją zachowań</strong>:
 
-1. inicjalizacja (PowerShell / WMI),  
-2. ustanowienie persistencji,  
-3. komunikacja z C2,  
+1. inicjalizacja (PowerShell / WMI),
+2. ustanowienie persistencji,
+3. komunikacja z C2,
 4. cicha eksploatacja zasobów (CPU/GPU) w tle.
 
 W klasycznym modelu sygnaturowym takie coś jest praktycznie niewidoczne – bo nie ma „pliku do złapania”.
@@ -134,33 +129,33 @@ W klasycznym modelu sygnaturowym takie coś jest praktycznie niewidoczne – bo 
 
 ## 4. Warstwy obserwacji W₁–W₅: jak naprawdę widzimy malware
 
-Podobnie jak w tekście o protokołach czasu, wprowadzimy sobie <strong>warstwy obserwacji</strong>, ale tym razem dla malware:
+Podobnie jak w tekście o protokołach czasu, wprowadzimy sobie <strong>warstwy obserwacji</strong>, ale tymczasem dla malware:
 
-- **W₁ – kod i artefakty binarne**  
+* **W₁ – kod i artefakty binarne**
   Hash, PE/ELF, packery, sekcje, importy, fragmenty shellcode’u.
 
-- **W₂ – procesy i pamięć**  
+* **W₂ – procesy i pamięć**
   Tworzenie procesów, injekcja, alokacje pamięci, hooki, moduły DLL.
 
-- **W₃ – sieć**  
+* **W₃ – sieć**
   Połączenia wychodzące, C2, DNS, nietypowe protokoły, tunelowanie.
 
-- **W₄ – host i środowisko**  
+* **W₄ – host i środowisko**
   Zmiany w rejestrze, harmonogramie zadań, usługach, logach systemowych.
 
-- **W₅ – warstwa tekstowa i telemetria wysokiego poziomu**  
+* **W₅ – warstwa tekstowa i telemetria wysokiego poziomu**
   Logi aplikacyjne, zapisy EDR/XDR, ciągi znaków (ASCII) używane przez malware, opisy zdarzeń, alerty.
 
 Kluczowa obserwacja:
 
-> <strong>Im bardziej malware „ucieka” z W₁ (pliki), tym bardziej musi „wejść” w W₂–W₅.</strong>  
+> <strong>Im bardziej malware „ucieka” z W₁ (pliki), tym bardziej musi „wejść” w W₂–W₅.</strong>
 > Fileless i LOTL redukują obecność w W₁, ale zostawiają bogatszy ślad w W₂–W₅.
 
 W modelu AI-centric to właśnie W₂–W₅ są paliwem dla:
 
-- detekcji anomalii,  
-- profilowania behawioralnego,  
-- korelacji kampanii w czasie.
+* detekcji anomalii,
+* profilowania behawioralnego,
+* korelacji kampanii w czasie.
 
 ---
 
@@ -168,36 +163,38 @@ W modelu AI-centric to właśnie W₂–W₅ są paliwem dla:
 
 Tradycyjny AV można traktować jak <strong>system orzeczniczy oparty na funkcji podobieństwa</strong> w W₁:
 
-- jeśli hash/kawałek kodu jest podobny do znanego malware → „złośliwe”,  
-- jeśli nie → „niezidentyfikowane” (często: „bezpieczne”).
+* jeśli hash/kawałek kodu jest podobny do znanego malware → „złośliwe”,
+* jeśli nie → „niezidentyfikowane” (często: „bezpieczne”).
 
 Wraz z wprowadzeniem:
 
-- heurystyk,  
-- reputacji,  
-- analizy behawioralnej,
+* heurystyk,
+* reputacji,
+* analizy behawioralnej,
 
 system detekcji zaczął działać jak prosty <strong>klasyfikator wielowymiarowy</strong>, gdzie cechy pochodzą z W₁–W₅.
 
 Dzisiejsze EDR/XDR to już explicite:
 
-- modele uczenia maszynowego,  
-- grafy zależności między procesami i hostami,  
-- systemy scoringowe (ryzyko hosta / użytkownika).
+* modele uczenia maszynowego,
+* grafy zależności między procesami i hostami,
+* systemy scoringowe (ryzyko hosta / użytkownika).
 
-Możemy to zarysować jako <em>flowchart współewolucji</em>:
+### 5.1. Flowchart ewolucji: malware ↔ detekcja
+
+Poniższy flowchart (Mermaid) możesz wstawić 1:1 – GitHub powinien go wyrenderować:
 
 ```mermaid
 flowchart TD
     A[Malware v1 – sygnatury<br/>plik na dysku] --> B[AV v1 – sygnatury]
     B --> C[Malware v2 – polimorfizm<br/>packery, mutacje]
-    C --> D[AV v2 – heurystyka<br/>reputacja, sandbox]
+    C --> D[AV v2 – heurystyka,<br/>reputacja, sandbox]
     D --> E[Malware v3 – fileless/LOTL<br/>PowerShell, WMI, makra]
-    E --> F[AV/EDR v3 – behawior, grafy zdarzeń,<br/>MITRE ATT&CK]
+    E --> F[AV/EDR v3 – behawior,<br/>grafy zdarzeń, MITRE ATT&CK]
     F --> G[Malware v4 – adaptacja do telemetry,<br/>ukierunkowane kampanie]
-    G --> H[AI-Driven Defense – modele ML/AI,<br/>detekcja anomalii, korelacja kampanii]
+    G --> H[AI-Driven Defense – modele ML/AI,<br/>anomalia, korelacja kampanii]
     H --> I[Malware v5 – AI-assisted atak,<br/>automatyczne TTP, modyfikacja ładunku]
-````
+```
 
 Ten diagram podkreśla, że:
 
@@ -262,8 +259,6 @@ Teza jest <strong>samo-falsyfikująca</strong>, bo:
 ---
 
 ## 8. Scenariusze rozwoju (1–4)
-
-Te same scenariusze, które rysują przyszłość AI w cyberbezpieczeństwie, można przepisać wprost na oś „ewolucja malware”:
 
 ### 8.1. Scenariusz 1 – AI wzmacnia obronę
 
@@ -350,7 +345,3 @@ W tym sensie „ewolucja malware” nie jest historią zewnętrznego wroga – j
 ---
 
 Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliwość Locus–Medium–Mandat Human–AI‡ Próg–Przejście Semantyka–Energia
-
-```
-::contentReference[oaicite:0]{index=0}
-```
