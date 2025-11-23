@@ -182,8 +182,6 @@ Dzisiejsze EDR/XDR to już explicite:
 
 ### 5.1. Flowchart ewolucji: malware ↔ detekcja
 
-Poniższy flowchart (Mermaid) możesz wstawić 1:1 – GitHub powinien go wyrenderować:
-
 ```mermaid
 flowchart TD
     A[Malware v1 – sygnatury<br/>plik na dysku] --> B[AV v1 – sygnatury]
