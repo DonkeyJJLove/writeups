@@ -64,7 +64,7 @@
       <sub><b>Rys. 5.</b> Graf 9D · <code>weights_9D</code>.</sub>
     </td>
     <td align="center" width="33%">
-      <img src="images/q3_nomosty_image_9d.png"
+      <img src="https://github.com/DonkeyJJLove/ai_platform/blob/master/tests/images/q3_mosty_image_9d.PNG"
            alt="Scena Q3 – osoba między pracą biurową a influencerstwem"
            width="100%"><br>
       <sub><b>Rys. 6.</b> Test Q3 „NIE WIADOMO” · realna decyzja Human–AI.</sub>
