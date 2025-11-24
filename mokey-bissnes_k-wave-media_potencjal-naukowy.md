@@ -2,11 +2,11 @@
 
 
 
-<!-- BANNER: ai_platform/writeups/images/mokey-bissnes-kwm-banner.png -->
+<!-- BANNER: ai_platform/writeups/images/Mon(k)ey-bissnes-kwm-banner.png -->
 
 <p align="center">
-  <img src="images/mokey-bissnes-kwm-banner.png"
-       alt="Mokey Bissnes — media + fandom + BTC-skarbiec — K Wave Media — potencjał naukowy"
+  <img src="images/Mon(k)ey-bissnes-kwm-banner.png"
+       alt="Mon(k)ey Bissnes — media + fandom + BTC-skarbiec — K Wave Media — potencjał naukowy"
        width="800" />
 </p>
 
@@ -15,13 +15,13 @@
 
 ### Abstrakt
 
-Artykuł stawia tezę, że model „media + fandom + BTC-skarbiec” – nazywany roboczo „Mokey Bissnes” – opisuje nową klasę spółek z sektora kultury cyfrowej, w których wartość pochodzi przede wszystkim z kapitału niematerialnego: IP, danych o fandomie i pozycji w sieci Bitcoin. Na przykładzie K Wave Media Ltd. (NASDAQ: KWM) pokazuję, że mimo skrajnie zmiennego kursu akcji i dużej niepewności co do trajektorii finansowej, sam układ technologiczny spółki jest ekonomicznie spójny z głównym nurtem badań nad kapitałem niematerialnym i produktywnością. [1–4] Jednocześnie wykres KWM pełni funkcję soczewki: ujawnia ryzyka mikrokapów, nadmiernej dźwigni na BTC oraz asymetrii między polem technologii a bieżącą wyceną rynkową. „Ona się podnosi” – o ile „ona” oznacza pole kapitału niematerialnego (media + fandom + BTC-skarbiec), a nie krótkoterminowy wykres ceny.
+Artykuł stawia tezę, że model „media + fandom + BTC-skarbiec” – nazywany roboczo „Mon(k)ey Bissnes” – opisuje nową klasę spółek z sektora kultury cyfrowej, w których wartość pochodzi przede wszystkim z kapitału niematerialnego: IP, danych o fandomie i pozycji w sieci Bitcoin. Na przykładzie K Wave Media Ltd. (NASDAQ: KWM) pokazuję, że mimo skrajnie zmiennego kursu akcji i dużej niepewności co do trajektorii finansowej, sam układ technologiczny spółki jest ekonomicznie spójny z głównym nurtem badań nad kapitałem niematerialnym i produktywnością. [1–4] Jednocześnie wykres KWM pełni funkcję soczewki: ujawnia ryzyka mikrokapów, nadmiernej dźwigni na BTC oraz asymetrii między polem technologii a bieżącą wyceną rynkową. „Ona się podnosi” – o ile „ona” oznacza pole kapitału niematerialnego (media + fandom + BTC-skarbiec), a nie krótkoterminowy wykres ceny.
 
 ---
 
 ## 1. Wprowadzenie: od mema do tezy ekonomicznej
 
-W potocznym języku „małpi biznes” kojarzy się z hazardem na mem-coinach i pompowaniem mikrokapów. W tym tekście „Mokey Bissnes” definiuję bardziej precyzyjnie: jako **model biznesowy, w którym trzy warstwy kapitału niematerialnego – media, fandom i BTC-skarbiec – są zintegrowane w jedną architekturę technologiczno-finansową**.
+W potocznym języku „małpi biznes” kojarzy się z hazardem na mem-coinach i pompowaniem mikrokapów. W tym tekście „Mon(k)ey Bissnes” definiuję bardziej precyzyjnie: jako **model biznesowy, w którym trzy warstwy kapitału niematerialnego – media, fandom i BTC-skarbiec – są zintegrowane w jedną architekturę technologiczno-finansową**.
 
 K Wave Media (KWM) jest dobrym kandydatem do takiego studium przypadku, bo:
 
@@ -59,7 +59,7 @@ To tworzy teoretyczne tło dla tezy, że **spółka łącząca media, dane o fan
 
 ---
 
-## 3. Model „Mokey Bissnes”: media + fandom + BTC-skarbiec
+## 3. Model „Mon(k)ey Bissnes”: media + fandom + BTC-skarbiec
 
 Proponuję następującą roboczą definicję modelu:
 
@@ -120,7 +120,7 @@ W języku kapitału niematerialnego daje to:
 * pipeline produkcyjny (studio VFX/3D/AI),
 * kompetencje inwestycyjne oparte na danych z rynku K-contentu.
 
-To jest **rdzeń „media” w modelu „Mokey Bissnes”**.
+To jest **rdzeń „media” w modelu „Mon(k)ey Bissnes”**.
 
 ### 4.3. Warstwa „fandom”: graf relacji i możliwości danych
 
@@ -153,7 +153,7 @@ Z punktu widzenia ekonomii finansowej oznacza to:
 * **przeniesienie zmienności BTC na kurs akcji**,
 * **ryzyko „double whammy”**: spadek BTC + presja podaży akcji z emisji.
 
-Tutaj zaczyna się „małpi” aspekt „Mokey Bissnesu”: jeśli narracja BTC zdominuje opowieść o mediach i fandomie, spółka staje się po prostu kolejnym wehikułem lewarowanego BTC z doczepionym IP.
+Tutaj zaczyna się „małpi” aspekt „Mon(k)ey Bissnesu”: jeśli narracja BTC zdominuje opowieść o mediach i fandomie, spółka staje się po prostu kolejnym wehikułem lewarowanego BTC z doczepionym IP.
 
 Z naukowego punktu widzenia ta konfiguracja jest jednak bezcenna: pozwala badać, **jak rynek dyskontuje hybrydę „media + dane + BTC-skarbiec”** oraz jak szybko inwestorzy odróżniają rzeczywistą jakość kapitału niematerialnego od czystej ekspozycji na BTC.
 
@@ -209,7 +209,7 @@ Z perspektywy **kolektywnego kapitalizmu** i „Wioski Kosmicznej” racjonalna 
 * **badać wzorce ataków i manipulacji** (pump-and-dump, short-and-distort, „grupy sygnałowe”),
 * a nie próbować samemu „wejść w buty” silnych rąk na aktywie, na którym ktoś prawdopodobnie ucierpi po drugiej stronie.
 
-To jest zasadnicza różnica między **„małpim biznesem” jako hazardem** a **„Mokey Bissnes” jako programem badawczym**. W tym drugim wariancie:
+To jest zasadnicza różnica między **„małpim biznesem” jako hazardem** a **„Mon(k)ey Bissnes” jako programem badawczym**. W tym drugim wariancie:
 
 * mała pozycja w KWM jest oznaczona czerwonym prostokątem „eksperyment wysokiego ryzyka / moduł R&D”,
 * większość kapitału pozostaje w prostszych, bardziej przejrzystych ekspozycjach (np. BTC bez lewara, szeroki rynek),
@@ -217,7 +217,7 @@ To jest zasadnicza różnica między **„małpim biznesem” jako hazardem** a 
 
 ---
 
-## 7. Potencjał naukowy: co „Mokey Bissnes” wnosi do ekonomii?
+## 7. Potencjał naukowy: co „Mon(k)ey Bissnes” wnosi do ekonomii?
 
 Na koniec – dlaczego w ogóle warto traktować ten „małpi biznes” poważnie jako temat naukowy?
 
@@ -258,7 +258,7 @@ Teza „przyrost technologiczny trzęsie, wartość technologiczna podnosi wykre
 * w skali mikro rosną wyceny spółek, które potrafią spiąć software, dane, IP i organizację;
 * BTC może pełnić rolę kolejnego, kontrowersyjnego, ale realnego składnika tej układanki.
 
-K Wave Media jest przykładem **„Mokey Bissnesu” w fazie eksperymentalnej**:
+K Wave Media jest przykładem **„Mon(k)ey Bissnesu” w fazie eksperymentalnej**:
 
 * struktura aktywów (media + fandom + BTC-skarbiec) jest spójna z teorią,
 * pole technologiczne, w które spółka wchodzi, jest obiektywnie rosnące,
