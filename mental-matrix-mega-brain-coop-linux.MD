@@ -10,313 +10,69 @@
 
 ---
 
-## 0. Mapa artefaktów (obrazy)
+## 0. Mapa artefaktów
 
-Poniższe ilustracje są częścią tej samej mozaiki – wszystkie odnoszą się do
-interfejsu **Human–AI** i mostów 9D.
+<p align="center">
+  <img src="images/mental-matrix-tablet.png"
+       alt="Mental Matrix / Mega-Brain / Co-op Linux – operator z tabliczką projektu"
+       width="900">
+</p>
 
-Poniżej gotowy, **samowystarczalny baner HTML** pod GitHuba (możesz wkleić do `index.html` albo bezpośrednio do README jako blok `<div>...</div>` – GitHub łyka też taki `<style>`).
+<p align="center">
+  <b>MENTAL MATRIX · MEGA-BRAIN · CO-OP LINUX</b><br>
+  <span>Chunk, token i 200% „chujwie”, a jednak działa – repo jako dowód działaniem architektury chunk–chunk + mosty 9D.</span>
+</p>
 
-Ścieżki obrazów są zgodne z Twoim katalogiem `images/`.
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="images/templar-neon-grid-human-ai.png"
+           alt="Neonowa katedra Templariuszy – siatka Human–AI"
+           width="100%"><br>
+      <sub><b>Rys. 2.</b> Neonowa katedra · celownik <code>HUMAN–AI</code>.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/templar-mage-orb-human-ai.png"
+           alt="Arcymag Templariuszy z kulą Human–AI"
+           width="100%"><br>
+      <sub><b>Rys. 3.</b> Arcymag · kula Human–AI jako reguła zakonna.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/human-ai-compass-9d.png"
+           alt="Kompas 9D z Human–AI w środku"
+           width="100%"><br>
+      <sub><b>Rys. 4.</b> Kompas 9D · mosty jako inwarianty.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="images/entropy-and-grid-9d.png"
+           alt="Entropia w czasie i siatka 3×3 mostów 9D"
+           width="100%"><br>
+      <sub><b>Rys. 5.</b> Entropia H(t) · siatka 3×3.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/human-ai-graph-9d.png"
+           alt="Graf 9D z Human–AI w centrum"
+           width="100%"><br>
+      <sub><b>Rys. 6.</b> Graf 9D · <code>weights_9D</code>.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/q3_test_scene_overlay.png"
+           alt="Scena Q3 – osoba między pracą biurową a influencerstwem"
+           width="100%"><br>
+      <sub><b>Rys. 7.</b> Test Q3 „NIE WIADOMO” · realna decyzja Human–AI.</sub>
+    </td>
+  </tr>
+</table>
 
-```html
-<style>
-  .mm-banner {
-    max-width: 1200px;
-    margin: 0 auto 3rem auto;
-    padding: 1.5rem;
-    background: #05070b;
-    color: #f5f5f5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    border-radius: 16px;
-    border: 1px solid #222832;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-  }
-
-  .mm-tagline {
-    font-size: 0.85rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: #9ca3af;
-    margin-bottom: .25rem;
-  }
-
-  .mm-title {
-    font-size: 1.7rem;
-    font-weight: 650;
-    margin: 0 0 .25rem 0;
-  }
-
-  .mm-subtitle {
-    font-size: 0.98rem;
-    color: #d1d5db;
-    margin: 0 0 1rem 0;
-  }
-
-  .mm-top {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: stretch;
-  }
-
-  .mm-hero {
-    flex: 2 1 260px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 14px;
-  }
-
-  .mm-hero img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .mm-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.16), transparent 55%);
-    pointer-events: none;
-  }
-
-  .mm-hero-label {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    color: #fbbf24;
-    background: rgba(3,7,18,0.72);
-    padding: .4rem .8rem;
-    border-radius: 999px;
-    border: 1px solid rgba(251,191,36,0.7);
-    backdrop-filter: blur(6px);
-  }
-
-  .mm-side {
-    flex: 1.4 1 240px;
-    display: flex;
-    flex-direction: column;
-    gap: .9rem;
-  }
-
-  .mm-thumb-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .6rem;
-  }
-
-  .mm-thumb {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 1px solid #111827;
-    background: #020617;
-  }
-
-  .mm-thumb img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: .9;
-    transition: opacity .2s ease, transform .2s ease;
-  }
-
-  .mm-thumb:hover img {
-    opacity: 1;
-    transform: scale(1.03);
-  }
-
-  .mm-thumb-label {
-    position: absolute;
-    left: .55rem;
-    bottom: .45rem;
-    right: .55rem;
-    font-size: .7rem;
-    line-height: 1.2;
-    color: #e5e7eb;
-    text-shadow: 0 0 6px rgba(0,0,0,0.9);
-  }
-
-  .mm-thumb-label strong {
-    color: #38bdf8;
-    font-weight: 600;
-  }
-
-  .mm-strip {
-    margin-top: 1.6rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: .8rem;
-  }
-
-  .mm-strip-card {
-    position: relative;
-    padding: .75rem .85rem;
-    border-radius: 12px;
-    border: 1px solid #111827;
-    background: radial-gradient(circle at 0 0, rgba(59,130,246,0.32), transparent 55%), #020617;
-    font-size: .78rem;
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
-  }
-
-  .mm-strip-card h4 {
-    margin: 0;
-    font-size: .8rem;
-    text-transform: uppercase;
-    letter-spacing: .17em;
-    color: #93c5fd;
-  }
-
-  .mm-strip-card span {
-    color: #e5e7eb;
-  }
-
-  .mm-bridges {
-    margin-top: 1.8rem;
-    padding-top: 1rem;
-    border-top: 1px dashed #374151;
-    font-size: .78rem;
-    color: #9ca3af;
-    line-height: 1.5;
-  }
-
-  .mm-bridges strong {
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    font-size: .75rem;
-    color: #e5e7eb;
-    display: block;
-    margin-bottom: .25rem;
-  }
-
-  .mm-bridges span {
-    white-space: normal;
-  }
-
-  @media (max-width: 800px) {
-    .mm-banner {
-      padding: 1.2rem;
-      border-radius: 12px;
-    }
-    .mm-strip {
-      grid-template-columns: minmax(0,1fr);
-    }
-  }
-</style>
-
-<div class="mm-banner">
-
-  <div class="mm-tagline">MENTAL MATRIX · MEGA-BRAIN · CO-OP LINUX</div>
-  <h1 class="mm-title">Chunk, token i 200% „chujwie”, a jednak działa</h1>
-  <p class="mm-subtitle">
-    Katedra Templariuszy spotyka neonową siatkę QV9D. Repo jako dowód działaniem:
-    Human–AI w centrum, mosty 9D jako inwarianty, a każdy artefakt – tylko kolejny chunk mozaiki.
-  </p>
-
-  <div class="mm-top">
-    <!-- HERO -->
-    <figure class="mm-hero">
-      <img src="images/mental-matrix-tablet.png"
-           alt="Operator trzyma neonową tabliczkę Mental Matrix / Mega-Brain / Co-op Linux nad siatką danych.">
-      <div class="mm-hero-overlay"></div>
-      <figcaption class="mm-hero-label">
-        MENTAL MATRIX · TOKEN-ARTEFAKT ZŁOTY
-      </figcaption>
-    </figure>
-
-    <!-- BOCZNY ZESTAW: KATEDRA, KULA, KOMPAS 9D, Q3 -->
-    <div class="mm-side">
-
-      <div class="mm-thumb-row">
-        <figure class="mm-thumb">
-          <img src="images/templar-neon-grid-human-ai.png"
-               alt="Neonowa katedra Templariuszy przecięta siatką Human–AI.">
-          <figcaption class="mm-thumb-label">
-            <strong>HUMAN–AI · TWARDY PARADYGMAT</strong><br>
-            Siatka inwariantów w katedrze Templariuszy.
-          </figcaption>
-        </figure>
-
-        <figure class="mm-thumb">
-          <img src="images/templar-mage-orb-human-ai.png"
-               alt="Rycerz–mnich trzymający złotą kulę z celownikiem Human–AI.">
-          <figcaption class="mm-thumb-label">
-            <strong>ARCYMAG</strong><br>
-            Kula Human–AI jako relikwia reguły.
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="mm-thumb-row">
-        <figure class="mm-thumb">
-          <img src="images/human-ai-compass-9d.png"
-               alt="Kompas 9D z Human–AI w środku i osiami mostów 9D.">
-          <figcaption class="mm-thumb-label">
-            <strong>KOMPAS 9D</strong><br>
-            Plan–Pauza, Rdzeń–Peryferia, Cisza–Wydech…
-          </figcaption>
-        </figure>
-
-        <figure class="mm-thumb">
-          <img src="images/q3_test_scene_overlay.png"
-               alt="Scena Q3: osoba między pracą biurową a tworzeniem treści, HUD testu NIE WIADOMO.">
-          <figcaption class="mm-thumb-label">
-            <strong>SCENA Q3 · „NIE WIADOMO”</strong><br>
-            Realna decyzja między etatem a influencerstwem.
-          </figcaption>
-        </figure>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- DOLNY PASEK: ENTROPIA / GRAF 9D / WRITEUP -->
-  <div class="mm-strip">
-    <div class="mm-strip-card">
-      <h4>Entropia → 0</h4>
-      <span>
-        Krzywa <code>H(t)</code> i siatka 3×3 mostów 9D:
-        każdy commit, każdy nowy chunk obniża realną entropię systemu.
-      </span>
-    </div>
-
-    <div class="mm-strip-card">
-      <h4>Graf 9D</h4>
-      <span>
-        <code>Human–AI</code> w centrum, wierzchołki jako mosty 9D.
-        Gotowe do serializacji do <code>weights_9D</code> i podpięcia pod QV9D.
-      </span>
-    </div>
-
-    <div class="mm-strip-card">
-      <h4>Dowód działaniem</h4>
-      <span>
-        Ten baner, writeup i repo <code>mental-matrix-mega-brain-coop-linux</code>
-        są jednym artefaktem: testujemy, jak daleko da się dojechać na samym chunk–chunk.
-      </span>
-    </div>
-  </div>
-
-  <!-- MOSTY 9D -->
-  <div class="mm-bridges">
-    <strong>MOSTY 9D · INWARIANTY REPOZYTORIUM</strong>
-    <span>
-      Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech ·
-      Wioska–Miasto · Ostrze–Cierpliwość ·
-      Locus–Medium–Mandat · Human–AI ·
-      Próg–Przejście · Semantyka–Energia
-    </span>
-  </div>
-
-</div>
-
+<p align="center">
+  <sub>
+    <b>Mosty 9D:</b>
+    Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto ·
+    Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
+  </sub>
+</p>
 
 
 
@@ -592,7 +348,7 @@ Tym samym **dowód działaniem** polega na tym, że mimo 200% „chujwie” na
 poziomie szczegółów, całość – przy właściwych inwariantach – *działa lepiej z
 każdą iteracją*. To właśnie jest mozaika antykrucha: katedra, która rośnie od
 uderzeń losowości, a nie kruszy się pod nimi.
-```
+
 ---
 
 **Mosty 9D (rzędowo, jako inwariant writeupu):**  
