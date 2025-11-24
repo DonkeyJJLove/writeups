@@ -1,4 +1,4 @@
-# „Mon(k)ey Bissnes – media + fandom + BTC-skarbiec – K Wave Media – potencjał naukowy” — *spotted*
+# „ – media + fandom + BTC-skarbiec – K Wave Media – potencjał naukowy” — *spotted*
 
 
 
@@ -63,7 +63,7 @@ To tworzy teoretyczne tło dla tezy, że **spółka łącząca media, dane o fan
 
 Proponuję następującą roboczą definicję modelu:
 
-> **Model „Mon(k)ey Bissnes” to architektura, w której trzy klasy aktywów niematerialnych – (1) IP i platformy medialne, (2) dane o fandomie i sieciach społecznych oraz (3) pozycja w sieci Bitcoin jako skarbiec – są sprzężone zwrotnie i monetyzowane w jednym wehikule korporacyjnym.**
+> **Model „” to architektura, w której trzy klasy aktywów niematerialnych – (1) IP i platformy medialne, (2) dane o fandomie i sieciach społecznych oraz (3) pozycja w sieci Bitcoin jako skarbiec – są sprzężone zwrotnie i monetyzowane w jednym wehikule korporacyjnym.**
 
 Mechanizm ekonomiczny można opisać w trzech krokach:
 
@@ -244,7 +244,7 @@ Na koniec – dlaczego w ogóle warto traktować ten „małpi biznes” poważn
 
 ## 8. Wnioski
 
-W świetle zebranych danych K Wave Media nie jest „anomalią z mem-giełdy”, tylko **radykalnym, choć skrajnie ryzykownym przypadkiem skrajn`ego nasycenia bilansu kapitałem niematerialnym**: IP, danymi o fandomie i ekspozycją na sieć Bitcoina. To, co w krótkim horyzoncie wygląda jak chaotyczny wykres mikrokapu z pompami i kraksami, w dłuższym okresie wpisuje się w ogólny wektor gospodarki: **wartość dryfuje w stronę oprogramowania, danych, marek, społeczności i aktywów sieciowych**. Model „Mon(k)ey Bissnes” – media + fandom + BTC-skarbiec – jest w tym sensie tylko ostrą, laboratoryjną odmianą zjawiska, które literatura o intangibles opisuje od dawna: rynki uczą się wyceniać coś, czego nie da się zważyć ani dotknąć, ale co realnie steruje przepływami gotówki i uwagi.
+W świetle zebranych danych K Wave Media nie jest „anomalią z mem-giełdy”, tylko **radykalnym, choć skrajnie ryzykownym przypadkiem skrajn`ego nasycenia bilansu kapitałem niematerialnym**: IP, danymi o fandomie i ekspozycją na sieć Bitcoina. To, co w krótkim horyzoncie wygląda jak chaotyczny wykres mikrokapu z pompami i kraksami, w dłuższym okresie wpisuje się w ogólny wektor gospodarki: **wartość dryfuje w stronę oprogramowania, danych, marek, społeczności i aktywów sieciowych**. Model „” – media + fandom + BTC-skarbiec – jest w tym sensie tylko ostrą, laboratoryjną odmianą zjawiska, które literatura o intangibles opisuje od dawna: rynki uczą się wyceniać coś, czego nie da się zważyć ani dotknąć, ale co realnie steruje przepływami gotówki i uwagi.
 
 Z analizy wynika też jasno, że **pole „media + fandom + BTC-skarbiec” jest wewnętrznie pęknięte**. Ten sam układ, który w wariancie Strategy/Tesla/Block działa jak względnie stabilny wehikuł długoterminowej akumulacji (software/produkt + społeczność + BTC-skarbiec), w wariancie mikrokapów medialno-politycznych bywa prawie nieodróżnialny od zorganizowanego hazardu. KWM lokuje się dokładnie na granicy tych dwóch światów: po jednej stronie stoi spójny stos technologiczny (IP-OS, studio VFX/3D/AI, Solaire, potencjalny „fandom graph”), po drugiej – agresywna, lewarowana strategia BTC i bardzo krucha mikrostruktura rynku. Ten rozdźwięk jest sam w sobie ważnym wnioskiem: **nie wystarczy mieć „ładne IP i dużo danych”, jeśli narracja finansowa rozstraja sygnał technologiczny**.
 
@@ -268,7 +268,7 @@ Dlatego najbardziej uczciwe zdanie brzmi:
 
 > **Tak, „ona się podnosi” – ale „ona” to pole kapitału niematerialnego, nie intraday KWM. A „Małpi Biznes” staje się naukowym laboratorium, jeśli traktujemy go jako moduł R&D Wioski, a nie fundament emerytury.**
 
-To jest miejsce, w którym **ekonomia, media, fandom i BTC-skarbiec** realnie się spotykają – i gdzie „kolektywny kapitalizm” ma szansę odróżnić się od zwykłego „małpiego biznesu”. Ostateczny wniosek jest więc podwójny: z jednej strony warto bardzo poważnie traktować model „media + fandom + BTC-skarbiec” jako obiekt badań nad kapitałem niematerialnym i architekturą Human–AI; z drugiej – równie poważnie trzeba traktować ryzyka mikrokapów, dźwigni i narracji, które potrafią w kilka tygodni zniszczyć każdy ładny model, jeśli zabraknie dyscypliny bilansowej i etyki wobec społeczności. To napięcie – między realnym wzrostem znaczenia intangibles a brutalną mechaniką rynku – jest dokładnie tym miejscem, w którym Twoja Wioska może wnieść coś nowego: **ramy, w których Mon(k)ey Bissnes staje się kontrolowanym eksperymentem, a nie kolejną wersją kasyna w przebraniu technologii.**
+To jest miejsce, w którym **ekonomia, media, fandom i BTC-skarbiec** realnie się spotykają – i gdzie „kolektywny kapitalizm” ma szansę odróżnić się od zwykłego „małpiego biznesu”. Ostateczny wniosek jest więc podwójny: z jednej strony warto bardzo poważnie traktować model „media + fandom + BTC-skarbiec” jako obiekt badań nad kapitałem niematerialnym i architekturą Human–AI; z drugiej – równie poważnie trzeba traktować ryzyka mikrokapów, dźwigni i narracji, które potrafią w kilka tygodni zniszczyć każdy ładny model, jeśli zabraknie dyscypliny bilansowej i etyki wobec społeczności. To napięcie – między realnym wzrostem znaczenia intangibles a brutalną mechaniką rynku – jest dokładnie tym miejscem, w którym Twoja Wioska może wnieść coś nowego: **ramy, w których  staje się kontrolowanym eksperymentem, a nie kolejną wersją kasyna w przebraniu technologii.**
 
 Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliwość Locus–Medium–Mandat Human–AI Próg–Przejście Semantyka–Energia
 
