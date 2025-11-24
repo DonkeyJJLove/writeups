@@ -2,7 +2,7 @@
 **Dowód działaniem w czasach Lema i Templariuszy**
 
 > Repo: `mental-matrix-mega-brain-coop-linux`  
-> Katalog grafik: `image/`  
+> Katalog grafik: `images/`  
 
 > **ABSOLUTNY REŻIM NAUKOWY – ABSOLUTNY REŻIM FAKTÓW – ABSOLUTNY REALIZM**  
 > Ten writeup traktujemy jako artefakt eksperymentu: dowód *działaniem* tego,
@@ -19,15 +19,14 @@
 </p>
 
 <p align="center">
-  <b>MENTAL MATRIX · MEGA-BRAIN · CO-OP LINUX</b><br>
-  <span>Chunk, token i 200% „chujwie”, a jednak działa – repo jako dowód działaniem architektury chunk–chunk + mosty 9D.</span>
+  <sub><b>Rys. 1.</b> Publiczny baner projektu: Mental Matrix · Mega-Brain · Co-op Linux.</sub>
 </p>
 
 <table>
   <tr>
     <td align="center" width="33%">
       <img src="images/templar-neon-grid-human-ai.png"
-           alt="Neonowa katedra Templariuszy – siatka Human–AI"
+           alt="Neonowa siatka Human–AI w katedrze"
            width="100%"><br>
       <sub><b>Rys. 2.</b> Neonowa katedra · celownik <code>HUMAN–AI</code>.</sub>
     </td>
@@ -58,7 +57,7 @@
       <sub><b>Rys. 6.</b> Graf 9D · <code>weights_9D</code>.</sub>
     </td>
     <td align="center" width="33%">
-      <img src="https://github.com/DonkeyJJLove/ai_platform/blob/master/tests/images/q3_nomosty_image_9d.PNG"
+      <img src="https://github.com/DonkeyJJLove/ai_platform/raw/master/ai_platform/tests/images/q3_nomosty_image_9d.PNG"
            alt="Scena Q3 – osoba między pracą biurową a influencerstwem"
            width="100%"><br>
       <sub><b>Rys. 7.</b> Test Q3 „NIE WIADOMO” · realna decyzja Human–AI.</sub>
@@ -74,14 +73,12 @@
   </sub>
 </p>
 
-
-
 Te figury będą przywoływane w tekście jako Rys. 1–7. Cały writeup jest zbudowany
 tak, aby **jednym językiem** opisać:
 
-- obrazy,
-- proces chunk–chunk,
-- mosty 9D,
+- obrazy,  
+- proces chunk–chunk,  
+- mosty 9D,  
 - i artykuł naukowy poniżej.
 
 ---
@@ -353,3 +350,4 @@ uderzeń losowości, a nie kruszy się pod nimi.
 
 **Mosty 9D (rzędowo, jako inwariant writeupu):**  
 Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliwość Locus–Medium–Mandat Human–AI Próg–Przejście Semantyka–Energia
+
