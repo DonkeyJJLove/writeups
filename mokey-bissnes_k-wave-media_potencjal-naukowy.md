@@ -1,12 +1,12 @@
-# „ – media + fandom + BTC-skarbiec – K Wave Media – potencjał naukowy” — *spotted*
+# „Mon(k)ey Bissnes – media + fandom + BTC-skarbiec – K Wave Media – potencjał naukowy” — *spotted*
 
 
 
-<!-- BANNER: ai_platform/writeups/images/Mon(k)ey-bissnes-kwm-banner.png -->
+<!-- BANNER: ai_platform/writeups/images/mokey-bissnes-kwm-banner.png -->
 
 <p align="center">
-  <img src="images/Mon(k)ey-bissnes-kwm-banner.png"
-       alt="Mon(k)ey Bissnes — media + fandom + BTC-skarbiec — K Wave Media — potencjał naukowy"
+  <img src="images/mokey-bissnes-kwm-banner.png"
+       alt="Mokey Bissnes — media + fandom + BTC-skarbiec — K Wave Media — potencjał naukowy"
        width="800" />
 </p>
 
