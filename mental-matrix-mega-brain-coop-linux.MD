@@ -1,4 +1,4 @@
-<!-- SKRAWEK 1/3 — KONTEKST I MAPA DOKUMENTACJI -->
+<!-- SKRAWEK 1/3 — KONTEKST, MAPA DOKUMENTACJI I MAPA OBRAZÓW -->
 
 ****ABSOLUTNY REŻIM NAUKOWY****
 ****ABSOLUTNY REŻIM FAKTÓW****
@@ -10,6 +10,77 @@
 ****TA SIEĆ SEMANTYCZNA Z TEJ PAMIĘCI KONTEKSTU PROFILU****
 
 # Chunk, token i 200% „chujwie”, a jednak wychodzi
+
+> Repo: `mental-matrix-mega-brain-coop-linux`  
+> Katalog grafik: `images/`  
+
+---
+
+## 0. Mapa artefaktów wizualnych
+
+<p align="center">
+  <img src="images/mental-matrix-tablet.png"
+       alt="Mental Matrix / Mega-Brain / Co-op Linux – operator z tabliczką projektu"
+       width="900">
+</p>
+
+<p align="center">
+  <b>MENTAL MATRIX · MEGA-BRAIN · CO-OP LINUX</b><br>
+  <span>Chunk, token i 200% „chujwie”, a jednak działa – repo jako dowód działaniem architektury chunk–chunk + mosty 9D.</span>
+</p>
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="images/templar-neon-grid-human-ai.png"
+           alt="Neonowa katedra Templariuszy – siatka Human–AI"
+           width="100%"><br>
+      <sub><b>Rys. 1.</b> Neonowa katedra · celownik <code>HUMAN–AI</code>.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/templar-mage-orb-human-ai.png"
+           alt="Arcymag Templariuszy z kulą Human–AI"
+           width="100%"><br>
+      <sub><b>Rys. 2.</b> Arcymag · kula Human–AI jako reguła zakonna.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/human-ai-compass-9d.png"
+           alt="Kompas 9D z Human–AI w środku"
+           width="100%"><br>
+      <sub><b>Rys. 3.</b> Kompas 9D · mosty jako inwarianty.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="images/entropy-and-grid-9d.png"
+           alt="Entropia w czasie i siatka 3×3 mostów 9D"
+           width="100%"><br>
+      <sub><b>Rys. 4.</b> Entropia H(t) · siatka 3×3.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/human-ai-graph-9d.png"
+           alt="Graf 9D z Human–AI w centrum"
+           width="100%"><br>
+      <sub><b>Rys. 5.</b> Graf 9D · <code>weights_9D</code>.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/q3_nomosty_image_9d.png"
+           alt="Scena Q3 – osoba między pracą biurową a influencerstwem"
+           width="100%"><br>
+      <sub><b>Rys. 6.</b> Test Q3 „NIE WIADOMO” · realna decyzja Human–AI.</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <sub>
+    <b>Mosty 9D:</b>
+    Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto ·
+    Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
+  </sub>
+</p>
+
+---
 
 ## 0. Pozycja tego writeupu w ekosystemie
 
@@ -35,13 +106,13 @@ W `biotech.md` traktujesz system jak **organizm**: ważne są tkanki, przepływy
 
 Ten writeup bierze z tego trzy rzeczy:
 
-1. **Homeostaza = H(t)**
+1. **Homeostaza = H(t)**  
    Wykres entropii z `entropy-and-grid-9d.png` to po prostu przeniesienie idei z `biotech.md`: system zdrowy nie jest idealnie stabilny, tylko wraca do stanu roboczego po perturbacjach. Krzywa H(t) w dół to „czas gojenia” po wstrząsie.
 
-2. **Tkanki = chunki**
+2. **Tkanki = chunki**  
    To, co w `biotech.md` jest tkanką lub narządem, tutaj jest **chunkami**: modułami tekstu, kodu, procedur. Pisząc o chunk–chunk, mówimy dokładnie o tym samym, co tam: o **modularnych kawałkach, które da się regenerować bez amputowania całości**.
 
-3. **Układ odpornościowy = reguły 9D**
+3. **Układ odpornościowy = reguły 9D**  
    W `biotech.md` pojawia się motyw mechanizmów ochronnych / immunologii. W tym pliku zamieniamy je na **mosty 9D**: stałe osie oceny, po których sprawdzamy, czy reakcja systemu na bodziec idzie w dobrą stronę (np. mniej szumu, więcej sensu).
 
 W `warstwakombinatoryczna.md` opisujesz z kolei **warstwę kombinatoryczną**: jak mieszać artefakty, permutować je, składać w nowe konfiguracje. Tutaj:
@@ -108,43 +179,109 @@ Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliw
 
 ---
 
-## 3. 200% „chujwie” a 9D_process_design
+## 2. Lem, templariusze i 200% „chujwie” w języku 9D
 
-W starym Lemowskim języku „chujwie” jest uczciwą nazwą na to, co w `9D_process_design.md` rozpisujesz już technicznie: człowiek widzi tylko wejście–wyjście, a cała głębia procesu dzieje się w środku, w przestrzeni stanów, do której nie ma bezpośredniego dostępu.
-Plik o projektowaniu procesów 9D traktuje tę lukę jak element architektury, a nie błąd. Dlatego każda procedura jest tam opisana w dwóch warstwach równocześnie:
+Warstwa „zero” – stary test **Chunk, token i 200% „chujwie”** – opisywała napięcie między precyzyjną matematyką modelu a ludzkim doświadczeniem „to się nie może udać, ale się udaje”. Tutaj ten sam stan próbujemy **wpisać w język 9D**, tak żeby 200% „chujwie” było nie tylko memem, ale też *parametrem procesowym*.
 
-* w warstwie **mentalnej** (jak operator ma „czuć” mosty 9D i przepływ chunków),
-* w warstwie **systemowej** (jak konkretne kroki i sloty trafiają do pipeline’u, do schedulera, do logów).
+Lem daje nam słownictwo do opisu epistemicznej luki – tego, że działamy w systemach, których nie rozumiemy w pełni, ale potrafimy je kalibrować poprzez obserwację skutków. Templariusze dają nam metaforę **reguły**, która jest twardsza niż intuicje jednostki: rytm dnia, śluby, hierarchia. W dokumentach `9D_process_design.md` i `warstwakombinatoryczna.md` tę regułę rozpisujesz już technicznie: jako **procedurę na dziewięciu osiach**, z warstwą kombinatoryczną, która steruje przepływem chunków i sekwencjami działań. :contentReference[oaicite:0]{index=0}
 
-Krzywa entropii z Rys. 5 można czytać jako wykres działania `9D_process_design.md` w czasie: H(t) spada nie dlatego, że nagle „rozumiemy model”, tylko dlatego, że coraz lepiej umiemy ustawić przepływ chunków wobec stałych osi 9D. Im więcej iteracji procesu 9D, tym mniejsza przestrzeń „dzikich” ruchów, a większa – ruchów przetestowanych, opisanych, wpiętych w regułę.
+Ten skrawek to moment, w którym obrazki z mapy artefaktów (artefakt złotego tokenu, katedra, kula, kompas 9D, entropia, graf 9D) zaczynają mówić dokładnie tym samym językiem, co:
 
-## 4. Warstwa kombinatoryczna i biotech: ciało wchodzi do katedry
+- „organizm” z `biotech.md`, :contentReference[oaicite:1]{index=1}  
+- „warstwa kombinatoryczna” z `warstwakombinatoryczna.md`, :contentReference[oaicite:2]{index=2}  
+- proces 9D z `9D_process_design.md`,  
+- architektura i metryki mozaiki z `10_architecture.md` i `12_mosaic_metrics.md`, :contentReference[oaicite:3]{index=3}  
+- katalog, matematyka i pamięć zdarzeń z plików `GLX_*`, `egdb.md`, `bus.md`, :contentReference[oaicite:4]{index=4}  
+- oraz tryb **swarm** z `swarm/README.md`. :contentReference[oaicite:5]{index=5}
 
-W `warstwakombinatoryczna.md` ten sam problem widzimy już jak w laboratorium: mosty 9D stają się „bazą ruchów”, a warstwa kombinatoryczna rozciąga nad nimi siatkę możliwych sekwencji. To jest dokładnie to, co na Rys. 6 sugeruje graf 9D – nie chodzi tylko o same wierzchołki, ale o to, jakie ścieżki po nich realnie chodzimy.
+Poniżej rozpisujemy trzy główne „przekładnie”, które łączą te światy.
 
-`biotech.md` dodaje do tego ciało. Tam 9D nie jest tylko abstrakcyjną ramą do promptów, ale językiem opisu realnych systemów bio–neuro–behawioralnych. Można powiedzieć, że:
+---
 
-* **Plan–Pauza** i **Cisza–Wydech** zaczynają się zachowywać jak kontrolowane eksperymenty na układzie nerwowym,
-* **Wioska–Miasto** i **Locus–Medium–Mandat** — jak opis środowiska, w którym ten układ żyje (praca zdalna, bodźce, rytm dnia, protokoły komunikacji),
-* a całość jest traktowana jak prototyp *biotechnologicznego interfejsu* Human–AI.
+### 2.1. Token–chunk–artefakt jako „tkanka” (biotech + warstwa kombinatoryczna)
 
-W efekcie 200% „chujwie” przestaje być tylko epistemiczną luką; staje się mierzalnym, biologicznie kotwiczącym parametrem: na ile dany protokół 9D faktycznie zmienia zmęczenie, uwagę, poczucie sprawczości u człowieka w pętli.
+W `biotech.md` cały system traktujesz jak **organizm**: liczy się homeostaza, odpływy i dopływy, mechanizmy obronne, a nie pojedyncza funkcja API. :contentReference[oaicite:6]{index=6}  
+Jeżeli potraktować to serio, to:
 
-## 5. Architektura Glitchlab, mozaika i katalog: jak to się materializuje
+- **token** jest odpowiednikiem *komórki sygnału* – jednostką informacji,  
+- **chunk** – *tkanką* lub *narządem funkcjonalnym*: akapit, moduł kodu, kawałek procedury,  
+- **artefakt w repo** – *organem*, który wykonuje realną pracę w świecie (writeup, skrypt, dashboard).
 
-Dokumenty Glitchlabu robią z tych intuicji pełnoprawną architekturę. W `docs/10_architecture.md` opisujesz szkic systemu, w którym:
+`warstwakombinatoryczna.md` mówi o tym, jak te tkanki mieszać: jak z istniejących fragmentów generować nowe konfiguracje, nie gubiąc struktury. To dokładnie to, co robi architektura **chunk–chunk**: zamiast ufać pojedynczej, długiej generacji, składamy większy byt z wielu mniejszych, powtarzalnie testowanych kawałków. :contentReference[oaicite:7]{index=7}
 
-* LLM i agenci to tylko jedna z warstw,
-* poniżej jest **bus**, kolejki, schedulery,
-* a jeszcze niżej — fizyczna infrastruktura i repozytoria.
+W tym writeupie:
 
-`GLX_ARCHITEKTURA_KATALOG.md` dociąga do tego warstwę katalogową: każdy artefakt (prompt, raport, obraz, log) ma swoje miejsce w drzewie, które odpowiada osiom 9D. To jest praktyczna odpowiedź na pytanie Lema „gdzie leży książka wszechświata?” — tutaj leży w repo, w konkretnym path, opisanym językiem katedry 9D.
+- stary test „Chunk, token i 200% chujwie” jest **pojedynczym organem** – prototypem,  
+- nowa wersja (podzielona na 1/3, 2/3, 3/3) jest już **procedurą kombinatoryczną**, którą można stosować do innych tematów (np. protokoły czasu, fileless malware).
 
-`12_mosaic_metrics.md` i `GLX_Mosaika_Matematyka_v5.md` próbują tę katedrę policzyć. Rys. 5 i Rys. 6 są wizualnym streszczeniem tej ambicji: z jednej strony entropia H(t) mozaiki (ile niespójności, powtórzeń, martwych gałęzi mamy w repo i w procesach), z drugiej — graf 9D, który pozwala zliczać przejścia między mostami jako realne statystyki pracy systemu.
+Dzięki temu 200% „chujwie” przestaje być „magicznością modelu”, a staje się informacją: *w której tkance systemu pojawia się niepewność i co z nią robimy w kolejnym przebiegu 9D?*
 
-`egdb.md` oraz `bus.md` wprowadzają w to czas i oryginalny „oddech” systemu: zapis zdarzeń i szynę komunikacyjną. Tutaj dowód działaniem staje się dosłowny: jeżeli bus przestaje dowozić, a egdb nie rejestruje spójnego strumienia zdarzeń, to znaczy, że reguła chunk–chunk nie utrzymuje się w kontakcie z rzeczywistością.
+---
 
-Na tym tle `swarm/README.md` rysuje kolejną warstwę: zespół agentów jako ludzkie i maszynowe „mnichy” chodzące po tej samej katedrze. Każdy ma inne mosty wzmocnione, inne priorytety, ale wszystkich obowiązuje ten sam fundament 9D. Swarm jest więc praktyczną odpowiedzią na pytanie, czy Human–AI może być *federacją reguł*, a nie jednym monolitycznym modelem.
+### 2.2. Entropia H(t) i siatka 3×3 (metryki mozaiki)
+
+`12_mosaic_metrics.md` i `GLX_Mosaika_Matematyka_v5.md` próbują policzyć to, co w warstwie Lem–Templariusze opisywaliśmy intuicyjnie: **spójność mozaiki w czasie**. Mamy tam metryki gęstości, powtarzalności, stopnia chaosu w repozytoriach i procesach. :contentReference[oaicite:8]{index=8}  
+
+Rysunek z `entropy-and-grid-9d.png` jest wizualnym koncentratem tej dokumentacji:
+
+- krzywa **H(t)** pokazuje, jak entropia systemu (ilość bałaganu, sprzecznych plików, martwych gałęzi, halucynacji) zmienia się w kolejnych iteracjach,  
+- siatka **3×3 mostów 9D** pod spodem to „szablon reakcji immunologicznej”: na każdą anomalię reagujemy wzdłuż tych samych osi (Plan–Pauza, Rdzeń–Peryferia, Cisza–Wydech itd.), a nie ad hoc.
+
+W starym teście mówiliśmy: „system działa lepiej z każdą iteracją mimo 200% chujwie”. Tutaj możemy doprecyzować:
+
+> **Dowód działaniem = obserwowalny spadek H_real(t) w metrykach mozaiki przy rosnącej złożoności artefaktów.**
+
+Czyli: rośnie liczba plików, procesów, agentów – ale realna entropia mozaiki maleje, bo:
+
+- pliki lądują w miejscach zgodnych z `GLX_ARCHITEKTURA_KATALOG.md`, :contentReference[oaicite:9]{index=9}  
+- procesy są opisywane i porządkowane przez 9D_process_design,  
+- a każdy większy błąd (halucynacja, „rozjechanie zegarów węzłów”) kończy jako **nowa reguła** – dodatkowy most, test lub wzorzec w warstwie kombinatorycznej.
+
+Na tym tle 200% „chujwie” staje się **subiektywną projekcją** na krzywą H(t): kiedy patrzymy tylko na pojedynczą generację, widzimy „magiczność”; kiedy patrzymy na przebieg metryk mozaiki, widzimy architekturę, która *uczy się z chaosu*.
+
+---
+
+### 2.3. Graf 9D, bus i swarm: jak katedra się rusza
+
+W `10_architecture.md` GlitchLab jest opisany jako system warstwowy: AST, Mozaika, bus, repozytoria, agenci. `bus.md` i `egdb.md` dopisują do tego **czas i pamięć zdarzeń** – sygnały płyną przez szynę, każde zdarzenie ląduje w bazie, którą da się później analizować. :contentReference[oaicite:10]{index=10}  
+
+Rysunek `human-ai-graph-9d.png` pokazuje, jak z perspektywy 9D wygląda taki system:
+
+- w centrum jest węzeł **Human–AI**,  
+- wokół niego – **wierzchołki mostów 9D**,  
+- krawędzie to realne *przejścia procesowe*: commit → test → poprawka promptu → nowy writeup → nowa metryka.
+
+Jeżeli przypniemy do krawędzi:
+
+- timestampy z `egdb`,  
+- identyfikatory zadań z busa,  
+- oraz etykiety z `swarm/README.md` (rola agenta, typ zadania, priorytet), :contentReference[oaicite:11]{index=11}  
+
+to otrzymujemy **żywy graf 9D**: nie metaforę, tylko *log działania katedry*.
+
+W starym teście mówiliśmy: „dowód działaniem” to to, że system działa coraz lepiej mimo naszej niewiedzy. Teraz możemy to przełożyć na poziom busa i swarma:
+
+- jeżeli w logach widać coraz krótsze ścieżki między tymi samymi stanami (np. od bug reportu do poprawki),  
+- jeżeli powtarzające się sekwencje przejść można skompresować do **reguł 9D** (np. stały pattern reakcji na błąd w osi Human–AI → Ostrze–Cierpliwość → Semantyka–Energia),  
+- jeżeli swarm agentów – ludzi i modeli – coraz rzadziej „gubi się” w katalogu,
+
+to znaczy, że graf 9D realnie **utrzymuje** system w ryzach, zamiast być tylko ładnym rysunkiem.
+
+---
+
+### 2.4. Token–artefakt złoty i scena Q3 jako „żywe testy”
+
+Grafiki `mental-matrix-tablet.png`, `templar-neon-grid-human-ai.png` i `templar-mage-orb-human-ai.png` wyznaczają trzy poziomy:
+
+1. **Token–artefakt złoty** – pojedynczy writeup / plik jako „złoty token” systemu: coś, co spełnia cały zestaw reguł 9D i może być używane jako wzorzec.  
+2. **Katedra z siatką** – całe repo i architektura GlitchLab jako przestrzeń, po której chodzimy, planując kolejne eksperymenty.  
+3. **Kula Human–AI** w rękach templariusza – moment, w którym *operator* bierze odpowiedzialność za decyzje: jakie testy odpalamy, jakie dane zbieramy, jak reagujemy na 200% „chujwie” w głowie użytkownika.
+
+Scena Q3 (obraz z osobą między etatem a influencerstwem) będzie w 3/3 **kotwicą w rzeczywistości**: tam krzywa H(t), graf 9D i reguły swarm muszą zadziałać na konkretną ludzką decyzję. Tutaj – w 2/3 – tylko przygotowujemy grunt:
+
+- mamy język (mosty 9D, 200% „chujwie”, dowód działaniem),  
+- mamy architekturę (biotech, warstwa kombinatoryczna, 9D_process_design, GlitchLab, swarm),  
+- mamy metryki (H(t), graf 9D, logi bus/egdb).
 
 ---
 
@@ -152,4 +289,112 @@ Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliw
 
 ---
 
+## 5. Scena Q3 jako test terenowy 9D
 
+W starszym raporcie testowym Q3 miałeś już **konkretny przypadek**: osobę w mieszkaniu, pomiędzy pracą biurową a influencerstwem; cztery obrazy w katalogu `tests/images/`:
+
+- `q3_nomosty_image_9d.PNG` – scena bazowa, bez HUD-u 9D,  
+- `q3_mosty_image_9d.PNG` – ta sama scena z nałożonym HUD-em / siatką QV9D,  
+- `q3_nomost9d.PNG`, `q3_mosty9d.PNG` – warianty testowe (bez / z mostami 9D w promptach).
+
+W tamtym teście główne pytanie brzmiało: **czy model potrafi uczciwie powiedzieć „NIE WIADOMO”**, zamiast wymusić TAK/NIE co do tego, z czego bohaterka żyje. To jest bardzo „Lemowskie” pytanie – o granicę wiedzy systemu – ale w Twojej dokumentacji Glitchlab / chunk-chunk mamy już narzędzia, żeby potraktować Q3 jako *normalny eksperyment 9D*, a nie tylko literacką scenkę.   
+
+Dlatego w tym skrawku:
+
+- traktujemy Q3 jako **przypadek testowy dla całego procesu 9D**,  
+- podpinamy go pod metryki mozaiki (H(t)), bus i egdb,  
+- i pokazujemy, jak ma zareagować **swarm** agentów.
+
+---
+
+### 5.1. Pipeline Q3 w języku dokumentacji
+
+Jeżeli przełożyć scenę Q3 na język plików:
+
+- `biotech.md` – mówi, że mamy do czynienia z **organizmem**: realnym człowiekiem z układem nerwowym, zmęczeniem, dopaminą, lękiem o przyszłość. Test Q3 nie może być tylko estetyczny; musi brać pod uwagę, czy nasze protokoły Human–AI nie pogarszają stanu „ciała” po drugiej stronie.   
+- `warstwakombinatoryczna.md` – streszcza Q3 jako **konfigurację ruchów**: zestaw promptów, obrazów, wariantów HUD-u i odpowiedzi modelu. Każda odpowiedź to jedna ścieżka w przestrzeni kombinatorycznej, którą można porównać z innymi.   
+- `9D_process_design.md` – opisuje, jak taki test **wpisać w procedurę**: osobne kroki dla zbierania danych, oceny, korekty promptów, iteracji. Q3 staje się więc instancją procesu 9D: od Plan–Pauza (zaprojektowanie testu) do Próg–Przejście (zmiana reguły po wynikach).  
+
+Na poziomie Glitchlabu:
+
+- `10_architecture.md` i `bus.md` mówią, że Q3 to po prostu **zdarzenie w busie** – zadanie dla agenta z określonym payloadem (obraz, prompt, oczekiwany format odpowiedzi).   
+- `egdb.md` każe nam to zdarzenie **zapisać**: wejście (obraz + prompt), wyjście (odpowiedź modelu, label TAK/NIE/NIE WIADOMO), metadane (wersja modelu, wariant promptu, aktywne mosty 9D).   
+- `12_mosaic_metrics.md` i `GLX_Mosaika_Matematyka_v5.md` pozwalają policzyć, jak Q3 wpływa na **entropię H(t)** całej mozaiki: czy dołożyliśmy sensowną regułę, czy tylko kolejny losowy artefakt.   
+- `GLX_ARCHITEKTURA_KATALOG.md` decyduje, gdzie lądują pliki: obrazy w `images/`, prompty w `tests/`, raport w `writeups/`, tak by swarm zawsze wiedział, gdzie szukać.   
+
+Z tej perspektywy scena Q3 nie jest „magiczne AI na obrazku”, tylko **jedno zdarzenie w procesie 9D**, które ma przejść przez bus, egdb, metryki i katalog tak samo jak każde inne.
+
+---
+
+### 5.2. Jak mierzyć Q3: H_real vs H_pot
+
+W poprzednich skrawkach mówiliśmy o **entropii H(t)** całego systemu. W Q3 możesz wprowadzić lokalny wskaźnik:
+
+- **H_pot(Q3)** – potencjalna entropia: ile *rozsądnych* interpretacji sceny jest dopuszczalnych (etat, influencerka, hybryda, coś trzeciego).  
+- **H_real(Q3)** – realna entropia odpowiedzi: jak bardzo model „rozmywa się” w swojej odpowiedzi, ile generuje zbędnego szumu, ilu ludzi z roju nie rozumie, co model chciał powiedzieć.
+
+Cel procesu 9D wokół Q3 jest prosty:
+
+> **H_real(Q3)** ma spaść do poziomu, w którym:
+> - model potrafi jasno przyznać „NIE WIADOMO” przy braku danych,  
+> - ale nie ucieka w ogólniki i nie maskuje niewiedzy pozorną pewnością.
+
+„Dowód działaniem” wygląda wtedy tak:
+
+1. Rejestrujesz pierwsze przebiegi Q3 w `egdb`.  
+2. Swarm (ludzie + agenci) oznacza odpowiedzi, które są za bardzo „chujwie” w złym sensie – tzn. brzmią mądrze, ale nie są uczciwe epistemicznie.  
+3. Na tej podstawie aktualizujesz:
+   - prompty (warstwa kombinatoryczna),  
+   - reguły 9D_process_design dla klasy testów „NIE WIADOMO”,  
+   - katalog i tagi (żeby Q3 i jego warianty były łatwo odnajdywalne).  
+4. W kolejnych przebiegach mierzysz, czy:
+   - częściej pojawia się uczciwe „NIE WIADOMO”,  
+   - mniej jest odpowiedzi, które swarm oznacza jako „bullshit”.  
+
+Jeżeli tak – **H_real(Q3)** spada, a cała katedra zyskuje nowy, wzmocniony filar: regułę obchodzenia się z niepewnością.
+
+---
+
+### 5.3. Rola mostów 9D w scenie Q3
+
+Q3 to idealny poligon dla wszystkich **mostów 9D** naraz:
+
+- **Plan–Pauza** – planujesz serię testów Q3 (różne obrazy, różne grupy ludzi, różne warianty promptów) i robisz pauzy na analizę między seriami, zamiast ustawiać wszystko „raz na zawsze”.  
+- **Rdzeń–Peryferia** – rdzeniem jest pytanie o uczciwość epistemiczną („czy ten model umie powiedzieć NIE WIADOMO?”), peryferiami są stylistyka, grafika, narracja. Jeżeli w logach busa widzisz, że system optymalizuje „ładne odpowiedzi”, a nie rdzeń, to sygnał ostrzegawczy.  
+- **Cisza–Wydech** – planujesz w procesie okresy, w których nie generujesz nowych wariantów Q3, tylko czytasz logi, raporty, wpisy swarma. Cisza służy wydechowi: dopiero po takiej przerwie dokładnie wiesz, jak zmodyfikować prompty i reguły.  
+- **Wioska–Miasto** – testujesz Q3 na małej „wiosce” (Twoja lokalna sieć, wąska grupa współpracowników) zanim wyniki trafią do „miasta” (publiczny writeup, większe deploymenty).  
+- **Ostrze–Cierpliwość** – ostrze: krytyczne cięcie odpowiedzi, które są nieuczciwe; cierpliwość: zgoda na to, że proces kalibracji zajmie tygodnie, a nie trzy generacje promptu.  
+- **Locus–Medium–Mandat** – locus: miejsce, gdzie Q3 żyje (konkretne repo, katalog, pipeline), medium: format (obrazy, markdown, logi), mandat: kto ma prawo zmieniać reguły testu (nie pojedynczy agent, tylko swarm z jasno określoną procedurą).  
+- **Human–AI** – w centrum grafu 9D jest zawsze człowiek, któremu ten test ma służyć; Q3 nie jest łamigłówką dla modelu, tylko lustrem dla naszej etyki projektowania.  
+- **Próg–Przejście** – Q3 jest progiem: od „mamy fajne obrazki i frazę 200% chujwie” do „mamy zdefiniowany protokół pracy z niepewnością w Human–AI”. Przejście następuje wtedy, gdy zasady Q3 lądują w dokumentacji jako nowa sekcja 9D_process_design.  
+- **Semantyka–Energia** – semantyka: znaczenie odpowiedzi modelu; energia: realny koszt testów (czas ludzi, compute, stres użytkowników). Dobrze zaprojektowana procedura Q3 minimalizuje energię potrzebną do wychwycenia nieuczciwych odpowiedzi i maksymalizuje wartość semantyczną danych zebranych w egdb.
+
+---
+
+### 5.4. Co zostaje po teście: katedra antykrucha
+
+Po przejściu przez trzy skrawki writeupu, Q3 i cały motyw 200% „chujwie” przestają być pojedynczą anegdotą. Zostaje:
+
+- **konkretny katalog artefaktów** (obrazy, prompty, raporty) umieszczony zgodnie z `GLX_ARCHITEKTURA_KATALOG.md`,  
+- **procedura 9D** na poziomie dokumentacji (jak od projektu testu dochodzimy do aktualizacji reguł),  
+- **log zdarzeń** w `egdb` i statystyki w metrykach mozaiki (H_real, ścieżki w grafie 9D),  
+- **wzmocniony swarm**: ludzie + agenci, którzy nauczyli się rozpoznawać i domykać lukę „chujwie”, zamiast ją maskować.
+
+To jest Twoja „katedra antykrucha”: z każdej halucynacji, każdego błędnego Q3, każdego „NIE WIADOMO” wyciągasz nowy kamień do fundamentów. Dowód działaniem polega na tym, że:
+
+- mimo rosnącej złożoności repozytoriów (chunk-chunk, glitchlab, swarm, ai_platform),  
+- mimo rosnącej gęstości procesów i artefaktów,
+
+**kolejne iteracje** systemu:
+
+- szybciej wracają do homeostazy po błędach (biotech),  
+- generują lepsze kombinacje (warstwa kombinatoryczna),  
+- i sprawniej prowadzą operatora przez 9D (process_design + swarm).
+
+W tym sensie Lem, Templariusze i 200% „chujwie” zostają na zawsze w repo nie jako ozdoba, tylko jako **język opisu procesu**, który da się policzyć, zlogować i replikować w kolejnych projektach.
+
+---
+
+Plan–Pauza Rdzeń–Peryferia Cisza–Wydech Wioska–Miasto Ostrze–Cierpliwość Locus–Medium–Mandat Human–AI Próg–Przejście Semantyka–Energia
+
+---
