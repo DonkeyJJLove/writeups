@@ -81,9 +81,7 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
   Wszystkie możliwe stany tworzą przestrzeń $$\(\mathcal{S}\)$$.
   Zapisuję to krótko jako
 
-  $$
-  S_t \in \mathcal{S}.
-  $$
+  $$S_t \in \mathcal{S}.$$
 
   Przykładowo: „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
   „jaki mam poziom ryzyka”.
