@@ -81,7 +81,7 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
   Wszystkie możliwe stany tworzą przestrzeń $$\(\mathcal{S}\)$$.
   Zapisuję to krótko jako
 
-  $$S_t \in \mathcal{S}.$$
+  $$S_t \in \mathcal{S}$$
 
   Przykładowo: „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
   „jaki mam poziom ryzyka”.
@@ -90,9 +90,7 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
   **pakietem kontekstowym** oznaczonym jako $$\(M_t\)$$.
   Dla uproszczenia zapisuję ją jako
 
-  $$
-  M_t = (C_t, K_t, T_t, Z_t),
-  $$
+  $$M_t = (C_t, K_t, T_t, Z_t)$$
 
   gdzie:
   - $$\(C_t\)$$ – treść,
