@@ -918,9 +918,10 @@ Jeśli ten sygnał przechwycę, opiszę i umieszczę w swoim układzie soczewek,
 
 ---
 
-## 8. „Atak czasu” w logice embeddingu
+### 8. „Atak czasu” w logice embeddingu
 
 Do tej pory traktowaliśmy embedding jako funkcję:
+
 $$
 f : \text{treść} \longmapsto \mathbf{v} \in \mathbb{R}^d.
 $$
