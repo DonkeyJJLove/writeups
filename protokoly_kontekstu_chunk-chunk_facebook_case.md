@@ -224,26 +224,22 @@ Warunek **„częściowego poznania”** protokołu zapisuję wtedy następując
 > protokół kontekstu bytu $Y$ jest częściowo poznany,  
 > jeżeli istnieje przybliżenie $\widehat{H}^{(Y)}$, dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
 
+
 Formalnie:
 
 $$
-\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
-=
+\text{acc}(\widehat{H}^{(Y)}) =
 \mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \in D}
-\left[
-  \widehat{H}^{(Y)}(M_{\leq t}) = A^{(Y)}_{t+1}
-\right].
+\left[\,\widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}\right].
 $$
 
 Mówimy, że protokół jest częściowo poznany, jeśli
 
 $$
-\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
->
-\mathrm{acc}_{\mathrm{bazowa}},
+\text{acc}(\widehat{H}^{(Y)}) > \text{acc}_\text{bazowa},
 $$
 
-gdzie $\mathrm{acc}_{\mathrm{bazowa}}$ to trafność **najlepszego trywialnego klasyfikatora**
+gdzie $\text{acc}_\text{bazowa}$ to trafność **najlepszego trywialnego klasyfikatora**
 (np. zawsze wybieram tę samą akcję, większościową w $D$).
 
 Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
