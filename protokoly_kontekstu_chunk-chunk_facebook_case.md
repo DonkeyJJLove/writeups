@@ -425,10 +425,15 @@ Jeżeli w logach bezpieczeństwa okazuje się, że sygnatury tego typu:
 
 to klasyfikator bezpieczeństwa może przypisać im wysoki **priorytet alarmowy**, nawet jeśli pojedyncze zdania nie łamią żadnego „ludzkiego” standardu społeczności. W praktyce mówimy wtedy: *„nie mam dowodu treściowego, że to szkodliwe, ale profil zachowania i sygnatura tekstu są na tyle nietypowe, że warto podnieść alarm”*.
 
-W tym momencie zaczyna działać dokładnie ta sama logika, którą wcześniej opisałem formalnie jako (F_\theta) i (G), tylko w innym układzie współrzędnych:
+W tym momencie zaczyna działać dokładnie ta sama logika, którą wcześniej opisałem formalnie jako $F_\theta$ i $G$, tylko w innym układzie współrzędnych:
 
-* funkcja przejścia stanu (F_\theta^{\text{sec}}) agreguje ze mną historię: ile postów o tej sygnaturze, w jakim tempie, o jakich porach, z jakich urządzeń, w jakim kontekście sieciowym,
-* funkcja decyzji (G^{\text{sec}}) patrzy na zaktualizowany stan (S_{t+1}^{\text{sec}}) i wybiera akcję: nic nie rób, ogranicz zasięg, oznacz do review, zablokuj.
+- funkcja przejścia stanu $F_\theta^{\mathrm{sec}}$ agreguje ze mną historię:
+  ile postów o tej sygnaturze, w jakim tempie, o jakich porach, z jakich urządzeń,
+  w jakim kontekście sieciowym,
+
+- funkcja decyzji $G^{\mathrm{sec}}$ patrzy na zaktualizowany stan
+  $S_{t+1}^{\mathrm{sec}}$ i wybiera akcję:
+  nic nie rób, ogranicz zasięg, oznacz do review, zablokuj.
 
 W chwili, gdy filtr bezpieczeństwa potrafi w sposób powtarzalny:
 
