@@ -77,7 +77,7 @@ Tę warstwę nazywam **protokołem kontekstu**.
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
 - każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
-  opisany funkcją czasu $$\(t \mapsto S_t\), gdzie \(t\)$$ to numer kroku interakcji.
+  opisany funkcją czasu $$\(t \mapsto S_t\)$$, gdzie $$\(t\)$$ to numer kroku interakcji.
   Wszystkie możliwe stany tworzą przestrzeń $$\(\mathcal{S}\)$$.
   Zapisuję to krótko jako
 
