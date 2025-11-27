@@ -989,17 +989,17 @@ To pierwszy poziom ataku czasu:
 
 W systemach typu RAG, logach bezpieczeństwa czy bazach wektorowych
 każdy zapisany element jest w praktyce **trójką**
-\[
+$$\[
 (\mathbf{v}, t, s),
-\]
+\]$$
 gdzie:
-- \(\mathbf{v}\) – wektor semantyczny (embedding),
-- \(t\) – znacznik czasu (timestamp),
-- \(s\) – identyfikator źródła (np. dokument, użytkownik, system).
+- $$\(\mathbf{v}\)$$ – wektor semantyczny (embedding),
+- $$\(t\)$$ – znacznik czasu (timestamp),
+- $$\(s\)$$ – identyfikator źródła (np. dokument, użytkownik, system).
 
 Przy wyszukiwaniu „bliskość semantyczna”:
 
-- liczy się zwykle jako \(d(\mathbf{v}, \mathbf{v}')\),
+- liczy się zwykle jako $$\(d(\mathbf{v}, \mathbf{v}')\)$$,
 - **ignoruje upływ czasu**,
 - traktuje stare i nowe reprezentacje jako „równorzędne głosy”.
 
