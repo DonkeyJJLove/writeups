@@ -646,49 +646,43 @@ zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor 
 
 Żeby to uporządkować, wracam do formalizmu z sekcji 2:
 
-stan bytu bezpieczeństwa \(Y\) aktualizuje się według
-$$
-S_{t+1}^{(Y)} = F^{(Y)}_\theta\bigl(S_t^{(Y)}, M_t\bigr),
-$$
+- stan bytu bezpieczeństwa \(Y\) aktualizuje się według  
+  $$S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\bigl(S_t^{(Y)}, M_t\bigr),$$
 
-decyzja powstaje z tego stanu przez
-$$
-A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),
-$$
+- decyzja powstaje z tego stanu przez  
+  $$A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),$$
 
-a z punktu widzenia obserwatora interesuje mnie złożenie
-$$
-H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
-$$
+- z punktu widzenia obserwatora interesuje mnie złożenie  
+  $$H^{(Y)} = G^{(Y)} \circ F^{(Y)}.$$
 
-Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\),  
-ani wnętrza \(F^{(Y)}_\theta\), ani szczegółów \(G^{(Y)}\).
+Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\),
+ani wnętrza \(F_{\theta}^{(Y)}\), ani szczegółów \(G^{(Y)}\).
 Widzę tylko:
 
 - ciąg wiadomości \(M_t\), które sam generuję,
-- ciąg akcji \(A^{(Y)}_{t+1}\), które system podejmuje.
+- ciąg akcji \(A_{t+1}^{(Y)}\), które system podejmuje.
 
 Z tego buduję empiryczny zbiór danych:
 $$
-D = \{\,\bigl(M_t,\ A^{(Y)}_{t+1}\bigr)\,\}_{t=1}^T.
+D = \{\, (M_t,\ A_{t+1}^{(Y)}) \,\}_{t=1}^{T}.
 $$
 
-Na podstawie \(D\) konstruuję własny stan roboczy \(Z_t\)  
+Na podstawie \(D\) konstruuję własny stan roboczy \(Z_t\)
 (np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.)
 i szukam funkcji
 $$
-\widehat{H}^{(Y)} : Z_t \to \widehat{A}^{(Y)}_{t+1},
+\hat{H}^{(Y)} : Z_t \to \hat{A}_{t+1}^{(Y)},
 $$
 która naśladuje rzeczywiste \(H^{(Y)}\).
 
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
 $$
-acc\bigl(\widehat{H}^{(Y)}\bigr) > acc_{bazowa},
+acc\bigl(\hat{H}^{(Y)}\bigr) > acc_{bazowa},
 $$
-gdzie \(acc_{bazowa}\) to dokładność najlepszego trywialnego klasyfikatora  
+gdzie \(acc_{bazowa}\) to dokładność najlepszego trywialnego klasyfikatora
 (np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w \(D\)”).
 
-Jeżeli moja \(\widehat{H}^{(Y)}\):
+Jeżeli moja \(\hat{H}^{(Y)}\):
 
 - jest **stabilna w czasie** (działa w kolejnych próbach, a nie tylko w jednej sesji),
 - jest **krótka opisowo** (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
@@ -703,6 +697,7 @@ w moim fragmencie świata.
 To właśnie nazywam **„łamaniem protokołu kontekstu”**:
 nie włamanie do kodu, tylko zbudowanie teorii działania systemu
 o wyższej mocy predykcyjnej niż przypadek.
+
 
 ### 6.3. Kontrapunkt wobec HUMAN–AI / AI–HUMAN / AI–AI
 
