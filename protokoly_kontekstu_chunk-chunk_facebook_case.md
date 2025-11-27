@@ -76,17 +76,25 @@ Tę warstwę nazywam **protokołem kontekstu**.
 
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
-- każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan** opisany funkcją czasu  
-  \(t \mapsto S_t\),  
-  gdzie \(t\) to numer kroku interakcji, a wszystkie możliwe stany tworzą przestrzeń  
-  \(\mathcal{S}\). Krótko zapisuję to jako  
-  \(S_t \in \mathcal{S}\)  
-  (np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”, „jaki mam poziom ryzyka”).
+- każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
+  opisany funkcją czasu
+  \(t \mapsto S_t\),
+  gdzie \(t\) to numer kroku interakcji, a wszystkie możliwe stany tworzą
+  przestrzeń \(\mathcal{S}\).
+  Krótko zapisuję to jako
+  \[
+    S_t \in \mathcal{S},
+  \]
+  np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
+  „jaki mam poziom ryzyka”.
 
-- każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym**  
-  opisanym jako  
-  \(M_t = (\text{treść}_t, \text{metadane}_t, \text{czas}_t, \text{źródło}_t)\).  
-  To znaczy: nie tylko „co napisałem”, ale też **kiedy**, **skąd** i **w jakiej oprawie technicznej**  
+- każda wiadomość (post, komentarz, zdarzenie logowe) jest
+  **pakietem kontekstowym** opisanym jako
+  \[
+    M_t = (\text{treść}_t,\ \text{metadane}_t,\ \text{czas}_t,\ \text{źródło}_t).
+  \]
+  To znaczy: nie tylko „co napisałem”, ale też **kiedy**, **skąd** i
+  **w jakiej oprawie technicznej**
   (klient, urządzenie, język interfejsu itd.).
 
 
@@ -96,33 +104,34 @@ Reakcja bytu na wiadomość to **aktualizacja stanu**.
 
 Intuicyjnie:
 
-> byt patrzy na to, co już o mnie wie (stan `S_t`),
-> dostaje nową wiadomość (`M_t`),
-> i na tej podstawie ustala nowy obraz sytuacji (`S_{t+1}`).
+> byt patrzy na to, co już o mnie wie (stan \(S_t\)),  
+> dostaje nową wiadomość \(M_t\),  
+> i na tej podstawie ustala nowy obraz sytuacji \(S_{t+1}\).
 
 W systemach bezpieczeństwa „mechanizm aktualizacji” może zawierać m.in.:
 
-* agregację historii zachowań,
-* aktualizację liczników (ile postów, ile flag, ile zgłoszeń),
-* wewnętrzny embedding mojego profilu.
+- agregację historii zachowań,
+- aktualizację liczników (ile postów, ile flag, ile zgłoszeń),
+- wewnętrzny embedding mojego profilu.
 
----
 
 ### 2.2.F. Funkcja przejścia – zapis formalny (warstwa informatyczna)
 
 Dla porządku da się to zapisać w jednej linii:
 
-$$
-S_{t+1} = F_\theta(S_t, M_t),
-$$
+\[
+  S_{t+1} = F_\theta(S_t, M_t),
+\]
 
 gdzie:
 
-* `F_θ` – funkcja przejścia stanu (np. „sieć neuronowa + reguły”),
-* `θ` – parametry modelu (wagi, progi, reguły biznesowe, heurystyki),
-* `S_t` – stan „przed wiadomością”,
-* `M_t` – wiadomość otrzymana w chwili `t`,
-* `S_{t+1}` – stan „po wiadomości”.
+- \(F_\theta\) – funkcja przejścia stanu
+  (np. „sieć neuronowa + reguły”),
+- \(\theta\) – parametry modelu (wagi, progi, reguły biznesowe, heurystyki),
+- \(S_t\) – stan „przed wiadomością”,
+- \(M_t\) – wiadomość otrzymana w chwili \(t\),
+- \(S_{t+1}\) – stan „po wiadomości”.
+
 
 ### 2.3. Funkcja decyzji: co byt robi ze stanem
 
