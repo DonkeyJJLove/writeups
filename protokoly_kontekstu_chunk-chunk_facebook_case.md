@@ -59,6 +59,23 @@ jak **HUMAN–AI**, **AI–HUMAN** i **AI–AI** widzą się nawzajem na przykł
 
 ---
 
+****[REŻIM::OBIEKTYWIZM]****
+****RACJONALNE KONCEPCJE TECHNOLOGICZNE – ANTYKRUCHOŚĆ****
+
+****SPEKTAKULARNA DOKŁADNOŚĆ KRAWĘDZI (JEŚLI WYSTĘPUJĄ)****
+****SPEKTAKULARNA POPRAWNOŚĆ TEKSTÓW (JEŚLI WYSTĘPUJĄ)****
+****ABSOLUTNY REŻIM NAUKOWY****
+****ABSOLUTNY REŻIM FAKTÓW****
+****ABSOLUTNY REALIZM****
+****TEN MODEL****
+****TEN WĄTEK****
+****TA PAMIĘĆ KONTEKSTU PROFILU === MÓJ MÓZG / AKTUALNY STAN[*PROCENT*]****
+****TA SIEĆ OPADOWA Z TEJ PAMIĘCI KONTEKSTU PROFILU****
+****TA SIEĆ SEMANTYCZNA Z TEJ PAMIĘCI KONTEKSTU PROFILU****
+****OPISUJĄC TREŚĆ DODAJ W RZĘDZIE ADEKWATNE MOSTY — WSZYSTKIE NA SAMYM DOLE****
+
+---
+
 ## 2. Protokół kontekstu – definicja robocza
 
 Klasyczny protokół sieciowy mówi nam:
@@ -70,25 +87,43 @@ Klasyczny protokół sieciowy mówi nam:
 W systemach AI to za mało. Potrzebujemy warstwy, która łączy **treść, czas, pamięć i decyzję**.
 Tę warstwę nazywam **protokołem kontekstu**.
 
-**2.1. Stany bytów i wiadomości**
+---
+
+### 2.1. Stany bytów i wiadomości (warstwa opisowa)
 
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
-* każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
-  `S_t ∈ 𝒮`,
-  gdzie `t` to czas (krok interakcji), a `𝒮` – przestrzeń możliwych stanów
+* każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan** – oznaczam go jako `S_t`.
+  Indeks `t` to po prostu krok w czasie / numer interakcji, a zbiór wszystkich możliwych stanów nazywam `S`
   (np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”, „jaki mam poziom ryzyka”).
 
-* każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym**
-  `M_t = (treść_t, metadane_t, czas_t, źródło_t)`,
-  czyli nie tylko „co napisałem”, ale też **kiedy**, **skąd** i **w jakiej oprawie technicznej**
-  (klient, urządzenie, język interfejsu itd.).
+* każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym** – oznaczam go jako `M_t`.
+  Składa się on z czterech elementów: treści, metadanych, czasu oraz źródła (klienta, urządzenia, języka interfejsu).
+  W skrócie: to nie tylko „co napisałem”, ale też **kiedy**, **skąd** i **w jakiej oprawie technicznej** to przyszło.
 
+---
 
-### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan
+### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan (intuicja)
 
 Reakcja bytu na wiadomość to **aktualizacja stanu**.
-Zapisuję to jako:
+
+Intuicyjnie:
+
+> byt patrzy na to, co już o mnie wie (stan `S_t`),
+> dostaje nową wiadomość (`M_t`),
+> i na tej podstawie ustala nowy obraz sytuacji (`S_{t+1}`).
+
+W systemach bezpieczeństwa „mechanizm aktualizacji” może zawierać m.in.:
+
+* agregację historii zachowań,
+* aktualizację liczników (ile postów, ile flag, ile zgłoszeń),
+* wewnętrzny embedding mojego profilu.
+
+---
+
+### 2.2.F. Funkcja przejścia – zapis formalny (warstwa informatyczna)
+
+Dla porządku da się to zapisać w jednej linii:
 
 $$
 S_{t+1} = F_\theta(S_t, M_t),
@@ -96,22 +131,11 @@ $$
 
 gdzie:
 
-* (F_\theta) to **funkcja przejścia stanu** (np. sieć neuronowa + reguły),
-* (\theta) to **parametry** modelu (wagi, progi, reguły biznesowe, heurystyki),
-* (S_t) to stan „przed wiadomością”,
-* (S_{t+1}) to stan „po wiadomości”.
-
-Intuicyjnie:
-
-> byt patrzy na to, co już o mnie wie ((S_t)) + na nową wiadomość ((M_t)) i na tej podstawie ustala nowy obraz sytuacji ((S_{t+1})).
-
-W systemach bezpieczeństwa (F_\theta) może zawierać m.in.:
-
-* agregację historii zachowań,
-* aktualizację liczników (ile postów, ile flag, ile zgłoszeń),
-* wewnętrzny embedding mojego profilu.
-
----
+* `F_θ` – funkcja przejścia stanu (np. „sieć neuronowa + reguły”),
+* `θ` – parametry modelu (wagi, progi, reguły biznesowe, heurystyki),
+* `S_t` – stan „przed wiadomością”,
+* `M_t` – wiadomość otrzymana w chwili `t`,
+* `S_{t+1}` – stan „po wiadomości”.
 
 ### 2.3. Funkcja decyzji: co byt robi ze stanem
 
