@@ -171,9 +171,9 @@ W przypadku mojego eksperymentu:
 * system bezpieczeństwa aktualizuje swój stan (np. „użytkownik z sygnaturą chunk–chunk podniósł mi licznik ryzyka”),
 * ich stany **stają się skorelowane** – po serii interakcji widać już wyraźny wzorzec reakcji.
 
----**
+---
 
-**## 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
+## 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
 
 Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam ani dokładnej postaci funkcji przejścia
 
