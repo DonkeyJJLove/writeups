@@ -178,7 +178,7 @@ W tym sensie **protokoł kontekstu** to para:
 
 Żeby nie zostać przy metaforze, można to związać z teorią informacji.
 
-Mówimy, że zachodzi **komunikacja** między dwoma bytami (X) i (Y), jeśli na skutek wymiany wiadomości:
+Mówimy, że zachodzi **komunikacja** między dwoma bytami $$(X)$$ i $$(Y)$$, jeśli na skutek wymiany wiadomości:
 
 $$
 I\big(S^{(X)}*{t+1} ,;\ S^{(Y)}*{t+1} \mid M_t\big) > 0,
@@ -561,9 +561,9 @@ Przykład w wersji chunk–chunk:
 Na poziomie AI–AI dzieje się więc coś takiego:
 
 * byt A (bezpieczeństwo) aktualizuje swój stan $S^{(A)}$ względem mojego stylu chunk–chunk,
-* produkuje akcję $A^{(A)}_{t+1}$ w postaci flagi / tagu,
+* produkuje akcję $A^{(A)}_{t+1}$ w postaci **flagi / tagu**,
 * byt B (rekomender, interfejs, analityka) widzi tę akcję jako nową cechę w swoim $M^{(B)}_t$,
-* aktualizuje własny stan \(S^{(B)}\) tak, jakby mój profil od początku należał do klasy `HIGH_RISK_EXPERIMENTAL_PATTERN`.
+* aktualizuje własny stan $$\(S^{(B)}\)$$ tak, jakby mój profil od początku należał do klasy `HIGH_RISK_EXPERIMENTAL_PATTERN`.
 
 To jest właśnie **sprzęgnięcie ontologii**: moje konto zaczyna być opisane nie tylko przez treść i zachowanie, ale również przez **słownik modeli, które już się o mnie wypowiedziały**.
 
