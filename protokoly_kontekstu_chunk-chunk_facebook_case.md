@@ -106,9 +106,9 @@ Reakcja bytu na wiadomość to **aktualizacja stanu**.
 
 Intuicyjnie:
 
-> byt patrzy na to, co już o mnie wie (stan \(S_t\)),  
-> dostaje nową wiadomość \(M_t\),  
-> i na tej podstawie ustala nowy obraz sytuacji \(S_{t+1}\).
+> byt patrzy na to, co już o mnie wie (stan $$\(S_t\)$$),  
+> dostaje nową wiadomość $$\(M_t\$$),  
+> i na tej podstawie ustala nowy obraz sytuacji $$\(S_{t+1}$$).
 
 W systemach bezpieczeństwa „mechanizm aktualizacji” może zawierać m.in.:
 
@@ -156,8 +156,8 @@ $$
 
 gdzie:
 
-* (G) to **funkcja decyzyjna**,
-* (A_{t+1}) to **akcja** podjęta przez byt po aktualizacji stanu.
+* $$(G)$$ to **funkcja decyzyjna**,
+* $$(A_{t+1})$$ to **akcja** podjęta przez byt po aktualizacji stanu.
 
 Przykładowe akcje:
 
@@ -169,8 +169,8 @@ Przykładowe akcje:
 
 W tym sensie **protokoł kontekstu** to para:
 
-* (F_\theta) – jak byt aktualizuje swój stan,
-* (G) – jak zamienia stan na akcję.
+* $$(F_\theta)$$ – jak byt aktualizuje swój stan,
+* $$(G)$$ – jak zamienia stan na akcję.
 
 ---
 
