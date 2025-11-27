@@ -77,30 +77,22 @@ Tę warstwę nazywam **protokołem kontekstu**.
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
 - każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
-  oznaczony jako $S_t$, gdzie $t$ to numer kroku interakcji.
-  Wszystkie możliwe stany tworzą zbiór $S$.
-  Zapisuję to krótko:
-
-  $$
-  S_t \in S
-  $$
-
+  oznaczony jako \(S_t\), gdzie \(t\) to numer kroku interakcji.
+  Wszystkie możliwe stany tworzą zbiór \(S\).
+  Zapisuję to krótko jako \(S_t \in S\).
   Przykładowo: „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
   „jaki mam poziom ryzyka”.
 
 - każda wiadomość (post, komentarz, zdarzenie logowe) jest
-  **pakietem kontekstowym** oznaczonym jako $M_t$.
-  Dla uproszczenia zapisuję ją jako:
-
-  $$
-  M_t = (C_t, K_t, T_t, Z_t)
-  $$
-
+  **pakietem kontekstowym** oznaczonym jako \(M_t\).
+  Dla uproszczenia zapisuję ją jako
+  \(M_t = (C_t, K_t, T_t, Z_t)\),
   gdzie:
-  - $C_t$ – treść,
-  - $K_t$ – metadane,
-  - $T_t$ – czas,
-  - $Z_t$ – źródło (klient, urządzenie, język interfejsu itd.).
+  - \(C_t\) – treść,
+  - \(K_t\) – metadane,
+  - \(T_t\) – czas,
+  - \(Z_t\) – źródło (klient, urządzenie, język interfejsu itd.).
+
 
 
 ### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan (intuicja)
