@@ -728,7 +728,7 @@ $$
 acc\bigl(\hat H^{(Y)}\bigr) > acc_{\text{bazowa}},
 $$
 
-gdzie \(acc_{\text{bazowa}}\) to dokładność najlepszego trywialnego
+gdzie $$\(acc_{\text{bazowa}}\)$$ to dokładność najlepszego trywialnego
 klasyfikatora (np. „zawsze brak reakcji”, „zawsze soft warning”,
 „zawsze najczęstsza klasa w \(D\)”).
 
