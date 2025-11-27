@@ -171,9 +171,9 @@ W przypadku mojego eksperymentu:
 * system bezpieczeństwa aktualizuje swój stan (np. „użytkownik z sygnaturą chunk–chunk podniósł mi licznik ryzyka”),
 * ich stany **stają się skorelowane** – po serii interakcji widać już wyraźny wzorzec reakcji.
 
----
+---**
 
-## 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
+**## 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
 
 Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam ani dokładnej postaci funkcji przejścia
 
@@ -227,23 +227,23 @@ Warunek **„częściowego poznania”** protokołu zapisuję wtedy następując
 Formalnie:
 
 $$
-\text{acc}\!\left(\widehat{H}^{(Y)}\right)
+\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
 =
 \mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \in D}
 \left[
-  \widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}
+  \widehat{H}^{(Y)}(M_{\leq t}) = A^{(Y)}_{t+1}
 \right].
 $$
 
 Mówimy, że protokół jest częściowo poznany, jeśli
 
 $$
-\text{acc}\!\left(\widehat{H}^{(Y)}\right)
+\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
 >
-\text{acc}_{\mathrm{bazowa}},
+\mathrm{acc}_{\mathrm{bazowa}},
 $$
 
-gdzie $\text{acc}_{\mathrm{bazowa}}$ to trafność **najlepszego trywialnego klasyfikatora**
+gdzie $\mathrm{acc}_{\mathrm{bazowa}}$ to trafność **najlepszego trywialnego klasyfikatora**
 (np. zawsze wybieram tę samą akcję, większościową w $D$).
 
 Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
@@ -264,9 +264,9 @@ Wtedy w praktyce:
 
 Jeśli przyjmę, że:
 
-1. próbki $(M_t, A^{(Y)}_{t+1})$ w $D$ są reprezentatywne dla rzeczywistej pracy systemu
+1. próbki $(M_t, A^{(Y)}_{t+1})$ w $D$ są reprezentatywne dla rzeczywistej pracy systemu  
    (brak silnego dryfu w czasie, brak zmiany polityki w trakcie pomiaru),
-2. dane są wystarczająco liczne, by estymacja $\text{acc}\big(\widehat{H}^{(Y)}\big)$
+2. dane są wystarczająco liczne, by estymacja $\mathrm{acc}\big(\widehat{H}^{(Y)}\big)$
    miała mały błąd statystyczny,
 3. oceniam $\widehat{H}^{(Y)}$ na danych odłożonych (out-of-sample), a nie na tym samym zbiorze,
    na którym ją „odkrywałem”,
@@ -274,13 +274,13 @@ Jeśli przyjmę, że:
 to warunek
 
 $$
-\text{acc}\!\left(\widehat{H}^{(Y)}\right)
+\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
 >
-\text{acc}_{\mathrm{bazowa}}
+\mathrm{acc}_{\mathrm{bazowa}}
 $$
 
-oznacza, że istnieje **nietrywialna informacja** o zachowaniu systemu, zakodowana
-w cechach wiadomości. Innymi słowy:
+oznacza, że istnieje **nietrywialna informacja** o zachowaniu systemu,
+zakodowana w cechach wiadomości. Innymi słowy:
 
 - jeśli protokół byłby całkowicie losowy (brak zależności między $M_t$ a $A^{(Y)}_{t+1}$),
   żadna deterministyczna $\widehat{H}^{(Y)}$ nie przekroczyłaby istotnie bazowej dokładności;
@@ -303,7 +303,7 @@ Ta sama teza przestaje być prawdziwa, gdy naruszone są założenia:
 - **Przeuczenie na jednym logu.**  
   Jeśli $\widehat{H}^{(Y)}$ jest „nauczona” i oceniona na tym samym $D$,
   może perfekcyjnie odtworzyć historię (overfitting), a zupełnie nie generalizować.  
-  Wtedy wysoka $\text{acc}$ nic nie mówi o poznaniu protokołu – pokazuje tylko,
+  Wtedy wysoka $\mathrm{acc}$ nic nie mówi o poznaniu protokołu – pokazuje tylko,
   że skopiowałem przeszłość.
 
 - **Silny dryf systemu w czasie.**  
@@ -314,7 +314,7 @@ Ta sama teza przestaje być prawdziwa, gdy naruszone są założenia:
   z którym teraz rozmawiam.
 
 - **Złe zdefiniowanie „bazowego” klasyfikatora.**  
-  Jeśli $\text{acc}_{\mathrm{bazowa}}$ jest ustawiona zbyt nisko
+  Jeśli $\mathrm{acc}_{\mathrm{bazowa}}$ jest ustawiona zbyt nisko
   (np. ignoruję silnie niezbalansowane klasy i biorę naiwną „losową” bazę),
   mogę sztucznie wykazać, że „przekroczyłem bazę”.  
   Wtedy wynik jest artefaktem **źle dobranej metryki**, nie realnego poznania
@@ -339,9 +339,9 @@ Ta sama teza przestaje być prawdziwa, gdy naruszone są założenia:
 W każdym z tych scenariuszy możemy mieć
 
 $$
-\text{acc}\!\left(\widehat{H}^{(Y)}\right)
+\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
 >
-\text{acc}_{\mathrm{bazowa}}
+\mathrm{acc}_{\mathrm{bazowa}}
 $$
 
 na jakimś ograniczonym zbiorze $D$, a mimo to nie mamy prawa mówić,
@@ -357,26 +357,13 @@ Po uwzględnieniu powyższych kontrprzykładów tezę można zaostrzyć:
 > protokół kontekstu bytu $Y$ jest częściowo poznany *w sensie operacyjnym*,  
 > jeżeli istnieje krótka funkcja $\widehat{H}^{(Y)}$, która:
 > 
-> - przekracza $\text{acc}_{\mathrm{bazowa}}$ na danych odłożonych,
+> - przekracza $\mathrm{acc}_{\mathrm{bazowa}}$ na danych odłożonych,
 > - zachowuje tę przewagę przez pewien czas mimo zmian w szczegółach ruchu,
 > - pozostaje stabilna względem rozsądnych perturbacji cech wejściowych.
 
 Dopiero wtedy mogę uczciwie powiedzieć, że nie tylko „mam korelację”,
 ale faktycznie **wyłuskałem fragment reguły**, według której byt bezpieczeństwa
 działa w moim mikroświecie chunk–chunk.
-
-#### (3) Wersja ostrożna (po falsyfikacji)
-
-Po uwzględnieniu powyższych kontrprzykładów tezę można zaostrzyć:
-
-> protokół kontekstu bytu $Y$ jest częściowo poznany *w sensie operacyjnym*,  
-> jeżeli istnieje krótka funkcja $\widehat{H}^{(Y)}$, która:
-> 
-> - przekracza $\operatorname{acc}_{\text{bazowa}}$ na danych odłożonych,  
-> - zachowuje tę przewagę przez pewien czas mimo zmian w szczegółach ruchu,  
-> - pozostaje stabilna względem rozsądnych perturbacji cech wejściowych.
-
-Dopiero wtedy mogę uczciwie powiedzieć, że nie tylko „mam korelację”, ale faktycznie **wyłuskałem fragment reguły**, według której byt bezpieczeństwa działa w moim mikroświecie chunk–chunk.
 
 ## 3. HUMAN–AI: język chunk–chunk jako sygnatura
 
