@@ -4,6 +4,7 @@ title: "Protokoły kontekstu: jak byty widzą się nawzajem"
 author: "Sebastian Wieremiejczyk (RE9OS0VZSkpMT1ZF)"
 date: 2025-11-27
 image: "/img/facebook_chunk-chunk_protokoly_kontekstu.jpg"
+image: "/img/facebook_chunk-chunk_protokoly_kontekstu.jpg"
 tags:
 
 * HUMAN–AI
@@ -719,7 +720,7 @@ $$
 \hat H^{(Y)} : Z_t \to \hat A_{t+1}^{(Y)},
 $$
 
-która naśladuje rzeczywiste \(H^{(Y)}\).
+która naśladuje rzeczywiste $$\(H^{(Y)}\)$$.
 
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
 
