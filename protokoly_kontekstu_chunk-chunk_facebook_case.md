@@ -77,25 +77,25 @@ Tę warstwę nazywam **protokołem kontekstu**.
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
 - każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
-  opisany funkcją czasu  
-  $t \mapsto S_t$,  
-  gdzie $t$ to numer kroku interakcji, a wszystkie możliwe stany tworzą
-  przestrzeń $\mathcal{S}$.  
-  Krótko zapisuję to jako
+  oznaczony jako $S_t$, gdzie $t$ to numer kroku interakcji.
+  Wszystkie możliwe stany tworzą zbiór $S$, więc zapisuję krótko:
   $$
-  S_t \in \mathcal{S},
+  S_t \in S.
   $$
-  np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
+  Przykładowo: „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
   „jaki mam poziom ryzyka”.
 
 - każda wiadomość (post, komentarz, zdarzenie logowe) jest
-  **pakietem kontekstowym** opisanym jako
+  **pakietem kontekstowym** oznaczonym jako $M_t$.
+  Dla uproszczenia zapisuję ją jako czwórkę:
   $$
-  M_t = (\text{treść}_t,\ \text{metadane}_t,\ \text{czas}_t,\ \text{źródło}_t).
+  M_t = (C_t, K_t, T_t, Z_t),
   $$
-  To znaczy: nie tylko „co napisałem”, ale też **kiedy**, **skąd** i
-  **w jakiej oprawie technicznej**
-  (klient, urządzenie, język interfejsu itd.).
+  gdzie:
+  - $C_t$ – treść,
+  - $K_t$ – metadane,
+  - $T_t$ – czas,
+  - $Z_t$ – źródło (klient, urządzenie, język interfejsu itd.).
 
 
 ### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan (intuicja)
@@ -125,12 +125,12 @@ $$
 
 gdzie:
 
-- $F_\theta$ – funkcja przejścia stanu
-  (np. „sieć neuronowa + reguły”),
+- $F_\theta$ – funkcja przejścia stanu (np. „sieć neuronowa + reguły”),
 - $\theta$ – parametry modelu (wagi, progi, reguły biznesowe, heurystyki),
 - $S_t$ – stan „przed wiadomością”,
 - $M_t$ – wiadomość otrzymana w chwili $t$,
 - $S_{t+1}$ – stan „po wiadomości”.
+
 
 
 
