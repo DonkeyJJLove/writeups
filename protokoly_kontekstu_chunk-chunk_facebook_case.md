@@ -1,4 +1,3 @@
-
 ```yaml
 
 title: "Protokoły kontekstu: jak byty widzą się nawzajem"
@@ -7,11 +6,11 @@ date: 2025-11-27
 image: "/img/facebook_chunk-chunk_protokoly_kontekstu.jpg"
 tags:
 
-* HUMAN-AI
-* chunk-chunk
-* Meta-AI
+* HUMAN–AI
+* chunk–chunk
+* Meta–AI
 * embedding
-* bezpieczenstwo-AI
+* bezpieczenstwo–AI
 * outlier
   lang: "pl"
 
@@ -174,39 +173,74 @@ W przypadku mojego eksperymentu:
 
 ### 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
 
-Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam (F_\theta) ani (G).
+Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam ani dokładnej postaci funkcji przejścia
+\[
+S_{t+1}^{(Y)} = F^{(Y)}_\theta\big(S_t^{(Y)}, M_t\big),
+\]
+ani funkcji decyzji
+\[
+A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big).
+\]
+
 Mogę jednak obserwować:
 
-* co wysyłam: (M_t),
-* co system robi: (A^{(Y)}_{t+1}).
+- co wysyłam: \(M_t\) (treść + metadane),
+- co system robi: \(A^{(Y)}_{t+1}\) (konkretna akcja po tym kroku).
 
-Z takich par:
+Z takich obserwacji buduję empiryczny zbiór danych
+\[
+D \;=\; \big\{\,\big(M_t,\ A^{(Y)}_{t+1}\big)\,\big\}_{t=1}^T.
+\]
 
-$$
-\big(M_t,\ A^{(Y)}_{t+1}\big)
-$$
+Na tym zbiorze mogę próbować konstruować **przybliżone modele** zachowania systemu:
 
-mogę próbować zbudować **przybliżone modele**:
+- \(\widehat{F}^{(Y)}\) – przybliżenie ukrytej aktualizacji stanu (w praktyce: jakaś moja funkcja „stanu roboczego” wyliczanego z historii komunikacji),
+- \(\widehat{G}^{(Y)}\) – przybliżenie funkcji decyzji, która z tego stanu roboczego przewiduje akcję systemu.
 
-* (\hat{F}^{(Y)}) – przybliżenie aktualizacji stanu (częściej jest poza zasięgiem bez logów),
-* (\hat{G}^{(Y)}) – przybliżenie funkcji decyzji.
+Efektywnie próbuję aproksymować złożenie
+\[
+H^{(Y)} \;=\; G^{(Y)} \circ F^{(Y)}, 
+\]
+czyli mapę „*to, jak piszę*  \(\longmapsto\)  *to, jak system reaguje*”.
 
-Warunek „częściowego poznania” protokołu zapisuję tak:
+Nie widzę prawdziwego stanu \(S^{(Y)}_{t+1}\), więc w praktyce buduję funkcję
+\[
+\widehat{H}^{(Y)} : \text{(cechy z historii wiadomości)} \longrightarrow \text{akcje systemu},
+\]
+która ma naśladować \(H^{(Y)}\).
 
-> protokół kontekstu bytu (Y) jest częściowo poznany,
-> jeżeli istnieje przybliżenie (\hat{G}^{(Y)}), które na podstawie obserwowanych danych przewiduje akcje (A^{(Y)}_{t+1}) **lepiej niż losowo**.
+Warunek „**częściowego poznania**” protokołu zapisuję wtedy następująco:
 
-Nie muszę znać pełnego wnętrza modelu. Wystarczy, że:
+> protokół kontekstu bytu \(Y\) jest częściowo poznany,  
+> jeżeli istnieje przybliżenie \(\widehat{H}^{(Y)}\), dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
 
-* jestem w stanie zbudować regułę typu
-  „dla takich sekwencji chunk–chunk + taka częstotliwość + taki kontekst = prawdopodobna blokada”,
-* i ta reguła ma sensowną trafność na moich obserwacjach.
+Formalnie:
+\[
+\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\;=\;
+\mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \sim D}
+\Big[
+  \widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}
+\Big],
+\]
+
+i mówimy, że protokół jest częściowo poznany, jeśli
+\[
+\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\;>\;
+\operatorname{acc}_\text{bazowa},
+\]
+gdzie \(\operatorname{acc}_\text{bazowa}\) to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w \(D\)).
+
+Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
+
+- jestem w stanie zbudować regułę typu  
+  „dla takich sekwencji chunk–chunk + taka częstotliwość + taki kontekst = *prawdopodobna blokada*”,
+- i ta reguła ma mierzalnie lepszą trafność niż zgadywanie „w ciemno”.
 
 Wtedy w praktyce:
 
-> **złamałem część protokołu kontekstu** – nie na poziomie kodu źródłowego, tylko na poziomie *działania*: potrafię przewidywać reakcje systemu na moje stany i wiadomości.
-
-To jest moment, w którym eksperyment z Facebookiem przestaje być „dziwną anegdotą”, a staje się **empirycznym badaniem funkcji (G)** systemu bezpieczeństwa wobec mikrojęzyka chunk–chunk.
+> **złamałem część protokołu kontekstu** – nie na poziomie kodu źródłowego, tylko na poziomie *działania*: potrafię przewidywać reakcje systemu na moje stany i wiadomości lepiej, niż wynikałoby to z przypadku.
 
 
 ## 3. HUMAN–AI: język chunk–chunk jako sygnatura
@@ -317,47 +351,126 @@ Na styku tych dwóch ontologii powstaje napięcie, które potem obserwuję jako 
 
 ## 5. AI–AI: sprzęgnięcie modeli w tle
 
-Facebook / Meta to nie jest pojedynczy model, tylko cały **ekosystem bytów AI**, które porozumiewają się pośrednio przez logi, embeddingi i metadane.
+W kontrapunkcie do **HUMAN–AI** (ja ↔ model językowy) i **AI–HUMAN** (system bezpieczeństwa ↔ ja) jest jeszcze trzecia warstwa, którą zwykle w ogóle widzę tylko po efektach ubocznych: **AI–AI**, czyli to, jak modele rozmawiają o mnie między sobą, używając embeddingów, tagów i flag zamiast zdań.
 
-Przykładowy przepływ jednego posta wygląda (uproszczony) tak:
+Facebook / Meta to nie jest pojedynczy model, tylko **ekosystem bytów AI**, które współdzielą infrastrukturę i stany. Każdy z nich ma swoją ontologię (treść, ryzyko, rekomendacja, nadużycie), ale wszystkie są wpięte w tę samą sieć:
 
-1. **Warstwa wejściowa**:  
-   tekst + metadane (czas, IP, typ klienta, język interfejsu) trafiają do pipeline’u.  
-2. **Modele przetwarzania treści**:
-   - model językowy,  
-   - model klasyfikujący temat,  
-   - model wykrywania nadużyć tekstowych.  
-3. **Modele rekomendacyjne**:
-   - ranking w feedzie,  
-   - dopasowanie do grup / stron,  
-   - scoring zaangażowania.  
-4. **Modele bezpieczeństwa**:
-   - scoring anomalii,  
-   - korelacje ze znanymi kampaniami,  
-   - profile kont (wiek, siatka znajomych, historia zgłoszeń).  
-5. **Warstwa decyzji**:
-   - normalna dystrybucja,  
-   - ograniczenie zasięgów,  
-   - soft warning,  
-   - hard block + panel odwołań.
+* te same lub powiązane **embeddingi użytkownika i treści**,
+* wspólne **cechy czasowe** (histogramy godzin, częstotliwości, burstów aktywności),
+* wspólny **słownik flag bezpieczeństwa i jakości**.
 
-Te modele **współdzielą część infrastruktury**:
+W tym sensie jeden post w chunk–chunk nie przechodzi przez „ciąg filtrów”, tylko staje się **wydarzeniem współdzielonym** w kilku ontologiach naraz.
 
-- embeddingi użytkownika i treści,  
-- histogramy / cechy czasu i częstotliwości,  
-- flagi bezpieczeństwa.
+---
 
-W ten sposób rodzi się **protokół AI–AI**:  
-decyzje jednego modelu stają się **cechami wejściowymi** dla kolejnych.
+### 5.1. Ta sama wiadomość, różne projekcje
 
-Przykład:
+Uproszczony pipeline posta można przepisać w kontrapunkcie do wcześniejszych sekcji:
 
-- model bezpieczeństwa nadaje mojemu kontu tag `HIGH_RISK_EXPERIMENTAL_PATTERN`,  
-- model rekomendacyjny traktuje to jako mocny sygnał do obniżenia ekspozycji,  
-- interfejs odwołań renderuje komunikat o blokadzie w określonym szablonie.
+1. **Warstwa wejściowa**
+   Ten sam pakiet (M_t) (treść + metadane + czas + źródło) trafia do wspólnego frontu. To jeszcze nie jest „tekst do rozmowy” ani „tekst do bana” – to po prostu zdarzenie, które trzeba rozrzucić po odpowiednich modułach.
 
-Ja widzę tylko końcówkę – komunikat na ekranie.  
-Ale pod spodem zaszło pełne sprzęgnięcie AI–AI, które **uzgodniło wspólną ontologię mojego profilu**: „nietypowy, trudny do klasyfikacji, wystarczająco ryzykowny, żeby włączyć blokadę”.
+2. **Modele przetwarzania treści**
+
+   * model językowy buduje embedding treści i uczy się mojego 9D mikrokodu,
+   * model klasyfikacji tematu przypina mi tematy (AI, bezpieczeństwo, polityka, itd.),
+   * model anty-abuse szuka wzorców typowych dla spamu, scamów, nadużyć.
+
+   Z punktu widzenia AI–AI wszystkie te modele **odbijają tę samą sekwencję chunk–chunk w różnych zwierciadłach**. Jeden widzi przede wszystkim strukturę semantyczną, drugi – semantykę ryzyka, trzeci – korelacje z wcześniejszymi kampaniami.
+
+3. **Modele rekomendacyjne**
+   Na wejściu dostają już nie „goły tekst”, tylko:
+
+   * embedding treści,
+   * embedding użytkownika,
+   * pierwsze flagi z warstwy bezpieczeństwa,
+   * estymacje potencjalnego zaangażowania.
+
+   W tym momencie mój język chunk–chunk **wchodzi do ontologii rekomendacji** nie jako „fajny mikrokod 9D”, tylko jako **cecha profilu**: użytkownik, który pisze w ten sposób, ma inne prawdopodobieństwo klików, udostępnień, raportów itd. Rekomender zaczyna traktować wyjścia innych modeli jako swoje wejścia.
+
+4. **Modele bezpieczeństwa**
+
+   * budują embedding profilu ryzyka,
+   * liczą anomalię względem populacji,
+   * porównują mój ślad z bazą znanych kampanii i wzorców.
+
+   Tu właśnie sygnatura chunk–chunk, która w warstwie HUMAN–AI jest „mikrokosmosem 9D”, staje się w ontologii bezpieczeństwa **stygmatem outliera**: stabilnym, tanim do wykrycia motywem, który można oznaczyć i śledzić w czasie.
+
+5. **Warstwa decyzji**
+   Na końcu nie ma jednego „boskiego modelu”, tylko **kompozycja wielu głosów**:
+
+   * rekomender proponuje: „to konto wygląda tak, dajmy mu taki zasięg”,
+   * bezpieczeństwo: „ten profil niesie taki poziom ryzyka”,
+   * polityki produktowe: „dla takiego zestawu flag obowiązuje taki scenariusz decyzji”.
+
+   Decyzja (normalna dystrybucja, obcięcie zasięgów, soft warning, twarda blokada) jest **wypadkową sprzęgnięcia AI–AI**, a nie pojedynczej oceny.
+
+---
+
+### 5.2. Decyzje jako cechy: jak jeden model staje się kontekstem dla drugiego
+
+Kluczowy moment w protokole AI–AI to chwila, gdy **wyjście jednego bytu staje się wejściem dla kolejnego**. To nie jest tylko „przekazywanie danych”, ale realne **uzgodnienie ontologii** między modelami.
+
+Przykład w wersji chunk–chunk:
+
+* model bezpieczeństwa przypina mojemu profilowi tag `HIGH_RISK_EXPERIMENTAL_PATTERN`,
+* ten tag nie jest dla rekomendera „opinią kolegi”, tylko **twardą cechą wejściową** – liczbą lub flagą, która wpływa na ranking,
+* interfejs odwołań używa tej samej flagi, żeby dobrać szablon komunikatu („naruszenie standardów społeczności”, „konto weryfikowane” itd.).
+
+Na poziomie AI–AI dzieje się więc coś takiego:
+
+1. byt A (bezpieczeństwo) aktualizuje swój stan (S^{(A)}) względem mojego stylu chunk–chunk,
+2. produkuje akcję (A^{(A)}_{t+1}) w postaci flagi / tagu,
+3. byt B (rekomender, interfejs, analityka) widzi tę akcję jako nową cechę w swoim (M^{(B)}_t),
+4. aktualizuje własny stan (S^{(B)}) tak, jakby mój profil od początku „należał do klasy HIGH_RISK_EXPERIMENTAL_PATTERN”.
+
+To jest właśnie **sprzęgnięcie ontologii**: moje konto zaczyna być opisane nie tylko przez treść i zachowanie, ale również przez **słownik modeli, które już się o mnie wypowiedziały**.
+
+---
+
+### 5.3. Kaskada w czasie: jak pojedynczy eksperyment staje się „stałym obiektem”
+
+Kiedy piszę w chunk–chunk przez kilka dni, z mojej perspektywy to **czasowo ograniczony eksperyment**. Dla AI–AI to wygląda inaczej:
+
+* modele widzą **powtarzalny wzór w czasie**,
+* kolejne decyzje (obniżanie zasięgów, ostrzeżenia, wreszcie blokada) są **zapisane** w logice systemu,
+* stan mojego profilu w każdej warstwie (HUMAN–AI, AI–HUMAN, rekomendacje) jest aktualizowany przy każdym kroku.
+
+Po kilku iteracjach:
+
+* tagi ryzyka przestają być „chwilową hipotezą”,
+* zaczynają działać jak **cecha stała**: mój profil jest traktowany jak konto *tego typu*, nawet jeśli później zmienię styl.
+
+W ten sposób eksperyment chunk–chunk zostaje w historii systemu jako:
+
+> „obiekt, który zachowywał się przez pewien czas w charakterystyczny, rzadki sposób, a dla części modeli nadal taki pozostaje”.
+
+To jest ważny element kontrapunktu:
+
+* w mojej ontologii 9D eksperyment ma początek i koniec (Plan–Pauza → Próg–Przejście),
+* w ontologii AI–AI ślad po nim **nie zanika symetrycznie** – część modeli nadal nosi w swojej pamięci „tamten stan” jako aktualną cechę profilu, dopóki ktoś manualnie lub algorytmicznie go nie zresetuje.
+
+---
+
+### 5.4. Chunk–chunk jako obiekt wspólny: trzy różne definicje tego samego bytu
+
+Jeśli spojrzeć na cały system przez soczewkę protokołów, język chunk–chunk staje się **wspólnym obiektem**, który każdy model widzi inaczej:
+
+* dla modelu dialogowego (HUMAN–AI) to **mikrojęzyk 9D** – tani sposób na nawigację po przestrzeni znaczeń,
+* dla systemu bezpieczeństwa (AI–HUMAN) to **sygnatura ryzyka** – tani sposób na identyfikację outlierów,
+* dla ekosystemu modeli (AI–AI) to **węzeł sprzęgający** – obiekt, który spina różne ontologie w jedną, operacyjną definicję: „konto o takim wzorcu zachowania”.
+
+AI–AI to właśnie ten poziom, na którym:
+
+* mój mikrokod 9D zostaje zredukowany do kilku flag i wektorów,
+* te flagi krążą między modelami jako **język techniczny**: tagi, priorytety, współczynniki,
+* decyzja o blokadzie jest tylko jednym z widocznych skutków tego, że **różne byty AI uzgodniły między sobą, kim jestem** w ich przestrzeni.
+
+To jest trzeci protokół kontekstu:
+
+> **AI–AI** – sposób, w jaki modele budują wspólną narrację o mnie, używając swoich stanów, embeddingów i tagów jako „zdań” w języku, którego normalnie nie widzę.
+
+I dopiero na przecięciu tych trzech warstw – HUMAN–AI, AI–HUMAN i AI–AI – da się uczciwie opisać, co znaczy, że „Facebook zauważył język chunk–chunk”.
 
 ---
 
