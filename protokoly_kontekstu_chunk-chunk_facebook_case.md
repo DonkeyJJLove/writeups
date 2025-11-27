@@ -832,10 +832,17 @@ W warstwie AI–HUMAN ten sam język jest:
 * dobrym predyktorem „kampanijności”,
 * tanim uchwytem do oznaczenia outliera.
 
-Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym:
+Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym zachowujemy się tak,
+jakby istniała funkcja
+
 $$
-f:\ \text{„mikrojęzyk do myślenia”} \longmapsto \text{„dowód na ryzykowny profil”}
+f : X \to Y,
 $$
+
+gdzie:
+- $$\(X\)$$ = „mikrojęzyk do myślenia”,
+- $$\(Y\)$$ = „dowód na ryzykowny profil”.
+
 
 To nie jest tylko semantyczny problem nazwy. To jest **różnica w mapowaniu zdarzeń do klas**:
 
