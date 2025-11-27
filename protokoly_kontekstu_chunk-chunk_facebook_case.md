@@ -978,25 +978,34 @@ To pierwszy poziom ataku czasu:
 
 ### 8.2. Poziom drugi: pamięć i indeksowanie
 
-W systemach typu RAG, logach bezpieczeństwa czy bazach wektorowych każdy wektor jest w praktyce trójką:
-$(\mathbf{v},\ \text{timestamp},\ \text{source\_id})$,
-ale przy wyszukiwaniu „bliskość semantyczna”:
+W systemach typu RAG, logach bezpieczeństwa czy bazach wektorowych każdy zapisany element jest w praktyce **trójką**
+[
+(\mathbf v,, t,, s),
+]
+gdzie:
 
-- liczy się zwykle jako $d(\mathbf{v}, \mathbf{v}')$,  
-- **ignoruje** upływ czasu,  
-- traktuje stare i nowe reprezentacje jako „równorzędne głosy”.
+* (\mathbf v) – wektor semantyczny (embedding),
+* (t) – znacznik czasu (timestamp),
+* (s) – identyfikator źródła (source_id, np. dokument, użytkownik, system).
+
+Przy wyszukiwaniu „bliskość semantyczna”:
+
+* liczy się zwykle jako (d(\mathbf v, \mathbf v')),
+* **ignoruje upływ czasu**,
+* traktuje stare i nowe reprezentacje jako „równorzędne głosy”.
 
 Jeśli:
 
-- zbudowałem wiele warstw chunk–chunk w różnych okresach,  
-- stare wersje 9D dalej krążą w indeksie,
+* zbudowałem wiele warstw chunk–chunk w różnych okresach,
+* stare wersje 9D dalej krążą w indeksie,
 
 to system widzi **superklaster podobnych rzeczy**, ale nie wie:
 
-- która wersja jest aktualna,  
-- które reprezentacje są „historyczne”, a które „bieżące”.
+* która wersja jest aktualna,
+* które reprezentacje są „historyczne”, a które „bieżące”.
 
-Atak czasu na tym poziomie polega na tym, że **przestarzałe embeddingi nadal wpływają na decyzje** tak, jakby były świeże.
+**Atak czasu** na tym poziomie polega na tym, że **przestarzałe embeddingi nadal wpływają na decyzje** tak, jakby były świeże.
+
 
 ### 8.3. Poziom trzeci: dynamika sekwencji w czasie rzeczywistym
 
