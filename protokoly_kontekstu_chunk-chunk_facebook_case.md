@@ -972,7 +972,9 @@ To pierwszy poziom ataku czasu:
 ### 8.2. Poziom drugi: pamięć i indeksowanie
 
 W systemach typu RAG, logach bezpieczeństwa czy bazach wektorowych każdy wektor jest w praktyce trójką:
-$$(\mathbf{v},\ \text{timestamp},\ \text{source\_id})$$ ,
+$$
+(\mathbf{v},\ \text{timestamp},\ \text{source\_id})
+$$,
 ale przy wyszukiwaniu „bliskość semantyczna”:
 
 - liczy się zwykle jako $d(\mathbf{v}, \mathbf{v}')$,  
