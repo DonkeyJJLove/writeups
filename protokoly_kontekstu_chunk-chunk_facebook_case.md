@@ -64,51 +64,150 @@ jak **HUMAN–AI**, **AI–HUMAN** i **AI–AI** widzą się nawzajem na przykł
 
 Klasyczny protokół sieciowy mówi nam:
 
-- jak wygląda pakiet,  
-- jakie są kody odpowiedzi,  
-- co dzieje się, gdy pakiet jest poprawny albo błędny.
+* jak wygląda pakiet,
+* jakie są kody odpowiedzi,
+* co dzieje się, gdy pakiet jest poprawny albo błędny.
 
-W systemach AI to za mało. Potrzebujemy warstwy, która **łączy treść, czas, pamięć i decyzję**.  
-Nazwijmy ją **protokołem kontekstu**.
+W systemach AI to za mało. Potrzebujemy warstwy, która **łączy treść, czas, pamięć i decyzję**.
+Tę warstwę nazywam **protokołem kontekstu**.
 
-W najprostszej, ale już użytecznej postaci:
+---
 
-- każdy byt (człowiek, model, system bezpieczeństwa) ma wewnętrzny stan  
+### 2.1. Stany bytów i wiadomości
+
+W najprostszej, ale już użytecznej postaci zakładam, że:
+
+* każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**:
   $$
   S_t \in \mathcal{S},
   $$
-- każda wiadomość (post, komentarz, zdarzenie logowe) jest pakietem  
+  gdzie (t) to czas (krok interakcji), a (\mathcal{S}) – przestrzeń możliwych stanów (np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”, „jaki mam poziom ryzyka”).
+
+* każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym**:
   $$
   M_t = \big(\text{treść}_t,\ \text{metadane}_t,\ \text{czas}_t,\ \text{źródło}_t\big),
   $$
-- stan bytu jest aktualizowany przez funkcję przejścia
-  $$
-  S_{t+1} = F_\theta(S_t, M_t),
-  $$
-  gdzie $\theta$ to parametry (np. wagi sieci, progi, reguły).
-
-**Protokół kontekstu** to:
-
-1. sama funkcja $F_\theta$ (czyli *jak* byt aktualizuje swój stan),  
-2. oraz zestaw reguł decyzyjnych
-   $$
-   A_{t+1} = G(S_{t+1}),
-   $$
-   gdzie $A_{t+1}$ to akcja: wygenerowanie odpowiedzi, podbicie ryzyka, ręczny review, blokada konta itd.
-
-Formalnie możemy powiedzieć, że:
-
-- zachodzi komunikacja między dwoma bytami $X$ i $Y$, jeśli na skutek wymiany wiadomości pojawia się niezerowa **informacja wzajemna** między ich stanami:
-  $$
-  I\big(S^{(X)}_{t+1} ; S^{(Y)}_{t+1} \mid M_t\big) > 0,
-  $$
-- a protokół kontekstu jest **częściowo poznany**, jeśli z par $(M_t, A^{(Y)}_{t+1})$ jesteśmy w stanie zbudować przybliżenie $\hat{F}^{(Y)}$ lub $\hat{G}^{(Y)}$, które przewiduje reakcje bytu $Y$ lepiej niż losowo.
-
-W praktyce oznacza to coś prostego:
-
-> jeśli na podstawie reakcji systemu bezpieczeństwa na nasze posty możemy **z sensowną dokładnością przewidzieć**, kiedy zablokuje konto, a kiedy nie – to znaczy, że **złamaliśmy część jego protokołu kontekstu**.
+  czyli nie tylko „co napisałem”, ale też **kiedy**, **skąd** i **w jakiej oprawie technicznej** (klient, urządzenie, język interfejsu itd.).
 
 ---
+
+### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan
+
+Reakcja bytu na wiadomość to **aktualizacja stanu**.
+Zapisuję to jako:
+
+$$
+S_{t+1} = F_\theta(S_t, M_t),
+$$
+
+gdzie:
+
+* (F_\theta) to **funkcja przejścia stanu** (np. sieć neuronowa + reguły),
+* (\theta) to **parametry** modelu (wagi, progi, reguły biznesowe, heurystyki),
+* (S_t) to stan „przed wiadomością”,
+* (S_{t+1}) to stan „po wiadomości”.
+
+Intuicyjnie:
+
+> byt patrzy na to, co już o mnie wie ((S_t)) + na nową wiadomość ((M_t)) i na tej podstawie ustala nowy obraz sytuacji ((S_{t+1})).
+
+W systemach bezpieczeństwa (F_\theta) może zawierać m.in.:
+
+* agregację historii zachowań,
+* aktualizację liczników (ile postów, ile flag, ile zgłoszeń),
+* wewnętrzny embedding mojego profilu.
+
+---
+
+### 2.3. Funkcja decyzji: co byt robi ze stanem
+
+Sam stan to jeszcze nie decyzja. Decyzję opisuje druga funkcja:
+
+$$
+A_{t+1} = G(S_{t+1}),
+$$
+
+gdzie:
+
+* (G) to **funkcja decyzyjna**,
+* (A_{t+1}) to **akcja** podjęta przez byt po aktualizacji stanu.
+
+Przykładowe akcje:
+
+* wygenerowanie odpowiedzi (model dialogowy),
+* podbicie wewnętrznego poziomu ryzyka,
+* obniżenie zasięgu posta,
+* skierowanie sprawy do ręcznego review,
+* blokada konta.
+
+W tym sensie **protokoł kontekstu** to para:
+
+* (F_\theta) – jak byt aktualizuje swój stan,
+* (G) – jak zamienia stan na akcję.
+
+---
+
+### 2.4. Kiedy zachodzi komunikacja między bytami?
+
+Żeby nie zostać przy metaforze, można to związać z teorią informacji.
+
+Mówimy, że zachodzi **komunikacja** między dwoma bytami (X) i (Y), jeśli na skutek wymiany wiadomości:
+
+$$
+I\big(S^{(X)}*{t+1} ,;\ S^{(Y)}*{t+1} \mid M_t\big) > 0,
+$$
+
+czyli **informacja wzajemna** między ich stanami po kroku (t+1), warunkowa względem wiadomości (M_t), jest dodatnia.
+
+Intuicyjnie:
+
+> stan bytu (X) po tej wiadomości niesie informację o stanie bytu (Y) – i odwrotnie.
+> Nie zmieniamy się „każdy w swoim świecie”, tylko **współ-zmieniamy się** względem tego samego zdarzenia.
+
+W przypadku mojego eksperymentu:
+
+* ja aktualizuję swój stan (np. „system znów podbił komunikat bezpieczeństwa”),
+* system bezpieczeństwa aktualizuje swój stan (np. „użytkownik z sygnaturą chunk–chunk podniósł mi licznik ryzyka”),
+* ich stany **stają się skorelowane** – po serii interakcji widać już wyraźny wzorzec reakcji.
+
+---
+
+### 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
+
+Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam (F_\theta) ani (G).
+Mogę jednak obserwować:
+
+* co wysyłam: (M_t),
+* co system robi: (A^{(Y)}_{t+1}).
+
+Z takich par:
+
+$$
+\big(M_t,\ A^{(Y)}_{t+1}\big)
+$$
+
+mogę próbować zbudować **przybliżone modele**:
+
+* (\hat{F}^{(Y)}) – przybliżenie aktualizacji stanu (częściej jest poza zasięgiem bez logów),
+* (\hat{G}^{(Y)}) – przybliżenie funkcji decyzji.
+
+Warunek „częściowego poznania” protokołu zapisuję tak:
+
+> protokół kontekstu bytu (Y) jest częściowo poznany,
+> jeżeli istnieje przybliżenie (\hat{G}^{(Y)}), które na podstawie obserwowanych danych przewiduje akcje (A^{(Y)}_{t+1}) **lepiej niż losowo**.
+
+Nie muszę znać pełnego wnętrza modelu. Wystarczy, że:
+
+* jestem w stanie zbudować regułę typu
+  „dla takich sekwencji chunk–chunk + taka częstotliwość + taki kontekst = prawdopodobna blokada”,
+* i ta reguła ma sensowną trafność na moich obserwacjach.
+
+Wtedy w praktyce:
+
+> **złamałem część protokołu kontekstu** – nie na poziomie kodu źródłowego, tylko na poziomie *działania*: potrafię przewidywać reakcje systemu na moje stany i wiadomości.
+
+To jest moment, w którym eksperyment z Facebookiem przestaje być „dziwną anegdotą”, a staje się **empirycznym badaniem funkcji (G)** systemu bezpieczeństwa wobec mikrojęzyka chunk–chunk.
+
 
 ## 3. HUMAN–AI: język chunk–chunk jako sygnatura
 
