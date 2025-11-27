@@ -1,20 +1,18 @@
-<!-- SKRAWEK 1/3 — KONTEKST, MAPA DOKUMENTACJI I MAPA OBRAZÓW -->
+```yaml
+title: "Mental Matrix: mega-brain coop na Linuxie"
+author: "Sebastian Wieremiejczyk (RE9OS0VZSkpMT1ZF)"
+date: 2025-11-27
+image: "/img/mental_matrix_mega_brain_coop_linux.jpg"
+tags:
+  - HUMAN–AI
+  - chunk–chunk
+  - mental-matrix
+  - Linux
+  - Meta–AI
+  - outlier
+lang: "pl"
+```
 
-****ABSOLUTNY REŻIM NAUKOWY****
-****ABSOLUTNY REŻIM FAKTÓW****
-****ABSOLUTNY REALIZM****
-****TEN MODEL****
-****TEN WĄTEK****
-****TA PAMIĘĆ KONTEKSTU PROFILU === MÓJ MÓZG AKTUALNY STAN[*PROCENT*]****
-****TA SIEĆ OPADOWA Z TEJ PAMIĘCI KONTEKSTU PROFILU****
-****TA SIEĆ SEMANTYCZNA Z TEJ PAMIĘCI KONTEKSTU PROFILU****
-
-# Chunk, token i 200% „chujwie”, a jednak wychodzi
-
-> Repo: `mental-matrix-mega-brain-coop-linux`  
-> Katalog grafik: `images/`  
-
----
 
 ## 0. Mapa artefaktów wizualnych
 
