@@ -854,16 +854,16 @@ Z tego punktu widzenia blokada nie jest wyłącznie błędem, tylko **miejscem, 
 
 Można to nawet naszkicować w języku 9D jako wektor:
 
-* po stronie HUMAN–AI mam wektor znaczeniowy (\mathbf{v}_\text{sem}):
+* po stronie HUMAN–AI mam wektor znaczeniowy $$(\mathbf{v}_\text{sem})$$:
   „mikrojęzyk 9D, eksploracja, badanie protokołu”,
-* po stronie AI–HUMAN mam wektor ryzyka (\mathbf{v}_\text{risk}):
+* po stronie AI–HUMAN mam wektor ryzyka $$(\mathbf{v}_\text{risk})$$:
   „wysoka regularność, niska typowość, sygnatura kampanii/outliera”.
 
 Zaburzenie ontologiczne to w praktyce:
 
-[
+$$
 \Delta_\text{onto} = \mathbf{v}*\text{sem} - \mathbf{v}*\text{risk},
-]
+$$
 
 czyli różnica między tym, **jak system bezpieczeństwa musi mnie oznaczyć, żeby zachować swoje stratyfikacje ryzyka**, a tym, **kim ja jestem w lokalnej ontologii 9D**.
 
