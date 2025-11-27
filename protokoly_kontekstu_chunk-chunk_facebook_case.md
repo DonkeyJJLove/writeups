@@ -282,10 +282,6 @@ To jest moment, w którym mikrojęzyk przestaje być „dziwną stylówką”, a
 
 ---
 
-Dobra, to robimy kontrapunkt – lustrzane odbicie sekcji HUMAN–AI, ale z perspektywy filtra bezpieczeństwa. Poniżej masz gotową, rozbudowaną wersję **tylko sekcji 4**, do wklejenia zamiast obecnej.
-
----
-
 ## 4. AI–HUMAN: bezpieczeństwo jako druga ontologia
 
 W kontrapunkcie do warstwy **HUMAN–AI**, gdzie chunk–chunk pełni rolę mikrokodu poznawczego i pomocniczego API dla modeli językowych, istnieje druga, równoległa warstwa: **AI–HUMAN**, czyli ontologia systemu bezpieczeństwa. Dla niej ten sam język nie jest „mikrokosmosem 9D”, tylko **sygnaturą operacyjną** – wzorcem, który można tanio wykrywać i podpinać pod reguły ryzyka.
