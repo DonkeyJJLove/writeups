@@ -67,27 +67,23 @@ Klasyczny protokół sieciowy mówi nam:
 * jakie są kody odpowiedzi,
 * co dzieje się, gdy pakiet jest poprawny albo błędny.
 
-W systemach AI to za mało. Potrzebujemy warstwy, która **łączy treść, czas, pamięć i decyzję**.
+W systemach AI to za mało. Potrzebujemy warstwy, która łączy **treść, czas, pamięć i decyzję**.
 Tę warstwę nazywam **protokołem kontekstu**.
 
----
+**2.1. Stany bytów i wiadomości**
 
-2.1. Stany bytów i wiadomości
 W najprostszej, ale już użytecznej postaci zakładam, że:
 
-każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
-[
-S_t \in \mathcal{S},
-]
-gdzie (t) to czas (krok interakcji), a (\mathcal{S}) – przestrzeń możliwych stanów (np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”, „jaki mam poziom ryzyka”).
+* każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
+  `S_t ∈ 𝒮`,
+  gdzie `t` to czas (krok interakcji), a `𝒮` – przestrzeń możliwych stanów
+  (np. „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”, „jaki mam poziom ryzyka”).
 
-każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym**
-[
-M_t = \big(\text{treść}_t,\ \text{metadane}_t,\ \text{czas}_t,\ \text{źródło}_t\big),
-]
-czyli nie tylko „co napisałem”, ale też *kiedy*, *skąd* i *w jakiej oprawie technicznej* (klient, urządzenie, język interfejsu itd.).
+* każda wiadomość (post, komentarz, zdarzenie logowe) jest **pakietem kontekstowym**
+  `M_t = (treść_t, metadane_t, czas_t, źródło_t)`,
+  czyli nie tylko „co napisałem”, ale też **kiedy**, **skąd** i **w jakiej oprawie technicznej**
+  (klient, urządzenie, język interfejsu itd.).
 
----
 
 ### 2.2. Funkcja przejścia: jak byt aktualizuje swój stan
 
