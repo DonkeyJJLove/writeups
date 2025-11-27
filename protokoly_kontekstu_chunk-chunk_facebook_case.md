@@ -646,15 +646,20 @@ zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor 
 
 Żeby to uporządkować, wracam do formalizmu z sekcji 2:
 
-- stan bytu bezpieczeństwa \(Y\) aktualizuje się według  
+- stan bytu bezpieczeństwa \(Y\) aktualizuje się według
+
   $$
   S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\big(S_t^{(Y)}, M_t\big),
   $$
-- decyzja powstaje z tego stanu przez  
+
+- decyzja powstaje z tego stanu przez
+
   $$
   A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big),
   $$
-- z punktu widzenia obserwatora interesuje mnie złożenie  
+
+- z punktu widzenia obserwatora interesuje mnie złożenie
+
   $$
   H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
   $$
@@ -665,6 +670,7 @@ Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\), ani wnętrza \(
 - ciąg akcji \(A_{t+1}^{(Y)}\), które system podejmuje.
 
 Z tego buduję empiryczny zbiór danych:
+
 $$
 D = \{ (M_t,\ A_{t+1}^{(Y)}) \}_{t=1}^{T}.
 $$
@@ -672,17 +678,22 @@ $$
 Na podstawie \(D\) konstruuję własny stan roboczy \(Z_t\)
 (np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.)
 i szukam funkcji
+
 $$
-\hat H^{(Y)} : Z_t \rightarrow \hat A_{t+1}^{(Y)},
+\hat H^{(Y)} : Z_t \to \hat A_{t+1}^{(Y)},
 $$
+
 która naśladuje rzeczywiste \(H^{(Y)}\).
 
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
+
 $$
-acc\big(\hat H^{(Y)}\big) > acc_{bazowa},
+acc\big(\hat H^{(Y)}\big) > acc_{\text{bazowa}},
 $$
-gdzie `acc_bazowa` to dokładność najlepszego trywialnego klasyfikatora
-(np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w \(D\)”).
+
+gdzie \(acc_{\text{bazowa}}\) to dokładność najlepszego trywialnego
+klasyfikatora (np. „zawsze brak reakcji”, „zawsze soft warning”,
+„zawsze najczęstsza klasa w \(D\)”).
 
 Jeżeli moja \(\hat H^{(Y)}\):
 
@@ -690,11 +701,13 @@ Jeżeli moja \(\hat H^{(Y)}\):
 - jest krótka opisowo (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
 - ma istotnie lepszą trafność niż bazowa,
 
-to w sensie ścisłym dokonałem **kompresji czarnej skrzynki**: zamiast zapamiętywać cały przebieg interakcji, mam „krótki kod”, który dobrze przewiduje zachowanie systemu w moim fragmencie świata.
+to w sensie ścisłym dokonałem **kompresji czarnej skrzynki**:
+zamiast zapamiętywać cały przebieg interakcji, mam „krótki kod”,
+który dobrze przewiduje zachowanie systemu w moim fragmencie świata.
 
-To właśnie nazywam **„łamaniem protokołu kontekstu”**: nie włamanie do kodu, tylko zbudowanie teorii działania systemu o wyższej mocy predykcyjnej niż przypadek.
-
-
+To właśnie nazywam **„łamaniem protokołu kontekstu”**:
+nie włamanie do kodu, tylko zbudowanie teorii działania systemu
+o wyższej mocy predykcyjnej niż przypadek.
 
 ### 6.3. Kontrapunkt wobec HUMAN–AI / AI–HUMAN / AI–AI
 
