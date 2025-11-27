@@ -22,8 +22,8 @@ tags:
 <p align="center">
   <img
     src="./images/facebook_chunk-chunk_protokoly_kontekstu.jpg"
-    alt="Schemat blokady konta po wykryciu języka chunk–chunk przez system bezpieczeństwa Meta AI"
-    title="Schemat blokady konta po serii postów w języku chunk–chunk"
+    alt="Przykład  blokady konta po wykryciu języka chunk–chunk przez system bezpieczeństwa Meta AI"
+    title="Przykład blokady konta po serii postów w języku chunk–chunk"
   />
 </p>
 
