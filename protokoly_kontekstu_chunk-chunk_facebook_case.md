@@ -227,23 +227,24 @@ Warunek **„częściowego poznania”** protokołu zapisuję wtedy następując
 Formalnie:
 
 $$
-\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\text{acc}\!\left(\widehat{H}^{(Y)}\right)
 =
-\mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \sim D}
-\Big[
+\mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \in D}
+\left[
   \widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}
-\Big],
+\right].
 $$
 
-i mówimy, że protokół jest częściowo poznany, jeśli
+Mówimy, że protokół jest częściowo poznany, jeśli
 
 $$
-\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\text{acc}\!\left(\widehat{H}^{(Y)}\right)
 >
-\operatorname{acc}_{\text{bazowa}},
+\text{acc}_{\mathrm{bazowa}},
 $$
 
-gdzie $\operatorname{acc}_{\text{bazowa}}$ to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w $D$).
+gdzie $\text{acc}_{\mathrm{bazowa}}$ to trafność **najlepszego trywialnego klasyfikatora**
+(np. zawsze wybieram tę samą akcję, większościową w $D$).
 
 Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
 
@@ -263,63 +264,106 @@ Wtedy w praktyce:
 
 Jeśli przyjmę, że:
 
-1. próbki $(M_t, A^{(Y)}_{t+1})$ w $D$ są reprezentatywne dla rzeczywistej pracy systemu (brak silnego dryfu w czasie, brak zmiany polityki w trakcie pomiaru),
-2. dane są wystarczająco liczne, by estymacja $\operatorname{acc}\big(\widehat{H}^{(Y)}\big)$ miała mały błąd statystyczny,
-3. oceniam $\widehat{H}^{(Y)}$ **na danych odłożonych** (out-of-sample), a nie na tym samym zbiorze, na którym ją „odkrywałem”,
+1. próbki $(M_t, A^{(Y)}_{t+1})$ w $D$ są reprezentatywne dla rzeczywistej pracy systemu
+   (brak silnego dryfu w czasie, brak zmiany polityki w trakcie pomiaru),
+2. dane są wystarczająco liczne, by estymacja $\text{acc}\big(\widehat{H}^{(Y)}\big)$
+   miała mały błąd statystyczny,
+3. oceniam $\widehat{H}^{(Y)}$ na danych odłożonych (out-of-sample), a nie na tym samym zbiorze,
+   na którym ją „odkrywałem”,
 
 to warunek
 
 $$
-\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\text{acc}\!\left(\widehat{H}^{(Y)}\right)
 >
-\operatorname{acc}_{\text{bazowa}}
+\text{acc}_{\mathrm{bazowa}}
 $$
 
-oznacza, że istnieje **nie-trywialna informacja** o zachowaniu systemu, zakodowana w cechach wiadomości. Innymi słowy:
+oznacza, że istnieje **nietrywialna informacja** o zachowaniu systemu, zakodowana
+w cechach wiadomości. Innymi słowy:
 
-- jeśli protokół byłby całkowicie losowy (brak zależności między $M_t$ a $A^{(Y)}_{t+1}$), żadna deterministyczna $\widehat{H}^{(Y)}$ nie przekroczyłaby istotnie bazowej dokładności;
-- skoro istnieje funkcja, która tę bazę przebija w stabilny sposób, to znaczy, że **część zależności wejście–akcja została uchwycona**.
+- jeśli protokół byłby całkowicie losowy (brak zależności między $M_t$ a $A^{(Y)}_{t+1}$),
+  żadna deterministyczna $\widehat{H}^{(Y)}$ nie przekroczyłaby istotnie bazowej dokładności;
+- skoro istnieje funkcja, która tę bazę przebija w stabilny sposób,
+  to znaczy, że **część zależności wejście–akcja została uchwycona**.
 
-W tym sensie „częściowe poznanie” jest dokładnie tym, co w teorii informacji nazywa się **niezerową informacją wzajemną** między cechami z historii wiadomości a akcjami systemu, plus dodatkowy warunek, że tę informację udało się skompresować do postaci funkcji $\widehat{H}^{(Y)}$.
+W tym sensie „częściowe poznanie” jest dokładnie tym, co w teorii informacji
+nazywa się **niezerową informacją wzajemną** między cechami z historii wiadomości
+a akcjami systemu, plus dodatkowy warunek, że tę informację udało się skompresować
+do postaci funkcji $\widehat{H}^{(Y)}$.
 
-Podsumowując: **przy założeniach (1)–(3)** teza jest poprawna – przekroczenie bazowej dokładności na danych odłożonych jest operacyjnym dowodem, że protokół nie jest dla mnie całkowicie nieprzejrzysty.
+Podsumowując: przy założeniach (1)–(3) teza jest poprawna – przekroczenie bazowej
+dokładności na danych odłożonych jest operacyjnym dowodem, że protokół nie jest
+dla mnie całkowicie nieprzejrzysty.
 
 #### (2) Falsyfikacja: kiedy teza przestaje działać
 
 Ta sama teza przestaje być prawdziwa, gdy naruszone są założenia:
 
 - **Przeuczenie na jednym logu.**  
-  Jeśli $\widehat{H}^{(Y)}$ jest „nauczona” i oceniona na tym samym $D$, może perfekcyjnie odtworzyć historię (overfitting), a **zupełnie nie generalizować**.  
-  Wtedy wysoka $\operatorname{acc}$ nic nie mówi o poznaniu protokołu – pokazuje tylko, że skopiowałem przeszłość.
+  Jeśli $\widehat{H}^{(Y)}$ jest „nauczona” i oceniona na tym samym $D$,
+  może perfekcyjnie odtworzyć historię (overfitting), a zupełnie nie generalizować.  
+  Wtedy wysoka $\text{acc}$ nic nie mówi o poznaniu protokołu – pokazuje tylko,
+  że skopiowałem przeszłość.
 
 - **Silny dryf systemu w czasie.**  
   Platforma może zmieniać modele, progi i reguły biznesowe.  
-  Wersja $\widehat{H}^{(Y)}$, która dobrze przewidywała zachowanie systemu w tygodniu $t \in [t_0, t_1]$, może być bezużyteczna tydzień później.  
-  Wtedy częściowo poznałem *historyczną* wersję protokołu, ale nie **aktualny byt**, z którym teraz rozmawiam.
+  Wersja $\widehat{H}^{(Y)}$, która dobrze przewidywała zachowanie systemu
+  w tygodniu $t \in [t_0, t_1]$, może być bezużyteczna tydzień później.  
+  Wtedy częściowo poznałem *historyczną* wersję protokołu, ale nie aktualny byt,
+  z którym teraz rozmawiam.
 
 - **Złe zdefiniowanie „bazowego” klasyfikatora.**  
-  Jeśli $\operatorname{acc}_{\text{bazowa}}$ jest ustawiona zbyt nisko (np. ignoruję silnie niezbalansowane klasy i biorę naiwną „losową” bazę), mogę sztucznie wykazać, że „przekroczyłem bazę”.  
-  Wtedy wynik jest artefaktem **źle dobranej metryki**, nie realnego poznania protokołu.
+  Jeśli $\text{acc}_{\mathrm{bazowa}}$ jest ustawiona zbyt nisko
+  (np. ignoruję silnie niezbalansowane klasy i biorę naiwną „losową” bazę),
+  mogę sztucznie wykazać, że „przekroczyłem bazę”.  
+  Wtedy wynik jest artefaktem **źle dobranej metryki**, nie realnego poznania
+  protokołu.
 
-- **Silna korelacja z nie-istotnymi cechami.**  
-  Mogę stworzyć regułę typu: „jeśli piszę w określonych godzinach z konkretnego urządzenia, to prawdopodobieństwo blokady rośnie”, bo tak akurat było w mojej próbce.  
-  Jeżeli ta korelacja wynika z **przypadkowego zbiegu okoliczności** (np. zmian infrastruktury w tym tygodniu), to $\widehat{H}^{(Y)}$ jest oparta na szumie.  
-  W nowej konfiguracji systemu upada – czyli de facto **nie opisuje** protokołu.
+- **Silna korelacja z nieistotnymi cechami.**  
+  Mogę stworzyć regułę typu: „jeśli piszę w określonych godzinach
+  z konkretnego urządzenia, to prawdopodobieństwo blokady rośnie”,
+  bo tak akurat było w mojej próbce.  
+  Jeżeli ta korelacja wynika z przypadkowego zbiegu okoliczności
+  (np. zmian infrastruktury w tym tygodniu), to $\widehat{H}^{(Y)}$
+  jest oparta na szumie. W nowej konfiguracji systemu upada – czyli
+  de facto **nie opisuje** protokołu.
 
 - **Brak kompresji opisu.**  
-  Jeżeli $\widehat{H}^{(Y)}$ to bardzo długa tablica „jeżeli–wtedy” dla pojedynczych przypadków, nie jest to „poznanie protokołu”, tylko **przepisanie logów** w innej formie.  
-  Do poznania sensownego potrzebuję *krótkiego opisu* (wysoka kompresja), który działa na wielu nowych przykładach.
+  Jeżeli $\widehat{H}^{(Y)}$ to bardzo długa tablica „jeżeli–wtedy”
+  dla pojedynczych przypadków, nie jest to „poznanie protokołu”,
+  tylko **przepisanie logów** w innej formie.  
+  Do sensownego poznania potrzebuję *krótkiego opisu* (wysoka kompresja),
+  który działa na wielu nowych przykładach.
 
 W każdym z tych scenariuszy możemy mieć
 
 $$
-\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+\text{acc}\!\left(\widehat{H}^{(Y)}\right)
 >
-\operatorname{acc}_{\text{bazowa}}
+\text{acc}_{\mathrm{bazowa}}
 $$
 
-na jakimś ograniczonym zbiorze $D$, a mimo to **nie mamy prawa mówić**, że protokół jest częściowo poznany w silnym sensie.  
-Teza w swojej prostej formie zostaje wtedy **sfalsyfikowana**: sama nierówność na dokładnościach jest konieczna, ale **niewystarczająca** do stwierdzenia poznania.
+na jakimś ograniczonym zbiorze $D$, a mimo to nie mamy prawa mówić,
+że protokół jest częściowo poznany w silnym sensie.  
+Teza w swojej prostej formie zostaje wtedy **sfalsyfikowana**:
+sama nierówność na dokładnościach jest konieczna, ale **niewystarczająca**
+do stwierdzenia poznania.
+
+#### (3) Wersja ostrożna (po falsyfikacji)
+
+Po uwzględnieniu powyższych kontrprzykładów tezę można zaostrzyć:
+
+> protokół kontekstu bytu $Y$ jest częściowo poznany *w sensie operacyjnym*,  
+> jeżeli istnieje krótka funkcja $\widehat{H}^{(Y)}$, która:
+> 
+> - przekracza $\text{acc}_{\mathrm{bazowa}}$ na danych odłożonych,
+> - zachowuje tę przewagę przez pewien czas mimo zmian w szczegółach ruchu,
+> - pozostaje stabilna względem rozsądnych perturbacji cech wejściowych.
+
+Dopiero wtedy mogę uczciwie powiedzieć, że nie tylko „mam korelację”,
+ale faktycznie **wyłuskałem fragment reguły**, według której byt bezpieczeństwa
+działa w moim mikroświecie chunk–chunk.
 
 #### (3) Wersja ostrożna (po falsyfikacji)
 
