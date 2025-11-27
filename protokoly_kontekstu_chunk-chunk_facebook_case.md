@@ -723,7 +723,7 @@ gdzie \(acc_{\text{bazowa}}\) to dokładność najlepszego trywialnego
 klasyfikatora (np. „zawsze brak reakcji”, „zawsze soft warning”,
 „zawsze najczęstsza klasa w \(D\)”).
 
-Jeżeli moja \(\hat H^{(Y)}\):
+Jeżeli moja $$\(\hat H^{(Y)}\)$$:
 
 - jest stabilna w czasie (działa w kolejnych próbach, a nie tylko w jednej sesji),
 - jest krótka opisowo (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
@@ -798,7 +798,7 @@ To jest zasadnicza różnica między:
   * projektuję mikrojęzyk chunk–chunk,
   * wprowadzam go w pole widzenia wielu modeli,
   * obserwuję ich reakcje (HUMAN–AI, AI–HUMAN, AI–AI),
-  * buduję (\widehat{H}^{(Y)}), które ten układ potrafi przewidywać.
+  * buduję $$(\widehat{H}^{(Y)})$$, które ten układ potrafi przewidywać.
 
 W tym sensie **łamaniem** nie jest tylko to, że systemowi „coś nie gra”.
 Łamie się **asymetria**: z jednostronnej opowieści „AI ocenia użytkownika” przechodzimy do **dwustronnej relacji**, w której:
@@ -834,13 +834,13 @@ W warstwie AI–HUMAN ten sam język jest:
 * tanim uchwytem do oznaczenia outliera.
 
 Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym:
-
+$$
 [
 \text{„mikrojęzyk do myślenia”}
 ;;\longrightarrow;;
 \text{„dowód na ryzykowny profil”}.
 ]
-
+$$
 To nie jest tylko semantyczny problem nazwy. To jest **różnica w mapowaniu zdarzeń do klas**:
 
 * w mojej klasie: „eksperyment poznawczy / test mikroświata”,
