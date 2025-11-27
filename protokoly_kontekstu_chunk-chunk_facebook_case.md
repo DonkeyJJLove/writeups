@@ -646,14 +646,23 @@ zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor 
 
 Żeby to uporządkować, wracam do formalizmu z sekcji 2:
 
-- stan bytu bezpieczeństwa \(Y\) aktualizuje się według  
-  $$S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\bigl(S_t^{(Y)}, M_t\bigr),$$
+stan bytu bezpieczeństwa \(Y\) aktualizuje się według
 
-- decyzja powstaje z tego stanu przez  
-  $$A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),$$
+$$
+S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\bigl(S_t^{(Y)}, M_t\bigr),
+$$
 
-- z punktu widzenia obserwatora interesuje mnie złożenie  
-  $$H^{(Y)} = G^{(Y)} \circ F^{(Y)}.$$
+decyzja powstaje z tego stanu przez
+
+$$
+A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),
+$$
+
+z punktu widzenia obserwatora interesuje mnie złożenie
+
+$$
+H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
+$$
 
 Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\),
 ani wnętrza \(F_{\theta}^{(Y)}\), ani szczegółów \(G^{(Y)}\).
@@ -681,7 +690,7 @@ która naśladuje rzeczywiste \(H^{(Y)}\).
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
 
 $$
-acc\big(\hat H^{(Y)}\big) > acc_{\text{bazowa}},
+acc\bigl(\hat H^{(Y)}\bigr) > acc_{\text{bazowa}},
 $$
 
 gdzie \(acc_{\text{bazowa}}\) to dokładność najlepszego trywialnego
@@ -701,6 +710,8 @@ który dobrze przewiduje zachowanie systemu w moim fragmencie świata.
 To właśnie nazywam **„łamaniem protokołu kontekstu”**:
 nie włamanie do kodu, tylko zbudowanie teorii działania systemu
 o wyższej mocy predykcyjnej niż przypadek.
+
+---
 
 ### 6.3. Kontrapunkt wobec HUMAN–AI / AI–HUMAN / AI–AI
 
