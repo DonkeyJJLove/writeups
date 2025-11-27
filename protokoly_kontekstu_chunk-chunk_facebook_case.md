@@ -333,9 +333,7 @@ Ta sama teza przestaje być prawdziwa, gdy naruszone są założenia:
 W każdym z tych scenariuszy możemy mieć
 
 $$
-\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
->
-\mathrm{acc}_{\mathrm{bazowa}}
+\text{acc}(\widehat{H}^{(Y)}) > \text{acc}_\text{bazowa}
 $$
 
 na jakimś ograniczonym zbiorze $D$, a mimo to nie mamy prawa mówić,
