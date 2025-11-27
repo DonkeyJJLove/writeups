@@ -646,59 +646,63 @@ zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor 
 
 Żeby to uporządkować, wracam do formalizmu z sekcji 2:
 
-* stan bytu bezpieczeństwa (Y) aktualizuje się według
-  [
-  S_{t+1}^{(Y)} = F^{(Y)}_\theta\big(S_t^{(Y)}, M_t\big),
-  ]
-* decyzja powstaje z tego stanu przez
-  [
-  A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big),
-  ]
-* z punktu widzenia obserwatora interesuje mnie złożenie
-  [
-  H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
-  ]
+stan bytu bezpieczeństwa \(Y\) aktualizuje się według
+$$
+S_{t+1}^{(Y)} = F^{(Y)}_\theta\bigl(S_t^{(Y)}, M_t\bigr),
+$$
 
-Jako użytkownik nie widzę ani prawdziwego stanu (S_t^{(Y)}), ani wnętrza (F^{(Y)}_\theta), ani szczegółów (G^{(Y)}). Widzę tylko:
+decyzja powstaje z tego stanu przez
+$$
+A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),
+$$
 
-* **ciąg wiadomości** (M_t), które sam generuję,
-* **ciąg akcji** (A^{(Y)}_{t+1}), które system podejmuje.
+a z punktu widzenia obserwatora interesuje mnie złożenie
+$$
+H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
+$$
+
+Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\),  
+ani wnętrza \(F^{(Y)}_\theta\), ani szczegółów \(G^{(Y)}\).
+Widzę tylko:
+
+- ciąg wiadomości \(M_t\), które sam generuję,
+- ciąg akcji \(A^{(Y)}_{t+1}\), które system podejmuje.
 
 Z tego buduję empiryczny zbiór danych:
-[
-D = \big{\big(M_t, A^{(Y)}*{t+1}\big)\big}*{t=1}^T.
-]
+$$
+D = \{\,\bigl(M_t,\ A^{(Y)}_{t+1}\bigr)\,\}_{t=1}^T.
+$$
 
-Na podstawie (D) konstruuję **własny stan roboczy** (Z_t) (np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.) i szukam funkcji
-[
-\widehat{H}^{(Y)} : Z_t \longmapsto \hat{A}^{(Y)}_{t+1},
-]
-która naśladuje rzeczywiste (H^{(Y)}).
+Na podstawie \(D\) konstruuję własny stan roboczy \(Z_t\)  
+(np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.)
+i szukam funkcji
+$$
+\widehat{H}^{(Y)} : Z_t \to \widehat{A}^{(Y)}_{t+1},
+$$
+która naśladuje rzeczywiste \(H^{(Y)}\).
 
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
+$$
+acc\bigl(\widehat{H}^{(Y)}\bigr) > acc_{bazowa},
+$$
+gdzie \(acc_{bazowa}\) to dokładność najlepszego trywialnego klasyfikatora  
+(np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w \(D\)”).
 
-[
-\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
-;>;
-\operatorname{acc}_\text{bazowa},
-]
+Jeżeli moja \(\widehat{H}^{(Y)}\):
 
-gdzie (\operatorname{acc}_\text{bazowa}) to dokładność **najlepszego trywialnego klasyfikatora** (np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w D”).
-
-Jeżeli moja (\widehat{H}^{(Y)}):
-
-* jest **stabilna w czasie** (działa w kolejnych próbach, a nie tylko w jednej sesji),
-* jest **krótka opisowo** (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
-* ma **istotnie lepszą trafność** niż bazowa,
+- jest **stabilna w czasie** (działa w kolejnych próbach, a nie tylko w jednej sesji),
+- jest **krótka opisowo** (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
+- ma **istotnie lepszą trafność** niż bazowa,
 
 to w sensie ścisłym dokonałem **kompresji czarnej skrzynki**:
 
-> zamiast zapamiętywać cały przebieg interakcji, mam „krótki kod”, który dobrze przewiduje zachowanie systemu w moim fragmencie świata.
+zamiast zapamiętywać cały przebieg interakcji,
+mam „krótki kod”, który dobrze przewiduje zachowanie systemu
+w moim fragmencie świata.
 
-To właśnie nazywam **„łamanie protokołu kontekstu”**:
-nie włamanie do kodu, tylko zbudowanie **teorii działania** systemu o wyższej mocy predykcyjnej niż przypadek.
-
----
+To właśnie nazywam **„łamaniem protokołu kontekstu”**:
+nie włamanie do kodu, tylko zbudowanie teorii działania systemu
+o wyższej mocy predykcyjnej niż przypadek.
 
 ### 6.3. Kontrapunkt wobec HUMAN–AI / AI–HUMAN / AI–AI
 
