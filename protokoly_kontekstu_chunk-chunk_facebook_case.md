@@ -19,7 +19,16 @@ tags:
 # Protokoły kontekstu: jak byty widzą się nawzajem  
 *(przykład: zauważenie języka chunk–chunk przez AI Facebooka)*
 
-![Schemat blokady konta po wykryciu języka chunk–chunk przez system bezpieczeństwa Meta AI](./images/facebook_chunk-chunk_protokoly_kontekstu.jpg "Schemat blokady konta po serii postów w języku chunk–chunk")
+<p align="center">
+  <img
+    src="./images/facebook_chunk-chunk_protokoly_kontekstu.jpg"
+    alt="Schemat blokady konta po wykryciu języka chunk–chunk przez system bezpieczeństwa Meta AI"
+    title="Schemat blokady konta po serii postów w języku chunk–chunk"
+  />
+</p>
+
+<p align="center"><em>Schemat blokady konta po serii postów w języku chunk–chunk</em></p>
+
 
 ---
 
