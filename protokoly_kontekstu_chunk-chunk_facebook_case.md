@@ -620,13 +620,12 @@ I dopiero na przecięciu tych trzech warstw – HUMAN–AI, AI–HUMAN i AI–AI
 Jeśli interesuje mnie nie tylko **co** system bezpieczeństwa zrobił z moim kontem, ale **jak działa** jako byt decyzyjny, muszę wyjść z roli zwykłego użytkownika i wejść w rolę **badacza protokołu**. To jest moment, w którym przestaję traktować Meta AI jak „pogodę na Facebooku”, a zaczynam traktować ją jak układ, na którym można prowadzić **empiryczne pomiary**.
 
 W języku sekcji 2 oznacza to, że przestaję patrzeć na pojedyncze zdarzenia, a zaczynam patrzeć na **ciąg par**
-[
-(M_t,\ A_{t+1}),
-]
+$$(M_t,\ A_{t+1})$$,
+
 czyli:
 
-* (M_t) – *co* wysłałem (treść, metadane, czas, kontekst),
-* (A_{t+1}) – *co* system zrobił krok później (brak reakcji, clamp zasięgów, soft warning, blokada, review).
+* $$(M_t)$$ – *co* wysłałem (treść, metadane, czas, kontekst),
+* $$(A_{t+1})$$ – *co* system zrobił krok później (brak reakcji, clamp zasięgów, soft warning, blokada, review).
 
 Moim celem przestaje być „odzyskać konto” – staje się nim **aproksymacja funkcji decyzji** tego konkretnego bytu bezpieczeństwa.
 
@@ -835,12 +834,9 @@ W warstwie AI–HUMAN ten sam język jest:
 
 Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym:
 $$
-[
-\text{„mikrojęzyk do myślenia”}
-;;\longrightarrow;;
-\text{„dowód na ryzykowny profil”}.
-]
+\text{„mikrojęzyk do myślenia”} \longrightarrow \text{„dowód na ryzykowny profil”}
 $$
+
 To nie jest tylko semantyczny problem nazwy. To jest **różnica w mapowaniu zdarzeń do klas**:
 
 * w mojej klasie: „eksperyment poznawczy / test mikroświata”,
