@@ -646,25 +646,18 @@ zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor 
 
 Żeby to uporządkować, wracam do formalizmu z sekcji 2:
 
-- stan bytu bezpieczeństwa \(Y\) aktualizuje się według
+- stan bytu bezpieczeństwa \(Y\) aktualizuje się według  
+  $$S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\bigl(S_t^{(Y)}, M_t\bigr),$$
 
-  $$
-  S_{t+1}^{(Y)} = F_{\theta}^{(Y)}\big(S_t^{(Y)}, M_t\big),
-  $$
+- decyzja powstaje z tego stanu przez  
+  $$A_{t+1}^{(Y)} = G^{(Y)}\bigl(S_{t+1}^{(Y)}\bigr),$$
 
-- decyzja powstaje z tego stanu przez
+- z punktu widzenia obserwatora interesuje mnie złożenie  
+  $$H^{(Y)} = G^{(Y)} \circ F^{(Y)}.$$
 
-  $$
-  A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big),
-  $$
-
-- z punktu widzenia obserwatora interesuje mnie złożenie
-
-  $$
-  H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
-  $$
-
-Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\), ani wnętrza \(F_{\theta}^{(Y)}\), ani szczegółów \(G^{(Y)}\). Widzę tylko:
+Jako użytkownik nie widzę ani prawdziwego stanu \(S_t^{(Y)}\),
+ani wnętrza \(F_{\theta}^{(Y)}\), ani szczegółów \(G^{(Y)}\).
+Widzę tylko:
 
 - ciąg wiadomości \(M_t\), które sam generuję,
 - ciąg akcji \(A_{t+1}^{(Y)}\), które system podejmuje.
