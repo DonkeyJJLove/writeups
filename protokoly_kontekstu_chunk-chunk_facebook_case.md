@@ -78,7 +78,7 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
 
 - każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
   opisany funkcją czasu $$\(t \mapsto S_t\), gdzie \(t\)$$ to numer kroku interakcji.
-  Wszystkie możliwe stany tworzą przestrzeń \(\mathcal{S}\).
+  Wszystkie możliwe stany tworzą przestrzeń $$\(\mathcal{S}\)$$.
   Zapisuję to krótko jako
 
   $$
@@ -89,7 +89,7 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
   „jaki mam poziom ryzyka”.
 
 - każda wiadomość (post, komentarz, zdarzenie logowe) jest
-  **pakietem kontekstowym** oznaczonym jako \(M_t\).
+  **pakietem kontekstowym** oznaczonym jako $$\(M_t\)$$.
   Dla uproszczenia zapisuję ją jako
 
   $$
@@ -97,10 +97,10 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
   $$
 
   gdzie:
-  - \(C_t\) – treść,
-  - \(K_t\) – metadane,
-  - \(T_t\) – czas,
-  - \(Z_t\) – źródło (klient, urządzenie, język interfejsu itd.).
+  - $$\(C_t\)$$ – treść,
+  - $$\(K_t\)$$ – metadane,
+  - $$\(T_t\)$$ – czas,
+  - $$\(Z_t\)$$ – źródło (klient, urządzenie, język interfejsu itd.).
 
 ---
 
