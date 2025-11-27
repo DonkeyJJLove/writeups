@@ -664,23 +664,24 @@ Widzę tylko:
 
 Z tego buduję empiryczny zbiór danych:
 $$
-D = \{\, (M_t,\ A_{t+1}^{(Y)}) \,\}_{t=1}^{T}.
+D = \{ (M_t,\ A_{t+1}^{(Y)}) \}_{t=1}^{T}.
 $$
 
-Na podstawie \(D\) konstruuję własny stan roboczy \(Z_t\)
+Na podstawie $D$ konstruuję własny stan roboczy $Z_t$
 (np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.)
 i szukam funkcji
 $$
 \hat{H}^{(Y)} : Z_t \to \hat{A}_{t+1}^{(Y)},
 $$
-która naśladuje rzeczywiste \(H^{(Y)}\).
+która naśladuje rzeczywiste $H^{(Y)}$.
 
 Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
 $$
 acc\bigl(\hat{H}^{(Y)}\bigr) > acc_{bazowa},
 $$
-gdzie \(acc_{bazowa}\) to dokładność najlepszego trywialnego klasyfikatora
-(np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w \(D\)”).
+gdzie $acc_{bazowa}$ to dokładność najlepszego trywialnego klasyfikatora
+(np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w $D$”).
+
 
 Jeżeli moja \(\hat{H}^{(Y)}\):
 
