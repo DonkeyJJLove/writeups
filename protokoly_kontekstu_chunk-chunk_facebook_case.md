@@ -529,10 +529,10 @@ Przykład w wersji chunk–chunk:
 
 Na poziomie AI–AI dzieje się więc coś takiego:
 
-1. byt A (bezpieczeństwo) aktualizuje swój stan (S^{(A)}) względem mojego stylu chunk–chunk,
-2. produkuje akcję (A^{(A)}_{t+1}) w postaci flagi / tagu,
-3. byt B (rekomender, interfejs, analityka) widzi tę akcję jako nową cechę w swoim (M^{(B)}_t),
-4. aktualizuje własny stan (S^{(B)}) tak, jakby mój profil od początku „należał do klasy HIGH_RISK_EXPERIMENTAL_PATTERN”.
+* byt A (bezpieczeństwo) aktualizuje swój stan $S^{(A)}$ względem mojego stylu chunk–chunk,
+* produkuje akcję $A^{(A)}_{t+1}$ w postaci flagi / tagu,
+* byt B (rekomender, interfejs, analityka) widzi tę akcję jako nową cechę w swoim $M^{(B)}_t$,
+* aktualizuje własny stan $S^{(B)}$ tak, jakby mój profil od początku „należał do klasy \texttt{HIGH\_RISK\_EXPERIMENTAL\_PATTERN}”.
 
 To jest właśnie **sprzęgnięcie ontologii**: moje konto zaczyna być opisane nie tylko przez treść i zachowanie, ale również przez **słownik modeli, które już się o mnie wypowiedziały**.
 
