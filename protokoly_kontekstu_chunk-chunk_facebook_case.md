@@ -178,19 +178,19 @@ W przypadku mojego eksperymentu:
 Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam ani dokładnej postaci funkcji przejścia
 
 $$
-S_{t+1}^{(Y)} = F^{(Y)}_\theta\big(S_t^{(Y)}, M_t\big),
+S^{(Y)}*{t+1} = F^{(Y)}*\theta\big(S^{(Y)}_t, M_t\big),
 $$
 
 ani funkcji decyzji
 
 $$
-A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big).
+A^{(Y)}*{t+1} = G^{(Y)}\big(S^{(Y)}*{t+1}\big).
 $$
 
 Mogę jednak obserwować:
 
-* co wysyłam: `M_t` (treść + metadane),
-* co system robi: `A^{(Y)}_{t+1}` (konkretna akcja po tym kroku).
+* co wysyłam: (M_t) (treść + metadane),
+* co system robi: (A^{(Y)}_{t+1}) (konkretna akcja po tym kroku).
 
 Z takich obserwacji buduję empiryczny zbiór danych
 
@@ -200,8 +200,8 @@ $$
 
 Na tym zbiorze mogę próbować konstruować **przybliżone modele** zachowania systemu:
 
-* `\widehat{F}^{(Y)}` – przybliżenie ukrytej aktualizacji stanu (w praktyce: jakaś moja funkcja „stanu roboczego” wyliczanego z historii komunikacji),
-* `\widehat{G}^{(Y)}` – przybliżenie funkcji decyzji, która z tego stanu roboczego przewiduje akcję systemu.
+* (\widehat{F}^{(Y)}) – przybliżenie ukrytej aktualizacji stanu (w praktyce: moja funkcja „stanu roboczego” wyliczanego z historii komunikacji),
+* (\widehat{G}^{(Y)}) – przybliżenie funkcji decyzji, która z tego stanu roboczego przewiduje akcję systemu.
 
 Efektywnie próbuję aproksymować złożenie
 
@@ -211,18 +211,18 @@ $$
 
 czyli mapę „*to, jak piszę*  →  *to, jak system reaguje*”.
 
-Nie widzę prawdziwego stanu `S^{(Y)}_{t+1}`, więc w praktyce buduję funkcję
+Nie widzę prawdziwego stanu (S^{(Y)}_{t+1}), więc w praktyce buduję funkcję
 
 $$
 \widehat{H}^{(Y)} : \text{(cechy z historii wiadomości)} \longrightarrow \text{akcje systemu},
 $$
 
-która ma naśladować `H^{(Y)}`.
+która ma naśladować (H^{(Y)}).
 
-Warunek „**częściowego poznania**” protokołu zapisuję wtedy następująco:
+Warunek **„częściowego poznania”** protokołu zapisuję wtedy następująco:
 
-> protokół kontekstu bytu `Y` jest częściowo poznany,
-> jeżeli istnieje przybliżenie `\widehat{H}^{(Y)}`, dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
+> protokół kontekstu bytu (Y) jest częściowo poznany,
+> jeżeli istnieje przybliżenie (\widehat{H}^{(Y)}), dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
 
 Formalnie:
 
@@ -243,10 +243,10 @@ $$
 
 >
 
-\operatorname{acc}_\text{bazowa},
+\operatorname{acc}_{\text{bazowa}},
 $$
 
-gdzie `\operatorname{acc}_\text{bazowa}` to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w `D`).
+gdzie (\operatorname{acc}_{\text{bazowa}}) to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w (D)).
 
 Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
 
@@ -258,6 +258,97 @@ Wtedy w praktyce:
 
 > **złamałem część protokołu kontekstu** – nie na poziomie kodu źródłowego, tylko na poziomie *działania*: potrafię przewidywać reakcje systemu na moje stany i wiadomości lepiej, niż wynikałoby to z przypadku.
 
+---
+
+### Dowód (warunkowy) i falsyfikacja tezy
+
+**(1) Szkic dowodu warunkowego**
+
+Jeśli przyjmę, że:
+
+1. próbki ((M_t, A^{(Y)}_{t+1})) w (D) są reprezentatywne dla rzeczywistej pracy systemu (brak silnego dryfu w czasie, brak zmiany polityki w trakcie pomiaru),
+2. dane są wystarczająco liczne, by estymacja (\operatorname{acc}\big(\widehat{H}^{(Y)}\big)) miała mały błąd statystyczny,
+3. oceniam (\widehat{H}^{(Y)}) **na danych odłożonych** (out-of-sample), a nie na tym samym zbiorze, na którym ją „odkrywałem”,
+
+to warunek
+
+$$
+\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+
+>
+
+\operatorname{acc}_{\text{bazowa}}
+$$
+
+oznacza, że istnieje **nie-trywialna informacja** o zachowaniu systemu, zakodowana w cechach wiadomości. Innymi słowy:
+
+* jeśli protokół byłby całkowicie losowy (brak zależności między (M_t) a (A^{(Y)}_{t+1})), żadna deterministyczna (\widehat{H}^{(Y)}) nie przekroczyłaby istotnie bazowej dokładności;
+* skoro istnieje funkcja, która tę bazę przebija w stabilny sposób, to znaczy, że **część zależności wejście–akcja została uchwycona**.
+
+W tym sensie „częściowe poznanie” jest dokładnie tym, co w teorii informacji nazywa się **niezerową informacją wzajemną** między cechami z historii wiadomości a akcjami systemu, plus dodatkowy warunek, że tę informację udało się skompresować do postaci funkcji (\widehat{H}^{(Y)}).
+
+Podsumowując: **przy założeniach (1)–(3)** teza jest poprawna – przekroczenie bazowej dokładności na danych odłożonych jest operacyjnym dowodem, że protokół nie jest dla mnie całkowicie nieprzejrzysty.
+
+---
+
+**(2) Falsyfikacja: kiedy teza przestaje działać**
+
+Ta sama teza **przestaje być prawdziwa**, gdy naruszone są założenia:
+
+1. **Przeuczenie na jednym logu.**
+   Jeśli (\widehat{H}^{(Y)}) jest „nauczona” i oceniona na tym samym (D), może perfekcyjnie odtworzyć historię (overfitting), a **zupełnie nie generalizować**.
+   Wtedy wysoka (\operatorname{acc}) nic nie mówi o poznaniu protokołu – pokazuje tylko, że skopiowałem przeszłość.
+
+2. **Silny dryf systemu w czasie.**
+   Platforma może zmieniać modele, progi i reguły biznesowe.
+   Wersja (\widehat{H}^{(Y)}), która dobrze przewidywała zachowanie systemu w tygodniu (t \in [t_0, t_1]), może być **bezużyteczna** tydzień później.
+   Wtedy częściowo poznałem *historyczną* wersję protokołu, ale nie **aktualny byt**, z którym teraz rozmawiam.
+
+3. **Złe zdefiniowanie „bazowego” klasyfikatora.**
+   Jeśli (\operatorname{acc}_{\text{bazowa}!}) jest ustawiona zbyt nisko (np. ignoruję silnie niezbalansowane klasy i biorę naiwną „losową” bazę), mogę sztucznie wykazać, że „przekroczyłem bazę”.
+   Wtedy wynik jest artefaktem **źle dobranej metryki**, nie realnego poznania protokołu.
+
+4. **Silna korelacja z nie-istotnymi cechami.**
+   Mogę stworzyć regułę typu: „jeśli piszę w określonych godzinach z konkretnego urządzenia, to prawdopodobieństwo blokady rośnie”, bo tak akurat było w mojej próbce.
+   Jeżeli ta korelacja wynika z **przypadkowego zbiegu okoliczności** (np. zmian infrastruktury w tym tygodniu), to (\widehat{H}^{(Y)}) jest oparta na szumie.
+   W nowej konfiguracji systemu upada – czyli de facto **nie opisuje** protokołu.
+
+5. **Brak kompresji opisu.**
+   Jeżeli (\widehat{H}^{(Y)}) to bardzo długa tablica „jeżeli–wtedy” dla pojedynczych przypadków, nie jest to „poznanie protokołu”, tylko **przepisanie logów** w innej formie.
+   Do poznania sensownego potrzebuję *krótkiego opisu* (wysoka kompresja), który działa na wielu nowych przykładach.
+
+W każdym z tych scenariuszy możemy mieć:
+
+$$
+\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+
+>
+
+\operatorname{acc}_{\text{bazowa}}
+$$
+
+na jakimś ograniczonym zbiorze (D), a mimo to **nie mamy prawa mówić**, że protokół jest częściowo poznany w silnym sensie.
+Teza w swojej prostej formie zostaje wtedy **sfalsyfikowana**: sama nierówność na dokładnościach jest konieczna, ale **niewystarczająca** do stwierdzenia poznania.
+
+---
+
+**(3) Wersja ostrożna (po falsyfikacji)**
+
+Po uwzględnieniu powyższych kontrprzykładów tezę można zaostrzyć:
+
+> protokół kontekstu bytu (Y) jest częściowo poznany *w sensie operacyjnym*,
+> jeżeli istnieje krótka funkcja (\widehat{H}^{(Y)}),
+> która:
+>
+> * przekracza (\operatorname{acc}_{\text{bazowa}}) na danych odłożonych,
+> * zachowuje tę przewagę przez pewien czas mimo zmian w szczegółach ruchu,
+> * pozostaje stabilna względem rozsądnych perturbacji cech wejściowych.
+
+Dopiero wtedy mogę uczciwie powiedzieć, że nie tylko „mam korelację”, ale faktycznie **wyłuskałem fragment reguły**, według której byt bezpieczeństwa działa w moim mikroświecie chunk–chunk.
+
+---
+
+Plan–Pauza Human–AI Próg–Przejście Semantyka–Energia Model–Świat Dowód–Fikcja
 
 ## 3. HUMAN–AI: język chunk–chunk jako sygnatura
 
