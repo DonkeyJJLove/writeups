@@ -833,9 +833,7 @@ W warstwie AI–HUMAN ten sam język jest:
 * tanim uchwytem do oznaczenia outliera.
 
 Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym:
-$$
-\text{„mikrojęzyk do myślenia”} \longrightarrow \text{„dowód na ryzykowny profil”}
-$$
+$$\text{„mikrojęzyk do myślenia”} \longrightarrow \text{„dowód na ryzykowny profil”}$$
 
 To nie jest tylko semantyczny problem nazwy. To jest **różnica w mapowaniu zdarzeń do klas**:
 
