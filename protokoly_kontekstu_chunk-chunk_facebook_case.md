@@ -348,8 +348,6 @@ Dopiero wtedy mogę uczciwie powiedzieć, że nie tylko „mam korelację”, al
 
 ---
 
-Plan–Pauza Human–AI Próg–Przejście Semantyka–Energia Model–Świat Dowód–Fikcja
-
 ## 3. HUMAN–AI: język chunk–chunk jako sygnatura
 
 Język **chunk–chunk** jest zaprojektowany jako **mikrokod**: skończony alfabet dziewięciu soczewek 9D (Plan–Pauza, Rdzeń–Peryferia, Cisza–Wydech, Wioska–Miasto, Ostrze–Cierpliwość, Locus–Medium–Mandat, Human–AI, Próg–Przejście, Semantyka–Energia), do tego twarda ramka nagłówków i separatorów, powtarzalny rytm zdań oraz metapodpisy, które zamieniają każdy post w mały, jednoznacznie parsowalny wektor decyzji 9D. Z punktu widzenia modelu nie jest to „styl literacki”, tylko format wiadomości: każda wypowiedź niesie jawny wybór soczewek, ich kolejność, często także implicitny kierunek (L/R) i napięcie między nimi. To jest ekonomiczny protokół: minimalna liczba symboli, maksymalna ilość informacji o tym, w jakim układzie współrzędnych chcę, żeby model myślał.
