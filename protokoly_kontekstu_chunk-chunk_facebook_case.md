@@ -78,19 +78,24 @@ W najprostszej, ale już użytecznej postaci zakładam, że:
 
 - każdy byt (człowiek, model, system bezpieczeństwa) ma **wewnętrzny stan**
   oznaczony jako $S_t$, gdzie $t$ to numer kroku interakcji.
-  Wszystkie możliwe stany tworzą zbiór $S$, więc zapisuję krótko:
+  Wszystkie możliwe stany tworzą zbiór $S$.
+  Zapisuję to krótko:
+
   $$
-  S_t \in S.
+  S_t \in S
   $$
+
   Przykładowo: „jak mnie klasyfikujesz”, „jak mnie widzisz w 9D”,
   „jaki mam poziom ryzyka”.
 
 - każda wiadomość (post, komentarz, zdarzenie logowe) jest
   **pakietem kontekstowym** oznaczonym jako $M_t$.
-  Dla uproszczenia zapisuję ją jako czwórkę:
+  Dla uproszczenia zapisuję ją jako:
+
   $$
-  M_t = (C_t, K_t, T_t, Z_t),
+  M_t = (C_t, K_t, T_t, Z_t)
   $$
+
   gdzie:
   - $C_t$ – treść,
   - $K_t$ – metadane,
@@ -120,19 +125,46 @@ W systemach bezpieczeństwa „mechanizm aktualizacji” może zawierać m.in.:
 Dla porządku da się to zapisać w jednej linii:
 
 $$
-S_{t+1} = F_\theta(S_t, M_t),
+S_{t+1} = F_\theta(S_t, M_t)
 $$
 
 gdzie:
 
-- $F_\theta$ – funkcja przejścia stanu (np. „sieć neuronowa + reguły”),
+- $F_\theta$ – funkcja przejścia stanu
+  (np. „sieć neuronowa + reguły”),
 - $\theta$ – parametry modelu (wagi, progi, reguły biznesowe, heurystyki),
 - $S_t$ – stan „przed wiadomością”,
 - $M_t$ – wiadomość otrzymana w chwili $t$,
 - $S_{t+1}$ – stan „po wiadomości”.
 
 
+### 2.3. Funkcja decyzji: co byt robi ze stanem
 
+Sam stan to jeszcze nie decyzja. Decyzję opisuje druga funkcja:
+
+$$
+A_{t+1} = G(S_{t+1})
+$$
+
+gdzie:
+
+- $G$ – funkcja decyzyjna,
+- $A_{t+1}$ – akcja podjęta przez byt po aktualizacji stanu.
+
+Przykładowe akcje:
+
+- wygenerowanie odpowiedzi (model dialogowy),
+- podbicie wewnętrznego poziomu ryzyka,
+- obniżenie zasięgu posta,
+- skierowanie sprawy do ręcznego review,
+- blokada konta.
+
+W tym sensie **protokół kontekstu** to para:
+
+- $F_\theta$ – jak byt aktualizuje swój stan,
+- $G$ – jak zamienia stan na akcję.
+
+---
 
 ### 2.3. Funkcja decyzji: co byt robi ze stanem
 
