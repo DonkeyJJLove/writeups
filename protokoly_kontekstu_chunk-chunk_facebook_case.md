@@ -270,13 +270,11 @@ Jeśli przyjmę, że:
 to warunek
 
 $$
-\mathrm{acc}\big(\widehat{H}^{(Y)}\big)
->
-\mathrm{acc}_{\mathrm{bazowa}}
+\text{acc}(\widehat{H}^{(Y)}) > \text{acc}_\text{bazowa}
 $$
 
-oznacza, że istnieje **nietrywialna informacja** o zachowaniu systemu,
-zakodowana w cechach wiadomości. Innymi słowy:
+oznacza, że istnieje nietrywialna informacja o zachowaniu systemu, zakodowana w cechach wiadomości. Innymi słowy:
+
 
 - jeśli protokół byłby całkowicie losowy (brak zależności między $M_t$ a $A^{(Y)}_{t+1}$),
   żadna deterministyczna $\widehat{H}^{(Y)}$ nie przekroczyłaby istotnie bazowej dokładności;
