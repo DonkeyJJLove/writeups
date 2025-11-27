@@ -173,72 +173,86 @@ W przypadku mojego eksperymentu:
 
 ---
 
-### 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
+## 2.5. Kiedy protokół kontekstu jest „częściowo poznany”?
 
 Protokół kontekstu modelu bezpieczeństwa jest dla mnie **czarną skrzynką** – nie znam ani dokładnej postaci funkcji przejścia
-\[
+
+$$
 S_{t+1}^{(Y)} = F^{(Y)}_\theta\big(S_t^{(Y)}, M_t\big),
-\]
+$$
+
 ani funkcji decyzji
-\[
+
+$$
 A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big).
-\]
+$$
 
 Mogę jednak obserwować:
 
-- co wysyłam: \(M_t\) (treść + metadane),
-- co system robi: \(A^{(Y)}_{t+1}\) (konkretna akcja po tym kroku).
+* co wysyłam: `M_t` (treść + metadane),
+* co system robi: `A^{(Y)}_{t+1}` (konkretna akcja po tym kroku).
 
 Z takich obserwacji buduję empiryczny zbiór danych
-\[
-D \;=\; \big\{\,\big(M_t,\ A^{(Y)}_{t+1}\big)\,\big\}_{t=1}^T.
-\]
+
+$$
+D = \big{,\big(M_t,\ A^{(Y)}*{t+1}\big),\big}*{t=1}^T.
+$$
 
 Na tym zbiorze mogę próbować konstruować **przybliżone modele** zachowania systemu:
 
-- \(\widehat{F}^{(Y)}\) – przybliżenie ukrytej aktualizacji stanu (w praktyce: jakaś moja funkcja „stanu roboczego” wyliczanego z historii komunikacji),
-- \(\widehat{G}^{(Y)}\) – przybliżenie funkcji decyzji, która z tego stanu roboczego przewiduje akcję systemu.
+* `\widehat{F}^{(Y)}` – przybliżenie ukrytej aktualizacji stanu (w praktyce: jakaś moja funkcja „stanu roboczego” wyliczanego z historii komunikacji),
+* `\widehat{G}^{(Y)}` – przybliżenie funkcji decyzji, która z tego stanu roboczego przewiduje akcję systemu.
 
 Efektywnie próbuję aproksymować złożenie
-\[
-H^{(Y)} \;=\; G^{(Y)} \circ F^{(Y)}, 
-\]
-czyli mapę „*to, jak piszę*  \(\longmapsto\)  *to, jak system reaguje*”.
 
-Nie widzę prawdziwego stanu \(S^{(Y)}_{t+1}\), więc w praktyce buduję funkcję
-\[
+$$
+H^{(Y)} = G^{(Y)} \circ F^{(Y)},
+$$
+
+czyli mapę „*to, jak piszę*  →  *to, jak system reaguje*”.
+
+Nie widzę prawdziwego stanu `S^{(Y)}_{t+1}`, więc w praktyce buduję funkcję
+
+$$
 \widehat{H}^{(Y)} : \text{(cechy z historii wiadomości)} \longrightarrow \text{akcje systemu},
-\]
-która ma naśladować \(H^{(Y)}\).
+$$
+
+która ma naśladować `H^{(Y)}`.
 
 Warunek „**częściowego poznania**” protokołu zapisuję wtedy następująco:
 
-> protokół kontekstu bytu \(Y\) jest częściowo poznany,  
-> jeżeli istnieje przybliżenie \(\widehat{H}^{(Y)}\), dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
+> protokół kontekstu bytu `Y` jest częściowo poznany,
+> jeżeli istnieje przybliżenie `\widehat{H}^{(Y)}`, dla którego trafność przewidywania akcji systemu jest **istotnie lepsza od bazowej** (losowej lub „zawsze ta sama klasa”).
 
 Formalnie:
-\[
+
+$$
 \operatorname{acc}\big(\widehat{H}^{(Y)}\big)
-\;=\;
-\mathbb{P}_{(M_t, A^{(Y)}_{t+1}) \sim D}
+=============================================
+
+\mathbb{P}*{(M_t, A^{(Y)}*{t+1}) \sim D}
 \Big[
-  \widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}
+\widehat{H}^{(Y)}(M_{\le t}) = A^{(Y)}_{t+1}
 \Big],
-\]
+$$
 
 i mówimy, że protokół jest częściowo poznany, jeśli
-\[
+
+$$
 \operatorname{acc}\big(\widehat{H}^{(Y)}\big)
-\;>\;
+
+>
+
 \operatorname{acc}_\text{bazowa},
-\]
-gdzie \(\operatorname{acc}_\text{bazowa}\) to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w \(D\)).
+$$
+
+gdzie `\operatorname{acc}_\text{bazowa}` to trafność **najlepszego trywialnego klasyfikatora** (np. zawsze wybieram tę samą akcję, większościową w `D`).
 
 Nie muszę więc znać pełnego wnętrza modelu. Wystarczy, że:
 
-- jestem w stanie zbudować regułę typu  
+* jestem w stanie zbudować regułę typu
   „dla takich sekwencji chunk–chunk + taka częstotliwość + taki kontekst = *prawdopodobna blokada*”,
-- i ta reguła ma mierzalnie lepszą trafność niż zgadywanie „w ciemno”.
+* i ta reguła ma mierzalnie lepszą trafność niż zgadywanie „w ciemno”.
 
 Wtedy w praktyce:
 
