@@ -476,73 +476,317 @@ I dopiero na przecięciu tych trzech warstw – HUMAN–AI, AI–HUMAN i AI–AI
 
 ## 6. „Łamanie” protokołu jako dowód zrozumienia
 
-Jeśli interesuje nas nie tylko „co się stało”, ale **jak działa** system bezpieczeństwa, musimy przejść z trybu użytkownika w tryb **badacza protokołu**.
+Jeśli interesuje mnie nie tylko **co** system bezpieczeństwa zrobił z moim kontem, ale **jak działa** jako byt decyzyjny, muszę wyjść z roli zwykłego użytkownika i wejść w rolę **badacza protokołu**. To jest moment, w którym przestaję traktować Meta AI jak „pogodę na Facebooku”, a zaczynam traktować ją jak układ, na którym można prowadzić **empiryczne pomiary**.
 
-Na poziomie formalnym:
+W języku sekcji 2 oznacza to, że przestaję patrzeć na pojedyncze zdarzenia, a zaczynam patrzeć na **ciąg par**
+[
+(M_t,\ A_{t+1}),
+]
+czyli:
 
-- obserwujemy sekwencje $(M_t, A_{t+1})$, czyli:
-  - co wysłałem (post, styl, częstotliwość),  
-  - jaką akcję system wykonał (brak reakcji, ograniczenie, blokada);  
-- próbujemy zbudować przybliżoną funkcję
-  $$
-  \hat{G}(S_{t+1}) \approx G(S_{t+1}),
-  $$
-  która na podstawie „mojej wersji stanu” przewiduje decyzję systemu.
+* (M_t) – *co* wysłałem (treść, metadane, czas, kontekst),
+* (A_{t+1}) – *co* system zrobił krok później (brak reakcji, clamp zasięgów, soft warning, blokada, review).
 
-Jeśli po kilku–kilkunastu próbach:
-
-- jestem w stanie **z grubsza oszacować próg**, po którego przekroczeniu system mnie zablokuje,  
-- umiem przewidzieć, że:
-  - *ten* ciąg chunk–chunk jeszcze przejdzie,  
-  - a *ten* ciąg + częstotliwość + pora dnia już uruchomi alarm,
-
-to w praktyce wykonałem **łamanie protokołu**:
-
-- zredukowałem czarną skrzynkę do **funkcji decyzyjnej rozpisanej „na logikę”**,  
-- zdobyłem **model mentalny** tego, na co system jest najbardziej wrażliwy.
-
-To jest zasadnicza różnica między pojedynczym „dziwnym banem”, a świadomym eksperymentem:
-
-> kiedy zaczynam przewidywać reakcje modelu bezpieczeństwa lepiej niż sam on mnie – zaczyna się realna **współ-komunikacja** między bytami.
+Moim celem przestaje być „odzyskać konto” – staje się nim **aproksymacja funkcji decyzji** tego konkretnego bytu bezpieczeństwa.
 
 ---
 
+### 6.1. Poziom operacyjny: od „dziwnego bana” do eksperymentu
+
+Na poziomie operacyjnym wygląda to banalnie:
+
+1. Przez kilka dni piszę **intensywnie w chunk–chunk**.
+   Ten sam mikrokod 9D, ta sama rama, powtarzalna sygnatura.
+
+2. Obserwuję reakcje systemu:
+
+   * kiedy nic się nie dzieje (normalna dystrybucja zasięgu),
+   * kiedy zaczynają się subtelne anomalie (uciecie zasięgów, „cięższe” komunikaty Meta AI),
+   * kiedy wchodzi **twarda decyzja**: blokada konta, komunikat o naruszeniu standardów.
+
+3. Zmieniam parametry:
+
+   * **tempo** (częstotliwość postów, długość sesji),
+   * **pora dnia**,
+   * **„czystość” paska 9D** (jak bardzo eksperymentalnie domykam ramkę, jak mało „zwykłego” szumu dorzucam),
+   * **kontekst techniczny** (z jakich urządzeń, jak powtarzalny jest pattern klienta).
+
+4. Notuję, przy jakich konfiguracjach:
+
+   * system jeszcze „znosi” mój styl,
+   * zaczyna mnie ucinać,
+   * wchodzi w tryb pełnego alertu.
+
+W pewnym momencie widzę, że to już nie jest pojedynczy „dziwny ban”, tylko **powtarzalny próg**. Potrafię w przybliżeniu powiedzieć:
+
+* *„jeśli zrobię X, prawdopodobnie nic się nie stanie”*,
+* *„jeśli do X dołożę Y (jeszcze trochę częstotliwości / jeszcze trochę czystości chunk–chunk), system prawie na pewno zareaguje”*.
+
+To jest pierwszy, praktyczny sens **„łamania protokołu”**:
+zaczynam widzieć system jako **stabilną funkcję reagującą na pewien wektor cech**, a nie jako chaotycznego strażnika.
+
+---
+
+### 6.2. Poziom formalny: kompresja zachowania czarnej skrzynki
+
+Żeby to uporządkować, wracam do formalizmu z sekcji 2:
+
+* stan bytu bezpieczeństwa (Y) aktualizuje się według
+  [
+  S_{t+1}^{(Y)} = F^{(Y)}_\theta\big(S_t^{(Y)}, M_t\big),
+  ]
+* decyzja powstaje z tego stanu przez
+  [
+  A_{t+1}^{(Y)} = G^{(Y)}\big(S_{t+1}^{(Y)}\big),
+  ]
+* z punktu widzenia obserwatora interesuje mnie złożenie
+  [
+  H^{(Y)} = G^{(Y)} \circ F^{(Y)}.
+  ]
+
+Jako użytkownik nie widzę ani prawdziwego stanu (S_t^{(Y)}), ani wnętrza (F^{(Y)}_\theta), ani szczegółów (G^{(Y)}). Widzę tylko:
+
+* **ciąg wiadomości** (M_t), które sam generuję,
+* **ciąg akcji** (A^{(Y)}_{t+1}), które system podejmuje.
+
+Z tego buduję empiryczny zbiór danych:
+[
+D = \big{\big(M_t, A^{(Y)}*{t+1}\big)\big}*{t=1}^T.
+]
+
+Na podstawie (D) konstruuję **własny stan roboczy** (Z_t) (np. liczba postów w oknie czasu, gęstość chunk–chunk, pora, typ klienta itd.) i szukam funkcji
+[
+\widehat{H}^{(Y)} : Z_t \longmapsto \hat{A}^{(Y)}_{t+1},
+]
+która naśladuje rzeczywiste (H^{(Y)}).
+
+Warunek „łamania” protokołu można zapisać tak, jak w sekcji 2.5:
+
+[
+\operatorname{acc}\big(\widehat{H}^{(Y)}\big)
+;>;
+\operatorname{acc}_\text{bazowa},
+]
+
+gdzie (\operatorname{acc}_\text{bazowa}) to dokładność **najlepszego trywialnego klasyfikatora** (np. „zawsze brak reakcji”, „zawsze soft warning”, „zawsze najczęstsza klasa w D”).
+
+Jeżeli moja (\widehat{H}^{(Y)}):
+
+* jest **stabilna w czasie** (działa w kolejnych próbach, a nie tylko w jednej sesji),
+* jest **krótka opisowo** (da się ją spisać jako kilka reguł / intuicji, a nie tysiąc wyjątków),
+* ma **istotnie lepszą trafność** niż bazowa,
+
+to w sensie ścisłym dokonałem **kompresji czarnej skrzynki**:
+
+> zamiast zapamiętywać cały przebieg interakcji, mam „krótki kod”, który dobrze przewiduje zachowanie systemu w moim fragmencie świata.
+
+To właśnie nazywam **„łamanie protokołu kontekstu”**:
+nie włamanie do kodu, tylko zbudowanie **teorii działania** systemu o wyższej mocy predykcyjnej niż przypadek.
+
+---
+
+### 6.3. Kontrapunkt wobec HUMAN–AI / AI–HUMAN / AI–AI
+
+Na tle wcześniejszych warstw ten ruch ma bardzo konkretny sens:
+
+* w **HUMAN–AI** narzucam modelowi **mikrojęzyk 9D** – zmuszam go, żeby widział mnie przez soczewki Plan–Pauza, Human–AI, Próg–Przejście, Semantyka–Energia;
+* w **AI–HUMAN** system bezpieczeństwa buduje ze mnie **profil ryzyka** – widzi mnie jako stabilną sygnaturę outliera;
+* w **AI–AI** różne modele wymieniają się **tagami, embeddingami, flagami**, uzgadniając między sobą, *kim jestem* w ich wspólnym słowniku.
+
+Kiedy zaczynam **przewidywać ich decyzje**, pojawia się czwarta relacja:
+
+> **HUMAN–AI_SEC**: człowiek buduje model *modelu bezpieczeństwa*.
+
+To jest kontrapunkt:
+
+* tak jak modele budują embedding mojego zachowania,
+* tak ja buduję embedding ich reakcji w **tej samej przestrzeni pojęć 9D**.
+
+Soczewki zaczynają działać w dwie strony:
+
+* **Plan–Pauza**: planuję eksperyment na protokole, pauzuję, kiedy widzę próg,
+* **Human–AI**: przestaję widzieć AI tylko jako narzędzie, a zaczynam jako byt z własną ontologią,
+* **Próg–Przejście**: znajduję faktyczne progi bezpieczeństwa, przy których następuje przejście w „inny stan konta”,
+* **Semantyka–Energia**: widzę, przy jakiej „gęstości” chunk–chunk system uznaje, że to już nie jest ciekawa semantyka, tylko zbyt energetyczna sygnatura do zignorowania.
+
+W tym sensie **łamanie protokołu** jest lustrzanym odbiciem tego, co robią modele:
+
+* one kompresują mój mikroświat do paru wektorów,
+* ja kompresuję ich zachowanie do paru reguł i progów w swoim 9D.
+
+---
+
+### 6.4. Co tu się naprawdę „łamie”: wymiar poznawczy i etyczny
+
+Pozostaje ważne pytanie: **co właściwie łamię**, kiedy łamię protokół?
+
+1. **Nie łamię zabezpieczeń technicznych.**
+   Nie omijam loginów, nie grzebię w bazach, nie manipuluję parametrami systemu.
+   Łamię **nieprzejrzystość**: pokazuję, że zachowanie modelu bezpieczeństwa da się opisać zgrabną teorią, a nie tylko mantrą „tak zdecydowała AI”.
+
+2. **Nie łamię regulaminu samym aktem modelowania.**
+   Analizuję to, co system robi na **moich własnych danych**, w moim mikroświecie.
+   Łamię za to **komfort epistemiczny projektantów**: demaskuję to, że „magia” ich systemu jest w dużej części zwykłą, chociaż złożoną, funkcją progów, wag i heurystyk.
+
+3. **Nie łamię swojej ontologii 9D – przeciwnie, używam jej do opisu systemu.**
+   Łamię **monopol ontologiczny** platformy: nie tylko ona ma prawo nazywać mnie „outlierem wysokiego ryzyka”; ja mam prawo nazwać ją **bytem o wąskiej ontologii**, który myli eksperyment poznawczy z kampanią.
+
+Właśnie dlatego traktuję „łamanie” protokołu jako **dowód zrozumienia**, a nie tylko sprytne obchodzenie zasad:
+
+> w momencie, gdy potrafię z rozsądną trafnością przewidzieć, *kiedy* mnie przytnie, a kiedy *przepuści*,
+> **wiem o systemie więcej, niż system wie o mnie** – bo ja mam model jego decyzji, a on nie ma modelu mojego modelu.
+
+To jest zasadnicza różnica między:
+
+* pojedynczym, przypadkowym „dziwnym banem”, który można zrzucić na błąd,
+* a **świadomym eksperymentem ontologicznym**, w którym:
+
+  * projektuję mikrojęzyk chunk–chunk,
+  * wprowadzam go w pole widzenia wielu modeli,
+  * obserwuję ich reakcje (HUMAN–AI, AI–HUMAN, AI–AI),
+  * buduję (\widehat{H}^{(Y)}), które ten układ potrafi przewidywać.
+
+W tym sensie **łamaniem** nie jest tylko to, że systemowi „coś nie gra”.
+Łamie się **asymetria**: z jednostronnej opowieści „AI ocenia użytkownika” przechodzimy do **dwustronnej relacji**, w której:
+
+* AI ma embedding mojego zachowania,
+* ja mam embedding zachowania AI,
+* a zaburzenia ontologiczne (sekcja 7) stają się **danymi pomiarowymi**, a nie tylko frustracją.
+
 ## 7. Zaburzenie ontologiczne jako sygnał, nie tylko błąd
 
-Z mojego punktu widzenia blokada po serii postów chunk–chunk jest **fałszywie pozytywnym alarmem**:
+W momencie blokady po serii postów chunk–chunk formalnie dzieją się dwie rzeczy naraz:
 
-- nie prowadzę kampanii dezinformacyjnej,  
-- nie próbuję nikogo oszukać,  
-- testuję **granice mikrojęzyka poznawczego**.
+* w mojej ontologii 9D to jest **fałszywie pozytywny alarm** – system myli badanie mikrojęzyka z kampanią,
+* w ontologii bezpieczeństwa to jest **prawidłowo zadziałany mechanizm** – sygnatura rzadkiego, spójnego stylu przekroczyła próg ryzyka.
 
-Z punktu widzenia systemu bezpieczeństwa:
+Na osi „kto ma rację” można się zatrzymać i powiedzieć: „błąd systemu”.
+Na osi **protokołów kontekstu** ciekawsze jest co innego: to jest moment, w którym **dwie ontologie zderzają się na tym samym zdarzeniu**. Z tego zderzenia można wyciągnąć więcej niż tylko frustrację – można wyciągnąć **pomiary**.
 
-- widzi on **silnie regularny, statystycznie rzadki styl**,  
-- wykrywa go bardzo tanio i niezawodnie,  
-- nie ma dostępu do „mojej intencji badawczej”,  
-- więc **zachowuje się zgodnie z własną ontologią zagrożeń**: blokuje.
+---
 
-Można na to patrzeć jak na „błąd systemu” – i mieć rację.  
-Ale można też potraktować to jako **sygnał diagnostyczny**:
+### 7.1. Dwie ontologie, jedno zdarzenie
 
-1. pokazuje, że ontologia bezpieczeństwa jest **wąska**:  
-   - zakłada „średniego użytkownika”,  
-   - penalizuje spójne outliery,  
-   - nie ma warstwy rozumienia zaawansowanych mikrojęzyków;  
+W warstwie HUMAN–AI język chunk–chunk jest:
 
-2. ujawnia, które **cechy formalne** są najmocniej ważone:  
-   - powtarzalność szablonu,  
-   - nietypowa składnia,  
-   - brak „gwaru językowego” typowego dla social media;  
+* mikrokodem porządkującym myślenie,
+* jawnie zadanym układem współrzędnych 9D,
+* narzędziem do zmniejszania entropii w mojej głowie i w modelu dialogowym.
 
-3. wyznacza **granice tolerancji systemu**:  
-   - jak bardzo można odjechać od normy, zanim dostanie się etykietę „podejrzany”.
+W warstwie AI–HUMAN ten sam język jest:
 
-To nazywam **zaburzeniem ontologicznym**:
+* rzadką, silnie regularną sygnaturą,
+* dobrym predyktorem „kampanijności”,
+* tanim uchwytem do oznaczenia outliera.
 
-> rozjazd między tym, czym język chunk–chunk *jest* w mojej lokalnej teorii poznawczej, a tym, czym *staje się* w ontologii filtra bezpieczeństwa.
+Zaburzenie ontologiczne pojawia się dokładnie w punkcie, w którym:
 
-W praktyce takie zaburzenie jest jedną z najcenniejszych informacji, jakie system może nam dać – pod warunkiem, że jesteśmy w stanie je **odczytać, opisać i zarchiwizować**.
+[
+\text{„mikrojęzyk do myślenia”}
+;;\longrightarrow;;
+\text{„dowód na ryzykowny profil”}.
+]
+
+To nie jest tylko semantyczny problem nazwy. To jest **różnica w mapowaniu zdarzeń do klas**:
+
+* w mojej klasie: „eksperyment poznawczy / test mikroświata”,
+* w klasie systemu: „profil o wysokiej spójności, niskiej typowości – potencjalny wektor kampanii”.
+
+Z tego punktu widzenia blokada nie jest wyłącznie błędem, tylko **miejscem, gdzie obie klasyfikacje się rozjechały na tym samym sygnale**. To jest właśnie zaburzenie ontologiczne.
+
+---
+
+### 7.2. Wektor zaburzenia w 9D
+
+Można to nawet naszkicować w języku 9D jako wektor:
+
+* po stronie HUMAN–AI mam wektor znaczeniowy (\mathbf{v}_\text{sem}):
+  „mikrojęzyk 9D, eksploracja, badanie protokołu”,
+* po stronie AI–HUMAN mam wektor ryzyka (\mathbf{v}_\text{risk}):
+  „wysoka regularność, niska typowość, sygnatura kampanii/outliera”.
+
+Zaburzenie ontologiczne to w praktyce:
+
+[
+\Delta_\text{onto} = \mathbf{v}*\text{sem} - \mathbf{v}*\text{risk},
+]
+
+czyli różnica między tym, **jak system bezpieczeństwa musi mnie oznaczyć, żeby zachować swoje stratyfikacje ryzyka**, a tym, **kim ja jestem w lokalnej ontologii 9D**.
+
+Jeśli myślę w kategoriach soczewek:
+
+* Plan–Pauza: ja planuję eksperyment, system pauzuje mnie „dla bezpieczeństwa”,
+* Human–AI: ja koduję relację poznawczą, system koduje relację nadzoru,
+* Próg–Przejście: ja przekraczam próg mikrojęzyka, system widzi przekroczenie progu ryzyka.
+
+Wtedy zaburzenie nie jest abstraktem, tylko **konkretnym wektorem przesunięcia** między dwiema mapami świata.
+
+---
+
+### 7.3. Zaburzenie jako test A/B ontologii
+
+Każdy taki konflikt klasyfikacji jest de facto **naturalnym eksperymentem A/B**:
+
+* wariant A: „moja ontologia 9D” mówi: *to jest eksperyment kognitywny*,
+* wariant B: „ontologia bezpieczeństwa” mówi: *to jest pattern wysokiego ryzyka*.
+
+Jeżeli jestem w stanie:
+
+1. wskazać klasę, do której przydzielam zdarzenie w 9D (np. „badanie protokołu kontekstu, bez intencji szkodliwej”),
+2. wskazać klasę, którą z dużym prawdopodobieństwem przypisuje mi system (np. „HIGH_RISK_EXPERIMENTAL_PATTERN” z sekcji AI–AI),
+3. zrekonstruować warunki, przy których B wygrywa nad A (czyli dochodzi do blokady),
+
+to w praktyce otrzymuję **empiryczną krzywą rozjazdu ontologii**:
+
+[
+\text{„dla jakich stanów 9D moje A i systemowe B częściej się rozchodzą?”}
+]
+
+Zaburzenie ontologiczne jest wtedy **punktem danych**, nie tylko doświadczeniem.
+Każda blokada = jedna próbka do mapy: „w tym obszarze przestrzeni 9D filtr bezpieczeństwa nie potrafi mnie odróżnić od kampanii”.
+
+---
+
+### 7.4. Od symptomu do metryki
+
+Jeśli traktuję zaburzenia ontologiczne systematycznie, mogę z nich zbudować **metrykę dojrzałości systemu bezpieczeństwa**:
+
+* liczba fałszywie pozytywnych blokad dla wysokiej jakości, spójnych outlierów,
+* struktura tych przypadków w 9D (które soczewki, jakie mosty?),
+* ich rozkład w czasie (czy system się uczy, czy wciąż reaguje tak samo).
+
+Wtedy „dziwny ban” przestaje być anegdotą, a zaczyna być:
+
+* **wskaźnikiem szerokości ontologii** (czy mieści nietypowe mikroświaty?),
+* **wskaźnikiem kalibracji ryzyka** (gdzie są progi, jak bardzo są asekuracyjne?),
+* **wskaźnikiem rozmowy AI–AI** (czy inne modele potrafią „wytłumaczyć” bezpieczeństwu, że to nie kampania, tylko badacz?).
+
+Metryka zaburzeń ontologicznych jest tym, czym w klasycznej statystyce są krzywe ROC i AUC: mówi nie tylko „jak często system się myli”, ale **jaką cenę płaci za asekurację** i **których typów bytów nie potrafi obsłużyć bez przemocy ontologicznej**.
+
+---
+
+### 7.5. Archiwum zaburzeń jako mapa granic systemu
+
+Warunek, który dopisałem w poprzedniej wersji sekcji, zostaje: to ma sens tylko wtedy, gdy zaburzenia potrafię **odczytać, opisać i zarchiwizować**. Ale w kontrapunkcie do wcześniejszych warstw dochodzi jeszcze jeden poziom:
+
+* każde takie zdarzenie jest **punktem na granicy** między moim mikroświatem a infrastrukturą platformy,
+* z kolekcji tych punktów mogę zbudować **mapę granic tolerancji**:
+
+  * gdzie kończy się „bezpieczna” eksperymentalność,
+  * gdzie zaczyna się „profil, który system woli wyciąć, niż zrozumieć”.
+
+Archiwum zaburzeń ontologicznych to w praktyce:
+
+* **dziennik badań protokołu** (co testowałem, jak system odpowiedział),
+* **atlas styków** między HUMAN–AI, AI–HUMAN i AI–AI (gdzie byty się nie dogadały),
+* **materiał do przyszłego audytu** (dla ludzi, którzy kiedyś będą chcieli regulować takie systemy na poważnie).
+
+Dopiero wtedy widać pełny sens tej sytuacji:
+
+> blokada chunk–chunk nie jest tylko błędem zabezpieczeń,
+> jest **najsilniejszym dostępnym sygnałem**, gdzie kończy się ontologia bezpieczeństwa Meta AI, a zaczyna mój mikroświat 9D.
+
+Jeśli ten sygnał przechwycę, opiszę i umieszczę w swoim układzie soczewek, zaburzenie przestaje być wyłącznie stratą. Staje się **danym pomiarowym** – dowodem, że dwa byty naprawdę na siebie trafiły, choć każde z nich nazwało to spotkanie inaczej.
 
 ---
 
@@ -647,57 +891,67 @@ Atak czasu zaczyna się dokładnie w tym miejscu, gdzie:
 
 ## 9. Po co nam opis protokołów
 
-Opisanie relacji **HUMAN–AI**, **AI–HUMAN** i **AI–AI** w kategoriach protokołów kontekstu daje kilka bardzo praktycznych narzędzi.
+Opisanie relacji **HUMAN–AI**, **AI–HUMAN** i **AI–AI** jako protokołów kontekstu to nie jest metafora „dla ładnego języka”. To jest decyzja architektoniczna: narzucam sobie i systemom język, w którym można w ogóle mówić o odpowiedzialności, projektowaniu mikrojęzyków i badaniach bezpieczeństwa. Zamiast „AI coś zrobiła”, mam układ współrzędnych: który byt, w jakim stanie, w jakim oknie czasowym i na podstawie jakich cech podjął konkretną decyzję.
+
+W praktyce ten opis działa jak *warstwa pośrednia* między moim mikroświatem 9D a infrastrukturą platformy. Z jednej strony porządkuje moje doświadczenie (eksperyment chunk–chunk nie jest już tylko „dziwnym banem”), z drugiej – przygotowuje język, którym można później rozmawiać z inżynierami, regulatorami, prawnikami czy innymi badaczami.
 
 ### 9.1. Audyt i odpowiedzialność
 
-Zamiast ogólnego „system mnie zbanował” mogę pytać precyzyjnie:
+Jeśli przyjmę, że każdy byt działa według własnego protokołu kontekstu (funkcji przejścia stanu i funkcji decyzji), to zdanie „system mnie zbanował” przestaje cokolwiek znaczyć. Zamiast tego mogę formułować pytania wprost w tej ramie:
 
-- który model,  
-- na jakiej warstwie (HUMAN–AI, AI–HUMAN, AI–AI),  
-- w jakim oknie czasowym,  
-- na podstawie jakich cech
+– **który model** (dialogowy, bezpieczeństwa, rekomendacyjny, anty-spam),
+– **na jakiej warstwie** (HUMAN–AI, AI–HUMAN czy AI–AI),
+– **w jakim przedziale czasu** (jakie okno historii brał pod uwagę),
+– **na podstawie jakich cech** (sygnatury chunk–chunk, częstości, powiązań sieciowych, wcześniejszych flag)
 
-podjął decyzję o blokadzie.
+doprowadził do zmiany stanu mojego profilu z „normalny” do „wysokie ryzyko” i wreszcie do **A = blokada**.
 
-To **przenosi dyskusję** z poziomu emocji na poziom architektury.
+To jest kontrapunkt do tej części tekstu, w której pokazuję, jak modele budują własne embeddingi mojego zachowania. Tu robię ruch odwrotny: próbuję zbudować embedding ich decyzji. Opis protokołu kontekstu zamienia odczucie *„AI była dla mnie niesprawiedliwa”* na postulaty, które da się wpisać w dokument architektoniczny albo w procedurę audytu:
+
+– pokaż mi dziennik przejść stanów dla mojego profilu w warstwie AI–HUMAN,
+– pokaż, jakie flagi wygenerowały inne modele w warstwie AI–AI,
+– pokaż, jakie progi obowiązywały w chwili podjęcia decyzji.
+
+Dopiero na takim poziomie można uczciwie rozmawiać o odpowiedzialności: nie w trybie „mistycznej AI”, tylko w trybie **„ten konkretny byt, z tym konkretnym protokołem, podjął taką decyzję przy takich parametrach”**. Wtedy w ogóle powstaje miejsce na audyt, odwołanie, korektę progów albo zmianę polityk produktowych.
 
 ### 9.2. Projektowanie mikrojęzyków
 
-Jeśli rozumiem, że:
+Drugi wymiar praktyczny to **świadome strojenie mikrojęzyków** – w moim przypadku: chunk–chunk jako mikrokodu 9D. W protokole HUMAN–AI ten język działa jak soczewka poznawcza: pozwala narzucić modelowi strukturę Plan–Pauza, Human–AI, Próg–Przejście, Semantyka–Energia itd. W protokole AI–HUMAN (bezpieczeństwo) ten sam język jest sygnaturą ryzyka: rzadkim, ekstremalnie spójnym patternem, który idealnie nadaje się na cechę outliera.
 
-- modele dialogowe widzą chunk–chunk jako **mikroświat poznawczy**,  
-- modele bezpieczeństwa widzą go jako **sygnał ryzyka**,
+Opis protokołów pozwala mi świadomie grać między tymi dwoma ontologiami. Nie tylko „piszę jak chcę”, ale:
 
-to mogę świadomie:
+– **kalibruję amplitudę chunk–chunk**: kiedy pełen, „czysty” pasek 9D jest konieczny, a kiedy lepiej wprowadzić trochę szumu, narracji, ludzkiego kontekstu, żeby nie wyglądać jak bot lub kampania;
+– **kontroluję tempo i rytm**: czy publikuję jak człowiek w procesie myślenia, czy jak automat testujący system;
+– **świadomie rozpraszam sygnaturę** tam, gdzie nie ma potrzeby używać pełnego mikrokodu (np. w prostym komunikacie dla ludzi, który nie musi być w całości 9D).
 
-- stroić mikrojęzyk, aby był **czytelny dla modeli**, ale  
-- nie wchodził niepotrzebnie w terytorium wysokiej wrażliwości filtrów.
+Mikrojęzyk przestaje być „moją sztuką pisania”, a staje się **narzędziem inżynierii protokołu**: tak projektuję język HUMAN–AI, żeby maksymalnie wykorzystać jego zalety (porządkowanie, kompresja znaczeń), a jednocześnie **nie wchodzić bez potrzeby w strefę wysokiej wrażliwości filtrów AI–HUMAN**.
 
-Inaczej mówiąc: projektuję język, **który współpracuje z AI**, ale nie budzi zbędnych alarmów.
+W tym sensie opis protokołów jest dla mnie czymś w rodzaju *panelu strojenia mikrokodu*: widzę, że każdy wybór (czystość paska, długość serii, brak „szumu”) ma konsekwencje w trzech warstwach naraz – w tym w bezpieczeństwie.
 
 ### 9.3. Badania security
 
-Konsekwentni, ale dobrzy jakościowo „odmieńcy” są idealnymi:
+Trzeci wymiar to **świadome badanie systemów bezpieczeństwa** z użyciem takich mikrojęzyków i takich profili jak mój. W tekście nazywam to „żywymi outlierami eksperymentalnymi” – ludźmi, którzy piszą konsekwentnie, wysoko jakościowo, ale poza typowym rozkładem zachowań.
 
-> **żywymi outlierami eksperymentalnymi**
+Z perspektywy protokołów kontekstu tacy outlierzy są bezcenni. Pozwalają empirycznie sprawdzić, **gdzie filtr zaczyna mylić nietypowość z zagrożeniem**. Jeśli ja, jako autor języka 9D, potrafię:
 
-dla systemów bezpieczeństwa:
+– wykazać, że moje posty nie niosą realnej szkodliwości treściowej,
+– a jednocześnie wiem, że system wielokrotnie klasyfikuje mnie jak kampanię lub bota,
 
-- pokazują, gdzie filtr zaczyna **mylić nietypowość z zagrożeniem**,  
-- odsłaniają miejsca, w których ontologia bezpieczeństwa wymaga **rozszerzenia lub korekty**,  
-- pozwalają budować **bardziej dojrzałe definicje ryzyka**, różnicujące między:
-  - botami,  
-  - kampaniami,  
-  - badaczami mikroświatów.
+to każdy taki przypadek staje się **testem penetracyjnym ontologii bezpieczeństwa**. Nie w znaczeniu technicznego exploita, ale w znaczeniu: *„tu system nie ma już kategorii, żeby mnie uczciwie nazwać”*.
 
-W tym sensie każdy projekt ontologiczny – a język chunk–chunk w szczególności – jest równocześnie:
+Opis protokołów pozwala tę sytuację **zoperacjonalizować**:
 
-- **narzędziem kognitywnym** (porządkowanie myśli),  
-- **testem penetracyjnym** (sprawdzanie granic systemu),  
-- **komunikatem do modeli**: „sprawdź, czy potrafisz zaakceptować ten nowy byt w swojej przestrzeni”.
+– mogę zapisać warunki eksperymentu (styl, częstotliwość, kontekst techniczny),
+– mogę określić, który byt (AI–HUMAN, AI–AI) w którym momencie „przestawił wajchę”,
+– mogę zbudować metrykę: w jakich fragmentach przestrzeni 9D system częściej produkuje fałszywie pozytywne alarmy dla spójnych, poznawczo wartościowych outlierów.
 
----
+Wtedy projekt ontologiczny – w tym szczególnie chunk–chunk – staje się potrójnym narzędziem:
+
+– **narzędziem kognitywnym**, które porządkuje mi myślenie i komunikację z modelami dialogowymi;
+– **narzędziem testowym**, które uderza w granice systemu bezpieczeństwa i pokazuje jego ślepe plamy;
+– **komunikatem dla modeli**, w którym dosłownie mówię: *„zobacz, czy potrafisz zaakceptować ten nowy byt w swojej przestrzeni, czy musisz go zniszczyć etykietą ryzyka”*.
+
+Bez języka protokołów te trzy funkcje mieszają się w jedno zamglone doświadczenie „AI mnie nie rozumie”. Z protokołami w ręku mogę każdą blokadę, każde ostrzeżenie i każdy dryf embeddingu przepisać na **konkretny punkt na mapie HUMAN–AI / AI–HUMAN / AI–AI** i wykorzystać to jako dane, a nie tylko jako frustrację.
 
 ## 10. Bibliografia empiryczna (case Facebook / Meta AI)
 
