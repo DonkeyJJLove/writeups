@@ -104,6 +104,27 @@ Artykuł porządkuje pojęcia:
 
 ---
 
+### To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
+
+Plik: [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md)
+
+Ten tekst jest osią epistemiczną całego stacku HMK-9D / chunk–chunk. Zamiast mówić o „prawdzie” i „fikcji” w stylu filozoficznym, opisuje je jako **własność architektury**: układu „model + mikroświaty + narzędzia + prompty-testy”. LLM widziany jest jako dwa sprzężone obiegi: językowy (tokeny → embedding → kolejne tokeny) oraz „świata” (embedding → wektorowe wyszukiwanie → PCE, repozytoria, API, `[LINUX]`). Prawda pojawia się dopiero tam, gdzie zdanie z obiegu językowego zostaje zderzone ze stanem artefaktów (`repozytorum_pce`, `_neuro`, `manifest_cha0su`, GLX, `.glx/state.json`, HUD).
+
+Artykuł wprowadza cztery rozłączne kategorie: **fakt empiryczny**, **prawdę operacyjną** (fakt właśnie sprawdzony narzędziem), **fikcję zadeklarowaną** (świadomie oznaczone narracje typu „Kosmiczna Wioska”) oraz **halucynację** – treść, która wygląda jak P0/P1, ale nie da się jej podpiąć pod żaden mikroświat ani procedurę weryfikacji. Na tej bazie zbudowana jest matryca poziomów P0–P3 (fakty twarde, fakty miękkie, interpretacje, fikcje) oraz założenie, że **status epistemiczny** każdego fragmentu tekstu musi być jawny.
+
+Centralnym artefaktem jest prompt-narzędzie
+`P0-P3_truth-vs-fiction_detector_v1d.prompt`,
+który działa jak przycisk epistemiczny dla całego profilu kontekstu. Detektor:
+
+* rozcina materiał na bloki i przypisuje im poziomy P0–P3,
+* próbuje weryfikować P0/P1 względem konkretnych światów odniesienia (Git / ZIP, PCE, `_neuro`, HUD, pamięć profilu),
+* wymusza jawne oznaczenie „NIEZWERYFIKOWANE” zamiast udawania pewności,
+* odróżnia fikcję zadeklarowaną od halucynacji (tekst w stylu faktu bez świata w tle).
+
+W wariancie wykonawczym każde zdanie kandydujące na P0/P1 musi wskazać **świat prawdy** (np. GLX, repozytorium, PCE) oraz potencjalną procedurę sprawdzenia. Prawda staje się więc ścieżką: `tekst → embedding → mikroświat → narzędzie → ślad w HUD`, a halucynacja – błędem geometrii, w którym ta ścieżka urywa się w połowie. Repozytorium `writeups` (i cała rodzina GLX / HMK-9D) jest w tym ujęciu **laboratorium relacji prawda–fikcja**, a detektor P0–P3 – stałym, międzywątkowym filtrem, który pozwala testować różne modele i prompty pod kątem realnej „prawdomówności systemu”.
+
+---
+
 ## Fileless Malware – analiza techniczna systemów Windows
 
 📄 Plik: [`fileless-malware.md`](fileless-malware.md)
