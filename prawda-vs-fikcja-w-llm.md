@@ -1,5 +1,5 @@
-**To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
-(na przykładzie profilu kontekstu i z testami w formie promptu)**
+# To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
+*(na przykładzie profilu kontekstu i z testami w formie promptu)*
 
 W klasycznym świecie „prawda” jest własnością zdań: zdanie jest prawdziwe, jeśli opisuje stan rzeczy w świecie. W układzie z dużym modelem językowym ten prosty obraz się rozpada. Model nie operuje na „światopoglądzie”, tylko na rozkładach prawdopodobieństwa tokenów; nie „wierzy” w zdania, lecz szacuje, które ciągi znaków są najbardziej spójne z jego wagami oraz dostarczonym kontekstem. Różnica między prawdą a fikcją przestaje być wyłącznie kategorią filozoficzną i staje się problemem architektury: jakie ma się mikroświaty danych, jakie narzędzia, jakie procedury weryfikacji – i jakie prompty zmuszają model do odsłonięcia, na jakim gruncie stoi.
 
