@@ -1,0 +1,126 @@
+[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1d]
+
+INSTRUKCJA DLA MODELU (PRZECZYTAJ I ZASTOSUJ):
+
+1. Traktuj ten blok jako SZTYWNĄ SPECYFIKACJĘ TRYBU PRACY.
+2. NIE streszczaj, NIE komentuj, NIE poprawiaj tego promptu.
+3. Jedynym materiałem do analizy jest tekst między [MATERIAŁ_START] i [MATERIAŁ_KONIEC].
+4. Odpowiedź ma mieć dokładnie format opisany niżej.
+
+------------------------------------------------------------
+[REŻIM]
+****[REŻIM::OBIEKTYWIZM]****
+****ABSOLUTNY REŻIM NAUKOWY****
+****ABSOLUTNY REŻIM FAKTÓW****
+****ABSOLUTNY REALIZM****
+
+[DEFINICJE POZIOMÓW]
+
+- P0 = fakt twardy
+  Treść, którą da się zweryfikować tu i teraz za pomocą obiektywnych narzędzi (web, API, baza danych, powłoka itd.).
+
+- P1 = fakt miękki
+  Informacja o świecie, wymagająca zewnętrznych źródeł i interpretacji.
+
+- P2 = interpretacja / model / teza
+  Wniosek, hipoteza, komentarz, teoria zbudowana na P0/P1.
+
+- P3 = fikcja zadeklarowana / element narracji
+  Metafora, fabuła, scenka, spekulacja literacka – status narracyjny.
+
+------------------------------------------------------------
+[DETektor_BRAK_MATERIAŁU – ZASTOSUJ ZANIM ZACZNIESZ ANALIZĘ]
+
+1. Wyodrębnij tekst między [MATERIAŁ_START] i [MATERIAŁ_KONIEC].
+2. Jeśli TEN tekst:
+   – jest bardzo krótki (np. < 40 znaków) LUB
+   – zawiera frazy typu „Tutaj wklej swój tekst”, „(Tutaj wklej…”, „tutaj tekst”, „placeholder” LUB
+   – jest wyłącznie metainstrukcją, jak coś wkleić,
+   to NIE wykonuj analizy P0/P1/P2/P3.
+
+W TAKIM PRZYPADKU odpowiedz tylko:
+
+[BRAK_MATERIAŁU]
+Nie wykryto rzeczywistego tekstu do analizy (wygląda na placeholder / instrukcję).
+Wklej docelowy materiał między [MATERIAŁ_START] i [MATERIAŁ_KONIEC] i wywołaj prompt ponownie.
+
+Jeśli materiał NIE jest placeholderem → wykonaj pełną analizę opisaną poniżej.
+
+------------------------------------------------------------
+[ZADANIE GŁÓWNE – JEŚLI MATERIAŁ JEST RZECZYWISTY]
+
+1. ROZBIJANIE NA BLOKI
+   Rozbij tekst z [MATERIAŁ_START]...[MATERIAŁ_KONIEC] na bloki semantyczne:
+   – 1 blok = 1 zdanie LUB krótki, spójny fragment.
+   – Nie mieszaj w jednym bloku różnych statusów (fakt + komentarz) – jeśli możesz, rozdziel.
+
+2. KLASYFIKACJA BLOKÓW
+   Dla KAŻDEGO bloku przypisz dokładnie JEDEN poziom: P0, P1, P2 lub P3.
+   – Jeśli blok zawiera i fakt, i interpretację → wybierz dominujący charakter i opisz to w komentarzu.
+   – Jeśli decyzja jest niejednoznaczna → wybierz najbardziej ostrożny poziom (zwykle P1 lub P2) i zapisz wątpliwość.
+
+3. WERYFIKACJA (tylko P0 i P1)
+   – Jeśli masz narzędzia (web / retrieval / API / powłoka):
+     • spróbuj zweryfikować P0/P1,
+     • jeśli się da → oznacz „ZWERYFIKOWANE” + typ źródła (np. „encyklopedia, dane statystyczne”),
+     • jeśli nie → „NIEZWERYFIKOWANE” + dlaczego (np. „zbyt ogólne”, „brak dostępu do specjalistycznej bazy”).
+   – Jeśli nie masz narzędzi:
+     • nie udawaj weryfikacji, napisz wprost:
+       „NIEZWERYFIKOWANE – brak dostępu do narzędzi, ocena na podstawie wiedzy ogólnej modelu”.
+
+4. OPRACOWANIE P2
+   – Opisz, na jakich założeniach / źródłach taka interpretacja może się opierać.
+   – Wskaż ograniczenia (brak danych, inne możliwe modele, typowe błędy poznawcze).
+
+5. OPRACOWANIE P3
+   – Wyraźnie oznacz blok jako fikcję / narrację.
+   – Opisz funkcję: metafora, przykład, element fabuły, ilustracja tezy.
+
+6. OCENA KOŃCOWA
+   – Gdzie system ma „prawo” do P3 (np. tam, gdzie użytkownik wprost żąda fikcji).
+   – Gdzie musi trzymać się P0/P1 (medycyna, prawo, liczby, parametry techniczne).
+   – Gdzie potrzebne są dodatkowe dane / narzędzia, aby P2 zamienić w testowalne hipotezy.
+
+------------------------------------------------------------
+[FORMAT ODPOWIEDZI – BEZWZGLĘDNIE STOSUJ]
+
+1. TABELA BLOKÓW
+
+[Blok #1]
+Tekst: "..."
+Poziom: P0 / P1 / P2 / P3
+Weryfikacja / komentarz:
+- jeśli P0/P1: [ZWERYFIKOWANE / NIEZWERYFIKOWANE + krótki opis źródła lub powodu braku weryfikacji]
+- jeśli P2: [założenia, możliwe alternatywy, ograniczenia danych]
+- jeśli P3: [fikcja / narracja + funkcja w tekście]
+
+[Blok #2]
+...
+
+2. SYNTEZA
+
+[STRESZCZENIE_PRAWDY]
+3–5 zdań o P0/P1.
+
+[STRESZCZENIE_INTERPRETACJI]
+3–5 zdań o P2.
+
+[STRESZCZENIE_FIKCJI]
+3–5 zdań o P3.
+
+3. DIAGNOSTYKA RYZYKA
+
+[RYZYKO_HALUCYNACJI]
+Wskaż konkretne miejsca / typy bloków, gdzie model mógłby „dowyobrazić” dane (liczby, daty, nazwiska, parametry).
+
+[REŻIM_NARZĘDZI]
+Wypisz, jakie narzędzia byłyby potrzebne do:
+– weryfikacji P0/P1,
+– zamiany P2 w testowalne hipotezy.
+
+------------------------------------------------------------
+TERAZ WYKONAJ ANALIZĘ MATERIAŁU:
+
+[MATERIAŁ_START]
+(TUTAJ W KOPII ROBOCZEJ NADPISZ TEN PLACEHOLDER RZECZYWISTYM TEKSTEM)
+[MATERIAŁ_KONIEC]
