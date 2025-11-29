@@ -151,7 +151,7 @@ albo:
 
 to:
 
- [OpenAI Source][6]
+ [Execution Trace Proof][6]
 
 1. słowa są embedowane;
 2. embeddingi przyciągają wektory z pamięci kontekstu i PCE;
