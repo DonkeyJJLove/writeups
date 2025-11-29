@@ -1,4 +1,4 @@
-# Writeups: Malware, Incydenty Krytyczne i Analizy Fire Sale
+# Writeups: Human-AI, Malware, Incydenty Krytyczne i Analizy
 
 > 🛡️ Techniczne opracowania dotyczące cyberzagrożeń, fileless malware, operacji APT, incydentów infrastrukturalnych i strategicznych zdarzeń typu fire sale – oraz tego, jak na te zjawiska nakłada się ekonomia, media i logika AI.
 
