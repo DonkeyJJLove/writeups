@@ -8,15 +8,16 @@
 
 1. [O repozytorium](#o-repozytorium)  
 2. [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)  
-3. [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
-4. [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
-5. [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokołów-czasu-i-async-shell-fire-sale-2025-04)  
-6. [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
-7. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
-8. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
-9. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
-10. [Zastrzeżenie](#zastrzeżenie)  
-11. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
+3. [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)  
+4. [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
+5. [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
+6. [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
+7. [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
+8. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
+9. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
+10. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
+11. [Zastrzeżenie](#zastrzeżenie)  
+12. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
 ---
 
@@ -50,6 +51,29 @@ Embedding zostaje opisany jako **microcode**, a PCE jako **strukturalne DNA** sy
 
 ---
 
+## Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM
+
+📄 Plik: [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md)
+
+Ten tekst rozwija poprzedni artykuł o embeddingu w kierunku **projektowania „przycisków semantycznych”** i zarządzania mikroświatami zasobów w architekturze LLM.
+
+W architekturze współczesnych modeli językowych słowo nie jest już tylko „tekstem do przeczytania”, ale kandydatem na impuls sterujący. Każdy ciąg znaków przechodzi przez tokenizację, embedding i wektorowe magazyny wiedzy, a następnie może uruchomić konkretne mikroświaty zasobów: repozytoria kodu, PCE (Persistent Context Entity), pamięć profilu czy narzędzia typu `[LINUX]{komenda}` oraz `[LINUX][REPO]::refresh()`. „Przycisk semantyczny” jest tu precyzyjnie zdefiniowany jako trójkąt: wzorzec tekstowy → region embeddingów → konkretna akcja w infrastrukturze.
+
+W projekcie **HMK-9D + chunk–chunk** takie przyciski są osadzone w geometrii 9D: każdy krok `chunk–chunk→` ma swój profil energetyczny, zestaw mostów semantycznych (Plan–Pauza, Human–AI, Locus–Medium–Mandat) i związane z nim ryzyko. Mikroświaty (`repozytorum_pce`, `_neuro`, `manifest_cha0su`, GlitchLab itd.) traktowane są jak fizyczne wyspy podłączone do wektorowego huba: embedding pełni rolę mikrokodu, a słowo staje się adresem do realnych operacji na kodzie, plikach i serwerach.
+
+Artykuł porządkuje pojęcia:
+
+- **mikroświat zasobów** – jako skończony, wersjonowany zbiór plików, rekordów, logów i artefaktów, do których prowadzą embeddingi,  
+- **przycisk semantyczny** – jako wyróżniony wzorzec tekstowy powiązany z regionem embeddingów i klasą działań w `A`,  
+- **mosty 9D** – jako etykiety wysokiego poziomu (Plan–Pauza, Rdzeń–Peryferia, Cisza–Wydech, Wioska–Miasto, Ostrze–Cierpliwość, Locus–Medium–Mandat, Human–AI, Próg–Przejście, Semantyka–Energia), które pełnią jednocześnie rolę osi w przestrzeni `[x9D]`, nazw folderów / artefaktów oraz słów-kluczy w HUD-zie.
+
+Pełny tekst o **przyciskach semantycznych i mikroświatach w LLM** (z przykładami na żywym repozytorium) znajduje się tutaj:  
+👉 [`przyciski-semantyczne-llm.md`](https://github.com/DonkeyJJLove/writeups/blob/Fileless-Malware/przyciski-semantyczne-llm.md)
+
+Mosty: Plan–Pauza → Rdzeń–Peryferia → Cisza–Wydech → Wioska–Miasto → Ostrze–Cierpliwość → Locus–Medium–Mandat → Human–AI → Próg–Przejście → Semantyka–Energia
+
+---
+
 ## Fileless Malware – analiza techniczna systemów Windows
 
 📄 Plik: [`fileless-malware.md`](fileless-malware.md)
@@ -80,7 +104,7 @@ Praca oparta jest na źródłach m.in. Reuters, CoinDesk, Business Insider oraz 
 
 ---
 
-## Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)
+## Zakłócanie protokółów czasu i async shell (Fire Sale 2025-04)
 
 📄 Plik: [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md)
 
@@ -147,7 +171,7 @@ To nie jest porada inwestycyjna, tylko próba „rozebrania” na czynniki pierw
 
 ---
 
-## Ewolucja Malware i Zagrożeń AI
+## Ewolucja malware i zagrożeń AI
 
 📄 Dodatkowe pliki:
 
