@@ -151,6 +151,8 @@ albo:
 
 to:
 
+ [OpenAI Source][6]
+
 1. słowa są embedowane;
 2. embeddingi przyciągają wektory z pamięci kontekstu i PCE;
 3. model, korzystając z Tools / Responses API, wybiera funkcje i zasoby;
@@ -175,3 +177,4 @@ Plan–Pauza → Rdzeń–Peryferia → Cisza–Wydech → Wioska–Miasto → O
 [3]: https://medium.com/%40omark.k.aly/rag-systems-from-theory-to-production-ready-retrieval-ca87be424ef1?utm_source=chatgpt.com "RAG Systems: From Theory to Production-Ready Retrieval"
 [4]: https://github.com/DonkeyJJLove/chunk-chunk "GitHub - DonkeyJJLove/chunk-chunk: Protokół HMK-9D jest eksperymentalnym, naukowym protokołem przetwarzania i kompresji procesów dla projektu GlitchLab. Łączy modelowanie stanów, mozaikowe sterowanie DARPA-like i relacje 9D w jeden spójny system operacyjny dla analizy i budowy złożonych procesów Human–AI."
 [5]: https://en.wikipedia.org/wiki/Isaiah_Scroll?utm_source=chatgpt.com "Isaiah Scroll"
+[6]: https://chatgpt.com/share/692ad619-30a4-800e-b0b8-6597af0bc617 "OpenAI Source"
