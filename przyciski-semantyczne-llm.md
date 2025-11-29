@@ -40,7 +40,7 @@ Rozważa się klasyczny kontrakt decyzyjny:
 * przestrzeń działań $$( A )$$,
 * funkcję kompresji $$( F : S \to \Sigma )$$,
 * politykę działania $$( g : \Sigma \to A )$$,
-* złożenie $$( H = g \circ F : S \to A )$$. ([X (formerly Twitter)][4])
+* złożenie $$( H = g \circ F : S \to A )$$. ([X - formerly Twitter][4])
 
 **Przyciskiem semantycznym** nazywa się wtedy wyróżniony wzorzec ciągów znaków
 [
@@ -160,7 +160,7 @@ Po trzecie, przycisk musi być **włączony w geometrię 9D**. Dla każdego z ni
 * czy powinien zatrzymywać automatyzm (Cisza–Wydech, Próg–Przejście),
 * jak głęboko ingeruje w infrastrukturę (Semantyka–Energia).
 
-Taki opis pozwala traktować projektowanie przycisków jako problem pojemnościowy: ile energii i ryzyka może zostać „włożone” w dany przycisk, zanim system przekroczy sensowną granicę ( R^{*}(K) ) (minimalnego osiągalnego ryzyka przy danych zasobach). ([X (formerly Twitter)][4])
+Taki opis pozwala traktować projektowanie przycisków jako problem pojemnościowy: ile energii i ryzyka może zostać „włożone” w dany przycisk, zanim system przekroczy sensowną granicę ( R^{*}(K) ) (minimalnego osiągalnego ryzyka przy danych zasobach). ([X - formerly Twitter][4])
 
 Po czwarte, przyciski powinny być **testowane w trybie pokory**. Zanim zostaną powiązane z działaniami w świecie (np. operacje na repozytoriach czy serwerach), mogą być używane wyłącznie jako instrumenty analizy: do czytania, porządkowania, klasyfikacji istniejących artefaktów. Taki tryb jest zgodny z praktykami budowy systemów pamięci i knowledge hubów, w których faza „read-only RAG” poprzedza fazę „RAG sterujący infrastrukturą”. ([Medium][5])
 
