@@ -127,7 +127,7 @@ Z punktu widzenia HMK-9D każdy taki krok jest krokiem `Δ` z własną energią 
 ## 7. Detektor P0–P3 jako narzędzie międzywątkowe („PRAWDA vs FIKCJA”)
 
 W opisanym układzie różnica między prawdą, interpretacją i fikcją nie może pozostać „intuicyjnym wyczuciem” modelu. Została więc zapisana w postaci osobnego artefaktu narzędziowego: promptu
-**`P0-P3_truth-vs-fiction_detector_v1d.prompt`**, dostępnego jako plik referencyjny w repozytorium writeups: [[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1d]](https://github.com/DonkeyJJLove/writeups/blob/Fileless-Malware/P0-P3_truth-vs-fiction_detector_v1d.prompt) oraz przetestowanego w praktyce (sesja referencyjna): [Execution Trace Proof](https://chatgpt.com/share/692b4389-723c-800e-b754-f5587255b587)
+**`P0-P3_truth-vs-fiction_detector_v1d.prompt`**, dostępnego jako plik referencyjny w repozytorium writeups: [[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1d]](https://github.com/DonkeyJJLove/writeups/blob/Fileless-Malware/P0-P3_truth-vs-fiction_detector_v1d.prompt) oraz przetestowanego w praktyce (sesja referencyjna - tekst): [Execution Trace Proof](https://chatgpt.com/share/692b4389-723c-800e-b754-f5587255b587) i (instrukcja) [Execution Trace Proof](https://chatgpt.com/share/692b6c62-da48-800e-b362-41d7b2e4f264).
 
 Celem tego narzędzia nie jest „upiększanie tekstu”, lecz wymuszenie na modelu jawnej, powtarzalnej procedury epistemicznej w dowolnym wątku: rozbicia materiału na bloki, przypisania poziomów P0–P3, próby weryfikacji faktów oraz wskazania miejsc szczególnie podatnych na halucynacje.
 
