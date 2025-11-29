@@ -10,16 +10,20 @@
 2. [To, co najtrudniejsze: prawda vs fikcja w układzie LLM](#to-co-najtrudniejsze-prawda-vs-fikcja-w-układzie-llm)  
 3. [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)  
 4. [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)  
-5. [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
-6. [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
-7. [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
-8. [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
-9. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
-10. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
-11. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
-12. [Zastrzeżenie](#zastrzeżenie)  
-13. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)  
-14. [CHUNKS FILTER – mosty semantyczne 9D](#chunks-filter--mosty-semantyczne-9d)
+5. [Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)](#detektor-p0–p3-prawda-vs-fikcja-prompt-narzędziowy)  
+6. [APT-K-47 – asynchroniczne powłoki i operacje APT](#apt-k-47--asynchroniczne-powłoki-i-operacje-apt)  
+7. [Campaign Yokai Backdoor – studium przypadku kampanii backdoora](#campaign-yokai-backdoor--studium-przypadku-kampanii-backdoora)  
+8. [Operacja Cobalt Kitty – analiza kampanii APT](#operacja-cobalt-kitty--analiza-kampanii-apt)  
+9. [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
+10. [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
+11. [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
+12. [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
+13. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
+14. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
+15. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
+16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)  
+17. [Zastrzeżenie](#zastrzeżenie)  
+18. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)  
 
 ---
 
@@ -33,6 +37,8 @@ Dodatkowo pojawiają się tu teksty z pogranicza:
 - eksperymentów ekonomiczno–medialnych,  
 - interakcji człowiek–AI (języki, protokoły kontekstu, „mental matrix”),  
 - semantycznych eksperymentów językowych (chunk–chunk, mosty 9D, HMK-9D).
+
+Podkatalog `images/` zawiera ilustracje i schematy wspierające wybrane teksty (m.in. case chunk–chunk / Facebook).
 
 Każdy dokument jest – na ile to możliwe – oparty na potwierdzonych danych, zgodny z metodyką śledczą oraz wsparty odniesieniami do wiarygodnych źródeł (OSINT, logi, dane rynkowe, publikacje branżowe).
 
@@ -48,19 +54,17 @@ Na przykładzie:
 
 - profilu kontekstu (pamięć profilu jako mikroświat wektorów),  
 - testów w formie promptu (scenariusze kontroli i prób „rozszczelniania” narracji),  
+- architektury opartej o PCE `repozytorum_pce`, artefakt `_neuro`, manifest `cha0su`, HUD i encje GLX,
 
 pokazane jest, że:
 
 - LLM nie ma wbudowanego modułu „prawdy” – ma tylko statystykę i architekturę,  
 - „fikcja” i „fakt” mogą mieć podobną gęstość prawdopodobieństwa w przestrzeni embeddingów,  
-- to **architektura otaczająca model** (PCE, narzędzia, logika wywołań, walidacja zewnętrzna) decyduje, czy wygenerowane zdanie zostaje uznane za „obowiązującą wersję rzeczywistości”.
+- to **architektura otaczająca model** (mikroświaty, narzędzia, logika wywołań, walidacja zewnętrzna) decyduje, czy wygenerowane zdanie zostaje uznane za „obowiązującą wersję rzeczywistości”.
 
-Artykuł proponuje traktować:
+Artykuł definiuje m.in.: **fakt empiryczny, prawdę operacyjną, fikcję zadeklarowaną i halucynację**, wprowadza czteropoziomową matrycę P0–P3 oraz pokazuje, że różnica prawda/fikcja jest własnością **całego układu Human–AI**, a nie samego modelu.
 
-- **prawdę** jako wynik kontraktu między modelem, pamięcią kontekstu i światem zewnętrznym (logi, dane, eksperyment),  
-- **fikcję** jako niezweryfikowaną, ale strukturalnie poprawną trajektorię w przestrzeni stanów modelu.
-
-To punkt wyjścia dla pozostałych write-upów: jeśli słowo może stać się czynem i materią (narzędzia, API, shell), to problem „prawda vs fikcja” przestaje być filozoficznym ćwiczeniem, a staje się kwestią bezpieczeństwa.
+To epistemiczny kręgosłup całego repozytorium: wszystkie pozostałe write-upy zakładają, że słowo może przejść w czyn (narzędzia, API, shell), więc pytanie „czy to jest prawda?” staje się równocześnie pytaniem o bezpieczeństwo.
 
 ---
 
@@ -104,24 +108,64 @@ Artykuł porządkuje pojęcia:
 
 ---
 
-### To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
+## Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)
 
-Plik: [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md)
+📄 Plik: [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt)
 
-Ten tekst jest osią epistemiczną całego stacku HMK-9D / chunk–chunk. Zamiast mówić o „prawdzie” i „fikcji” w stylu filozoficznym, opisuje je jako **własność architektury**: układu „model + mikroświaty + narzędzia + prompty-testy”. LLM widziany jest jako dwa sprzężone obiegi: językowy (tokeny → embedding → kolejne tokeny) oraz „świata” (embedding → wektorowe wyszukiwanie → PCE, repozytoria, API, `[LINUX]`). Prawda pojawia się dopiero tam, gdzie zdanie z obiegu językowego zostaje zderzone ze stanem artefaktów (`repozytorum_pce`, `_neuro`, `manifest_cha0su`, GLX, `.glx/state.json`, HUD).
+To **narzędzie–prompt**, które zamienia abstrakcyjną dyskusję o „prawdzie” w procedurę techniczną. Detektor P0–P3:
 
-Artykuł wprowadza cztery rozłączne kategorie: **fakt empiryczny**, **prawdę operacyjną** (fakt właśnie sprawdzony narzędziem), **fikcję zadeklarowaną** (świadomie oznaczone narracje typu „Kosmiczna Wioska”) oraz **halucynację** – treść, która wygląda jak P0/P1, ale nie da się jej podpiąć pod żaden mikroświat ani procedurę weryfikacji. Na tej bazie zbudowana jest matryca poziomów P0–P3 (fakty twarde, fakty miękkie, interpretacje, fikcje) oraz założenie, że **status epistemiczny** każdego fragmentu tekstu musi być jawny.
+- wycina analizowany materiał między znacznikami `[MATERIAŁ_START] ... [MATERIAŁ_KONIEC]`,  
+- sprawdza, czy nie jest to tylko placeholder (`[DETektor_BRAK_MATERIAŁU]`),  
+- rozbija tekst na bloki i przypisuje im poziomy **P0 (fakty twarde), P1 (fakty miękkie), P2 (interpretacje), P3 (fikcje)**,  
+- zmusza model do jawnego oznaczania „NIEZWERYFIKOWANE”,  
+- wymusza wskazanie **świata prawdy** dla P0/P1 (repozytorium, PCE, `_neuro`, HUD, pamięć profilu).
 
-Centralnym artefaktem jest prompt-narzędzie
-`P0-P3_truth-vs-fiction_detector_v1d.prompt`,
-który działa jak przycisk epistemiczny dla całego profilu kontekstu. Detektor:
+Znaczenie praktyczne:
 
-* rozcina materiał na bloki i przypisuje im poziomy P0–P3,
-* próbuje weryfikować P0/P1 względem konkretnych światów odniesienia (Git / ZIP, PCE, `_neuro`, HUD, pamięć profilu),
-* wymusza jawne oznaczenie „NIEZWERYFIKOWANE” zamiast udawania pewności,
-* odróżnia fikcję zadeklarowaną od halucynacji (tekst w stylu faktu bez świata w tle).
+- w każdym wątku z udziałem LLM można „przefiltrować” tekst przez ten prompt i zobaczyć, **gdzie kończą się fakty, a zaczynają interpretacje lub czysta narracja**,  
+- to przycisk epistemiczny dla całego stacku HMK-9D / chunk–chunk: taki sam filtr można nakładać na write-upy techniczne, manifesty, analizy rynkowe czy scenografie „Kosmicznej Wioski”.
 
-W wariancie wykonawczym każde zdanie kandydujące na P0/P1 musi wskazać **świat prawdy** (np. GLX, repozytorium, PCE) oraz potencjalną procedurę sprawdzenia. Prawda staje się więc ścieżką: `tekst → embedding → mikroświat → narzędzie → ślad w HUD`, a halucynacja – błędem geometrii, w którym ta ścieżka urywa się w połowie. Repozytorium `writeups` (i cała rodzina GLX / HMK-9D) jest w tym ujęciu **laboratorium relacji prawda–fikcja**, a detektor P0–P3 – stałym, międzywątkowym filtrem, który pozwala testować różne modele i prompty pod kątem realnej „prawdomówności systemu”.
+---
+
+## APT-K-47 – asynchroniczne powłoki i operacje APT
+
+📄 Plik: [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md)
+
+Dokument koncentruje się na wątku **asynchronicznych powłok (async shell)** w kontekście operacji typu APT, roboczo oznaczonej jako „APT-K-47”. Interesuje go nie tylko sam payload, ale **geometria operacji w czasie**:
+
+- jak wygląda model pracy z powłoką, w której komendy idą partiami, z opóźnieniem i z jitterem czasowym,  
+- jak asynchroniczny charakter kanału wpływa na trudność detekcji (telemetria, korelacja logów, heurystyki EDR),  
+- jak taki tryb pracy może być sprzężony z zaburzeniami protokołów czasu (NTP/PTP) oraz z incydentami typu fire sale.
+
+Plik można traktować jako „roboczy szkic” operacji, która splata trzy wątki: fileless / living-off-the-land, manipulację czasem oraz asynchroniczność kanału C2.
+
+---
+
+## Campaign Yokai Backdoor – studium przypadku kampanii backdoora
+
+📄 Plik: [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md)
+
+Write-up poświęcony jest kampanii backdoora o roboczej nazwie **Yokai**. W centrum stoją pytania:
+
+- jak wygląda **łańcuch zaburzeń** od pierwszego wektora wejścia po stabilną persystencję,  
+- jakie artefakty (logi, wpisy rejestru, nietypowe wywołania API) pozostawia po sobie backdoor projektowany „pod szum”,  
+- jak ta kampania wpisuje się w szerszy trend **„cichych” operacji APT**, w których klasyczny malware jest minimalizowany, a ciężar przenoszony na mis-use legalnych komponentów.
+
+W tle obecna jest logika HMK-9D: Yokai jest traktowany nie tylko jako „zagrożenie”, ale też jako **źródło sygnałów do projektowania lepszych detektorów** (mosty, energie `E(Δ)`, osie 9D).
+
+---
+
+## Operacja Cobalt Kitty – analiza kampanii APT
+
+📄 Plik: [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md)
+
+Dokument osadza znaną z literatury bezpieczeństwa operację **Cobalt Kitty** w szerszym kontekście:
+
+- długoletnie, ukryte kampanie APT wymierzone w wybrane organizacje,  
+- spearphishing, kontrola stacji roboczych, lateral movement i stopniowe przejmowanie infrastruktury,  
+- relacja między „klasycznymi” TTP opisanymi w raportach vendorów a lokalną perspektywą badawczą (co widzi ofiara? co widzą logi? co widzi rynek?).
+
+Tekst można czytać jako **case-study do porównywania kolejnych kampanii**: Yokai, APT-K-47, fire sale. Zamiast opisywać Cobalt Kitty wyłącznie z perspektywy vendorów, próbuje zobaczyć ją jako element dłuższego trendu ewolucji APT.
 
 ---
 
@@ -135,7 +179,7 @@ Dogłębna analiza złośliwego oprogramowania działającego bez zapisu na dysk
 - techniki reflective DLL injection, process hollowing, code injection w legalne procesy,  
 - sztuczki utrudniające detekcję (obfuskacja, multi-stage loaders, zaciemnianie śladów w logach).
 
-Praca zawiera studia przypadków, wykaz funkcji API systemu Windows używanych przez malware oraz praktyczne środki obronne (telemetria, EDR, hardening, zasady reagowania).
+Praca zawiera studia przypadków, wykaz funkcji API systemu Windows używanych przez malware oraz praktyczne środki obronne (telemetria, EDR, hardening, zasady reagowania). To jeden z „fundamentów” repozytorium – punkt odniesienia dla nowszych kampanii (Yokai, APT-K-47, Cobalt Kitty).
 
 ---
 
@@ -210,7 +254,7 @@ Case-study na styku:
 
 - rynków finansowych,  
 - mediów cyfrowych,  
-- zachowań zbiorowych i „ekonomii memów”.
+- zachowań zbiorowych i **ekonomii memów**.
 
 Tekst analizuje projekt **K-Wave Media** jako eksperyment:
 
@@ -224,12 +268,26 @@ To nie jest porada inwestycyjna, tylko próba „rozebrania” na czynniki pierw
 
 ## Ewolucja malware i zagrożeń AI
 
-📄 Dodatkowe pliki:
+📄 Pliki:
 
 - [`malware-evolution.md`](malware-evolution.md) – historia i możliwe przyszłe kierunki rozwoju malware w kontekście narzędzi AI, automatyzacji i masowej dostępności mocy obliczeniowej,  
-- [`cybersecurity-evolution.md`](cybersecurity-evolution.md) – zmiany w taktykach cyberataków i wyzwania dla strategii bezpieczeństwa (SOC, CERT, threat hunting) w świecie z dominującą rolą AI.
+- [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md) – zmiany w taktykach cyberataków i wyzwania dla strategii bezpieczeństwa (SOC, CERT, threat hunting) w świecie z dominującą rolą AI.
 
 Oba teksty razem tworzą ramę do myślenia o **ewolucji atakujących i obrońców**: jak zmienia się ekonomia ataku, jakie wektory stają się tańsze, a które droższe, oraz jak na tę dynamikę nakładają się modele językowe, automatyzacja i „commoditization” ofensywnych narzędzi.
+
+---
+
+## Dodatkowe materiały i ilustracje (`images/`)
+
+📁 Katalog: [`images/`](images)
+
+Folder służy jako magazyn grafik i schematów wspierających poszczególne write-upy, m.in.:
+
+- diagramy przepływu w kampaniach APT,  
+- schematy fire sale i zaburzeń protokołów czasu,  
+- ilustracje do case’u chunk–chunk / Facebook.
+
+Jest traktowany jako **część mikroświata repozytorium**: konkretne obrazy są powiązane z tekstami przez ścieżki plików i hashe, tak aby w analizach technicznych można było odwoływać się do nich jak do „twardych artefaktów” (P0) – a nie tylko luźnych ilustracji.
 
 ---
 
