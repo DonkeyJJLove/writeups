@@ -109,7 +109,7 @@ W tym przypadku mikroświatem jest całe repozytorium „GlitchLab” rozumiane 
 
 * zbiór plików źródłowych,
 * ich skróty kryptograficzne,
-* statystyki liczby linii,
+* statystyki liczby linii, 
 * historia zmian (patch maile).
 
 Po wciśnięciu przycisku `[LINUX][REPO]::refresh()` zachodzi ciąg zdarzeń:
