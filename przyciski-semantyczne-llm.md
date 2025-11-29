@@ -35,12 +35,12 @@ Na tym tle można precyzyjnie zdefiniować pojęcie „przycisku” w systemie L
 
 Rozważa się klasyczny kontrakt decyzyjny:
 
-* przestrzeń stanów ( S ),
-* alfabet znaków ( \Sigma ),
-* przestrzeń działań ( A ),
-* funkcję kompresji ( F : S \to \Sigma ),
-* politykę działania ( g : \Sigma \to A ),
-* złożenie ( H = g \circ F : S \to A ). ([X (formerly Twitter)][4])
+* przestrzeń stanów $$( S )$$,
+* alfabet znaków $$( \Sigma )$$,
+* przestrzeń działań $$( A )$$,
+* funkcję kompresji $$( F : S \to \Sigma )$$,
+* politykę działania $$( g : \Sigma \to A )$$,
+* złożenie $$( H = g \circ F : S \to A )$$. ([X (formerly Twitter)][4])
 
 **Przyciskiem semantycznym** nazywa się wtedy wyróżniony wzorzec ciągów znaków
 [
@@ -75,9 +75,9 @@ Protokół HoloMozaikowej Kompresji 9D (HMK-9D) wprowadza dodatkową warstwę ge
 
 Przycisk semantyczny można interpretować jako szczególny przypadek takiego kroku, w którym:
 
-* ( z(\Delta) ) zawiera m.in. identyfikator wzorca, typ narzędzia, kontekst repozytorium,
-* ( r(\Delta) ) koduje rozkład „energii” decyzji w dziewięciu soczewkach (Plan–Pauza, Rdzeń–Peryferia itd.),
-* energia ( E(\Delta) ) opisuje koszt uruchomienia przycisku: obciążenie poznawcze, ryzyko operacyjne, koszt infrastrukturalny.
+* $$( z(\Delta) )$$ zawiera m.in. identyfikator wzorca, typ narzędzia, kontekst repozytorium,
+* $$( r(\Delta) )$$ koduje rozkład „energii” decyzji w dziewięciu soczewkach (Plan–Pauza, Rdzeń–Peryferia itd.),
+* energia $$( E(\Delta) )$$ opisuje koszt uruchomienia przycisku: obciążenie poznawcze, ryzyko operacyjne, koszt infrastrukturalny.
 
 W mozaikowym polu sterowania ( \Phi ) (w sensie HMK-9D) przyciski stają się kafelkami o dobrze zdefiniowanej topologii: wiadomo, z jakich stanów ( S ) są osiągalne, jakie mosty semantyczne przecinają, jakie progi `‡` aktywują. Taki opis jest kompatybilny z podejściem „LLM Knowledge Hub”, w którym system jest postrzegany jako węzeł nad wektorowym hubem wiedzy, a poszczególne narzędzia i magazyny są do niego podłączone jako źródła kontekstu i mocy wykonawczej. ([Medium][5])
 
