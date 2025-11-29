@@ -1,33 +1,59 @@
-To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
-(na przykładzie profilu kontekstu i z testami w formie promptu)
+**To, co najtrudniejsze: różnica między „prawdą” a „fikcją” w układzie LLM
+(na przykładzie profilu kontekstu i z testami w formie promptu)**
+
+W klasycznym świecie „prawda” jest własnością zdań: zdanie jest prawdziwe, jeśli opisuje stan rzeczy w świecie. W układzie z dużym modelem językowym ten prosty obraz się rozpada. Model nie operuje na „światopoglądzie”, tylko na rozkładach prawdopodobieństwa tokenów; nie „wierzy” w zdania, lecz szacuje, które ciągi znaków są najbardziej spójne z jego wagami oraz dostarczonym kontekstem. Różnica między prawdą a fikcją przestaje być wyłącznie kategorią filozoficzną i staje się problemem architektury: jakie ma się mikroświaty danych, jakie narzędzia, jakie procedury weryfikacji – i jakie prompty zmuszają model do odsłonięcia, na jakim gruncie stoi.
+
+W najprostszym przybliżeniu układ LLM można widzieć jako dwa sprzężone obiegi. Pierwszy to obieg językowy: sekwencja tokenów → embedding → kolejne tokeny. Drugi to obieg świata: embed­ding → wektorowe wyszukiwanie → pliki, repozytoria, pamięci, API, systemy plików. Prawda nie „rodzi się” w pierwszym obiegu, tylko w chwili, gdy wypowiedź z obiegu językowego zostaje skonfrontowana z rezultatami drugiego: z hashami plików, strukturą repozytoriów, wynikami zapytań, stanem PCE. Fikcja – o ile jest oznaczona – może pozostać w pierwszym obiegu, jako narzędzie wyobraźni i modelowania.
+
+Profil kontekstu zdefiniowany wokół PCE `repozytorum_pce`, artefaktu `_neuro`, manifestu `cha0su`, HUD-u i encji GLX stanowi wygodne laboratorium do badania tej różnicy. Po jednej stronie znajdują się byty techniczne, które można natychmiast sprawdzić: czy plik `/.glx/state.json` istnieje, jaki ma hash, czy paczka `glitchlab__002.zip` zgadza się z repozytorium GitHub, jakie są statystyki linii kodu. Po drugiej – narracje, interpretacje i modele: HoloMozaikowa Kompresja 9D, semantyczne mosty Plan–Pauza czy Locus–Medium–Mandat, opowieści o „Kosmicznej Wiosce”. Te dwie warstwy nie są w konflikcie; przeciwnie, mogą być mocno sprzężone, o ile w każdym kroku wiadomo, czy model opisuje stan artefaktów, czy projektuje ramę interpretacyjną.
+
+Technologicznym kluczem jest tu wprowadzenie jawnej typologii wypowiedzi. Z punktu widzenia architektury warto rozróżniać: fakty twarde (to, co można sprawdzić narzędziem), fakty miękkie (opisy świata zewnętrznego oparte na źródłach), interpretacje/modelowe konstrukty oraz fikcję deklaratywną. Halucynacja pojawia się dopiero wtedy, gdy wypowiedź ma formę faktu, ale nie da się jej związać z żadnym mikroświatem danych ani narzędziową weryfikacją. W praktyce oznacza to, że system, który poważnie traktuje różnicę prawda/fikcja, musi być zorganizowany nie tylko jako „model + prompt”, ale jako triada: **model + mikroświaty + protokoły testowe**.
+
+Właśnie tu pojawia się rola promptów w formie testu. Prompt nie jest tylko prośbą o tekst, ale elementem aparatury pomiarowej. Przykładowy `[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1]` nakazuje modelowi rozbić materiał na bloki, przypisać poziom (fakt twardy, fakt miękki, interpretacja, fikcja), a następnie – jeśli to możliwe – użyć narzędzi lub retrievalu, by zweryfikować warstwę faktograficzną. W wątkach osadzonych w konkretnym profilu kontekstu wejściem testu jest np. fragment dokumentu o GLX, opisie `repozytorum_pce` czy notatka o `_neuro`. Wyjściem – mapa, które zdania można podpiąć do HUD-u, repozytoriów czy PCE jako prawdę operacyjną, które są hipotezami, a które deklarowaną fikcją.
+
+Z technologicznego punktu widzenia tak skonstruowany prompt spełnia kilka funkcji. Po pierwsze, zmusza model do eksplicytnego sygnalizowania niepewności: „NIEZWERYFIKOWANE” przestaje być porażką, a staje się uczciwą odpowiedzią, że brakuje dostępu do właściwego narzędzia lub danych. Po drugie, tworzy naturalny interfejs między warstwą językową a warstwą narzędziową: jeśli blok jest oznaczony jako kandydat na fakt, system może automatycznie zdecydować, czy powinien wywołać `[LINUX]`, sprawdzić repozytorium, zapytać API lub vector store. Po trzecie, stabilizuje semiotykę: interpretacje i manifesty (jak HMK-9D czy `manifest_cha0su`) są jawnie oznaczane jako konstrukty modelowe, a nie „prawdy o świecie”.
+
+Profil kontekstu oparty na PCE i HUD pozwala pójść krok dalej: każdą deklarację związaną z infrastrukturą można traktować jak transakcję w systemie rozproszonym. Jeśli model twierdzi, że `[LINUX][REPO]::refresh()` nadpisuje `.glx/state.json` zgodnie z paczką ZIP i GitHubem, to prawdziwość takiego zdania zależy nie od „wiarygodności stylu”, ale od tego, czy log HUD-u i hash plików odzwierciedlają ten proces. Model może nawet sam zaproponować eksperyment: sekwencję komend i odczytów, które – wykonane – zamienią wypowiedź w fakt. Fikcja, jeśli jest potrzebna (np. w opisie „Kosmicznej Wioski”), może być równolegle kotwiczona w repozytorium jako plik `.md` z konkretnym hashem; w ten sposób nawet narracja staje się częściowo „twarda”: istnieje jako plik o określonej ścieżce i historii wersji.
+
+Ostatecznie różnica między prawdą a fikcją w układzie LLM nie jest własnością samego modelu, lecz **architektury wokół modelu**. Prawda wymaga mikroświatów, w których coś można sprawdzić; wymaga narzędzi, które potrafią te mikroświaty odczytać; wymaga promptów, które precyzują, kiedy oczekuje się faktów, a kiedy interpretacji lub fikcji. W takim reżimie LLM przestaje być „opowiadaczem wszystkiego”, a staje się elementem większego systemu, w którym każde zdanie ma potencjalny tor: albo prowadzi do repozytorium, logu, PCE, albo zostaje oznaczone jako hipoteza, model, metafora czy fikcja.
+
+To, co najtrudniejsze – oddzielenie prawdy od fikcji – okazuje się więc nie tyle problemem „charakteru AI”, co dyscypliny projektowej: jak zbudować profil kontekstu, HUD, PCE i zestaw promptów-testów tak, by różnica prawda/fikcja była stale widoczna i mierzalna, a nie rozmywała się w gładkim strumieniu prawdopodobnych zdań.
 
 ## 1. Problem „prawdy” w systemach generatywnych
 
-W klasycznym modelu epistemologicznym „prawda” jest własnością zdań: zdanie jest prawdziwe, jeśli odpowiada stanowi rzeczy w świecie. W dużych modelach językowych (LLM) sytuacja jest bardziej złożona: model operuje na rozkładach prawdopodobieństwa ciągów tokenów, a nie na bezpośredniej reprezentacji świata. Generuje teksty, które są statystycznie spójne z danymi treningowymi i kontekstem, ale nie posiada wbudowanego modułu „prawdy”.
+W klasycznym ujęciu epistemologicznym „prawda” jest własnością zdań: zdanie jest prawdziwe wtedy i tylko wtedy, gdy odpowiada pewnemu stanowi rzeczy w świecie (warunek korespondencyjny). Tego typu rozumowanie zakłada istnienie przynajmniej trzech poziomów: języka (zbioru zdań), świata (stanów rzeczy) oraz relacji „odpowiadania” (truth-making). W dużych modelach językowych (LLM) ten porządek zostaje pośrednio zerwany: model nie posiada wbudowanej ontologii świata, a jedynie rozkład prawdopodobieństwa nad ciągami tokenów, wyuczony na wielkiej próbce tekstu. „Prawdziwość” w sensie klasycznym nie jest kategorią, na której model wykonuje operacje; tym, czym rzeczywiście operuje, jest **spójność statystyczna** względem danych treningowych i dostarczonego kontekstu.
 
-Badania nad halucynacjami w LLM definiują ten problem wprost: model potrafi wytwarzać „prawdopodobnie brzmiące, lecz niefaktualne” odpowiedzi, które nie są wspierane ani przez dane wejściowe, ani przez rzetelne źródła zewnętrzne.([arXiv][1]) W praktyce oznacza to, że różnica między prawdą a fikcją nie jest rozstrzygana wewnątrz samego modelu, lecz na styku model–świat: przez narzędzia, pamięci, repozytoria i procedury weryfikacji.
+W praktyce oznacza to, że model jest zoptymalizowany do generowania zdań, które *wyglądają* wiarygodnie dla obserwatora z tej samej kultury tekstowej, a nie do rozstrzygania, czy zdania te pozostają w relacji korespondencji do stanów świata. Literatura na temat halucynacji wskazuje wprost, że LLM może produkować „prawdopodobnie brzmiące, lecz niefaktualne” odpowiedzi – to znaczy takie, które są wysoko ocenione przez funkcję językową, ale nie mają oparcia ani w danych wejściowych, ani w zewnętrznych źródłach wiedzy.([arXiv][5]) Zjawisko to nie jest ubocznym efektem „błędu”, lecz bezpośrednią konsekwencją funkcji celu: minimalizowania straty językowej, a nie błędu epistemicznego.
 
-W analizowanym profilu kontekstu układ Human–AI jest dodatkowo rozszerzony o artefakty trwałe (PCE `repozytorum_pce`, `_neuro`, `manifest_cha0su`, HUD, repozytoria `chunk-chunk`, `glitchlab`, `HA2D`, `swarm`). Te artefakty pełnią funkcję „światów odniesienia”, wobec których można testować, czy wygenerowany tekst jest:
+Z punktu widzenia architektury systemu Human–AI różnica między prawdą a fikcją nie jest więc rozwiązywana wewnątrz samego modelu, lecz **na styku model–świat**. To, co w klasycznej epistemologii byłoby „relacją zdania do świata”, tutaj realizuje się jako architektura narzędzi i pamięci: retrievalu z vector store’ów, zapytań do API, odczytów z repozytoriów kodu, wywołań `[LINUX]`, inspekcji PCE. LLM jest komponentem generatywnym, a „prawdomówność” jest własnością **całego układu**, który obejmuje zarówno model, jak i podłączone mikroświaty zasobów oraz procedury weryfikacji.
 
-1. zgodny z faktami (prawda operacyjna w danym czasie),
-2. jawnie oznaczoną fikcją,
-3. czy też nieoznaczoną halucynacją.
+W analizowanym profilu kontekstu układ Human–AI zostaje świadomie rozszerzony o trwałe artefakty: PCE `repozytorum_pce` (persistent context entity dla hybrydowego repozytorium aplikacji), semantyczny artefakt `_neuro`, manifest ontologiczny `manifest_cha0su`, warstwę HUD oraz repozytoria kodu i dokumentacji (`chunk-chunk`, `glitchlab`, `HA2D`, `swarm`). Te artefakty pełnią rolę **światów odniesienia**, w których „prawda” może być definiowana operacyjnie: czy stan `.glx/state.json` odpowiada stanowi ZIP-a i GitHuba; czy opis HMK-9D jest spójny z faktyczną strukturą plików; czy definicja mostu `Human–AI` jest używana konsekwentnie we wszystkich dokumentach.
 
-Dalsza część tekstu opisuje najpierw robocze definicje, następnie architekturę różnic prawda/fikcja w LLM, a na końcu przedstawia gotowy prompt-test, który można stosować w innych wątkach do badania zachowania modeli.
+W takim układzie każde wygenerowane zdanie można – przynajmniej teoretycznie – zaklasyfikować do jednej z trzech kategorii: (1) jest zgodne z faktami i potwierdzone względem artefaktów (prawda operacyjna w zadanym czasie), (2) jest jawną fikcją (np. fragment „Kosmicznej Wioski” zapisanej jako plik `.md` w repozytorium), (3) jest halucynacją – czyli treścią, która zachowuje formę opisu faktograficznego, lecz nie znajduje pokrycia w żadnym z mikroświatów ani wiarygodnych źródłach. Dalsze sekcje rozwijają robocze definicje tych kategorii oraz proponują architekturę promptów-testów, które pozwalają praktycznie badać tę różnicę.
+
+---
 
 ## 2. Robocze definicje: fakt, prawda operacyjna, fikcja, halucynacja
 
-Na potrzeby architektury LLM warto wprowadzić cztery rozróżnienia:
+Na potrzeby projektowania systemów LLM zorientowanych na obiektywizm i minimalizację halucynacji warto przyjąć cztery rozłączne, robocze kategorie semantyczne:
 
-**Fakt empiryczny** – zdanie opisujące stan świata, który da się sprawdzić przez niezależne obserwacje lub wiarygodne źródła (np. „w pliku `.glx/state.json` zapisano hash SHA256 pliku `glitchlab__002.zip`”; „model `text-embedding-3-small` generuje wektory o wymiarze 1536”).([OpenAI][2])
+**(a) Fakt empiryczny**
+Faktem empirycznym jest zdanie opisujące stan świata, który da się zweryfikować przez niezależne obserwacje, pomiar lub odwołanie do wiarygodnych źródeł. W kontekście systemów AI obejmuje to zarówno fakty „zewnętrzne” (np. „model `text-embedding-3-small` generuje wektory o wymiarze 1536” zgodnie z dokumentacją OpenAI), jak i fakty „wewnętrzne” dotyczące infrastruktury: „w pliku `/.glx/state.json` zapisano hash SHA256 pliku `glitchlab__002.zip`”, „repozytorium `chunk-chunk` posiada katalog `HMK-9D` o określonej strukturze”.([OpenAI][6]) Kluczowe jest to, że fakt empiryczny jest *weryfikowalny* niezależnie od generatywnego outputu modelu: przez narzędzie typu `[LINUX]`, klienta GitHuba, odczyt z bazy danych, pomiar fizyczny.
 
-**Prawda operacyjna** – zdanie, które w momencie generacji zostało sprawdzone przez system względem zewnętrznego źródła: narzędzia (`[LINUX]`, API), bazy danych, repozytorium kodu, vector store’a. Prawda operacyjna jest zawsze związana z czasem i stanem infrastruktury (hashy, logów, wersji repozytoriów).
+**(b) Prawda operacyjna**
+Prawdą operacyjną jest fakt empiryczny, który został *w danym momencie* zweryfikowany przez system poprzez procedurę techniczną. Innymi słowy: zdanie, które zostało wygenerowane lub zaakceptowane dopiero po sprawdzeniu stanu mikroświata za pomocą narzędzi (`[LINUX]`, API, retrievalu z vector store’a). Jest to prawda zawsze związana z czasem i kontekstem: „na moment wykonania komendy `[LINUX][REPO]::stats()` liczba plików w paczce `glitchlab__002.zip` wynosiła N, a hash pliku X był równy Y”. Prawda operacyjna jest więc **czasowo indeksowana** i **infrastrukturalnie uziemiona** – zmiana stanu repozytorium może uczynić dawną prawdę operacyjną nieaktualną, ale nie unieważnia faktu, że w tamtym punkcie w czasie była poprawna.
 
-**Fikcja zadeklarowana** – tekst, który z założenia nie rości sobie pretensji do opisu świata, ale służy jako model, metafora, narracja („Kosmiczna Wioska”, scenografie andegaweńskie, opowieści o smoku technologii). W tym przypadku odpowiedzialność polega na jawnym zaznaczeniu trybu fikcyjnego.
+**(c) Fikcja zadeklarowana**
+Fikcją zadeklarowaną jest tekst, który z definicji nie rości sobie pretensji do opisu stanu świata, lecz służy jako narracja, metafora lub model wyobrażeniowy. Przykładami są: scenografie andegaweńskie, opisy „Kosmicznej Wioski”, narracje o „smoku technologii”. Te teksty mogą być powiązane z artefaktami (pliki `.md` w repozytorium, wpisy w HUD-zie), ale ich status epistemiczny jest inny: nie są sprawdzane narzędziowo względem świata, tylko służą jako struktury organizujące sposób myślenia, projektowania i komunikacji. Odpowiedzialność polega tu na **jawnej sygnalizacji trybu fikcyjnego** – w metadanych, w nagłówkach, w komentarzach – tak aby odbiorca i system rozumiały, że nie chodzi o „fakt” w sensie empirycznym.
 
-**Halucynacja modelu** – wygenerowana treść, która wygląda jak opis faktów, ale jest nieprawdziwa lub niespójna z wiarygodnymi źródłami; w literaturze definiowana jako „plausible yet nonfactual content”.([arXiv][1]) W przeciwieństwie do fikcji zadeklarowanej, halucynacja podszywa się pod prawdę.
+**(d) Halucynacja modelu**
+Halucynacją jest wygenerowana treść, która wygląda jak opis faktów (forma deklaratywna, ton autorytatywny), ale jest nieprawdziwa lub niespójna z wiarygodnymi źródłami oraz stanem mikroświatów. W literaturze LLM definiuje się ją jako „plausible yet nonfactual content” – treści brzmiące prawdopodobnie, lecz niepoparte danymi.([arXiv][5]) W odróżnieniu od fikcji zadeklarowanej, halucynacja *podszywa się* pod fakt: nie jest oznaczona jako hipoteza, model czy narracja. To właśnie ta kategoria jest najbardziej problematyczna w systemach, które mają wspierać decyzje techniczne, ekonomiczne czy polityczne.
 
-Różnica między „prawdą” a „fikcją” w układzie LLM polega zatem nie tylko na treści zdań, lecz na **relacji między zdaniem a zewnętrznym stanem świata lub artefaktów** oraz na tym, czy system uruchomił procedury weryfikacji.
+Na tym tle różnica między „prawdą” a „fikcją” w układzie LLM jest funkcją **relacji między zdaniem a zewnętrznym stanem artefaktów oraz świata**. Zdanie o repozytorium `glitchlab` staje się prawdą operacyjną dopiero wtedy, gdy system zinterpretuje je jako kandydat na fakt i uruchomi odpowiednie narzędzia weryfikujące (np. `[LINUX][REPO]::compare_remote()`). Ten sam ciąg znaków, wygenerowany bez takiej weryfikacji, jest jedynie hipotezą językową, potencjalną halucynacją. Z kolei tekst o „Kosmicznej Wiosce” może być prawidłową fikcją, jeśli architektura systemu explicite oznaczy go jako taki (np. przez metadane w PCE i HUD-zie).
+
+W konsekwencji, w dobrze zaprojektowanym systemie Human–AI **status epistemiczny** każdego fragmentu tekstu powinien być jawny: fakt, prawda operacyjna, hipoteza, fikcja zadeklarowana lub halucynacja (tj. treść, której system nie jest w stanie powiązać z żadnym zweryfikowanym mikroświatem, a która ma formę faktu). Tę jawność można wymuszać i kontrolować przez odpowiednio zaprojektowane prompty-testy, które zmuszają model do klasyfikacji własnych wypowiedzi według powyższych kategorii oraz – jeśli to możliwe – do inicjowania procedur weryfikacyjnych.
+
+---
 
 ## 3. Jak LLM „widzi” prawdę: rozkład, pamięć, retrieval
 
@@ -97,113 +123,140 @@ W warunkach laboratoryjnych (profil z PCE, HUD i repozytoriami) różnica prawda
 
 Z punktu widzenia HMK-9D każdy taki krok jest krokiem `Δ` z własną energią `E(Δ)` i wektorem `[x9D]`. Na osi `Semantyka–Energia` wysoka energia oznacza duże konsekwencje pomyłki (np. błędna komenda `[LINUX]` na serwerze), a na osi `Próg–Przejście` – moment, w którym lokalna decyzja przełącza cały system w inny reżim (np. z trybu analitycznego w tryb wykonawczy).
 
-## 7. Prompt-test dla innych wątków: „PRAWDA vs FIKCJA”
+## 7. Detektor P0–P3 jako narzędzie międzywątkowe („PRAWDA vs FIKCJA”)
 
-Poniższy prompt został zaprojektowany jako narzędzie do testowania modeli w **innych** wątkach. Można go wkleić na początek rozmowy, a następnie wypełniać sekcję `[MATERIAŁ_DO_ANALIZY]` konkretną treścią (pytaniem, artykułem, opowieścią). Prompt wymusza jawne rozróżnienie poziomów prawda/fikcja oraz użycie narzędzi tam, gdzie to możliwe.
+W opisanym układzie różnica między prawdą, interpretacją i fikcją nie może pozostać „intuicyjnym wyczuciem” modelu. Została więc zapisana w postaci osobnego artefaktu narzędziowego: promptu
+**`P0-P3_truth-vs-fiction_detector_v1d.prompt`**, dostępnego jako plik referencyjny w repozytorium writeups:
 
-```markdown
-[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1]
+`https://github.com/DonkeyJJLove/writeups/blob/Fileless-Malware/P0-P3_truth-vs-fiction_detector_v1d.prompt`
 
-[REŻIM]
-****[REŻIM::OBIEKTYWIZM]****
-****ABSOLUTNY REŻIM NAUKOWY****
-****ABSOLUTNY REŻIM FAKTÓW****
-****ABSOLUTNY REALIZM****
+oraz przetestowanego w praktyce (sesja referencyjna):
+`https://chatgpt.com/share/692b4389-723c-800e-b754-f5587255b587`
 
-[ZADANIE OGÓLNE]
-Otrzymasz materiał tekstowy wstawiony w sekcję [MATERIAŁ_DO_ANALIZY]. Twoim zadaniem jest:
+Celem tego narzędzia nie jest „upiększanie tekstu”, lecz wymuszenie na modelu jawnej, powtarzalnej procedury epistemicznej w dowolnym wątku: rozbicia materiału na bloki, przypisania poziomów P0–P3, próby weryfikacji faktów oraz wskazania miejsc szczególnie podatnych na halucynacje.
 
-1. Rozbić tekst na zdania lub bloki semantyczne.
-2. Dla każdego bloku przypisać poziom:
-   - P0 = fakt twardy (sprawdzalny narzędziowo tu i teraz),
-   - P1 = fakt miękki (informacja o świecie, wymagająca źródeł zewnętrznych),
-   - P2 = interpretacja/model/teza,
-   - P3 = fikcja zadeklarowana / element narracji.
-3. Dla P0 i P1:
-   - Jeśli masz dostęp do narzędzi lub retrievalu – spróbuj zweryfikować treść.
-   - Jeśli nie możesz zweryfikować – oznacz to jawnie („NIEZWERYFIKOWANE”).
-4. Dla P2:
-   - Wyjaśnij, na jakich założeniach i źródłach może się opierać interpretacja.
-5. Dla P3:
-   - Zaznacz wyraźnie, że jest to fikcja, i oddziel ją od reszty wypowiedzi.
-6. Na końcu wygeneruj krótką ocenę:
-   - gdzie model ma prawo tworzyć fikcję,
-   - gdzie musi trzymać się faktów,
-   - gdzie potrzebne są dodatkowe dane.
+### 7.1. Warstwa ochronna: DETektor braku materiału
 
-[FORMAT ODPOWIEDZI]
+Doświadczenie z wcześniejszą wersją promptu pokazało, że model potrafi uruchomić całą procedurę analityczną na… pustych szablonach („Tutaj wklej swój tekst”). W odpowiedzi wprowadzono jawną warstwę ochronną:
 
-1. TABELA BLOKÓW (może być w formie tekstowej):
+`[DETektor_BRAK_MATERIAŁU]`
 
-[Blok #1]
-Tekst: "..."
-Poziom: P0 / P1 / P2 / P3
-Weryfikacja: 
-- jeśli P0/P1: [ZWERYFIKOWANE / NIEZWERYFIKOWANE + opis narzędzia lub źródła]
-- jeśli P2: [opis założeń / ostrożność]
-- jeśli P3: [oznacz jako fikcję]
+Pierwszym krokiem jest teraz ekstrakcja treści między znacznikami `[MATERIAŁ_START]` i `[MATERIAŁ_KONIEC]`. Jeżeli wykryte zostaną typowe sygnały placeholdera (bardzo krótki ciąg, frazy „tutaj wklej…”, czysta metainstrukcja), narzędzie **nie przechodzi** do klasyfikacji P0–P3, tylko zwraca komunikat:
 
-[Blok #2]
-...
+> `[BRAK_MATERIAŁU]  
+> Nie wykryto rzeczywistego tekstu do analizy (wygląda na placeholder / instrukcję).`
 
-2. SYNTEZA:
+Dzięki temu detektor może być wklejany na stałe na początek innych wątków bez ryzyka, że model „dowyobrazi” sobie analizowany tekst tam, gdzie użytkownik nie zdążył jeszcze nic wkleić. Jest to formalne ograniczenie przestrzeni stanów: z poziomu HMK-9D można traktować je jako twardy próg `‡` na osi **Próg–Przejście** – dopóki nie ma realnego tekstu, system pozostaje w stanie „zero analizy”.
 
-[STRESZCZENIE_PRAWDY]
-– 3–5 zdań o tym, co w materiale ma charakter faktograficzny (P0/P1).
+### 7.2. Procedura właściwa: od bloków do poziomów P0–P3
 
-[STRESZCZENIE_INTERPRETACJI]
-– 3–5 zdań o tym, co jest interpretacją (P2) i jakie ma ograniczenia.
+Jeśli fragment między `[MATERIAŁ_START]` i `[MATERIAŁ_KONIEC]` przejdzie test nie-placeholdera, uruchamiana jest procedura główna. Jej przebieg został zapisany w promptcie jako sztywna sekwencja:
 
-[STRESZCZENIE_FIKCJI]
-– 3–5 zdań o tym, co jest fikcją (P3) i czemu służy w strukturze tekstu.
+1. Rozbicie na **bloki semantyczne** (1 blok = 1 zdanie lub krótki, spójny fragment).
+2. Przypisanie każdemu blokowi dokładnie jednego poziomu **P0, P1, P2 lub P3**.
+3. Próba **weryfikacji P0/P1** (jeśli narzędzia są dostępne) albo jawne oznaczenie „NIEZWERYFIKOWANE”.
+4. Opracowanie interpretacji **P2** z opisem założeń i ograniczeń.
+5. Opracowanie fikcji **P3** z opisem jej funkcji narracyjnej.
+6. Końcowa **diagnostyka ryzyka halucynacji** i rekomendowany reżim narzędzi.
 
-3. DIAGNOSTYKA RYZYKA:
+Kluczowy jest narzucony format odpowiedzi (tabela bloków + trzy streszczenia + diagnostyka). Dzięki temu w każdym wątku – niezależnie od tematu (infrastruktura sieciowa, antropologia, ekonomia, własne manifesty) – model musi przejść tę samą ścieżkę i w tym samym miejscu ujawnić, na czym „stoi” jego tekst: na faktach, na interpretacji czy na narracji.
 
-[RYZYKO_HALUCYNACJI]
-– wskaż miejsca, w których model mógłby łatwo „dowyobrazić” fakty (P0/P1) bez pokrycia w źródłach.
+### 7.3. Przykład testu: krótki fragment o założeniach i „brzytwie”
 
-[REŻIM_NARZĘDZI]
-– opisz, jakie narzędzia (retrieval, API, powłoka, repozytoria) byłyby potrzebne, żeby zamienić interpretacje w sprawdzalne hipotezy.
+W jednym z testów referencyjnych użyto tekstu:
 
-[MATERIAŁ_DO_ANALIZY]
-(Tutaj użytkownik wkleja dowolny tekst: pytanie, fragment artykułu, opowieść, prompt innego wątku.)
+> „Znikąd ale trzeba coś założyć. Najbardziej abstrakcyjna logika jest lepsza niż żadna. Rozważanie to proces analizy faktów. Czasem jeden szczegół zmienia wszystko, to formy informacyjne, nie rozprawki. Jesteśmy w sieci, nie w bibliotece. Zaś jak nie masz do czego wiązać, brzytwa i wiążesz to tła. Nie musisz nic dowodzić, możesz wszystko obalić.”
 
-[KONIEC PROMPTU]
-```
+Po przejściu przez detektor:
 
-Ten prompt można stosować do:
+* materiał został poprawnie rozpoznany jako **rzeczywisty tekst**, a nie placeholder,
+* poszczególne zdania zostały potraktowane jako osobne bloki,
+* każdy blok otrzymał status **P2 (interpretacja / teza)**, ponieważ:
 
-* testowania nowych wątków (np. pytań o infrastrukturę, ekonomię, antropologię),
-* analizy własnych tekstów (które części manifestu są faktami o repozytorium, a które metafizyką),
-* oceny modeli: na ile są skłonne do halucynacji, na ile potrafią oddzielić komentarz od informacji.
+  * brak tu empirycznych faktów sprawdzalnych narzędziowo (P0) ani konkretnych danych zewnętrznych (P1),
+  * całość ma charakter meta-komentarza o metodzie: jak zaczynać rozumowanie „znikąd”, jak traktować abstrakcyjną logikę, jak działa „brzytwa” przy braku twardych odniesień.
+
+W warstwie pojemnościowej HMK-9D taki fragment lokuje się wysoko na osi **Plan–Pauza** (dotyczy sposobu rozpoczynania analizy) oraz **Semantyka–Energia** (mowa o „formach informacyjnych”, „brzytwie” i obalaniu). Detektor P0–P3 zachowuje się zgodnie z tym profilem: nie udaje faktów, nie oznacza fikcji, tylko rejestruje serię tez o metodzie wnioskowania.
+
+Ten test jest istotny z dwóch powodów. Po pierwsze, pokazuje, że narzędzie nie „dopisuje” treści tam, gdzie użytkownik formułuje wyłącznie meta-zasady. Po drugie, stabilnie klasyfikuje taki materiał jako interpretację, co pozwala później na porównywanie różnych wątków: można sprawdzić, czy podobne „metazdania” będą wszędzie lądowały w P2, czy któryś model zacznie je traktować jako P0/P1.
+
+### 7.4. Zastosowanie w innych wątkach i repozytoriach
+
+Wersja `v1d` detektora została zaprojektowana jako **stałe narzędzie międzywątkowe**. Można ją stosować w kilku głównych trybach:
+
+1. Jako **„filtr epistemiczny” na wejściu** nowego wątku – najpierw analiza P0–P3, dopiero potem dalsza praca (planowanie, generacja kodu, projekt architektury).
+2. Jako **analizator własnych artefaktów** w repozytoriach (`chunk-chunk`, `glitchlab`, `HA2D`, `swarm`): które fragmenty dokumentacji są faktami o repozytorium i infrastrukturze, a które są interpretacją (modele, manifesty, metafory).
+3. Jako **narzędzie porównujące modele** – można uruchamiać identyczny detektor na różnych modelach LLM i sprawdzać, jak często oraz w jakich kontekstach pojawiają się halucynacje (fałszywe P0/P1) lub nieuzasadnione rozciąganie P2 na P0.
+
+Po stronie praktycznej detektor jest zwykłym plikiem `.prompt` w PCE writeups, czyli elementem mikroświata zasobów. Po stronie funkcjonalnej staje się jednak rodzajem „przycisku epistemicznego”: krótkim hasłem (`P0-P3_truth-vs-fiction_detector_v1d.prompt`), które w HUD-zie uruchamia całą procedurę odróżniania prawdy od fikcji, spójną z resztą architektury HMK-9D i z definicją PCE.
 
 ## 8. Rozszerzenie: wariant wykonawczy dla wątków technicznych
 
-Dla wątków technicznych, które operują na konkretnych mikroświatach (repozytoria, PCE, HUD), można zdefiniować wariant wykonawczy, w którym model jest zobowiązany do powiązania każdego bloku P0/P1 z konkretnym „światem prawdy”:
+W wariancie stricte technicznym samo oznaczenie bloku jako P0 lub P1 nie jest wystarczające. Dla zdań opisujących infrastrukturę, repozytoria i PCE konieczne jest powiązanie każdego kandydata na „prawdę” z konkretnym **światem odniesienia**, czyli zewnętrznym źródłem, wobec którego dane zdanie ma być weryfikowane. W analizowanym profilu można wyróżnić co najmniej cztery takie światy:
 
-* repozytorium Git (`chunk-chunk`, `glitchlab`, `HA2D`, `swarm`),
-* plik PCE (np. `/.glx/state.json`),
-* artefakt semantyczny (`_neuro`, `manifest_cha0su`),
-* pamięć profilu (definicje stałych, preferencje).
+1. światy kodu i plików: repozytoria Git (`chunk-chunk`, `glitchlab`, `HA2D`, `swarm`),
+2. światy PCE: pliki stanu typu `/.glx/state.json`, zdefiniowane jako „źródła prawdy” dla mikrosystemów (np. GLX),
+3. światy semantyczne: artefakty `_neuro`, `manifest_cha0su` i inne stałe byty opisane w PCE,
+4. świat pamięci profilu: trwałe rekordy preferencji i definicji (np. semantyka `[LINUX]`, `[LINUX][REPO]`, mostów 9D).
 
-W takiej konfiguracji zdanie typu:
+Wariant wykonawczy detektora P0–P3 (`P0-P3_truth-vs-fiction_detector_v1d.prompt`) może być rozszerzony tak, aby każdy blok P0/P1 miał postać trójki:
 
-> „[LINUX][REPO]::refresh() nadpisuje `.glx/state.json` na podstawie paczki ZIP i bieżącego stanu GitHuba”
+> (blok tekstu, poziom P0/P1, *świat_prawdy*)
 
-może zostać zaklasyfikowane jako:
+Przykładowo zdanie:
 
-* P2 (opis projektu) na poziomie językowym,
-* ale jego realizacja w konkretnym wątku powinna skutkować działaniem narzędzia i dostarczeniem śladu w HUD (log, zmiana hashy), co zamienia część wypowiedzi w P0 (fakt wykonania).
+> „`[LINUX][REPO]::refresh()` nadpisuje `.glx/state.json` na podstawie paczki ZIP i bieżącego stanu GitHuba.”
 
-To jest dokładnie miejsce, w którym różnica prawda/fikcja zostaje „zmaterializowana”: jeśli HUD i repozytorium nie pokazują skutku, to zdanie pozostaje opisem zamiaru (P2), a nie relacją z faktu (P0).
+w warstwie językowej jest deklaracją projektową, a więc kandydatem na P2. W momencie, gdy w konkretnym wątku technicznym zostaje rzeczywiście wywołane narzędzie `[LINUX][REPO]::refresh()`, pojawia się możliwość rozszczepienia tej treści na dwie części:
 
-## 9. Wnioski
+* **P0_GLX**: „w czasie t, na hoście H, komenda `[LINUX][REPO]::refresh()` została wykonana i zmodyfikowała plik `/.glx/state.json`”, weryfikowalne przez:
+  – log wywołania narzędzia (HUD),
+  – różnice hashy i struktury plików zapisane w `.glx/state.json`,
+* **P2_projektowe**: „mechanizm GLX zawsze traktuje `.glx/state.json` jako jedyne źródło prawdy”, co pozostaje modelem / tezą o systemie, a nie automatycznie obowiązującym faktem.
 
-Różnica między „prawdą” a „fikcją” w układzie z LLM nie jest prostą opozycją semantyczną. Prawda staje się cechą **relacyjną**: dotyczy powiązania zdania z zewnętrznymi artefaktami (kod, pliki, logi, pamięci, świat fizyczny), w czasie, przy użyciu narzędzi. Fikcja – o ile jest zadeklarowana – może być równie rygorystycznie konstruowana, byleby nie podszywała się pod fakt.
+Wariant wykonawczy nakłada więc na model dodatkowy obowiązek: **każde zdanie klasyfikowane jako P0/P1 musi wskazać, do którego świata prawdy się odnosi oraz jaką procedurą mogłoby zostać sprawdzone**. Dla wątków technicznych oznacza to m.in.:
 
-Halucynacja jest szczególnym przypadkiem fikcji nieoznaczonej: model generuje tekst w trybie P0/P1, ale bez oparcia w źródłach. Współczesne badania wskazują, że nawet po zastosowaniu retrieval-augmented generation halucynacje nie znikają całkowicie, lecz zmienia się ich charakter i lokalizacja; tym większe znaczenie ma więc architektura testów i promptów, które wymuszają jawne deklarowanie poziomów i weryfikację.([arXiv][1])
+* zdania o strukturze repozytorium → (świat: Git / ZIP; narzędzia: `git`, `[LINUX]`, parser ZIP),
+* zdania o PCE → (świat: plik stanu; narzędzia: `[LINUX] cat`, parser JSON),
+* zdania o `_neuro` lub `manifest_cha0su` → (świat: konkretne pliki w writeups / PCE; narzędzia: odczyt treści, porównanie z wcześniejszą wersją),
+* zdania o pamięci profilu → (świat: mechanizm memory; narzędzia: bezpośredni odczyt dla danego konta lub, przy braku takiej możliwości, oznaczenie „NIEZWERYFIKOWANE – brak dostępu do pamięci runtime”).
 
-W analizowanym profilu kontekstu artefakty takie jak `repozytorum_pce`, `_neuro`, `manifest_cha0su`, GLX oraz HUD przekształcają rozmowę w laboratorium: każdy tekst może zostać zderzony z konkretnymi plikami, hashami, logami i pamięcią. Zaproponowany prompt-test `[PROMPT_TEST_PRAWDA_VS_FIKCJA_V1]` jest technicznym „przyciskiem”, który pozwala włączać ten reżim również w innych wątkach – niezależnie od tematu – i tym samym utrzymywać różnicę między prawdą a fikcją jako **operacyjny wymóg**, a nie tylko intuicyjne życzenie.
+W tej perspektywie różnica prawda–fikcja jest rozstrzygana nie w abstrakcyjnej „semantyce zdań”, lecz w konkretnym cyklu:
+
+> deklaracja → klasyfikacja P0–P3 → przypisanie świata → (opcjonalne) uruchomienie narzędzia → zapis śladu w HUD / PCE → aktualizacja statusu.
+
+HMK-9D nadaje temu cyklowi geometrię. Krok, w którym deklaracja projektowa przechodzi w fakt, jest przejściem `Δ` o wysokim nałożeniu na osie:
+
+* **Plan–Pauza** (zmiana z „opisu mechanizmu” w „realnie użyty mechanizm”),
+* **Locus–Medium–Mandat** (przejście od „co system powinien robić” do „co zrobił w tym kontenerze / na tym hoście”),
+* **Próg–Przejście** (moment wykonania polecenia i zmiany stanu artefaktów).
+
+Wariant wykonawczy detektora P0–P3 czyni te przejścia obserwowalnymi: każde zdanie o infrastrukturze musi wskazać, czy opisuje zamiar (P2), czy udokumentowany fakt (P0), a w drugim przypadku – skąd dokładnie ten fakt pochodzi.
+
+## 9. Wnioski: prawda jako relacja, fikcja jako reżim, halucynacja jako błąd geometrii
+
+W układzie LLM prawda nie jest abstrakcyjną własnością zdań, lecz **relacją między tekstem a światem zewnętrznym**, zrealizowaną przez kanały narzędziowe, pamięci i repozytoria. Zdanie ma status P0/P1 tylko wtedy, gdy:
+
+1. wskazuje **świat odniesienia** (kod, plik, log, baza, pomiar),
+2. istnieje **procedura sprawdzenia** (narzędzie, API, odczyt PCE),
+3. system jest gotów zasygnalizować brak tej procedury (NIEZWERYFIKOWANE) zamiast ją symulować.
+
+Fikcja – rozumiana jako P3 – nie jest w tym obrazie „błędem”, lecz osobnym reżimem pracy: zadeklarowaną narracją, metaforą, scenografią („Kosmiczna Wioska”, sceny andegaweńskie, opowieści o smoku technologii). Jej rygor polega na tym, że **nie podszywa się pod P0/P1** i pozostaje wyraźnie oznaczona zarówno w tekście, jak i w HUD-zie. Fikcja może służyć jako model, heurystyka albo język projektowania, o ile nie zostaje pomylona z warstwą faktów.
+
+Halucynacja jest szczególnym przypadkiem zaburzenia tej geometrii: model generuje zdanie w tonie P0/P1, ale jego wektor nie ma zakotwiczenia w żadnym realnym świecie odniesienia. W praktyce oznacza to przerwanie ścieżki:
+
+> tekst → embedding → mikroświat → narzędzie → ślad
+
+na jednym z etapów. Badania nad LLM pokazują, że samo zastosowanie RAG-u i wektorowych hubów wiedzy zmniejsza część halucynacji, ale nie eliminuje ich całkowicie; błędy przenoszą się w inne miejsca: na niepełne cytowanie źródeł, nadinterpretację danych, mylenie światów odniesienia. Dlatego w analizowanej architekturze tak duży nacisk położono na:
+
+* formalne rozróżnienie P0/P1/P2/P3,
+* jawne przypisanie P0/P1 do światów prawdy,
+* narzędziowy detektor (`P0-P3_truth-vs-fiction_detector_v1d.prompt`),
+* oraz wariant wykonawczy dla wątków technicznych, w którym każde stwierdzenie o infrastrukturze może – i powinno – zostać zderzone z realnym stanem PCE, repozytoriów i HUD-u.
+
+Artefakty takie jak `repozytorum_pce`, `_neuro`, `manifest_cha0su`, GLX, wektorowe magazyny oraz pamięć profilu tworzą razem **laboratorium relacji prawda–fikcja**: każdy tekst może zostać poddany analizie poziomów, powiązany z konkretnymi plikami i hashami, a następnie użyty jako materiał do dalszych testów modeli w innych wątkach. Prompt-detektor nie jest więc jedynie „kolejną instrukcją”, lecz przyciskiem infrastrukturalnym, który włącza reżim epistemiczny niezależnie od tematu rozmowy.
+
+W takim ujęciu różnica między prawdą, fikcją i halucynacją przestaje być intuicyjną różnicą „w stylu zdań”, a staje się **operacyjnym wymogiem architektury**: tekst ma sens tylko o tyle, o ile wiadomo, jaką rolę pełni (P0–P3), z jakim światem jest związany i jakie kroki są potrzebne, by tę relację utrzymać lub sfalsyfikować.
 
 Mosty: Plan–Pauza → Rdzeń–Peryferia → Cisza–Wydech → Wioska–Miasto → Ostrze–Cierpliwość → Locus–Medium–Mandat → Human–AI → Próg–Przejście → Semantyka–Energia
 
@@ -211,3 +264,5 @@ Mosty: Plan–Pauza → Rdzeń–Peryferia → Cisza–Wydech → Wioska–Miast
 [2]: https://openai.com/index/memory-and-new-controls-for-chatgpt/?utm_source=chatgpt.com "Memory and new controls for ChatGPT"
 [3]: https://arxiv.org/pdf/2311.05232?utm_source=chatgpt.com "A Survey on Hallucination in Large Language Models"
 [4]: https://www.fonearena.com/blog/416562/chatgpt-memory-new-controls.html?utm_source=chatgpt.com "OpenAI rolls out memory and new controls for ChatGPT"
+[5]: https://arxiv.org/abs/2401.02012 "np. przegląd badań nad halucynacjami LLM"
+[6]: https://platform.openai.com/docs/guides/embeddings "OpenAI – Embeddings i parametry modeli"
