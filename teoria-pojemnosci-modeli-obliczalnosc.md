@@ -235,11 +235,181 @@ Wtedy „sakramentalne WTF w token&chunk system” przestaje być mgłą:
 * wyżej jest **świat funkcji o różnej pojemności**,
 * a najwyżej – **świat rytuałów ASCII**, gdzie przycisk `[LINUX][REPO]::refresh()` jest już tylko jednym, mocno skompresowanym, obliczalnym artefaktem w całej tej hierarchii.
 
+To, co wkleiłeś, to w zasadzie **gotowy mikroświat typu „sonda EEG”** – i jednocześnie **placeholder na przycisk** w większym systemie.
+
+Spróbujmy go rozebrać nie „jak listę funkcji”, tylko jak mały świat ze swoją fizyką.
+
 ---
 
-Human–AI Semantyka–Energia Rdzeń–Peryferia Plan–Pauza Język–Urządzenie
+### 1. Ten prompt jako mikroświat
+
+Ten blok od `[PROMPT_MOZOWANIE_V1][RUN]` w dół definiuje **cały lokalny kosmos**:
+
+* ma **fizykę** (REŻIM: obiektywizm, naukowość, realizm),
+* ma **geometrię** (chunk–chunk, soczewki 9D, sieć opadowa, PKP),
+* ma **metryki** (CHUNK_CHUNK_SCORE, CONTEXT_FILTER_SCORE itd.),
+* ma nawet **kosmetykę i język UI** (dokładny FORMAT ODPOWIEDZI).
+
+To jest klasyczny mikroświat w Twoim rozumieniu: zamknięty ekosystem znaczeń, w którym:
+
+* wiadomo, **co jest materią**: „biezacy watek + pamiec profilu”,
+* wiadomo, **jak to mierzyć**: zestaw skal 0.00–1.00,
+* wiadomo, **jak wypluwać wynik**: 6 sekcji, ściśle opisana struktura.
+
+Czyli to nie jest „prompt ogólny”, tylko **specyfikacja jednego konkretnego typu pomiaru**. Taki sam typ bytu jak: HUD, PCE, `_neuro`, z tą różnicą, że to byt „czynny”: po uruchomieniu wykonuje rytuał „mozowania”.
+
+---
+
+### 2. Placeholder: [PROMPT_MOZOWANIE_V1][RUN] jako przycisk
+
+Fragment:
+
+```text
+[!!!! UWAGA PROMPT TYLKO DO ANALIZY NIE WYKONUJ OD TEGO MIEJSCA]
+[PROMPT_MOZOWANIE_V1][RUN]
+```
+
+jest dokładnie tym, co nazwałeś kiedyś **przyciskiem**:
+
+* `[PROMPT_MOZOWANIE_V1]` – nazwa mikroświata / procedury,
+* `[RUN]` – intencja: „uruchom protokół”.
+
+To zachowuje się jak placeholder w kodzie:
+
+* w pliku `.md` może stać tylko ta linijka – reszta (ten wielki blok specyfikacji) siedzi w repo / PKP / artefakcie;
+* backend (czyli model + otoczka) wie:
+  „jeśli widzę `[PROMPT_MOZOWANIE_V1][RUN]`, to wczytuję z pamięci ten **świat reguł**, podstawiam aktualny materiał i generuję wynik w zadanym formacie”.
+
+Czyli:
+
+* **mikroświat** = cała długa specyfikacja,
+* **placeholder** = krótki ASCII-znak przywołujący ten mikroświat.
+
+To jest realizacja Twojej tezy „słowo ma być równocześnie opisem i kablem”:
+`[PROMPT_MOZOWANIE_V1][RUN]` jest kablem, a specyfikacja poniżej – opisem fizyki, jaka się uruchamia po zwarciu.
+
+---
+
+### 3. Warstwy w środku mikroświata
+
+Ten prompt ma bardzo klarowny podział warstw (mikroświat jest „trójpiętrowy”):
+
+1. **Warstwa ontologiczna** – nagłówek REŻIM + „TEN MODEL / TEN WĄTEK / TA PAMIĘĆ…”.
+   To jest deklaracja, w jakim trybie ma działać interpretator: absolutny realizm, zero bajerów, materiał = PKP + bieżący wątek.
+
+2. **Warstwa operacyjna** – [ZAKRES MATERIAŁU], [MECHANIZM MOZOWANIA], [DEFINICJE METRYK].
+   Tutaj definiujesz, *jaką* funkcję ten mikroświat implementuje:
+   – bierze strumień tekstu,
+   – nadaje mu interpretację EEG/PKP,
+   – destyluje do kilku skal liczbowych + opisu.
+
+3. **Warstwa interfejsu** – [FORMAT ODPOWIEDZI] + ostatni rząd mostów semantycznych.
+   To jest kontrakt z zewnętrzem:
+   „Z zewnątrz zobaczysz tylko tę strukturę odpowiedzi. W środku może się dziać dużo, ale na kablu leci 6 sekcji + rząd soczewek 9D”.
+
+W języku mikroświatów:
+
+* **fizyka**: reguły mozowania, definicje metryk, soczewki 9D, pojęcia ALIGNMENT/EXTENDED/DIVERGENT,
+* **topologia**: POWIERZCHNIA_ODNIESIENIA (PKP_GLOBAL, `_neuro`, PCE…), punkty kotwiczenia, kierunki odchyleń,
+* **UI**: placeholder `[PROMPT_MOZOWANIE_V1][RUN]` i format wyjścia.
+
+---
+
+### 4. Jak ten prompt wchodzi w rodzinę mikroświatów
+
+Widać bardzo jasno, że to jest **prototyp klasy**:
+
+* mikroświat typu **„diagnoza / pomiar stanu”**,
+  w przeciwieństwie do mikroświata typu „generacja artykułu”, „wykonanie komendy”, „synteza kodu”.
+
+Można to widzieć jako:
+
+* klasę `MOZOWANIE` z polami:
+
+  * `INPUT`: wątek + PKP,
+  * `OUTPUT`: zestandaryzowane metryki,
+  * `LENSES`: 9D,
+  * `REFERENCE_SURFACE`: PKP_GLOBAL / `_neuro` / inne artefakty;
+
+a `[PROMPT_MOZOWANIE_V1]` to jedna implementacja tej klasy, w wersji V1.
+
+W ten sam sposób mogą powstać:
+
+* `[PROMPT_DIAGNOZA_DEPLOY_V1][RUN]`,
+* `[PROMPT_ANALIZA_PRAWDA_VS_FIKCJA_V1d][RUN]`,
+* `[PROMPT_TEST_LOSOWOŚĆ_V1a][RUN]`,
+
+każdy jako osobny mikroświat, ale z podobnym **szkieletem placeholdera**: `[NAZWA][RUN]`.
+
+ASCII placeholder staje się więc **jednolitą notacją**: w `.md` siedzą tylko pojedyncze „przyciski”, a właściwa „fizyka” mikroświata jest trzymana w artefaktach PKP i repozytorium.
+
+---
+
+### 5. Relacja do teorii pojemności / obliczalności
+
+W tle idealnie widać to, o czym przed chwilą była mowa:
+
+* Teoretycznie LLM (jako funkcja) ma gigantyczną pojemność – może robić milion różnych rzeczy.
+* Ten prompt **drastycznie ogranicza klasę funkcji** dopuszczalnych w tym mikroświecie:
+
+  * nie wolno zmieniać formatu wyjścia,
+  * wolno używać tylko zadanego zestawu metryk,
+  * nie wolno ignorować soczewek 9D,
+  * materiał wejściowy jest jasno określony.
+
+Czyli z punktu widzenia pojemności:
+
+* `[PROMPT_MOZOWANIE_V1][RUN]` jest **projekcją** „wielkiego modelu” na bardzo mały, mocno ustrukturyzowany wycinek funkcji:
+  „funkcje, które biorą EEG tekstu i zwracają 6 liczb + interpretację”.
+
+Z punktu widzenia obliczalności:
+
+* cały mikroświat jest definicją jednej **obliczalnej funkcji** nad skończonym alfabetem ASCII;
+* placeholder jest nazwą tej funkcji,
+* REŻIM i FORMAT ODPOWIEDZI są częścią jej specyfikacji.
+
+To jest dokładnie „algorytm w tekście”: wystarczy, że jakiś interpreter (np. asystent + shell) umie czytać tę specyfikację i wykonywać ją deterministycznie.
+
+---
+
+### 6. Co daje taki placeholder dla większej architektury
+
+W praktyce:
+
+* wątek „główny” (np. dyskusja o artykule, projekcie, deplyo) może w dowolnym momencie wstawić:
+
+  ```text
+  [PROMPT_MOZOWANIE_V1][RUN]
+  ```
+
+  i dostać **meta-raport** o samym wątku, bez przeklejania całej specyfikacji;
+
+* każda taka specyfikacja może być trzymana:
+
+  * jako plik `.prompt` w repo (np. `HMK-9D_MOZOWANIE_V1.prompt`),
+  * jako artefakt w PKP,
+  * jako zarejestrowany „tryb narzędzia” w HUD.
+
+To jest dokładnie poziom, w którym **ASCII zaczyna zachowywać się jak mini-język**:
+
+* `[PROMPT_MOZOWANIE_V1][RUN]`
+  ≈ `call MOZOWANIE_V1(context=THREAD, memory=PKP_GLOBAL)`,
+
+tylko zapisane w formie prostego tekstu, który rozumie człowiek i LLM, a backend może przetłumaczyć na konkretne procedury.
+
+---
+
+Plan–Pauza Human–AI Rdzeń–Peryferia Wioska–Miasto Locus–Medium–Mandat Ostrze–Cierpliwość Próg–Przejście Semantyka–Energia
+
 
 [1]: https://pl.wikipedia.org/wiki/Teoria_obliczalno%C5%9Bci?utm_source=chatgpt.com "Teoria obliczalności – Wikipedia, wolna encyklopedia"
 [2]: https://pl.wikipedia.org/wiki/Funkcja_obliczalna?utm_source=chatgpt.com "Funkcja obliczalna – Wikipedia, wolna encyklopedia"
 [3]: https://lmf.di.uminho.pt/quantum-computation-2122/NotesSlides/QC-LN-Computability.pdf?utm_source=chatgpt.com "Lecture 2 Computability 1 The halting problem"
 [4]: https://en.wikipedia.org/wiki/Halting_problem?utm_source=chatgpt.com "Halting problem"
+
+
+
+
+---
+
+Human–AI Semantyka–Energia Rdzeń–Peryferia Plan–Pauza Język–Urządzenie
