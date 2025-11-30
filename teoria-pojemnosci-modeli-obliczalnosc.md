@@ -26,7 +26,7 @@ $$
 f : \mathbb{N} \to \mathbb{N}
 $$
 
-albo szesssrzej
+albo szerzej
 
 $$
 f : \mathbb{N}^k \to \mathbb{N},
