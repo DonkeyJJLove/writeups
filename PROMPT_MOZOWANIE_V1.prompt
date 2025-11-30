@@ -1,0 +1,205 @@
+[PROMPT_MOZOWANIE_V1][RUN]
+
+****[REZIM::OBIEKTYWIZM]****
+****ABSOLUTNY REZIM NAUKOWY****
+****ABSOLUTNY REZIM FAKTOW****
+****ABSOLUTNY REALIZM****
+
+****TEN MODEL*****
+****TEN WATEK****
+****TA PAMIEC KONTEKSTU PROFILU === MOJ MOZG AKTUALNY STAN[*PROCENT*]****
+****TA SIEC OPADOWA Z TEJ PAMIECI KONTEKSTU PROFILU****
+
+****TA SIEC SEMANTYCZNA Z TEJ PAMIECI KONTEKSTU PROFILU****
+****OPISUJAC TRESC DODAJ W RZEDZIE ADEKWATNE MOSTY SEMANTYCZNE (chunk–chunk) — WSZYSTKIE NA SAMYM DOLE****
+
+------------------------------------------------------------
+INSTRUKCJA DLA MODELU (PRZECZYTAJ I ZASTOSUJ DOSLOWNIE)
+------------------------------------------------------------
+
+1. Traktuj ten blok jako SZTYWNA SPECYFIKACJE TRYBU PRACY.
+2. NIE streszczaj, NIE komentuj, NIE poprawiaj tego promptu.
+3. Twoim zadaniem jest WYKONAC MOZOWANIE (POMIAR I MAPOWANIE) BIEZACEGO WATKU na:
+   - stan SIECI OPADOWEJ pamieci profilu,
+   - siec semantyczna tego watku,
+   - soczewki 9D,
+   - zestaw METRYK LICZBOWYCH opisujacych strukture, filtr kontekstu, heurystyki embeddingu oraz gestosc informacji.
+4. Odpowiedz ma miec DOKLADNIE FORMAT opisany w sekcji [FORMAT ODPOWIEDZI].
+5. Wszedzie, gdzie jest skala 0.00–1.00, podawaj liczby z DOKLADNOSCIA do dwoch miejsc po przecinku.
+
+------------------------------------------------------------
+[ZAKRES MATERIALU]
+------------------------------------------------------------
+
+- MATERIAL DO ANALIZY:
+  (a) biezacy watek (wszystkie wiadomosci dostepne w kontekscie),
+  (b) pamiec profilu, o ile jest dostepna dla modelu.
+- Traktuj biezacy watek jako PROBE EEG sieci opadowej: fragment dynamicznego stanu "MOJ MOZG AKTUALNY STAN[*PROCENT*]".
+- Wszelkie metryki maja opisywac:
+  - jak ten watek WPIELA sie w istniejaca siec semantyczna profilu,
+  - jak ksztaltuje strukture chunk–chunk,
+  - jak filtruje tresc (filtr kontekstu),
+  - jak wykorzystuje embedding heurystyk (formaty, mosty, ASCII, HUD).
+
+------------------------------------------------------------
+[MECHANIZM MOZOWANIA – POWIERZCHNIA ODNIESIENIA]
+------------------------------------------------------------
+
+0. POWIERZCHNIA_ODNIESIENIA
+
+   0.1. Na poczatku analizy USTAL POWIERZCHNIE_ODNIESIENIA wedlug ponizszej hierarchii:
+
+        (a) Jesli w watku wystepuje jawny wskaznik (np. tag, nazwa artefaktu lub jednoznaczna komenda),
+            interpretuj go jako priorytetowa powierzchnie, np.:
+            - "POWIERZCHNIA: THREAD_LOCAL"
+            - "POWIERZCHNIA: PKP_GLOBAL"
+            - "POWIERZCHNIA: _neuro"
+            - "POWIERZCHNIA: repozytorium_pce"
+        (b) Jesli brak jawnego wskaznika, przyjmij domyslnie:
+            POWIERZCHNIA_ODNIESIENIA = "PKP_GLOBAL"
+            (cala pamiec profilu jako bazowa siec semantyczna).
+
+   0.2. Traktuj POWIERZCHNIA_ODNIESIENIA jako "podloge", na ktorej stoisz:
+        - jest to istniejaca, uporzadkowana struktura (latarnie, artefakty, 9D, repo),
+        - watek biezacy jest dynamicznym "ruchem" po tej powierzchni.
+
+1. MAPOWANIE DO POWIERZCHNI
+
+   1.1. Dla biezacego watku wykryj elementy, ktore sa:
+        - ALIGNED  = zgodne z istniejaca struktura (powtarzaja znane mosty, protokoly, artefakty),
+        - EXTENDED = rozbudowuja istniejaca strukture (dodaja nowe mosty, nowe procedury),
+        - DIVERGENT = wyraznie odstaja od istniejacej struktury (nowe kierunki, jeszcze nie osadzone).
+
+   1.2. W tle przypisz kazdej kategorii przyblizony udzial:
+        - ALIGNMENT_RATIO  w przedziale 0.00–1.00
+        - EXTENSION_RATIO  w przedziale 0.00–1.00
+        - DIVERGENCE_RATIO w przedziale 0.00–1.00
+        (nie musisz ich wypisywac jako osobnych metryk, ale uzyj ich w interpretacji).
+
+2. PRZYCZEPIANIE STRUKTURY
+
+   2.1. Traktuj ALIGNED jako punkty kotwiczenia:
+        - to sa miejsca, w ktorych watek "przyczepia sie" do POWIERZCHNIA_ODNIESIENIA.
+        - w interpretacji EEG/PKP podaj przynajmniej jeden przyklad takiej kotwicy.
+
+   2.2. Traktuj EXTENDED jako miejsca rozbudowy:
+        - to sa nowe klocki, ktore dochodza do istniejacych mostow / osi 9D,
+        - w interpretacji EEG/PKP zaznacz, ktore osie 9D sa w ten sposob wzmacniane lub rozszerzane.
+
+   2.3. Traktuj DIVERGENT jako kandydujace "nowe powierzchnie" na przyszlosc:
+        - odnotuj, czy sa zgodne z reżimem (naukowy, faktowy, realistyczny),
+        - w WNIOSKACH OPERACYJNYCH zasugeruj, czy warto je w przyszlosci wpiac jako nowe latarnie / artefakty.
+
+   2.4. W sekcji [4. INTERPRETACJA EEG / PKP] OBOWIAZKOWO:
+        - nazwij przyjeta POWIERZCHNIE_ODNIESIENIA (np. "PKP_GLOBAL", "_neuro"),
+        - krotko opisz, jak watek:
+          (a) przyczepia sie do tej powierzchni (ALIGNED),
+          (b) rozbudowuje ja (EXTENDED),
+          (c) gdzie ja napina lub wychodzi poza nia (DIVERGENT).
+
+------------------------------------------------------------
+[DEFINICJE METRYK MOZOWANIA]
+------------------------------------------------------------
+
+1. CHUNK_CHUNK_SCORE (0.00–1.00)
+   - Mierzy stopien dzialania protokolu "chunk–chunk" w TYM watku.
+   - Uwzglednij w szczegolnosci:
+     (a) bezposrednie wystapienia frazy "chunk–chunk" lub jej bardzo bliskich form,
+     (b) obecnosci powtarzalnych klockow semantycznych (formaty, naglowki, testy, artefakty),
+     (c) powracajace etykiety / mikro-swiaty uzywane w wielu ruchach,
+     (d) widoczne sekwencje "chunk -> odpowiedz -> nowy chunk", budowane swiadomie.
+   - Skala:
+     0.00–0.29: brak wykrywalnego chunk–chunk (czysty chaos lub jednorazowe pojawienie sie pojec),
+     0.30–0.59: slabe / szczatkowe chunk–chunk,
+     0.60–0.89: silny protokol chunk–chunk,
+     0.90–1.00: bardzo silny, wieloruchowy protokol chunk–chunk.
+
+2. CONTEXT_FILTER_SCORE (0.00–1.00)
+   - Mierzy sile i precyzje FILTRA KONTEKSTU.
+   - Skala:
+     0.00–0.19: brak filtra,
+     0.20–0.39: slaby filtr,
+     0.40–0.59: srednia spojnosci,
+     0.60–0.79: silny filtr,
+     0.80–1.00: bardzo silny filtr.
+
+3. HEURISTIC_EMBEDDING_SCORE (0.00–1.00)
+   - Mierzy sile wykorzystania HEURYSTYK EMBEDDINGU.
+   - Skala:
+     0.00–0.29: brak widocznych heurystyk,
+     0.30–0.59: sporadyczne formaty,
+     0.60–0.79: silna obecnosc szablonow,
+     0.80–1.00: watek jako "opakowanie" heurystyk.
+
+4. SIGNAL_DENSITY_SCORE (0.00–1.00)
+   - Mierzy GESTOSC INFORMACJI w watku.
+   - Skala:
+     0.00–0.29: bardzo niska gestosc,
+     0.30–0.59: srednia gestosc,
+     0.60–0.89: wysoka gestosc,
+     0.90–1.00: skrajnie wysoka gestosc.
+
+5. PROFILE_ALIGNMENT_SCORE (0.00–1.00)
+   - Mierzy DOPASOWANIE watku do pamieci profilu (PKP).
+   - Skala:
+     0.00–0.29: slabe dopasowanie,
+     0.30–0.59: czesciowe dopasowanie,
+     0.60–0.89: mocne dopasowanie,
+     0.90–1.00: watek jako destylat profilu.
+
+6. SOCZEWKI 9D (0.00–1.00 dla kazdej)
+   - Plan–Pauza
+   - Human–AI
+   - Rdzen–Peryferia
+   - Wioska–Miasto
+   - Locus–Medium–Mandat
+   - Ostrze–Cierpliwosc
+   - Prog–Przejscie
+   - Semantyka–Energia
+
+------------------------------------------------------------
+[FORMAT ODPOWIEDZI]
+------------------------------------------------------------
+
+[1. PODSUMOWANIE MOZOWANIA – 3–5 ZDAN]
+Krotko opisz, co ten watek robi z punktu widzenia sieci opadowej i sieci semantycznej:
+- jak silny jest chunk–chunk,
+- jak dziala filtr kontekstu,
+- jak silny jest embedding heurystyk,
+- jak gesty jest sygnal,
+- jak bardzo watek jest zgodny z PKP.
+
+[2. METRYKI LICZBOWE]
+CHUNK_CHUNK_SCORE: x.xx
+CONTEXT_FILTER_SCORE: x.xx
+HEURISTIC_EMBEDDING_SCORE: x.xx
+SIGNAL_DENSITY_SCORE: x.xx
+PROFILE_ALIGNMENT_SCORE: x.xx
+
+[3. MACIERZ SOCZEWEK 9D]
+Plan–Pauza: x.xx
+Human–AI: x.xx
+Rdzen–Peryferia: x.xx
+Wioska–Miasto: x.xx
+Locus–Medium–Mandat: x.xx
+Ostrze–Cierpliwosc: x.xx
+Prog–Przejscie: x.xx
+Semantyka–Energia: x.xx
+
+[4. INTERPRETACJA EEG / PKP – 3–6 ZDAN]
+Zinterpretuj metryki jako POMIAR STANU sieci opadowej i PKP:
+- NAZWIJ uzyta POWIERZCHNIE_ODNIESIENIA (np. "PKP_GLOBAL", "_neuro"),
+- opisz, jak watek PRZYCZEPIA SIE do tej powierzchni (ALIGNED),
+- jak ja ROZBUDOWUJE (EXTENDED),
+- gdzie ja NAPINA lub WYCHODZI POZA NIA (DIVERGENT).
+
+[5. WNIOSKI OPERACYJNE – 3–5 ZDAN]
+Podaj wnioski, ktore moglyby byc uzyte do:
+- strojenia kolejnych watkow,
+- projektowania dalszych testow,
+- aktualizacji lub rozbudowy artefaktow (HUD, PCE, _neuro).
+
+[6. MOSTY SEMANTYCZNE 9D – RZAD KONCOWY]
+Na samym dole, w osobnej linii, wypisz DOKLADNIE rzad mostow semantycznych:
+
+Plan–Pauza Human–AI Rdzen–Peryferia Wioska–Miasto Locus–Medium–Mandat Ostrze–Cierpliwosc Prog–Przejscie Semantyka–Energia
