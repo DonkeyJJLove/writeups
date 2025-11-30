@@ -58,6 +58,9 @@ co oznacza dążenie do twardej inwariancji: dla tego samego materiału wejścio
 
 ### 3. Metoda: protokół [HMK-9D](https://github.com/DonkeyJJLove/chunk-chunk/blob/master/HMK9D_SEM9D_GLITCHLAB_V1.PROMPT) jako warstwa pomiarowa 
 
+[inwariants I](https://chatgpt.com/share/692ccaf8-6830-800e-a69c-528cc51bbf1d)
+[inwariants II](https://chatgpt.com/share/692cd28e-4cd0-800e-9bf4-40e73e6f793c)
+
 Specyfikacja HMK-9D, zapisana w formie „czystego ASCII”, pełni podwójną rolę: jest jednocześnie kodem i dokumentacją działania. Kluczowe elementy metody można streścić następująco, trzymając się języka protokołu.
 
 Wątek jest źródłem danych. Jeżeli występują tagi [MATERIAŁ_START]…[MATERIAŁ_KONIEC], mierzony jest tylko ten fragment; w przeciwnym razie mierzony jest cały dostępny wątek (SRC = AUTO). Następnie stosowana jest segmentacja:
