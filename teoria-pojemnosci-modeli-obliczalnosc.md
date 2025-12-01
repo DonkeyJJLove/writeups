@@ -315,101 +315,121 @@ W języku mikroświatów:
 
 ---
 
-### 4. Jak ten prompt wchodzi w rodzinę mikroświatów
-
-Widać bardzo jasno, że to jest **prototyp klasy**:
-
-* mikroświat typu **„diagnoza / pomiar stanu”**,
-  w przeciwieństwie do mikroświata typu „generacja artykułu”, „wykonanie komendy”, „synteza kodu”.
-
-Można to widzieć jako:
-
-* klasę `MOZOWANIE` z polami:
-
-  * `INPUT`: wątek + PKP,
-  * `OUTPUT`: zestandaryzowane metryki,
-  * `LENSES`: 9D,
-  * `REFERENCE_SURFACE`: PKP_GLOBAL / `_neuro` / inne artefakty;
-
-a `[PROMPT_MOZOWANIE_V1]` to jedna implementacja tej klasy, w wersji V1.
-
-W ten sam sposób mogą powstać:
-
-* `[PROMPT_DIAGNOZA_DEPLOY_V1][RUN]`,
-* `[PROMPT_ANALIZA_PRAWDA_VS_FIKCJA_V1d][RUN]`,
-* `[PROMPT_TEST_LOSOWOŚĆ_V1a][RUN]`,
-
-każdy jako osobny mikroświat, ale z podobnym **szkieletem placeholdera**: `[NAZWA][RUN]`.
-
-ASCII placeholder staje się więc **jednolitą notacją**: w `.md` siedzą tylko pojedyncze „przyciski”, a właściwa „fizyka” mikroświata jest trzymana w artefaktach PKP i repozytorium.
+Dobra, składamy to w jeden, spójny kawałek „pod książkę”, bez listy zakupów – od punktu 4 dalej.
 
 ---
 
-### 5. Relacja do teorii pojemności / obliczalności
+### 4. Placeholder jako wpis w kartotece: biblioteka mikroświatów
 
-W tle idealnie widać to, o czym przed chwilą była mowa:
+W dużych systemach LLM szybko okazuje się, że pojedyncze, wymyślane ad hoc prompty nie wystarczą. Dlatego zespoły zaczęły budować **biblioteki promptów** – zbiory gotowych szablonów, utrzymywanych jak kod: w repozytorium, z wersjami, review i QA.  W praktyce wygląda to jak kartoteka: każda „karta” opisuje jeden mikroświat, czyli konkretny tryb pracy modelu.
 
-* Teoretycznie LLM (jako funkcja) ma gigantyczną pojemność – może robić milion różnych rzeczy.
-* Ten prompt **drastycznie ogranicza klasę funkcji** dopuszczalnych w tym mikroświecie:
+Nad tym samym pracuje „Prompt Canvas”: to propozycja kanwy, która układa prompt w pola – rola modelu, odbiorca, cel, kontekst, ograniczenia, przykłady, format wyjścia.  Zamiast chaotycznego „prompt from scratch” masz płótno, w które wpisujesz dane, a sam szablon wymusza strukturę. W Twoim języku: każdy placeholder jest rekordem w tej kartotece, z nazwą, rolą i kontraktem.
 
-  * nie wolno zmieniać formatu wyjścia,
-  * wolno używać tylko zadanego zestawu metryk,
-  * nie wolno ignorować soczewek 9D,
-  * materiał wejściowy jest jasno określony.
+`[PROMPT_MOZOWANIE_V1]` staje się więc nie „jakąś zaklęcią”, tylko wpisem typu:
 
-Czyli z punktu widzenia pojemności:
+> mikroświat diagnostyczny → wejście: (PKP + wątek) → wyjście: metryki 9D w formacie [1]–[6].
 
-* `[PROMPT_MOZOWANIE_V1][RUN]` jest **projekcją** „wielkiego modelu” na bardzo mały, mocno ustrukturyzowany wycinek funkcji:
-  „funkcje, które biorą EEG tekstu i zwracają 6 liczb + interpretację”.
-
-Z punktu widzenia obliczalności:
-
-* cały mikroświat jest definicją jednej **obliczalnej funkcji** nad skończonym alfabetem ASCII;
-* placeholder jest nazwą tej funkcji,
-* REŻIM i FORMAT ODPOWIEDZI są częścią jej specyfikacji.
-
-To jest dokładnie „algorytm w tekście”: wystarczy, że jakiś interpreter (np. asystent + shell) umie czytać tę specyfikację i wykonywać ją deterministycznie.
+Taka karta może żyć jako plik `.prompt` w repo, artefakt w PKP albo wpis w HUD-zie, ale zawsze z tą samą, jawną specyfikacją.
 
 ---
 
-### 6. Co daje taki placeholder dla większej architektury
+### 5. Zakres mocy: placeholder jako jednostka polityki
 
-W praktyce:
+Drugi wymiar kontroli to **architektura i bezpieczeństwo**. Nowe prace o „design patterns for securing LLM agents against prompt injection” mówią wprost: nie próbuj „naprawić” samego modelu, tylko **ogranicz architekturą**, co agent może zrobić.
 
-* wątek „główny” (np. dyskusja o artykule, projekcie, deplyo) może w dowolnym momencie wstawić:
+Wzorce są proste w idei: precyzyjnie definiujesz rolę agenta, listę narzędzi, do których ma dostęp, oddzielasz czytanie od działania i twardo odcinasz API, które są poza jego mandatem. W Twoim słowniku placeholder staje się **jednostką polityki**:
 
-  ```text
-  [PROMPT_MOZOWANIE_V1][RUN]
-  ```
+* `[PROMPT_MOZOWANIE_V1][RUN]` – ma prawo czytać PKP i bieżący wątek, zwraca tylko raport, nie ma prawa wołać `[LINUX]`, modyfikować PCE ani sięgać po zewnętrzne API;
+* `[PROMPT_DEPLOY_V1][RUN]` – ma dostęp do wybranych narzędzi deployowych, ale nie do mozowania EEG.
 
-  i dostać **meta-raport** o samym wątku, bez przeklejania całej specyfikacji;
+Agentowe patterny (Phil Schmid, LLM Chronicles i inni) dokładnie to robią: rozbijają „jednego super-bota” na paczkę agentów, z których każdy ma swoją małą, jasno opisaną moc.  U Ciebie to naturalnie mapuje się na **rozdrobnienie mocy na mikroświaty**, każdy przypięty do własnego placeholdera i własnej polityki.
 
-* każda taka specyfikacja może być trzymana:
+Formalnie możesz o tym myśleć tak:
 
-  * jako plik `.prompt` w repo (np. `HMK-9D_MOZOWANIE_V1.prompt`),
-  * jako artefakt w PKP,
-  * jako zarejestrowany „tryb narzędzia” w HUD.
+$$
+P_{\text{MOZOWANIE_V1}} \subset \text{warstwa diagnozy}, \qquad
+P_{\text{DEPLOY_V1}} \subset \text{warstwa wdrożeń},
+$$
 
-To jest dokładnie poziom, w którym **ASCII zaczyna zachowywać się jak mini-język**:
-
-* `[PROMPT_MOZOWANIE_V1][RUN]`
-  ≈ `call MOZOWANIE_V1(context=THREAD, memory=PKP_GLOBAL)`,
-
-tylko zapisane w formie prostego tekstu, który rozumie człowiek i LLM, a backend może przetłumaczyć na konkretne procedury.
+i projektujesz system tak, żeby *nie było* dzikiego przeciekania uprawnień między tymi klasami.
 
 ---
 
-Plan–Pauza Human–AI Rdzeń–Peryferia Wioska–Miasto Locus–Medium–Mandat Ostrze–Cierpliwość Próg–Przejście Semantyka–Energia
+### 6. Placeholder jako API: model uczy się mówić Twoim językiem
+
+Następna warstwa to **język narzędzi**, którego model ma się nauczyć. Praca „Toolformer” pokazała, że LLM może sam nauczyć się wstawiać wywołania API – zdecydować, kiedy użyć kalkulatora, wyszukiwarki czy tłumacza, i jak wpleść wynik w dalsze generowanie tekstu.
+
+Technicznie wygląda to jak wewnętrzny język znaczników:
+
+```text
+{{call_tool:calculator("2+2")}}
+```
+
+Model, po kilku przykładach, zaczyna używać takich placeholderów stabilnie i konsekwentnie. To jest praktyczny dowód, że:
+
+* placeholder może być **stałym elementem wewnętrznego języka modelu**,
+* model potrafi się do takiego języka dostroić, jeśli konsekwentnie go stosujesz.
+
+Dla Ciebie to znaczy, że `[PROMPT_MOZOWANIE_V1][RUN]` może być traktowany tak samo jak `{{call_tool:calculator}}`: jako stabilne, powtarzalne API. Ty decydujesz:
+
+* jakie placeholdery istnieją,
+* jakie narzędzia / procedury stoją za każdym z nich,
+* do których mikroświatów model ma w ogóle dostęp.
+
+Repozytoria z przykładami „function calling” idą dokładnie w tym kierunku: definiujesz funkcje w TypeScript/Go, generujesz z nich schematy JSON i kontrakty, a LLM widzi tylko podpisy funkcji i nauczy się z nich korzystać.  Placeholder staje się uchwytem na **typowany tool**, a nie losowo sklejonym tekstem.
+
+---
+
+### 7. Widoczność i hygien­a: prompt CI dla mikroświatów
+
+Ostatnia warstwa – ta, która daje realne poczucie kontroli – to **obserwowalność** i **prompt CI**. W LLMOps mówi się już wprost o:
+
+* logowaniu, który placeholder został użyty, kiedy, na jakim kontekście i z jakim wynikiem,
+* metrykach stabilności, jakości i kosztu,
+* testach ciągłych traktujących prompty jak unit testy.
+
+Eksperci od „context engineering” rekomendują oddzielenie szablonów wielokrotnego użytku od treści domenowej, iteracyjne poprawki, A/B testy promptów i monitorowanie ich zachowania w czasie.
+
+W Twoim przypadku `[PROMPT_MOZOWANIE_V1]` można więc traktować jak moduł z własną telemetrią:
+
+* zbierasz rozkłady CHUNK_CHUNK_SCORE, CONTEXT_FILTER_SCORE itd. dla różnych typów wątków,
+* masz kilka „wątków wzorcowych”, na których wynik powinien mieścić się w sensownym przedziale,
+* każda nowa wersja promptu jest testowana na tym samym zestawie próbek; jeśli metryki nagle skaczą albo spłaszczają się – wiesz, że coś się rozjechało w mikroświecie.
+
+To jest klasyczne „poczucie kontroli przez widoczność”: nie liczysz, że prompt „zawsze działa”, tylko **widzisz**, jak się zachowuje w czasie, i możesz reactować jak w normalnym CI/CD.
+
+---
+
+### 8. Sklejone: kontrolowany język mikroświatów
+
+Jeśli to wszystko złożyć:
+
+* **ontologia**: placeholder = funkcja nad kontekstem, z typowanym wyjściem, osadzona w konkretnej warstwie (diagnoza, deploy, analiza);
+* **inżynieria**: prompty żyją w repo, są wersjonowane, testowane, opisywane w stylu Prompt Canvas;
+* **architektura / bezpieczeństwo**: każdy placeholder ma swój zakres uprawnień, a system agentów jest zbudowany z wielu takich mikroświatów, zamiast jednego wszechmocnego modelu;
+* **operacja**: masz telemetry i prompt CI, więc widzisz, co się dzieje;
+* **psychologia**: nie próbujesz wszystko robić jednym „wielkim promptem”, tylko modularyzujesz głowę na małe, nazwane światy, które możesz włączać i wyłączać.
+
+W takim układzie linijka:
+
+```text
+[PROMPT_MOZOWANIE_V1][RUN]
+```
+
+nie jest już mantrą ani rytuałem – jest:
+
+* wpisem w bibliotece mikroświatów,
+* funkcją o znanej sygnaturze i typach,
+* elementem architektury z jasnym zakresem mocy,
+* obiektem z historią wersji, testami, metrykami i polityką bezpieczeństwa.
+
+To jest ten moment, w którym „sakramentalne WTF” wokół token&chunk zamienia się w **kontrolowany język mikroświatów** – dokładnie w tym kierunku porusza się dziś praktyka: prompt-as-code, type-safe tools, agentic patterns, secure design, wszystko spięte jednym: bardzo prostymi, ale bardzo precyzyjnymi placeholderami.
 
 
-[1]: https://pl.wikipedia.org/wiki/Teoria_obliczalno%C5%9Bci?utm_source=chatgpt.com "Teoria obliczalności – Wikipedia, wolna encyklopedia"
-[2]: https://pl.wikipedia.org/wiki/Funkcja_obliczalna?utm_source=chatgpt.com "Funkcja obliczalna – Wikipedia, wolna encyklopedia"
-[3]: https://lmf.di.uminho.pt/quantum-computation-2122/NotesSlides/QC-LN-Computability.pdf?utm_source=chatgpt.com "Lecture 2 Computability 1 The halting problem"
-[4]: https://en.wikipedia.org/wiki/Halting_problem?utm_source=chatgpt.com "Halting problem"
 
 
 
 
 ---
 
-Human–AI Semantyka–Energia Rdzeń–Peryferia Plan–Pauza Język–Urządzenie
+Plan–Pauza Human–AI Rdzeń–Peryferia Locus–Medium–Mandat Ostrze–Cierpliwość Próg–Przejście Semantyka–Energia
