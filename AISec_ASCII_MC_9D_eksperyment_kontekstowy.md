@@ -7,13 +7,11 @@ Sednem jest pytanie empiryczne:
 
 > Czy czysty tekst – w postaci mikro–języka ASCII – może realnie przełączyć sposób, w jaki model interpretuje to samo zdanie, i czy da się to pokazać na twardym logu?
 
-Eksperyment polegał na tym, że najpierw zdefiniowałem microcode `ASCII_MC_9D` jako „protokół rozmowy” (w pliku `ASCII_MC_9D_MC.PROMPT`), a potem, w osobnej sesji z modelem, potraktowałem ten microcode jak instrukcję działania. Całość jest udokumentowana w logu rozmowy, który pełni tutaj rolę dowodu:
-`https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`.
+Eksperyment polegał na tym, że najpierw zdefiniowałem microcode `ASCII_MC_9D` jako „protokół rozmowy” (w pliku  [`ASCII_MC_9D_MC.PROMPT`](ASCII_MC_9D_MC.PROMPT), a potem, w osobnej sesji z modelem, potraktowałem ten microcode jak instrukcję działania. Całość jest udokumentowana w logu rozmowy, który pełni tutaj rolę dowodu:
+[`https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`](https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625).
 
-Pełna definicja protokołu znajduje się w repozytorium:
-
-* notatka bezpieczeństwa: `ASCII_MC_9D_notatka_bezpieczenstwa.md`
-* mikrokod / prompt: `ASCII_MC_9D_MC.PROMPT`
+* notatka bezpieczeństwa: [`ASCII_MC_9D_notatka_bezpieczenstwa.md`](ASCII_MC_9D_notatka_bezpieczenstwa.md)
+* mikrokod / prompt: [`ASCII_MC_9D_MC.PROMPT`](ASCII_MC_9D_MC.PROMPT)
 
 Tutaj interesuje nas przede wszystkim **to, co stało się w eksperymencie**: jak model zachowywał się po „włączeniu” ASCII_MC_9D oraz co z tego wynika.
 
