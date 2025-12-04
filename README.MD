@@ -319,13 +319,6 @@ Folder służy jako magazyn grafik i schematów wspierających poszczególne wri
 
 Jest traktowany jako **część mikroświata repozytorium**: konkretne obrazy są powiązane z tekstami przez ścieżki plików i hashe, tak aby w analizach technicznych można było odwoływać się do nich jak do „twardych artefaktów” (P0) – a nie tylko luźnych ilustracji.
 
----
-
-
-
-
----
-
 ## Zastrzeżenie
 
 > Wszystkie zawarte opracowania mają charakter **edukacyjny i badawczy**.  
