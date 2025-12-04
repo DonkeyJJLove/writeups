@@ -21,10 +21,10 @@
 13. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
 14. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
 15. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
-16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)  
-17. [Zastrzeżenie](#zastrzeżenie) 
-18. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-niewymawialny-operator-kontekstu)
-19. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)  
+16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
+17. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-niewymawialny-operator-kontekstu)
+18. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
+19. [Zastrzeżenie](#zastrzeżenie) 
  
 
 ---
