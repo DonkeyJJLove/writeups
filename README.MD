@@ -330,7 +330,7 @@ Tekst traktuje `ASCII_MC_9D` nie jako exploit, lecz jako **oscyloskop do semanty
 <a id="ascii-hud-date-format"></a>
 ## HUD daty – kanoniczny format ASCII
 
-📄 Plik: [`ASCII_HUD_date_format_spec.md`](ASCII_HUD_date_format_spec.md)
+📄 Plik: [`ASCII_HUD_date_format_spec.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md)
 
 Ten writeup definiuje „mikrokod daty”, który w ekosystemie GlitchLab / chunk–chunk pełni rolę **kanonicznego formatu czasu w ASCII**. Wprowadza dwa spójne warianty:
 
