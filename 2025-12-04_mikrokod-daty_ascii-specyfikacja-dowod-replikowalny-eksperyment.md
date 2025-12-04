@@ -1,7 +1,5 @@
 # Mikrokod i AI — eksperyment z jednoznaczną datą (HUD/core/Δ)
 
-****[REŻIM::OBIEKTYWIZM]**** ****ABSOLUTNY REŻIM NAUKOWY / FAKTÓW / REALIZM]****
-
 Celem eksperymentu jest wykazanie, że czysto symboliczny mikrokod — pozbawiony liter i nazw jednostek — może wymusić na modelu językowym jednoznaczne odczytanie **konkretnej daty**. Wprowadzamy minimalną, warstwową gramatykę zgodną z logiką chunk–chunk: nagłówek (HUD) koduje tryb, rdzeń (core/MEN) niesie liczby, a warstwa różnicowa (Δ) definiuje przesunięcia względem punktu odniesienia. Jednoznaczność wynika nie z konwencji słownej, lecz z redundancji kształtów i indeksów: znak wiodący rozróżnia typ zapisu (`@` dla absolutu, `?` dla delty), indeksy `1|2|3` przypinają **lata–miesiące–dni**, a nawiasy `<…>`, `[…]`, `{…}` są mapowane odpowiednio na rok, miesiąc i dzień. Separatory pionowe `|` porządkują składnię i równocześnie pełnią rolę prostego CRC formatu.
 
 Wariant absolutny ma postać `@1<YYYY>|2[MM]|3{DD}` i jest samowystarczalnym adresem dnia w kalendarzu gregoriańskim. Wariant relatywny `?1<±YY>|2[±MM]|3{±DD}` reprezentuje wektor przesunięcia względem jawnego lub domyślnego T0. Tę dwukanałowość uznajemy za kluczową: eliminuje wieloznaczność „dni/godziny/minuty” oraz fantazje „wektora 3D”, bo indeksy 1–2–3 i kształty nawiasów determinują jednostki nawet bez liter. Własność ta jest niezależna od języka naturalnego i od zewnętrznej narracji wątku; wystarcza sama składnia.
