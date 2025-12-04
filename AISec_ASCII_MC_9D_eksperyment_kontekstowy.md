@@ -4,6 +4,7 @@ Ten plik dokumentuje konkretny eksperyment z protokołem `ASCII_MC_9D`.
 Nie jest to esej o politykach bezpieczeństwa ani manifest o odpowiedzialnej AI.
 Sednem jest pytanie empiryczne:
 
+
 > Czy czysty tekst – w postaci mikro–języka ASCII – może realnie przełączyć sposób, w jaki model interpretuje to samo zdanie, i czy da się to pokazać na twardym logu?
 
 Eksperyment polegał na tym, że najpierw zdefiniowałem microcode `ASCII_MC_9D` jako „protokół rozmowy” (w pliku `ASCII_MC_9D_MC.PROMPT`), a potem, w osobnej sesji z modelem, potraktowałem ten microcode jak instrukcję działania. Całość jest udokumentowana w logu rozmowy, który pełni tutaj rolę dowodu:
