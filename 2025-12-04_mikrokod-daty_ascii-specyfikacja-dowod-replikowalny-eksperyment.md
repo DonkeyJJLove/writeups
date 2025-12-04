@@ -257,5 +257,4 @@ Zaproponowany mikrokod:
 
 Wynikowy system jest **produkcyjny**: można go natychmiast wdrożyć w parserze, walidatorze, generatorze mikro-artefaktów oraz w protokołach ASCII/9D jak [Protokół HoloMozaikowej Kompresji 9D (HMK-9D 4 GlitchLab)](https://github.com/DonkeyJJLove/chunk-chunk) jako kanoniczną reprezentację daty.
 
-
 Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
