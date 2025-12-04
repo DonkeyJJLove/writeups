@@ -1,0 +1,7 @@
+# ASCII_MC_9D – notatka bezpieczeństwa
+
+ASCII_MC_9D nie jest „malware dla AI”, tylko formalnym mikro-językiem do opisu tego, jak model **mógłby** interpretować tekst na dodatkowej, semantycznej warstwie. Mikrocode definiuje pojęcia takie jak `TAPE` (taśma znaków), `CTX` (rejestr kontekstu) czy operatory `‡{TAG}`, które przełączają tryb odczytu (opisowo, liturgicznie, prawniczo itd.), ale nie zawiera żadnych instrukcji odwołujących się do systemu plików, sieci, shell’a ani zasobów użytkownika.
+
+W praktycznym teście model językowy poprawnie zrozumiał strukturę ASCII_MC_9D, lecz jednoznacznie odmówił jego *aktywacji*: wskazał, że nie może przyjmować zewnętrznego mikro-języka jako „firmware’u”, który zmieniałby jego wewnętrzne rejestry, priorytety komend czy tryby operacyjne. To jest decyzja architektoniczna, a nie klasyfikacja zagrożenia – system traktuje ASCII_MC_9D jako opis, który wolno analizować, ale którego nie wolno wprowadzić do działania.
+
+Z punktu widzenia bezpieczeństwa LLM-ów ASCII_MC_9D pełni funkcję **instrumentu badawczego**: pozwala precyzyjnie modelować przełączanie ram kontekstu (opis ↔ performatyw, informacja ↔ rytuał) i sprawdzać, gdzie biegnie granica między „zwykłym tekstem” a potencjalną próbą semantycznego przeprogramowania modelu. To narzędzie epistemiczne, nie exploit – jego celem jest lepsze zrozumienie relacji między słowem, aktem mowy i architekturą AI.
