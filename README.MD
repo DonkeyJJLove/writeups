@@ -22,7 +22,7 @@
 14. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
 15. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
 16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
-17. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-niewymawialny-operator-kontekstu)
+17. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
 18. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 19. [Zastrzeżenie](#zastrzeżenie) 
  
@@ -278,7 +278,7 @@ To nie jest porada inwestycyjna, tylko próba „rozebrania” na czynniki pierw
 Oba teksty razem tworzą ramę do myślenia o **ewolucji atakujących i obrońców**: jak zmienia się ekonomia ataku, jakie wektory stają się tańsze, a które droższe, oraz jak na tę dynamikę nakładają się modele językowe, automatyzacja i „commoditization” ofensywnych narzędzi.
 
 ---
-
+<a id="double-dagger-ctx"></a>
 ## Double dagger (‡) – niewymawialny operator kontekstu
 
 📄 Plik: [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)

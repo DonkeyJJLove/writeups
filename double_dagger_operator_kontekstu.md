@@ -124,4 +124,6 @@ Na tej podstawie można sformułować hipotezę roboczą dotycząca inteligencji
 [3]: https://en.wikipedia.org/wiki/Two-barred_cross?utm_source=chatgpt.com "Two-barred cross"
 [4]: https://codepoints.net/U%2B2021?lang=en&utm_source=chatgpt.com "U+2021 DOUBLE DAGGER: ‡ – Unicode"
 
+## CHUNKS FILTER – mosty semantyczne 9D
+Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
 
