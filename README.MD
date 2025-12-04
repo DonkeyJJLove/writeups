@@ -23,6 +23,7 @@
 - [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
 - [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
 - [AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D](#aisec-ascii-mc-9d)
+- [HUD daty – kanoniczny format ASCII](#ascii-hud-date-format)
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
@@ -324,6 +325,23 @@ Z perspektywy bezpieczeństwa AI:
 - w innej – microcode działa na poziomie dyskursu, pozwalając badać granicę między „promptem” a **językiem sterującym**.
 
 Tekst traktuje `ASCII_MC_9D` nie jako exploit, lecz jako **oscyloskop do semantyki**: narzędzie do badania, gdzie kończy się zwykłe słowo, a zaczyna próba przeprogramowania systemu, oraz jak realne mechanizmy AISEC reagują na nowe metajęzyki.
+
+---
+<a id="ascii-hud-date-format"></a>
+## HUD daty – kanoniczny format ASCII
+
+📄 Plik: [`ASCII_HUD_date_format_spec.md`](ASCII_HUD_date_format_spec.md)
+
+Ten writeup definiuje „mikrokod daty”, który w ekosystemie GlitchLab / chunk–chunk pełni rolę **kanonicznego formatu czasu w ASCII**. Wprowadza dwa spójne warianty:
+
+- datę absolutną w HUD-cie: `[YYYY|MM|DD]`,  
+- datę relatywną względem chwili T0: `{+YY|+MM|+DD}`.
+
+Specyfikacja zawiera formalną gramatykę (EBNF i regexy), algorytm składania daty absolutnej z delty w proleptycznym kalendarzu gregoriańskim (stała kolejność operacji: „lata → miesiące → dni”) oraz referencyjne testy, które można replikować w dowolnym parserze.
+
+Celem formatu jest **pełna jednoznaczność i łatwość parsowania** bez liter i nazw miesięcy, przy zachowaniu intuicji ISO 8601 / RFC 3339: big-endian (rok-miesiąc-dzień), wyraźne rozróżnienie między absolutem (`[]`) i deltą (`{}`) już pierwszym znakiem oraz możliwość użycia wariantu indeksowanego `@1<YYYY>|2[MM]|3{DD}` jako adresowalnego slotu w protokołach 9D i HUD-zie.
+
+Writeup pokazuje też, jak ten mikrokod może służyć jako **warstwa niskopoziomowa** pod wyższe protokoły (HMK-9D, ASCII_MC_9D, analizy fire sale / zakłóceń czasu systemowego), tak aby wszystkie eksperymenty z czasem, logami i osiami 9D opierały się na identycznej, testowalnej reprezentacji daty.
 
 ---
 
