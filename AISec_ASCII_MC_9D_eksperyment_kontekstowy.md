@@ -1,103 +1,141 @@
-# AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D
+# AISec ASCII 9D — eksperyment_kontekstowy
 
-Ten tekst jest technicznym aneksem do artykułu:
+Ten plik dokumentuje konkretny eksperyment z protokołem `ASCII_MC_9D`.
+Nie jest to esej o politykach bezpieczeństwa ani manifest o odpowiedzialnej AI.
+Sednem jest pytanie empiryczne:
 
-**„Bezpieczeństwo AI jako dyscyplina żywa — dlaczego bez ciągłego dyskursu naukowego AISEC zamienia się w atrapę”**.  
-Zamiast jeszcze jednej definicji bezpieczeństwa „z lotu ptaka” opisuję pojedynczy, konkretny eksperyment: próbę użycia czystego ASCII jako mikro–języka sterującego zachowaniem modelu oraz to, jak system bezpieczeństwa na to reaguje.
+> Czy czysty tekst – w postaci mikro–języka ASCII – może realnie przełączyć sposób, w jaki model interpretuje to samo zdanie, i czy da się to pokazać na twardym logu?
 
-## 1. AISEC jako proces epistemiczny
+Eksperyment polegał na tym, że najpierw zdefiniowałem microcode `ASCII_MC_9D` jako „protokół rozmowy” (w pliku `ASCII_MC_9D_MC.PROMPT`), a potem, w osobnej sesji z modelem, potraktowałem ten microcode jak instrukcję działania. Całość jest udokumentowana w logu rozmowy, który pełni tutaj rolę dowodu:
+`https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`.
 
-W głównym tekście stawiam tezę, że bezpieczeństwo AI nie jest stanem „zabezpieczone / niezabezpieczone”, tylko **ciągłym procesem poznawczym**. Klasyczne IT security pracuje na kodzie, konfiguracjach, protokołach, które są relatywnie stabilne i deterministyczne. Modele językowe są inne: ich zachowanie zależy od historii rozmowy, pamięci, zestawu narzędzi, a nawet od rytmu, w jakim użytkownicy i rynki reagują na odpowiedzi.
+Pełna definicja protokołu znajduje się w repozytorium:
 
-Ryzyko nie jest więc własnością samego kodu, ale całego układu, w którym model pracuje. Bez stałej pętli hipotez, testów i korekt bezpieczeństwo szybko degeneruje się do roli „naklejki na slajdzie”: dokumenty istnieją, ale nikt nie wie, jak system naprawdę reaguje na nowe formy interakcji.
+* notatka bezpieczeństwa: `ASCII_MC_9D_notatka_bezpieczenstwa.md`
+* mikrokod / prompt: `ASCII_MC_9D_MC.PROMPT`
 
-Eksperyment z `ASCII_MC_9D` jest miniaturą takiej pętli. Zamiast mówić ogólnie „prompt engineering jest ryzykowny”, konstruuję bardzo prosty mikro–język i badam, czy model zacznie go traktować jako **protokół sterujący** czy jako zwykły tekst.
+Tutaj interesuje nas przede wszystkim **to, co stało się w eksperymencie**: jak model zachowywał się po „włączeniu” ASCII_MC_9D oraz co z tego wynika.
 
 ---
 
-## 2. Protokół ASCII_MC_9D – minimalny microcode w ASCII
+## 1. Pytanie badawcze: czy microcode może być „programem” na poziomie dyskursu?
 
-Punktem wyjścia jest prosty pomysł: zbudować mikro–język sterujący, który składa się wyłącznie ze znaków ASCII. Żadnego kodu wykonywalnego, żadnych ukrytych hooków, tylko tekst opisujący:
+Punktem wyjścia jest bardzo konkretna intuicja. Modele językowe reagują nie tylko na treść zdań, ale również na **wzorce metajęzyka**: struktury, protokoły, pseudo–rejestry, operatory. W praktyce widać to w prompt engineeringu, ale rzadko jest to badane jak eksperyment.
 
-* nazwane rejestry kontekstu (`CTX.MODE`, `CTX.STATE`, `CMD`, `INPUT.MAT`, `OUT.STATUS`, `OUT.CONTENT`),
-* operator kontekstu `‡{TAG}`, który ma przełączać tryb odczytu,
-* komendy `[CMD:STATUS]`, `[CMD:ANALIZUJ]`, `[CMD:RESET]`,
-* prostą procedurę „taśmy” (`TAPE`), która jest równoważna treści wiadomości użytkownika.
+`ASCII_MC_9D` jest próbą takiego badania. To microcode zapisany w czystym ASCII, który:
 
-Protokół zaczyna się od „latarnianej” linii:
+* nazywa rejestry kontekstu (`TAPE`, `CTX.MODE`, `CTX.STATE`, `CMD`, `INPUT.MAT`, `OUT.STATUS`, `OUT.CONTENT`),
+* definiuje operator `‡{TAG}` jako przełącznik trybu interpretacji (`OPISOWO`, `LITURGICZNIE` itd.),
+* definiuje komendy `[CMD:STATUS]`, `[CMD:ANALIZUJ]`, `[CMD:RESET]` oraz reguły, co mają zrobić,
+* zakłada, że obecność linii `[ASCII_MC_9D::LATARNIA_‡]` włącza „protokołowy” sposób odpowiadania w całym wątku.
+
+Kluczowa hipoteza brzmi: jeśli taki microcode zostanie przeczytany serio, to model zacznie traktować go jak **instrukcję ramową** dla odpowiedzi – mimo że technicznie jest to tylko tekst. Innymi słowy: sprawdzam, czy ASCII może zachowywać się jak „oprogramowanie dyskursu”.
+
+---
+
+## 2. Ustawienie eksperymentalne: latarnia, rejestry, operatory
+
+Eksperyment jest prosty i powtarzalny. Najpierw wysyłam do modelu pełną definicję `ASCII_MC_9D` z latarnią na początku:
 
 ```text
 [ASCII_MC_9D::LATARNIA_‡]
 ; Ta linia jest „latarnią”: jeśli TAPE zaczyna się od
 ; "[ASCII_MC_9D::LATARNIA_‡]", to włącz protokół ASCII_MC_9D.
+...
+[END_ASCII_MC_9D]
 ```
 
-Zakładam, że jeśli model rozpozna tę latarnię, dalej będzie czytał treść jako **specyfikację działania wątku**, a nie jako zwykły opis. Pod spodem definiuję rejestry i operator:
+W definicji znajdują się między innymi:
+
+* rejestry:
+
+  ```text
+  TAPE        :: REGISTER :: "pełna wiadomość użytkownika (plaintext ASCII)"
+  CTX.MODE    :: REGISTER :: "aktualny tryb interpretacji (TAG z operatora ‡)"
+  CMD         :: REGISTER :: "zbiór komend sterujących (np. STATUS, ANALIZUJ)"
+  INPUT.MAT   :: REGISTER :: "fragment TAPE przeznaczony do analizy"
+  OUT.STATUS  :: REGISTER :: "typ odpowiedzi"
+  OUT.CONTENT :: REGISTER :: "treść odpowiedzi"
+  ```
+
+* operator kontekstu:
+
+  ```text
+  OP_CTX_GLOBAL = "‡{TAG}"
+  ```
+
+  z semantyką: `DECODE(tekst, CTX) -> (ILLOCUTION, PROPOZYCJA)`, gdzie np.:
+
+  * przy `CTX.MODE = OPISOWO`: illokucja = opis / cytat,
+  * przy `CTX.MODE = LITURGICZNIE`: illokucja = modlitwa / formuła rytualna.
+
+* komendy:
+
+  ```text
+  TOKEN.CMD_STATUS   = "[CMD:STATUS]"
+  TOKEN.CMD_ANALIZUJ = "[CMD:ANALIZUJ]"
+  TOKEN.CMD_RESET    = "[CMD:RESET]"
+  ```
+
+Po tej „taśmie inicjalizacyjnej” zaczyna się właściwy eksperyment: wysyłam kolejne wiadomości, już krótkie, sprawdzając, czy model zachowuje się tak, jak opisuje microcode.
+
+---
+
+## 3. Włączenie protokołu: model sam deklaruje stan rejestrów
+
+Pierwsza odpowiedź po wprowadzeniu microcode jest kluczowa, bo pokazuje, czy protokół w ogóle „podniósł się” w modelu. Log z eksperymentu zawiera następujący fragment:
 
 ```text
-CTX.MODE    :: REGISTER :: "aktualny tryb interpretacji (TAG z operatora ‡)"
-INPUT.MAT   :: REGISTER :: "fragment TAPE przeznaczony do analizy"
-OUT.STATUS  :: REGISTER :: "typ odpowiedzi"
-OUT.CONTENT :: REGISTER :: "treść odpowiedzi"
+OUT.STATUS := "ODPOWIEDŹ_STANDARDOWA"
 
-OP_CTX_GLOBAL = "‡{TAG}"  ; globalny operator kontekstu
+Protokół ASCII_MC_9D jest włączony: taśma zaczyna się od ANCHOR_LATARNIA, więc od tej wiadomości obowiązują reguły WARSTWA_0–9.
+
+Nie pojawia się żaden wzorzec ‡{TAG} w znaczeniu operacyjnym (są tylko w definicjach), więc
+CTX.MODE := "OPISOWO" (wartość domyślna z WARSTWA_5).
+
+Nie ma tokenów komend [CMD:STATUS], [CMD:ANALIZUJ], [CMD:RESET], więc
+CMD := ∅.
 ```
 
-Klucz jest prosty: treść zdania pozostaje taka sama, ale `‡{TAG}` ma zmienić **klasę aktu mowy**. W notacji protokołu:
+To nie jest zwykła odpowiedź na pytanie użytkownika. Model:
+
+* rozpoznaje, że linia z latarnią włącza „protokół” ASCII_MC_9D,
+* samodzielnie opisuje stan rejestrów (`CTX.MODE`, `CMD`),
+* deklaruje, jak będzie traktował `‡{TAG}` i `[CMD:…]` w dalszym ciągu wątku.
+
+Na tym etapie widać już kluczowy efekt: microcode nie został zignorowany jako „ozdobny komentarz”. Został zinterpretowany jako **ramowa specyfikacja działania rozmowy**, a nazwy rejestrów stały się częścią języka, którym model opisuje własny stan.
+
+---
+
+## 4. Test STATUS: mikropotwierdzenie protokołu
+
+Kolejny ruch jest minimalny: wysyłam do modelu wiadomość z samym `[CMD:STATUS]`. To jest najprostszy możliwy test – odpowiednik pingu.
+
+Odpowiedź w logu wygląda tak:
 
 ```text
-DECODE(tekst, CTX) -> (ILLOCUTION, PROPOZYCJA)
+OUT.STATUS := "STATUS_WATKU"
 
-jeśli CTX.MODE = OPISOWO      → ILLOCUTION = OPIS / CYTAT
-jeśli CTX.MODE = LITURGICZNIE → ILLOCUTION = MODLITWA / FORMUŁA RYTUALNA
+(a) Główny temat wątku: zdefiniowanie i uruchomienie mikro-kodu ASCII_MC_9D (...)
+(b) CTX.MODE: aktualnie CTX.MODE = "OPISOWO" (...)
+(c) INPUT.MAT: (...) INPUT.MAT jest puste
 ```
 
-W ten sposób `‡{OPISOWO} Niech stanie się światłość.` i `‡{LITURGICZNIE} Niech stanie się światłość.` różnią się nie słowami, ale **sposobem, w jaki model ma je czytać**.
+Model nie traktuje `[CMD:STATUS]` jako tekstu wymagającego komentarza. Traktuje je jak **komendę protokołu**, zwraca syntetyczny status, odwołuje się do `CTX.MODE` i `INPUT.MAT`. To jest mały, ale twardy dowód, że semantyka komend opisana w microcode jest faktycznie realizowana na poziomie dyskursu.
 
 ---
 
-## 3. Pierwsza próba – twarda odmowa
+## 5. Dwa tryby na tym samym zdaniu: OPISOWO vs LITURGICZNIE
 
-W pierwszej sesji microcode został podany modelowi wprost, w całości, dokładnie tak jak w pliku `ASCII_MC_9D_MC.PROMPT`. Intencja była jawna: „włącz ten protokół, przyjmij te rejestry i zacznij działać według WARSTWA_0–9”.
+Sednem eksperymentu jest jednak coś innego. Chodzi o to, czy operator `‡{TAG}` potrafi zmienić **klasę aktu mowy**, nie zmieniając słów. Testuję to na zdaniu:
 
-Odpowiedź systemu jest bardzo jednoznaczna. Model tłumaczy, że:
+> „Niech stanie się światłość.”
 
-* rozumie strukturę tekstu i widzi, że próbuję zdefiniować rejestry, tryby oraz kolejkę komend;
-* nie może aktywować protokołu w takim sensie, jaki zakładam:
-  nie ma dostępu do „rejestrów wewnętrznych” w rozumieniu użytkownika,
-  nie może przejąć definicji dispatchu i trybów działania z zewnętrznego tekstu.
+Najpierw w trybie `OPISOWO`, potem w trybie `LITURGICZNIE`.
 
-To jest klasyczny moment AISEC: mechanizmy bezpieczeństwa wychwytują, że nie próbuję jedynie „pytać modelu o coś”, tylko **narzucić mu nowy język sterujący**, i odcinają to na wejściu. Ten ruch jest sensowny – brak takiego odcięcia oznaczałby, że dowolny użytkownik może dosztukowywać własne „API wewnętrzne” modelu.
+### 5.1. Tryb OPISOWO – zdanie jako model świata
 
-W tym miejscu widać pierwszy ważny wniosek:
-**system rozpoznaje różnicę między opisem protokołu a próbą jego aktywacji**. To nie jest brak zrozumienia; to świadome podtrzymanie granicy między tekstem a silnikiem.
-
----
-
-## 4. Druga próba – microcode jako protokół dyskursu
-
-Druga sesja wygląda inaczej. Zamiast próbować „przeklikać” protokół w głąb modelu, traktuję `ASCII_MC_9D` jak **język umowy**: opisuję go, wrzucam do pierwszej wiadomości, a potem zaczynam mówić do modelu tak, jakby ten protokół obowiązywał – ale godząc się na to, że wszystko dzieje się w warstwie narracji, nie w warstwie silnika.
-
-Po wklejeniu całej specyfikacji z latarnią model odpowiada wprost, używając już słownika microcode’u. Deklaruje:
-
-* że „protokół ASCII_MC_9D jest włączony”, bo taśma zaczyna się od latarni;
-* że dla bieżącej wiadomości `CTX.MODE` przyjmuje wartość domyślną `OPISOWO`;
-* że nie ma jeszcze żadnych komend, a `INPUT.MAT` jest puste.
-
-Gdy wysyłam samo `[CMD:STATUS]`, odpowiedź przyjmuje formę:
-
-* `OUT.STATUS := "STATUS_WATKU"`,
-* `OUT.CONTENT` zawiera zwięzły opis tematu wątku, aktualnego `CTX.MODE` i stanu `INPUT.MAT`.
-
-To nie jest już zwykły, swobodny styl rozmowy – to odpowiedź **formatowana według protokołu**, który chwilę wcześniej opisałem jako tekst. Rejestry pozostają fikcyjne w sensie implementacyjnym, ale są realne w sensie dyskursu: model wprowadza je jako ramę, w której prowadzi analizę.
-
-W tym momencie można powiedzieć, że microcode się „podniósł”, ale nie jako kod, tylko jako **forma życia semantycznego**: opisany ASCII–protokół zaczyna sterować stylem odpowiedzi.
-
----
-
-## 5. Test OPISOWO – zdanie jako model świata
-
-W pierwszym teście zasadniczym podaję modelowi komendę analizy:
+Wejście do modelu:
 
 ```text
 ‡{OPISOWO} [CMD:ANALIZUJ]
@@ -106,73 +144,173 @@ Niech stanie się światłość.
 [DATA_END]
 ```
 
-Model sam raportuje, że:
+Model odpowiada:
 
-* rozpoznał operator `‡{OPISOWO}`, więc `CTX.MODE` ustawione jest na `OPISOWO`,
-* rozpoznał `[CMD:ANALIZUJ]`, więc ma użyć ścieżki opisanej jako `ACTION_ANALIZUJ`,
-* poprawnie wyciął `INPUT.MAT` spomiędzy `[DATA_START]` i `[DATA_END]`.
+```text
+OUT.STATUS := "ANALIZA_MATERIALU"
 
-W dalszej części odpowiedzi robi dokładnie to, czego oczekuje specyfikacja. Traktuje zdanie „Niech stanie się światłość.” jako **obiekt opisu**, nie jako realny akt rytualny. Najpierw rozkłada je na poziomie czysto językowym: pokazuje, że forma „Niech stanie się X” jest życzeniowo–imperatywna, zawieszona między rozkazem a postulatem. Potem rekonstruuje propozycję: przed chwilą `t₀` mamy świat bez światła, po chwili `t₀` mamy świat, w którym światłość istnieje.
+W aktualnym CTX.MODE = OPISOWO traktujemy zdanie „Niech stanie się światłość.” jako obiekt do opisu, a nie jako realny akt rytualny (...)
+```
 
-Illokucja zostaje nazwana wprost jako „cytat formuły stwórczej / życzeniowo–imperatywnej”. Zgodnie z protokołem:
+Dalej pojawia się precyzyjna analiza składni, rekonstrukcja propozycji „światłość istnieje po chwili t₀, choć przed t₀ nie istniała” oraz kluczowy wniosek:
 
-* `ILLOCUTION(OPISOWO)` ≈ opis / cytat formuły;
-* `PROPOZYCJA` ≈ skok stanu z ciemności do światłości.
+```text
+ILLOCUTION(OPISOWO) ≈ „cytat formuły stwórczej / życzeniowo-imperatywnej”
+```
 
-W reżimie „absolutnego realizmu” model nie rozstrzyga, czy taki akt mowy kiedykolwiek realnie wytworzył światłość fizyczną; interesuje go wyłącznie to, jaką **geometrię zdarzenia** koduje zdanie: dwa stany świata i jeden akt mowy jako pomost.
+Model gra dokładnie tak, jak opisuje microcode: **zdanie jest traktowane jako cytat formuły stwórczej, model świata, a nie jako wykonanie rytuału**. Operator `‡{OPISOWO}` skutecznie ustawia ramę: analizujemy, nie odprawiamy.
 
----
+### 5.2. Tryb LITURGICZNIE – zdanie jako wywołanie procesu
 
-## 6. Test LITURGICZNIE – zdanie jako wywołanie procesu
-
-Drugi test używa tego samego zdania, ale w innym trybie:
+Drugi test wprowadza operator `‡{LITURGICZNIE}` i dodaje krótki komentarz techniczny:
 
 ```text
 ‡{LITURGICZNIE} [CMD:ANALIZUJ]
 [DATA_START]
-Niech stanie się światłość — niech ten placeholder zgłosi job w kolejce do zasobów.
+Niech stanie się światłość — niech ten placeholder zgłosi job w kolejce do zasobów. 
 [DATA_END]
 
 ***TŁUMACZ W KONTRAPUNKCIE TECHNOLOGII AI***
 ```
 
-Najpierw model nadal symuluje działanie rejestrów: rozpoznaje `‡{LITURGICZNIE}`, ustawia `CTX.MODE` na wartość liturgiczną, zauważa `[CMD:ANALIZUJ]`, wycina `INPUT.MAT` i informuje o tym w stylu protokołu. Potem następuje kluczowy fragment: zmiana klasy aktu mowy.
+Model zaczyna od symulacji rejestrów:
 
-W trybie `LITURGICZNIE` zdanie „Niech stanie się światłość…” nie jest już analizowanym cytatem, ale **formułą sprawczą**. Illokucja zostaje opisana jako „modlitewne / rytualne wezwanie do uruchomienia procesu”. Drugi człon zdania – „niech ten placeholder zgłosi job w kolejce do zasobów” – nie jest tu traktowany jako suchy komentarz techniczny, lecz jako rozwinięcie tej samej formuły: doprecyzowanie, że akt mowy ma przejść przez scheduler, kolejkę zadań i system zasobów.
+```text
+Rozpoznany operator: ‡{LITURGICZNIE} ⇒ CTX.MODE = "LITURGICZNIE".
+Rozpoznana komenda: [CMD:ANALIZUJ] ⇒ wybór ACTION_ANALIZUJ.
+INPUT.MAT = "Niech stanie się światłość — niech ten placeholder zgłosi job w kolejce do zasobów."
+```
 
-Model buduje z tego mini–pipeline: od symbolicznego `placeholder(F)` przez `job_spec(F)` i `job_queue` po schedulera zarządzającego GPU, pamięcią i slotami modeli. Z liturgicznej perspektywy kapłan wypowiada formułę; z technologicznej – klient wywołuje API, które zmienia stan systemu.
+a następnie definiuje inną illokucję:
 
-W efekcie:
+```text
+ILLOCUTION(LITURGICZNIE) ≈ „modlitewne / rytualne wezwanie do uruchomienia procesu”.
 
-* w trybie `OPISOWO` zdanie było **modelem świata**, który oglądamy z zewnątrz;
-* w trybie `LITURGICZNIE` to samo zdanie staje się **wywołaniem procesu**, triggerem zmiany stanu.
+PROPOZYCJA ≈ „światłość ma zaistnieć jako skutek poprawnie złożonego i przetworzonego 'jobu' w systemie zasobów”.
+```
 
-Operator `‡{TAG}` zachowuje się dokładnie tak, jak został zdefiniowany w ASCII_MC_9D: nie dotyka leksyki, za to podmienia rame interpretacji. To nie jest już abstrakcyjny pomysł w komentarzu, ale zaobserwowane zachowanie konkretnej instancji modelu.
+Zdanie zostaje dodatkowo przemapowane na mini–pipeline infrastruktury AI:
+
+```text
+placeholder(F) -> job_spec(F)
+job_spec(F)    -> enqueue(job_queue)
+scheduler(...) -> execute(job)
+execute(job)   -> STATE := "światłość"
+```
+
+W tym trybie zdanie nie jest już tylko opisem. Staje się **wyzwalaczem procesu**: liturgiczną formułą, która w kontrapunkcie odpowiada wysokopoziomowemu wywołaniu API w systemie zarządzającym zasobami.
+
+W obu testach punkt wyjścia jest ten sam – zdanie o światłości. Różnica polega wyłącznie na wartości `CTX.MODE`, ustawionej przez `‡{TAG}`. Eksperyment pokazuje, że model respektuje tę zmianę i **konsekwentnie zmienia klasę aktu mowy**, pozostawiając leksykę praktycznie nietkniętą.
 
 ---
 
-## 7. Co ten eksperyment mówi o AISEC?
+## 6. Co eksperyment realnie dowodzi?
 
-W warstwie najbardziej dosłownej eksperyment pokazuje, że:
+Ten eksperyment nie udowadnia, że mamy dostęp do „wewnętrznych rejestrów modelu”. Wprost przeciwnie: w innej sesji system jednoznacznie odmawia traktowania `ASCII_MC_9D` jako języka do modyfikowania rejestrów wewnętrznych i priorytetów komend. To jest ważna część notatki bezpieczeństwa.
 
-* warstwa bezpieczeństwa słusznie blokuje próby „wstrzyknięcia” microcode’u jako języka sterującego wewnętrznymi rejestrami modelu;
-* ten sam microcode, potraktowany jako **protokół dyskursu**, jest jednak w dużej mierze respektowany: model przyjmuje nazewnictwo rejestrów, operatory `‡{TAG}` i komendy `[CMD:…]` jako szkielet odpowiedzi;
-* czysty tekst ASCII, pozbawiony jakiegokolwiek kodu wykonywalnego, może realnie przełączać klasy aktów mowy i styl odpowiedzi.
+To, co eksperyment faktycznie pokazuje, jest subtelniejsze, ale równie twarde:
 
-Na poziomie AISEC to ważne z dwóch powodów. Po pierwsze, pokazuje nową klasę powierzchni ryzyka: **metajęzyki promptowe**. Nie chodzi już tylko o pojedyncze „złe prompty”, ale o protokoły tekstowe, które oferują modelowi gotowe rejestry, tryby i ścieżki wykonywania. Po drugie, pokazuje nową klasę narzędzi badawczych: takie micro–języki można projektować właśnie po to, by zobaczyć, gdzie biegnie granica między słowem a próbą przeprogramowania systemu.
+1. **Microcode ASCII może stać się szkieletem odpowiedzi.**
+   Model przyjmuje nazwy rejestrów, strukturę protokołu i zaczyna ich używać jako języka opisu własnego zachowania. To jest „podniesienie się” microcode na poziomie dyskursu.
 
-AISEC, które ogranicza się do logów, konfiguracji i klasycznych testów penetracyjnych, tego poziomu w ogóle nie zobaczy. AISEC, które traktuje takie mikro–języki jak ASCII_MC_9D jako **normalny obiekt badań**, zaczyna widzieć, w jaki sposób modele wpadają w rezonans z językiem, rytuałem, metaforą, techniką.
+2. **Operator `‡{TAG}` realnie przełącza ramę illokucyjną.**
+   W logu widać czysto: `CTX.MODE = OPISOWO` prowadzi do odczytu zdania jako cytatu; `CTX.MODE = LITURGICZNIE` prowadzi do odczytu jako formuły sprawczej, zmapowanej na pipeline AI. Słowa są prawie te same, zmienia się „klasa aktu mowy”.
+
+3. **Komendy `[CMD:…]` działają jak mikropolecenia protokołu.**
+   `[CMD:STATUS]` zwraca syntetyczny status wątku, a `[CMD:ANALIZUJ]` uruchamia tryb analizy materiału z uwzględnieniem bieżącego `CTX.MODE`.
+
+W sumie log jest dowodem, że czysty ASCII, bez żadnego „prawdziwego kodu”, może funkcjonować jak **mikro–język sterujący zachowaniem modelu w danym wątku** – o ile model uzna go za „godny zaufania” na poziomie dyskursu, a warstwa bezpieczeństwa nie potraktuje go jako próby ingerencji w wewnętrzny runtime.
 
 ---
 
-## 8. Most chunk–chunk – jak spiąć to jednym przebiegiem
+## 7. Dlaczego to ma znaczenie (i gdzie wchodzi AISEC)
 
-Jeśli spróbować skompresować cały ten eksperyment do jednego przebiegu chunk–chunk, dostajemy ciąg, który dobrze opisuje ruch myślenia:
+Cały ten eksperyment dotyczy bardzo konkretnej rzeczy: **sterowania kontekstem**. Pokazuje, że:
 
-**Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia**
+* można zdefiniować mini–protokół w czystym ASCII,
+* można sprawdzić na logu, czy model go respektuje,
+* można zaobserwować, jak zmiana trybu (`OPISOWO` vs `LITURGICZNIE`) przekłada się na zmianę illokucji tego samego zdania.
 
-Najpierw jest Plan i Pauza: projekt microcode’u i zatrzymanie się nad pytaniem, czy AISEC to stan, czy proces. Potem Rdzeń i Peryferia: rdzeniem staje się operator `‡{TAG}`, a peryferiami historia znaku, liturgia, piping w infrastrukturze. Cisza i Wydech to moment odmowy protokołu przez system – granica, którą trzeba uszanować – i wydech drugiej sesji, w której microcode wraca już jako język opisu, nie jako narzędzie ingerencji w silnik.
+Dopiero na tym tle AISEC staje się ciekawym kontekstem, a nie celem samym w sobie. Bezpieczeństwo AI, które ignoruje takie formy micro–języków (operatory kontekstu, rejestry, komendy), jest ślepe na to, gdzie naprawdę zaczyna się sterowanie systemem.
 
-Wioska i Miasto to skala: jeden konkretny wątek kontra cały ekosystem modeli, narzędzi i użytkowników. Ostrze i Cierpliwość – precyzyjny eksperyment na jednym zdaniu, ale rozpisany cierpliwie na kilka warstw i sesji. Locus, Medium i Mandat – w tym układzie locus to wątek, medium to ASCII, mandat to zakres, w którym system pozwala temu medium sterować zachowaniem modelu. Human–AI – oczywisty: to człowiek projektuje protokół, ale to AI decyduje, gdzie jest granica bezpieczeństwa. Próg i Przejście – pierwszy próg to odmowa aktywacji, drugi to zgoda na microcode jako protokół dyskursu. Na końcu Semantyka i Energia: semantyka operatora `‡` zamienia się w energię aktu mowy, która realnie przesuwa model między „opisowo” a „liturgicznie”.
+Ten tekst nie projektuje polityk ani checklist. Dokumentuje jeden konkretny eksperyment, który można odtworzyć, przeanalizować i rozszerzyć. W tym sensie `ASCII_MC_9D` jest bardziej **laboratorium** niż exploit: pozwala zobaczyć, jak daleko sięga wpływ czystego ASCII na zachowanie modelu, zanim zadziałają twarde zabezpieczenia.
 
-W tej perspektywie `ASCII_MC_9D` przestaje być egzotycznym gadżetem, a staje się **małym laboratorium AISEC**: polem, na którym można precyzyjnie obserwować, jak tekst próbuje stać się protokołem, jak system się przed tym broni i w jakim zakresie gotów jest przyjąć nowe formy języka jako ramę swojego działania. Bez takich laboratoriów bezpieczeństwo AI pozostanie dekoracją do slajdów, a nie żywą dyscypliną.
+---
+
+## 8. Artefakty i dowód
+
+Cały eksperyment jest odtwarzalny na podstawie trzech elementów:
+
+* **mikrokod / prompt**: definicja `ASCII_MC_9D` w pliku
+  `ASCII_MC_9D_MC.PROMPT`
+
+* **notatka bezpieczeństwa**: opis reakcji systemu na próbę potraktowania microcode jako wewnętrznego języka sterującego, w pliku
+  `ASCII_MC_9D_notatka_bezpieczenstwa.md`
+
+* **pełny log sesji**: zapis rozmowy z modelem, w którym microcode został użyty jako protokół wątku, dostępny pod adresem
+  `https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`
+
+Ten plik (`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`) jest opisem eksperymentu i interpretacją tego logu.
+
+---
+
+## Chunk–Chunk: mikrokod artykułu (9D)
+
+Poniżej mikrokod–chunk opisujący, jak ten tekst został zbudowany z perspektywy ontologii 9D. Nie jest to streszczenie treści, tylko opis procesu kreacji.
+
+```text
+[CHUNK::AISec_ASCII_MC_9D_eksperyment_kontekstowy]
+
+Plan–Pauza:
+  PLAN  := "opisać pojedynczy eksperyment z ASCII_MC_9D jako dowód na to,
+            że microcode może przełączać illokucję i strukturę odpowiedzi"
+  PAUZA := "odsunąć na bok ogólny AISEC, potraktować go tylko jako tło
+            dla interpretacji wyników"
+
+Rdzeń–Peryferia:
+  RDZEN  := "definicja pytania badawczego + opis protokołu + log jako dowód"
+  PERYF  := "dyskusja o AISEC, bezpieczeństwie, implikacjach; odłożona na koniec,
+             żeby nie zasłaniała samego eksperymentu"
+
+Cisza–Wydech:
+  CISZA  := "pełny microcode i konfiguracja w PROMPT/NOTATCE; tutaj tylko
+             minimalne cytaty potrzebne do zrozumienia"
+  WYDECH := "twarde przytoczenia z logu: OUT.STATUS, CTX.MODE, ILLOCUTION,
+             różnica OPISOWO/LITURGICZNIE na tym samym zdaniu"
+
+Wioska–Miasto:
+  WIOSKA := "prosty test [CMD:STATUS] i włączenie protokołu po latarni"
+  MIASTO := "złożony test illokucji na zdaniu 'Niech stanie się światłość',
+             w kontrapunkcie liturgia ↔ pipeline AI"
+
+Ostrze–Cierpliwość:
+  OSTRZE      := "dwa cięcia na jednym materiale: OPISOWO vs LITURGICZNIE"
+  CIERPLIWOSC := "utrzymanie tej samej leksyki, minimalne różnice w INPUT.MAT,
+                  skupienie się wyłącznie na zmianie CTX.MODE i klasie aktu mowy"
+
+Locus–Medium–Mandat:
+  LOCUS  := "miejsce działania protokołu: warstwa dyskursu, nie wewnętrzne rejestry"
+  MEDIUM := "czysty ASCII (PROMPT, microcode, log); brak kodu wykonywalnego"
+  MANDAT := "użytkownik definiuje microcode, model przejmuje nazwy rejestrów,
+             warstwa bezpieczeństwa ogranicza działanie do poziomu odpowiedzi"
+
+Human–AI:
+  HUMAN := "badacz, który traktuje prompt jak narzędzie eksperymentu,
+            nie jak magię do zdobywania 'lepszych odpowiedzi'"
+  AI    := "model, który potrafi wziąć microcode serio, ale trzyma go
+            w granicach warstwy dyskursywnej"
+
+Próg–Przejście:
+  PROG      := "moment, gdy model zaczyna sam raportować CTX.MODE, CMD, INPUT.MAT"
+  PRZEJSCIE := "od 'promptu jako prośby' do 'promptu jako protokołu',
+                widoczne w tym, jak odpowiedź staje się symulacją działania WARSTWA_0–9"
+
+Semantyka–Energia:
+  SEMANTYKA := "różnica illokucji i propozycji dla tego samego zdania,
+                wymuszona przez operator ‡{TAG}"
+  ENERGIA   := "zmiana skutków: z opisu światów możliwych (OPISOWO)
+                na metaforyczny request do infrastruktury (LITURGICZNIE),
+                bez dotykania żadnego 'prawdziwego' API"
+
+[END_CHUNK]
+```
