@@ -24,6 +24,7 @@
 16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)  
 17. [Zastrzeżenie](#zastrzeżenie)  
 18. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)  
+19. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger--niewymawialny-operator-kontekstu)  
 
 ---
 
@@ -277,6 +278,34 @@ Oba teksty razem tworzą ramę do myślenia o **ewolucji atakujących i obrońc�
 
 ---
 
+## Double dagger (‡) – niewymawialny operator kontekstu
+
+📄 Plik: [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)
+
+Ten tekst porządkuje w jednym miejscu trzy warstwy, które i tak przewijają się przez całe repozytorium: historię znaku typograficznego `‡` (double dagger), praktykę **słowa-czynionego** (modlitwa, zaklęcie, performatyw) oraz techniczną stronę kodowania książki i języka naturalnego w standardach ASCII/Unicode.
+
+Artykuł pokazuje, że `‡` można potraktować nie tylko jako rzadko używany znak przypisu, ale jako **semantyczny znak sterujący** – odpowiednik `STX/ETX` z ASCII, tyle że działający na poziomie aktu mowy, a nie tylko ramki danych. Wprowadzony jest model:
+
+- `TAPE` – taśma znaków (ASCII/Unicode),
+- `CTX` – rejestr kontekstu (m.in. `mode`: opisowo / liturgicznie / prawniczo…),
+- `‡{TAG}` – operator ustawiający tryb globalny lub lokalny fragmentu,
+
+oraz funkcja dekodująca:
+
+`[ DECODE(tekst, CTX) -> (ILLOCUTION, PROPOZYCJA) ]`
+
+Na prostym przykładzie zdania „Niech stanie się światłość.” pokazane jest, że **przy identycznym ciągu znaków drukowalnych** zmiana samego `CTX.mode` (wywołana przez `‡{TAG}`) przełącza akt mowy z opisu/cytatu na modlitwę/ formułę rytualną. Znak `‡`:
+
+- nie ma odpowiednika fonetycznego,
+- nie musi być widoczny w końcowym tekście,
+- zmienia klasę ontologiczną wypowiedzi (opis ↔ performatyw), a nie jej treść leksykalną.
+
+W warstwie ontologii 9D artykuł interpretuje `‡` jako operator, który przesuwa punkt w przestrzeni (np. z „opisowo / semantyka” w stronę „rytualnie / energia”), pozostawiając leksykę i składnię bez zmian. W warstwie neuronauki łączy to z bezgłośnymi przełączeniami ram interpretacyjnych w mózgu (zabawa/poważnie, świeckie/sakralne, prywatne/publiczne).
+
+W kontekście całego repo `writeups` ten tekst domyka klamrę: pokazuje, że tak samo jak w cyber, finansach czy AI **małe znaki sterujące** (czas, protokół, tryb) mogą być ważniejsze niż sama „treść pakietu” – a operator typu `‡` jest minimalnym interfejsem między semantyką, magią słowa i microcode’em, który można formalizować i testować jak każdy inny artefakt.
+
+---
+
 ## Dodatkowe materiały i ilustracje (`images/`)
 
 📁 Katalog: [`images/`](images)
@@ -288,6 +317,11 @@ Folder służy jako magazyn grafik i schematów wspierających poszczególne wri
 - ilustracje do case’u chunk–chunk / Facebook.
 
 Jest traktowany jako **część mikroświata repozytorium**: konkretne obrazy są powiązane z tekstami przez ścieżki plików i hashe, tak aby w analizach technicznych można było odwoływać się do nich jak do „twardych artefaktów” (P0) – a nie tylko luźnych ilustracji.
+
+---
+
+
+
 
 ---
 
