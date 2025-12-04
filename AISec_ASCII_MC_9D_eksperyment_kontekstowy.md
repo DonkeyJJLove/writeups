@@ -254,6 +254,7 @@ Ten plik (`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`) jest opisem eksperymen
 
 ---
 
+
 ## Chunk–Chunk: mikrokod artykułu (9D)
 
 Poniżej mikrokod–chunk opisujący, jak ten tekst został zbudowany z perspektywy ontologii 9D. Nie jest to streszczenie treści, tylko opis procesu kreacji.
