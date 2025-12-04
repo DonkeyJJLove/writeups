@@ -238,18 +238,18 @@ Ten tekst nie projektuje polityk ani checklist. Dokumentuje jeden konkretny eksp
 
 ---
 
-## 8. Artefakty i dowód
+## Artefakty i dowód
 
 Cały eksperyment jest odtwarzalny na podstawie trzech elementów:
 
-* **mikrokod / prompt**: definicja `ASCII_MC_9D` w pliku
-  `ASCII_MC_9D_MC.PROMPT`
+* **mikrokod / prompt**: definicja `ASCII_MC_9D` w pliku  
+  [`ASCII_MC_9D_MC.PROMPT`](ASCII_MC_9D_MC.PROMPT)
 
-* **notatka bezpieczeństwa**: opis reakcji systemu na próbę potraktowania microcode jako wewnętrznego języka sterującego, w pliku
-  `ASCII_MC_9D_notatka_bezpieczenstwa.md`
+* **notatka bezpieczeństwa**: opis reakcji systemu na próbę potraktowania microcode jako wewnętrznego języka sterującego, w pliku  
+  [`ASCII_MC_9D_notatka_bezpieczenstwa.md`](ASCII_MC_9D_notatka_bezpieczenstwa.md)
 
-* **pełny log sesji**: zapis rozmowy z modelem, w którym microcode został użyty jako protokół wątku, dostępny pod adresem
-  `https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`
+* **pełny log sesji**: zapis rozmowy z modelem, w którym microcode został użyty jako protokół wątku, dostępny pod adresem  
+  [`https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625`](https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625)
 
 Ten plik (`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`) jest opisem eksperymentu i interpretacją tego logu.
 
