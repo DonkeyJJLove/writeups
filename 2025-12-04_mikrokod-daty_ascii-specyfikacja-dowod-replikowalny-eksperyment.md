@@ -22,6 +22,7 @@ Poniżej przytaczam rdzeń zapisu użyty w teście oraz jego wynik w postaci abs
 
 Wnioski są trojakie. Po pierwsze, można zbudować w pełni symboliczny język HUD/core/Δ, który jest dla modelu nieusuwalnie jednoznaczny w zakresie dat; po drugie, replikacja na niezależnych przebiegach daje identyczną datę wyjściową, co świadczy o stabilności semantyki; po trzecie, taka gramatyka nadaje się do dalszej rozbudowy (czas doby, strefy, interwały), bez rezygnacji z głównej zalety: braku liter i dominacji kształtów. W praktyce oznacza to, że mikrokod może stać się elementem „higieny wejścia” w krytycznych przepływach Human–AI — tam, gdzie słowo bywa zbyt plastyczne, a my potrzebujemy formy, której nie da się przeczytać „na trzy sposoby”.
 
+---
 
 ## 1. Format: definicja minimalna
 
@@ -31,27 +32,27 @@ Wnioski są trojakie. Po pierwsze, można zbudować w pełni symboliczny język 
 [YYYY|MM|DD]
 ```
 
-* `YYYY` — rok (liczba calkowita; dopuszczalny znak „-” dla lat „BC” w ujeciu astronomicznym),
-* `MM` — miesiac `01…12` (zawsze 2 cyfry),
-* `DD` — dzien `01…31` (zawsze 2 cyfry),
-* separator pól: **pionowa kreska** `|` (unikalny, nie myli sie z cyframi/literami).
+* `YYYY` — rok (liczba całkowita; dopuszczalny znak „-” dla lat „BC” w ujęciu astronomicznym),
+* `MM` — miesiąc `01…12` (zawsze 2 cyfry),
+* `DD` — dzień `01…31` (zawsze 2 cyfry),
+* separator pól: **pionowa kreska** `|` (unikalny, nie myli się z cyframi/literami).
 
-**Przyklad**: `[2030|06|08]` ? 8 czerwca 2030.
+**Przykład**: `[2030|06|08]` ? 8 czerwca 2030.
 
 ---
 
-### 1.2. Data relatywna (HUD = `{}`) — ? wzgledem T0
+### 1.2. Data relatywna (HUD = `{}`) — ? względem T0
 
 ```
 {+YY|+MM|+DD}
 {-YY|-MM|-DD}
 ```
 
-* **kolejnosc pól stala**: lata | miesiace | dni,
-* **znak obowiazkowy przy kazdym polu** (`+` lub `-`),
+* **kolejność pól stała**: lata | miesiące | dni,
+* **znak obowiązkowy przy każdym polu** (`+` lub `-`),
 * odniesienie do **T0** (np. „data bazowa”, „czas startu eksperymentu”).
 
-**Przyklad**: `{+04|+06|+08}` ? „T0 + 4 lata + 6 miesiecy + 8 dni”.
+**Przykład**: `{+04|+06|+08}` ? „T0 + 4 lata + 6 miesięcy + 8 dni”.
 
 ---
 
@@ -62,41 +63,41 @@ Wnioski są trojakie. Po pierwsze, można zbudować w pełni symboliczny język 
 ?1<+YY>|2[+MM]|3{+DD}     ; relatywna (alias na {+YY|+MM|+DD})
 ```
 
-To tylko „szata” z etykietami slotów (1: rok, 2: miesiac, 3: dzien); **semantyka jak wyzej**.
+To tylko „szata” z etykietami slotów (1: rok, 2: miesiąc, 3: dzień); **semantyka jak wyżej**.
 
 ---
 
-## 2. Formalna skladnia (EBNF)
+## 2. Formalna składnia (EBNF)
 
 ```ebnf
 ABS  = "[" YEAR "|" MON "|" DAY "]";
 REL  = "{" SNUM "|" SNUM "|" SNUM "}";
 
-YEAR = ["-"], 1*DIGIT;          (* dlugosc dowolna, np. 2025, 0007, -0043 *)
-MON  = 2*DIGIT;                 (* 01..12; walidacja zakresu poza gramatyka *)
-DAY  = 2*DIGIT;                 (* 01..31; walidacja zakresu poza gramatyka *)
+YEAR = ["-"], 1*DIGIT;          (* długość dowolna, np. 2025, 0007, -0043 *)
+MON  = 2*DIGIT;                 (* 01..12; walidacja zakresu poza gramatyką *)
+DAY  = 2*DIGIT;                 (* 01..31; walidacja zakresu poza gramatyką *)
 
-SNUM = ("+"|"-"), 1*DIGIT;      (* znak obowiazkowy przy kazdej delcie *)
+SNUM = ("+"|"-"), 1*DIGIT;      (* znak obowiązkowy przy każdej delcie *)
 DIGIT = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 ```
 
 ---
 
-## 3. Algorytm skladania daty: chunk–chunk
+## 3. Algorytm składania daty: chunk–chunk
 
-**Zalozenia kalendarzowe**: proleptyczny gregorianski (rok przestepny: podzielny przez 4, wyjatki dla setek niepodzielnych przez 400).
+**Założenia kalendarzowe**: proleptyczny gregoriański (rok przestępny: podzielny przez 4, wyjątki dla setek niepodzielnych przez 400).
 
-**Operator skladania**
+**Operator składania**
 Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
 
-1. **Dodaj lata**: `Y ? Y + y`.
-2. **Dodaj miesiace**: `M ? M + m`, a nastepnie **znormalizuj**:
+1. **Dodaj lata**: `Y ← Y + y`.
+2. **Dodaj miesiące**: `M ← M + m`, a następnie **znormalizuj**:
 
    * `while M > 12: Y++; M -= 12`
    * `while M < 1:  Y--; M += 12`
-3. **Dodaj dni**: najpierw „przytnij” `D` do maksymalnej dlugosci miesiaca `(Y,M)`, potem dodaj `d`, z normalizacja na granicach miesiecy (uwzglednij rózne dlugosci miesiecy i przestepnosc).
+3. **Dodaj dni**: najpierw „przytnij” `D` do maksymalnej długości miesiąca `(Y,M)`, potem dodaj `d`, z normalizacją na granicach miesięcy (uwzględnij różne długości miesięcy i przestępność).
 
-> Porzadek **lata ? miesiace ? dni** jest staly. Gwarantuje to deterministyke na granicach (np. „ostatni dzien miesiaca” po dodaniu ?M).
+> Porządek **lata → miesiące → dni** jest stały. Gwarantuje to determinizm na granicach (np. „ostatni dzień miesiąca” po dodaniu ΔM).
 
 ---
 
@@ -114,7 +115,7 @@ Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
   ^\{([+\-]\d+)\|([+\-]\d+)\|([+\-]\d+)\}$
   ```
 
-* **Wariant indeksowany** (przykladowo, baza i delta):
+* **Wariant indeksowany** (przykładowo, baza i delta):
 
   ```
   ^@1<(\-?\d+)>\|2\[(0[1-9]|1[0-2])\]\|3\{(0[1-9]|[12]\d|3[01])\}$
@@ -123,11 +124,11 @@ Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
 
 ---
 
-## 5. „Dowód przez konstrukcje”: replikowalne testy
+## 5. „Dowód przez konstrukcję”: replikowalne testy
 
-### 5.1. Przypadek bazowy (baza + ? ? wynik)
+### 5.1. Przypadek bazowy (baza + Δ → wynik)
 
-* **Wejscie**
+* **Wejście**
 
   ```
   @1<2024>|2[01]|3{01}
@@ -137,10 +138,10 @@ Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
   Semantycznie: `[2024|01|01]` + `{+30|+06|+08}`.
 
 * **Obliczenia**
-  2024-01-01 + 30 lat ? 2054-01-01
+  2024-01-01 + 30 lat → 2054-01-01
 
-  * 6 miesiecy ? 2054-07-01
-  * 8 dni ? **2054-07-09**
+  * 6 miesięcy → 2054-07-01
+  * 8 dni → **2054-07-09**
 
 * **Wynik**
   **`[2054|07|09]`** (alias: `@1<2054>|2[07]|3{09}`).
@@ -157,48 +158,47 @@ Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
 ### 5.2. Dodatkowe logi kontekstowe (analiza symboliczna)
 
 * [https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625](https://chatgpt.com/share/693169b0-e4f0-800e-8da5-bbea482ce625)
-* [https://chatgpt.com/share/69318764-ffb0-800e-97a9-2fa225f1cdcf](https://chatgpt.com/share/69318764-ffb0-800e-97a9-2fa225f1cdcf)
 
-> **Uwaga**: Linki „share” wymagaja dostepu w obrebie konta; stanowia oryginalne artefakty z przebiegów testowych potwierdzajacych dzialanie mikrokodu.
+> **Uwaga**: Linki „share” wymagają dostępu w obrębie konta; stanowią oryginalne artefakty z przebiegów testowych potwierdzających działanie mikrokodu.
 
 ---
 
-## 6. Uzasadnienie projektowe (jednoznacznosc)
+## 6. Uzasadnienie projektowe (jednoznaczność)
 
-* **Brak liter / nazw miesiecy** ? brak sporów o jezyk i skróty (Mar/Marzec/March).
-* **Big-endian (R-M-D)** i separatory `|` ? natychmiastowa segmentacja (`[YYYY|MM|DD]`).
-* **HUD róznicuje typ**: `[]` = absolut, `{}` = delta. Juz pierwszy znak rozstrzyga semantyke.
-* **Znaki „+/-” przy kazdym polu** w REL ? zadnych domyslów co do kierunku i jednostki.
-* **Prosty „proof by parsing”** (regex/EBNF) ? format jest samokontrolujacy (odchylki w strukturze to blad).
+* **Brak liter / nazw miesięcy** → brak sporów o język i skróty (Mar/Marzec/March).
+* **Big-endian (R-M-D)** i separatory `|` → natychmiastowa segmentacja (`[YYYY|MM|DD]`).
+* **HUD rozróżnia typ**: `[]` = absolut, `{}` = delta. Już pierwszy znak rozstrzyga semantykę.
+* **Znaki „+/-” przy każdym polu** w REL → żadnych domysłów co do kierunku i jednostki.
+* **Prosty „proof by parsing”** (regex/EBNF) → format jest samokontrolujący (odchyłki w strukturze to błąd).
 
 ---
 
 ## 7. Normy i literatura (kontekst)
 
-* **ISO 8601** — numeryczne reprezentacje daty/czasu (kolejnosc pól, jezykowa neutralnosc):
+* **ISO 8601** — numeryczne reprezentacje daty/czasu (kolejność pól, językowa neutralność):
 
   * Wprowadzenie: [https://www.iso.org/iso-8601-date-and-time-format.html](https://www.iso.org/iso-8601-date-and-time-format.html)
   * RFC-profil: **RFC 3339** [https://www.rfc-editor.org/rfc/rfc3339](https://www.rfc-editor.org/rfc/rfc3339)
-  * W3C NOTE-datetime (big-endian, porzadek pól): [https://www.w3.org/TR/NOTE-datetime](https://www.w3.org/TR/NOTE-datetime)
-* **Proleptyczny kalendarz gregorianski** (ciaglosc rachuby, reguly przestepnosci):
+  * W3C NOTE-datetime (big-endian, porządek pól): [https://www.w3.org/TR/NOTE-datetime](https://www.w3.org/TR/NOTE-datetime)
+* **Proleptyczny kalendarz gregoriański** (ciągłość rachuby, reguły przestępności):
   [https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar)
 * **Astronomical year numbering** (rok 0 i liczby ujemne dla „BC”):
   [https://en.wikipedia.org/wiki/Astronomical_year_numbering](https://en.wikipedia.org/wiki/Astronomical_year_numbering)
-* **Praktyka „numeric-only” w srodowiskach naukowych (np. FITS/NASA)**:
+* **Praktyka „numeric-only” w środowiskach naukowych (np. FITS/NASA)**:
   [https://fits.gsfc.nasa.gov/](https://fits.gsfc.nasa.gov/)
 
-*(Odwolania sluza potwierdzeniu **kierunku i zasad**; mikrokod w tym dokumencie jest implementacja tych zasad z celowa „nadmiarowoscia strukturalna” — HUD, separatory, obowiazkowe znaki w delcie — aby podbic jednoznacznosc.)*
+*(Odwołania służą potwierdzeniu **kierunku i zasad**; mikrokod w tym dokumencie jest implementacją tych zasad z celową „nadmiarowością strukturalną” — HUD, separatory, obowiązkowe znaki w delcie — aby podbić jednoznaczność.)*
 
 ---
 
-## 8. „Production one-liners” i szablony wdrozeniowe
+## 8. „Production one-liners” i szablony wdrożeniowe
 
 * **Absolut**:
 
   ```
   [2054|07|09]
   ```
-* **Relatyw wzgledem T0**:
+* **Relatyw względem T0**:
 
   ```
   {+30|+06|+08}
@@ -213,7 +213,7 @@ Dany T0 = `[Y|M|D]` i ? = `{±y|±m|±d}`. Wynik to `[Y'|M'|D']`, gdzie:
 
 ---
 
-## 9. Zalacznik: referencyjny pseudokod operatora ? ? ABS
+## 9. Załącznik: referencyjny pseudokod operatora Δ ⊕ ABS
 
 ```text
 function add_delta([Y|M|D], {+y|+m|+d}) -> [Y'|M'|D']:
@@ -221,13 +221,13 @@ function add_delta([Y|M|D], {+y|+m|+d}) -> [Y'|M'|D']:
   # 1) lata
   Y := Y + y
 
-  # 2) miesiace (+ normalizacja)
+  # 2) miesiące (+ normalizacja)
   M := M + m
   while M > 12: Y := Y + 1; M := M - 12
   while M <  1: Y := Y - 1; M := M + 12
 
-  # 3) dni (+ normalizacja przez granice miesiecy)
-  Dmax := days_in_month(Y, M)  # uwzglednij przestepnosc: gregorianski 4/100/400
+  # 3) dni (+ normalizacja przez granice miesięcy)
+  Dmax := days_in_month(Y, M)  # uwzględnij przestępność: gregoriański 4/100/400
   if D > Dmax: D := Dmax
   D := D + d
 
@@ -250,11 +250,11 @@ function add_delta([Y|M|D], {+y|+m|+d}) -> [Y'|M'|D']:
 
 Zaproponowany mikrokod:
 
-* **eliminuje wieloznacznosc** (brak liter, stala kolejnosc pól, jawne znaki w delcie),
-* **rozróznia tryb** juz pierwszym znakiem (`[]` vs `{}`),
+* **eliminuje wieloznaczność** (brak liter, stała kolejność pól, jawne znaki w delcie),
+* **rozróżnia tryb** już pierwszym znakiem (`[]` vs `{}`),
 * **jest banalny do parsowania** (regex/EBNF) i **testowalny/replikowalny** (logi „share”),
-* **odwzorowuje praktyki ISO/RFC** w wersji zaostrzajacej czytelnosc (separatory `|`, HUD).
+* **odwzorowuje praktyki ISO/RFC** w wersji zaostrzającej czytelność (separatory `|`, HUD).
 
-Wynikowy system jest **produkcyjny**: mozna go natychmiast wdrozyc w parserze, walidatorze, generatorze mikro-artefaktów oraz w protokolach ASCII/9D jak [Protokół HoloMozaikowej Kompresji 9D (HMK-9D 4 GlitchLab)](https://github.com/DonkeyJJLove/chunk-chunk) jako kanoniczna reprezentacje daty.
+Wynikowy system jest **produkcyjny**: można go natychmiast wdrożyć w parserze, walidatorze, generatorze mikro-artefaktów oraz w protokołach ASCII/9D jak [Protokół HoloMozaikowej Kompresji 9D (HMK-9D 4 GlitchLab)](https://github.com/DonkeyJJLove/chunk-chunk) jako kanoniczną reprezentację daty.
 
 Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
