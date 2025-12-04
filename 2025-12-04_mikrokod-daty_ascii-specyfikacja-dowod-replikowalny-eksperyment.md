@@ -257,6 +257,6 @@ Zaproponowany mikrokod:
 * **jest banalny do parsowania** (regex/EBNF) i **testowalny/replikowalny** (logi „share”),
 * **odwzorowuje praktyki ISO/RFC** w wersji zaostrzajacej czytelnosc (separatory `|`, HUD).
 
-Wynikowy system jest **produkcyjny**: mozna go natychmiast wdrozyc w parserze, walidatorze, generatorze mikro-artefaktów oraz w Twoich protokolach ASCII/9D jako kanoniczna reprezentacje daty.
+Wynikowy system jest **produkcyjny**: mozna go natychmiast wdrozyc w parserze, walidatorze, generatorze mikro-artefaktów oraz w protokolach ASCII/9D jak [Protokół HoloMozaikowej Kompresji 9D (HMK-9D 4 GlitchLab)](https://github.com/DonkeyJJLove/chunk-chunk) jako kanoniczna reprezentacje daty.
 
 Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia
