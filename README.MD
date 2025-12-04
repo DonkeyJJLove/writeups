@@ -6,26 +6,26 @@
 
 ## 📚 Spis treści
 
-1. [O repozytorium](#o-repozytorium)  
-2. [To, co najtrudniejsze: prawda vs fikcja w układzie LLM](#to-co-najtrudniejsze-prawda-vs-fikcja-w-układzie-llm)  
-3. [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)  
-4. [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)  
-5. [Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)](#detektor-p0–p3-prawda-vs-fikcja-prompt-narzędziowy)  
-6. [APT-K-47 – asynchroniczne powłoki i operacje APT](#apt-k-47--asynchroniczne-powłoki-i-operacje-apt)  
-7. [Campaign Yokai Backdoor – studium przypadku kampanii backdoora](#campaign-yokai-backdoor--studium-przypadku-kampanii-backdoora)  
-8. [Operacja Cobalt Kitty – analiza kampanii APT](#operacja-cobalt-kitty--analiza-kampanii-apt)  
-9. [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
-10. [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
-11. [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
-12. [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
-13. [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
-14. [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
-15. [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
-16. [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
-17. [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
-18. [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
-19. [Zastrzeżenie](#zastrzeżenie) 
- 
+- [O repozytorium](#o-repozytorium)  
+- [To, co najtrudniejsze: prawda vs fikcja w układzie LLM](#to-co-najtrudniejsze-prawda-vs-fikcja-w-układzie-llm)  
+- [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)  
+- [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)  
+- [Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)](#detektor-p0–p3-prawda-vs-fikcja-prompt-narzędziowy)  
+- [APT-K-47 – asynchroniczne powłoki i operacje APT](#apt-k-47--asynchroniczne-powłoki-i-operacje-apt)  
+- [Campaign Yokai Backdoor – studium przypadku kampanii backdoora](#campaign-yokai-backdoor--studium-przypadku-kampanii-backdoora)  
+- [Operacja Cobalt Kitty – analiza kampanii APT](#operacja-cobalt-kitty--analiza-kampanii-apt)  
+- [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
+- [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
+- [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
+- [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
+- [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
+- [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
+- [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
+- [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
+- [AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D](#aisec-ascii-mc-9d)
+- [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
+- [Zastrzeżenie](#zastrzeżenie) 
+- [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
 ---
 
@@ -304,6 +304,26 @@ Na prostym przykładzie zdania „Niech stanie się światłość.” pokazane j
 W warstwie ontologii 9D artykuł interpretuje `‡` jako operator, który przesuwa punkt w przestrzeni (np. z „opisowo / semantyka” w stronę „rytualnie / energia”), pozostawiając leksykę i składnię bez zmian. W warstwie neuronauki łączy to z bezgłośnymi przełączeniami ram interpretacyjnych w mózgu (zabawa/poważnie, świeckie/sakralne, prywatne/publiczne).
 
 W kontekście całego repo `writeups` ten tekst domyka klamrę: pokazuje, że tak samo jak w cyber, finansach czy AI **małe znaki sterujące** (czas, protokół, tryb) mogą być ważniejsze niż sama „treść pakietu” – a operator typu `‡` jest minimalnym interfejsem między semantyką, magią słowa i microcode’em, który można formalizować i testować jak każdy inny artefakt.
+
+---
+<a id="aisec-ascii-mc-9d"></a>
+## AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D
+
+📄 Plik: [`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`](AISec_ASCII_MC_9D_eksperyment_kontekstowy.md)
+
+Ten writeup jest technicznym aneksem do artykułu o **AISEC jako dyscyplinie żywej**.  
+Opisuje mini–eksperyment, w którym czysty tekst `ASCII_MC_9D` działa jak **mikro–język sterujący**:
+
+- definiuje latarnię protokołu (`[ASCII_MC_9D::LATARNIA_‡]`), rejestry (`CTX.MODE`, `INPUT.MAT`, `OUT.STATUS`), operatory `‡{TAG}` i komendy `[CMD:ANALIZUJ]`,  
+- pokazuje dwie odpowiedzi modelu na to samo zdanie „Niech stanie się światłość.” w trybach `OPISOWO` i `LITURGICZNIE`,  
+- analizuje, kiedy microcode jest traktowany jako zwykły tekst, a kiedy jako **aktywny szkielet odpowiedzi** (model sam zaczyna raportować `CTX.MODE`, `INPUT.MAT`, ILLOCUTION).
+
+Z perspektywy bezpieczeństwa AI:
+
+- w jednej sesji system **odmawia aktywacji** microcode (chroni „rejestry wewnętrzne” przed programowaniem przez użytkownika),  
+- w innej – microcode działa na poziomie dyskursu, pozwalając badać granicę między „promptem” a **językiem sterującym**.
+
+Tekst traktuje `ASCII_MC_9D` nie jako exploit, lecz jako **oscyloskop do semantyki**: narzędzie do badania, gdzie kończy się zwykłe słowo, a zaczyna próba przeprogramowania systemu, oraz jak realne mechanizmy AISEC reagują na nowe metajęzyki.
 
 ---
 
