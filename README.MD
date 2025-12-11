@@ -345,6 +345,35 @@ Writeup pokazuje też, jak ten mikrokod może służyć jako **warstwa niskopozi
 
 ---
 
+<a id="ascii-microcode-ai"></a>
+## ASCII microcode dla AI – znak, microcode i systemy LLM
+
+📂 Seria 3 plików:
+
+- 📄 [`ascii-microcode-ai_part1.md`](ascii-microcode-ai_part1.md) – **Fundament: znak, semantyka i mikro-warstwy sensu**  
+- 📄 [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) – **Model formalny i semantyka operacyjna microcode ASCII**  
+- 📄 [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) – **Zastosowania praktyczne, GitHub i integracja z pipeline’ami AI**
+
+Seria stanowi spójny podręcznik do traktowania znaków (w szczególności ASCII) jako **ontologicznego microcode dla systemów AI** – z jednoczesnym uwzględnieniem „twardego” ASCII, rozszerzeń Unicode (indeksy górne/dolne) oraz warstwy typograficznej (Markdown/HTML).
+
+W części **1** (`ascii-microcode-ai_part1.md`) zdefiniowany jest znak jako byt bitowo–symboliczno–semantyczny oraz wprowadzona jest idea **warstwy 1** nad tekstem: microtagi ASCII (`==`, `~~`, `??`, `!!`, `::`, `>>`) jako mini–operatory sensu. Pokazane jest, że korzystają one z już istniejącej semantyki znaków (`?`, `!`, `~`, `>`, `=`) i mogą pracować jako lekka ontologia faktów, narracji, niepewności i ryzyk.
+
+Część **2** (`ascii-microcode-ai_part2.md`) formalizuje ten język w stylu BNF/EBNF: definiuje składnię **MicroTag + Index + TextPayload**, mapuje microtagi na klasy epistemiczne (`Fact`, `Context`, `Uncertainty`, `Risk`, `Elaboration`, `Vector`) oraz pokazuje, jak indeksy (`[lvl=1,src=primary]` lub indeksy górne/dolne typu `==¹`) mogą tworzyć **meta-wymiar** opisujący poziom wiarygodności, źródło, domenę czy typ ryzyka. Jest tu też szkic integracji z tokenizacją LLM i wewnętrzną strukturą danych.
+
+Część **3** (`ascii-microcode-ai_part3.md`) jest praktycznym przewodnikiem:  
+zawiera przykład realnego pliku `.mc.md` z microcode ASCII, wzorzec integracji z RAG/LLM (filtrowanie po `role`, `lvl`, `dom`, `risk`), szkic minimalnego parsera w Pythonie oraz propozycję organizacji repozytorium GitHub, w którym pliki z microcode (`*.mc.md`) pełnią rolę **„żywej ontologii tekstowej”** dla systemów AI. Pokazane jest też, jak microcode łączy się z innymi artefaktami repo (AISEC, `ASCII_MC_9D`, operator `‡`, HUD daty) i może służyć jako wspólny protokół semantyczny Human–AI.
+
+Seria „ASCII microcode dla AI” spinając się z:
+
+- operatorem kontekstu `‡` (double dagger)  
+- eksperymentem `ASCII_MC_9D`  
+- oraz specyfikacją HUD–daty w ASCII  
+
+tworzy **pełny stack „mikrokodu semantycznego”**: od pojedynczego znaku i indeksu górnego/dolnego, przez microtagi epistemiczne, aż po integrację z pipeline’ami LLM/RAG i praktyką pracy w repozytoriach (`writeups`, `glitchlab`, `chunk–chunk`).
+
+---
+
+
 ## Dodatkowe materiały i ilustracje (`images/`)
 
 📁 Katalog: [`images/`](images)
