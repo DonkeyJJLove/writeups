@@ -272,4 +272,4 @@ W części 2/3 przejdziemy do:
 
 ---
 
-_Next: [Część 2](`ascii-microcode-ai_part2.md`) – model formalny i integracja z LLM._
+_Next: [Część 2](ascii-microcode-ai_part2.md) – model formalny i integracja z LLM._

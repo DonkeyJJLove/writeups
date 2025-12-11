@@ -350,4 +350,4 @@ W części 3/3 przejdziemy do:
 * scenariuszy użycia microcode w analizie, raportowaniu i generowaniu,
 * minimalnych bibliotek/parserów, które mogą tę semantykę obsługiwać w sposób powtarzalny.
 
-*Dalej: [Część 3](`ascii-microcode-ai_part3.md`) – zastosowania praktyczne i wzorce integracyjne.*
+*Dalej: [Część 3](ascii-microcode-ai_part3.md) – zastosowania praktyczne i wzorce integracyjne.*
