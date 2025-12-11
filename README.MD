@@ -24,6 +24,7 @@
 - [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
 - [AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D](#aisec-ascii-mc-9d)
 - [HUD daty – kanoniczny format ASCII](#ascii-hud-date-format)
+- [ASCII microcode dla AI – znak, microcode i systemy LLM](#ascii-microcode-ai)
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
@@ -350,7 +351,7 @@ Writeup pokazuje też, jak ten mikrokod może służyć jako **warstwa niskopozi
 
 📂 Seria 3 plików:
 
-- 📄 [`ascii-microcode-ai_part1.md`](ascii-microcode-ai_part1.md) – **Fundament: znak, semantyka i mikro-warstwy sensu**  
+- 📄 [`ascii-microcode-ai_part1.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md) – **Fundament: znak, semantyka i mikro-warstwy sensu**  
 - 📄 [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) – **Model formalny i semantyka operacyjna microcode ASCII**  
 - 📄 [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) – **Zastosowania praktyczne, GitHub i integracja z pipeline’ami AI**
 
