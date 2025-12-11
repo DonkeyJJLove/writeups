@@ -374,6 +374,29 @@ tworzy **pełny stack „mikrokodu semantycznego”**: od pojedynczego znaku i i
 
 ---
 
+<a id="ascii-microcode-ai"></a>
+## ASCII microcode dla AI – od znaku do ontologicznego mikrokodu
+
+📄 Artykuł syntetyczny:
+
+- [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md) – **podsumowanie całości**: od pojedynczego znaku ASCII, przez microtagi epistemiczne (`==`, `~~`, `??`, `!!`, `::`, `>>`), aż po integrację z LLM, RAG i specyfikacją HUD–daty. To główny punkt wejścia, który spina w jeden wywód wszystkie powiązane teksty.
+
+📂 Seria źródłowa (fundamenty i detale):
+
+- 📄 [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md) – **Fundament**: znak jako byt bitowo–symboliczno–semantyczny, naturalna semantyka `?`, `!`, `~`, `>`, `=` i idea microtagów jako warstwy 1 nad tekstem.
+- 📄 [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) – **Model formalny**: składnia w stylu BNF (`MicroTag + Index + TextPayload`), klasy epistemiczne (`Fact`, `Context`, `Uncertainty`, `Risk`, `Elaboration`, `Vector`), indeksy (`[lvl=1,src=primary]` / `==¹`) i mapowanie na strukturę danych dla LLM.
+- 📄 [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) – **Praktyka**: przykładowe pliki `.mc.md`, szkic parsera w Pythonie, wzorzec integracji z RAG/LLM oraz konwencje repo (`*.mc.md` jako „żywa ontologia tekstowa”).
+- 📄 [`2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) – **HUD–data**: kanoniczny mikrokod daty w ASCII (`[YYYY|MM|DD]`, `{+YY|+MM|+DD}`), formalna gramatyka i algorytm liczenia daty jako dowód replikowalny. To niskopoziomowa warstwa czasu, na której opierają się wyższe protokoły (HMK-9D, ASCII_MC_9D, analizy fire sale).
+
+Seria „ASCII microcode dla AI” łączy się z:
+
+- operatorem kontekstu `‡` (double dagger),
+- eksperymentem `ASCII_MC_9D` i tekstem o AISEC jako dyscyplinie żywej,
+- specyfikacją HUD–daty w ASCII,
+
+tworząc **pełny stack mikrokodu semantycznego**:  
+od pojedynczego znaku i indeksu górnego/dolnego, przez microtagi epistemiczne, aż po integrację z pipeline’ami LLM/RAG oraz praktyką pracy w repozytoriach (`writeups`, `glitchlab`, `chunk–chunk`).
+
 
 ## Dodatkowe materiały i ilustracje (`images/`)
 
