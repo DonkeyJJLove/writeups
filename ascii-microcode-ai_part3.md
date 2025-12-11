@@ -1,4 +1,3 @@
-````markdown
 # ASCII jako ontologiczny microcode dla systemów AI  
 ## Część 3/3 – Zastosowania praktyczne i wzorce integracyjne
 

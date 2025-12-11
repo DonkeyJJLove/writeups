@@ -1,4 +1,3 @@
-````markdown
 # ASCII jako ontologiczny microcode dla systemów AI  
 ## Część 2/3 – Model formalny i semantyka operacyjna
 
