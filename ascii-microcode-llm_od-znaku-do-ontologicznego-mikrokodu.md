@@ -1,10 +1,10 @@
 # ASCII microcode dla LLM: od znaku do ontologicznego mikrokodu
 
 > Artykuł syntetyzujący:  
-> – ["ASCII Ontologiczny microcode ai 1"]("ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md")
-> – ["ASCII Ontologiczny microcode ai 2"]("ascii-microcode-ai_part2.md")
-> – ["ASCII Ontologiczny microcode ai 3"]("ascii-microcode-ai_part3.md")
-> – ["Mikrokod Daty" ]("2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md") 
+> – [ASCII Ontologiczny Microcode Ai 1](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md)
+> – [ASCII Ontologiczny Microcode Ai 2](ascii-microcode-ai_part2.md)
+> – [ASCII Ontologiczny Microcode Ai 3](ascii-microcode-ai_part3.md)
+> – [Mikrokod Daty](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) 
 
 ---
 
