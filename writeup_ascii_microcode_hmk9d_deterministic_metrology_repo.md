@@ -71,9 +71,9 @@ To rozwiązuje klasyczny problem „ładnych liczb”: liczby nie mogą istnieć
 
 W materiale dowodowym, który już rozbijaliśmy, kluczowe jest to, że dwa różne bloki ODP mogą dać identyczny wektor HMK-9D, jeżeli mają identyczny rozkład tagów w obrębie tego samego reżimu. To nie jest błąd: to dokładnie cecha metrologii strukturalnej. Ona mierzy artefakt jako układ ról (fakty robocze, kontekst, ryzyko, pytania, domknięcie), a nie „co autor miał na myśli” ani „czy świat jest prawdziwy”. W tym sensie metrologia staje się warstwą kontrolną nad generacją: stabilizuje sygnał regresyjny nawet wtedy, gdy semantyka odpowiedzi pozostaje probabilistyczna.
 
-## Uwaga implementacyjna: tylda w Markdown i neutralizacja formatu
+### Uwaga implementacyjna: neutralizacja składni Markdown
 
-Ponieważ praktyka repozytoryjna często przechodzi przez Markdown, trzeba świadomie „odizolować” operator mikrokodu od silnika formatowania. Sam zapis `~~` w tekście Markdown bywa interpretowany jako strikethrough, więc tag `~~` należy w takich dokumentach zawsze zapisywać w trybie neutralnym: jako inline code `` `~~` `` albo ucieczką znaków `\~\~`. Ta zasada jest drobna, ale krytyczna: metrologia ma być odporna na prezentację, więc nie może pozwalać, by warstwa prezentacji zmieniała warstwę sterującą.
+W praktyce repozytoryjnej tekst protokołu często żyje w plikach `.md`, a tam część sekwencji znaków ma znaczenie formatowania. Najbardziej kłopotliwe są podwójne tyldy, ponieważ w GitHub Flavored Markdown są operatorem skreślenia. Dlatego tokeny mikrokodu nie mogą „pływać” w narracji jako gołe znaki. Zasada redakcyjna jest prosta: tagi zawsze zapisuje się w kodzie inline albo w blokach kodu, a nie w zwykłym tekście, tak aby warstwa prezentacji nie dotykała warstwy sterującej.
 
 W tym miejscu protokół jest już kompletny na poziomie fundamentu: jest alfabet, jest składnia, są klasy epistemiczne, jest kontrakt deterministyczności. Reszta to konsekwentne dopięcie mapowania do HMK-9D oraz deterministycznego scorera opartego o cechy struktury (w szczególności `tag_counts`), tak aby metryki były porównywalne między krokami Δ przy zachowaniu audytowalności i zero-guessing.
 
@@ -115,15 +115,13 @@ W tej architekturze `[DET]` nie jest etykietą kosmetyczną, tylko semantyką pr
 
 W praktyce `[DET]` pełni rolę bezpiecznika przeciw halucynacji metryki. Jeżeli implementacja nie potrafi policzyć wartości zgodnie z `SCORER_SPEC_LOCAL_DET`, to poprawną reakcją nie jest „wymyślić liczbę”, tylko przyznać `n/a` (o ile tryb na to pozwala) albo odrzucić artefakt jako niespełniający reżimu. Ta różnica jest krytyczna w audycie: metryka ma być powtarzalna w czasie i pomiędzy wątkami, a więc musi być powiązana z konkretną wersją specyfikacji i z konkretnym materiałem wejściowym.
 
-## Opieka nad tyldami w Markdown: jak pisać o tagu `~~`, żeby nie „skreślało” tekstu
+### Konwencja nazw liczników: tag w kodzie, licznik w alfabecie
 
-Problem, który zgłaszasz, nie jest błędem protokołu, tylko kolizją z konwencją Markdown: sekwencja `~~tekst~~` bywa interpretowana jako skreślenie. Dlatego w dokumencie, który ma żyć jako `.md`, tag kontekstu trzeba „zabezpieczyć” tak samo jak zabezpiecza się znaki o znaczeniu specjalnym w innych językach.
-
-Najprostsza zasada redakcyjna brzmi: każdy tag mikrokodu zapisywać w kodzie inline, a nie „gołym tekstem”, czyli `==`, `~~`, `??`, `!!`, `>>`, `::`. To dotyczy również wzorów; zamiast pisać `n_~~` (co w Markdown jest proszeniem się o artefakt), należy pisać `n_ctx`, a mapowanie na tag zostawić w tekście lub w jednym, krótkim fragmencie kodu.
+Drugim źródłem artefaktów jest notacja typu `n_~~`, która miesza symbolikę protokołu z symboliką Markdown. W tekstach objaśniających lepiej rozdzielić znak i znaczenie: tag pozostaje literalnym tokenem (zawsze w kodzie), a liczniki przyjmują neutralne nazwy alfabetowe. Przykładowo zamiast `n_~~` stosuje się `n_ctx`, zamiast `n_==` — `n_eq`, zamiast `n_??` — `n_q`, zamiast `n_!!` — `n_risk`, zamiast `n_>>` — `n_dec`. Dopiero w jednym miejscu, jawnie i w kodzie, definiuje się mapowanie licznika na tag, co poprawia czytelność, stabilność diffów i eliminuje przypadkowe skreślenia.
 
 ```text
-n_ctx := count(tag == `~~`)   # liczba linii kontekstu
-AX.R  := n_ctx / total
+n_ctx := count(tag == `~~`)
+AX.R  := n_ctx / N
 ```
 
 Ta konwencja jest zgodna z kanonem, bo kanon właśnie tak nazywa liczniki (`n_ctx`, `n_eq`, `n_q`, `n_risk`, `n_dec`). Dodatkowo ma zaletę repozytoryjną: diff nie „gubi” znaczenia, a renderer Markdown nie deformuje treści. W samych blokach mikrokodu sprawa jest jeszcze prostsza: tam i tak obowiązuje reżim „danych”, więc blok powinien być trzymany w ogrodzeniu kodu (fenced code block) albo w formacie wyjściowym bez Markdown, zgodnie z polityką „bez ozdobników” w obrębie mikrokodu.
@@ -156,9 +154,9 @@ Współczesne „structured outputs” rozwiązują inny problem niż HMK-9D. Ta
 
 ASCII Microcode idzie inną drogą: zamiast przenosić całą semantykę do JSON, utrzymuje minimalny DSL, w którym człowiek i repozytorium nadal widzą tekst, diff, kontekst i domknięcie decyzją. W praktyce te podejścia się uzupełniają. Structured outputs stabilizują interfejs danych „do maszyny”, a mikrokod stabilizuje interfejs procesu „do audytu i regresji”. Najbardziej pragmatyczny wariant hybrydowy wygląda tak, że mikrokod jest formatem pierwotnym (źródłowym), liczonym deterministycznie do HMK-9D, a JSON jest formatem wtórnym (kompilatem) dla integracji, generowanym deterministycznie z mikrokodu, a nie bezpośrednio z modelu.
 
-## Higiena publikacji: tyldy w Markdown i stabilność zapisu tagów
+### Reżim publikacji: literalność przykładów i odporność na kopiowanie
 
-W publikacjach opartych o Markdown, zwłaszcza w odmianie GitHub Flavored Markdown, sekwencja dwóch tyld pełni funkcję operatora skreślenia. Oznacza to, że ciąg znaków `~~` w zwykłym akapicie nie jest traktowany jako „literalny token”, lecz jako składnia formatowania. W konsekwencji każdorazowe użycie tagu kontekstu `~~` w tekście opisowym może zostać zinterpretowane przez renderer jako początek lub koniec fragmentu skreślonego, co prowadzi do degradacji czytelności i, co ważniejsze, do utraty jednoznaczności powierzchni protokołu.
+Wszystkie przykłady mikrokodu, wzory scorera i fragmenty, które mają zostać później parsowane lub kopiowane do narzędzi, powinny być publikowane wyłącznie w formie literalnej, czyli jako fenced code block albo jako inline code. To nie jest kosmetyka: renderer Markdown potrafi zmienić to, co człowiek widzi, a kopiowanie z widoku renderowanego do surowego tekstu potrafi zgubić znaki lub przenieść je w innej postaci. Jeżeli celem jest audytowalność i deterministyczna metrologia, dokument musi gwarantować, że „to samo” oznacza „dokładnie te same znaki”, niezależnie od środowiska prezentacji.
 
 Ponieważ metrologia strukturalna opiera się na deterministycznym parsowaniu powierzchni odpowiedzi, higiena publikacji staje się elementem protokołu. W szczególności tokeny klas epistemicznych (`==`, `~~`, `!!`, `??`, `>>`) nie powinny pojawiać się w narracji w postaci „gołych znaków”. Ich poprawną reprezentacją w tekście pracy jest zawsze zapis w kodzie, czyli w backtickach, albo w bloku kodu. Dzięki temu warstwa typograficzna nie zmienia znaczenia znaków i nie wprowadza bocznych kanałów formatowania.
 
