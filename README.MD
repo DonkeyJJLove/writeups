@@ -25,6 +25,7 @@
 - [AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D](#aisec-ascii-mc-9d)
 - [HUD daty – kanoniczny format ASCII](#ascii-hud-date-format)
 - [ASCII microcode dla AI – znak, microcode i systemy LLM](#ascii-microcode-ai)
+- [Deterministyczna metrologia strukturalna (ASCII Microcode + HMK-9D)](#deterministyczna-metrologia-strukturalna)
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
@@ -368,6 +369,21 @@ Seria „ASCII microcode dla AI” łączy się z:
 
 tworząc **pełny stack mikrokodu semantycznego**:  
 od pojedynczego znaku i indeksu górnego/dolnego, przez microtagi epistemiczne, aż po integrację z pipeline’ami LLM/RAG oraz praktyką pracy w repozytoriach (`writeups`, `glitchlab`, `chunk–chunk`).
+
+---
+
+<a id="deterministyczna-metrologia-strukturalna"></a>
+## Deterministyczna metrologia strukturalna (ASCII Microcode + HMK-9D)
+
+📄 Plik: [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md)
+
+Writeup opisuje, jak zbudować deterministyczną warstwę pomiarową nad odpowiedziami LLM: minimalny mikrokod ASCII + heurystyczny skorer HMK-9D (AX/LENS/MT) oparty o liczenie tagów. Wyjaśnia:
+
+- rozdział klasy epistemicznej od treści (klasę nadaje TAG, nie ton),
+- mechanizm [DET] jako kontrakt na deterministyczne wyliczenie lub `n/a`,
+- fallback SCORER_SPEC_LOCAL_DET liczący 0–1 z rozkładu tagów, aby unikać `n/a` i uzyskać porównywalność między wątkami przy identycznym materiale.
+
+Pokazuje też, że identyczna struktura mikrokodu (tag_counts) może celowo dawać identyczny wektor 9D, co ułatwia regresję, archiwizację i porównywanie mikroświatów w różnych wątkach.
 
 ---
 
