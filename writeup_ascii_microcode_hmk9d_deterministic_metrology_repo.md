@@ -55,7 +55,7 @@ Dla czytelności rekonstrukcja może zostać zapisana w postaci prostego zestawi
 
 Przypadek ten jest ważny metodologicznie, bo rozdziela dwa typy powtarzalności. Powtarzalność semantyczna byłaby podejrzana, gdyby model powtarzał te same zdania. Powtarzalność metrologiczna jest pożądana, jeżeli struktura procesu jest ta sama. W tym sensie identyczne AX/LENS/MT w różnych wątkach nie dowodzą, że „model się nie zmienia”, tylko że w obu krokach Δ wymuszono podobny układ ról epistemicznych, a skorer celowo nie analizował treści.
 
-Źródła dowodów (linki): https://chatgpt.com/share/693c53a5-0438-800e-a9f1-515b4fbd1c7d oraz https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850.
+Źródła dowodów (linki): https://chatgpt.com/share/693c732c-0780-800e-a3c3-15d8c307076b oraz https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850.
 
 ## 6. Rekonstrukcja minimalnego skorera deterministycznego zgodnego z dowodem
 
@@ -107,7 +107,9 @@ Połączenie ASCII Microcode i HMK-9D tworzy pragmatyczny interfejs między gene
 Materiał projektu: [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md); [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part2.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part2.md); [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part3.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part3.md).
 
 
-Materiał dowodowy (bloki ODP): [https://chatgpt.com/share/693c53a5-0438-800e-a9f1-515b4fbd1c7d](https://chatgpt.com/share/693c53a5-0438-800e-a9f1-515b4fbd1c7d); [https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850](https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850).
+Materiał dowodowy (bloki ODP): [https://chatgpt.com/share/693c732c-0780-800e-a3c3-15d8c307076b](https://chatgpt.com/share/693c732c-0780-800e-a3c3-15d8c307076b)
+
+[https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850](https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850).
 
 
 Dokumentacja dotycząca powtarzalności i struktury wyjścia: [https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/reproducible-output](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/reproducible-output); [https://platform.openai.com/docs/guides/structured-outputs](https://platform.openai.com/docs/guides/structured-outputs).
