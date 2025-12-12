@@ -2,7 +2,9 @@
 
 ## Abstrakt
 
-W praktycznych wdrożeniach dużych modeli językowych (LLM) stabilność procesu wytwarzania tekstu bywa równie krytyczna jak jakość semantyczna odpowiedzi. Ten sam prompt potrafi dać odpowiedzi o innej strukturze, a w usługach sieciowych do zmienności próbkowania dochodzą zmiany wersji modelu, backendu i infrastruktury serwującej. Niniejsza praca proponuje rozdzielenie „miękkiej” generacji od „twardego” pomiaru: odpowiedź jest formatowana jako minimalny, parsowalny mikrokod ASCII (ASCII Microcode), a następnie mapowana deterministycznie do wektora stanu HMK-9D oraz metryk pomocniczych. Kluczowa teza brzmi: jeżeli inferencja bywa niedeterministyczna, to warstwa metrologiczna powinna być deterministyczna, jawna i odporna na „literackość” wyjścia. Dowody w postaci dwóch bloków ODP pokazują, że identyczne wektory HMK-9D mogą występować w różnych wątkach przy różnej treści, jeżeli skorer opiera się na tag_counts, a nie na semantyce, co jest cechą (a nie błędem) metrologii strukturalnej.
+W praktycznych wdrożeniach dużych modeli językowych (LLM) stabilność procesu wytwarzania tekstu bywa równie krytyczna jak jakość semantyczna odpowiedzi. Ten sam prompt potrafi dać odpowiedzi o innej strukturze, a w usługach sieciowych do zmienności próbkowania dochodzą zmiany wersji modelu, backendu i infrastruktury serwującej. Niniejsza praca proponuje rozdzielenie „miękkiej” generacji od „twardego” pomiaru: odpowiedź jest formatowana jako minimalny, parsowalny mikrokod ASCII (ASCII Microcode), a następnie mapowana deterministycznie do wektora stanu HMK-9D oraz metryk pomocniczych. Kluczowa teza brzmi: jeżeli inferencja bywa niedeterministyczna, to warstwa metrologiczna powinna być deterministyczna, jawna i odporna na „literackość” wyjścia.
+
+Pokazujemy, jak to osiągnąć w praktyce: (1) klasa epistemiczna linii wynika wyłącznie z tagu, nie z treści; (2) [DET] jest kontraktem na deterministyczne wyliczenie wartości AX/LENS/MT lub jawne `n/a`; (3) fallback SCORER_SPEC_LOCAL_DET liczy 0–1 wyłącznie z rozkładu tagów w danym [ODP_BEGIN]…[ODP_END], co eliminuje `n/a` w środowisku bez zewnętrznego scorera. Dowody w postaci dwóch bloków ODP pokazują, że identyczne wektory HMK-9D mogą występować w różnych wątkach przy różnej treści, jeśli struktura (tag_counts) jest identyczna — i jest to zamierzona cecha metrologii strukturalnej: stabilna warstwa kontrolna nad niedeterministyczną generacją.
 
 ## Słowa kluczowe
 
@@ -126,4 +128,3 @@ Dokumentacja dotycząca powtarzalności i struktury wyjścia: [https://learn.mic
 !! RSK1 Metryka_tag_counts_jest_stabilna_regresyjnie_ale_slepa_na_halucynacje_faktograficzne
 >> DEC1 HMK9D_uzywaj_do_porownywania_krokow_Δ_a_weryfikacje_prawdy_rob_osobno
 Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia‡
-
