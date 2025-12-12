@@ -106,7 +106,9 @@ Połączenie ASCII Microcode i HMK-9D tworzy pragmatyczny interfejs między gene
 
 Materiał projektu: [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md); [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part2.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part2.md); [https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part3.md](https://github.com/DonkeyJJLove/writeups/blob/master/ascii-microcode-ai_part3.md).
 
+
 Materiał dowodowy (bloki ODP): [https://chatgpt.com/share/693c53a5-0438-800e-a9f1-515b4fbd1c7d](https://chatgpt.com/share/693c53a5-0438-800e-a9f1-515b4fbd1c7d); [https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850](https://chatgpt.com/share/693c5391-ac2c-800e-b9a1-5d4665559850).
+
 
 Dokumentacja dotycząca powtarzalności i struktury wyjścia: [https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/reproducible-output](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/reproducible-output); [https://platform.openai.com/docs/guides/structured-outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
