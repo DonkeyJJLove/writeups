@@ -1,5 +1,13 @@
 # SBOM jako ontologiczna pieczęć relacji w rozproszonym systemie cybernetycznym
 
+<!-- BANNER: ai_platform/writeups/images/mokey-bissnes-kwm-banner.png -->
+
+<p align="center">
+  <img src="images/BOM_Image 19 sty 2026, 21_02_28.png"
+       alt="BOM Image"
+       width="30%" />
+</p>
+
 ## Ontologia relacji i ślad bytu (SBOM jako sigillum relationis)
 
 SBOM (Software Bill of Materials) to znacznie więcej niż zwykła lista komponentów oprogramowania – to ontologiczny ślad relacji, pieczęć odciśnięta przez byt cyfrowy w momencie jego powstania. Każdy artefakt oprogramowania (czy to obraz kontenera, pakiet binarny, aplikacja) niesie ze sobą relacyjny relikt: zapis wszystkich zależności i komponentów, z których został zbudowany[1]. SBOM jest niczym pieczęć bytu poprzez pryzmat relacji – formalny zapis istnienia komponentu software’owego poprzez związek z innymi komponentami, które z nim współ-tworzyły całość w chwili kompilacji[1]. Mówiąc metaforycznie, SBOM jest „świadkiem chwili stworzenia” danej aplikacji – ujawnia genealogię jej powstania, pokazując co z czym współbytowało w systemie podczas budowy danego wydania oprogramowania[2].
