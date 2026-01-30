@@ -45,7 +45,7 @@ Z perspektywy architektury „metawersum Meta” to układ warstw:
 ### Sygnał z roku 2026: korekta kursu (Workrooms, Horizon Feed, reorganizacja)
 Na przełomie stycznia 2026 widać silną korektę strategii: Meta oficjalnie komunikuje zakończenie Horizon Workrooms (narzędzia do pracy w VR) od **16 lutego 2026** (z usunięciem danych), co potwierdzają komunikaty w centrum pomocy oraz doniesienia mediów.
 
-Równolegle, w aktualizacjach Quest/Horizon OS Meta zaczęła **wygaszać „Horizon Feed”** na headsetach i zastępować go interfejsem „Navigator”, co w relacjach i materiałach branżowych opisywane jest jako próba poprawy doświadczenia użytkownika i odejścia od nachalnej integracji „feedowej” w VR. citeturn10search16turn10search18turn1news47
+Równolegle, w aktualizacjach Quest/Horizon OS Meta zaczęła **wygaszać „Horizon Feed”** na headsetach i zastępować go interfejsem „Navigator”, co w relacjach i materiałach branżowych opisywane jest jako próba poprawy doświadczenia użytkownika i odejścia od nachalnej integracji „feedowej” w VR.
 
 Te decyzje nie są dowodem biologicznej niemożności samej technologii, ale są ważnym kontekstem: jeśli pewne formy VR (praca/spotkania w headsetach, feed jako domyślny ekran) nie „klikają” na poziomie doświadczenia, to często przyczyną bywa mieszanina ergonomii, zmęczenia, percepcji i norm społecznych – czyli dokładnie obszary, gdzie biologia ma duży wpływ.
 
@@ -54,7 +54,7 @@ Te decyzje nie są dowodem biologicznej niemożności samej technologii, ale są
 Biologia nie „zakazuje” VR, ale narzuca twarde warunki brzegowe. Najważniejsze dla immersji są układy: wzrokowy, przedsionkowy, proprioceptywny/somatosensoryczny, a także sieci odpowiedzialne za ucieleśnienie i poznanie społeczne.
 
 ### Układ wzrokowy: przetwarzanie, głębia i „dwa strumienie” percepcji
-Kora wzrokowa (obszary V1–V5 i okolice) integruje i przetwarza informacje z siatkówki, a wynik jest przekazywany do dalszych sieci poznawczych. To podstawowe ograniczenie: VR jest „hackiem” na wejściu wzrokowym – dostarcza intensywnych bodźców, które mózg musi uznać za spójne z ruchem i ciałem. citeturn3search5
+Kora wzrokowa (obszary V1–V5 i okolice) integruje i przetwarza informacje z siatkówki, a wynik jest przekazywany do dalszych sieci poznawczych. To podstawowe ograniczenie: VR jest „hackiem” na wejściu wzrokowym – dostarcza intensywnych bodźców, które mózg musi uznać za spójne z ruchem i ciałem.
 
 W klasycznym ujęciu przetwarzanie wzrokowe rozdziela się na dwa główne szlaki:  
 **brzuszny („co”)** – bardziej związany z rozpoznawaniem obiektów, oraz **grzbietowy („gdzie/jak”)** – bardziej związany z przestrzenią i kierowaniem działaniem. W VR oba są mocno obciążane, bo użytkownik nie tylko „ogląda”, ale ma też sięgać, chwytać i poruszać w przestrzeni.
@@ -62,7 +62,7 @@ W klasycznym ujęciu przetwarzanie wzrokowe rozdziela się na dwa główne szlak
 ### Układ przedsionkowy i integracja wzrokowo-przedsionkowa: fundament stabilności i źródło choroby symulatorowej
 Układ przedsionkowy (kanały półkoliste i narządy otolitowe) oraz jego połączenia pniowe i móżdżkowe są kluczowe dla równowagi i orientacji. To on dostarcza sygnałów o przyspieszeniu i położeniu głowy, które muszą „pasować” do tego, co widzi oko.
 
-Mózg rutynowo łączy dane wzrokowe (np. przepływ optyczny) z przedsionkowymi i proprioceptywnymi, by oszacować własny ruch (self-motion perception). VR często wytwarza sytuacje, w których wzrok „krzyczy: poruszasz się”, a przedsionek „mówi: siedzisz”, co jest biologicznym przepisem na mdłości i dezorientację. citeturn3search16turn3search0
+Mózg rutynowo łączy dane wzrokowe (np. przepływ optyczny) z przedsionkowymi i proprioceptywnymi, by oszacować własny ruch (self-motion perception). VR często wytwarza sytuacje, w których wzrok „krzyczy: poruszasz się”, a przedsionek „mówi: siedzisz”, co jest biologicznym przepisem na mdłości i dezorientację. 
 
 Dla jasności, można to streścić w prostym schemacie:
 
@@ -86,11 +86,11 @@ Meta sama podkreśla, że gesty, nastawienie głowy czy kontakt wzrokowy są no�
 ## Jak mózg i psychika przetwarzają VR oraz środowiska społecznościowe: ograniczenia, wyzwania i dane empiryczne
 
 ### VR: cybersickness, zmęczenie wzrokowe i obciążenie poznawcze
-**Cybersickness** (choroba symulatorowa w VR) jest jednym z najlepiej opisanych biologicznych hamulców adopcji. Przeglądy wskazują typowe klastry objawów: nudności, dezorientację, zaburzenia okulomotoryczne i ogólny dyskomfort, a mechanizmy często wiążą się z konfliktami wzrokowo-przedsionkowymi oraz innymi niespójnościami sensorycznymi. citeturn2search32turn2search0turn3search0
+**Cybersickness** (choroba symulatorowa w VR) jest jednym z najlepiej opisanych biologicznych hamulców adopcji. Przeglądy wskazują typowe klastry objawów: nudności, dezorientację, zaburzenia okulomotoryczne i ogólny dyskomfort, a mechanizmy często wiążą się z konfliktami wzrokowo-przedsionkowymi oraz innymi niespójnościami sensorycznymi.
 
 Ważne są trzy konkretne „biologiczne tarcia” konstrukcyjne VR, które regularnie wracają w literaturze:
 
-**Konflikty sensoryczne podczas lokomocji**. Meta w swoich wytycznych projektowych wprost opisuje ryzyka komfortu i zaleca minimalizowanie nienaturalnych przyspieszeń, stosowanie teleportacji/snap turn, oferowanie ustawień preferencji itp. – bo to właśnie zmniejsza niedopasowania sensoryczne.
+**Konflikty sensoryczne podczas lokomocji**. Meta w swoich wytycznych projektowych wprost opisuje ryzyka komfortu i zaleca minimalizowanie nienaturalnych przyspieszeń, stosowanie teleportacji/snap turn, oferowanie ustawień preferencji itp. – bo to właśnie zmniejsza niedopasowania sensoryczne.
 
 **Vergence–accommodation conflict (VAC)**. W skrócie: stereoskopia zmusza oczy do konwergencji (ustawienia) na wirtualną odległość obiektu, ale akomodacja (ogniskowanie) bywa „uwięziona” na stałej płaszczyźnie optycznej wyświetlacza. Badania empiryczne i prace przeglądowe pokazują, że VAC może wpływać na objawy i parametry funkcji wzrokowych; testowano też rozwiązania (np. multifocal).
 
@@ -99,7 +99,7 @@ Ważne są trzy konkretne „biologiczne tarcia” konstrukcyjne VR, które regu
 Kolejny aspekt to **zmęczenie i ergonomia**. Badania porównujące spotkania w VR vs wideokonferencje sugerują, że VR może zwiększać m.in. **zmęczenie wzrokowe** (przynajmniej w warunkach eksperymentalnych i u użytkowników o mniejszej wprawie). 
 Z kolei literatura o ergonomii VR opisuje problemy w trzech obszarach: wizualnym, fizjologicznym i poznawczym (to ważne, bo „metawersum jako codzienna praca” wymagałoby długich sesji).
 
-Pojawiają się też prace sugerujące praktyczne limity czasu ekspozycji: w kontekście edukacji zdalnej w VR autorzy wskazują, że dłuższe sesje wiążą się ze wzrostem zmęczenia spotkaniowego, a rekomendacje dydaktyczne bywają ostrożne (np. utrzymywanie sesji w okolicach kilkudziesięciu minut, dopóki komfort nie będzie lepszy). citeturn5search26
+Pojawiają się też prace sugerujące praktyczne limity czasu ekspozycji: w kontekście edukacji zdalnej w VR autorzy wskazują, że dłuższe sesje wiążą się ze wzrostem zmęczenia spotkaniowego, a rekomendacje dydaktyczne bywają ostrożne (np. utrzymywanie sesji w okolicach kilkudziesięciu minut, dopóki komfort nie będzie lepszy).
 
 ### Spotkania i praca w VR: „więcej obecności”, ale też „więcej zmęczenia”
 To obszar szczególnie ważny dla tezy, bo „metawersum jako przyszłość pracy” wymagałoby wielogodzinnej tolerancji. W 2024 r. opublikowano wyniki porównań VR, VC i spotkań twarzą w twarz, wskazujące na wyższe zmęczenie wzrokowe w VR. 
@@ -166,21 +166,21 @@ W dokumentacji i produktach Meta widać kilka miejsc, gdzie biologia jest jawnie
 ### Obszary, w których podejście zderza się z twardymi limitami biologii
 Są jednak ograniczenia, które nie znikają od samego „lepszego UX”:
 
-**Długotrwała praca i spotkania w HMD**. Nawet jeśli VR daje większą „obecność”, badania pokazują koszty w postaci zmęczenia, w tym wzrokowego; to problem dla metawersum jako domyślnego środowiska pracy. Empiryczne porównania VR vs VC wskazują wyższą visual fatigue w VR. citeturn5search30
+**Długotrwała praca i spotkania w HMD**. Nawet jeśli VR daje większą „obecność”, badania pokazują koszty w postaci zmęczenia, w tym wzrokowego; to problem dla metawersum jako domyślnego środowiska pracy. Empiryczne porównania VR vs VC wskazują wyższą visual fatigue w VR.
 
-**Konflikty oczne (VAC) i zmęczenie**. To ograniczenie wynika z fizyki wyświetlania i optyki wielu HMD, a nie z samego software’u. Badania potwierdzają, że VAC może generować objawy i wpływać na funkcje wzrokowe, a rozwiązania (multifocal itp.) są technologicznie złożone i kosztowne. citeturn2search9turn2search17
+**Konflikty oczne (VAC) i zmęczenie**. To ograniczenie wynika z fizyki wyświetlania i optyki wielu HMD, a nie z samego software’u. Badania potwierdzają, że VAC może generować objawy i wpływać na funkcje wzrokowe, a rozwiązania (multifocal itp.) są technologicznie złożone i kosztowne.
 
-**Cybersickness jako bariera populacyjna**. Przeglądy wskazują, że cybersickness jest powszechnym efektem ubocznym HMD, a wrażliwość jest zróżnicowana indywidualnie. To oznacza, że „internet w VR” może być biologicznie niedostępny lub awersyjny dla istotnej części populacji. citeturn2search32turn5search0
+**Cybersickness jako bariera populacyjna**. Przeglądy wskazują, że cybersickness jest powszechnym efektem ubocznym HMD, a wrażliwość jest zróżnicowana indywidualnie. To oznacza, że „internet w VR” może być biologicznie niedostępny lub awersyjny dla istotnej części populacji.
 
-**Koszt psychologiczny przeniesienia feedu do immersji**. Facebookowa logika rankingu (przewidywanie, co ma „wartość”) jest zoptymalizowana pod utrzymanie uwagi przez częste, krótkie sesje. W VR próba przesunięcia tej logiki może zwiększać przeciążenie i zmęczenie, zamiast je zmniejszać – co widać w fakcie wygaszania Horizon Feed na headsetach i zastępowania go bardziej pragmatycznym interfejsem. citeturn6search0turn1news47turn10search18
+**Koszt psychologiczny przeniesienia feedu do immersji**. Facebookowa logika rankingu (przewidywanie, co ma „wartość”) jest zoptymalizowana pod utrzymanie uwagi przez częste, krótkie sesje. W VR próba przesunięcia tej logiki może zwiększać przeciążenie i zmęczenie, zamiast je zmniejszać – co widać w fakcie wygaszania Horizon Feed na headsetach i zastępowania go bardziej pragmatycznym interfejsem.
 
 ### Tabela: ograniczenia neurobiologiczne vs elementy projektu Meta
 
 | Ograniczenie biologiczne | Co mówi nauka | Typowe skutki w VR | Jak Meta próbuje to adresować (lub gdzie jest luka) |
 |---|---|---|---|
-| Konflikt wzrok–przedsionek | konflikt sygnałów sprzyja mdłościom/objawom choroby symulatorowej | cybersickness, dezorientacja | wytyczne komfortu lokomocji (teleport, snap turn, unikanie przyspieszeń) citeturn0search29turn0search33 |
+| Konflikt wzrok–przedsionek | konflikt sygnałów sprzyja mdłościom/objawom choroby symulatorowej | cybersickness, dezorientacja | wytyczne komfortu lokomocji (teleport, snap turn, unikanie przyspieszeń)|
 | VAC (konwergencja–akomodacja) | VAC wiąże się z objawami i pogorszeniem parametrów wzrokowych u części osób | eye strain, dyskomfort, spadek precyzji | ograniczone „software’owe” obejścia; potrzebne rozwiązania optyczne/wyświetlaczowe (koszt/masa) |
-| Latencja pętli sensomotorycznej | opóźnienia psują sprawstwo i komfort | „pływanie” świata, dyskomfort | techniki redukcji latencji (late latching) citeturn0search3turn0search7 |
+| Latencja pętli sensomotorycznej | opóźnienia psują sprawstwo i komfort | „pływanie” świata, dyskomfort | techniki redukcji latencji (late latching) |
 | Zmęczenie i ergonomia (szyja, oczy) | literatura ergonomiczna opisuje obciążenia fizjologiczne VR  | ból szyi, zmęczenie, krótsze sesje | częściowo: lżejsze konstrukcje, MR; ale limity masy/komfortu trwają (szczególnie dla wielogodzinnej pracy) |
 | Mózg społeczny potrzebuje sygnałów niewerbalnych | ToM i sieci społeczne są wrażliwe na brak sygnałów; Meta to podkreśla | „pustka emocjonalna” awatarów, mniejsze zaufanie | eye/face tracking, Movement SDK, Codec Avatars (kierunek zgodny, ale ryzyko prywatności i „uncanny”) |
 | Ograniczona pojemność uwagi i przeciążenie informacyjne | systemy feedowe wzmacniają bodźce, co może męczyć | burnout, „VR fatigue” | wygaszanie feedu w headsetach i pivot ku bardziej użytecznym interfejsom (Navigator) |
@@ -210,9 +210,9 @@ W rezultacie bardziej obronna teza brzmi: **„metawersum jako totalna platforma
 ### Rekomendacje: jak projektować „metawersum zgodne z człowiekiem”
 Poniższe rekomendacje są ugruntowane w tym, co wiemy o integracji sensorycznej, zmęczeniu w VR i o tym, jak mechanizmy nagrody działają w mediach społecznościowych.
 
-**Projektuj pod krótkie, celowe sesje, nie pod „zamieszkiwanie w VR”.** Tam, gdzie badania sugerują zmęczenie przy dłuższych sesjach, produkt powinien promować mikro-sesje, przerwy i powrót do świata fizycznego (np. miękkie limity czasu, rytuały „wejścia/wyjścia”, przypomnienia). W edukacji VR wskazuje się na potrzebę ostrożnego dawkowania czasu. citeturn5search26turn5search30
+**Projektuj pod krótkie, celowe sesje, nie pod „zamieszkiwanie w VR”.** Tam, gdzie badania sugerują zmęczenie przy dłuższych sesjach, produkt powinien promować mikro-sesje, przerwy i powrót do świata fizycznego (np. miękkie limity czasu, rytuały „wejścia/wyjścia”, przypomnienia). W edukacji VR wskazuje się na potrzebę ostrożnego dawkowania czasu.
 
-**Minimalizuj konflikty sensoryczne jako nadrzędny KPI.** Meta już to robi w wytycznych lokomocji: preferuj teleportację i snap turning, unikaj nieciągłych przyspieszeń, dawaj użytkownikowi kontrolę (preferencje lokomocji). W metawersum społecznym lokomocja „dla funu” jest mniej ważna niż komfort; warto wprost stawiać komfort ponad „efekt wow”. citeturn0search29turn0search25turn0search33
+**Minimalizuj konflikty sensoryczne jako nadrzędny KPI.** Meta już to robi w wytycznych lokomocji: preferuj teleportację i snap turning, unikaj nieciągłych przyspieszeń, dawaj użytkownikowi kontrolę (preferencje lokomocji). W metawersum społecznym lokomocja „dla funu” jest mniej ważna niż komfort; warto wprost stawiać komfort ponad „efekt wow”.
 
 **Wybieraj MR/passthrough jako domyślny tryb społeczny tam, gdzie to możliwe.** MR daje stały kontekst przestrzeni i redukuje lęk/zmęczenie związane z dezorientacją; Presence Platform dostarcza elementy techniczne (anchors/scene) umożliwiające projektowanie „z kotwicą w realności”.
 
