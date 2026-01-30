@@ -27,6 +27,7 @@
 - [ASCII microcode dla AI – znak, microcode i systemy LLM](#ascii-microcode-ai)
 - [Deterministyczna metrologia strukturalna (ASCII Microcode + HMK-9D)](#deterministyczna-metrologia-strukturalna)
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
+- [Metawersum Meta a biologia człowieka](#metawersum-meta-a-biologia-człowieka)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
@@ -386,6 +387,27 @@ Writeup opisuje, jak zbudować deterministyczną warstwę pomiarową nad odpowie
 Pokazuje też, że identyczna struktura mikrokodu (tag_counts) może celowo dawać identyczny wektor 9D, co ułatwia regresję, archiwizację i porównywanie mikroświatów w różnych wątkach.
 
 ---
+
+---
+
+## Metawersum Meta a biologia człowieka
+
+📄 Plik: [`06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md`](06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md)
+
+![Metawersum Meta a biologia człowieka](/images/cover_metaverse_biologia.png)
+
+Ten write-up broni i obala tezę, że „Metaverse Meta” (w wariancie VR-first, budowany w duchu Facebooka jako platformy uwagi i rankingów) musiał skończyć się porażką ze względu na ograniczenia biologiczne człowieka.
+
+Analiza łączy trzy warstwy:
+
+- neurobiologię percepcji i integracji sensorycznej (wzrok–błędnik–propriocepcja), w tym mechanizmy cybersickness i zmęczenia,
+- „mózg społeczny” i kanały niewerbalne (obecność, ucieleśnienie, teoria umysłu) oraz koszty poznawczo-emocjonalne długich sesji,
+- logikę Facebooka jako maszyny uwagi (ranking, walidacja społeczna, pętle nawyku) i ryzyko przeniesienia tego paradygmatu do immersji.
+
+Wniosek operacyjny: VR może działać jako narzędzie i środowisko zadaniowe (krótkie sesje, MR, zastosowania specjalistyczne), ale „VR jako następca mobilnego internetu” nie skaluje się biologicznie w populacji bez głębokiej zmiany paradygmatu produktu, ergonomii i rytmu użycia.
+
+---
+
 
 ## Dodatkowe materiały i ilustracje (`images/`)
 
