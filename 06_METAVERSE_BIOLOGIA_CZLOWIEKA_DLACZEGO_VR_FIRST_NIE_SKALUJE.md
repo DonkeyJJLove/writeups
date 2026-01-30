@@ -1,6 +1,7 @@
 # Metawersum Meta a biologia człowieka: czy projekt był skazany na porażkę przez ograniczenia mózgu i ciała?
 
-![Metawersum Meta a biologia człowieka]("https://github.com/DonkeyJJLove/writeups/blob/master/images/VR_i_biologia_%20interakcje%20m%C3%B3zgu.png")
+
+<img src="/images/VR_i_biologia_%20interakcje%20m%C3%B3zgu.png" width="600" alt="Metawersum Meta a biologia człowieka">
 
 ## Ramy analizy i interpretacja tezy
 

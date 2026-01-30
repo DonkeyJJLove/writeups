@@ -388,13 +388,11 @@ Pokazuje też, że identyczna struktura mikrokodu (tag_counts) może celowo dawa
 
 ---
 
----
-
 ## Metawersum Meta a biologia człowieka
 
 📄 Plik: [`06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md`](06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md)
 
-![Metawersum Meta a biologia człowieka](/images/cover_metaverse_biologia.png)
+<img src="/images/VR_i_biologia_%20interakcje%20m%C3%B3zgu.png" width="600" alt="Metawersum Meta a biologia człowieka">
 
 Ten write-up broni i obala tezę, że „Metaverse Meta” (w wariancie VR-first, budowany w duchu Facebooka jako platformy uwagi i rankingów) musiał skończyć się porażką ze względu na ograniczenia biologiczne człowieka.
 
