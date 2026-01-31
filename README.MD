@@ -28,6 +28,7 @@
 - [Deterministyczna metrologia strukturalna (ASCII Microcode + HMK-9D)](#deterministyczna-metrologia-strukturalna)
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
 - [Metawersum Meta a biologia człowieka](#metawersum-meta-a-biologia-człowieka)
+- [Kosmiczne Wioski – social-network AI i premia od kreacji](#kosmiczne-wioski--social-network-ai-i-premia-od-kreacji)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
@@ -406,6 +407,29 @@ Wniosek operacyjny: VR może działać jako narzędzie i środowisko zadaniowe (
 
 ---
 
+## Kosmiczne Wioski – social-network AI i premia od kreacji
+
+📄 Plik: [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md)
+
+Artykuł projektowy, który używa metafory **„Wioski Kosmicznej”** jako ramy do zbudowania nowego typu social-networku z AI – nie opartego na dopaminie i lajku, tylko na **premii od kreacji**:
+
+- zamiast „więcej scrolla” – misje, zadania i grywalizowane prace społeczne (zupa, naleśniki, lokalne projekty, kompetencje), które generują **dane wysokiej jakości** dla AI;
+- zamiast rynku atencji – **rynek kompetencji i danych**, gdzie użytkownik dostaje „chleb, nie cukier”: realne korzyści (skille, ścieżki pracy, czasem pieniądz) za wkład w rozwój systemu;
+- zamiast dzikiego kapitalizmu social mediów – **architektura habitatowa**: telemetria, zamknięte obiegi, ECLSS dla społeczeństwa (uwaga, zaufanie, bezpieczeństwo informacyjne jako tlen i woda systemu).
+
+Tekst łączy:
+
+- metafory i wątki kosmiczne (habitaty NASA, Moon Village ESA) z konkretnymi pomysłami na **federowane Wioski** (domeny–państwa, integracja z UE, lokalne reguły, podatki i czasem VAT od sociala),
+- „absolutny reżim naukowy” (metryki, telemetria, eksperymenty społeczne, data-centric AI) z warstwą **fantazji i zabawy** (gry dodatnie, asymetrie, program lojalnościowy zamiast certyfikacji),
+- perspektywę polityczno-społeczną („bezrobotni z powodu AI jako pierwsi klienci”, „kosmosem wygrać wybory”, „nie lewica, nie prawica – kosmos”) z praktycznym designem: jak social-network z AI może sam rozwiązywać problem, który współtworzy (automatyzacja, wykluczenie, polaryzacja).
+
+„Premia od kreacji” jest tu rozumiana dosłownie jako:
+
+> bonus za działania, które rozwijają AI **i** rozwijają ludzi,
+
+mierzone twardo (jakość danych, efekty na rynku pracy, kompetencje) i miękko (sieci wsparcia, wioski w realu, zaufanie). W tle obecna jest logika mostów 9D (Wioska–Miasto, Human–AI, Semantyka–Energia) i docelowej integracji z resztą stacku: AISEC, ASCII microcode, HUD daty i protokołami kontekstu.
+
+---
 
 ## Dodatkowe materiały i ilustracje (`images/`)
 
