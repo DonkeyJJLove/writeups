@@ -1,146 +1,207 @@
 # Opłacalność Human-AI-In-The-Loop  
 ## Przegląd badań empirycznych i koncepcyjnych (Research Write-Up)
 
-### Repozytorium badań
+### Repozytorium badań (źródło pierwotne)
 👉 https://github.com/DonkeyJJLove/writeups/tree/master/badania
 
 ---
 
 ## Abstrakt
 
-Niniejszy README stanowi **artykuł przeglądowy (review paper)** dokumentujący
-badania prowadzone w katalogu `badania/`.  
-Celem jest **synteza wyników**, identyfikacja wspólnych tez oraz ocena
-opłacalności modeli społeczno-technicznych opartych o **Human-AI-In-The-Loop (HITL)**.
+Niniejszy dokument stanowi **artykuł przeglądowy (review paper)** opisujący
+zestaw badań prowadzonych w katalogu `writeups/badania`.
+Celem README jest **integracja wyników** z zakresu ekonomii danych,
+architektur Human-AI-In-The-Loop (HITL),
+neurokognitywnych ograniczeń człowieka
+oraz modeli społeczno-technicznych produkcji wartości.
 
-README **nie wprowadza nowych tez** – opisuje i porządkuje istniejące badania.
+README **nie wprowadza nowych tez** – rekonstruuje i syntetyzuje
+wnioski już obecne w badaniach źródłowych.
 
 ---
 
 ## Metodologia przeglądu
 
-- Źródło: katalog `badania/` (write-ups badawcze, eksperymenty koncepcyjne)
-- Metoda: analiza porównawcza
-- Kryterium: opłacalność, skalowalność poznawcza, rola człowieka w pętli AI
+- **Źródło danych**: write-ups badawcze (katalog `badania/`)
+- **Charakter badań**: koncepcyjno-empiryczny, eksploracyjny
+- **Metoda**:
+  - analiza porównawcza modeli ekonomicznych
+  - analiza kosztów poznawczych i organizacyjnych
+  - synteza wniosków międzydyscyplinarnych
+- **Kryteria oceny**:
+  - opłacalność (ROI, koszt błędu, koszt koordynacji)
+  - stabilność epistemiczna
+  - rola człowieka w pętli AI
 
 ---
 
-## Katalog badań i ich wnioski
+## Katalog badań (opis i wnioski)
 
-### 1. Ekonomiczna „taśma prototypowa danych” poniżej progu startupu  
-📄  
-[badania/Ekonomiczna „taśma prototypowa danych”…](https://github.com/DonkeyJJLove/writeups/tree/master/badania)
+### 1. Ekonomiczna „taśma prototypowa danych” poniżej progu startupu
 
-**Teza:**  
-Brak danych nie jest barierą – barierą jest brak mechanizmu ich seryjnej produkcji.
+**Teza**  
+Brak danych nie jest barierą ekonomiczną – barierą jest brak procesu ich
+systematycznej produkcji.
 
-**Metoda:**  
-Modelowanie iteracyjnego wytwarzania danych przez człowieka wspieranego przez AI,
-poniżej progu kapitałowego startupu.
+**Wyniki kluczowe**
+- HITL umożliwia seryjne wytwarzanie danych bez kosztownej infrastruktury
+- człowiek pełni funkcję generatora semantyki i sensu
+- AI pełni funkcję akceleratora iteracji
 
-**Wnioski:**  
-- HITL umożliwia ekonomiczną produkcję danych bez skali infrastrukturalnej  
-- człowiek pełni rolę „generatora semantyki”, AI – akceleratora
-
-**Implikacja HITL:**  
-Człowiek nie jest kosztem operacyjnym, lecz elementem linii produkcyjnej danych.
+**Wniosek ekonomiczny**  
+Człowiek w pętli **obniża próg wejścia**, zamiast podnosić koszty.
 
 ---
 
-### 2. Ekonomiczna falsyfikacja modelu „data-only”  
-📄  
-[badania/Ekonomiczna falsyfikacja modelu „data-only”…](https://github.com/DonkeyJJLove/writeups/tree/master/badania)
+### 2. Ekonomiczna falsyfikacja modelu „data-only”
 
-**Teza:**  
-Model „więcej danych = lepsza AI” jest ekonomicznie fałszywy.
+**Teza**  
+Model „więcej danych → lepsza AI” jest długoterminowo nieopłacalny.
 
-**Metoda:**  
-Analiza kosztów błędów, dryfu i utraty sensu w systemach bez człowieka w pętli.
+**Wyniki kluczowe**
+- wzrost kosztów walidacji i czyszczenia danych
+- dryf semantyczny modeli
+- rosnący koszt korekty błędów
 
-**Wnioski:**  
-- data-only prowadzi do inflacji kosztów walidacji  
-- brak człowieka zwiększa koszt semantycznej korekty
-
-**Implikacja HITL:**  
-HITL działa jako mechanizm stabilizacji epistemicznej systemu.
+**Wniosek ekonomiczny**  
+Brak człowieka powoduje **inflację kosztów błędu**.
 
 ---
 
-### 3. Ekonomiczny dowód opłacalności modelu „idealnej wioski kosmicznej”  
-📄  
-[badania/Ekonomiczny dowód opłacalności modelu „idealnej wioski kosmicznej”…](https://github.com/DonkeyJJLove/writeups/tree/master/badania)
+### 3. Ekonomiczny dowód opłacalności modelu „idealnej wioski kosmicznej”
 
-**Teza:**  
-Zamknięte, współzależne ekosystemy ludzie-AI są bardziej efektywne niż rynki danych.
+**Teza**  
+Zamknięte ekosystemy Human-AI są efektywniejsze niż rynki danych.
 
-**Metoda:**  
-Modelowanie synergicznego ekosystemu produkcji wiedzy i danych.
-
-**Wnioski:**  
-- opłacalność wynika z relacji, nie z wolumenu  
+**Wyniki kluczowe**
+- wartość powstaje w relacjach, nie w wolumenie
 - koordynacja zastępuje skalę
+- wiedza zastępuje kapitał
 
-**Implikacja HITL:**  
-HITL jest podstawą lokalnych, samowystarczalnych fabryk wiedzy.
-
----
-
-### 4. Pięć racjonalnych modeli hybrydowej „wioski kosmicznej” Social-AI  
-📄  
-[badania/Pięć racjonalnych modeli hybrydowej wioski kosmicznej…](https://github.com/DonkeyJJLove/writeups/tree/master/badania)
-
-**Teza:**  
-Istnieje skończona liczba stabilnych modeli współpracy Social-AI.
-
-**Metoda:**  
-Analiza porównawcza pięciu archetypów organizacyjnych.
-
-**Wnioski:**  
-- nie każdy model HITL jest opłacalny  
-- opłacalność zależy od struktury sprzężeń zwrotnych
-
-**Implikacja HITL:**  
-Architektura relacji jest ważniejsza niż architektura techniczna.
+**Wniosek ekonomiczny**  
+Opłacalność = funkcja spójności relacji, nie skali produkcji.
 
 ---
 
-### 5. Neurokognitywne skutki środowiska cyfrowego dla roli człowieka w pętli AI  
-📄  
-[badania/Neurokognitywne skutki środowiska cyfrowego…](https://github.com/DonkeyJJLove/writeups/tree/master/badania)
+### 4. Pięć racjonalnych modeli hybrydowej „wioski kosmicznej” Social-AI
 
-**Teza:**  
-Człowiek w pętli AI podlega przeciążeniom poznawczym, które wpływają na jakość danych.
+**Teza**  
+Nie każdy model HITL jest ekonomicznie stabilny.
 
-**Metoda:**  
-Analiza neurokognitywna i psychologiczna (CBT, heurystyki, rytuały).
+**Wyniki kluczowe**
+- istnieje skończona liczba stabilnych archetypów
+- kluczowa jest architektura sprzężeń zwrotnych
+- błędna struktura relacji prowadzi do entropii organizacyjnej
 
-**Wnioski:**  
-- HITL wymaga projektowania higieny poznawczej  
-- bez tego człowiek staje się wąskim gardłem
-
-**Implikacja HITL:**  
-Opłacalność HITL zależy od ochrony zdolności poznawczych człowieka.
+**Wniosek ekonomiczny**  
+Architektura relacji > architektura techniczna.
 
 ---
 
-## Synteza wniosków
+### 5. Neurokognitywne skutki środowiska cyfrowego dla roli człowieka w pętli AI
 
-1. Opłacalność AI jest funkcją **relacji człowiek–AI**, nie automatyzacji.
-2. Modele data-only są krótkoterminowe i niestabilne.
-3. HITL jest mechanizmem:
-   - produkcji sensu  
-   - kontroli kosztów błędu  
-   - stabilizacji systemów uczących się
+**Teza**  
+Człowiek w pętli jest zasobem o ograniczonej pojemności poznawczej.
+
+**Wyniki kluczowe**
+- przeciążenie poznawcze obniża jakość danych
+- brak higieny poznawczej generuje błędy systemowe
+- rytuały, CBT i struktury redukują koszt poznawczy
+
+**Wniosek ekonomiczny**  
+Koszt poznawczy jest **ukrytym składnikiem TCO systemów AI**.
+
+---
+
+### 6. Rytuał, CBT i „mózg zwierzęcy” jako stabilizator HITL
+
+**Teza**  
+Bez stabilizacji psychologicznej człowiek staje się najsłabszym ogniwem pętli.
+
+**Wyniki kluczowe**
+- rytuały redukują zmienność decyzyjną
+- CBT zwiększa odporność na stres informacyjny
+- struktura dnia pracy wpływa na jakość sprzężenia z AI
+
+**Wniosek ekonomiczny**  
+Psychologia człowieka wpływa bezpośrednio na ROI AI.
+
+---
+
+## Synteza ekonomiczna (wnioski zbiorcze)
+
+### 1. Funkcja opłacalności HITL
+
+```mermaid
+graph LR
+A[Człowiek] -->|semantyka| B[Pętla HITL]
+C[AI] -->|akceleracja| B
+B --> D[Wartość]
+B --> E[Redukcja ryzyka]
+B --> F[Kontrola kosztu błędu]
+````
+
+**Wniosek**
+Wartość nie powstaje w AI ani w człowieku, lecz **w pętli**.
+
+---
+
+### 2. Porównanie modeli ekonomicznych
+
+```mermaid
+xychart-beta
+title "Koszt całkowity vs stabilność systemu"
+x-axis ["Data-only", "AI-heavy", "Human-AI-In-The-Loop"]
+y-axis "Koszt długoterminowy" 0 --> 100
+line [30, 55, 25]
+```
+
+**Interpretacja**
+HITL ma niższy koszt długoterminowy mimo wyższego kosztu początkowego.
+
+---
+
+### 3. Koszt błędu a architektura
+
+```mermaid
+flowchart TD
+A[Błąd AI] -->|brak HITL| B[Skalowanie błędu]
+A -->|HITL| C[Człowiek]
+C --> D[Korekta]
+D --> E[Uczenie systemu]
+```
+
+**Wniosek**
+HITL działa jak **amortyzator błędu**.
+
+---
+
+## Wnioski końcowe
+
+1. Opłacalność AI jest funkcją **relacji**, nie automatyzacji.
+2. Modele data-only są krótkoterminowo atrakcyjne, długoterminowo niestabilne.
+3. Człowiek w pętli:
+
+   * stabilizuje system,
+   * obniża koszt błędu,
+   * dostarcza sens i intencję.
+4. Koszty poznawcze muszą być traktowane jako element ekonomiczny.
 
 ---
 
 ## Status badań
 
-Badania mają charakter:
-- eksploracyjny
-- iteracyjny
-- otwarty (living research)
-
-README będzie aktualizowany wraz z rozwojem katalogu `badania/`.
+* charakter: **living research**
+* katalog `badania/` pozostaje źródłem pierwotnym
+* README pełni rolę **syntetycznego artykułu przeglądowego**
 
 ---
+
+## Jak czytać repozytorium
+
+1. **badania/** – prace źródłowe, eksperymenty, modele
+2. **README.md** – synteza, wnioski, mapa pojęć
+3. dalsze repo (SBOM, DevSecOps, AI-Ops) – warstwa aplikacyjna
+
+---
+
