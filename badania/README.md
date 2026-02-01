@@ -144,7 +144,152 @@ Psychologiczna stabilność człowieka warunkuje opłacalność HITL.
 
 ---
 
-## Synteza wniosków
+## Human-AI-In-The-Loop (HITL) – definicja, rola i znaczenie ekonomiczne
+
+### Definicja operacyjna
+
+**Human-AI-In-The-Loop (HITL)** to architektura systemowa, w której człowiek
+pozostaje **aktywnym elementem pętli decyzyjnej, poznawczej i walidacyjnej**
+systemu sztucznej inteligencji.
+
+W odróżnieniu od:
+- *human-on-the-loop* (człowiek jako nadzór awaryjny),
+- *human-out-of-the-loop* (pełna automatyzacja),
+
+HITL zakłada, że **bez udziału człowieka system nie jest kompletny
+ani epistemicznie, ani ekonomicznie**.
+
+---
+
+### Komponenty pętli HITL
+
+Architektura HITL składa się z czterech współzależnych elementów:
+
+1. **Człowiek**
+   - źródło intencji, sensu i kontekstu
+   - generator semantyki
+   - korektor błędów poznawczych systemu
+
+2. **Model / System AI**
+   - akcelerator przetwarzania
+   - eksplorator przestrzeni rozwiązań
+   - wzmacniacz iteracji
+
+3. **Artefakty pośrednie**
+   - dane, adnotacje, decyzje
+   - dokumenty, modele pojęciowe, heurystyki
+   - rytuały i procedury pracy
+
+4. **Sprzężenie zwrotne**
+   - mechanizm uczenia się po obu stronach
+   - redukcja błędu i dryfu semantycznego
+   - stabilizacja znaczeń
+
+```mermaid
+flowchart LR
+H[Człowiek] -->|intencja / sens| A[AI]
+A -->|propozycje / wzorce| H
+H -->|walidacja / korekta| D[Dane]
+D --> A
+````
+
+---
+
+### Rola człowieka w HITL
+
+Na podstawie badań z katalogu `badania/` człowiek w HITL pełni **wiele ról jednocześnie**:
+
+* **producent semantyki**
+  (badania: „taśma prototypowa danych”)
+
+* **stabilizator epistemiczny**
+  (badania: falsyfikacja modelu data-only)
+
+* **amortyzator błędu**
+  (analiza kosztów korekty i dryfu)
+
+* **węzeł koordynacji społecznej**
+  (modele „wioski kosmicznej” Social-AI)
+
+* **element o ograniczonej pojemności poznawczej**
+  (badania neurokognitywne, CBT, rytuały)
+
+**Wniosek:**
+Człowiek nie jest „użytkownikiem” systemu AI, lecz **jego krytycznym komponentem strukturalnym**.
+
+---
+
+### Ekonomiczna rola HITL
+
+Badania pokazują, że HITL wpływa na opłacalność systemów AI w czterech wymiarach:
+
+1. **Redukcja kosztu błędu**
+
+   * błędy są korygowane wcześnie
+   * nie ulegają masowemu skalowaniu
+
+2. **Redukcja kosztu walidacji danych**
+
+   * mniej danych niskiej jakości
+   * więcej danych o wysokiej wartości semantycznej
+
+3. **Obniżenie progu wejścia kapitałowego**
+
+   * wiedza i kompetencje zastępują infrastrukturę
+   * możliwe działanie poniżej progu startupu
+
+4. **Stabilność długoterminowa**
+
+   * mniejszy dryf modeli
+   * mniejsza potrzeba kosztownych retreningów
+
+```mermaid
+xychart-beta
+title "Koszt całkowity systemu AI w czasie"
+x-axis ["Start", "Skala", "Utrzymanie"]
+y-axis "Koszt" 0 --> 100
+line ["Data-only", 20, 70, 90]
+line ["Human-AI-In-The-Loop", 35, 45, 55]
+```
+
+---
+
+### HITL a koszt poznawczy człowieka
+
+Jednym z kluczowych wniosków badań jest fakt, że **człowiek w pętli nie jest zasobem nieskończonym**.
+
+Badania neurokognitywne pokazują:
+
+* przeciążenie informacyjne
+* zmęczenie decyzyjne
+* spadek jakości walidacji
+
+Dlatego HITL **musi być projektowany**, a nie zakładany intuicyjnie.
+
+Stąd znaczenie:
+
+* rytuałów pracy
+* CBT i metaprogramowania
+* struktur redukujących zmienność poznawczą
+
+**Wniosek ekonomiczny:**
+Koszt poznawczy człowieka jest **ukrytym składnikiem TCO** systemów AI.
+
+---
+
+### HITL jako wspólny mianownik wszystkich badań
+
+Wszystkie badania w katalogu `badania/` można sprowadzić do jednego wspólnego wniosku:
+
+> **Wartość nie powstaje w AI ani w danych, lecz w stabilnej pętli relacyjnej
+> pomiędzy człowiekiem a systemem.**
+
+HITL nie jest kompromisem między automatyzacją a kontrolą.
+Jest **optymalnym punktem równowagi ekonomicznej, poznawczej i organizacyjnej**.
+
+---
+
+# Synteza wniosków
 
 1. Opłacalność AI jest funkcją **relacji człowiek–AI**, nie automatyzacji.
 2. Modele data-only są krótkoterminowe i niestabilne.
@@ -160,15 +305,5 @@ Psychologiczna stabilność człowieka warunkuje opłacalność HITL.
 - charakter: **eksploracyjny i iteracyjny**
 - katalog `badania/` jest źródłem pierwotnym
 - README pełni rolę **warstwy syntetycznej (review)**
-
----
-
-## Referencje (źródła pierwotne)
-
-Pełna lista dokumentów znajduje się w:  
-👉 https://github.com/DonkeyJJLove/writeups/tree/master/badania
-
-Każdy punkt w README odnosi się bezpośrednio do jednego lub więcej plików
-z powyższego katalogu.
 
 ---
