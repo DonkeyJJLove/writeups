@@ -207,14 +207,15 @@ D --> A
    * stabilizuje znaczenie danych,
    * obniża długoterminowe TCO.
 
-```mermaid
-xychart-beta
-title "Koszt całkowity systemu AI w czasie"
-x-axis ["Start", "Skalowanie", "Utrzymanie"]
-y-axis "Koszt" 0 --> 100
-line ["Data-only", 20, 65, 90]
-line ["Human-AI-In-The-Loop", 35, 45, 55]
-```
+flowchart LR
+DO[Data-only AI] -->|niski koszt startu| S1[Start]
+S1 -->|eskalacja błędów| S2[Skalowanie]
+S2 -->|wysoki koszt utrzymania| S3[Utrzymanie]
+
+HITL[Human-AI-In-The-Loop] -->|wyższy koszt startu| H1[Start]
+H1 -->|kontrola błędu| H2[Skalowanie]
+H2 -->|stabilny koszt| H3[Utrzymanie]
+
 
 ---
 
