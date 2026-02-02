@@ -29,6 +29,8 @@
 - [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
 - [Metawersum Meta a biologia człowieka](#metawersum-meta-a-biologia-człowieka)
 - [Kosmiczne Wioski – social-network AI i premia od kreacji](#kosmiczne-wioski--social-network-ai-i-premia-od-kreacji)
+- [Badania – opłacalność Human-AI-In-The-Loop (HITL)](#badania)
+- [Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej](#-kod-cywilizacji--human-ai-i-społeczeństwo-w-epoce-niskiej-elastyczności-poznawczej)
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
@@ -428,6 +430,249 @@ Tekst łączy:
 > bonus za działania, które rozwijają AI **i** rozwijają ludzi,
 
 mierzone twardo (jakość danych, efekty na rynku pracy, kompetencje) i miękko (sieci wsparcia, wioski w realu, zaufanie). W tle obecna jest logika mostów 9D (Wioska–Miasto, Human–AI, Semantyka–Energia) i docelowej integracji z resztą stacku: AISEC, ASCII microcode, HUD daty i protokołami kontekstu.
+
+---
+
+<a id="badania"></a>
+## Badania – opłacalność Human-AI-In-The-Loop (HITL)
+
+📂 Katalog: [`badania/`](badania)
+
+Ten dział repozytorium rozszerza „writeups” o warstwę stricte badawczą: **zintegrowany przegląd + syntezę (review + synthesis)** materiałów z katalogu `badania/`, skupionych na pytaniu:
+
+> Kiedy (i dlaczego) Human‑AI‑In‑The‑Loop (HITL) jest **opłacalny** — oraz kiedy brak człowieka w pętli generuje narastające koszty błędów, dryfu semantycznego i walidacji?
+
+🔗 Repozytorium badań (źródło pierwotne):  
+👉 https://github.com/DonkeyJJLove/writeups/tree/master/badania
+
+---
+
+### Abstrakt
+
+Niniejszy fragment README streszcza **zintegrowany artykuł przeglądowy**,
+opisujący badania prowadzone w katalogu `writeups/badania`.
+
+Badania te analizują opłacalność systemów opartych o sztuczną inteligencję
+z perspektywy:
+- ekonomii danych,
+- kosztu błędu,
+- kosztu poznawczego człowieka,
+- architektury relacji społeczno-technicznych.
+
+Celem tej sekcji jest:
+1. **uporządkowanie badań jako spójnych strumieni badawczych**,  
+2. **rekonstrukcja HITL** jako wspólnego wyniku tych badań,  
+3. **sformułowanie ogólnych wniosków ekonomicznych**.
+
+Sekcja **nie wprowadza nowych badań** — pełni rolę warstwy integrującej.
+
+---
+
+### Metodologia przeglądu
+
+- **Źródło**: katalog `writeups/badania`
+- **Charakter badań**: eksploracyjny, iteracyjny („living research”)
+- **Metoda**:
+  - analiza porównawcza strumieni badawczych,
+  - synteza pojęciowa,
+  - analiza ekonomiczna kosztu błędu i kosztu poznawczego
+- **Jednostka analizy**: strumień badawczy (nie pojedynczy plik)
+
+> Repozytorium `badania/` pełni funkcję **indeksu i dziennika badań**.
+> Część materiałów roboczych istnieje poza repozytorium,
+> natomiast ta sekcja opisuje **wyniki i kierunki badań**.
+
+---
+
+### Przegląd badań jako strumieni badawczych
+
+#### Strumień A — Ekonomika produkcji danych poniżej progu startupu
+
+**Problem badawczy**  
+Wysoki próg kapitałowy wejścia w produkcję danych i systemy AI.
+
+**Pytania badawcze**
+- Czy brak danych jest barierą, czy problemem organizacji procesu?
+- Jaką rolę pełni człowiek w produkcji danych?
+
+**Wkład do HITL**
+| Element pętli | Identyfikowana rola |
+|--------------|---------------------|
+| Człowiek | źródło intencji i semantyki |
+| AI | akcelerator iteracji |
+| Artefakty | dane prototypowe |
+| Sprzężenie | szybka korekta znaczeń |
+
+**Wynik**  
+Produkcja danych wymaga **pętli Human-AI**, nie skali infrastrukturalnej.
+
+---
+
+#### Strumień B — Falsyfikacja modelu „data-only”
+
+**Problem badawczy**  
+Narastający koszt walidacji i błędów w systemach AI opartych wyłącznie na danych.
+
+**Pytania badawcze**
+- Jak rośnie koszt błędu w czasie?
+- Gdzie pojawia się dryf semantyczny?
+
+**Wkład do HITL**
+| Element pętli | Identyfikowana rola |
+|--------------|---------------------|
+| Człowiek | walidator semantyczny |
+| AI | generator hipotez |
+| Artefakty | decyzje, etykiety |
+| Sprzężenie | redukcja dryfu |
+
+**Wynik**  
+Modele *data-only* są **ekonomicznie niestabilne długoterminowo**.
+
+---
+
+#### Strumień C — Modele społeczno-techniczne Human-AI (Social-AI)
+
+**Problem badawczy**  
+Dlaczego część systemów Human-AI się rozpada mimo obecności człowieka?
+
+**Pytania badawcze**
+- Jak struktura relacji wpływa na stabilność?
+- Czy relacje mogą zastąpić skalę?
+
+**Wkład do HITL**
+| Element pętli | Identyfikowana rola |
+|--------------|---------------------|
+| Człowiek | węzeł koordynacji |
+| AI | mediator informacji |
+| Artefakty | reguły, procedury |
+| Sprzężenie | stabilność relacji |
+
+**Wynik**  
+O opłacalności decyduje **architektura relacji**, nie sama automatyzacja.
+
+---
+
+#### Strumień D — Koszt poznawczy człowieka w pętli AI
+
+**Problem badawczy**  
+Spadek jakości decyzji przy przeciążeniu informacyjnym.
+
+**Pytania badawcze**
+- Jak zmęczenie wpływa na walidację?
+- Jakie są granice poznawcze HITL?
+
+**Wkład do HITL**
+| Element pętli | Identyfikowana rola |
+|--------------|---------------------|
+| Człowiek | zasób ograniczony |
+| AI | źródło presji informacyjnej |
+| Artefakty | heurystyki |
+| Sprzężenie | stabilizacja decyzji |
+
+**Wynik**  
+Koszt poznawczy jest **realnym składnikiem TCO** systemów AI.
+
+---
+
+#### Strumień E — Rytuały, CBT i stabilizacja pętli HITL
+
+**Problem badawczy**  
+Zmienność człowieka destabilizuje systemy AI.
+
+**Pytania badawcze**
+- Jak ograniczyć losowość decyzji?
+- Jak stabilizować pętlę Human-AI?
+
+**Wkład do HITL**
+| Element pętli | Identyfikowana rola |
+|--------------|---------------------|
+| Człowiek | czynnik losowy |
+| AI | wzmacniacz stanu |
+| Artefakty | rytuały, procedury |
+| Sprzężenie | redukcja fluktuacji |
+
+**Wynik**  
+Stabilny człowiek = stabilna pętla = stabilny koszt.
+
+---
+
+### Rekonstrukcja Human-AI-In-The-Loop (HITL)
+
+Na podstawie wszystkich strumieni badawczych HITL wyłania się jako:
+
+> **architektura społeczno-techniczna, w której człowiek pozostaje
+> nieusuwalnym elementem pętli produkcji danych, walidacji znaczeń
+> i korekty błędów, ponieważ bez tego pętla generuje narastające koszty.**
+
+#### Formalna pętla HITL
+
+```mermaid
+flowchart LR
+H[Człowiek<br/>sens / walidacja] --> A[AI<br/>eksploracja]
+A --> H
+H --> D[Artefakty<br/>dane / decyzje]
+D --> A
+```
+
+---
+
+### Synteza ekonomiczna
+
+#### Kluczowe obserwacje
+
+1. **Koszt błędu** dominuje nad kosztem interakcji z człowiekiem.
+2. Modele *data-only* przenoszą koszt w przyszłość.
+3. HITL:
+   - redukuje koszt błędu,
+   - stabilizuje znaczenie danych,
+   - obniża długoterminowe TCO.
+
+```mermaid
+xychart-beta
+title "Koszt całkowity systemu AI w czasie"
+x-axis ["Start", "Skalowanie", "Utrzymanie"]
+y-axis 0 --> 100
+line [20, 65, 90]
+line [35, 45, 55]
+```
+
+---
+
+### Wnioski końcowe
+
+- HITL **nie jest kompromisem**, lecz wynikiem empirycznym badań.
+- Opłacalność AI jest funkcją **relacji, kosztu błędu i kosztu poznawczego**.
+- Człowiek w pętli nie jest kosztem ubocznym, lecz **elementem strukturalnym systemu**.
+
+---
+
+### Status badań
+
+- charakter: **living research**
+- repozytorium `badania/` jest źródłem pierwotnym
+- ta sekcja README pełni rolę **warstwy integrującej i syntetycznej**
+
+---
+
+## 📄 Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej
+
+📄 Plik: [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md)
+
+Artykuł **„Kod cywilizacji”** pełni w repozytorium rolę tekstu osiowego. Nie analizuje pojedynczego incydentu, kampanii APT ani konkretnej techniki malware, lecz opisuje **warstwę nadrzędną**, w której wszystkie te zjawiska stają się możliwe, skuteczne i ekonomicznie istotne. Jest to praca o kodzie społecznym, językowym i ontologicznym, który determinuje sposób działania systemów Human–AI, infrastruktury cyfrowej oraz nowoczesnych form władzy informacyjnej.
+
+Tekst pokazuje, że sztuczna inteligencja nie jest autonomicznym aktorem cywilizacyjnym, lecz **akceleratorem istniejących struktur** – podobnie jak malware przyspiesza ujawnienie słabości systemu, a zakłócenia czasu obnażają kruchość synchronizacji infrastruktury. AI nie tworzy nowych form sensu; przyspiesza obieg tych, które zostały już wytworzone przez język, ekonomię danych i nawyki poznawcze społeczeństw. W tym sensie AI działa jak wzmacniacz kodu cywilizacyjnego, a nie jego substytut.
+
+Centralnym wątkiem artykułu jest **język jako punkt graniczny** między człowiekiem a systemami AI. Z perspektywy psycholingwistyki język nie jest mechanizmem generowania zdań, lecz narzędziem koordynacji działań w świecie. Modele językowe operują na statystyce tokenów i embeddingów, podczas gdy człowiek pozostaje nośnikiem intencjonalności, odniesienia do rzeczywistości i odpowiedzialności za skutki aktu mowy. Ta różnica, często maskowana wysoką jakością generacji, staje się krytyczna w systemach o realnych konsekwencjach: finansowych, infrastrukturalnych i strategicznych.
+
+Artykuł rozwija pojęcie **kodu cywilizacyjnego** jako warstwy nadrzędnej wobec kodu maszynowego. Kod ten obejmuje normy sensu, prawdy i odpowiedzialności, które decydują o tym, czy dane stają się wiedzą, czy jedynie artefaktami statystycznymi. W tym ujęciu problemy znane z cyberbezpieczeństwa – dryf semantyczny, ciche anomalie, eskalacja błędu, operacje „poniżej radaru” – mają swoje odpowiedniki w systemach AI opartych na automatyzacji interpretacji i modelach *data-only*.
+
+Szczególną rolę odgrywa analiza **artefaktów danych** i ich wartości w świecie syntetycznej logiki. Dane nie są traktowane jako neutralny surowiec, lecz jako wytwór procesów społecznych, językowych i poznawczych. Artykuł pokazuje, że ekonomiczna i poznawcza wartość danych pojawia się dopiero wtedy, gdy istnieje stabilna pętla walidacji sensu – a więc wtedy, gdy człowiek pozostaje aktywnym elementem systemu. W przeciwnym razie AI staje się mechanizmem inflacji danych i eskalacji kosztu błędu.
+
+Koncepcja **„wioski kosmicznej”** pełni funkcję modelu granicznego. W warunkach ograniczonych zasobów, wysokiej ceny pomyłki i braku redundancji nie ma miejsca na poznawcze iluzje, podobnie jak w incydentach typu *fire sale* czy długotrwałych kampaniach APT. Automatyzacja bez sensu nie zwiększa bezpieczeństwa, a dane bez interpretacji nie zwiększają wiedzy. AI pozbawiona człowieka w pętli nie zwiększa inteligencji systemu – obniża jego odporność.
+
+Wnioskiem spajającym artykuł jest teza, że **Human-AI-In-The-Loop nie jest kompromisem ani kosztem**, lecz empirycznie wyłaniającą się strukturą stabilności. Tak jak w cyberbezpieczeństwie kluczowe są detektory anomalii i korelacja kontekstu, tak w systemach AI kluczowa pozostaje ludzka zdolność do korekty ontologicznej, walidacji sensu i ponoszenia odpowiedzialności. Bez tych funkcji AI staje się jedynie szybkim mechanizmem eskalacji błędów.
+
+„Kod cywilizacji” spina w jedną narrację write-upy o malware, incydentach krytycznych, językach typu chunk–chunk, ASCII microcode, AISEC i badaniach nad HITL, dostarczając **ramy interpretacyjnej** dla całego repozytorium `writeups`.
 
 ---
 
