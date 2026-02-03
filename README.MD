@@ -680,8 +680,8 @@ Wnioskiem spajającym artykuł jest teza, że **Human-AI-In-The-Loop nie jest ko
 
 ## Taśma prototypowa – habitaty AI i ekonomia falsyfikacji
 
-📄 Artykuł: [`taśma_prototypowa_habitaty_AI.md`](taśma_prototypowa_habitaty_AI.md)  
-📊 Figury i schematy: [`taśma_prototypowa_habitaty_AI_wykresy_i_obrazy.md`](taśma_prototypowa_habitaty_AI_wykresy_i_obrazy.md)
+📄 Artykuł: [`taśma_prototypowa_habitaty_AI.md`](epistemiczna_tasma_prototypowa_figury.md)  
+
 
 Ten write-up wprowadza **taśmę prototypową** jako mechanizm epistemiczno-ekonomiczny
 dla badań nad AI prowadzonych w warunkach wysokiej niepewności, ograniczonych zasobów
