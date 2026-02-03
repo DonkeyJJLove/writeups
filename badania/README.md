@@ -16,14 +16,17 @@ z perspektywy:
 - ekonomii danych,
 - kosztu błędu,
 - kosztu poznawczego człowieka,
-- architektury relacji społeczno-technicznych.
+- architektury relacji społeczno-technicznych,
+- długoterminowej stabilności systemów Human-AI.
 
 Celem README jest:
 1. **uporządkowanie badań jako spójnych strumieni badawczych**,  
 2. **rekonstrukcja Human-AI-In-The-Loop (HITL)** jako wspólnego wyniku tych badań,  
-3. **sformułowanie ogólnych wniosków ekonomicznych**.
+3. **integracja HITL z pięcioma modelami ekosystemów Human-AI**,  
+4. **sformułowanie ogólnych wniosków ekonomicznych i projektowych**.
 
-README **nie wprowadza nowych badań** — pełni rolę warstwy integrującej.
+README **nie wprowadza nowych badań empirycznych** — pełni rolę warstwy integrującej,
+syntetycznej i interpretacyjnej.
 
 ---
 
@@ -34,12 +37,12 @@ README **nie wprowadza nowych badań** — pełni rolę warstwy integrującej.
 - **Metoda**:
   - analiza porównawcza strumieni badawczych,
   - synteza pojęciowa,
-  - analiza ekonomiczna kosztu błędu i kosztu poznawczego
+  - analiza ekonomiczna kosztu błędu i kosztu poznawczego,
+  - rekonstrukcja architektur systemowych
 - **Jednostka analizy**: strumień badawczy (nie pojedynczy plik)
 
-> Repozytorium `badania/` pełni funkcję **indeksu i dziennika badań**.
-> Część materiałów roboczych istnieje poza repozytorium
-> (np. dokumenty robocze), natomiast README opisuje **wyniki i kierunki badań**.
+> Repozytorium `badania/` pełni funkcję **indeksu, archiwum i dziennika badań**.  
+> README opisuje **wyniki, relacje i kierunki**, a nie surowy materiał roboczy.
 
 ---
 
@@ -47,9 +50,6 @@ README **nie wprowadza nowych badań** — pełni rolę warstwy integrującej.
 
 ### Strumień A  
 ### Ekonomika produkcji danych poniżej progu startupu
-
-🔗 **Repo:**  
-https://github.com/DonkeyJJLove/writeups/tree/master/badania
 
 **Problem badawczy**  
 Wysoki próg kapitałowy wejścia w produkcję danych i systemy AI.
@@ -59,23 +59,21 @@ Wysoki próg kapitałowy wejścia w produkcję danych i systemy AI.
 - Jaką rolę pełni człowiek w produkcji danych?
 
 **Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
+
+| Element pętli | Rola |
+|--------------|------|
 | Człowiek | źródło intencji i semantyki |
 | AI | akcelerator iteracji |
 | Artefakty | dane prototypowe |
 | Sprzężenie | szybka korekta znaczeń |
 
 **Wynik**  
-Produkcja danych wymaga **pętli Human-AI**, nie skali infrastrukturalnej.
+Produkcja danych wymaga **pętli Human-AI**, a nie skali infrastrukturalnej.
 
 ---
 
 ### Strumień B  
 ### Falsyfikacja modelu „data-only”
-
-🔗 **Repo:**  
-https://github.com/DonkeyJJLove/writeups/tree/master/badania
 
 **Problem badawczy**  
 Narastający koszt walidacji i błędów w systemach AI opartych wyłącznie na danych.
@@ -85,8 +83,9 @@ Narastający koszt walidacji i błędów w systemach AI opartych wyłącznie na 
 - Gdzie pojawia się dryf semantyczny?
 
 **Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
+
+| Element pętli | Rola |
+|--------------|------|
 | Człowiek | walidator semantyczny |
 | AI | generator hipotez |
 | Artefakty | decyzje, etykiety |
@@ -100,9 +99,6 @@ Modele *data-only* są **ekonomicznie niestabilne długoterminowo**.
 ### Strumień C  
 ### Modele społeczno-techniczne Human-AI (Social-AI)
 
-🔗 **Repo:**  
-https://github.com/DonkeyJJLove/writeups/tree/master/badania
-
 **Problem badawczy**  
 Dlaczego część systemów Human-AI się rozpada mimo obecności człowieka?
 
@@ -111,8 +107,9 @@ Dlaczego część systemów Human-AI się rozpada mimo obecności człowieka?
 - Czy relacje mogą zastąpić skalę?
 
 **Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
+
+| Element pętli | Rola |
+|--------------|------|
 | Człowiek | węzeł koordynacji |
 | AI | mediator informacji |
 | Artefakty | reguły, procedury |
@@ -126,9 +123,6 @@ O opłacalności decyduje **architektura relacji**, nie sama automatyzacja.
 ### Strumień D  
 ### Koszt poznawczy człowieka w pętli AI
 
-🔗 **Repo:**  
-https://github.com/DonkeyJJLove/writeups/tree/master/badania
-
 **Problem badawczy**  
 Spadek jakości decyzji przy przeciążeniu informacyjnym.
 
@@ -137,8 +131,9 @@ Spadek jakości decyzji przy przeciążeniu informacyjnym.
 - Jakie są granice poznawcze HITL?
 
 **Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
+
+| Element pętli | Rola |
+|--------------|------|
 | Człowiek | zasób ograniczony |
 | AI | źródło presji informacyjnej |
 | Artefakty | heurystyki |
@@ -152,9 +147,6 @@ Koszt poznawczy jest **realnym składnikiem TCO** systemów AI.
 ### Strumień E  
 ### Rytuały, CBT i stabilizacja pętli HITL
 
-🔗 **Repo:**  
-https://github.com/DonkeyJJLove/writeups/tree/master/badania
-
 **Problem badawczy**  
 Zmienność człowieka destabilizuje systemy AI.
 
@@ -163,8 +155,9 @@ Zmienność człowieka destabilizuje systemy AI.
 - Jak stabilizować pętlę Human-AI?
 
 **Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
+
+| Element pętli | Rola |
+|--------------|------|
 | Człowiek | czynnik losowy |
 | AI | wzmacniacz stanu |
 | Artefakty | rytuały, procedury |
@@ -187,49 +180,11 @@ Na podstawie wszystkich strumieni badawczych HITL wyłania się jako:
 
 ```mermaid
 flowchart LR
-H[Człowiek<br/>sens / walidacja] --> A[AI<br/>eksploracja]
+H[Człowiek<br/>sens, walidacja, decyzja]
+A[AI<br/>eksploracja, predykcja]
+D[Artefakty<br/>dane, modele, procedury]
+
+H --> A
 A --> H
-H --> D[Artefakty<br/>dane / decyzje]
+H --> D
 D --> A
-````
-
----
-
-## Synteza ekonomiczna
-
-### Kluczowe obserwacje
-
-1. **Koszt błędu** dominuje nad kosztem interakcji z człowiekiem.
-2. Modele *data-only* przenoszą koszt w przyszłość.
-3. HITL:
-
-   * redukuje koszt błędu,
-   * stabilizuje znaczenie danych,
-   * obniża długoterminowe TCO.
-
-```mermaid
-xychart-beta
-title "Koszt całkowity systemu AI w czasie"
-x-axis ["Start", "Skalowanie", "Utrzymanie"]
-y-axis 0 --> 100
-line [20, 65, 90]
-line [35, 45, 55]
-```
-
----
-
-## Wnioski końcowe
-
-* HITL **nie jest kompromisem**, lecz wynikiem empirycznym badań.
-* Opłacalność AI jest funkcją **relacji, kosztu błędu i kosztu poznawczego**.
-* Człowiek w pętli nie jest kosztem ubocznym, lecz **elementem strukturalnym systemu**.
-
----
-
-## Status badań
-
-* charakter: **living research**
-* repozytorium `badania/` jest źródłem pierwotnym
-* README pełni rolę **warstwy integrującej i syntetycznej**
-
----
