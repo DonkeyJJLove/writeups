@@ -1,0 +1,68 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="background:white;font-family:serif">
+
+  <text x="450" y="40" text-anchor="middle" font-size="18">
+    Human–AI–In–The–Loop jako system progów sensu
+  </text>
+
+  <!-- Axes -->
+  <line x1="120" y1="480" x2="780" y2="480" stroke="black" stroke-width="2"></line>
+  <line x1="120" y1="120" x2="120" y2="480" stroke="black" stroke-width="2"></line>
+
+  <text x="780" y="505" text-anchor="end" font-size="14">
+    Złożoność / ryzyko decyzji
+  </text>
+  <text x="90" y="120" text-anchor="end" font-size="14" transform="rotate(-90 90,120)">
+    Poziom odpowiedzialności
+  </text>
+
+  <!-- AI zone -->
+  <rect x="140" y="360" width="260" height="100" fill="none" stroke="black" stroke-width="1.5"></rect>
+  <text x="270" y="415" text-anchor="middle" font-size="14">
+    AI (automatyzacja)
+  </text>
+
+  <!-- Hybrid zone -->
+  <rect x="400" y="260" width="220" height="140" fill="none" stroke="black" stroke-width="2"></rect>
+  <text x="510" y="335" text-anchor="middle" font-size="14">
+    Strefa HITL
+  </text>
+  <text x="510" y="355" text-anchor="middle" font-size="12">
+    korekta • interpretacja
+  </text>
+
+  <!-- Human zone -->
+  <rect x="620" y="140" width="140" height="160" fill="none" stroke="black" stroke-width="2.5"></rect>
+  <text x="690" y="220" text-anchor="middle" font-size="14">
+    Człowiek
+  </text>
+  <text x="690" y="240" text-anchor="middle" font-size="12">
+    sens • odpowiedzialność
+  </text>
+
+  <!-- Thresholds -->
+  <line x1="400" y1="120" x2="400" y2="480" stroke="black" stroke-dasharray="6,6"></line>
+  <line x1="620" y1="120" x2="620" y2="480" stroke="black" stroke-dasharray="6,6"></line>
+
+  <text x="400" y="505" text-anchor="middle" font-size="12">
+    próg interpretacji
+  </text>
+  <text x="620" y="505" text-anchor="middle" font-size="12">
+    próg odpowiedzialności
+  </text>
+
+  <!-- Flow arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"></path>
+    </marker>
+  </defs>
+
+  <line x1="300" y1="360" x2="420" y2="330" stroke="black" marker-end="url(#arrow)"></line>
+  <line x1="520" y1="260" x2="650" y2="220" stroke="black" marker-end="url(#arrow)"></line>
+
+  <!-- Annotation -->
+  <text x="450" y="540" text-anchor="middle" font-size="12">
+    Automatyzacja kończy się tam, gdzie zaczyna się nieodwracalność decyzji
+  </text>
+
+</svg>

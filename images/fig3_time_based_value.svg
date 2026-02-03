@@ -1,0 +1,58 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="background:white;font-family:serif">
+
+  <text x="450" y="40" text-anchor="middle" font-size="18">
+    Czasowość wartości informacyjnej w procesach rozwojowych
+  </text>
+
+  <!-- Axes -->
+  <line x1="120" y1="480" x2="780" y2="480" stroke="black" stroke-width="2"></line>
+  <line x1="120" y1="120" x2="120" y2="480" stroke="black" stroke-width="2"></line>
+
+  <text x="780" y="505" text-anchor="end" font-size="14">
+    Czas
+  </text>
+  <text x="90" y="120" text-anchor="end" font-size="14" transform="rotate(-90 90,120)">
+    Wartość informacyjna
+  </text>
+
+  <!-- Early detection curve -->
+  <path d="M120,460 
+           C220,200 300,140 360,150
+           C420,165 480,220 540,300
+           C620,410 700,460 780,470" fill="none" stroke="black" stroke-width="2"></path>
+
+  <text x="300" y="150" font-size="12">
+    wczesna falsyfikacja
+  </text>
+
+  <!-- Late detection curve -->
+  <path d="M120,200
+           C300,220 480,260 600,330
+           C700,380 740,420 780,460" fill="none" stroke="black" stroke-width="2" stroke-dasharray="6,6"></path>
+
+  <text x="520" y="310" font-size="12">
+    późne odkrycie
+  </text>
+
+  <!-- Vertical marker -->
+  <line x1="320" y1="120" x2="320" y2="480" stroke="black" stroke-dasharray="4,4"></line>
+
+  <text x="320" y="505" text-anchor="middle" font-size="12">
+    okno sensu
+  </text>
+
+  <!-- Annotations -->
+  <text x="150" y="170" font-size="12">
+    zysk epistemiczny
+  </text>
+
+  <text x="650" y="450" font-size="12">
+    strata systemowa
+  </text>
+
+  <text x="450" y="540" text-anchor="middle" font-size="12">
+    Ta sama informacja może mieć dodatnią lub ujemną wartość
+    w zależności od momentu jej pozyskania
+  </text>
+
+</svg>

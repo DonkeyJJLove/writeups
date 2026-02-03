@@ -1,0 +1,45 @@
+<svg width="900" height="600" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="background:white;font-family:serif">
+
+  <!-- Outer habitat -->
+  <rect x="50" y="50" width="800" height="500" fill="none" stroke="black" stroke-width="2"></rect>
+
+  <text x="450" y="35" text-anchor="middle" font-size="18">
+    Habitat epistemiczny (system podtrzymywania sensu)
+  </text>
+
+  <!-- Core -->
+  <ellipse cx="450" cy="300" rx="180" ry="90" fill="none" stroke="black" stroke-width="2"></ellipse>
+
+  <text x="450" y="305" text-anchor="middle" font-size="16">
+    Proces poznawczy
+  </text>
+  <text x="450" y="325" text-anchor="middle" font-size="12">
+    (eksperyment – obserwacja – decyzja)
+  </text>
+
+  <!-- Resources -->
+  <text x="120" y="150" font-size="14">Energia</text>
+  <text x="120" y="200" font-size="14">Czas</text>
+  <text x="120" y="250" font-size="14">Uwaga</text>
+  <text x="120" y="300" font-size="14">Stabilność poznawcza</text>
+  <text x="120" y="350" font-size="14">Sens</text>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"></path>
+    </marker>
+  </defs>
+
+  <line x1="220" y1="150" x2="330" y2="260" stroke="black" marker-end="url(#arrow)"></line>
+  <line x1="220" y1="200" x2="330" y2="280" stroke="black" marker-end="url(#arrow)"></line>
+  <line x1="220" y1="250" x2="330" y2="300" stroke="black" marker-end="url(#arrow)"></line>
+  <line x1="220" y1="300" x2="330" y2="320" stroke="black" marker-end="url(#arrow)"></line>
+  <line x1="220" y1="350" x2="330" y2="340" stroke="black" marker-end="url(#arrow)"></line>
+
+  <!-- Boundary note -->
+  <text x="650" y="520" font-size="12" text-anchor="middle">
+    Ograniczenia habitatowe: brak zasobów „za darmo”
+  </text>
+
+</svg>
