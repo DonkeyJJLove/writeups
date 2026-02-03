@@ -31,6 +31,8 @@
 - [Kosmiczne Wioski – social-network AI i premia od kreacji](#kosmiczne-wioski--social-network-ai-i-premia-od-kreacji)
 - [Badania – opłacalność Human-AI-In-The-Loop (HITL)](#badania)
 - [Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej](#-kod-cywilizacji--human-ai-i-społeczeństwo-w-epoce-niskiej-elastyczności-poznawczej)
+- [Taśma prototypowa – habitaty AI i ekonomia falsyfikacji](#taśma-prototypowa--habitaty-ai-i-ekonomia-falsyfikacji)
+
 - [Zastrzeżenie](#zastrzeżenie) 
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
 
@@ -673,6 +675,38 @@ Koncepcja **„wioski kosmicznej”** pełni funkcję modelu granicznego. W waru
 Wnioskiem spajającym artykuł jest teza, że **Human-AI-In-The-Loop nie jest kompromisem ani kosztem**, lecz empirycznie wyłaniającą się strukturą stabilności. Tak jak w cyberbezpieczeństwie kluczowe są detektory anomalii i korelacja kontekstu, tak w systemach AI kluczowa pozostaje ludzka zdolność do korekty ontologicznej, walidacji sensu i ponoszenia odpowiedzialności. Bez tych funkcji AI staje się jedynie szybkim mechanizmem eskalacji błędów.
 
 „Kod cywilizacji” spina w jedną narrację write-upy o malware, incydentach krytycznych, językach typu chunk–chunk, ASCII microcode, AISEC i badaniach nad HITL, dostarczając **ramy interpretacyjnej** dla całego repozytorium `writeups`.
+
+---
+
+## Taśma prototypowa – habitaty AI i ekonomia falsyfikacji
+
+📄 Artykuł: [`taśma_prototypowa_habitaty_AI.md`](taśma_prototypowa_habitaty_AI.md)  
+📊 Figury i schematy: [`taśma_prototypowa_habitaty_AI_wykresy_i_obrazy.md`](taśma_prototypowa_habitaty_AI_wykresy_i_obrazy.md)
+
+Ten write-up wprowadza **taśmę prototypową** jako mechanizm epistemiczno-ekonomiczny
+dla badań nad AI prowadzonych w warunkach wysokiej niepewności, ograniczonych zasobów
+i silnej czasowości wartości informacyjnej. Punkt wyjścia stanowi paradygmat
+**habitatów rozwojowych** (fizycznych i cyfrowych), w których – analogicznie do środowisk LEO –
+czas, energia, uwaga i sens nie są darmowe, lecz podlegają rachunkowi.
+
+Artykuł pokazuje, że taśma prototypowa nie jest linią produkcyjną ani metodyką
+„szybkiego MVP”, lecz **pętlą epistemiczną**, której podstawową funkcją jest
+falsyfikacja założeń, wykrywanie anomalii oraz wczesna redukcja kosztu błędnych
+trajektorii rozwojowych. W tym ujęciu wartość nie powstaje przez skalowanie,
+lecz przez przesuwanie odkryć w czasie – zanim błąd, inspiracja lub decyzja
+utracą swoją wartość operacyjną.
+
+Model taśmy opisany jest jako **portfel opcji realnych poniżej progu startupu**:
+większość eksperymentów wygasa bez materializacji, jednak cały portfel zachowuje
+dodatnią wartość dzięki poprawie orientacji decyzyjnej systemu. Szczególną rolę
+odgrywa architektura **Human–AI–In–The–Loop**, w której człowiek nie pełni funkcji
+operatora, lecz kuratora progów sensu i odpowiedzialności.
+
+Zwieńczeniem analizy jest interpretacja **sieci społecznej jako rozproszonej
+taśmy prototypowej** – infrastruktury epistemicznej, w której podstawową walutą
+nie jest uwaga ani ekspresja, lecz falsyfikowalne artefakty poznawcze
+(hipotezy, dane, protokoły, analizy). W tym sensie tekst stanowi pomost
+między działem *Kosmiczne Wioski* a badaniami nad opłacalnością HITL.
 
 ---
 
