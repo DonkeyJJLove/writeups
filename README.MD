@@ -1,57 +1,153 @@
-# Writeups: Human–AI, Malware, Incydenty Krytyczne i Analizy
+# Writeups — Human–AI, malware, incydenty krytyczne, epistemika i metakod
 
-> 🛡️ Techniczne opracowania dotyczące cyberzagrożeń, fileless malware, operacji APT, incydentów infrastrukturalnych i strategicznych zdarzeń typu fire sale – oraz tego, jak na te zjawiska nakłada się ekonomia, media, logika AI i języki typu chunk–chunk.
+> 🛡️ Repozytorium technicznych i strategicznych opracowań o cyberzagrożeniach, fileless malware, operacjach APT, incydentach infrastrukturalnych, zjawiskach typu fire sale oraz o tym, jak na te warstwy nakładają się ekonomia, media, logika AI, języki kontekstu i architektury Human–AI.
 
 ---
 
 ## 📚 Spis treści
 
-- [O repozytorium](#o-repozytorium)  
-- [To, co najtrudniejsze: prawda vs fikcja w układzie LLM](#to-co-najtrudniejsze-prawda-vs-fikcja-w-układzie-llm)  
-- [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)  
-- [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)  
-- [Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)](#detektor-p0–p3-prawda-vs-fikcja-prompt-narzędziowy)  
-- [APT-K-47 – asynchroniczne powłoki i operacje APT](#apt-k-47--asynchroniczne-powłoki-i-operacje-apt)  
-- [Campaign Yokai Backdoor – studium przypadku kampanii backdoora](#campaign-yokai-backdoor--studium-przypadku-kampanii-backdoora)  
-- [Operacja Cobalt Kitty – analiza kampanii APT](#operacja-cobalt-kitty--analiza-kampanii-apt)  
-- [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)  
-- [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)  
-- [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokółów-czasu-i-async-shell-fire-sale-2025-04)  
-- [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)  
-- [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)  
-- [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)  
-- [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)  
+- [O repozytorium](#o-repozytorium)
+- [Jak czytać to repozytorium](#jak-czytać-to-repozytorium)
+- [Rdzeń metodologiczny: prawda, fikcja, halucynacja i walidacja](#rdzeń-metodologiczny-prawda-fikcja-halucynacja-i-walidacja)
+- [Warstwa Human–AI i metakodowanie](#warstwa-humanai-i-metakodowanie)
+- [Mapa działów](#mapa-działów)
+
+### Epistemika i architektura LLM
+- [To, co najtrudniejsze: prawda vs fikcja w układzie LLM](#to-co-najtrudniejsze-prawda-vs-fikcja-w-układzie-llm)
+- [Słowa zmieniające się w czyn i materię — magia embeddingu LLM](#słowa-zmieniające-się-w-czyn-i-materię--magia-embeddingu-llm)
+- [Słowa zmieniające się w czyn i materię — przyciski semantyczne i mikroświaty LLM](#słowa-zmieniające-się-w-czyn-i-materię--przyciski-semantyczne-i-mikroświaty-llm)
+- [Detektor P0–P3: prawda vs fikcja (prompt narzędziowy)](#detektor-p0p3-prawda-vs-fikcja-prompt-narzędziowy)
+
+### Cyber, malware i incydenty
+- [APT-K-47 – asynchroniczne powłoki i operacje APT](#apt-k-47--asynchroniczne-powłoki-i-operacje-apt)
+- [Campaign Yokai Backdoor – studium przypadku kampanii backdoora](#campaign-yokai-backdoor--studium-przypadku-kampanii-backdoora)
+- [Operacja Cobalt Kitty – analiza kampanii APT](#operacja-cobalt-kitty--analiza-kampanii-apt)
+- [Fileless Malware – analiza techniczna systemów Windows](#fileless-malware--analiza-techniczna-systemów-windows)
+- [Fire Sale – analiza incydentu wielowarstwowego](#fire-sale--analiza-incydentu-wielowarstwowego)
+- [Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)](#zakłócanie-protokołów-czasu-i-async-shell-fire-sale-2025-04)
+
+### Języki kontekstu, AISEC i microcode
+- [Protokoły kontekstu – case języka chunk–chunk (Facebook)](#protokoły-kontekstu--case-języka-chunkchunk-facebook)
+- [Mental Matrix – mega brain coop Linux](#mental-matrix--mega-brain-coop-linux)
 - [Double dagger (‡) – niewymawialny operator kontekstu](#double-dagger-ctx)
 - [AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D](#aisec-ascii-mc-9d)
 - [HUD daty – kanoniczny format ASCII](#ascii-hud-date-format)
 - [ASCII microcode dla AI – znak, microcode i systemy LLM](#ascii-microcode-ai)
 - [Deterministyczna metrologia strukturalna (ASCII Microcode + HMK-9D)](#deterministyczna-metrologia-strukturalna)
-- [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
+
+### Społeczeństwo, biologia, ekonomia, badania
+- [Monkey Business – K-Wave Media i potencjał naukowy](#monkey-business--k-wave-media-i-potencjał-naukowy)
+- [Ewolucja malware i zagrożeń AI](#ewolucja-malware-i-zagrożeń-ai)
 - [Metawersum Meta a biologia człowieka](#metawersum-meta-a-biologia-człowieka)
 - [Kosmiczne Wioski – social-network AI i premia od kreacji](#kosmiczne-wioski--social-network-ai-i-premia-od-kreacji)
 - [Badania – opłacalność Human-AI-In-The-Loop (HITL)](#badania)
-- [Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej](#-kod-cywilizacji--human-ai-i-społeczeństwo-w-epoce-niskiej-elastyczności-poznawczej)
+- [Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej](#kod-cywilizacji--human-ai-i-społeczeństwo-w-epoce-niskiej-elastyczności-poznawczej)
 - [Taśma prototypowa – habitaty AI i ekonomia falsyfikacji](#taśma-prototypowa--habitaty-ai-i-ekonomia-falsyfikacji)
 
-- [Zastrzeżenie](#zastrzeżenie) 
+### Dodatki
+- [Dodatkowe materiały i ilustracje (`images/`)](#dodatkowe-materiały-i-ilustracje-images)
+- [Konwencje nazw i artefaktów](#konwencje-nazw-i-artefaktów)
+- [Status repozytorium](#status-repozytorium)
+- [Zastrzeżenie](#zastrzeżenie)
 - [📎 Kontakt i współpraca](#-kontakt-i-współpraca)
+- [CHUNKS FILTER – mosty semantyczne 9D](#chunks-filter--mosty-semantyczne-9d)
 
 ---
 
 ## O repozytorium
 
-Repozytorium `writeups` zawiera zaawansowane opracowania dotyczące cyberbezpieczeństwa, złośliwego oprogramowania (w tym fileless malware) oraz analizę wielowarstwowych incydentów typu **fire sale**, czyli ataków o charakterze zintegrowanym, których celem jest destabilizacja systemów państwowych, finansowych lub infrastrukturalnych.
+Repozytorium `writeups` gromadzi zaawansowane opracowania o cyberbezpieczeństwie, złośliwym oprogramowaniu, incydentach infrastrukturalnych i analizie ryzyka w systemach technicznych oraz społeczno-technicznych.
 
-Dodatkowo pojawiają się tu teksty z pogranicza:
+Nie jest to wyłącznie zbiór „opisów ataków”. To repozytorium buduje szerszą ramę, w której:
 
-- bezpieczeństwa infrastruktury krytycznej i rynków finansowych,  
-- eksperymentów ekonomiczno–medialnych,  
-- interakcji człowiek–AI (języki, protokoły kontekstu, „mental matrix”),  
-- semantycznych eksperymentów językowych (chunk–chunk, mosty 9D, HMK-9D).
+- cyberzagrożenia są traktowane jako zjawiska wielowarstwowe,
+- język i interfejsy LLM są traktowane jako element środowiska bezpieczeństwa,
+- ekonomia, media, infrastruktura i AI są analizowane jako sprzężone systemy,
+- pytanie o prawdę, walidację i halucynację jest częścią praktyki technicznej, a nie dodatkiem filozoficznym.
 
-Podkatalog `images/` zawiera ilustracje i schematy wspierające wybrane teksty (m.in. case chunk–chunk / Facebook).
+Rdzeń repozytorium tworzą write-upy techniczne, ale istotną rolę pełnią także teksty z pogranicza:
 
-Każdy dokument jest – na ile to możliwe – oparty na potwierdzonych danych, zgodny z metodyką śledczą oraz wsparty odniesieniami do wiarygodnych źródeł (OSINT, logi, dane rynkowe, publikacje branżowe).
+- epistemiki LLM i architektur Human–AI,
+- języków kontekstu i semantycznego microcode,
+- ekonomii danych, HITL i kosztu błędu,
+- biologii człowieka, społeczeństwa i granic interfejsów cyfrowych.
+
+Repozytorium należy czytać jako **żywy katalog analiz**, a nie jako zamknięty podręcznik. Poszczególne teksty są połączone wspólną logiką: od logów i shelli, przez embedding i P0–P3, aż po pytanie o stabilność cywilizacji w świecie masowej automatyzacji sensu.
+
+---
+
+## Jak czytać to repozytorium
+
+Repozytorium ma kilka poziomów wejścia.
+
+Pierwszy poziom to klasyczne write-upy techniczne: malware, APT, fire sale, zakłócenia czasu, async shell. To materiały, które można czytać osobno, jak autonomiczne studia przypadków.
+
+Drugi poziom to warstwa epistemiczna i architektoniczna: `prawda-vs-fikcja-w-llm`, `P0-P3_truth-vs-fiction_detector_v1d.prompt`, teksty o embeddingu, microcode, operatorze `‡`, AISEC i HMK-9D. Te dokumenty odpowiadają na pytanie, **jak w ogóle odróżniać fakt od narracji w systemach, które umieją generować sens szybciej niż człowiek umie go zweryfikować**.
+
+Trzeci poziom to warstwa cywilizacyjna i badawcza: HITL, taśma prototypowa, Kod cywilizacji, Kosmiczne Wioski, Metawersum Meta. Tutaj write-up przestaje być tylko analizą incydentu, a staje się narzędziem opisu większego układu: człowiek–AI–społeczeństwo–infrastruktura.
+
+Najbardziej użyteczna ścieżka czytania wygląda tak:
+
+1. najpierw `prawda-vs-fikcja-w-llm` i detektor P0–P3,
+2. potem jeden z write-upów technicznych (`fileless-malware`, `fire-sale`, `APT-K-47`),
+3. następnie teksty o microcode i AISEC,
+4. na końcu teksty integrujące: HITL, Kod cywilizacji, Taśma prototypowa.
+
+---
+
+## Rdzeń metodologiczny: prawda, fikcja, halucynacja i walidacja
+
+Przez całe repo przewija się jedna zasada: **nie wystarczy, że tekst brzmi prawdziwie**. W środowisku LLM, OSINT, analizy incydentów i narracji medialnych trzeba stale rozróżniać:
+
+- fakt empiryczny,
+- prawdę operacyjną,
+- interpretację,
+- fikcję zadeklarowaną,
+- halucynację.
+
+Dlatego w repozytorium pojawiają się:
+
+- matryca P0–P3,
+- jawne oznaczanie „NIEZWERYFIKOWANE”,
+- rozdział warstwy źródłowej od warstwy interpretacyjnej,
+- analiza mikroświatów, PCE, pamięci profilu i narzędzi jako elementów decydujących o tym, co system uznaje za obowiązującą wersję rzeczywistości.
+
+W tym sensie `writeups` nie są tylko zbiorem tematów bezpieczeństwa. Są także laboratorium walidacji sensu.
+
+---
+
+## Warstwa Human–AI i metakodowanie
+
+Istotną częścią repozytorium jest traktowanie relacji człowiek–AI nie jako prostego „używania narzędzia”, ale jako układu współpracy, w którym znaczenie powstaje iteracyjnie.
+
+Ta logika jest obecna w tekstach o:
+
+- HMK-9D,
+- chunk–chunk,
+- protokołach kontekstu,
+- ASCII microcode,
+- HITL,
+- taśmie prototypowej,
+- ekonomii błędu i kosztu poznawczego.
+
+W praktyce oznacza to, że wiele dokumentów w repo można czytać także jako studia nad metakodowaniem: nad tym, jak człowiek projektuje warstwę sterującą, jak AI przetwarza ją na trajektorię decyzji i gdzie pojawiają się progi, dryf, halucynacje albo wzrost jakości.
+
+---
+
+## Mapa działów
+
+Repozytorium można podzielić na pięć głównych klastrów:
+
+- **cyber / malware / APT**,
+- **epistemika LLM i walidacja**,
+- **języki kontekstu / AISEC / microcode**,
+- **badania HITL / ekonomia błędu / prototypowanie**,
+- **teksty cywilizacyjne i społeczne**.
+
+Dzięki temu `writeups` pełni podwójną rolę:
+
+- katalogu technicznych analiz,
+- oraz laboratorium pojęć dla architektury Human–AI.
 
 ---
 
@@ -63,19 +159,17 @@ Tekst rozbraja podstawowy problem pracy z modelami językowymi: **co znaczy „p
 
 Na przykładzie:
 
-- profilu kontekstu (pamięć profilu jako mikroświat wektorów),  
-- testów w formie promptu (scenariusze kontroli i prób „rozszczelniania” narracji),  
+- profilu kontekstu,
+- testów w formie promptu,
 - architektury opartej o PCE `repozytorum_pce`, artefakt `_neuro`, manifest `cha0su`, HUD i encje GLX,
 
 pokazane jest, że:
 
-- LLM nie ma wbudowanego modułu „prawdy” – ma tylko statystykę i architekturę,  
-- „fikcja” i „fakt” mogą mieć podobną gęstość prawdopodobieństwa w przestrzeni embeddingów,  
-- to **architektura otaczająca model** (mikroświaty, narzędzia, logika wywołań, walidacja zewnętrzna) decyduje, czy wygenerowane zdanie zostaje uznane za „obowiązującą wersję rzeczywistości”.
+- LLM nie ma wbudowanego modułu prawdy,
+- fikcja i fakt mogą mieć podobną gęstość w przestrzeni embeddingów,
+- o statusie zdania decyduje architektura całego układu Human–AI.
 
-Artykuł definiuje m.in.: **fakt empiryczny, prawdę operacyjną, fikcję zadeklarowaną i halucynację**, wprowadza czteropoziomową matrycę P0–P3 oraz pokazuje, że różnica prawda/fikcja jest własnością **całego układu Human–AI**, a nie samego modelu.
-
-To epistemiczny kręgosłup całego repozytorium: wszystkie pozostałe write-upy zakładają, że słowo może przejść w czyn (narzędzia, API, shell), więc pytanie „czy to jest prawda?” staje się równocześnie pytaniem o bezpieczeństwo.
+To epistemiczny kręgosłup repozytorium.
 
 ---
 
@@ -83,17 +177,14 @@ To epistemiczny kręgosłup całego repozytorium: wszystkie pozostałe write-upy
 
 📄 Plik: [`magia-embeddingu-llm-slowo-w-czyn.md`](magia-embeddingu-llm-slowo-w-czyn.md)
 
-Tekst stanowi most między inżynierią systemów LLM a praktyką operacyjną w GlitchLab / chunk–chunk. Pokazuje, że formuła „słowa zmieniające się w czyn i materię” nie jest metaforą, lecz opisem rzeczywistej architektury: w stosie OpenAI (i szerzej: systemach z narzędziami) każdy komunikat przechodzi przez tokenizację, embedding oraz warstwę operacji na zewnętrznych zasobach (vector stores, narzędzia, API, shell).
+Tekst pokazuje, że formuła „słowo przechodzące w czyn” nie jest metaforą, lecz opisem realnej architektury systemów z embeddingiem, vector stores, RAG i narzędziami.
 
-Wprowadzone są pojęcia:
+Wprowadza m.in.:
 
-- **PCE (Persistent Context Entity)** jako świadomie zaprojektowana „wyspa” w infrastrukturze – zbiór plików, artefaktów, wektorów i reguł wersjonowania,  
-- **HMK-9D + `chunk–chunk→`** jako protokół porcjowania procesu na kroki `Δ`, przypisywania im współrzędnych `[x9D]` i energii `E(Δ)`,  
-- **pamięć kontekstu profilu** jako realny mikroświat wektorów, który wpływa na trajektorię stanów w kontrakcie `S, Σ, A, F, g, H, a*`.
-
-Embedding jest opisany jako **microcode**, a PCE jako **strukturalne DNA** systemu: krótkie ciągi znaków (np. symbole HUD-u, nazwy mostów `Plan–Pauza`, `Human–AI`, znak `‡`) po przejściu przez funkcję `F` i mozaikę `Φ` determinują, które pliki, fragmenty kodu i narzędzia zostaną fizycznie uruchomione.
-
-Tekst rozwija też tryb **embeddingu pracującego wstecz** (archeologia strukturalna, rekonstrukcja procesów) oraz problem odpowiedzialności za decyzję-token jako punkt styku słowa z materią.
+- PCE jako wyspę operacyjną,
+- HMK-9D i `chunk–chunk→` jako protokół porcjowania decyzji,
+- embedding jako microcode,
+- pamięć kontekstu jako mikroświat, który zmienia trajektorię odpowiedzi.
 
 ---
 
@@ -101,21 +192,13 @@ Tekst rozwija też tryb **embeddingu pracującego wstecz** (archeologia struktur
 
 📄 Plik: [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md)
 
-Ten tekst rozwija poprzedni artykuł o embeddingu w kierunku **projektowania „przycisków semantycznych”** i zarządzania mikroświatami zasobów w architekturze LLM.
+Rozwinięcie poprzedniego tekstu w kierunku projektowania **przycisków semantycznych**, czyli wzorców tekstowych, które prowadzą od znaku do konkretnej klasy akcji w infrastrukturze.
 
-W architekturze współczesnych modeli językowych słowo nie jest już tylko „tekstem do przeczytania”, ale kandydatem na impuls sterujący. Każdy ciąg znaków przechodzi przez tokenizację, embedding i wektorowe magazyny wiedzy, a następnie może uruchomić konkretne mikroświaty zasobów: repozytoria kodu, PCE, pamięć profilu czy narzędzia typu `[LINUX]{komenda}` oraz `[LINUX][REPO]::refresh()`.
+Triada:
 
-„Przycisk semantyczny” jest tu precyzyjnie zdefiniowany jako trójkąt:
+> wzorzec tekstowy → region embeddingów → konkretna akcja
 
-> wzorzec tekstowy → region embeddingów → konkretna akcja w infrastrukturze.
-
-W projekcie **HMK-9D + chunk–chunk** takie przyciski są osadzone w geometrii 9D: każdy krok `chunk–chunk→` ma swój profil energetyczny, zestaw mostów semantycznych (Plan–Pauza, Human–AI, Locus–Medium–Mandat) i związane z nim ryzyko. Mikroświaty (`repozytorum_pce`, `_neuro`, `manifest_cha0su`, GlitchLab itd.) traktowane są jak fizyczne wyspy podłączone do wektorowego huba: embedding pełni rolę mikrokodu, a słowo staje się adresem do realnych operacji na kodzie, plikach i serwerach.
-
-Artykuł porządkuje pojęcia:
-
-- **mikroświat zasobów** – skończony, wersjonowany zbiór plików, rekordów, logów i artefaktów, do których prowadzą embeddingi,  
-- **przycisk semantyczny** – wyróżniony wzorzec tekstowy powiązany z regionem embeddingów i klasą działań w `A`,  
-- **mosty 9D** – etykiety wysokiego poziomu (Plan–Pauza, Rdzeń–Peryferia, Cisza–Wydech, Wioska–Miasto, Ostrze–Cierpliwość, Locus–Medium–Mandat, Human–AI, Próg–Przejście, Semantyka–Energia), które pełnią jednocześnie rolę osi w przestrzeni `[x9D]`, nazw folderów / artefaktów oraz słów-kluczy w HUD-zie.
+jest tu opisana jako rdzeń nowoczesnego interfejsu LLM.
 
 ---
 
@@ -123,18 +206,14 @@ Artykuł porządkuje pojęcia:
 
 📄 Plik: [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt)
 
-To **narzędzie–prompt**, które zamienia abstrakcyjną dyskusję o „prawdzie” w procedurę techniczną. Detektor P0–P3:
+Prompt narzędziowy do rozbijania materiału na:
 
-- wycina analizowany materiał między znacznikami `[MATERIAŁ_START] ... [MATERIAŁ_KONIEC]`,  
-- sprawdza, czy nie jest to tylko placeholder (`[DETektor_BRAK_MATERIAŁU]`),  
-- rozbija tekst na bloki i przypisuje im poziomy **P0 (fakty twarde), P1 (fakty miękkie), P2 (interpretacje), P3 (fikcje)**,  
-- zmusza model do jawnego oznaczania „NIEZWERYFIKOWANE”,  
-- wymusza wskazanie **świata prawdy** dla P0/P1 (repozytorium, PCE, `_neuro`, HUD, pamięć profilu).
+- P0 – fakty twarde,
+- P1 – fakty miękkie,
+- P2 – interpretacje,
+- P3 – fikcje.
 
-Znaczenie praktyczne:
-
-- w każdym wątku z udziałem LLM można „przefiltrować” tekst przez ten prompt i zobaczyć, **gdzie kończą się fakty, a zaczynają interpretacje lub czysta narracja**,  
-- to przycisk epistemiczny dla całego stacku HMK-9D / chunk–chunk: taki sam filtr można nakładać na write-upy techniczne, manifesty, analizy rynkowe czy scenografie „Kosmicznej Wioski”.
+To praktyczny filtr epistemiczny dla całego repo.
 
 ---
 
@@ -142,13 +221,7 @@ Znaczenie praktyczne:
 
 📄 Plik: [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md)
 
-Dokument koncentruje się na wątku **asynchronicznych powłok (async shell)** w kontekście operacji typu APT, roboczo oznaczonej jako „APT-K-47”. Interesuje go nie tylko sam payload, ale **geometria operacji w czasie**:
-
-- jak wygląda model pracy z powłoką, w której komendy idą partiami, z opóźnieniem i z jitterem czasowym,  
-- jak asynchroniczny charakter kanału wpływa na trudność detekcji (telemetria, korelacja logów, heurystyki EDR),  
-- jak taki tryb pracy może być sprzężony z zaburzeniami protokołów czasu (NTP/PTP) oraz z incydentami typu fire sale.
-
-Plik można traktować jako „roboczy szkic” operacji, która splata trzy wątki: fileless / living-off-the-land, manipulację czasem oraz asynchroniczność kanału C2.
+Write-up o asynchronicznych powłokach, ukrytych kanałach operacyjnych i geometrii działania APT rozciągniętej w czasie.
 
 ---
 
@@ -156,13 +229,7 @@ Plik można traktować jako „roboczy szkic” operacji, która splata trzy wą
 
 📄 Plik: [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md)
 
-Write-up poświęcony jest kampanii backdoora o roboczej nazwie **Yokai**. W centrum stoją pytania:
-
-- jak wygląda **łańcuch zaburzeń** od pierwszego wektora wejścia po stabilną persystencję,  
-- jakie artefakty (logi, wpisy rejestru, nietypowe wywołania API) pozostawia po sobie backdoor projektowany „pod szum”,  
-- jak ta kampania wpisuje się w szerszy trend **„cichych” operacji APT**, w których klasyczny malware jest minimalizowany, a ciężar przenoszony na mis-use legalnych komponentów.
-
-W tle obecna jest logika HMK-9D: Yokai jest traktowany nie tylko jako „zagrożenie”, ale też jako **źródło sygnałów do projektowania lepszych detektorów** (mosty, energie `E(Δ)`, osie 9D).
+Analiza kampanii backdoora nastawionej na cichą persystencję, mały ślad i życie „poniżej radaru”.
 
 ---
 
@@ -170,13 +237,7 @@ W tle obecna jest logika HMK-9D: Yokai jest traktowany nie tylko jako „zagroż
 
 📄 Plik: [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md)
 
-Dokument osadza znaną z literatury bezpieczeństwa operację **Cobalt Kitty** w szerszym kontekście:
-
-- długoletnie, ukryte kampanie APT wymierzone w wybrane organizacje,  
-- spearphishing, kontrola stacji roboczych, lateral movement i stopniowe przejmowanie infrastruktury,  
-- relacja między „klasycznymi” TTP opisanymi w raportach vendorów a lokalną perspektywą badawczą (co widzi ofiara? co widzą logi? co widzi rynek?).
-
-Tekst można czytać jako **case-study do porównywania kolejnych kampanii**: Yokai, APT-K-47, fire sale. Zamiast opisywać Cobalt Kitty wyłącznie z perspektywy vendorów, próbuje zobaczyć ją jako element dłuższego trendu ewolucji APT.
+Case-study osadzające klasyczną kampanię APT w szerszym trendzie ewolucji TTP i długich, ukrytych operacji.
 
 ---
 
@@ -184,13 +245,7 @@ Tekst można czytać jako **case-study do porównywania kolejnych kampanii**: Yo
 
 📄 Plik: [`fileless-malware.md`](fileless-malware.md)
 
-Dogłębna analiza złośliwego oprogramowania działającego bez zapisu na dysku, wykorzystującego m.in.:
-
-- PowerShell, WMI i mechanizmy living-off-the-land,  
-- techniki reflective DLL injection, process hollowing, code injection w legalne procesy,  
-- sztuczki utrudniające detekcję (obfuskacja, multi-stage loaders, zaciemnianie śladów w logach).
-
-Praca zawiera studia przypadków, wykaz funkcji API systemu Windows używanych przez malware oraz praktyczne środki obronne (telemetria, EDR, hardening, zasady reagowania). To jeden z „fundamentów” repozytorium – punkt odniesienia dla nowszych kampanii (Yokai, APT-K-47, Cobalt Kitty).
+Analiza fileless malware, living-off-the-land, PowerShell, WMI, injection i środków detekcji.
 
 ---
 
@@ -198,30 +253,15 @@ Praca zawiera studia przypadków, wykaz funkcji API systemu Windows używanych p
 
 📄 Plik: [`fire-sale.md`](fire-sale.md)
 
-Analiza zintegrowanego incydentu „fire sale” z kwietnia 2025 roku. Obejmuje:
-
-- załamanie rynku obligacji amerykańskich,  
-- wtórną falę likwidacji pozycji w Bitcoinie,  
-- mechanizmy paniki algorytmicznej i rolę HFT,  
-- podejrzenia o działania geopolityczne i cybernetyczne,  
-- możliwe scenariusze „ćwiczeń na żywym organizmie” infrastruktury finansowej.
-
-Praca oparta jest na źródłach m.in. Reuters, CoinDesk, Business Insider oraz danych własnych z badania open-source i OSINT – z próbą rekonstrukcji osi czasu i łańcucha przyczynowo-skutkowego.
+Analiza incydentu o charakterze zintegrowanym, na styku finansów, paniki algorytmicznej, geopolityki i infrastruktury.
 
 ---
 
-## Zakłócanie protokółów czasu i async shell (Fire Sale 2025-04)
+## Zakłócanie protokołów czasu i async shell (Fire Sale 2025-04)
 
 📄 Plik: [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md)
 
-Ten write-up rozwija wątek incydentu **fire sale** od strony „warstwy czasu”:
-
-- opisuje, jak manipulacja **protokołami czasu** (NTP, PTP, wewnętrzne zegary systemów) może prowadzić do rozjechania się logów, kolejek zleceń i mechanizmów rozliczeń,  
-- analizuje scenariusze użycia **asynchronicznych powłok (async shell)** i operacji „poniżej radaru” do stopniowego rozregulowania infrastruktury,  
-- omawia, jak takie zakłócenia mogą wyglądać z perspektywy SOC / CERT: co widać w logach, a czego nie widać wcale,  
-- wskazuje możliwe metody obrony i detekcji: referencyjne źródła czasu, korelacja multi-site, healthchecki zegarów węzłów, sanity-checki na poziomie systemów transakcyjnych.
-
-Tekst można traktować jako techniczne uzupełnienie do `fire-sale.md`, skupione na osi **czas / synchronizacja / asynchroniczność operacji**.
+Uzupełnienie `fire-sale.md` od strony czasu systemowego, synchronizacji, NTP/PTP i asynchroniczności operacji.
 
 ---
 
@@ -229,16 +269,7 @@ Tekst można traktować jako techniczne uzupełnienie do `fire-sale.md`, skupion
 
 📄 Plik: [`protokoly_kontekstu_chunk-chunk_facebook_case.md`](protokoly_kontekstu_chunk-chunk_facebook_case.md)
 
-Opis przypadku, w którym niestandardowy język / metajęzyk komunikacji (tzw. **chunk–chunk**) zostaje zauważony przez systemy bezpieczeństwa platformy społecznościowej (case: Facebook / Meta).
-
-W dokumencie:
-
-- jak systemy moderacji / bezpieczeństwa „widzą” nowy język – nie przez znaczenie, ale przez **wzory**,  
-- jakie sygnały mogą sprawić, że profil, posty lub wzorce interakcji zaczynają wyglądać jak anomalia (botnet, koordynowana kampania, ukryta komunikacja),  
-- jak na tym tle wygląda problem **fałszywych pozytywów** wobec nowych form ekspresji, badań czy eksperymentów,  
-- w jaki sposób można myśleć o **„protokołach kontekstu”** – czyli wspólnych zasadach, które pozwalają bytom (człowiek, AI, system bezpieczeństwa) rozpoznać się nawzajem bez natychmiastowego uruchamiania trybu „zagrożenie”.
-
-To tekst na styku cyberbezpieczeństwa, socjologii sieci i inżynierii promptów.
+Studium przypadku pokazujące, jak systemy bezpieczeństwa platform mogą traktować nowy język lub metajęzyk jako wzorzec anomalny.
 
 ---
 
@@ -246,135 +277,52 @@ To tekst na styku cyberbezpieczeństwa, socjologii sieci i inżynierii promptów
 
 📄 Plik: [`mental-matrix-mega-brain-coop-linux.MD`](mental-matrix-mega-brain-coop-linux.MD)
 
-Techniczno-koncepcyjny opis środowiska **„Mental Matrix”** – czyli:
-
-- jak zbudować na Linuksie „mega-mózg” do analiz, testów i eksperymentów (logi, modele, symulacje),  
-- jakie narzędzia i wzorce pracy pozwalają łączyć wiele źródeł danych, modeli i procesów w jedną logiczną całość,  
-- jak organizować przepływ informacji między człowiekiem, AI i infrastrukturą (shell, kontenery, skrypty orkiestrujące),  
-- w jaki sposób traktować środowisko systemowe jako **kooperujący układ poznawczy**, a nie tylko zbiór losowych skryptów.
-
-Write-up jest punktem wyjścia dla osób, które chcą zbudować własne, „badawcze” laboratorium AI / cyber na Linuksie.
+Opis laboratorium analitycznego opartego o Linuksa, skrypty, modele, shell i środowisko współpracujące z człowiekiem jako układ poznawczy.
 
 ---
 
-## Monkey Business – K-Wave Media i potencjał naukowy
-
-📄 Plik: [`mokey-bissnes_k-wave-media_potencjal-naukowy.md`](mokey-bissnes_k-wave-media_potencjal-naukowy.md)
-
-Case-study na styku:
-
-- rynków finansowych,  
-- mediów cyfrowych,  
-- zachowań zbiorowych i **ekonomii memów**.
-
-Tekst analizuje projekt **K-Wave Media** jako eksperyment:
-
-- jak narracje, spekulacja i „szum medialny” przekładają się na realne przepływy kapitału,  
-- jak można badać takie zjawiska narzędziami z pogranicza AI, analizy danych i psychologii rynku,  
-- gdzie kończy się marketing, a zaczyna **materiał badawczy** o działaniu współczesnych systemów finansowo-informacyjnych.
-
-To nie jest porada inwestycyjna, tylko próba „rozebrania” na czynniki pierwsze pewnego stylu uprawiania biznesu i komunikacji.
-
----
-
-## Ewolucja malware i zagrożeń AI
-
-📄 Pliki:
-
-- [`malware-evolution.md`](malware-evolution.md) – historia i możliwe przyszłe kierunki rozwoju malware w kontekście narzędzi AI, automatyzacji i masowej dostępności mocy obliczeniowej,  
-- [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md) – zmiany w taktykach cyberataków i wyzwania dla strategii bezpieczeństwa (SOC, CERT, threat hunting) w świecie z dominującą rolą AI.
-
-Oba teksty razem tworzą ramę do myślenia o **ewolucji atakujących i obrońców**: jak zmienia się ekonomia ataku, jakie wektory stają się tańsze, a które droższe, oraz jak na tę dynamikę nakładają się modele językowe, automatyzacja i „commoditization” ofensywnych narzędzi.
-
----
 <a id="double-dagger-ctx"></a>
 ## Double dagger (‡) – niewymawialny operator kontekstu
 
 📄 Plik: [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)
 
-Ten tekst porządkuje w jednym miejscu trzy warstwy, które i tak przewijają się przez całe repozytorium: historię znaku typograficznego `‡` (double dagger), praktykę **słowa-czynionego** (modlitwa, zaklęcie, performatyw) oraz techniczną stronę kodowania książki i języka naturalnego w standardach ASCII/Unicode.
-
-Artykuł pokazuje, że `‡` można potraktować nie tylko jako rzadko używany znak przypisu, ale jako **semantyczny znak sterujący** – odpowiednik `STX/ETX` z ASCII, tyle że działający na poziomie aktu mowy, a nie tylko ramki danych. Wprowadzony jest model:
-
-- `TAPE` – taśma znaków (ASCII/Unicode),
-- `CTX` – rejestr kontekstu (m.in. `mode`: opisowo / liturgicznie / prawniczo…),
-- `‡{TAG}` – operator ustawiający tryb globalny lub lokalny fragmentu,
-
-oraz funkcja dekodująca:
-
-`[ DECODE(tekst, CTX) -> (ILLOCUTION, PROPOZYCJA) ]`
-
-Na prostym przykładzie zdania „Niech stanie się światłość.” pokazane jest, że **przy identycznym ciągu znaków drukowalnych** zmiana samego `CTX.mode` (wywołana przez `‡{TAG}`) przełącza akt mowy z opisu/cytatu na modlitwę/ formułę rytualną. Znak `‡`:
-
-- nie ma odpowiednika fonetycznego,
-- nie musi być widoczny w końcowym tekście,
-- zmienia klasę ontologiczną wypowiedzi (opis ↔ performatyw), a nie jej treść leksykalną.
-
-W warstwie ontologii 9D artykuł interpretuje `‡` jako operator, który przesuwa punkt w przestrzeni (np. z „opisowo / semantyka” w stronę „rytualnie / energia”), pozostawiając leksykę i składnię bez zmian. W warstwie neuronauki łączy to z bezgłośnymi przełączeniami ram interpretacyjnych w mózgu (zabawa/poważnie, świeckie/sakralne, prywatne/publiczne).
-
-W kontekście całego repo `writeups` ten tekst domyka klamrę: pokazuje, że tak samo jak w cyber, finansach czy AI **małe znaki sterujące** (czas, protokół, tryb) mogą być ważniejsze niż sama „treść pakietu” – a operator typu `‡` jest minimalnym interfejsem między semantyką, magią słowa i microcode’em, który można formalizować i testować jak każdy inny artefakt.
+Tekst o znaku `‡` jako operatorze kontekstu, który może przełączać klasę ontologiczną wypowiedzi: opisową, rytualną, performatywną, sterującą.
 
 ---
+
 <a id="aisec-ascii-mc-9d"></a>
 ## AISEC jako dyscyplina żywa – eksperyment ASCII_MC_9D
 
 📄 Plik: [`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`](AISec_ASCII_MC_9D_eksperyment_kontekstowy.md)
 
-Ten writeup jest technicznym aneksem do artykułu o **AISEC jako dyscyplinie żywej**.  
-Opisuje mini–eksperyment, w którym czysty tekst `ASCII_MC_9D` działa jak **mikro–język sterujący**:
-
-- definiuje latarnię protokołu (`[ASCII_MC_9D::LATARNIA_‡]`), rejestry (`CTX.MODE`, `INPUT.MAT`, `OUT.STATUS`), operatory `‡{TAG}` i komendy `[CMD:ANALIZUJ]`,  
-- pokazuje dwie odpowiedzi modelu na to samo zdanie „Niech stanie się światłość.” w trybach `OPISOWO` i `LITURGICZNIE`,  
-- analizuje, kiedy microcode jest traktowany jako zwykły tekst, a kiedy jako **aktywny szkielet odpowiedzi** (model sam zaczyna raportować `CTX.MODE`, `INPUT.MAT`, ILLOCUTION).
-
-Z perspektywy bezpieczeństwa AI:
-
-- w jednej sesji system **odmawia aktywacji** microcode (chroni „rejestry wewnętrzne” przed programowaniem przez użytkownika),  
-- w innej – microcode działa na poziomie dyskursu, pozwalając badać granicę między „promptem” a **językiem sterującym**.
-
-Tekst traktuje `ASCII_MC_9D` nie jako exploit, lecz jako **oscyloskop do semantyki**: narzędzie do badania, gdzie kończy się zwykłe słowo, a zaczyna próba przeprogramowania systemu, oraz jak realne mechanizmy AISEC reagują na nowe metajęzyki.
+Eksperyment z mikrojęzykiem sterującym, który pozwala badać granicę między zwykłym promptem a aktywnym microcode.
 
 ---
+
 <a id="ascii-hud-date-format"></a>
 ## HUD daty – kanoniczny format ASCII
 
 📄 Plik: [`ASCII_HUD_date_format_spec.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md)
 
-Ten writeup definiuje „mikrokod daty”, który w ekosystemie GlitchLab / chunk–chunk pełni rolę **kanonicznego formatu czasu w ASCII**. Wprowadza dwa spójne warianty:
-
-- datę absolutną w HUD-cie: `[YYYY|MM|DD]`,  
-- datę relatywną względem chwili T0: `{+YY|+MM|+DD}`.
-
-Specyfikacja zawiera formalną gramatykę (EBNF i regexy), algorytm składania daty absolutnej z delty w proleptycznym kalendarzu gregoriańskim (stała kolejność operacji: „lata → miesiące → dni”) oraz referencyjne testy, które można replikować w dowolnym parserze.
-
-Celem formatu jest **pełna jednoznaczność i łatwość parsowania** bez liter i nazw miesięcy, przy zachowaniu intuicji ISO 8601 / RFC 3339: big-endian (rok-miesiąc-dzień), wyraźne rozróżnienie między absolutem (`[]`) i deltą (`{}`) już pierwszym znakiem oraz możliwość użycia wariantu indeksowanego `@1<YYYY>|2[MM]|3{DD}` jako adresowalnego slotu w protokołach 9D i HUD-zie.
-
-Writeup pokazuje też, jak ten mikrokod może służyć jako **warstwa niskopoziomowa** pod wyższe protokoły (HMK-9D, ASCII_MC_9D, analizy fire sale / zakłóceń czasu systemowego), tak aby wszystkie eksperymenty z czasem, logami i osiami 9D opierały się na identycznej, testowalnej reprezentacji daty.
+Specyfikacja ASCII dla dat absolutnych i relatywnych, jako warstwa niskopoziomowa dla HUD, HMK-9D i analiz zdarzeń czasowych.
 
 ---
 
 <a id="ascii-microcode-ai"></a>
-## ASCII microcode dla AI – od znaku do ontologicznego mikrokodu
+## ASCII microcode dla AI – znak, microcode i systemy LLM
 
 📄 Artykuł syntetyczny:
 
-- [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md) – **podsumowanie całości**: od pojedynczego znaku ASCII, przez microtagi epistemiczne (`==`, `~~`, `??`, `!!`, `::`, `>>`), aż po integrację z LLM, RAG i specyfikacją HUD–daty. To główny punkt wejścia, który spina w jeden wywód wszystkie powiązane teksty.
+- [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md)
 
-📂 Seria źródłowa (fundamenty i detale):
+📂 Seria źródłowa:
 
-- 📄 [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md) – **Fundament**: znak jako byt bitowo–symboliczno–semantyczny, naturalna semantyka `?`, `!`, `~`, `>`, `=` i idea microtagów jako warstwy 1 nad tekstem.
-- 📄 [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) – **Model formalny**: składnia w stylu BNF (`MicroTag + Index + TextPayload`), klasy epistemiczne (`Fact`, `Context`, `Uncertainty`, `Risk`, `Elaboration`, `Vector`), indeksy (`[lvl=1,src=primary]` / `==¹`) i mapowanie na strukturę danych dla LLM.
-- 📄 [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) – **Praktyka**: przykładowe pliki `.mc.md`, szkic parsera w Pythonie, wzorzec integracji z RAG/LLM oraz konwencje repo (`*.mc.md` jako „żywa ontologia tekstowa”).
-- 📄 [`2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) – **HUD–data**: kanoniczny mikrokod daty w ASCII (`[YYYY|MM|DD]`, `{+YY|+MM|+DD}`), formalna gramatyka i algorytm liczenia daty jako dowód replikowalny. To niskopoziomowa warstwa czasu, na której opierają się wyższe protokoły (HMK-9D, ASCII_MC_9D, analizy fire sale).
+- [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md)
+- [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md)
+- [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md)
+- [`2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md)
 
-Seria „ASCII microcode dla AI” łączy się z:
-
-- operatorem kontekstu `‡` (double dagger),
-- eksperymentem `ASCII_MC_9D` i tekstem o AISEC jako dyscyplinie żywej,
-- specyfikacją HUD–daty w ASCII,
-
-tworząc **pełny stack mikrokodu semantycznego**:  
-od pojedynczego znaku i indeksu górnego/dolnego, przez microtagi epistemiczne, aż po integrację z pipeline’ami LLM/RAG oraz praktyką pracy w repozytoriach (`writeups`, `glitchlab`, `chunk–chunk`).
+Seria opisuje pełny stack mikrokodu semantycznego: od znaku, przez microtag, po użycie w pipeline’ach LLM/RAG.
 
 ---
 
@@ -383,13 +331,26 @@ od pojedynczego znaku i indeksu górnego/dolnego, przez microtagi epistemiczne, 
 
 📄 Plik: [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md)
 
-Writeup opisuje, jak zbudować deterministyczną warstwę pomiarową nad odpowiedziami LLM: minimalny mikrokod ASCII + heurystyczny skorer HMK-9D (AX/LENS/MT) oparty o liczenie tagów. Wyjaśnia:
+Write-up opisuje, jak zbudować warstwę pomiarową nad odpowiedziami LLM i procesami interpretacyjnymi za pomocą tagów ASCII oraz heurystycznego skorera HMK-9D.
 
-- rozdział klasy epistemicznej od treści (klasę nadaje TAG, nie ton),
-- mechanizm [DET] jako kontrakt na deterministyczne wyliczenie lub `n/a`,
-- fallback SCORER_SPEC_LOCAL_DET liczący 0–1 z rozkładu tagów, aby unikać `n/a` i uzyskać porównywalność między wątkami przy identycznym materiale.
+---
 
-Pokazuje też, że identyczna struktura mikrokodu (tag_counts) może celowo dawać identyczny wektor 9D, co ułatwia regresję, archiwizację i porównywanie mikroświatów w różnych wątkach.
+## Monkey Business – K-Wave Media i potencjał naukowy
+
+📄 Plik: [`mokey-bissnes_k-wave-media_potencjal-naukowy.md`](mokey-bissnes_k-wave-media_potencjal-naukowy.md)
+
+Case-study o ekonomii memów, mediach cyfrowych, spekulacji i możliwościach badawczych współczesnych środowisk informacyjno-finansowych.
+
+---
+
+## Ewolucja malware i zagrożeń AI
+
+📄 Pliki:
+
+- [`malware-evolution.md`](malware-evolution.md)
+- [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md)
+
+Dwa teksty porządkujące zmiany po stronie atakujących i obrońców w epoce AI.
 
 ---
 
@@ -399,15 +360,7 @@ Pokazuje też, że identyczna struktura mikrokodu (tag_counts) może celowo dawa
 
 <img src="/images/VR_i_biologia_%20interakcje%20m%C3%B3zgu.png" width="600" alt="Metawersum Meta a biologia człowieka">
 
-Ten write-up broni i obala tezę, że „Metaverse Meta” (w wariancie VR-first, budowany w duchu Facebooka jako platformy uwagi i rankingów) musiał skończyć się porażką ze względu na ograniczenia biologiczne człowieka.
-
-Analiza łączy trzy warstwy:
-
-- neurobiologię percepcji i integracji sensorycznej (wzrok–błędnik–propriocepcja), w tym mechanizmy cybersickness i zmęczenia,
-- „mózg społeczny” i kanały niewerbalne (obecność, ucieleśnienie, teoria umysłu) oraz koszty poznawczo-emocjonalne długich sesji,
-- logikę Facebooka jako maszyny uwagi (ranking, walidacja społeczna, pętle nawyku) i ryzyko przeniesienia tego paradygmatu do immersji.
-
-Wniosek operacyjny: VR może działać jako narzędzie i środowisko zadaniowe (krótkie sesje, MR, zastosowania specjalistyczne), ale „VR jako następca mobilnego internetu” nie skaluje się biologicznie w populacji bez głębokiej zmiany paradygmatu produktu, ergonomii i rytmu użycia.
+Analiza granic biologicznych interfejsów VR-first oraz napięcia między projektowaniem immersji a realną neurobiologią człowieka.
 
 ---
 
@@ -415,23 +368,7 @@ Wniosek operacyjny: VR może działać jako narzędzie i środowisko zadaniowe (
 
 📄 Plik: [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md)
 
-Artykuł projektowy, który używa metafory **„Wioski Kosmicznej”** jako ramy do zbudowania nowego typu social-networku z AI – nie opartego na dopaminie i lajku, tylko na **premii od kreacji**:
-
-- zamiast „więcej scrolla” – misje, zadania i grywalizowane prace społeczne (zupa, naleśniki, lokalne projekty, kompetencje), które generują **dane wysokiej jakości** dla AI;
-- zamiast rynku atencji – **rynek kompetencji i danych**, gdzie użytkownik dostaje „chleb, nie cukier”: realne korzyści (skille, ścieżki pracy, czasem pieniądz) za wkład w rozwój systemu;
-- zamiast dzikiego kapitalizmu social mediów – **architektura habitatowa**: telemetria, zamknięte obiegi, ECLSS dla społeczeństwa (uwaga, zaufanie, bezpieczeństwo informacyjne jako tlen i woda systemu).
-
-Tekst łączy:
-
-- metafory i wątki kosmiczne (habitaty NASA, Moon Village ESA) z konkretnymi pomysłami na **federowane Wioski** (domeny–państwa, integracja z UE, lokalne reguły, podatki i czasem VAT od sociala),
-- „absolutny reżim naukowy” (metryki, telemetria, eksperymenty społeczne, data-centric AI) z warstwą **fantazji i zabawy** (gry dodatnie, asymetrie, program lojalnościowy zamiast certyfikacji),
-- perspektywę polityczno-społeczną („bezrobotni z powodu AI jako pierwsi klienci”, „kosmosem wygrać wybory”, „nie lewica, nie prawica – kosmos”) z praktycznym designem: jak social-network z AI może sam rozwiązywać problem, który współtworzy (automatyzacja, wykluczenie, polaryzacja).
-
-„Premia od kreacji” jest tu rozumiana dosłownie jako:
-
-> bonus za działania, które rozwijają AI **i** rozwijają ludzi,
-
-mierzone twardo (jakość danych, efekty na rynku pracy, kompetencje) i miękko (sieci wsparcia, wioski w realu, zaufanie). W tle obecna jest logika mostów 9D (Wioska–Miasto, Human–AI, Semantyka–Energia) i docelowej integracji z resztą stacku: AISEC, ASCII microcode, HUD daty i protokołami kontekstu.
+Projekt społeczno-techniczny, w którym AI i social network nie służą do maksymalizacji uwagi, lecz do produkcji wartości poznawczej, kompetencji i danych wysokiej jakości.
 
 ---
 
@@ -440,273 +377,32 @@ mierzone twardo (jakość danych, efekty na rynku pracy, kompetencje) i miękko 
 
 📂 Katalog: [`badania/`](badania)
 
-Ten dział repozytorium rozszerza „writeups” o warstwę stricte badawczą: **zintegrowany przegląd + syntezę (review + synthesis)** materiałów z katalogu `badania/`, skupionych na pytaniu:
+Sekcja badawcza repozytorium koncentrująca się na pytaniu:
 
-> Kiedy (i dlaczego) Human‑AI‑In‑The‑Loop (HITL) jest **opłacalny** — oraz kiedy brak człowieka w pętli generuje narastające koszty błędów, dryfu semantycznego i walidacji?
+> Kiedy Human-AI-In-The-Loop jest opłacalny, a kiedy brak człowieka w pętli zwiększa koszt błędu, dryf semantyczny i całkowite TCO systemu?
 
-🔗 Repozytorium badań (źródło pierwotne):  
-👉 https://github.com/DonkeyJJLove/writeups/tree/master/badania
+Ta część pełni rolę warstwy syntetycznej i integracyjnej dla badań nad:
 
----
-
-### Abstrakt
-
-Niniejszy fragment README streszcza **zintegrowany artykuł przeglądowy**,
-opisujący badania prowadzone w katalogu `writeups/badania`.
-
-Badania te analizują opłacalność systemów opartych o sztuczną inteligencję
-z perspektywy:
-- ekonomii danych,
-- kosztu błędu,
-- kosztu poznawczego człowieka,
-- architektury relacji społeczno-technicznych.
-
-Celem tej sekcji jest:
-1. **uporządkowanie badań jako spójnych strumieni badawczych**,  
-2. **rekonstrukcja HITL** jako wspólnego wyniku tych badań,  
-3. **sformułowanie ogólnych wniosków ekonomicznych**.
-
-Sekcja **nie wprowadza nowych badań** — pełni rolę warstwy integrującej.
+- ekonomią danych,
+- architekturą relacji Human–AI,
+- kosztem poznawczym,
+- stabilizacją znaczeń i walidacji.
 
 ---
 
-### Metodologia przeglądu
-
-- **Źródło**: katalog `writeups/badania`
-- **Charakter badań**: eksploracyjny, iteracyjny („living research”)
-- **Metoda**:
-  - analiza porównawcza strumieni badawczych,
-  - synteza pojęciowa,
-  - analiza ekonomiczna kosztu błędu i kosztu poznawczego
-- **Jednostka analizy**: strumień badawczy (nie pojedynczy plik)
-
-> Repozytorium `badania/` pełni funkcję **indeksu i dziennika badań**.
-> Część materiałów roboczych istnieje poza repozytorium,
-> natomiast ta sekcja opisuje **wyniki i kierunki badań**.
-
----
-
-### Przegląd badań jako strumieni badawczych
-
-#### Strumień A — Ekonomika produkcji danych poniżej progu startupu
-
-**Problem badawczy**  
-Wysoki próg kapitałowy wejścia w produkcję danych i systemy AI.
-
-**Pytania badawcze**
-- Czy brak danych jest barierą, czy problemem organizacji procesu?
-- Jaką rolę pełni człowiek w produkcji danych?
-
-**Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
-| Człowiek | źródło intencji i semantyki |
-| AI | akcelerator iteracji |
-| Artefakty | dane prototypowe |
-| Sprzężenie | szybka korekta znaczeń |
-
-**Wynik**  
-Produkcja danych wymaga **pętli Human-AI**, nie skali infrastrukturalnej.
-
----
-
-#### Strumień B — Falsyfikacja modelu „data-only”
-
-**Problem badawczy**  
-Narastający koszt walidacji i błędów w systemach AI opartych wyłącznie na danych.
-
-**Pytania badawcze**
-- Jak rośnie koszt błędu w czasie?
-- Gdzie pojawia się dryf semantyczny?
-
-**Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
-| Człowiek | walidator semantyczny |
-| AI | generator hipotez |
-| Artefakty | decyzje, etykiety |
-| Sprzężenie | redukcja dryfu |
-
-**Wynik**  
-Modele *data-only* są **ekonomicznie niestabilne długoterminowo**.
-
----
-
-#### Strumień C — Modele społeczno-techniczne Human-AI (Social-AI)
-
-**Problem badawczy**  
-Dlaczego część systemów Human-AI się rozpada mimo obecności człowieka?
-
-**Pytania badawcze**
-- Jak struktura relacji wpływa na stabilność?
-- Czy relacje mogą zastąpić skalę?
-
-**Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
-| Człowiek | węzeł koordynacji |
-| AI | mediator informacji |
-| Artefakty | reguły, procedury |
-| Sprzężenie | stabilność relacji |
-
-**Wynik**  
-O opłacalności decyduje **architektura relacji**, nie sama automatyzacja.
-
----
-
-#### Strumień D — Koszt poznawczy człowieka w pętli AI
-
-**Problem badawczy**  
-Spadek jakości decyzji przy przeciążeniu informacyjnym.
-
-**Pytania badawcze**
-- Jak zmęczenie wpływa na walidację?
-- Jakie są granice poznawcze HITL?
-
-**Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
-| Człowiek | zasób ograniczony |
-| AI | źródło presji informacyjnej |
-| Artefakty | heurystyki |
-| Sprzężenie | stabilizacja decyzji |
-
-**Wynik**  
-Koszt poznawczy jest **realnym składnikiem TCO** systemów AI.
-
----
-
-#### Strumień E — Rytuały, CBT i stabilizacja pętli HITL
-
-**Problem badawczy**  
-Zmienność człowieka destabilizuje systemy AI.
-
-**Pytania badawcze**
-- Jak ograniczyć losowość decyzji?
-- Jak stabilizować pętlę Human-AI?
-
-**Wkład do HITL**
-| Element pętli | Identyfikowana rola |
-|--------------|---------------------|
-| Człowiek | czynnik losowy |
-| AI | wzmacniacz stanu |
-| Artefakty | rytuały, procedury |
-| Sprzężenie | redukcja fluktuacji |
-
-**Wynik**  
-Stabilny człowiek = stabilna pętla = stabilny koszt.
-
----
-
-### Rekonstrukcja Human-AI-In-The-Loop (HITL)
-
-Na podstawie wszystkich strumieni badawczych HITL wyłania się jako:
-
-> **architektura społeczno-techniczna, w której człowiek pozostaje
-> nieusuwalnym elementem pętli produkcji danych, walidacji znaczeń
-> i korekty błędów, ponieważ bez tego pętla generuje narastające koszty.**
-
-#### Formalna pętla HITL
-
-```mermaid
-flowchart LR
-H[Człowiek<br/>sens / walidacja] --> A[AI<br/>eksploracja]
-A --> H
-H --> D[Artefakty<br/>dane / decyzje]
-D --> A
-```
-
----
-
-### Synteza ekonomiczna
-
-#### Kluczowe obserwacje
-
-1. **Koszt błędu** dominuje nad kosztem interakcji z człowiekiem.
-2. Modele *data-only* przenoszą koszt w przyszłość.
-3. HITL:
-   - redukuje koszt błędu,
-   - stabilizuje znaczenie danych,
-   - obniża długoterminowe TCO.
-
-```mermaid
-xychart-beta
-title "Koszt całkowity systemu AI w czasie"
-x-axis ["Start", "Skalowanie", "Utrzymanie"]
-y-axis 0 --> 100
-line [20, 65, 90]
-line [35, 45, 55]
-```
-
----
-
-### Wnioski końcowe
-
-- HITL **nie jest kompromisem**, lecz wynikiem empirycznym badań.
-- Opłacalność AI jest funkcją **relacji, kosztu błędu i kosztu poznawczego**.
-- Człowiek w pętli nie jest kosztem ubocznym, lecz **elementem strukturalnym systemu**.
-
----
-
-### Status badań
-
-- charakter: **living research**
-- repozytorium `badania/` jest źródłem pierwotnym
-- ta sekcja README pełni rolę **warstwy integrującej i syntetycznej**
-
----
-
-## 📄 Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej
+## Kod cywilizacji – Human, AI i społeczeństwo w epoce niskiej elastyczności poznawczej
 
 📄 Plik: [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md)
 
-Artykuł **„Kod cywilizacji”** pełni w repozytorium rolę tekstu osiowego. Nie analizuje pojedynczego incydentu, kampanii APT ani konkretnej techniki malware, lecz opisuje **warstwę nadrzędną**, w której wszystkie te zjawiska stają się możliwe, skuteczne i ekonomicznie istotne. Jest to praca o kodzie społecznym, językowym i ontologicznym, który determinuje sposób działania systemów Human–AI, infrastruktury cyfrowej oraz nowoczesnych form władzy informacyjnej.
-
-Tekst pokazuje, że sztuczna inteligencja nie jest autonomicznym aktorem cywilizacyjnym, lecz **akceleratorem istniejących struktur** – podobnie jak malware przyspiesza ujawnienie słabości systemu, a zakłócenia czasu obnażają kruchość synchronizacji infrastruktury. AI nie tworzy nowych form sensu; przyspiesza obieg tych, które zostały już wytworzone przez język, ekonomię danych i nawyki poznawcze społeczeństw. W tym sensie AI działa jak wzmacniacz kodu cywilizacyjnego, a nie jego substytut.
-
-Centralnym wątkiem artykułu jest **język jako punkt graniczny** między człowiekiem a systemami AI. Z perspektywy psycholingwistyki język nie jest mechanizmem generowania zdań, lecz narzędziem koordynacji działań w świecie. Modele językowe operują na statystyce tokenów i embeddingów, podczas gdy człowiek pozostaje nośnikiem intencjonalności, odniesienia do rzeczywistości i odpowiedzialności za skutki aktu mowy. Ta różnica, często maskowana wysoką jakością generacji, staje się krytyczna w systemach o realnych konsekwencjach: finansowych, infrastrukturalnych i strategicznych.
-
-Artykuł rozwija pojęcie **kodu cywilizacyjnego** jako warstwy nadrzędnej wobec kodu maszynowego. Kod ten obejmuje normy sensu, prawdy i odpowiedzialności, które decydują o tym, czy dane stają się wiedzą, czy jedynie artefaktami statystycznymi. W tym ujęciu problemy znane z cyberbezpieczeństwa – dryf semantyczny, ciche anomalie, eskalacja błędu, operacje „poniżej radaru” – mają swoje odpowiedniki w systemach AI opartych na automatyzacji interpretacji i modelach *data-only*.
-
-Szczególną rolę odgrywa analiza **artefaktów danych** i ich wartości w świecie syntetycznej logiki. Dane nie są traktowane jako neutralny surowiec, lecz jako wytwór procesów społecznych, językowych i poznawczych. Artykuł pokazuje, że ekonomiczna i poznawcza wartość danych pojawia się dopiero wtedy, gdy istnieje stabilna pętla walidacji sensu – a więc wtedy, gdy człowiek pozostaje aktywnym elementem systemu. W przeciwnym razie AI staje się mechanizmem inflacji danych i eskalacji kosztu błędu.
-
-Koncepcja **„wioski kosmicznej”** pełni funkcję modelu granicznego. W warunkach ograniczonych zasobów, wysokiej ceny pomyłki i braku redundancji nie ma miejsca na poznawcze iluzje, podobnie jak w incydentach typu *fire sale* czy długotrwałych kampaniach APT. Automatyzacja bez sensu nie zwiększa bezpieczeństwa, a dane bez interpretacji nie zwiększają wiedzy. AI pozbawiona człowieka w pętli nie zwiększa inteligencji systemu – obniża jego odporność.
-
-Wnioskiem spajającym artykuł jest teza, że **Human-AI-In-The-Loop nie jest kompromisem ani kosztem**, lecz empirycznie wyłaniającą się strukturą stabilności. Tak jak w cyberbezpieczeństwie kluczowe są detektory anomalii i korelacja kontekstu, tak w systemach AI kluczowa pozostaje ludzka zdolność do korekty ontologicznej, walidacji sensu i ponoszenia odpowiedzialności. Bez tych funkcji AI staje się jedynie szybkim mechanizmem eskalacji błędów.
-
-„Kod cywilizacji” spina w jedną narrację write-upy o malware, incydentach krytycznych, językach typu chunk–chunk, ASCII microcode, AISEC i badaniach nad HITL, dostarczając **ramy interpretacyjnej** dla całego repozytorium `writeups`.
+Tekst osiowy repozytorium. Nie opisuje pojedynczego incydentu, lecz nadrzędną warstwę społeczną, językową i ontologiczną, w której AI, infrastruktura, ekonomia i bezpieczeństwo stają się jednym problemem.
 
 ---
 
 ## Taśma prototypowa – habitaty AI i ekonomia falsyfikacji
 
-📄 Artykuł: [`taśma_prototypowa_habitaty_AI.md`](epistemiczna_tasma_prototypowa_figury.md)  
+📄 Artykuł: [`taśma_prototypowa_habitaty_AI.md`](epistemiczna_tasma_prototypowa_figury.md)
 
-
-Ten write-up wprowadza **taśmę prototypową** jako mechanizm epistemiczno-ekonomiczny
-dla badań nad AI prowadzonych w warunkach wysokiej niepewności, ograniczonych zasobów
-i silnej czasowości wartości informacyjnej. Punkt wyjścia stanowi paradygmat
-**habitatów rozwojowych** (fizycznych i cyfrowych), w których – analogicznie do środowisk LEO –
-czas, energia, uwaga i sens nie są darmowe, lecz podlegają rachunkowi.
-
-Artykuł pokazuje, że taśma prototypowa nie jest linią produkcyjną ani metodyką
-„szybkiego MVP”, lecz **pętlą epistemiczną**, której podstawową funkcją jest
-falsyfikacja założeń, wykrywanie anomalii oraz wczesna redukcja kosztu błędnych
-trajektorii rozwojowych. W tym ujęciu wartość nie powstaje przez skalowanie,
-lecz przez przesuwanie odkryć w czasie – zanim błąd, inspiracja lub decyzja
-utracą swoją wartość operacyjną.
-
-Model taśmy opisany jest jako **portfel opcji realnych poniżej progu startupu**:
-większość eksperymentów wygasa bez materializacji, jednak cały portfel zachowuje
-dodatnią wartość dzięki poprawie orientacji decyzyjnej systemu. Szczególną rolę
-odgrywa architektura **Human–AI–In–The–Loop**, w której człowiek nie pełni funkcji
-operatora, lecz kuratora progów sensu i odpowiedzialności.
-
-Zwieńczeniem analizy jest interpretacja **sieci społecznej jako rozproszonej
-taśmy prototypowej** – infrastruktury epistemicznej, w której podstawową walutą
-nie jest uwaga ani ekspresja, lecz falsyfikowalne artefakty poznawcze
-(hipotezy, dane, protokoły, analizy). W tym sensie tekst stanowi pomost
-między działem *Kosmiczne Wioski* a badaniami nad opłacalnością HITL.
+Write-up o taśmie prototypowej jako pętli epistemicznej służącej nie tyle produkcji, ile falsyfikacji, wykrywaniu anomalii i ochronie przed kosztownym dryfem.
 
 ---
 
@@ -714,21 +410,41 @@ między działem *Kosmiczne Wioski* a badaniami nad opłacalnością HITL.
 
 📁 Katalog: [`images/`](images)
 
-Folder służy jako magazyn grafik i schematów wspierających poszczególne write-upy, m.in.:
+Folder z grafikami, schematami i ilustracjami wspierającymi teksty techniczne i analityczne.
 
-- diagramy przepływu w kampaniach APT,  
-- schematy fire sale i zaburzeń protokołów czasu,  
-- ilustracje do case’u chunk–chunk / Facebook.
+---
 
-Jest traktowany jako **część mikroświata repozytorium**: konkretne obrazy są powiązane z tekstami przez ścieżki plików i hashe, tak aby w analizach technicznych można było odwoływać się do nich jak do „twardych artefaktów” (P0) – a nie tylko luźnych ilustracji.
+## Konwencje nazw i artefaktów
+
+W repozytorium występują trzy główne klasy artefaktów:
+
+- `*.md` — write-upy, artykuły i specyfikacje,
+- `*.prompt` — narzędzia epistemiczne i promptowe,
+- `images/` oraz `badania/` — zaplecze ilustracyjne i badawcze.
+
+Część nazw plików ma charakter stricte techniczny, część zachowuje roboczy, eksperymentalny lub narracyjny styl. To celowe: repozytorium łączy warstwę śledczą z warstwą badawczo-koncepcyjną.
+
+---
+
+## Status repozytorium
+
+Repozytorium ma charakter **living repository**:
+
+- część tekstów jest domknięta i pełni rolę referencyjną,
+- część pozostaje w ruchu i działa jako laboratorium pojęć, modeli i heurystyk,
+- niektóre pliki mają charakter szkicu, ale są utrzymywane świadomie jako materiał roboczy.
+
+To nie jest wada struktury repo. To element jego logiki: część write-upów dokumentuje wynik, a część dokumentuje proces dochodzenia do wyniku.
+
+---
 
 ## Zastrzeżenie
 
-> Wszystkie zawarte opracowania mają charakter **edukacyjny i badawczy**.  
-> Autor nie zachęca do żadnych działań niezgodnych z prawem ani nieautoryzowanego wykorzystania prezentowanych technik.  
-> Wiedza zawarta w repozytorium służy wyłącznie poprawie świadomości i praktyk cyberbezpieczeństwa, a także zrozumieniu powiązań między technologią, rynkami i systemami społecznymi.  
+> Wszystkie zawarte opracowania mają charakter edukacyjny, badawczy i analityczny.  
+> Autor nie zachęca do żadnych działań niezgodnych z prawem ani do nieautoryzowanego wykorzystania opisywanych technik.  
+> Wiedza zawarta w repozytorium służy wyłącznie poprawie świadomości, praktyk cyberbezpieczeństwa, jakości analiz oraz zrozumieniu relacji między technologią, rynkami, językiem i systemami społecznymi.  
 >
-> W przypadku analizy incydentów typu fire sale oraz opisów doświadczeń rynkowo-medialnych, przedstawione dane opierają się na faktach, logice śledczej i analizie źródeł – jednak z uwagi na potencjalny charakter strategiczny niektóre elementy mogą mieć charakter interpretacyjny i wymagają dalszej weryfikacji przez odpowiednie instytucje.
+> W przypadku materiałów dotyczących AI, LLM i protokołów kontekstu należy odróżniać warstwę empiryczną od warstwy interpretacyjnej. Nie każdy opis w repozytorium jest raportem końcowym; część materiałów stanowi udokumentowany etap badania, hipotezę roboczą lub instrument falsyfikacyjny.
 
 ---
 
