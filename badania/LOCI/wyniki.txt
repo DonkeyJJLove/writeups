@@ -1,21 +1,3 @@
-
->> R = loci_sample_text_all_in_one('sample/raw/Sample_0001.m')
-============================================================
-LOCI SAMPLE TEXT ALL IN ONE
-Plik wejściowy : sample/raw/Sample_0001.m
-Katalog skryptu: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI
-============================================================
-
-Error using loci_sample_text_all_in_one>i_load_dataset (line 278)
-Nie udało się odczytać wystarczającej liczby generacji z pliku: sample/raw/Sample_0001.m
-
-Error in loci_sample_text_all_in_one (line 54)
-    dataset = i_load_dataset(sampleFile);
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^
- 
->> tree
-Unrecognized function or variable 'tree'.
- 
 >> R = loci_sample_text_all_in_one('sample/norm/Sample_0001n.m');
 ============================================================
 LOCI SAMPLE TEXT ALL IN ONE
