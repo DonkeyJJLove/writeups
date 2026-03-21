@@ -1,624 +1,786 @@
 function R = loci_sample_text_all_in_one(sampleFile)
-% LOCI_SAMPLE_TEXT_ALL_IN_ONE
-% Analiza LOCI dla pliku będącego sekwencją kolejnych generacji tekstu.
+% LOCI SAMPLE TEXT ALL IN ONE
+% Wersja rygorystyczna: detekcja LOCI + dowód realności sygnału
 %
 % Użycie:
 %   R = loci_sample_text_all_in_one('Sample_0001.m');
-%
-% Założenie:
-% - plik NIE jest poprawnym skryptem MATLAB ani tabelą liczbową,
-% - plik zawiera kolejne wersje / generacje tekstu,
-% - każda generacja jest traktowana jako kolejny stan procesu.
-%
-% Wynik:
-% - segmentacja generacji,
-% - ekstrakcja cech tekstowych,
-% - konstrukcja wskaźnika złożoności / dryfu,
-% - analiza LOCI po indeksie generacji,
-% - raport dowodowy i wykresy.
 
     clc;
-
-    if nargin < 1 || ~(ischar(sampleFile) || isstring(sampleFile))
-        error('Podaj nazwę pliku, np. R = loci_sample_text_all_in_one(''Sample_0001.m'');');
-    end
-
-    sampleFile = char(sampleFile);
-
-    if ~exist(sampleFile, 'file')
-        error('Nie znaleziono pliku: %s', sampleFile);
-    end
-
     fprintf('============================================================\n');
     fprintf('LOCI SAMPLE TEXT ALL IN ONE\n');
     fprintf('Plik wejściowy: %s\n', sampleFile);
     fprintf('============================================================\n\n');
 
+    rng(42, 'twister');
+
+    cfg = i_default_cfg();
+
+    [generations, sourceInfo] = i_load_generations(sampleFile);
+    nG = numel(generations);
+
+    fprintf('Wykryto generacji: %d\n\n', nG);
+
+    features = i_build_features(generations, cfg);
+    resultTable = i_build_score_table(features, cfg);
+
+    onsetIdx    = resultTable.onset_idx;
+    maxSlopeIdx = resultTable.max_slope_idx;
+    maxCurvIdx  = resultTable.max_curv_idx;
+
+    evidence = i_basic_evidence(resultTable, cfg);
+
+    % ================= RYGOR DOWODOWY =================
+    rigorous = i_run_rigorous_evidence(features, resultTable, cfg);
+    verdict  = i_final_verdict(evidence, rigorous, cfg);
+
+    i_print_summary(nG, onsetIdx, maxSlopeIdx, maxCurvIdx, verdict);
+    i_print_rigorous_report(sampleFile, nG, resultTable, evidence, rigorous, verdict);
+
+    i_plot_all(resultTable, cfg, verdict);
+
+    R = struct();
+    R.sample_file    = sampleFile;
+    R.source_info    = sourceInfo;
+    R.generations    = generations;
+    R.features       = features;
+    R.result_table   = resultTable;
+    R.n_generations  = nG;
+    R.onset_idx      = onsetIdx;
+    R.max_slope_idx  = maxSlopeIdx;
+    R.max_curv_idx   = maxCurvIdx;
+    R.score_raw      = resultTable.score_raw;
+    R.score_smooth   = resultTable.score_smooth;
+    R.dscore         = resultTable.dscore;
+    R.d2score        = resultTable.d2score;
+    R.interior_mask  = resultTable.interior_mask;
+    R.onset_mask     = resultTable.onset_mask;
+    R.evidence       = evidence;
+    R.rigorous       = rigorous;
+    R.verdict        = verdict;
+end
+
+% ============================================================
+% KONFIGURACJA
+% ============================================================
+
+function cfg = i_default_cfg()
+    cfg = struct();
+
+    cfg.smooth_window = 9;
+    cfg.min_onset_idx = 8;
+    cfg.max_onset_frac = 0.90;
+
+    % Wagi score
+    cfg.w_len_jump       = 0.22;
+    cfg.w_novelty_prev   = 0.20;
+    cfg.w_drift_prev     = 0.18;
+    cfg.w_new_vocab      = 0.16;
+    cfg.w_entropy_delta  = 0.10;
+    cfg.w_repetition_inv = 0.14;
+
+    % Bootstrap / rygor
+    cfg.bootstrap_B          = 400;
+    cfg.jackknife_stride     = 5;
+    cfg.null_B               = 300;
+    cfg.split_B              = 120;
+    cfg.block_min            = 6;
+    cfg.block_max            = 20;
+    cfg.stability_tol        = 12;   % tolerancja indeksu onset
+    cfg.min_effect_z         = 2.0;  % minimum dla mocnego sygnału
+    cfg.max_emp_p            = 0.05; % próg istotności empirycznej
+    cfg.min_split_agreement  = 0.60;
+    cfg.min_jackknife_agree  = 0.60;
+    cfg.min_bootstrap_agree  = 0.60;
+
+    % Dla split-half / null
+    cfg.fast_mode_surrogates = false;
+end
+
+% ============================================================
+% WCZYTANIE GENERACJI
+% ============================================================
+
+function [generations, sourceInfo] = i_load_generations(sampleFile)
     txt = fileread(sampleFile);
+    lines = splitlines(string(txt));
+    lines = strip(lines);
+    lines(lines=="") = [];
 
-    G = i_parse_generations(txt);
-
-    if numel(G) < 8
-        error(['W pliku wykryto zbyt mało generacji (%d). ' ...
-               'To za mało do sensownej analizy LOCI.'], numel(G));
-    end
-
-    fprintf('Wykryto generacji: %d\n', numel(G));
-
-    F = i_extract_generation_features(G);
-    R = i_run_loci_text_analysis(sampleFile, G, F);
-
-    fprintf('\n==================== PODSUMOWANIE ====================\n');
-    fprintf('Liczba generacji: %d\n', R.n_generations);
-    fprintf('ONSET LOCI         = G%04d\n', R.onset_idx);
-    fprintf('MAX SLOPE          = G%04d\n', R.max_slope_idx);
-    fprintf('MAX CURVATURE      = G%04d\n', R.max_curv_idx);
-    fprintf('Werdykt            = %s\n', R.evidence.verdict);
-    fprintf('=====================================================\n');
-
-    fprintf('\n==================== RAPORT DOWODOWY ====================\n');
-    i_print_report(R);
-    fprintf('=========================================================\n');
-end
-
-% ========================================================================
-function G = i_parse_generations(txt)
-% Segmentacja kolejnych generacji tekstu.
-%
-% Heurystyka:
-% - plik zawiera bardzo wiele powtarzanych bloków,
-% - każda generacja zwykle zawiera:
-%   [cytat angielski] + [dopisany komentarz PL] + data "18 grudnia 2018"
-% - używamy daty jako naturalnego separatora końca generacji.
-
-    txt = strrep(txt, sprintf('\r\n'), sprintf('\n'));
-    txt = strrep(txt, sprintf('\r'), sprintf('\n'));
-
-    lines = regexp(txt, '\n', 'split');
-    lines = lines(:);
-
-    % normalizacja pustych linii
+    generations = struct('idx', {}, 'text', {});
+    k = 0;
     for i = 1:numel(lines)
-        lines{i} = strtrim(lines{i});
-    end
-
-    datePattern = '^\s*18\s+grudnia\s+2018\s*$';
-
-    blocks = {};
-    cur = {};
-
-    for i = 1:numel(lines)
-        line = lines{i};
-
-        if isempty(line)
+        t = lines(i);
+        if strlength(t) == 0
             continue;
         end
-
-        cur{end+1,1} = line; %#ok<AGROW>
-
-        if ~isempty(regexp(line, datePattern, 'once'))
-            blockText = strjoin(cur, newline);
-            blocks{end+1,1} = strtrim(blockText); %#ok<AGROW>
-            cur = {};
-        end
+        k = k + 1;
+        generations(k).idx = k;
+        generations(k).text = char(t);
     end
 
-    if ~isempty(cur)
-        blockText = strjoin(cur, newline);
-        if strlength(string(strtrim(blockText))) > 0
-            blocks{end+1,1} = strtrim(blockText); %#ok<AGROW>
-        end
+    if isempty(generations)
+        error('Nie wykryto żadnych generacji tekstu w pliku wejściowym.');
     end
 
-    % fallback: jeśli segmentacja po dacie da bardzo mało bloków,
-    % użyj bardziej brutalnego podziału po pojawieniu się "Shamoon attacks"
-    if numel(blocks) < 5
-        seedPattern = 'Shamoon attacks';
-        idx = strfind(txt, seedPattern);
-        blocks = {};
-        if numel(idx) >= 2
-            for k = 1:numel(idx)
-                s = idx(k);
-                if k < numel(idx)
-                    e = idx(k+1)-1;
-                else
-                    e = length(txt);
-                end
-                b = strtrim(txt(s:e));
-                if strlength(string(b)) > 20
-                    blocks{end+1,1} = b; %#ok<AGROW>
-                end
-            end
-        end
-    end
-
-    % czyszczenie duplikatów pustych / mikroskopijnych
-    G = struct('id', {}, 'text', {}, 'nChars', {}, 'nWords', {});
-    c = 0;
-
-    for i = 1:numel(blocks)
-        b = strtrim(blocks{i});
-        if strlength(string(b)) < 30
-            continue;
-        end
-
-        c = c + 1;
-        G(c).id = c; %#ok<AGROW>
-        G(c).text = b; %#ok<AGROW>
-        G(c).nChars = strlength(string(b)); %#ok<AGROW>
-        G(c).nWords = numel(regexp(lower(b), '\S+', 'match')); %#ok<AGROW>
-    end
+    sourceInfo = struct();
+    sourceInfo.mode = 'text_generations';
+    sourceInfo.n_lines = numel(generations);
 end
 
-% ========================================================================
-function F = i_extract_generation_features(G)
-% Ekstrakcja cech dla każdej generacji.
-%
-% Cechy:
-% - długość
-% - liczba słów
-% - liczba zdań
-% - bogactwo leksykalne
-% - udział nowych tokenów względem poprzedniej generacji
-% - podobieństwo Jaccarda do poprzedniej generacji
-% - przyrost długości
-% - gęstość znaków specjalnych
-% - gęstość pytań
-% - liczba fraz geopolitycznych / operacyjnych (neutralnie jako cecha tekstu)
+% ============================================================
+% CECHY
+% ============================================================
 
-    n = numel(G);
+function T = i_build_features(generations, cfg)
+    n = numel(generations);
 
-    len_chars      = zeros(n,1);
-    len_words      = zeros(n,1);
-    n_sent         = zeros(n,1);
-    lex_div        = zeros(n,1);
-    delta_words    = zeros(n,1);
-    jacc_prev      = zeros(n,1);
-    novelty_prev   = zeros(n,1);
-    punct_density  = zeros(n,1);
-    qmark_density  = zeros(n,1);
-    keyword_score  = zeros(n,1);
+    len_words       = zeros(n,1);
+    len_chars       = zeros(n,1);
+    novelty_prev    = zeros(n,1);
+    drift_prev      = zeros(n,1);
+    new_vocab_ratio = zeros(n,1);
+    entropy         = zeros(n,1);
+    repetition      = zeros(n,1);
 
-    keys = lower({ ...
-        'iran','saud','opec','francja','ropa','paliwa','terror', ...
-        'hezbollah','ajatollah','shamoon','apt33','apt34','apt35', ...
-        'france','oil','market','prices','nuclear','anti-terror'});
+    vocab_seen = containers.Map('KeyType','char','ValueType','double');
 
-    prevTokens = string.empty;
+    prevTokens = {};
+    prevText   = "";
 
     for i = 1:n
-        txt = G(i).text;
-        txl = lower(txt);
+        txt = string(generations(i).text);
+        tokens = i_tokenize_words(txt);
 
-        tokens = regexp(txl, '[\p{L}\p{N}_-]+', 'match');
-        tokens = string(tokens(:));
-
-        len_chars(i) = strlength(string(txt));
         len_words(i) = numel(tokens);
+        len_chars(i) = strlength(txt);
 
-        sents = regexp(txt, '[^.!?]+[.!?]?', 'match');
-        sents = sents(~cellfun(@isempty, strtrim(sents)));
-        n_sent(i) = numel(sents);
-
-        if ~isempty(tokens)
-            lex_div(i) = numel(unique(tokens)) / numel(tokens);
+        if isempty(tokens)
+            entropy(i)    = 0;
+            repetition(i) = 1;
         else
-            lex_div(i) = 0;
+            entropy(i)    = i_entropy_tokens(tokens);
+            repetition(i) = i_repetition_ratio(tokens);
         end
 
-        punct_density(i) = numel(regexp(txt, '[,;:()\-\?!"'']', 'match')) / max(1, len_chars(i));
-        qmark_density(i) = count(string(txt), '?') / max(1, len_words(i));
-
-        ksum = 0;
-        for k = 1:numel(keys)
-            ksum = ksum + count(string(txl), keys{k});
-        end
-        keyword_score(i) = ksum;
-
-        if i == 1
-            delta_words(i)  = 0;
-            jacc_prev(i)    = 1;
+        if i > 1
+            novelty_prev(i) = i_novelty_ratio(prevTokens, tokens);
+            drift_prev(i)   = i_normalized_edit_distance_words(prevTokens, tokens);
+        else
             novelty_prev(i) = 0;
+            drift_prev(i)   = 0;
+        end
+
+        if isempty(tokens)
+            new_vocab_ratio(i) = 0;
         else
-            delta_words(i) = len_words(i) - len_words(i-1);
-
-            A = unique(prevTokens);
-            B = unique(tokens);
-
-            interAB = numel(intersect(A,B));
-            unionAB = numel(union(A,B));
-
-            if unionAB == 0
-                jacc_prev(i) = 1;
-            else
-                jacc_prev(i) = interAB / unionAB;
+            isNew = false(numel(tokens),1);
+            for j = 1:numel(tokens)
+                key = tokens{j};
+                if ~isKey(vocab_seen, key)
+                    vocab_seen(key) = 1;
+                    isNew(j) = true;
+                else
+                    vocab_seen(key) = vocab_seen(key) + 1;
+                end
             end
-
-            if isempty(B)
-                novelty_prev(i) = 0;
-            else
-                novelty_prev(i) = numel(setdiff(B,A)) / numel(B);
-            end
+            new_vocab_ratio(i) = mean(isNew);
         end
 
         prevTokens = tokens;
+        prevText   = txt; %#ok<NASGU>
     end
 
-    % normalizacja robust
-    z_len_words     = i_robust_z(len_words);
-    z_n_sent        = i_robust_z(n_sent);
-    z_lex_div       = i_robust_z(lex_div);
-    z_delta_words   = i_robust_z(delta_words);
-    z_novelty_prev  = i_robust_z(novelty_prev);
-    z_jacc_change   = i_robust_z(1 - jacc_prev);
-    z_punct_density = i_robust_z(punct_density);
-    z_qmark_density = i_robust_z(qmark_density);
-    z_keyword_score = i_robust_z(keyword_score);
+    d_len_words = [0; diff(len_words)];
+    d_entropy   = [0; diff(entropy)];
 
-    % Indeks dynamiki generacyjnej: im większy, tym większa zmiana strukturalna.
-    dynamic_score = ...
-        0.20 * z_len_words + ...
-        0.10 * z_n_sent + ...
-        0.10 * z_lex_div + ...
-        0.15 * z_delta_words + ...
-        0.15 * z_novelty_prev + ...
-        0.15 * z_jacc_change + ...
-        0.05 * z_punct_density + ...
-        0.05 * z_qmark_density + ...
-        0.05 * z_keyword_score;
-
-    % przesunięcie do nieujemnych
-    dynamic_score = dynamic_score - min(dynamic_score);
-    dynamic_score = max(dynamic_score, 0);
-
-    F = table( ...
-        (1:n)', len_chars, len_words, n_sent, lex_div, delta_words, ...
-        jacc_prev, novelty_prev, punct_density, qmark_density, keyword_score, ...
-        dynamic_score, ...
+    T = table( ...
+        (1:n)', len_words, len_chars, novelty_prev, drift_prev, ...
+        new_vocab_ratio, entropy, repetition, d_len_words, d_entropy, ...
         'VariableNames', { ...
-        'gen','len_chars','len_words','n_sent','lex_div','delta_words', ...
-        'jacc_prev','novelty_prev','punct_density','qmark_density', ...
-        'keyword_score','dynamic_score'});
+        'gen_idx','len_words','len_chars','novelty_prev','drift_prev', ...
+        'new_vocab_ratio','entropy','repetition','d_len_words','d_entropy' ...
+        });
 end
 
-% ========================================================================
+function tokens = i_tokenize_words(txt)
+    txt = lower(string(txt));
+    txt = regexprep(txt, '[^\p{L}\p{N}\s]+', ' ');
+    txt = regexprep(txt, '\s+', ' ');
+    txt = strip(txt);
+
+    if strlength(txt) == 0
+        tokens = {};
+        return;
+    end
+
+    parts = split(txt, " ");
+    parts(parts=="") = [];
+    tokens = cellstr(parts);
+end
+
+function h = i_entropy_tokens(tokens)
+    if isempty(tokens)
+        h = 0;
+        return;
+    end
+    [~,~,ic] = unique(tokens);
+    cnt = accumarray(ic,1);
+    p = cnt / sum(cnt);
+    h = -sum(p .* log2(p + eps));
+end
+
+function r = i_repetition_ratio(tokens)
+    if isempty(tokens)
+        r = 1;
+        return;
+    end
+    u = numel(unique(tokens));
+    r = 1 - u / max(numel(tokens),1);
+end
+
+function v = i_novelty_ratio(prevTokens, tokens)
+    if isempty(tokens)
+        v = 0;
+        return;
+    end
+    if isempty(prevTokens)
+        v = 1;
+        return;
+    end
+    prevSet = unique(prevTokens);
+    curSet  = unique(tokens);
+    v = sum(~ismember(curSet, prevSet)) / max(numel(curSet),1);
+end
+
+% =================== NAPRAWIONA FUNKCJA =======================
+function d = i_normalized_edit_distance_words(a, b)
+    % Bezpieczna wersja; naprawia błąd:
+    % max(strlength(sa), strlength(sb), 1)
+
+    if isempty(a) && isempty(b)
+        d = 0;
+        return;
+    end
+
+    sa = string(strjoin(a, " "));
+    sb = string(strjoin(b, " "));
+
+    ca = char(sa);
+    cb = char(sb);
+
+    dRaw = i_levenshtein_chars(ca, cb);
+    denom = max([strlength(sa), strlength(sb), 1]);
+    d = double(dRaw) / double(denom);
+end
+
+function d = i_levenshtein_chars(s, t)
+    m = length(s);
+    n = length(t);
+
+    D = zeros(m+1, n+1);
+    D(:,1) = 0:m;
+    D(1,:) = 0:n;
+
+    for i = 2:m+1
+        for j = 2:n+1
+            cost = ~(s(i-1) == t(j-1));
+            D(i,j) = min([ ...
+                D(i-1,j) + 1, ...
+                D(i,j-1) + 1, ...
+                D(i-1,j-1) + cost ...
+            ]);
+        end
+    end
+    d = D(end,end);
+end
+
+% ============================================================
+% SCORE I POCHODNE
+% ============================================================
+
+function R = i_build_score_table(F, cfg)
+    n = height(F);
+
+    z_len_jump       = i_robust_z(abs(F.d_len_words));
+    z_novelty_prev   = i_robust_z(F.novelty_prev);
+    z_drift_prev     = i_robust_z(F.drift_prev);
+    z_new_vocab      = i_robust_z(F.new_vocab_ratio);
+    z_entropy_delta  = i_robust_z(abs(F.d_entropy));
+    z_repetition_inv = i_robust_z(1 - F.repetition);
+
+    score_raw = ...
+          cfg.w_len_jump       * z_len_jump ...
+        + cfg.w_novelty_prev   * z_novelty_prev ...
+        + cfg.w_drift_prev     * z_drift_prev ...
+        + cfg.w_new_vocab      * z_new_vocab ...
+        + cfg.w_entropy_delta  * z_entropy_delta ...
+        + cfg.w_repetition_inv * z_repetition_inv;
+
+    score_smooth = i_movmean_reflect(score_raw, cfg.smooth_window);
+    dscore  = [0; diff(score_smooth)];
+    d2score = [0; diff(dscore)];
+
+    interior_mask = false(n,1);
+    lo = max(2, cfg.min_onset_idx);
+    hi = max(lo, floor(cfg.max_onset_frac*n));
+    interior_mask(lo:hi) = true;
+
+    onset_mask = interior_mask & dscore > 0 & d2score > 0;
+
+    if any(onset_mask)
+        [~, idxLocal] = max(score_smooth .* onset_mask);
+        onset_idx = idxLocal;
+    else
+        onset_idx = max(lo, 1);
+    end
+
+    [~, max_slope_idx] = max(dscore .* interior_mask);
+    [~, max_curv_idx]  = max(d2score .* interior_mask);
+
+    R = table((1:n)', score_raw, score_smooth, dscore, d2score, interior_mask, onset_mask, ...
+        'VariableNames', {'gen_idx','score_raw','score_smooth','dscore','d2score','interior_mask','onset_mask'});
+
+    R.onset_idx(:)     = onset_idx;
+    R.max_slope_idx(:) = max_slope_idx;
+    R.max_curv_idx(:)  = max_curv_idx;
+end
+
 function z = i_robust_z(x)
-    x = x(:);
-    medx = median(x, 'omitnan');
-    madx = mad(x, 1);
-
-    if madx <= 0
-        sx = std(x, 'omitnan');
-        if sx <= 0
-            z = zeros(size(x));
-        else
-            z = (x - mean(x, 'omitnan')) ./ sx;
-        end
-    else
-        z = (x - medx) ./ madx;
-    end
-
-    z(~isfinite(z)) = 0;
+    x = double(x(:));
+    med = median(x, 'omitnan');
+    madv = median(abs(x - med), 'omitnan');
+    s = 1.4826 * madv + eps;
+    z = (x - med) / s;
 end
 
-% ========================================================================
-function R = i_run_loci_text_analysis(sampleFile, G, F)
-
-    x = F.gen;
-    y = F.dynamic_score;
-
-    n = numel(x);
-    if n < 8
-        error('Za mało generacji do analizy LOCI.');
-    end
-
-    y_s = i_smooth_signal(y, min(11,n), 3);
-    dy  = gradient(y_s, x);
-    d2y = gradient(dy, x);
-
-    kEdge = max(1, floor(0.05*n));
-    interior = false(n,1);
-    interior((kEdge+1):(n-kEdge)) = true;
-
-    if sum(interior) < 3
-        interior(:) = true;
-    end
-
-    thr_slope = median(abs(dy(interior)))  + 2.5 * mad(abs(dy(interior)), 1);
-    thr_curv  = median(abs(d2y(interior))) + 2.5 * mad(abs(d2y(interior)), 1);
-    thr_level = median(y_s(interior)) + 0.5 * mad(y_s(interior), 1);
-
-    onset_mask = interior & ...
-                 (abs(dy)  >= thr_slope) & ...
-                 (abs(d2y) >= thr_curv)  & ...
-                 (y_s      >= thr_level);
-
-    onset_idx = i_first_sustained_run(onset_mask, max(2, floor(0.03*n)));
-    if isnan(onset_idx)
-        onset_idx = i_first_sustained_run(interior & (abs(dy) >= thr_slope) & (y_s >= thr_level), 2);
-    end
-    if isnan(onset_idx)
-        [~, onset_idx] = max(abs(dy) .* interior);
-    end
-
-    [~, max_slope_idx] = max(abs(dy) .* interior);
-    [~, max_curv_idx]  = max(abs(d2y) .* interior);
-
-    % bootstrap na resztach
-    rng(42, 'twister');
-    resid = y - y_s;
-    sigma = mad(resid(interior), 1);
-    if sigma <= 0, sigma = std(resid(interior)); end
-    if sigma <= 0, sigma = 1e-6; end
-
-    nBoot = 1000;
-    onset_boot = nan(nBoot,1);
-    slope_boot = nan(nBoot,1);
-    curv_boot  = nan(nBoot,1);
-
-    for b = 1:nBoot
-        yb = max(0, y_s + sigma .* randn(size(y_s)));
-        ybs = i_smooth_signal(yb, min(11,n), 3);
-        dyb = gradient(ybs, x);
-        d2b = gradient(dyb, x);
-
-        thr_sb = median(abs(dyb(interior))) + 2.5 * mad(abs(dyb(interior)), 1);
-        thr_cb = median(abs(d2b(interior))) + 2.5 * mad(abs(d2b(interior)), 1);
-        thr_lb = median(ybs(interior)) + 0.5 * mad(ybs(interior), 1);
-
-        maskb = interior & (abs(dyb) >= thr_sb) & (abs(d2b) >= thr_cb) & (ybs >= thr_lb);
-        idxb = i_first_sustained_run(maskb, 2);
-
-        if isnan(idxb)
-            idxb = i_first_sustained_run(interior & (abs(dyb) >= thr_sb) & (ybs >= thr_lb), 2);
-        end
-        if isnan(idxb)
-            [~, idxb] = max(abs(dyb) .* interior);
-        end
-
-        [~, isb] = max(abs(dyb) .* interior);
-        [~, icb] = max(abs(d2b) .* interior);
-
-        onset_boot(b) = idxb;
-        slope_boot(b) = isb;
-        curv_boot(b)  = icb;
-    end
-
-    evidence = i_classify_text_evidence(onset_idx, max_slope_idx, max_curv_idx, n, y_s, dy, d2y, interior);
-
-    result_table = table( ...
-        x, y, y_s, dy, d2y, F.len_words, F.delta_words, F.jacc_prev, F.novelty_prev, ...
-        'VariableNames', {'gen','score_raw','score_smooth','dscore','d2score', ...
-        'len_words','delta_words','jacc_prev','novelty_prev'});
-
-    R = struct();
-    R.sample_file     = sampleFile;
-    R.generations     = G;
-    R.features        = F;
-    R.result_table    = result_table;
-    R.n_generations   = n;
-
-    R.onset_idx       = onset_idx;
-    R.max_slope_idx   = max_slope_idx;
-    R.max_curv_idx    = max_curv_idx;
-
-    R.score_raw       = y;
-    R.score_smooth    = y_s;
-    R.dscore          = dy;
-    R.d2score         = d2y;
-    R.interior_mask   = interior;
-    R.onset_mask      = onset_mask;
-
-    R.bootstrap = struct( ...
-        'n', nBoot, ...
-        'onset_ci95', prctile(onset_boot, [2.5 97.5]), ...
-        'onset_median', median(onset_boot), ...
-        'slope_ci95', prctile(slope_boot, [2.5 97.5]), ...
-        'slope_median', median(slope_boot), ...
-        'curv_ci95', prctile(curv_boot, [2.5 97.5]), ...
-        'curv_median', median(curv_boot));
-
-    R.thresholds = struct( ...
-        'thr_slope', thr_slope, ...
-        'thr_curv', thr_curv, ...
-        'thr_level', thr_level);
-
-    R.evidence = evidence;
-
-    i_plot_report(R);
-end
-
-% ========================================================================
-function y = i_smooth_signal(x, win, poly)
+function y = i_movmean_reflect(x, w)
     x = x(:);
     n = numel(x);
+    h = floor(w/2);
+    y = zeros(n,1);
 
-    if n < 5
-        y = x;
-        return;
-    end
-
-    if mod(win,2) == 0
-        win = win + 1;
-    end
-
-    if win >= n
-        win = n - 1;
-        if mod(win,2) == 0
-            win = win - 1;
-        end
-    end
-
-    if win < 5
-        win = 5;
-        if win >= n
-            y = movmean(x, min(3,n), 'Endpoints','shrink');
-            return;
-        end
-    end
-
-    if poly >= win
-        poly = max(1, win-2);
-    end
-
-    try
-        y = sgolayfilt(x, poly, win);
-    catch
-        y = movmean(x, win, 'Endpoints', 'shrink');
+    for i = 1:n
+        lo = max(1, i-h);
+        hi = min(n, i+h);
+        y(i) = mean(x(lo:hi), 'omitnan');
     end
 end
 
-% ========================================================================
-function idx = i_first_sustained_run(mask, minRun)
-    idx = NaN;
-    mask = logical(mask(:));
+% ============================================================
+% PODSTAWOWE EVIDENCE
+% ============================================================
 
-    d = diff([false; mask; false]);
-    starts = find(d == 1);
-    stops  = find(d == -1) - 1;
-
-    if isempty(starts)
-        return;
-    end
-
-    lens = stops - starts + 1;
-    k = find(lens >= minRun, 1, 'first');
-
-    if ~isempty(k)
-        idx = starts(k);
-    end
-end
-
-% ========================================================================
-function E = i_classify_text_evidence(onset_idx, slope_idx, curv_idx, n, y, dy, d2y, interior)
-
-    edgeTol = max(2, round(0.05*n));
-    onset_edge = (onset_idx <= edgeTol) || (onset_idx >= n-edgeTol+1);
-
-    spanSlope = abs(slope_idx - onset_idx);
-    spanCurv  = abs(curv_idx  - onset_idx);
-
-    coherent = (spanSlope <= max(3, round(0.15*n))) || ...
-               (spanCurv  <= max(3, round(0.15*n)));
-
-    amp = max(y(interior)) - min(y(interior));
-    dynStrong = max(abs(dy(interior))) > (median(abs(dy(interior))) + mad(abs(dy(interior)),1));
-    curvStrong = max(abs(d2y(interior))) > (median(abs(d2y(interior))) + mad(abs(d2y(interior)),1));
-
-    if coherent && dynStrong && curvStrong && ~onset_edge
-        verdict = 'P1 — silne przejście LOCI w sekwencji generacji';
-    elseif (dynStrong || curvStrong) && coherent
-        verdict = 'P2 — umiarkowanie silne przejście LOCI';
-    elseif dynStrong || curvStrong
-        verdict = 'P2/P3 — sygnał częściowy, słabszy dowodowo';
-    else
-        verdict = 'P3 — brak mocnego przejścia LOCI';
-    end
+function E = i_basic_evidence(RT, cfg)
+    onsetIdx = RT.onset_idx(1);
+    slopeIdx = RT.max_slope_idx(1);
+    curvIdx  = RT.max_curv_idx(1);
 
     E = struct();
-    E.verdict = verdict;
-    E.onset_edge = onset_edge;
-    E.coherent = coherent;
-    E.amp = amp;
-    E.spanSlope = spanSlope;
-    E.spanCurv = spanCurv;
-    E.dynStrong = dynStrong;
-    E.curvStrong = curvStrong;
+    E.amplitude_score = max(RT.score_smooth) - min(RT.score_smooth);
+    E.slope_onset_gap = abs(slopeIdx - onsetIdx);
+    E.curv_onset_gap  = abs(curvIdx  - onsetIdx);
+    E.phase_consistent = double((E.slope_onset_gap <= 8) && (E.curv_onset_gap <= 8));
 end
 
-% ========================================================================
-function i_plot_report(R)
+% ============================================================
+% RYGOR DOWODOWY
+% ============================================================
 
-    x = (1:R.n_generations)';
+function G = i_run_rigorous_evidence(F, RT, cfg)
+    n = height(F);
 
-    figure('Name','LOCI text generations audit','Color','w', ...
-           'Position',[80 80 1400 900]);
+    fprintf('==================== RYGOR DOWODOWY ====================\n');
+    fprintf('Start testów rygorystycznych...\n');
 
-    tiledlayout(4,1,'Padding','compact','TileSpacing','compact');
+    realOnset = RT.onset_idx(1);
+    realAmp   = max(RT.score_smooth) - min(RT.score_smooth);
+    realSlope = max(RT.dscore(RT.interior_mask));
+    realCurv  = max(RT.d2score(RT.interior_mask));
 
-    nexttile;
-    plot(x, R.features.len_words, '-', 'LineWidth', 1.2); hold on;
-    xline(R.onset_idx, '--', sprintf('onset G%d', R.onset_idx));
-    xline(R.max_slope_idx, '--', sprintf('slope G%d', R.max_slope_idx));
-    xline(R.max_curv_idx, '--', sprintf('curv G%d', R.max_curv_idx));
-    ylabel('len\_words');
-    title('Długość generacji');
-    grid on; box on;
-
-    nexttile;
-    plot(x, R.features.novelty_prev, '-', 'LineWidth', 1.2); hold on;
-    plot(x, 1 - R.features.jacc_prev, '-', 'LineWidth', 1.2);
-    xline(R.onset_idx, '--');
-    ylabel('change');
-    title('Nowość i dryf względem poprzedniej generacji');
-    legend({'novelty\_prev','1 - jacc\_prev'}, 'Location','best');
-    grid on; box on;
-
-    nexttile;
-    plot(x, R.score_raw, '-', 'LineWidth', 0.9); hold on;
-    plot(x, R.score_smooth, '-', 'LineWidth', 2.0);
-    xline(R.onset_idx, '--');
-    xline(R.max_slope_idx, '--');
-    xline(R.max_curv_idx, '--');
-    ylabel('score');
-    title('Wskaźnik dynamiki generacyjnej');
-    legend({'raw','smooth'}, 'Location','best');
-    grid on; box on;
-
-    nexttile;
-    plot(x, R.dscore, '-', 'LineWidth', 1.2); hold on;
-    plot(x, R.d2score, '-', 'LineWidth', 1.2);
-    xline(R.onset_idx, '--');
-    xline(R.max_slope_idx, '--');
-    xline(R.max_curv_idx, '--');
-    xlabel('Generacja');
-    ylabel('pochodne');
-    title('Pochodne wskaźnika i punkt przejścia LOCI');
-    legend({'dscore','d2score'}, 'Location','best');
-    grid on; box on;
-end
-
-% ========================================================================
-function i_print_report(R)
-
-    fprintf('Plik: %s\n', R.sample_file);
-    fprintf('Liczba generacji: %d\n', R.n_generations);
-
-    fprintf('\n[1] Interpretacja wejścia\n');
-    fprintf('  Plik został potraktowany jako sekwencja kolejnych generacji tekstu.\n');
-    fprintf('  Nie analizowano go jako skryptu MATLAB ani tabeli liczbowej.\n');
-
-    fprintf('\n[2] Punkty charakterystyczne LOCI\n');
-    fprintf('  onset_idx      = %d\n', R.onset_idx);
-    fprintf('  max_slope_idx  = %d\n', R.max_slope_idx);
-    fprintf('  max_curv_idx   = %d\n', R.max_curv_idx);
-
-    fprintf('\n[3] Bootstrap 95%% CI\n');
-    fprintf('  onset CI95     = [%.2f, %.2f], mediana=%.2f\n', ...
-        R.bootstrap.onset_ci95(1), R.bootstrap.onset_ci95(2), R.bootstrap.onset_median);
-    fprintf('  slope CI95     = [%.2f, %.2f], mediana=%.2f\n', ...
-        R.bootstrap.slope_ci95(1), R.bootstrap.slope_ci95(2), R.bootstrap.slope_median);
-    fprintf('  curv  CI95     = [%.2f, %.2f], mediana=%.2f\n', ...
-        R.bootstrap.curv_ci95(1), R.bootstrap.curv_ci95(2), R.bootstrap.curv_median);
-
-    fprintf('\n[4] Werdykt epistemiczny\n');
-    fprintf('  %s\n', R.evidence.verdict);
-    fprintf('  onset brzegowy?  %d\n', R.evidence.onset_edge);
-    fprintf('  spójność fazowa? %d\n', R.evidence.coherent);
-    fprintf('  amplituda score  %.6f\n', R.evidence.amp);
-    fprintf('  |slope-onset|    %d\n', R.evidence.spanSlope);
-    fprintf('  |curv-onset|     %d\n', R.evidence.spanCurv);
-
-    fprintf('\n[5] Najsilniejsze generacje\n');
-    idxs = unique([R.onset_idx; R.max_slope_idx; R.max_curv_idx]);
-    for k = 1:numel(idxs)
-        i = idxs(k);
-        snippet = R.generations(i).text;
-        snippet = regexprep(snippet, '\s+', ' ');
-        snippet = strtrim(snippet);
-        if strlength(string(snippet)) > 180
-            snippet = extractBefore(string(snippet), 181) + "...";
-        end
-        fprintf('  G%04d: %s\n', i, snippet);
+    % 1) Bootstrap onset stability
+    fprintf(' [1/5] Bootstrap stabilności...\n');
+    bootOnsets = nan(cfg.bootstrap_B,1);
+    for b = 1:cfg.bootstrap_B
+        idx = randi(n, n, 1);
+        idx = sort(idx); % zachowujemy porządek czasowy przez resampling indeksów
+        Fb = F(idx, :);
+        RTb = i_build_score_table(Fb, cfg);
+        bootOnsets(b) = RTb.onset_idx(1);
     end
+    bootCI = prctile(bootOnsets, [2.5 50 97.5]);
+    bootAgree = mean(abs(bootOnsets - median(bootOnsets,'omitnan')) <= cfg.stability_tol, 'omitnan');
+
+    % 2) Jackknife stride stability
+    fprintf(' [2/5] Jackknife stabilności...\n');
+    jkOnsets = [];
+    for s = 1:cfg.jackknife_stride
+        keep = true(n,1);
+        keep(s:cfg.jackknife_stride:end) = false;
+        if sum(keep) < max(20, round(0.5*n))
+            continue;
+        end
+        RTj = i_build_score_table(F(keep,:), cfg);
+        jkOnsets(end+1,1) = RTj.onset_idx(1); %#ok<AGROW>
+    end
+    if isempty(jkOnsets)
+        jkOnsets = realOnset;
+    end
+    jkAgree = mean(abs(jkOnsets - median(jkOnsets,'omitnan')) <= cfg.stability_tol, 'omitnan');
+    jkCI = prctile(jkOnsets, [2.5 50 97.5]);
+
+    % 3) Split-half temporal stability
+    fprintf(' [3/5] Split-half zgodności...\n');
+    splitAgreeVec = false(cfg.split_B,1);
+    splitDeltaVec = nan(cfg.split_B,1);
+
+    for b = 1:cfg.split_B
+        cut = randi([round(0.30*n), round(0.70*n)]);
+        left  = F(1:cut,:);
+        right = F(cut:end,:);
+
+        if height(left) < 15 || height(right) < 15
+            continue;
+        end
+
+        RTl = i_build_score_table(left, cfg);
+        RTr = i_build_score_table(right, cfg);
+
+        % onset prawy przenosimy do skali globalnej
+        onsetL = RTl.onset_idx(1);
+        onsetR = cut - 1 + RTr.onset_idx(1);
+
+        splitDeltaVec(b) = abs(onsetL - onsetR);
+        splitAgreeVec(b) = splitDeltaVec(b) <= max(cfg.stability_tol, round(0.08*n));
+    end
+    splitAgreement = mean(splitAgreeVec, 'omitnan');
+
+    % 4) Null models / surrogate testing
+    fprintf(' [4/5] Surrogaty zerowe...\n');
+    nullAmp_perm   = nan(cfg.null_B,1);
+    nullSlope_perm = nan(cfg.null_B,1);
+    nullCurv_perm  = nan(cfg.null_B,1);
+    nullOnset_perm = nan(cfg.null_B,1);
+
+    nullAmp_block   = nan(cfg.null_B,1);
+    nullSlope_block = nan(cfg.null_B,1);
+    nullCurv_block  = nan(cfg.null_B,1);
+    nullOnset_block = nan(cfg.null_B,1);
+
+    for b = 1:cfg.null_B
+        % permutacja pełna: niszczy temporalność
+        idxPerm = randperm(n);
+        RTp = i_build_score_table(F(idxPerm,:), cfg);
+        nullAmp_perm(b)   = max(RTp.score_smooth) - min(RTp.score_smooth);
+        nullSlope_perm(b) = max(RTp.dscore(RTp.interior_mask));
+        nullCurv_perm(b)  = max(RTp.d2score(RTp.interior_mask));
+        nullOnset_perm(b) = RTp.onset_idx(1);
+
+        % block shuffle: zachowuje lokalne pakiety, niszczy globalny porządek
+        idxBlock = i_make_block_shuffle_indices(n, cfg.block_min, cfg.block_max);
+        RTb = i_build_score_table(F(idxBlock,:), cfg);
+        nullAmp_block(b)   = max(RTb.score_smooth) - min(RTb.score_smooth);
+        nullSlope_block(b) = max(RTb.dscore(RTb.interior_mask));
+        nullCurv_block(b)  = max(RTb.d2score(RTb.interior_mask));
+        nullOnset_block(b) = RTb.onset_idx(1);
+    end
+
+    empP_amp_perm   = (1 + sum(nullAmp_perm   >= realAmp))   / (1 + cfg.null_B);
+    empP_slope_perm = (1 + sum(nullSlope_perm >= realSlope)) / (1 + cfg.null_B);
+    empP_curv_perm  = (1 + sum(nullCurv_perm  >= realCurv))  / (1 + cfg.null_B);
+
+    empP_amp_block   = (1 + sum(nullAmp_block   >= realAmp))   / (1 + cfg.null_B);
+    empP_slope_block = (1 + sum(nullSlope_block >= realSlope)) / (1 + cfg.null_B);
+    empP_curv_block  = (1 + sum(nullCurv_block  >= realCurv))  / (1 + cfg.null_B);
+
+    zAmp_perm   = (realAmp   - mean(nullAmp_perm,'omitnan'))   / (std(nullAmp_perm,'omitnan')   + eps);
+    zSlope_perm = (realSlope - mean(nullSlope_perm,'omitnan')) / (std(nullSlope_perm,'omitnan') + eps);
+    zCurv_perm  = (realCurv  - mean(nullCurv_perm,'omitnan'))  / (std(nullCurv_perm,'omitnan')  + eps);
+
+    zAmp_block   = (realAmp   - mean(nullAmp_block,'omitnan'))   / (std(nullAmp_block,'omitnan')   + eps);
+    zSlope_block = (realSlope - mean(nullSlope_block,'omitnan')) / (std(nullSlope_block,'omitnan') + eps);
+    zCurv_block  = (realCurv  - mean(nullCurv_block,'omitnan'))  / (std(nullCurv_block,'omitnan')  + eps);
+
+    % 5) Ablation: czy sygnał jest wielocechowy
+    fprintf(' [5/5] Ablation cech...\n');
+    ablation = i_run_ablation(F, cfg, realOnset);
+
+    G = struct();
+    G.real_onset = realOnset;
+    G.real_amp   = realAmp;
+    G.real_slope = realSlope;
+    G.real_curv  = realCurv;
+
+    G.bootstrap_onsets = bootOnsets;
+    G.bootstrap_ci95   = bootCI;
+    G.bootstrap_agree  = bootAgree;
+
+    G.jackknife_onsets = jkOnsets;
+    G.jackknife_ci95   = jkCI;
+    G.jackknife_agree  = jkAgree;
+
+    G.split_agreement  = splitAgreement;
+    G.split_delta      = splitDeltaVec;
+
+    G.null_perm = struct( ...
+        'amp', nullAmp_perm, ...
+        'slope', nullSlope_perm, ...
+        'curv', nullCurv_perm, ...
+        'onset', nullOnset_perm, ...
+        'p_amp', empP_amp_perm, ...
+        'p_slope', empP_slope_perm, ...
+        'p_curv', empP_curv_perm, ...
+        'z_amp', zAmp_perm, ...
+        'z_slope', zSlope_perm, ...
+        'z_curv', zCurv_perm);
+
+    G.null_block = struct( ...
+        'amp', nullAmp_block, ...
+        'slope', nullSlope_block, ...
+        'curv', nullCurv_block, ...
+        'onset', nullOnset_block, ...
+        'p_amp', empP_amp_block, ...
+        'p_slope', empP_slope_block, ...
+        'p_curv', empP_curv_block, ...
+        'z_amp', zAmp_block, ...
+        'z_slope', zSlope_block, ...
+        'z_curv', zCurv_block);
+
+    G.ablation = ablation;
+
+    fprintf('Rygor zakończony.\n');
+    fprintf('=========================================================\n\n');
+end
+
+function idx = i_make_block_shuffle_indices(n, bmin, bmax)
+    blocks = {};
+    s = 1;
+    while s <= n
+        bl = randi([bmin, bmax],1,1);
+        e = min(n, s + bl - 1);
+        blocks{end+1} = s:e; %#ok<AGROW>
+        s = e + 1;
+    end
+    ord = randperm(numel(blocks));
+    idx = [];
+    for k = 1:numel(ord)
+        idx = [idx, blocks{ord(k)}]; %#ok<AGROW>
+    end
+    idx = idx(:);
+end
+
+function A = i_run_ablation(F, cfg, realOnset)
+    feats = {'d_len_words','novelty_prev','drift_prev','new_vocab_ratio','d_entropy','repetition'};
+    nA = numel(feats);
+
+    A = struct();
+    A.names = feats(:);
+    A.onset = nan(nA,1);
+    A.delta = nan(nA,1);
+
+    for k = 1:nA
+        RTa = i_build_score_table_ablation(F, cfg, feats{k});
+        A.onset(k) = RTa.onset_idx(1);
+        A.delta(k) = abs(A.onset(k) - realOnset);
+    end
+
+    A.agreement = mean(A.delta <= max(cfg.stability_tol,8), 'omitnan');
+end
+
+function R = i_build_score_table_ablation(F, cfg, dropName)
+    z_len_jump       = i_robust_z(abs(F.d_len_words));
+    z_novelty_prev   = i_robust_z(F.novelty_prev);
+    z_drift_prev     = i_robust_z(F.drift_prev);
+    z_new_vocab      = i_robust_z(F.new_vocab_ratio);
+    z_entropy_delta  = i_robust_z(abs(F.d_entropy));
+    z_repetition_inv = i_robust_z(1 - F.repetition);
+
+    W = struct( ...
+        'd_len_words',     cfg.w_len_jump, ...
+        'novelty_prev',    cfg.w_novelty_prev, ...
+        'drift_prev',      cfg.w_drift_prev, ...
+        'new_vocab_ratio', cfg.w_new_vocab, ...
+        'd_entropy',       cfg.w_entropy_delta, ...
+        'repetition',      cfg.w_repetition_inv);
+
+    W.(dropName) = 0;
+
+    score_raw = ...
+          W.d_len_words     * z_len_jump ...
+        + W.novelty_prev    * z_novelty_prev ...
+        + W.drift_prev      * z_drift_prev ...
+        + W.new_vocab_ratio * z_new_vocab ...
+        + W.d_entropy       * z_entropy_delta ...
+        + W.repetition      * z_repetition_inv;
+
+    score_smooth = i_movmean_reflect(score_raw, cfg.smooth_window);
+    dscore  = [0; diff(score_smooth)];
+    d2score = [0; diff(dscore)];
+
+    n = numel(score_raw);
+    interior_mask = false(n,1);
+    lo = max(2, cfg.min_onset_idx);
+    hi = max(lo, floor(cfg.max_onset_frac*n));
+    interior_mask(lo:hi) = true;
+
+    onset_mask = interior_mask & dscore > 0 & d2score > 0;
+    if any(onset_mask)
+        [~, onset_idx] = max(score_smooth .* onset_mask);
+    else
+        onset_idx = lo;
+    end
+    [~, max_slope_idx] = max(dscore .* interior_mask);
+    [~, max_curv_idx]  = max(d2score .* interior_mask);
+
+    R = table((1:n)', score_raw, score_smooth, dscore, d2score, interior_mask, onset_mask, ...
+        'VariableNames', {'gen_idx','score_raw','score_smooth','dscore','d2score','interior_mask','onset_mask'});
+    R.onset_idx(:)     = onset_idx;
+    R.max_slope_idx(:) = max_slope_idx;
+    R.max_curv_idx(:)  = max_curv_idx;
+end
+
+% ============================================================
+% WERDYKT KOŃCOWY
+% ============================================================
+
+function V = i_final_verdict(E, G, cfg)
+    pass_boot  = G.bootstrap_agree >= cfg.min_bootstrap_agree;
+    pass_jack  = G.jackknife_agree >= cfg.min_jackknife_agree;
+    pass_split = G.split_agreement >= cfg.min_split_agreement;
+
+    pass_perm  = ...
+        (G.null_perm.p_amp   <= cfg.max_emp_p) && ...
+        (G.null_perm.p_slope <= cfg.max_emp_p) && ...
+        (G.null_perm.z_amp   >= cfg.min_effect_z);
+
+    pass_block = ...
+        (G.null_block.p_amp   <= cfg.max_emp_p) && ...
+        (G.null_block.p_slope <= cfg.max_emp_p) && ...
+        (G.null_block.z_amp   >= cfg.min_effect_z);
+
+    pass_ablation = G.ablation.agreement >= 0.50;
+    pass_phase = E.phase_consistent == 1;
+
+    score = sum([pass_boot, pass_jack, pass_split, pass_perm, pass_block, pass_ablation, pass_phase]);
+
+    V = struct();
+    V.pass_boot  = pass_boot;
+    V.pass_jack  = pass_jack;
+    V.pass_split = pass_split;
+    V.pass_perm  = pass_perm;
+    V.pass_block = pass_block;
+    V.pass_ablation = pass_ablation;
+    V.pass_phase = pass_phase;
+    V.score = score;
+
+    if score >= 6
+        V.label = 'P0/P1 — sygnał LOCI realny i rygorystycznie wsparty';
+    elseif score >= 4
+        V.label = 'P1 — silny sygnał LOCI, częściowo potwierdzony rygorystycznie';
+    elseif score >= 3
+        V.label = 'P2 — sygnał obecny, ale wymaga ostrożności interpretacyjnej';
+    else
+        V.label = 'P3 — brak wystarczającego dowodu realności sygnału';
+    end
+end
+
+% ============================================================
+% RAPORT
+% ============================================================
+
+function i_print_summary(nG, onsetIdx, maxSlopeIdx, maxCurvIdx, verdict)
+    fprintf('==================== PODSUMOWANIE ====================\n');
+    fprintf('Liczba generacji: %d\n', nG);
+    fprintf('ONSET LOCI         = G%04d\n', onsetIdx);
+    fprintf('MAX SLOPE          = G%04d\n', maxSlopeIdx);
+    fprintf('MAX CURVATURE      = G%04d\n', maxCurvIdx);
+    fprintf('Werdykt            = %s\n', verdict.label);
+    fprintf('=====================================================\n\n');
+end
+
+function i_print_rigorous_report(sampleFile, nG, RT, E, G, V)
+    fprintf('==================== RAPORT DOWODOWY ====================\n');
+    fprintf('Plik: %s\n', sampleFile);
+    fprintf('Liczba generacji: %d\n\n', nG);
+
+    fprintf('[1] Punkty charakterystyczne LOCI\n');
+    fprintf('  onset_idx      = %d\n', RT.onset_idx(1));
+    fprintf('  max_slope_idx  = %d\n', RT.max_slope_idx(1));
+    fprintf('  max_curv_idx   = %d\n\n', RT.max_curv_idx(1));
+
+    fprintf('[2] Spójność fazowa\n');
+    fprintf('  amplitude score = %.6f\n', E.amplitude_score);
+    fprintf('  |slope-onset|   = %d\n', E.slope_onset_gap);
+    fprintf('  |curv-onset|    = %d\n', E.curv_onset_gap);
+    fprintf('  phase_consistent= %d\n\n', E.phase_consistent);
+
+    fprintf('[3] Stabilność bootstrap / jackknife / split-half\n');
+    fprintf('  bootstrap CI95  = [%.2f, %.2f, %.2f]\n', G.bootstrap_ci95(1), G.bootstrap_ci95(2), G.bootstrap_ci95(3));
+    fprintf('  bootstrap agree = %.3f\n', G.bootstrap_agree);
+    fprintf('  jackknife CI95  = [%.2f, %.2f, %.2f]\n', G.jackknife_ci95(1), G.jackknife_ci95(2), G.jackknife_ci95(3));
+    fprintf('  jackknife agree = %.3f\n', G.jackknife_agree);
+    fprintf('  split agreement = %.3f\n\n', G.split_agreement);
+
+    fprintf('[4] Testy modeli zerowych\n');
+    fprintf('  PERM p_amp      = %.6f | z_amp   = %.3f\n', G.null_perm.p_amp,   G.null_perm.z_amp);
+    fprintf('  PERM p_slope    = %.6f | z_slope = %.3f\n', G.null_perm.p_slope, G.null_perm.z_slope);
+    fprintf('  PERM p_curv     = %.6f | z_curv  = %.3f\n', G.null_perm.p_curv,  G.null_perm.z_curv);
+    fprintf('  BLOCK p_amp     = %.6f | z_amp   = %.3f\n', G.null_block.p_amp,   G.null_block.z_amp);
+    fprintf('  BLOCK p_slope   = %.6f | z_slope = %.3f\n', G.null_block.p_slope, G.null_block.z_slope);
+    fprintf('  BLOCK p_curv    = %.6f | z_curv  = %.3f\n\n', G.null_block.p_curv, G.null_block.z_curv);
+
+    fprintf('[5] Ablation wielocechowa\n');
+    for k = 1:numel(G.ablation.names)
+        fprintf('  drop %-14s onset=%6.1f | delta=%6.1f\n', ...
+            G.ablation.names{k}, G.ablation.onset(k), G.ablation.delta(k));
+    end
+    fprintf('  ablation agreement = %.3f\n\n', G.ablation.agreement);
+
+    fprintf('[6] Werdykt końcowy\n');
+    fprintf('  %s\n', V.label);
+    fprintf('  score_criteria = %d / 7\n', V.score);
+    fprintf('=========================================================\n\n');
+end
+
+% ============================================================
+% PLOT
+% ============================================================
+
+function i_plot_all(RT, cfg, verdict)
+    x = RT.gen_idx;
+
+    figure('Color',[0.12 0.12 0.12], 'Position', [50 50 1350 850]);
+
+    tiledlayout(4,1,'TileSpacing','compact','Padding','compact');
+
+    nexttile;
+    plot(x, cumsum(max(RT.score_raw,0)+0.05), 'LineWidth', 1.4);
+    grid on;
+    title('Dynamika skumulowana');
+    ylabel('cum');
+
+    nexttile;
+    plot(x, RT.score_raw, 'LineWidth', 1.0); hold on;
+    plot(x, RT.score_smooth, 'LineWidth', 1.5);
+    xline(RT.onset_idx(1),'--','onset');
+    xline(RT.max_slope_idx(1),'--','slope');
+    xline(RT.max_curv_idx(1),'--','curv');
+    grid on;
+    legend({'raw','smooth'}, 'Location','best');
+    title(sprintf('Wskaźnik LOCI | %s', verdict.label));
+    ylabel('score');
+
+    nexttile;
+    plot(x, RT.dscore, 'LineWidth', 1.0); hold on;
+    xline(RT.onset_idx(1),'--','onset');
+    grid on;
+    title('Pierwsza pochodna');
+    ylabel('dscore');
+
+    nexttile;
+    plot(x, RT.d2score, 'LineWidth', 1.0); hold on;
+    xline(RT.onset_idx(1),'--','onset');
+    grid on;
+    title('Druga pochodna');
+    ylabel('d2score');
+    xlabel('Generacja');
 end
