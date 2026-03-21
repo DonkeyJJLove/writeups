@@ -1,4 +1,4 @@
-"Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected computer after which Shamoon will erase the master boot record of the computer, thus making it unusable.
+"Shamoon attacksShamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected computer after which Shamoon will erase the master boot record of the computer, thus making it unusable.
 However, US security firm FireEye said that APT33, APT34 and APT35"
 (się dzieje)
  
