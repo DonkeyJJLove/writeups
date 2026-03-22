@@ -1,260 +1,218 @@
-# Sample_0001 — raport analizy LOCI / Human–AI
+# Sample_0001 — analiza przejścia LOCI w sekwencji Human–AI
 
-> **REŻIM NAUKOWY: ABSOLUTNY**  
-> Źródło: Facebook (iteracyjna sekwencja Human–AI)  
-> Typ: tekst edytowany (write → edit → refine)
+Źródło: iteracyjny strumień edycyjny (write → edit → refine)
 
 ---
 
 ## 1. Dane wejściowe
 
 - liczba generacji: **123**
-- format: sekwencja iteracyjnych modyfikacji tekstu
-- charakter: **kompresyjno-redakcyjny (edit-loop)**
+- znaki: 335 → 2580 (+670%)
+- tokeny: 53 → 445 (+739%)
+- plateau ratio: **~0.64**
+- najdłuższe plateau: **76 generacji**
+
+Charakter procesu:
+
+> iteracyjna kompresja i stabilizacja treści (edit-loop)
 
 ---
 
-## 2. Wynik LOCI
+## 2. Wynik detekcji LOCI
 
 ```text
 ONSET LOCI         = G0092
 MAX SLOPE          = G0027
 MAX CURVATURE      = G0027
 
-Werdykt            = P2 — umiarkowany dowód lokalnego przejścia LOCI
+Werdykt            = umiarkowany dowód lokalnego przejścia
 ````
 
 ---
 
-## 3. Interpretacja dynamiczna
+## 3. Dynamika procesu
 
-### Faza I — impuls (G ~ 1–30)
+### Faza I — inicjalizacja (G ~ 1–30)
 
-* wysoka dynamika zmian
-* maksimum nachylenia i krzywizny
-
-👉 **G27 = punkt inicjalizacji zmiany**
-
-Interpretacja:
-
-> pojawia się nowa trajektoria semantyczna
+* wysoka zmienność
+* maksimum dynamiki (G27)
 
 ---
 
 ### Faza II — stabilizacja (G ~ 30–90)
 
 * dominacja edycji nad generacją
-* wysoka redundancja
-* plateau
+* długie plateau
+* redukcja amplitudy zmian
 
 ---
 
-### Faza III — przejście (G ~ 86–92)
+### Faza III — przejście (G ~ 92)
 
-👉 **LOCI = G92**
-
-Parametry:
-
-* wysoki kontrast segmentacyjny
-* bootstrap = 1.0
-* p ≈ 0
-
-Interpretacja:
-
-> system przechodzi w nowy reżim organizacji tekstu
+* silny kontrast segmentacyjny
+* wysoka stabilność bootstrap
+* istotność statystyczna
 
 ---
 
-## 4. Kluczowa obserwacja
+## 4. Dynamika sygnału LOCI
+
+![LOCI dynamics](wyniki1_sample_0001n.jpg)
+
+**Interpretacja:**
+
+* wczesny impuls (G27)
+* długi okres stabilizacji
+* wyraźne przejście w G92
+
+---
+
+## 5. Metaprzestrzeń (27D → 9R)
+
+![Metaspace trajectory](wyniki2_sample_0001n.jpg)
+
+**Własności:**
+
+* trajektoria lokalnie zagęszczona
+* ograniczona eksploracja przestrzeni
+* dominacja ruchu wewnątrz jednego regionu
+
+---
+
+## 6. Gęstość i dynamika trajektorii
+
+![Density](wyniki3_sample_0001n.jpg)
+
+**Interpretacja:**
+
+* wysoka gęstość lokalna
+* brak dyfuzji globalnej
+* system utrzymuje się w ograniczonym obszarze
+
+---
+
+## 7. Model dual-mode (kompresja vs eksploracja)
+
+![Dual mode](wyniki4_sample_0001n.jpg)
+
+### Wyniki
+
+```text
+PRE  compression  ≈ 0.80
+POST compression  ≈ 0.82
+
+PRE  exploration  ≈ 0.18
+POST exploration  ≈ 0.21
+```
+
+---
+
+### Wniosek
+
+* dominujący tryb: **kompresyjny**
+* eksploracja: wtórna i lokalna
+* brak pełnej zmiany trybu poznawczego
+
+---
+
+## 8. Klasyfikator trybu
+
+![Mode classifier](wyniki5_sample_0001n.jpg)
+
+```text
+Mode score   ≈ 0.65
+Confidence   ≈ 0.89
+```
+
+---
+
+### Interpretacja
+
+* lokalne przejście generatywne po LOCI
+* brak globalnej zmiany systemu
+
+---
+
+## 9. Złożoność strumienia (TSCI)
+
+```text
+TSCI ≈ 34.45 / 100
+```
+
+---
+
+### Charakterystyka
+
+* wysoka powtarzalność
+* niska dynamika zmian
+* wysoka stabilność struktury
+
+---
+
+### Wniosek
+
+> system wykazuje niską złożoność dynamiczną przy wysokiej kontroli strukturalnej
+
+---
+
+## 10. Interpretacja procesowa
+
+Kluczowa własność:
 
 ```text
 MAX SLOPE ≠ ONSET LOCI
 ```
 
-Wniosek:
-
-> zmiana ma charakter procesowy, nie punktowy
-
 ---
 
-## 5. Dual-mode (kompresja vs eksploracja)
+Oznacza to:
 
-### Wyniki
+> przejście nie jest impulsem, lecz procesem:
 
 ```text
-PRE  compression  = 0.8000
-POST compression  = 0.8174
-
-PRE  exploration  = 0.1838
-POST exploration  = 0.2084
-```
-
-### Interpretacja
-
-* system pozostaje **dominująco kompresyjny**
-* eksploracja rośnie lokalnie po LOCI
-* brak pełnego przejścia trybu
-
-👉 Werdykt:
-
-> **reżim: deklaratywno-kompresyjny**
-
----
-
-## 6. Metaprzestrzeń (27D / 9R)
-
-### Charakterystyka
-
-* bardzo wysoka długość trajektorii
-* ekstremalna gęstość plateau (~0.97)
-* niska eksploracja przestrzeni Sobola
-
-### Interpretacja
-
-> trajektoria nie eksploruje przestrzeni — **zagęszcza się lokalnie**
-
-czyli:
-
-* system optymalizuje istniejący stan
-* zamiast generować nowe regiony przestrzeni
-
----
-
-## 7. TSCI — złożoność strumienia
-
-```text
-TSCI = 34.45 / 100
-Klasa: niska złożoność
+inicjalizacja → propagacja → stabilizacja → przejście → reorganizacja
 ```
 
 ---
 
-### Struktura
+## 11. Znaczenie dla systemów Human–AI
 
-* wysoki plateau ratio (~0.64)
-* niska dynamika kroków
-* wysoka powtarzalność
+### Właściwości pozytywne
 
----
-
-### Interpretacja
-
-> system nie jest chaotyczny — jest **silnie uporządkowany**
-
----
-
-## 8. Interpretacja poznawcza (mózg / Human–AI)
-
-Ten typ procesu odpowiada:
-
-### trybowi:
-
-* **iteracyjna stabilizacja reprezentacji**
-* redukcja błędu
-* wzmacnianie ścieżek neuronalnych
-
----
-
-### analogia neuro:
-
-* LTP (long-term potentiation)
-* utrwalanie wzorców
-* minimalizacja entropii
-
----
-
-### po LOCI:
-
-* nie następuje eksplozja kreatywności
-* następuje:
-
-  * **rekonfiguracja struktury**
-  * utrzymanie kontroli
-
----
-
-## 9. Wpływ na współpracę Human–AI
-
-### Zalety
-
-* wysoka spójność
-* niska halucynacyjność
-* kontrola semantyczna
-* stabilność procesu
+* wysoka spójność semantyczna
+* stabilność generacji
+* redukcja błędów
+* niska podatność na halucynacje
 
 ---
 
 ### Ograniczenia
 
 * niska eksploracja
-* brak emergentnych struktur
 * ograniczona kreatywność
+* brak emergentnych struktur
 
 ---
 
-### Wniosek
+## 12. Wniosek końcowy
 
-> model „edit-loop” jest optymalny dla:
->
-> * precyzji
-> * redukcji błędu
-> * stabilizacji wiedzy
+Sample_0001 reprezentuje system:
 
-ale nie dla:
+* o wysokiej stabilności
+* o dominującej kompresji
+* o ograniczonej eksploracji
 
-* eksploracji
-* generowania nowych przestrzeni
+który:
 
----
-
-## 10. Interpretacja systemowa
-
-Schemat:
-
-```text
-IMPULS (G27)
-↓
-STABILIZACJA (plateau)
-↓
-LOCI (G92)
-↓
-REORGANIZACJA
-↓
-KOMPRESJA
-```
+> przechodzi przez lokalne przejście (LOCI),
+> ale nie zmienia globalnego trybu działania
 
 ---
 
-## 11. Wniosek końcowy
+## 13. Kierunki dalszych badań
 
-> Sample_0001 reprezentuje system:
->
-> * o wysokiej stabilności
-> * niskiej złożoności dynamicznej
-> * dominującej kompresji
->
-> który przechodzi przez lokalne przejście (LOCI),
-> ale **nie zmienia trybu poznawczego na generatywny**
-
----
-
-## 12. Znaczenie badawcze
-
-Ten sample pokazuje:
-
-> możliwy jest długoterminowy trening systemu Human–AI,
-> który:
->
-> * wzmacnia struktury
-> * redukuje chaos
-> * buduje kontrolowaną semantykę
-
----
-
-## 13. Status
-
-* LOCI: ✔
-* Dual-mode: ✔
-* Metaprzestrzeń: ✔
-* TSCI: ✔
+* porównanie z próbkami generatywnymi
+* analiza wielu trajektorii w metaprzestrzeni
+* mapowanie typów procesów Human–AI
+* rozszerzenie analizy Sobol / Hypercube
 
