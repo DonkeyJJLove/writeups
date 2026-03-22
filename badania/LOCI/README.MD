@@ -192,8 +192,6 @@ LOCI ma działać jako jeden, spójny system:
 * visualizer analizuje i zapisuje wyniki,
 * testy walidują całość.
 
-````
-
 ---
 
 ## 2. Sekcja do `LOCI/spec/canonical_pipeline.md`
@@ -345,7 +343,7 @@ Nowe sample muszą przechodzić wyłącznie przez:
 - `matlab/adapters/export_sample_norm_mat.m`
 - `matlab/visualizers/loci_27D_9R_visualizer_canonical.m`
 - `tests/run_all_loci_pipeline_tests.m`
-````
+
 
 ---
 
