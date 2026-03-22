@@ -1,0 +1,13 @@
+{
+  "sample_id": "Sample_0001",
+  "sandbox_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers\\sandbox.txt",
+  "sample_root": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001",
+  "raw_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\raw",
+  "norm_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\norm",
+  "parser_mode": "python-canonical",
+  "contract": {
+    "input": "sandbox.txt",
+    "output_raw": "entries.jsonl, parse_report.json",
+    "output_norm": "sample_norm.json, author_map.json, aliases.json, warnings.json"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "sample_id": "Sample_0002",
+  "sandbox_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers\\sandbox.txt",
+  "entries_count": 22,
+  "links_count": 22,
+  "authors_detected": [
+    "Sebastian Wieremiejczyk"
+  ],
+  "relation_counts": {
+    "root": 1,
+    "delta_update": 3,
+    "full_restatement": 17,
+    "branch": 1
+  },
+  "warnings_count": 0,
+  "warnings_preview": [],
+  "notes": [
+    "timestamp_iso is currently not resolved from Polish textual date",
+    "entry typing is heuristic and should be refined on real corpus",
+    "parent-child relation is based on textual similarity, not strict semantic diff"
+  ]
+}

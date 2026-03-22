@@ -1,0 +1,81 @@
+[PASS] load_sample_norm(JSON)
+        Załadowano poprawnie.
+[PASS] sample_norm_to_series(JSON)
+        sample_id=Sample_0002, count=22
+[PASS] build_loci_feature_matrix(JSON)
+        size=22x27
+Saved MAT: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+[PASS] export_sample_norm_mat
+        Utworzono: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+[PASS] load_sample_norm(MAT)
+        Załadowano poprawnie.
+[PASS] sample_norm_to_series(MAT)
+        sample_id=Sample_0002, count=22
+[PASS] build_loci_feature_matrix(MAT)
+        size=22x27
+[PASS] JSON vs MAT consistency
+        max_abs_diff=0.000000000000
+=========================================
+LOCI 27D -> 9R METASPACE VISUALIZER
+=========================================
+[Warning: Columns of X are linearly dependent to within machine precision.
+Using only the first 18 components to compute TSQUARED.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('pca>localTSquared', 'C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m', 515)" style="font-weight:bold">pca>localTSquared</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m',515,0)">line 515</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('pca', 'C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m', 361)" style="font-weight:bold">pca</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m',361,0)">line 361</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('loci_27D_9R_visualizer_canonical>lc_reduceTo3D', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m', 384)" style="font-weight:bold">loci_27D_9R_visualizer_canonical>lc_reduceTo3D</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m',384,0)">line 384</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('loci_27D_9R_visualizer_canonical', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m', 67)" style="font-weight:bold">loci_27D_9R_visualizer_canonical</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m',67,0)">line 67</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test_loci_pipeline_sample_0002', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\test_loci_pipeline_sample_0002.m', 200)" style="font-weight:bold">test_loci_pipeline_sample_0002</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\test_loci_pipeline_sample_0002.m',200,0)">line 200</a>)] 
+[Warning: Exported image displays axes toolbar. To remove axes toolbar from image, export again.] 
+Generations: 22
+Features   : 27
+=== META-WYNIKI ===
+Onset (LOCI approx): G0002
+Mean step          : 2.0280
+Max step           : 10.9971
+Trajectory length  : 42.5872
+
+Saved to:
+  PNG : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.png
+  FIG : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.fig
+  TXT : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.txt
+  JSON: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.json
+  MD  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.md
+[PASS] loci_27D_9R_visualizer_canonical(JSON)
+        onset=G0002, traj=42.5872
+=========================================
+LOCI 27D -> 9R METASPACE VISUALIZER
+=========================================
+[Warning: Columns of X are linearly dependent to within machine precision.
+Using only the first 18 components to compute TSQUARED.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('pca>localTSquared', 'C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m', 515)" style="font-weight:bold">pca>localTSquared</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m',515,0)">line 515</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('pca', 'C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m', 361)" style="font-weight:bold">pca</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2025b\toolbox\stats\stats\pca.m',361,0)">line 361</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('loci_27D_9R_visualizer_canonical>lc_reduceTo3D', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m', 384)" style="font-weight:bold">loci_27D_9R_visualizer_canonical>lc_reduceTo3D</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m',384,0)">line 384</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('loci_27D_9R_visualizer_canonical', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m', 67)" style="font-weight:bold">loci_27D_9R_visualizer_canonical</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\matlab\visualizers\loci_27D_9R_visualizer_canonical.m',67,0)">line 67</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('test_loci_pipeline_sample_0002', 'C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\test_loci_pipeline_sample_0002.m', 218)" style="font-weight:bold">test_loci_pipeline_sample_0002</a> (<a href="matlab: opentoline('C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\test_loci_pipeline_sample_0002.m',218,0)">line 218</a>)] 
+[Warning: Exported image displays axes toolbar. To remove axes toolbar from image, export again.] 
+Generations: 22
+Features   : 27
+=== META-WYNIKI ===
+Onset (LOCI approx): G0002
+Mean step          : 2.0280
+Max step           : 10.9971
+Trajectory length  : 42.5872
+
+Saved to:
+  PNG : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203616.png
+  FIG : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203616.fig
+  TXT : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203616.txt
+  JSON: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203616.json
+  MD  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203616.md
+[PASS] loci_27D_9R_visualizer_canonical(MAT)
+        onset=G0002, traj=42.5872
+
+=========================================
+PODSUMOWANIE TESTU
+=========================================
+TOTAL : 10
+PASS  : 10
+FAIL  : 0
+STATUS: OK
+Raport TXT : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\results\test_loci_pipeline_sample_0002_2026-03-22_203614.txt
+Raport JSON: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\results\test_loci_pipeline_sample_0002_2026-03-22_203614.json

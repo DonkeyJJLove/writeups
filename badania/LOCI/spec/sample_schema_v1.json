@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LOCI Raw Sample Schema v1",
+  "type": "object",
+  "required": ["sample_id", "entry_id", "timestamp_text", "author_raw", "content_raw", "sequence_index"],
+  "properties": {
+    "sample_id": {"type": "string"},
+    "entry_id": {"type": "string"},
+    "timestamp_text": {"type": ["string", "null"]},
+    "timestamp_iso": {"type": ["string", "null"]},
+    "author_raw": {"type": ["string", "null"]},
+    "content_raw": {"type": "string"},
+    "links": {"type": "array", "items": {"type": "string"}},
+    "sequence_index": {"type": "integer", "minimum": 0}
+  }
+}

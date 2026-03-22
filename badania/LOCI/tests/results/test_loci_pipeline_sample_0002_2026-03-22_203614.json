@@ -1,0 +1,65 @@
+{
+  "test_name": "test_loci_pipeline_sample_0002",
+  "timestamp": "2026-03-22 20:36:14",
+  "loci_root": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI",
+  "sample_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0002\\norm\\sample_norm.json",
+  "sample_mat": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0002\\norm\\sample_norm.mat",
+  "steps": [
+    {
+      "name": "load_sample_norm(JSON)",
+      "status": "pass",
+      "details": "Załadowano poprawnie."
+    },
+    {
+      "name": "sample_norm_to_series(JSON)",
+      "status": "pass",
+      "details": "sample_id=Sample_0002, count=22"
+    },
+    {
+      "name": "build_loci_feature_matrix(JSON)",
+      "status": "pass",
+      "details": "size=22x27"
+    },
+    {
+      "name": "export_sample_norm_mat",
+      "status": "pass",
+      "details": "Utworzono: C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0002\\norm\\sample_norm.mat"
+    },
+    {
+      "name": "load_sample_norm(MAT)",
+      "status": "pass",
+      "details": "Załadowano poprawnie."
+    },
+    {
+      "name": "sample_norm_to_series(MAT)",
+      "status": "pass",
+      "details": "sample_id=Sample_0002, count=22"
+    },
+    {
+      "name": "build_loci_feature_matrix(MAT)",
+      "status": "pass",
+      "details": "size=22x27"
+    },
+    {
+      "name": "JSON vs MAT consistency",
+      "status": "pass",
+      "details": "max_abs_diff=0.000000000000"
+    },
+    {
+      "name": "loci_27D_9R_visualizer_canonical(JSON)",
+      "status": "pass",
+      "details": "onset=G0002, traj=42.5872"
+    },
+    {
+      "name": "loci_27D_9R_visualizer_canonical(MAT)",
+      "status": "pass",
+      "details": "onset=G0002, traj=42.5872"
+    }
+  ],
+  "summary": {
+    "total_steps": 10,
+    "passed": 10,
+    "failed": 0,
+    "ok": true
+  }
+}

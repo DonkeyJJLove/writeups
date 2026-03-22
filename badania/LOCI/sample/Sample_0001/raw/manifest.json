@@ -1,0 +1,25 @@
+{
+  "sample_id": "Sample_0001",
+  "input": {
+    "sandbox_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers\\sandbox.txt",
+    "sandbox_sha256": "72dc4ef385cfcd40efd38ee16c82597cbc7fcb64268990616f121f8f33da108f",
+    "sandbox_bytes_utf8": 518963
+  },
+  "outputs": {
+    "raw_entries_jsonl": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\raw\\entries.jsonl",
+    "norm_sample_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\norm\\sample_norm.json",
+    "parse_report_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\raw\\parse_report.json",
+    "warnings_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\raw\\warnings.json",
+    "author_map_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\norm\\author_map.json",
+    "aliases_json": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\sample\\Sample_0001\\norm\\aliases.json"
+  },
+  "parser_contract": {
+    "writes_to": "sample/<Sample_ID>/raw|norm",
+    "fallback_mode": "single_entry_if_no_structural_split_detected",
+    "empty_output_allowed": false
+  },
+  "runtime": {
+    "cwd": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers",
+    "script_name": "parse_sandbox.py"
+  }
+}

@@ -1,0 +1,11 @@
+﻿{
+    "stage":  "stage1_scaffold",
+    "root":  "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI",
+    "created_at":  "2026-03-22T15:23:00",
+    "copied":  [
+                   "loci_27D_9R_visualizer.m -\u003e matlab/visualizers/loci_27D_9R_visualizer.m",
+                   "build_metaspace_map.m -\u003e matlab/visualizers/build_metaspace_map.m",
+                   "sample/Sample_0001/norm/parse_sample_0001n_fixed.m -\u003e matlab/compat/parse_sample_0001n_fixed.m"
+               ],
+    "note":  "Etap 1 tworzy scaffold i zachowuje kompatybilność wsteczną. Nie usuwa legacy parsera."
+}

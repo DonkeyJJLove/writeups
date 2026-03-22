@@ -1,0 +1,1869 @@
+=========================================
+LOCI COGNITIVE READINESS TEST
+=========================================
+
+sample_id                        : Sample_0001
+timestamp                        : 2026-03-22 23:40:02
+input_file                       : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm\sample_norm.mat
+result_dir                       : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0001
+generations                      : 142
+feature_count                    : 27
+loci_onset_generation            : G0002
+first_cognitive_stable_generation: unresolved
+first_llm_ready_generation       : unresolved
+transition_window                : 
+mean_core_stability              : 0.745444
+mean_answer_stability            : 0.854390
+mean_groundedness                : 0.023157
+mean_negative_hallucination_risk : 0.879437
+mean_interpretive_debt           : 0.488383
+mean_structure_score             : 0.000659
+mean_maturity_score              : 0.340126
+
+=== GENERATION ROWS ===
+
+G0001
+  char_len                     : 60
+  word_count                   : 5
+  core_stability               : 0.000000
+  answer_stability             : 0.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.544000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.008527
+  keywords                     : com, https, iamdj, soundcloud, tommy-lee-vibes-inna-dis-raw
+  snapshot                     : https://soundcloud.com/iamdj.../tommy-lee-vibes-inna-dis-raw
+
+G0002
+  char_len                     : 155
+  word_count                   : 19
+  core_stability               : 0.214286
+  answer_stability             : 0.911111
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.500000
+  interpretive_debt            : 0.350000
+  structure_score              : 0.000000
+  maturity_score               : 0.286873
+  keywords                     : linku, podgląd, posta, tego, com, dodano, https, sebastian, soul-reaper-1, soundcloud, tommyleespartaofficial, usunięto
+  snapshot                     : Usunięto podgląd linku z tego posta. Dodano podgląd linku do tego posta Sebastian Wieremiejczyk https://soundcloud.com/tommyleespartaofficia...
+
+G0003
+  char_len                     : 154
+  word_count                   : 18
+  core_stability               : 0.714286
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.393796
+  keywords                     : linku, podgląd, posta, tego, com, dodano, https, sebastian, soundcloud, tommy-lee-sparta-soul-reaper, usunięto, wieremiejczyk
+  snapshot                     : Usunięto podgląd linku z tego posta. Dodano podgląd linku do tego posta Sebastian Wieremiejczyk https://soundcloud.com/.../tommy-lee-sparta-...
+
+G0004
+  char_len                     : 152
+  word_count                   : 18
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.425444
+  keywords                     : linku, podgląd, posta, tego, com, dodano, https, sebastian, soundcloud, tommy-lee-sparta-life-of-a, usunięto, wieremiejczyk
+  snapshot                     : Usunięto podgląd linku z tego posta. Dodano podgląd linku do tego posta Sebastian Wieremiejczyk https://soundcloud.com/.../tommy-lee-sparta-...
+
+G0005
+  char_len                     : 154
+  word_count                   : 18
+  core_stability               : 0.714286
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.393796
+  keywords                     : linku, podgląd, posta, tego, com, dodano, gulfnews, https, iran-hackers-behind-attacks-on, sebastian, usunięto, wieremiejczyk
+  snapshot                     : Usunięto podgląd linku z tego posta. Dodano podgląd linku do tego posta Sebastian Wieremiejczyk https://gulfnews.com/.../iran-hackers-behind...
+
+G0006
+  char_len                     : 73
+  word_count                   : 6
+  core_stability               : 0.307692
+  answer_stability             : 0.911111
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.276658
+  keywords                     : com, dzieje, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : (się dzieje) https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0007
+  char_len                     : 383
+  word_count                   : 56
+  core_stability               : 0.133333
+  answer_stability             : 0.800000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.530556
+  structure_score              : 0.000000
+  maturity_score               : 0.212624
+  keywords                     : attacks, computer, said, shamoon, after, apt33, apt34, apt35, boot, com, deletes, dzieje
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0008
+  char_len                     : 497
+  word_count                   : 75
+  core_stability               : 0.714286
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.512500
+  structure_score              : 0.000000
+  maturity_score               : 0.397859
+  keywords                     : attacks, computer, said, shamoon, after, apt33, apt34, apt35, beyond, boot, com, conflicts
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0009
+  char_len                     : 525
+  word_count                   : 79
+  core_stability               : 1.000000
+  answer_stability             : 0.800000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.593750
+  structure_score              : 0.000000
+  maturity_score               : 0.408145
+  keywords                     : attacks, computer, said, shamoon, after, apt33, apt34, apt35, beyond, boot, com, conflicts
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0010
+  char_len                     : 533
+  word_count                   : 80
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.456207
+  keywords                     : attacks, computer, said, shamoon, after, apt33, apt34, apt35, beyond, boot, com, conflicts
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0011
+  char_len                     : 565
+  word_count                   : 85
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.537500
+  structure_score              : 0.000000
+  maturity_score               : 0.413514
+  keywords                     : attacks, computer, said, shamoon, szuka, after, apt33, apt34, apt35, beyond, boot, com
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0012
+  char_len                     : 576
+  word_count                   : 87
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.537500
+  structure_score              : 0.000000
+  maturity_score               : 0.457770
+  keywords                     : attacks, computer, said, shamoon, szuka, after, apt33, apt34, apt35, beyond, boot, com
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0013
+  char_len                     : 593
+  word_count                   : 89
+  core_stability               : 0.846154
+  answer_stability             : 0.900000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.676000
+  interpretive_debt            : 0.600000
+  structure_score              : 0.000000
+  maturity_score               : 0.386437
+  keywords                     : attacks, computer, said, shamoon, szuka, zobaczymy, after, apt33, apt34, apt35, beyond, boot
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0014
+  char_len                     : 581
+  word_count                   : 87
+  core_stability               : 0.846154
+  answer_stability             : 0.900000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.537500
+  structure_score              : 0.000000
+  maturity_score               : 0.398847
+  keywords                     : attacks, computer, said, shamoon, szuka, after, apt33, apt34, apt35, beyond, boot, com
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0015
+  char_len                     : 658
+  word_count                   : 102
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.502344
+  structure_score              : 0.000000
+  maturity_score               : 0.417029
+  keywords                     : attacks, computer, musi, said, shamoon, szuka, after, apt33, apt34, apt35, beyond, boot
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0016
+  char_len                     : 684
+  word_count                   : 107
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.493382
+  structure_score              : 0.000000
+  maturity_score               : 0.462182
+  keywords                     : attacks, computer, musi, said, shamoon, szuka, after, apt33, apt34, apt35, beyond, boot
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0017
+  char_len                     : 778
+  word_count                   : 126
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.493382
+  structure_score              : 0.000000
+  maturity_score               : 0.417925
+  keywords                     : szuka, attacks, computer, musi, said, shamoon, after, apt33, apt34, apt35, asach, beyond
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0018
+  char_len                     : 809
+  word_count                   : 131
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.478289
+  structure_score              : 0.000000
+  maturity_score               : 0.419435
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, after, apt33, apt34, apt35, asach
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0019
+  char_len                     : 816
+  word_count                   : 132
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.512500
+  structure_score              : 0.000000
+  maturity_score               : 0.460270
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, after, apt33, apt34, apt35, asach
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0020
+  char_len                     : 846
+  word_count                   : 137
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.504762
+  structure_score              : 0.000000
+  maturity_score               : 0.461044
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, after, apt33, apt34, apt35, asach
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0021
+  char_len                     : 913
+  word_count                   : 149
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.526630
+  structure_score              : 0.000000
+  maturity_score               : 0.458857
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, after, apt33, apt34, apt35, asach
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0022
+  char_len                     : 949
+  word_count                   : 154
+  core_stability               : 1.000000
+  answer_stability             : 0.900000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.632000
+  interpretive_debt            : 0.526630
+  structure_score              : 0.000000
+  maturity_score               : 0.436857
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, after, apt33, apt34, apt35, asach
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0023
+  char_len                     : 981
+  word_count                   : 158
+  core_stability               : 0.714286
+  answer_stability             : 0.900000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.676000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.359476
+  keywords                     : szuka, attacks, computer, dobra, musi, said, shamoon, smoka, zobaczymy, after, apt33, apt34
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0024
+  char_len                     : 1038
+  word_count                   : 166
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.808000
+  interpretive_debt            : 0.593750
+  structure_score              : 0.000000
+  maturity_score               : 0.420172
+  keywords                     : szuka, zobaczymy, attacks, computer, dobra, musi, said, shamoon, smoka, after, apt33, apt34
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0025
+  char_len                     : 1126
+  word_count                   : 179
+  core_stability               : 0.714286
+  answer_stability             : 0.900000
+  groundedness                 : 0.042017
+  negative_hallucination_risk  : 0.808000
+  interpretive_debt            : 0.550368
+  structure_score              : 0.000000
+  maturity_score               : 0.350516
+  keywords                     : szuka, zobaczymy, attacks, computer, dobra, musi, said, shamoon, smoka, tylko, after, ajatollaha
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0026
+  char_len                     : 1102
+  word_count                   : 177
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.040816
+  negative_hallucination_risk  : 0.808000
+  interpretive_debt            : 0.544643
+  structure_score              : 0.000000
+  maturity_score               : 0.404472
+  keywords                     : szuka, zobaczymy, attacks, computer, dobra, musi, said, shamoon, smoka, tego, after, ajatollaha
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0027
+  char_len                     : 1154
+  word_count                   : 185
+  core_stability               : 0.714286
+  answer_stability             : 0.966667
+  groundedness                 : 0.039683
+  negative_hallucination_risk  : 0.808000
+  interpretive_debt            : 0.539236
+  structure_score              : 0.000000
+  maturity_score               : 0.365782
+  keywords                     : szuka, zobaczymy, attacks, bardzo, computer, dobra, może, musi, said, shamoon, smoka, tego
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0028
+  char_len                     : 1212
+  word_count                   : 196
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.036630
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.545513
+  structure_score              : 0.000000
+  maturity_score               : 0.397304
+  keywords                     : szuka, zobaczymy, attacks, bardzo, computer, dobra, może, musi, planszy, said, shamoon, smoka
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0029
+  char_len                     : 1289
+  word_count                   : 212
+  core_stability               : 0.714286
+  answer_stability             : 1.000000
+  groundedness                 : 0.035714
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.540625
+  structure_score              : 0.000000
+  maturity_score               : 0.365943
+  keywords                     : szuka, zobaczymy, attacks, bardzo, computer, coś, dobra, gra, może, musi, planszy, said
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0030
+  char_len                     : 1361
+  word_count                   : 223
+  core_stability               : 0.846154
+  answer_stability             : 0.866667
+  groundedness                 : 0.034014
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.531548
+  structure_score              : 0.000000
+  maturity_score               : 0.368792
+  keywords                     : musi, szuka, zobaczymy, attacks, bardzo, być, computer, coś, dobra, gra, może, planszy
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0031
+  char_len                     : 1413
+  word_count                   : 232
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.031746
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.519444
+  structure_score              : 0.000000
+  maturity_score               : 0.435760
+  keywords                     : musi, szuka, zobaczymy, attacks, bardzo, być, computer, coś, dobra, gra, może, planszy
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0032
+  char_len                     : 1534
+  word_count                   : 249
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.030395
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.512234
+  structure_score              : 0.000000
+  maturity_score               : 0.436184
+  keywords                     : musi, szuka, zobaczymy, attacks, bardzo, być, computer, coś, dobra, gra, może, planszy
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0033
+  char_len                     : 1570
+  word_count                   : 255
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029762
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.508854
+  structure_score              : 0.000000
+  maturity_score               : 0.436382
+  keywords                     : musi, szuka, zobaczymy, attacks, bardzo, być, computer, coś, dobra, gra, może, planszy
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0034
+  char_len                     : 1607
+  word_count                   : 261
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.029155
+  negative_hallucination_risk  : 0.852000
+  interpretive_debt            : 0.505612
+  structure_score              : 0.000000
+  maturity_score               : 0.399650
+  keywords                     : musi, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, coś, dobra, gra, może
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0035
+  char_len                     : 1737
+  word_count                   : 284
+  core_stability               : 0.846154
+  answer_stability             : 0.925000
+  groundedness                 : 0.029155
+  negative_hallucination_risk  : 0.868000
+  interpretive_debt            : 0.505612
+  structure_score              : 0.000000
+  maturity_score               : 0.380910
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0036
+  char_len                     : 1738
+  word_count                   : 284
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.028571
+  negative_hallucination_risk  : 0.868000
+  interpretive_debt            : 0.502500
+  structure_score              : 0.000000
+  maturity_score               : 0.434516
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0037
+  char_len                     : 1773
+  word_count                   : 291
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.028011
+  negative_hallucination_risk  : 0.868000
+  interpretive_debt            : 0.499510
+  structure_score              : 0.000000
+  maturity_score               : 0.434691
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0038
+  char_len                     : 1784
+  word_count                   : 295
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.028571
+  negative_hallucination_risk  : 0.868000
+  interpretive_debt            : 0.502500
+  structure_score              : 0.000000
+  maturity_score               : 0.434516
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0039
+  char_len                     : 1824
+  word_count                   : 301
+  core_stability               : 1.000000
+  answer_stability             : 0.900000
+  groundedness                 : 0.025974
+  negative_hallucination_risk  : 0.912000
+  interpretive_debt            : 0.503409
+  structure_score              : 0.000000
+  maturity_score               : 0.405693
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0040
+  char_len                     : 1853
+  word_count                   : 305
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.025974
+  negative_hallucination_risk  : 0.912000
+  interpretive_debt            : 0.503409
+  structure_score              : 0.000000
+  maturity_score               : 0.427693
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0041
+  char_len                     : 2029
+  word_count                   : 334
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.025063
+  negative_hallucination_risk  : 0.912000
+  interpretive_debt            : 0.498026
+  structure_score              : 0.000000
+  maturity_score               : 0.428031
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0042
+  char_len                     : 2146
+  word_count                   : 352
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.023419
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.501639
+  structure_score              : 0.000000
+  maturity_score               : 0.421148
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0043
+  char_len                     : 2175
+  word_count                   : 358
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.023041
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.499194
+  structure_score              : 0.000000
+  maturity_score               : 0.421310
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0044
+  char_len                     : 2227
+  word_count                   : 367
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.022676
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.496825
+  structure_score              : 0.000000
+  maturity_score               : 0.421466
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0045
+  char_len                     : 2291
+  word_count                   : 376
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.022321
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.494531
+  structure_score              : 0.000000
+  maturity_score               : 0.421618
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0046
+  char_len                     : 2311
+  word_count                   : 380
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.021978
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.492308
+  structure_score              : 0.000000
+  maturity_score               : 0.421764
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0047
+  char_len                     : 2327
+  word_count                   : 383
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.021978
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.492308
+  structure_score              : 0.000000
+  maturity_score               : 0.421764
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0048
+  char_len                     : 2495
+  word_count                   : 412
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.021322
+  negative_hallucination_risk  : 0.956000
+  interpretive_debt            : 0.488060
+  structure_score              : 0.000000
+  maturity_score               : 0.422045
+  keywords                     : coś, może, musi, nas, szuka, zobaczymy, attacks, bardzo, być, będzie, computer, dobra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0049
+  char_len                     : 2582
+  word_count                   : 426
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.019841
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.489757
+  structure_score              : 0.000000
+  maturity_score               : 0.371133
+  keywords                     : coś, może, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być, będzie, computer
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0050
+  char_len                     : 2627
+  word_count                   : 436
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.019569
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.487842
+  structure_score              : 0.000000
+  maturity_score               : 0.415521
+  keywords                     : coś, może, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być, będzie, computer
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0051
+  char_len                     : 2656
+  word_count                   : 442
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.019305
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.485980
+  structure_score              : 0.000000
+  maturity_score               : 0.371393
+  keywords                     : coś, gra, może, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0052
+  char_len                     : 2706
+  word_count                   : 449
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.019048
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.484167
+  structure_score              : 0.000000
+  maturity_score               : 0.408440
+  keywords                     : będzie, coś, gra, może, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0053
+  char_len                     : 2726
+  word_count                   : 453
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.019048
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.484167
+  structure_score              : 0.000000
+  maturity_score               : 0.415774
+  keywords                     : coś, może, będzie, gra, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0054
+  char_len                     : 2818
+  word_count                   : 469
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.018553
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.480682
+  structure_score              : 0.000000
+  maturity_score               : 0.416013
+  keywords                     : coś, może, będzie, gra, musi, nas, sieć, szuka, zobaczymy, attacks, bardzo, być
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0055
+  char_len                     : 2865
+  word_count                   : 476
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.018315
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.479006
+  structure_score              : 0.000000
+  maturity_score               : 0.379206
+  keywords                     : coś, może, będzie, gra, musi, nas, przycisk, sieć, szuka, zobaczymy, attacks, bardzo
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0056
+  char_len                     : 2922
+  word_count                   : 486
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.017857
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.475781
+  structure_score              : 0.000000
+  maturity_score               : 0.416350
+  keywords                     : coś, może, będzie, gra, musi, nas, przycisk, sieć, szuka, zobaczymy, attacks, bardzo
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0057
+  char_len                     : 2982
+  word_count                   : 497
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.017637
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.474228
+  structure_score              : 0.000000
+  maturity_score               : 0.372201
+  keywords                     : coś, może, będzie, gra, iran, musi, nas, przycisk, sieć, szuka, zobaczymy, attacks
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0058
+  char_len                     : 3073
+  word_count                   : 511
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.017422
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.472713
+  structure_score              : 0.000000
+  maturity_score               : 0.416561
+  keywords                     : coś, może, będzie, gra, iran, musi, nas, przycisk, sieć, szuka, zobaczymy, attacks
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0059
+  char_len                     : 3201
+  word_count                   : 531
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.033613
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.462500
+  structure_score              : 0.000000
+  maturity_score               : 0.421145
+  keywords                     : coś, może, będzie, gra, iran, musi, nas, przycisk, sieć, szuka, zobaczymy, attacks
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0060
+  char_len                     : 3259
+  word_count                   : 541
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.032841
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.459914
+  structure_score              : 0.000000
+  maturity_score               : 0.376977
+  keywords                     : coś, może, będzie, dzieje, gra, iran, musi, nas, przycisk, sieć, szuka, zobaczymy
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0061
+  char_len                     : 3330
+  word_count                   : 553
+  core_stability               : 0.846154
+  answer_stability             : 0.866667
+  groundedness                 : 0.031056
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.453940
+  structure_score              : 0.000000
+  maturity_score               : 0.355182
+  keywords                     : coś, iran, może, będzie, dzieje, gra, musi, nas, przycisk, robi, sieć, szuka
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0062
+  char_len                     : 3388
+  word_count                   : 563
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.030722
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.452823
+  structure_score              : 0.000000
+  maturity_score               : 0.384553
+  keywords                     : coś, iran, może, będzie, dzieje, gra, musi, nas, paliw, przycisk, robi, sieć
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0063
+  char_len                     : 3444
+  word_count                   : 573
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.030395
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.451729
+  structure_score              : 0.000000
+  maturity_score               : 0.421514
+  keywords                     : coś, iran, może, będzie, dzieje, gra, musi, nas, paliw, przycisk, robi, sieć
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0064
+  char_len                     : 3592
+  word_count                   : 593
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029455
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.448582
+  structure_score              : 0.000000
+  maturity_score               : 0.421622
+  keywords                     : coś, dzieje, iran, może, będzie, gra, musi, nas, paliw, przycisk, robi, sieć
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0065
+  char_len                     : 3661
+  word_count                   : 602
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029455
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.448582
+  structure_score              : 0.000000
+  maturity_score               : 0.421622
+  keywords                     : coś, dzieje, iran, może, będzie, gra, musi, nas, paliw, przycisk, robi, sieć
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0066
+  char_len                     : 3711
+  word_count                   : 610
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.028860
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454798
+  structure_score              : 0.000000
+  maturity_score               : 0.376613
+  keywords                     : coś, dzieje, iran, może, zobaczymy, będzie, gra, musi, nas, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0067
+  char_len                     : 3773
+  word_count                   : 619
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.028571
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.453750
+  structure_score              : 0.000000
+  maturity_score               : 0.413577
+  keywords                     : będzie, coś, dzieje, iran, może, zobaczymy, gra, musi, nas, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0068
+  char_len                     : 3814
+  word_count                   : 628
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.028289
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.452723
+  structure_score              : 0.000000
+  maturity_score               : 0.420951
+  keywords                     : będzie, coś, dzieje, iran, może, zobaczymy, gra, musi, nas, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0069
+  char_len                     : 3884
+  word_count                   : 640
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.028011
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.451716
+  structure_score              : 0.000000
+  maturity_score               : 0.384068
+  keywords                     : będzie, coś, dzieje, iran, może, zobaczymy, był, gra, musi, nas, paliw, przycisk
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0070
+  char_len                     : 3983
+  word_count                   : 656
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.027739
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.450728
+  structure_score              : 0.000000
+  maturity_score               : 0.384107
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, był, gra, jakoś, musi, nas, paliw
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0071
+  char_len                     : 4010
+  word_count                   : 660
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.027473
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.449760
+  structure_score              : 0.000000
+  maturity_score               : 0.421068
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, był, gra, jakoś, musi, nas, paliw
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0072
+  char_len                     : 4024
+  word_count                   : 663
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.027473
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.449760
+  structure_score              : 0.000000
+  maturity_score               : 0.421068
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, był, gra, jakoś, musi, nas, paliw
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0073
+  char_len                     : 4099
+  word_count                   : 676
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.027211
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.456548
+  structure_score              : 0.000000
+  maturity_score               : 0.383409
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, być, był, gra, jakoś, musi, nas
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0074
+  char_len                     : 4142
+  word_count                   : 682
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.026954
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455542
+  structure_score              : 0.000000
+  maturity_score               : 0.420376
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, być, był, gra, jakoś, musi, nas
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0075
+  char_len                     : 4182
+  word_count                   : 689
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.026702
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454556
+  structure_score              : 0.000000
+  maturity_score               : 0.420419
+  keywords                     : iran, będzie, coś, dzieje, może, zobaczymy, być, był, gra, jakoś, musi, nas
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0076
+  char_len                     : 4231
+  word_count                   : 697
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.026455
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.453588
+  structure_score              : 0.000000
+  maturity_score               : 0.420461
+  keywords                     : iran, może, będzie, coś, dzieje, zobaczymy, być, był, gra, jakoś, musi, nas
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0077
+  char_len                     : 4290
+  word_count                   : 707
+  core_stability               : 0.714286
+  answer_stability             : 1.000000
+  groundedness                 : 0.026212
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.452638
+  structure_score              : 0.000000
+  maturity_score               : 0.351932
+  keywords                     : iran, może, będzie, coś, dzieje, wiele, zobaczymy, bardzo, być, był, gra, jakoś
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0078
+  char_len                     : 4345
+  word_count                   : 716
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.026212
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.452638
+  structure_score              : 0.000000
+  maturity_score               : 0.420503
+  keywords                     : iran, może, będzie, coś, dzieje, wiele, zobaczymy, bardzo, być, był, gra, jakoś
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0079
+  char_len                     : 4456
+  word_count                   : 735
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.025510
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.449888
+  structure_score              : 0.000000
+  maturity_score               : 0.420623
+  keywords                     : iran, może, będzie, coś, dzieje, wiele, zobaczymy, bardzo, być, był, gra, jakoś
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0080
+  char_len                     : 4530
+  word_count                   : 748
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.025063
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.448136
+  structure_score              : 0.000000
+  maturity_score               : 0.383777
+  keywords                     : iran, może, będzie, coś, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0081
+  char_len                     : 4581
+  word_count                   : 755
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.025063
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.448136
+  structure_score              : 0.000000
+  maturity_score               : 0.420700
+  keywords                     : iran, może, będzie, coś, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0082
+  char_len                     : 4592
+  word_count                   : 756
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.025063
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.448136
+  structure_score              : 0.000000
+  maturity_score               : 0.420700
+  keywords                     : iran, może, będzie, coś, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0083
+  char_len                     : 4752
+  word_count                   : 783
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.024631
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.446444
+  structure_score              : 0.000000
+  maturity_score               : 0.420774
+  keywords                     : coś, iran, może, będzie, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0084
+  char_len                     : 4771
+  word_count                   : 785
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.024420
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.452564
+  structure_score              : 0.000000
+  maturity_score               : 0.420116
+  keywords                     : coś, iran, może, będzie, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0085
+  char_len                     : 4876
+  word_count                   : 807
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.024010
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.457668
+  structure_score              : 0.000000
+  maturity_score               : 0.419515
+  keywords                     : coś, iran, może, będzie, dzieje, gra, wiele, zobaczymy, bardzo, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0086
+  char_len                     : 4929
+  word_count                   : 816
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.023613
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455888
+  structure_score              : 0.000000
+  maturity_score               : 0.412273
+  keywords                     : może, coś, iran, bardzo, będzie, dzieje, gra, wiele, zobaczymy, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0087
+  char_len                     : 4946
+  word_count                   : 818
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.023613
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455888
+  structure_score              : 0.000000
+  maturity_score               : 0.419606
+  keywords                     : może, coś, iran, bardzo, będzie, dzieje, gra, wiele, zobaczymy, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0088
+  char_len                     : 4981
+  word_count                   : 824
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.035129
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.450922
+  structure_score              : 0.000000
+  maturity_score               : 0.422636
+  keywords                     : może, coś, iran, bardzo, będzie, dzieje, gra, wiele, zobaczymy, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0089
+  char_len                     : 4990
+  word_count                   : 826
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.035129
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.450922
+  structure_score              : 0.000000
+  maturity_score               : 0.422636
+  keywords                     : może, coś, iran, bardzo, będzie, dzieje, gra, wiele, zobaczymy, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0090
+  char_len                     : 5025
+  word_count                   : 831
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.034843
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.450102
+  structure_score              : 0.000000
+  maturity_score               : 0.422655
+  keywords                     : może, coś, iran, bardzo, będzie, dzieje, gra, wiele, zobaczymy, być, był, gracz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0091
+  char_len                     : 5062
+  word_count                   : 837
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.034562
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.449294
+  structure_score              : 0.000000
+  maturity_score               : 0.385751
+  keywords                     : iran, może, coś, bardzo, będzie, dzieje, gra, robi, wiele, zobaczymy, być, był
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0092
+  char_len                     : 5152
+  word_count                   : 851
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.034014
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.447718
+  structure_score              : 0.000000
+  maturity_score               : 0.385788
+  keywords                     : iran, może, coś, bardzo, będzie, dzieje, gra, robi, szuka, wiele, zobaczymy, być
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0093
+  char_len                     : 5297
+  word_count                   : 878
+  core_stability               : 0.714286
+  answer_stability             : 0.966667
+  groundedness                 : 0.033482
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.446191
+  structure_score              : 0.000000
+  maturity_score               : 0.346842
+  keywords                     : może, iran, coś, robi, bardzo, będzie, dzieje, gra, szuka, teraz, wie, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0094
+  char_len                     : 5398
+  word_count                   : 895
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.032967
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.450962
+  structure_score              : 0.000000
+  maturity_score               : 0.414823
+  keywords                     : może, iran, coś, robi, wie, bardzo, będzie, dzieje, gra, szuka, teraz, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0095
+  char_len                     : 5547
+  word_count                   : 920
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.032223
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454793
+  structure_score              : 0.000000
+  maturity_score               : 0.421610
+  keywords                     : może, iran, coś, robi, wie, bardzo, będzie, dzieje, gra, szuka, teraz, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0096
+  char_len                     : 5693
+  word_count                   : 946
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.031746
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.459259
+  structure_score              : 0.000000
+  maturity_score               : 0.384135
+  keywords                     : może, iran, coś, robi, wie, bardzo, był, będzie, dzieje, gra, szuka, teraz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0097
+  char_len                     : 5775
+  word_count                   : 961
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.031283
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.463595
+  structure_score              : 0.000000
+  maturity_score               : 0.383600
+  keywords                     : może, iran, coś, robi, wie, bardzo, był, będzie, dzieje, gra, myślisz, szuka
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0098
+  char_len                     : 5812
+  word_count                   : 967
+  core_stability               : 1.000000
+  answer_stability             : 0.942857
+  groundedness                 : 0.030832
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.461960
+  structure_score              : 0.000000
+  maturity_score               : 0.408016
+  keywords                     : może, iran, coś, bardzo, dzieje, robi, wie, był, będzie, gra, myślisz, szuka
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0099
+  char_len                     : 5916
+  word_count                   : 983
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.030395
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.460372
+  structure_score              : 0.000000
+  maturity_score               : 0.383727
+  keywords                     : może, iran, coś, dzieje, bardzo, robi, wie, był, będzie, gra, iranie, myślisz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0100
+  char_len                     : 5975
+  word_count                   : 991
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029970
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.458829
+  structure_score              : 0.000000
+  maturity_score               : 0.420711
+  keywords                     : może, iran, coś, dzieje, bardzo, robi, wie, był, będzie, gra, iranie, myślisz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0101
+  char_len                     : 6024
+  word_count                   : 997
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029762
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.458073
+  structure_score              : 0.000000
+  maturity_score               : 0.420740
+  keywords                     : może, iran, coś, dzieje, bardzo, robi, wie, był, będzie, gra, iranie, myślisz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0102
+  char_len                     : 6102
+  word_count                   : 1008
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.029557
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.457328
+  structure_score              : 0.000000
+  maturity_score               : 0.420770
+  keywords                     : może, iran, coś, dzieje, bardzo, robi, wie, był, będzie, gra, iranie, myślisz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0103
+  char_len                     : 6157
+  word_count                   : 1017
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.029354
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.456592
+  structure_score              : 0.000000
+  maturity_score               : 0.383876
+  keywords                     : może, iran, coś, dzieje, bardzo, robi, wie, wiele, był, będzie, gra, iranie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0104
+  char_len                     : 6317
+  word_count                   : 1045
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.028763
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.459899
+  structure_score              : 0.000000
+  maturity_score               : 0.420338
+  keywords                     : może, iran, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie, gra
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0105
+  char_len                     : 6554
+  word_count                   : 1082
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.028382
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.458444
+  structure_score              : 0.000000
+  maturity_score               : 0.383477
+  keywords                     : może, iran, coś, dzieje, bardzo, iranie, opec, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0106
+  char_len                     : 6651
+  word_count                   : 1098
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.027473
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.460176
+  structure_score              : 0.000000
+  maturity_score               : 0.412693
+  keywords                     : może, iran, opec, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0107
+  char_len                     : 6747
+  word_count                   : 1115
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.027298
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.459475
+  structure_score              : 0.000000
+  maturity_score               : 0.420058
+  keywords                     : może, iran, opec, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0108
+  char_len                     : 6814
+  word_count                   : 1127
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.027298
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.459475
+  structure_score              : 0.000000
+  maturity_score               : 0.420058
+  keywords                     : może, iran, opec, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0109
+  char_len                     : 6834
+  word_count                   : 1130
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.036397
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.456290
+  structure_score              : 0.000000
+  maturity_score               : 0.422378
+  keywords                     : może, opec, iran, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0110
+  char_len                     : 6887
+  word_count                   : 1136
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.036397
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.456290
+  structure_score              : 0.000000
+  maturity_score               : 0.422378
+  keywords                     : może, opec, iran, coś, dzieje, bardzo, iranie, robi, wie, wiele, był, będzie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0111
+  char_len                     : 6994
+  word_count                   : 1153
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.036166
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455617
+  structure_score              : 0.000000
+  maturity_score               : 0.385472
+  keywords                     : może, opec, iran, coś, dzieje, bardzo, iranie, robi, saudów, wie, wiele, był
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0112
+  char_len                     : 7307
+  word_count                   : 1194
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.034843
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.456707
+  structure_score              : 0.000000
+  maturity_score               : 0.385072
+  keywords                     : może, opec, iran, coś, dzieje, saudów, bardzo, iranie, robi, teraz, wie, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0113
+  char_len                     : 7544
+  word_count                   : 1229
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.034423
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455422
+  structure_score              : 0.000000
+  maturity_score               : 0.414698
+  keywords                     : może, opec, iran, saudów, coś, dzieje, bardzo, iranie, robi, teraz, wie, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0114
+  char_len                     : 7668
+  word_count                   : 1249
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.042517
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.451190
+  structure_score              : 0.005952
+  maturity_score               : 0.425306
+  keywords                     : może, opec, iran, saudów, coś, dzieje, bardzo, iranie, robi, teraz, wie, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0115
+  char_len                     : 7762
+  word_count                   : 1265
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.042017
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454779
+  structure_score              : 0.005882
+  maturity_score               : 0.424825
+  keywords                     : może, opec, iran, saudów, coś, dzieje, bardzo, iranie, robi, teraz, wie, wiele
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0116
+  char_len                     : 7930
+  word_count                   : 1293
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.041528
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.458285
+  structure_score              : 0.005814
+  maturity_score               : 0.387431
+  keywords                     : może, opec, iran, saudów, coś, dzieje, bardzo, iranie, iranu, robi, teraz, wie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0117
+  char_len                     : 7964
+  word_count                   : 1304
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.051020
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.462723
+  structure_score              : 0.005952
+  maturity_score               : 0.426024
+  keywords                     : może, opec, iran, saudów, coś, dzieje, bardzo, iranie, iranu, robi, teraz, wie
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0118
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0119
+  char_len                     : 8119
+  word_count                   : 1327
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.051326
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.463398
+  structure_score              : 0.005988
+  maturity_score               : 0.032030
+  keywords                     : może, opec, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, robi, teraz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0120
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0121
+  char_len                     : 8193
+  word_count                   : 1336
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.051326
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.463398
+  structure_score              : 0.005988
+  maturity_score               : 0.032030
+  keywords                     : może, opec, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, robi, teraz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0122
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0123
+  char_len                     : 8199
+  word_count                   : 1337
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.050719
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.466864
+  structure_score              : 0.005917
+  maturity_score               : 0.031537
+  keywords                     : może, opec, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, robi, teraz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0124
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0125
+  char_len                     : 8294
+  word_count                   : 1351
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.050420
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.466176
+  structure_score              : 0.005882
+  maturity_score               : 0.031534
+  keywords                     : może, opec, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, robi, teraz
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0126
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0127
+  char_len                     : 8330
+  word_count                   : 1357
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.050125
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.465497
+  structure_score              : 0.005848
+  maturity_score               : 0.031530
+  keywords                     : może, opec, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0128
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0129
+  char_len                     : 8398
+  word_count                   : 1368
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.049546
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.464162
+  structure_score              : 0.005780
+  maturity_score               : 0.031524
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0130
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0131
+  char_len                     : 8413
+  word_count                   : 1370
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.049261
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.463506
+  structure_score              : 0.005747
+  maturity_score               : 0.031521
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0132
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0133
+  char_len                     : 8402
+  word_count                   : 1369
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.049834
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.455378
+  structure_score              : 0.005814
+  maturity_score               : 0.032472
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0134
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0135
+  char_len                     : 8460
+  word_count                   : 1376
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.049546
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454769
+  structure_score              : 0.005780
+  maturity_score               : 0.032464
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, iranie, iranu, paliw, przycisk, robi
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0136
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0137
+  char_len                     : 8513
+  word_count                   : 1386
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.049261
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.454167
+  structure_score              : 0.005747
+  maturity_score               : 0.032455
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, gra, iranie, iranu, paliw, przycisk
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0138
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0139
+  char_len                     : 8555
+  word_count                   : 1392
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.048980
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.453571
+  structure_score              : 0.005714
+  maturity_score               : 0.032447
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, gra, iranie, iranu, paliw, przycisk
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0140
+  char_len                     : 60
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.068368
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on... .
+
+G0141
+  char_len                     : 8562
+  word_count                   : 1393
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.048980
+  negative_hallucination_risk  : 1.000000
+  interpretive_debt            : 0.453571
+  structure_score              : 0.005714
+  maturity_score               : 0.032447
+  keywords                     : opec, może, iran, coś, saudów, dzieje, bardzo, gra, iranie, iranu, paliw, przycisk
+  snapshot                     : "Shamoon attacks, he said that latest attacks involved a second piece of wiping malware that deletes and overwrite files on the infected com...
+
+G0142
+  char_len                     : 58
+  word_count                   : 4
+  core_stability               : 0.000000
+  answer_stability             : 0.300000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.588000
+  interpretive_debt            : 0.582143
+  structure_score              : 0.000000
+  maturity_score               : 0.065466
+  keywords                     : com, gulfnews, https, iran-hackers-behind-attacks-on
+  snapshot                     : https://gulfnews.com/.../iran-hackers-behind-attacks-on...

@@ -1,0 +1,309 @@
+=========================================
+LOCI COGNITIVE READINESS TEST
+=========================================
+
+sample_id                        : Sample_0002
+timestamp                        : 2026-03-22 23:42:47
+input_file                       : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+result_dir                       : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002
+generations                      : 22
+feature_count                    : 27
+loci_onset_generation            : G0002
+first_cognitive_stable_generation: G0012
+first_llm_ready_generation       : G0015
+transition_window                : G0012 -> G0015
+mean_core_stability              : 0.784534
+mean_answer_stability            : 0.886851
+mean_groundedness                : 0.374411
+mean_negative_hallucination_risk : 0.548545
+mean_interpretive_debt           : 0.354853
+mean_structure_score             : 0.303523
+mean_maturity_score              : 0.548953
+
+=== GENERATION ROWS ===
+
+G0001
+  char_len                     : 138
+  word_count                   : 15
+  core_stability               : 0.000000
+  answer_stability             : 0.000000
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.720000
+  interpretive_debt            : 0.575694
+  structure_score              : 0.000000
+  maturity_score               : 0.000000
+  keywords                     : 20badanie, com, github, https, książeczki, można, piąteczek, rygorystyczne, wszystko, wychodząc, zamknięte, zasadzie
+  snapshot                     : Wychodząc do książeczki... ... W zasadzie... zamknięte wszystko. Można zrobić piąteczek. https://github.com/.../Rygorystyczne%20badanie...
+
+G0002
+  char_len                     : 257
+  word_count                   : 32
+  core_stability               : 0.333333
+  answer_stability             : 0.942857
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.736000
+  interpretive_debt            : 0.563816
+  structure_score              : 0.000000
+  maturity_score               : 0.268007
+  keywords                     : będzie, 20badanie, botów, com, github, https, książeczki, moim, można, niżej, normalności, okres
+  snapshot                     : Wychodząc do książeczki... ... W zasadzie... zamknięte wszystko. Można zrobić piąteczek. Teraz sporo botów będzie procować nad wygenerowanym...
+
+G0003
+  char_len                     : 320
+  word_count                   : 43
+  core_stability               : 0.846154
+  answer_stability             : 0.966667
+  groundedness                 : 0.000000
+  negative_hallucination_risk  : 0.736000
+  interpretive_debt            : 0.553125
+  structure_score              : 0.000000
+  maturity_score               : 0.397391
+  keywords                     : będzie, zasadzie, 20badanie, botów, com, github, https, książeczki, moim, można, niżej, normalności
+  snapshot                     : Wychodząc do książeczki... ... W zasadzie... zamknięte wszystko. Można zrobić piąteczek. Teraz sporo botów będzie procować nad wygenerowanym...
+
+G0004
+  char_len                     : 491
+  word_count                   : 74
+  core_stability               : 0.411765
+  answer_stability             : 0.442857
+  groundedness                 : 0.105820
+  negative_hallucination_risk  : 0.824000
+  interpretive_debt            : 0.553704
+  structure_score              : 0.000000
+  maturity_score               : 0.188802
+  keywords                     : zasadzie, będzie, teraz, 20badanie, badawczy, botów, będę, com, elementem, github, hej, https
+  snapshot                     : Wychodząc do książeczki... ... W zasadzie... zamknięte wszystko. Można zrobić piąteczek. Teraz sporo botów będzie procować nad wygenerowanym...
+
+G0005
+  char_len                     : 623
+  word_count                   : 96
+  core_stability               : 0.500000
+  answer_stability             : 0.966667
+  groundedness                 : 0.102041
+  negative_hallucination_risk  : 0.824000
+  interpretive_debt            : 0.546429
+  structure_score              : 0.000000
+  maturity_score               : 0.325113
+  keywords                     : będzie, zasadzie, teraz, wartość, 20badanie, badawczy, botów, bywa, będę, com, dodana, dwanaście
+  snapshot                     : Wychodząc do książeczki... ... W zasadzie... zamknięte wszystko. Można zrobić piąteczek. Teraz sporo botów będzie procować nad wygenerowanym...
+
+G0006
+  char_len                     : 2472
+  word_count                   : 385
+  core_stability               : 0.142857
+  answer_stability             : 0.400000
+  groundedness                 : 0.313589
+  negative_hallucination_risk  : 0.584000
+  interpretive_debt            : 0.339329
+  structure_score              : 0.219512
+  maturity_score               : 0.255095
+  keywords                     : tego, tylko, zaczyna, model, może, teraz, wartość, więc, właśnie, być, będzie, człowiek
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0007
+  char_len                     : 2667
+  word_count                   : 414
+  core_stability               : 1.000000
+  answer_stability             : 0.900000
+  groundedness                 : 0.332226
+  negative_hallucination_risk  : 0.584000
+  interpretive_debt            : 0.347093
+  structure_score              : 0.232558
+  maturity_score               : 0.576481
+  keywords                     : tego, tylko, zaczyna, model, może, teraz, wartość, więc, właśnie, być, będzie, człowiek
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0008
+  char_len                     : 2772
+  word_count                   : 427
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.389610
+  negative_hallucination_risk  : 0.600000
+  interpretive_debt            : 0.324432
+  structure_score              : 0.272727
+  maturity_score               : 0.618362
+  keywords                     : tego, tylko, zaczyna, model, może, teraz, wartość, więc, właśnie, być, będzie, człowiek
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0009
+  char_len                     : 4462
+  word_count                   : 656
+  core_stability               : 0.333333
+  answer_stability             : 0.925000
+  groundedness                 : 0.517241
+  negative_hallucination_risk  : 0.476000
+  interpretive_debt            : 0.253017
+  structure_score              : 0.431034
+  maturity_score               : 0.522938
+  keywords                     : donkey, tego, tylko, którym, człowiek, mnie, model, sensu, więc, wyłącznie, zaczyna, modelu
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0010
+  char_len                     : 4465
+  word_count                   : 657
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.508475
+  negative_hallucination_risk  : 0.476000
+  interpretive_debt            : 0.268432
+  structure_score              : 0.423729
+  maturity_score               : 0.694652
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, mnie, modelu
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0011
+  char_len                     : 4626
+  word_count                   : 678
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.521542
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.283532
+  structure_score              : 0.444444
+  maturity_score               : 0.703666
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, mnie, modelu
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0012
+  char_len                     : 4717
+  word_count                   : 693
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.505495
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.285577
+  structure_score              : 0.430769
+  maturity_score               : 0.697470
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, mnie, modelu
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0013
+  char_len                     : 4803
+  word_count                   : 709
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.525210
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.285662
+  structure_score              : 0.411765
+  maturity_score               : 0.698378
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, mnie, modelu
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0014
+  char_len                     : 4949
+  word_count                   : 732
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.517598
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.286594
+  structure_score              : 0.420290
+  maturity_score               : 0.661221
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, będzie, mnie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0015
+  char_len                     : 5055
+  word_count                   : 747
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.510204
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.287500
+  structure_score              : 0.428571
+  maturity_score               : 0.697918
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, sensu, więc, wyłącznie, zaczyna, będzie, mnie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0016
+  char_len                     : 5127
+  word_count                   : 757
+  core_stability               : 0.846154
+  answer_stability             : 1.000000
+  groundedness                 : 0.503018
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.288380
+  structure_score              : 0.436620
+  maturity_score               : 0.660774
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0017
+  char_len                     : 5147
+  word_count                   : 759
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.503018
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.288380
+  structure_score              : 0.436620
+  maturity_score               : 0.697698
+  keywords                     : tego, tylko, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0018
+  char_len                     : 5277
+  word_count                   : 783
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.508806
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.283219
+  structure_score              : 0.424658
+  maturity_score               : 0.697334
+  keywords                     : tylko, tego, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0019
+  char_len                     : 5398
+  word_count                   : 801
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.495238
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.285000
+  structure_score              : 0.440000
+  maturity_score               : 0.696932
+  keywords                     : tylko, tego, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0020
+  char_len                     : 5471
+  word_count                   : 812
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.482375
+  negative_hallucination_risk  : 0.448000
+  interpretive_debt            : 0.286688
+  structure_score              : 0.428571
+  maturity_score               : 0.691876
+  keywords                     : tylko, tego, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0021
+  char_len                     : 5583
+  word_count                   : 830
+  core_stability               : 1.000000
+  answer_stability             : 1.000000
+  groundedness                 : 0.458554
+  negative_hallucination_risk  : 0.492000
+  interpretive_debt            : 0.299846
+  structure_score              : 0.407407
+  maturity_score               : 0.675351
+  keywords                     : tylko, tego, donkey, którym, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna, będzie
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...
+
+G0022
+  char_len                     : 5692
+  word_count                   : 848
+  core_stability               : 1.000000
+  answer_stability             : 0.966667
+  groundedness                 : 0.436975
+  negative_hallucination_risk  : 0.536000
+  interpretive_debt            : 0.321324
+  structure_score              : 0.388235
+  maturity_score               : 0.651511
+  keywords                     : tylko, tego, donkey, którym, będzie, człowiek, model, pracy, sensu, więc, wyłącznie, zaczyna
+  snapshot                     : Wychodząc już trochę do książeczki, ... mam poczucie, że pewien etap się domknął. W zasadzie wszystko jest na ten moment zamknięte i można z...

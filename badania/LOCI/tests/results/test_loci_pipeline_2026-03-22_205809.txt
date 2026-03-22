@@ -1,0 +1,50 @@
+=========================================
+LOCI PIPELINE - FULL TEST REPORT
+=========================================
+
+timestamp     : 2026-03-22 20:58:09
+loci_root     : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI
+sample_root   : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample
+results_root  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\tests\results
+total_samples : 2
+passed        : 2
+failed        : 0
+ok            : 1
+
+-----------------------------------------
+SAMPLE: Sample_0001
+-----------------------------------------
+ok            : 1
+sample_dir    : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001
+norm_dir      : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm
+series_count  : 142
+feature_rows  : 142
+feature_cols  : 27
+
+STEPS:
+  [01] detect_input                        PASS   Using JSON: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm\sample_norm.json
+  [02] load_sample_norm                    PASS   Loaded input successfully (C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm\sample_norm.json)
+  [03] sample_norm_to_series               PASS   Series OK: sample_id=Sample_0001, count=142
+  [04] build_loci_feature_matrix           PASS   Feature matrix OK: 142 x 27
+  [05] export_sample_norm_mat              PASS   MAT exported: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm\sample_norm.mat
+  [06] reload_mat_pipeline                 PASS   MAT re-load OK: sample_id=Sample_0001, count=142
+  [07] loci_27D_9R_visualizer_canonical    PASS   onset=G0002, traj=378.7554
+
+-----------------------------------------
+SAMPLE: Sample_0002
+-----------------------------------------
+ok            : 1
+sample_dir    : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002
+norm_dir      : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm
+series_count  : 22
+feature_rows  : 22
+feature_cols  : 27
+
+STEPS:
+  [01] detect_input                        PASS   Using JSON: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.json
+  [02] load_sample_norm                    PASS   Loaded input successfully (C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.json)
+  [03] sample_norm_to_series               PASS   Series OK: sample_id=Sample_0002, count=22
+  [04] build_loci_feature_matrix           PASS   Feature matrix OK: 22 x 27
+  [05] export_sample_norm_mat              PASS   MAT exported: C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+  [06] reload_mat_pipeline                 PASS   MAT re-load OK: sample_id=Sample_0002, count=22
+  [07] loci_27D_9R_visualizer_canonical    PASS   onset=G0002, traj=42.5872

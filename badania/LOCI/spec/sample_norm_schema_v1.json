@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LOCI Normalized Sample Schema v1",
+  "type": "object",
+  "required": ["sample_id", "entry_id", "author_id", "content_norm", "entry_type"],
+  "properties": {
+    "sample_id": {"type": "string"},
+    "entry_id": {"type": "string"},
+    "author_id": {"type": ["string", "null"]},
+    "author_role": {"type": ["string", "null"]},
+    "timestamp_text": {"type": ["string", "null"]},
+    "content_norm": {"type": "string"},
+    "content_display": {"type": ["string", "null"]},
+    "entry_type": {"type": "string", "enum": ["link_only", "delta_update", "full_restatement", "mixed", "unknown"]},
+    "parent_entry_id": {"type": ["string", "null"]},
+    "similarity_score": {"type": ["number", "null"]},
+    "links": {"type": "array", "items": {"type": "string"}},
+    "entities_masked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {"type": "string"},
+          "raw": {"type": "string"},
+          "norm": {"type": "string"}
+        }
+      }
+    }
+  }
+}

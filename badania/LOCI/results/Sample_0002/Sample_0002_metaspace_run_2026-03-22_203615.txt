@@ -1,0 +1,51 @@
+=========================================
+LOCI 27D -> 9R METASPACE VISUALIZER
+=========================================
+
+sample_id         : Sample_0002
+timestamp         : 2026-03-22 20:36:16
+input_file        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.json
+result_dir        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002
+generations       : 22
+feature_count     : 27
+onset_generation  : G0002
+mean_step         : 2.027960
+max_step          : 10.997116
+trajectory_length : 42.587168
+explained_var_3d  : [52.094666, 18.955530, 16.514790]
+
+Feature names:
+  01. char_len
+  02. word_count
+  03. line_count
+  04. avg_word_len
+  05. unique_word_ratio
+  06. uppercase_ratio
+  07. digit_ratio
+  08. punct_ratio
+  09. ellipsis_count
+  10. question_count
+  11. exclamation_count
+  12. url_count
+  13. masked_entity_count
+  14. has_parent
+  15. is_root
+  16. entry_type_code
+  17. author_role_code
+  18. similarity_score_safe
+  19. delta_char_len
+  20. delta_word_count
+  21. delta_unique_word_ratio
+  22. token_jaccard_prev
+  23. prefix_overlap_prev
+  24. suffix_overlap_prev
+  25. newline_density
+  26. comma_density
+  27. semantic_expansion_score
+
+Saved files:
+PNG  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.png
+FIG  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.fig
+TXT  : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.txt
+JSON : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.json
+MD   : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-22_203615.md
