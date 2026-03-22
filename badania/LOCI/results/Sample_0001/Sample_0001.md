@@ -10,7 +10,7 @@
 - znaki: 335 → 2580 (+670%)
 - tokeny: 53 → 445 (+739%)
 - plateau ratio: **~0.64**
-- najdłuższe plateau: **76 generacji**
+- najdłuższe plateau lokalne: **14 generacji**
 
 Charakter procesu:
 
@@ -25,7 +25,7 @@ ONSET LOCI         = G0092
 MAX SLOPE          = G0027
 MAX CURVATURE      = G0027
 
-Werdykt            = umiarkowany dowód lokalnego przejścia
+Werdykt            = P2 — umiarkowany dowód lokalnego przejścia
 ````
 
 ---
@@ -35,7 +35,10 @@ Werdykt            = umiarkowany dowód lokalnego przejścia
 ### Faza I — inicjalizacja (G ~ 1–30)
 
 * wysoka zmienność
-* maksimum dynamiki (G27)
+* silne fluktuacje
+* maksimum dynamiki w **G27**
+
+👉 prekursor zmiany
 
 ---
 
@@ -44,14 +47,17 @@ Werdykt            = umiarkowany dowód lokalnego przejścia
 * dominacja edycji nad generacją
 * długie plateau
 * redukcja amplitudy zmian
+* lokalna reorganizacja bez zmiany trybu
 
 ---
 
 ### Faza III — przejście (G ~ 92)
 
 * silny kontrast segmentacyjny
-* wysoka stabilność bootstrap
-* istotność statystyczna
+* bootstrap = 1.0
+* p-value ≈ 0
+
+👉 rzeczywisty punkt przejścia (LOCI)
 
 ---
 
@@ -61,9 +67,9 @@ Werdykt            = umiarkowany dowód lokalnego przejścia
 
 **Interpretacja:**
 
-* wczesny impuls (G27)
-* długi okres stabilizacji
-* wyraźne przejście w G92
+* G27 → impuls (prekursor)
+* G30–90 → stabilizacja
+* G92 → przejście strukturalne
 
 ---
 
@@ -73,9 +79,9 @@ Werdykt            = umiarkowany dowód lokalnego przejścia
 
 **Własności:**
 
-* trajektoria lokalnie zagęszczona
-* ograniczona eksploracja przestrzeni
-* dominacja ruchu wewnątrz jednego regionu
+* trajektoria silnie ograniczona przestrzennie
+* brak eksploracji globalnej
+* dominacja lokalnego ruchu
 
 ---
 
@@ -86,8 +92,8 @@ Werdykt            = umiarkowany dowód lokalnego przejścia
 **Interpretacja:**
 
 * wysoka gęstość lokalna
-* brak dyfuzji globalnej
-* system utrzymuje się w ograniczonym obszarze
+* brak dyfuzji w przestrzeni
+* stabilna orbita w metaprzestrzeni
 
 ---
 
@@ -111,7 +117,7 @@ POST exploration  ≈ 0.21
 
 * dominujący tryb: **kompresyjny**
 * eksploracja: wtórna i lokalna
-* brak pełnej zmiany trybu poznawczego
+* brak zmiany globalnego reżimu
 
 ---
 
@@ -122,14 +128,16 @@ POST exploration  ≈ 0.21
 ```text
 Mode score   ≈ 0.65
 Confidence   ≈ 0.89
+
+Werdykt      : deklaratywno-kompresyjny
 ```
 
 ---
 
 ### Interpretacja
 
-* lokalne przejście generatywne po LOCI
-* brak globalnej zmiany systemu
+* lokalne wzrosty generatywności po LOCI
+* brak trwałego przejścia trybu
 
 ---
 
@@ -144,20 +152,18 @@ TSCI ≈ 34.45 / 100
 ### Charakterystyka
 
 * wysoka powtarzalność
-* niska dynamika zmian
-* wysoka stabilność struktury
+* ograniczona zmienność
+* wysoka kontrola strukturalna
 
 ---
 
 ### Wniosek
 
-> system wykazuje niską złożoność dynamiczną przy wysokiej kontroli strukturalnej
+> niska złożoność dynamiczna przy wysokiej stabilności
 
 ---
 
-## 10. Interpretacja procesowa
-
-Kluczowa własność:
+## 10. Kluczowa własność systemu
 
 ```text
 MAX SLOPE ≠ ONSET LOCI
@@ -165,32 +171,32 @@ MAX SLOPE ≠ ONSET LOCI
 
 ---
 
-Oznacza to:
+### Interpretacja
 
-> przejście nie jest impulsem, lecz procesem:
+> zmiana ma charakter procesowy, nie impulsowy
 
 ```text
-inicjalizacja → propagacja → stabilizacja → przejście → reorganizacja
+inicjalizacja → propagacja → stabilizacja → LOCI → reorganizacja
 ```
 
 ---
 
-## 11. Znaczenie dla systemów Human–AI
+## 11. Znaczenie dla Human–AI
 
-### Właściwości pozytywne
+### Właściwości
 
 * wysoka spójność semantyczna
 * stabilność generacji
-* redukcja błędów
 * niska podatność na halucynacje
+* kontrola nad trajektorią tekstu
 
 ---
 
 ### Ograniczenia
 
 * niska eksploracja
-* ograniczona kreatywność
 * brak emergentnych struktur
+* ograniczona kreatywność globalna
 
 ---
 
@@ -198,21 +204,32 @@ inicjalizacja → propagacja → stabilizacja → przejście → reorganizacja
 
 Sample_0001 reprezentuje system:
 
-* o wysokiej stabilności
-* o dominującej kompresji
-* o ograniczonej eksploracji
+* stabilny
+* kompresyjny
+* lokalnie adaptacyjny
 
 który:
 
-> przechodzi przez lokalne przejście (LOCI),
+> wykazuje lokalne przejście (LOCI),
 > ale nie zmienia globalnego trybu działania
 
 ---
 
-## 13. Kierunki dalszych badań
+## 13. Status naukowy
 
-* porównanie z próbkami generatywnymi
-* analiza wielu trajektorii w metaprzestrzeni
-* mapowanie typów procesów Human–AI
-* rozszerzenie analizy Sobol / Hypercube
+* detekcja LOCI: ✔
+* istotność statystyczna: ✔
+* stabilność bootstrap: ✔
+* spójność globalna: ✖
+
+---
+
+## 14. Kierunki dalszych badań
+
+* porównanie z próbkami eksploracyjnymi
+* analiza wielu trajektorii
+* modelowanie przejść trybów
+* rozszerzenie Sobol / Hypercube 27D
+
+```
 
