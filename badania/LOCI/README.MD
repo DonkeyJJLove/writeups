@@ -196,7 +196,6 @@ LOCI ma działać jako jeden, spójny system:
 
 ## 2. Sekcja do `LOCI/spec/canonical_pipeline.md`
 
-```md
 # LOCI — specyfikacja pipeline kanonicznego
 
 ## 1. Cel
