@@ -1,317 +1,215 @@
-# LOCI — Formalna detekcja lokalnych przejść w sekwencjach tekstowych (Human–AI / Social Media)
+# LOCI — analiza przejść w sekwencjach tekstowych Human–AI
 
-> **REŻIM NAUKOWY: ABSOLUTNY**  
-> Epistemika: P0–P3  
-> Cel: detekcja i weryfikacja **realnych punktów przejścia (LOCI)** w sekwencjach generacyjnych tekstu
+> Analiza tekstu jako układu dynamicznego (LOCI, dual-mode, metaprzestrzeń)
 
 ---
 
-## 1. Kontekst badania
+## O projekcie
 
-Przedmiotem analizy jest sekwencja tekstowa pochodząca z:
+Repozytorium zawiera narzędzia do badania iteracyjnie generowanego tekstu w układzie:
 
-- źródło: Facebook (Human–AI stream)
-- charakter: **ciąg generacji / iteracji semantycznych**
-- natura: hybrydowa (język naturalny + heurystyki + strumień świadomości)
+> **Human–AI → sekwencja → dynamika → przejście (LOCI)**
 
-Dane zostały przekształcone do postaci:
-
-- `Sample_0001.m` — surowe dane
-- `Sample_0001n.m` — dane znormalizowane (parsowane, segmentowane)
+Tekst traktowany jest jako trajektoria w przestrzeni cech, a nie tylko jako zapis językowy.
 
 ---
 
-## 2. Problem badawczy
+## Co robimy
 
-Czy w sekwencji tekstowej istnieje:
+Analizujemy:
 
-> **realny (nielosowy) punkt przejścia semantycznego / strukturalnego (LOCI)**
-
-czyli moment, w którym:
-
-- zmienia się dynamika narracji
-- pojawia się nowy reżim semantyczny
-- zachodzi reorganizacja struktury tekstu
-
----
-
-## 3. Metoda LOCI
-
-Pipeline:
-
-```
-
-TEXT → PARSING → FEATURE ENGINEERING → SCORE → SEGMENTACJA → TESTY → WERDYKT
-
-```
-
-### 3.1 Cechy (features)
-
-- długość fragmentu (`d_len_words`)
-- entropia (`d_entropy`)
-- nowość (`novelty_prev`)
-- drift semantyczny (`drift_prev`)
-- powtarzalność (`repetition`)
-- nowe słownictwo (`new_vocab_ratio`)
+- lokalne przejścia strukturalne (**LOCI**)
+- dynamikę generacji (slope, curvature)
+- tryby pracy:
+  - kompresja (redakcja)
+  - eksploracja (generacja)
+- trajektorię w metaprzestrzeni (**27D / 9R**)
+- złożoność strumienia myśli (**TSCI**)
 
 ---
 
-### 3.2 Sygnał
+## Pipeline
 
-- `score_raw` — surowy sygnał dynamiki
-- `score_smooth` — wygładzony sygnał
-- `dscore` — pochodna (zmiana)
-- `d2score` — krzywizna (przyspieszenie)
-
----
-
-### 3.3 Detekcja LOCI
-
-Wykorzystywane wskaźniki:
-
-- **ONSET LOCI** → maksimum kontrastu segmentacyjnego
-- **MAX SLOPE** → największa zmiana (gradient)
-- **MAX CURVATURE** → punkt największego przyspieszenia zmiany
+```text
+TEXT
+→ PARSING
+→ FEATURE ENGINEERING
+→ LOCI
+→ DUAL-MODE
+→ METASPACE (27D / 9R)
+→ TSCI
+→ WERDYKT
+````
 
 ---
 
-### 3.4 Walidacja
+## Modele
 
-#### Stabilność:
-- bootstrap
-- jackknife
-- split-half
+### LOCI
 
-#### Testy zerowe:
-- permutacje
-- blokowe losowanie
+Detekcja lokalnego przejścia:
 
-#### Ablacja:
-- usuwanie cech i wpływ na wynik
+* onset
+* max slope
+* max curvature
 
 ---
 
-## 4. Wynik eksperymentu
+### Dual-mode
 
-Źródło: :contentReference[oaicite:0]{index=0}
+Balans:
 
-```
-
-Liczba generacji: 123
-
-ONSET LOCI         = G0092
-MAX SLOPE          = G0027
-MAX CURVATURE      = G0027
-
-Werdykt            = P2 — umiarkowany dowód lokalnego przejścia LOCI
-
-```
+* kompresja ↔ eksploracja
 
 ---
 
-## 5. Interpretacja (REŻIM NAUKOWY)
+### Metaprzestrzeń (Sobol / Hypercube)
 
-### 5.1 Struktura dynamiczna
+Ocena:
 
-System wykazuje **dwufazową dynamikę**:
-
-#### Faza I — prekursor (G ~ 1–30)
-- silne fluktuacje
-- wysoka zmienność pochodnych
-- pojawienie się pierwszego impulsu (G27)
-
-👉 **MAX SLOPE / CURVATURE = G27**
-
-Interpretacja:
-> wczesne zaburzenie — inicjacja zmiany systemowej
+* pokrycia
+* rozproszenia
+* gęstości trajektorii
 
 ---
 
-#### Faza II — stabilizacja i reorganizacja (G ~ 30–90)
-- spadek amplitudy zmian
-- stabilizacja lokalna
-- brak dominującego sygnału
+### TSCI
+
+Złożoność strumienia:
+
+* dynamika
+* plateau
+* zmienność
+* przejścia
 
 ---
 
-#### Faza III — przejście segmentacyjne (G ~ 86–92)
+## ▶ Wyniki eksperymentów
 
-👉 **ONSET LOCI = G92**
+Szczegółowe wyniki dla konkretnego sampla:
 
-Parametry:
-- peak contrast = 32.39
-- bootstrap agree = 1.0
-- perm p-value = 0.000
+👉 **[Sample_0001 — raport analizy](results/Sample_0001/Sample_0001.md)**
 
-Interpretacja:
-> **tu następuje realne rozdzielenie dwóch reżimów tekstu**
+Zawiera:
 
----
-
-### 5.2 Kluczowa obserwacja
-
-Brak synchronizacji:
-
-```
-
-MAX SLOPE ≠ ONSET LOCI
-
-```
-
-oznacza:
-
-> zmiana nie jest jednorazowym „skokiem”, tylko procesem:
->
-> **prekursor → propagacja → stabilizacja → przejście**
+* wynik LOCI
+* analizę faz (prekursor → przejście)
+* dual-mode (kompresja vs eksploracja)
+* metaprzestrzeń 27D / 9R
+* TSCI
+* interpretację poznawczą (Human–AI)
 
 ---
 
-## 6. Werdykt epistemiczny
+## Interpretacja systemowa
 
-### P2 — umiarkowany dowód lokalnego przejścia
+Kluczowa obserwacja:
 
-Spełnione:
-- ✔ silny kontrast segmentacyjny
-- ✔ stabilność bootstrap
-- ✔ istotność statystyczna (p ≈ 0)
+> tekst nie zmienia się liniowo — przechodzi przez lokalne bifurkacje
 
-Niespełnione:
-- ✖ pełna spójność fazowa
-- ✖ zgodność wszystkich detektorów
-- ✖ wysoka stabilność split-half
+Schemat:
 
----
-
-## 7. Znaczenie dla analizy Human–AI
-
-Ten przypadek pokazuje:
-
-> tekst generowany w środowisku social media (Facebook)  
-> **nie ewoluuje liniowo, tylko przechodzi przez lokalne bifurkacje**
-
-czyli:
-
-- nie ma jednej „narracji”
-- są **mikro-reżimy semantyczne**
-- przejścia są **opóźnione względem impulsów**
-
----
-
-## 8. Model interpretacyjny
-
-```
-
-IMPULS (G27)
+```text
+IMPULS (max slope)
 ↓
 PROPAGACJA
 ↓
 STABILIZACJA
 ↓
-LOCI (G92)
+LOCI (onset)
 ↓
 NOWY REŻIM
-
 ```
 
 ---
 
-## 9. Wnioski systemowe
+## Znaczenie dla Human–AI
 
-1. **LOCI ≠ maksimum dynamiki**
-   - przejście nie musi być tam, gdzie największy ruch
+Podejście umożliwia:
 
-2. **prekursory są krytyczne**
-   - G27 jest ważniejszy niż się wydaje
-
-3. **tekst jako system dynamiczny**
-   - przypomina układy nieliniowe / chaos deterministyczny
+* wykrywanie momentu reorganizacji myśli
+* rozróżnienie eksploracji vs stabilizacji
+* analizę jakości procesu generowania
+* ograniczanie dryfu i „halucynacyjności”
 
 ---
 
-## 10. Metodologia dla kolejnych próbek
+## Struktura repo
 
-Dla każdego sample:
+```text
+sample/
+  raw/
+  norm/
 
-### Krok 1
-Parsowanie:
+results/
+  Sample_0001.md
+
+*.m (MATLAB)
 ```
 
-parse_sample_XXXX
+---
+
+## Jak uruchamiać
+
+### LOCI
+
+```matlab
+R = loci_sample_text_all_in_one('sample/norm/Sample_0001n.m');
+```
+
+### Dual-mode
+
+```matlab
+R = loci_dual_mode_model_v2('sample/norm/Sample_0001n.m');
+```
+
+### TSCI
+
+```matlab
+R = loci_thought_stream_complexity('sample/norm/Sample_0001n.m');
+```
+
+### Metaprzestrzeń
+
+```matlab
+R = loci_27D_9R_visualizer('sample/norm/Sample_0001n.m');
+```
+
+---
+
+## Skala epistemiczna
+
+| Poziom | Znaczenie         |
+| ------ | ----------------- |
+| P0     | brak sygnału      |
+| P1     | słaby             |
+| P2     | lokalne przejście |
+| P3     | brak dowodu       |
+| P4     | silne             |
+| P5     | globalne          |
+
+---
+
+## Meta-wniosek
+
+> Tekst generowany iteracyjnie (Human–AI) zachowuje się jak układ dynamiczny,
+> w którym przejścia są opóźnione względem impulsów.
+
+---
+
+## Status
+
+* LOCI: ✔
+* Dual-mode: ✔
+* TSCI: ✔
+* Metaprzestrzeń: rozwój
+
+---
+
+**TRYB:** badawczy
+**REŻIM:** absolutny
 
 ```
 
-### Krok 2
-Analiza:
-```
 
-loci_sample_text_all_in_one
-
-```
-
-### Krok 3
-Ocena:
-
-| Kryterium | Opis |
-|----------|------|
-| onset stability | bootstrap |
-| contrast | siła segmentacji |
-| null model | p-value |
-| phase alignment | slope vs onset |
-| robustness | split |
-
----
-
-### Klasyfikacja końcowa
-
-| Poziom | Znaczenie |
-|------|----------|
-| P0 | brak sygnału |
-| P1 | słaby sygnał |
-| P2 | lokalne przejście |
-| P3 | brak dowodu (niestabilne) |
-| P4 | silne przejście |
-| P5 | globalna zmiana fazy |
-
----
-
-## 11. Zastosowania
-
-- analiza narracji social media
-- detekcja zmiany tonu / intencji
-- badanie procesów poznawczych Human–AI
-- analiza chaosu semantycznego
-- monitoring propagacji idei
-
----
-
-## 12. Meta-wniosek
-
-> Facebookowy strumień tekstu zachowuje się jak system dynamiczny,
-> w którym zmiany:
->
-> - pojawiają się wcześniej (prekursor)
-> - materializują się później (LOCI)
->
-> To jest zgodne z teorią chaosu i systemów złożonych.
-
----
-
-## 13. Następny krok
-
-- analiza semantyczna okolic:
-```
-
-G86 – G96
-
-```
-- porównanie wielu próbek
-- budowa mapy metaprzestrzeni (Sobol / Hypercube)
-
----
-
-**STATUS:** eksperyment poprawny  
-**REPRODUKOWALNOŚĆ:** wysoka  
-**SYSTEM:** stabilny dla danych znormalizowanych  
-
----
 
