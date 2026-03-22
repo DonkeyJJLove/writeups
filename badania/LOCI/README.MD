@@ -142,7 +142,8 @@ sample/
   norm/
 
 results/
-  Sample_0001.md
+  Sample_0001/
+    Sample_0001.md
 
 *.m (MATLAB)
 ```
@@ -206,10 +207,6 @@ R = loci_27D_9R_visualizer('sample/norm/Sample_0001n.m');
 
 ---
 
-**TRYB:** badawczy
-**REŻIM:** absolutny
-
-```
 
 
 
