@@ -638,5 +638,5 @@ Jeżeli moduły dają różne werdykty, należy to zapisać jawnie, a nie uśred
 
 ## 16. Powiązane pliki
 
-- raport konkretnego sampla: ["Sample_0001"](`https://github.com/DonkeyJJLove/writeups/blob/master/badania/LOCI/results/Sample_0001/Sample_0001.md`)
+- raport konkretnego sampla: [Sample_0001]("./results/Sample_0001/Sample_0001.md")
 
