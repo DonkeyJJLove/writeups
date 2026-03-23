@@ -1,0 +1,36 @@
+=========================================
+LOCI COGNITIVE READINESS TEST
+=========================================
+
+sample_id                         : Sample_0002
+timestamp                         : 2026-03-23 01:28:27
+input_file                        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+result_dir                        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002
+generations                       : 22
+feature_count                     : 27
+loci_onset_generation             : G0002
+first_cognitive_stable_generation : G0014
+first_llm_ready_generation        : unresolved
+candidate_cognitive_stable_generation : G0013
+candidate_llm_ready_generation    : G0013
+transition_window                 : G0014 -> G0013
+readiness_status                  : COGNITIVELY_STABLE
+
+=== THRESHOLDS ===
+core_stability     : 0.650000
+answer_stability   : 0.650000
+groundedness       : 0.339768
+neg_risk           : 0.533333
+interpretive_debt  : 0.354648
+structure_score    : 0.254508
+maturity           : 0.581502
+
+=== GLOBAL MEANS ===
+mean_core_stability              : 0.784534
+mean_answer_stability            : 0.890260
+mean_groundedness                : 0.271012
+mean_negative_hallucination_risk : 0.536250
+mean_interpretive_debt           : 0.371046
+mean_structure_score             : 0.198613
+mean_maturity_score              : 0.494511
+max_maturity_score               : 0.595025
