@@ -1,0 +1,35 @@
+{
+  "sample_id": "Sample_0003",
+  "status": "parsed",
+  "parser_mode": "python-canonical",
+  "input": {
+    "sandbox_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers\\sandbox.txt",
+    "sandbox_sha256": "234a385822cde8d063ab256e6eeb5332a61e79e10da09589bc3832419a8555c9",
+    "sandbox_bytes_utf8": 18012
+  },
+  "paths": {
+    "sample_root": "sample\\Sample_0003",
+    "raw_path": "sample\\Sample_0003\\raw",
+    "norm_path": "sample\\Sample_0003\\norm",
+    "sample_manifest": "sample\\Sample_0003\\manifest.json",
+    "raw_manifest": "sample\\Sample_0003\\raw\\manifest.json"
+  },
+  "outputs": {
+    "raw_entries_jsonl": "sample\\Sample_0003\\raw\\entries.jsonl",
+    "norm_sample_json": "sample\\Sample_0003\\norm\\sample_norm.json",
+    "parse_report_json": "sample\\Sample_0003\\raw\\parse_report.json",
+    "warnings_json": "sample\\Sample_0003\\raw\\warnings.json",
+    "author_map_json": "sample\\Sample_0003\\norm\\author_map.json",
+    "aliases_json": "sample\\Sample_0003\\norm\\aliases.json"
+  },
+  "parser_contract": {
+    "writes_to": "sample/<Sample_ID>/raw|norm",
+    "fallback_mode": "single_entry_if_no_structural_split_detected",
+    "empty_output_allowed": false,
+    "sample_manifest_location": "sample/<Sample_ID>/manifest.json"
+  },
+  "runtime": {
+    "cwd": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers",
+    "script_name": "parse_sandbox.py"
+  }
+}

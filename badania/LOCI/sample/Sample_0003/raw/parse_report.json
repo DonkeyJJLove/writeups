@@ -1,0 +1,19 @@
+{
+  "sample_id": "Sample_0003",
+  "sandbox_path": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\parsers\\sandbox.txt",
+  "entries_count": 14,
+  "links_count": 0,
+  "authors_detected": [
+    "Sebastian Wieremiejczyk"
+  ],
+  "relation_counts": {
+    "header_split": 14
+  },
+  "warnings_count": 0,
+  "warnings_preview": [],
+  "notes": [
+    "timestamp_iso is conservatively resolved only for ISO-like input",
+    "entry typing is heuristic and should be refined on real corpus",
+    "parser uses fallback-to-single-entry instead of emitting empty payloads"
+  ]
+}

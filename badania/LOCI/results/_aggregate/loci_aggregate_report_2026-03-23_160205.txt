@@ -1,0 +1,65 @@
+=========================================
+LOCI AGGREGATE REPORT
+=========================================
+
+generated_at      : 2026-03-23 16:02:12
+loci_root         : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI
+sample_root       : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample
+aggregate_dir     : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\_aggregate
+total_samples     : 3
+passed            : 3
+failed            : 0
+ok                : 1
+
+=== METRICS ===
+mean_generations      : 59.333333
+mean_feature_count    : 27.000000
+mean_onset_generation : 2.000000
+mean_step             : 2.813573
+mean_max_step         : 11.618953
+mean_trajectory_len   : 161.535505
+max_trajectory_sample : Sample_0001
+max_trajectory_value  : 393.399906
+min_trajectory_sample : Sample_0003
+min_trajectory_value  : 44.617641
+
+=== SAMPLES ===
+
+[01] Sample_0001
+  ok                : 1
+  input_file        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0001\norm\sample_norm.mat
+  generations       : 142
+  feature_count     : 27
+  onset_generation  : 2
+  mean_step         : 2.790070
+  max_step          : 14.278932
+  trajectory_length : 393.399906
+  result_dir        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0001
+  png               : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0001\Sample_0001_metaspace_run_2026-03-23_160205.png
+  md                : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0001\Sample_0001_metaspace_run_2026-03-23_160205.md
+
+[02] Sample_0002
+  ok                : 1
+  input_file        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0002\norm\sample_norm.mat
+  generations       : 22
+  feature_count     : 27
+  onset_generation  : 2
+  mean_step         : 2.218522
+  max_step          : 10.420659
+  trajectory_length : 46.588968
+  result_dir        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002
+  png               : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-23_160209.png
+  md                : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0002\Sample_0002_metaspace_run_2026-03-23_160209.md
+
+[03] Sample_0003
+  ok                : 1
+  input_file        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\sample\Sample_0003\norm\sample_norm.mat
+  generations       : 14
+  feature_count     : 27
+  onset_generation  : 2
+  mean_step         : 3.432126
+  max_step          : 10.157270
+  trajectory_length : 44.617641
+  result_dir        : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0003
+  png               : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0003\Sample_0003_metaspace_run_2026-03-23_160211.png
+  md                : C:\Users\d2j3\PycharmProjects\writeups\badania\LOCI\results\Sample_0003\Sample_0003_metaspace_run_2026-03-23_160211.md

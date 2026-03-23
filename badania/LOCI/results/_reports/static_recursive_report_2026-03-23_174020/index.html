@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>LOCI Static Recursive Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #f4f4f6;
+      --card: #ffffff;
+      --ink: #1f2430;
+      --muted: #5f6675;
+      --line: #d8dce3;
+      --blue: #275dad;
+      --violet: #6a1b9a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+    .wrap {
+      width: min(1320px, 96%);
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    .hero, .evolution, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+    }
+    .hero {
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #ffffff, #edf3ff);
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 42px;
+      line-height: 1.1;
+    }
+    .lead {
+      max-width: 1050px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .stamp {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .evolution {
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    .evolution h2 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+    .phase-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .phase-table th, .phase-table td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .card {
+      padding: 24px 28px;
+      margin-bottom: 22px;
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 34px;
+    }
+    .subtitle {
+      margin-top: 6px;
+      font-size: 22px;
+      color: var(--violet);
+      font-style: italic;
+    }
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pill {
+      background: #eef3ff;
+      color: #1f4d93;
+      border: 1px solid #d8e3ff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .metric {
+      background: #fafbfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    .metric span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .metric strong {
+      font-size: 20px;
+    }
+    .narrative {
+      margin-top: 18px;
+    }
+    .narrative h3 {
+      margin-bottom: 8px;
+    }
+    .img-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .img-card {
+      background: #fafbfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .img-title {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: var(--muted);
+    }
+    .img-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>LOCI Static Recursive Report</h1>
+      <p class="lead">
+        Statyczny raport budowany na podstawie już istniejących wyników zapisanych w katalogu
+        <code>LOCI/results/</code>. Python zbiera gotowe analizy, kopiuje niezbędne media do katalogu raportu
+        i generuje jedną stronę HTML, która wyłącznie prezentuje wcześniej policzone metryki metaspace i LCRT.
+      </p>
+      <div class="stamp">Generated at: 2026-03-23 17:40:20</div>
+    </section>
+
+    <section class="evolution">
+      <h2>Recursive Evolution Analysis</h2>
+      <p>Analiza rekurencyjna wskazuje przejście od wcześniejszych próbek o charakterze „Exploratory / Divergent” do późniejszych próbek bliższych trybowi „Structured / Modular”. Proces nie dotyczy wyłącznie pojedynczych artefaktów, lecz samej ewolucji heurystycznej w czasie. Kolejne sample są traktowane jako etapy przebudowy połączeń funkcjonalnych: od większej dystrybucji, entropii i rozproszenia ku większej selektywności, modułowości i stabilizacji rdzenia poznawczego.</p>
+
+      <table class="phase-table">
+        <thead>
+          <tr>
+            <th>Sample</th>
+            <th>Year</th>
+            <th>Network mode</th>
+            <th>Cognitive</th>
+            <th>LLM</th>
+            <th>Maturity</th>
+            <th>Groundedness</th>
+            <th>Trajectory</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr>
+          <td>Sample_0003</td>
+          <td>2015</td>
+          <td>Exploratory / Divergent</td>
+          <td>candidate</td>
+          <td>none</td>
+          <td>0.4833</td>
+          <td>0.1660</td>
+          <td>44.6176</td>
+        </tr>
+        
+        <tr>
+          <td>Sample_0001</td>
+          <td>2018</td>
+          <td>Exploratory / Divergent</td>
+          <td>candidate</td>
+          <td>none</td>
+          <td>0.4286</td>
+          <td>0.1548</td>
+          <td>393.3999</td>
+        </tr>
+        
+        <tr>
+          <td>Sample_0002</td>
+          <td>2026</td>
+          <td>Structured / Modular</td>
+          <td>confirmed</td>
+          <td>candidate</td>
+          <td>0.4945</td>
+          <td>0.2710</td>
+          <td>46.5890</td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </section>
+
+    
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Sample_0003</h2>
+              <div class="subtitle">Exploratory / Divergent</div>
+            </div>
+            <div class="pill-row">
+              <div class='pill'>Year: 2015</div>
+              <div class="pill">Generations: 14</div>
+              <div class="pill">Features: 27</div>
+              <div class="pill">Cognitive: candidate</div>
+              <div class="pill">LLM: none</div>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric"><span>Onset</span><strong>G0002</strong></div>
+            <div class="metric"><span>Trajectory</span><strong>44.6176</strong></div>
+            <div class="metric"><span>Mean step</span><strong>3.4321</strong></div>
+            <div class="metric"><span>Groundedness</span><strong>0.1660</strong></div>
+            <div class="metric"><span>Hallucination risk</span><strong>0.3212</strong></div>
+            <div class="metric"><span>Maturity</span><strong>0.4833</strong></div>
+          </div>
+
+          <div class="narrative">
+            <h3>Analysis</h3>
+            <p>Sample_0003 jest klasyfikowany jako „Exploratory / Divergent”. Próbka jest osadzona na osi czasu w roku 2015. Relatywnie krótka trajektoria wskazuje na szybszą konwergencję i bardziej zwartą organizację procesu. Niższa długość trajektorii sugeruje bardziej skupiony ruch w metaspace. Groundedness pozostaje umiarkowany lub niski, więc artefakt nadal zostawia modelowi sporą swobodę interpretacji. Ryzyko halucynacyjne proxy jest umiarkowane lub obniżone. Poziom cognitive-ready pozostaje kandydatem. Poziom LLM-ready nie został osiągnięty.</p>
+          </div>
+
+          <div class="img-grid">
+            
+            <div class="img-card">
+              <div class="img-title">Metaspace</div>
+              <img src="assets/Sample_0003_metaspace_run_2026-03-23_160211.png" alt="Sample_0003 metaspace">
+            </div>
+            
+            
+            <div class="img-card">
+              <div class="img-title">LCRT</div>
+              <img src="assets/Sample_0003_lcrt_2026-03-23_160040.png" alt="Sample_0003 lcrt">
+            </div>
+            
+          </div>
+        </section>
+        
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Sample_0001</h2>
+              <div class="subtitle">Exploratory / Divergent</div>
+            </div>
+            <div class="pill-row">
+              <div class='pill'>Year: 2018</div>
+              <div class="pill">Generations: 142</div>
+              <div class="pill">Features: 27</div>
+              <div class="pill">Cognitive: candidate</div>
+              <div class="pill">LLM: none</div>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric"><span>Onset</span><strong>G0002</strong></div>
+            <div class="metric"><span>Trajectory</span><strong>393.3999</strong></div>
+            <div class="metric"><span>Mean step</span><strong>2.7901</strong></div>
+            <div class="metric"><span>Groundedness</span><strong>0.1548</strong></div>
+            <div class="metric"><span>Hallucination risk</span><strong>0.5759</strong></div>
+            <div class="metric"><span>Maturity</span><strong>0.4286</strong></div>
+          </div>
+
+          <div class="narrative">
+            <h3>Analysis</h3>
+            <p>Sample_0001 jest klasyfikowany jako „Exploratory / Divergent”. Próbka jest osadzona na osi czasu w roku 2018. Długa trajektoria wskazuje na intensywną eksplorację przestrzeni semantycznej i większą dywergencję stanów. Duża długość trajektorii sugeruje wysoką amplitudę przejść między stanami znaczeń. Groundedness pozostaje umiarkowany lub niski, więc artefakt nadal zostawia modelowi sporą swobodę interpretacji. Ryzyko halucynacyjne proxy pozostaje podwyższone, co utrudnia pełne potwierdzenie gotowości LLM-safe. Poziom cognitive-ready pozostaje kandydatem. Poziom LLM-ready nie został osiągnięty.</p>
+          </div>
+
+          <div class="img-grid">
+            
+            <div class="img-card">
+              <div class="img-title">Metaspace</div>
+              <img src="assets/Sample_0001_metaspace_run_2026-03-23_160205.png" alt="Sample_0001 metaspace">
+            </div>
+            
+            
+            <div class="img-card">
+              <div class="img-title">LCRT</div>
+              <img src="assets/Sample_0001_lcrt_2026-03-23_022334.png" alt="Sample_0001 lcrt">
+            </div>
+            
+          </div>
+        </section>
+        
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Sample_0002</h2>
+              <div class="subtitle">Structured / Modular</div>
+            </div>
+            <div class="pill-row">
+              <div class='pill'>Year: 2026</div>
+              <div class="pill">Generations: 22</div>
+              <div class="pill">Features: 27</div>
+              <div class="pill">Cognitive: confirmed</div>
+              <div class="pill">LLM: candidate</div>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric"><span>Onset</span><strong>G0002</strong></div>
+            <div class="metric"><span>Trajectory</span><strong>46.5890</strong></div>
+            <div class="metric"><span>Mean step</span><strong>2.2185</strong></div>
+            <div class="metric"><span>Groundedness</span><strong>0.2710</strong></div>
+            <div class="metric"><span>Hallucination risk</span><strong>0.5362</strong></div>
+            <div class="metric"><span>Maturity</span><strong>0.4945</strong></div>
+          </div>
+
+          <div class="narrative">
+            <h3>Analysis</h3>
+            <p>Sample_0002 jest klasyfikowany jako „Structured / Modular”. Próbka jest osadzona na osi czasu w roku 2026. Relatywnie krótka trajektoria wskazuje na szybszą konwergencję i bardziej zwartą organizację procesu. Niższa długość trajektorii sugeruje bardziej skupiony ruch w metaspace. Groundedness osiąga poziom wskazujący na względnie zakotwiczoną strukturę poznawczą. Ryzyko halucynacyjne proxy pozostaje podwyższone, co utrudnia pełne potwierdzenie gotowości LLM-safe. Poziom cognitive-ready jest potwierdzony. Poziom LLM-ready pozostaje kandydatem.</p>
+          </div>
+
+          <div class="img-grid">
+            
+            <div class="img-card">
+              <div class="img-title">Metaspace</div>
+              <img src="assets/Sample_0002_metaspace_run_2026-03-23_160209.png" alt="Sample_0002 metaspace">
+            </div>
+            
+            
+            <div class="img-card">
+              <div class="img-title">LCRT</div>
+              <img src="assets/Sample_0002_lcrt_2026-03-23_022318.png" alt="Sample_0002 lcrt">
+            </div>
+            
+          </div>
+        </section>
+        
+
+    <div class="footer">
+      LOCI static recursive report · generated from precomputed results only
+    </div>
+  </div>
+</body>
+</html>

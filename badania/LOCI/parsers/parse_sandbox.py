@@ -6,7 +6,9 @@ Cel:
 - czyta `sandbox.txt` z katalogu parsera
 - zapisuje wynik do `sample/<Sample_ID>/raw|norm`
 - zachowuje kontrakt pipeline
-- tworzy manifest uruchomienia
+- tworzy manifest uruchomienia:
+    * sample/<Sample_ID>/manifest.json
+    * sample/<Sample_ID>/raw/manifest.json
 - jest odporny na różne warianty formatu wejściowego
 
 Obsługiwane wzorce wejścia:
@@ -177,6 +179,25 @@ def line_is_effectively_empty(line: str) -> bool:
     return not line.strip()
 
 
+def next_sample_id(out_root: Path) -> str:
+    max_id = 0
+    if out_root.exists():
+        for item in out_root.iterdir():
+            if not item.is_dir():
+                continue
+            m = re.fullmatch(r"Sample_(\d{4})", item.name)
+            if m:
+                max_id = max(max_id, int(m.group(1)))
+    return f"Sample_{max_id + 1:04d}"
+
+
+def relpath_str(path: Path, start: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(start.resolve()))
+    except Exception:
+        return str(path)
+
+
 # ============================================================
 # PODZIAŁ NA SEGMENTY
 # ============================================================
@@ -200,7 +221,6 @@ def split_block_by_headers(block: str, warnings: List[str]) -> List[Dict]:
     seq = 0
 
     while i < len(lines):
-        # pomijaj puste i kontrolne
         while i < len(lines) and (line_is_effectively_empty(lines[i]) or CONTROL_LINE_RE.match(lines[i].strip())):
             i += 1
 
@@ -211,7 +231,6 @@ def split_block_by_headers(block: str, warnings: List[str]) -> List[Dict]:
             header = lines[i].strip()
             i += 1
 
-            # opcjonalny autor
             author_raw = ""
             if i < len(lines):
                 probe = lines[i].strip()
@@ -219,7 +238,6 @@ def split_block_by_headers(block: str, warnings: List[str]) -> List[Dict]:
                     author_raw = probe
                     i += 1
 
-            # treść do kolejnego headera albo końca
             content_lines = []
             while i < len(lines):
                 probe = lines[i].strip()
@@ -233,7 +251,6 @@ def split_block_by_headers(block: str, warnings: List[str]) -> List[Dict]:
 
             content_raw = "\n".join(content_lines).strip()
             if not content_raw and author_raw:
-                # jeśli autor istnieje, ale treść pusta, zachowaj wpis
                 content_raw = ""
 
             entries.append({
@@ -247,7 +264,6 @@ def split_block_by_headers(block: str, warnings: List[str]) -> List[Dict]:
             })
             seq += 1
         else:
-            # fragment bez nagłówka: zbierz do kolejnego nagłówka
             content_lines = []
             while i < len(lines):
                 probe = lines[i].strip()
@@ -334,7 +350,6 @@ def split_entries(text: str) -> Tuple[List[Dict], List[str]]:
             warnings.append("[split_entries] No entries parsed from input text.")
             return [], warnings
 
-    # odfiltruj totalnie puste wpisy
     filtered = []
     for idx, entry in enumerate(entries):
         content = (entry.get("content_raw") or "").strip()
@@ -364,7 +379,6 @@ def resolve_timestamp_iso(timestamp_text: Optional[str]) -> Optional[str]:
         return None
     ts = timestamp_text.strip()
     if ISO_DATE_RE.match(ts):
-        # lekki passthrough
         return ts.replace(" ", "T")
     return None
 
@@ -439,32 +453,48 @@ def build_manifest(
     sample_id: str,
     sandbox_path: Path,
     text: str,
+    sample_root: Path,
+    raw_dir: Path,
+    norm_dir: Path,
     raw_entries_path: Path,
     norm_entries_path: Path,
     parse_report_path: Path,
     warnings_path: Path,
     author_map_path: Path,
     aliases_path: Path,
+    sample_manifest_path: Path,
+    raw_manifest_path: Path,
+    project_root: Path,
 ) -> Dict:
     return {
         "sample_id": sample_id,
+        "status": "parsed",
+        "parser_mode": "python-canonical",
         "input": {
             "sandbox_path": str(sandbox_path),
             "sandbox_sha256": sha256(text),
             "sandbox_bytes_utf8": len(text.encode("utf-8", errors="replace")),
         },
+        "paths": {
+            "sample_root": relpath_str(sample_root, project_root),
+            "raw_path": relpath_str(raw_dir, project_root),
+            "norm_path": relpath_str(norm_dir, project_root),
+            "sample_manifest": relpath_str(sample_manifest_path, project_root),
+            "raw_manifest": relpath_str(raw_manifest_path, project_root),
+        },
         "outputs": {
-            "raw_entries_jsonl": str(raw_entries_path),
-            "norm_sample_json": str(norm_entries_path),
-            "parse_report_json": str(parse_report_path),
-            "warnings_json": str(warnings_path),
-            "author_map_json": str(author_map_path),
-            "aliases_json": str(aliases_path),
+            "raw_entries_jsonl": relpath_str(raw_entries_path, project_root),
+            "norm_sample_json": relpath_str(norm_entries_path, project_root),
+            "parse_report_json": relpath_str(parse_report_path, project_root),
+            "warnings_json": relpath_str(warnings_path, project_root),
+            "author_map_json": relpath_str(author_map_path, project_root),
+            "aliases_json": relpath_str(aliases_path, project_root),
         },
         "parser_contract": {
             "writes_to": "sample/<Sample_ID>/raw|norm",
             "fallback_mode": "single_entry_if_no_structural_split_detected",
             "empty_output_allowed": False,
+            "sample_manifest_location": "sample/<Sample_ID>/manifest.json",
         },
         "runtime": {
             "cwd": os.getcwd(),
@@ -478,6 +508,7 @@ def build_manifest(
 # ============================================================
 
 def write_json(path: Path, payload: Dict | List) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
@@ -485,6 +516,7 @@ def write_json(path: Path, payload: Dict | List) -> None:
 
 
 def write_jsonl(path: Path, rows: List[Dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as fh:
         for row in rows:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -496,7 +528,7 @@ def write_jsonl(path: Path, rows: List[Dict]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--sample-id", required=True)
+    parser.add_argument("--sample-id", default=None)
     parser.add_argument("--sandbox", default=str(Path(__file__).with_name("sandbox.txt")))
     parser.add_argument("--out-root", default=str(Path(__file__).resolve().parents[1] / "sample"))
     args = parser.parse_args()
@@ -505,7 +537,13 @@ def main() -> None:
     if not sandbox.exists():
         raise SystemExit(f"Missing sandbox file: {sandbox}")
 
-    sample_root = Path(args.out_root) / args.sample_id
+    out_root = Path(args.out_root)
+    out_root.mkdir(parents=True, exist_ok=True)
+
+    sample_id = args.sample_id or next_sample_id(out_root)
+
+    project_root = Path(__file__).resolve().parents[1]
+    sample_root = out_root / sample_id
     raw_dir = sample_root / "raw"
     norm_dir = sample_root / "norm"
 
@@ -515,7 +553,6 @@ def main() -> None:
     text = ensure_text(sandbox.read_text(encoding="utf-8", errors="replace"))
     entries, warnings = split_entries(text)
 
-    # Twardy fallback bezpieczeństwa: nigdy nie zapisuj pustego norm, jeśli jest tekst wejściowy
     if not entries and text.strip():
         warnings.append("[main] Emergency fallback activated: full text stored as one entry.")
         entries = [{
@@ -531,12 +568,12 @@ def main() -> None:
     raw_rows = []
     for idx, entry in enumerate(entries):
         raw_rows.append({
-            "sample_id": args.sample_id,
-            "entry_id": f"{args.sample_id}_E{idx:04d}",
+            "sample_id": sample_id,
+            "entry_id": f"{sample_id}_E{idx:04d}",
             **entry,
         })
 
-    norm_entries = [normalize_entry(args.sample_id, idx, entry) for idx, entry in enumerate(entries)]
+    norm_entries = [normalize_entry(sample_id, idx, entry) for idx, entry in enumerate(entries)]
 
     raw_entries_path = raw_dir / "entries.jsonl"
     norm_entries_path = norm_dir / "sample_norm.json"
@@ -544,32 +581,42 @@ def main() -> None:
     aliases_path = norm_dir / "aliases.json"
     parse_report_path = raw_dir / "parse_report.json"
     warnings_path = raw_dir / "warnings.json"
-    manifest_path = raw_dir / "manifest.json"
+    raw_manifest_path = raw_dir / "manifest.json"
+    sample_manifest_path = sample_root / "manifest.json"
 
     write_jsonl(raw_entries_path, raw_rows)
     write_json(norm_entries_path, norm_entries)
     write_json(author_map_path, AUTHOR_MAP)
     write_json(aliases_path, ALIASES)
-    write_json(parse_report_path, build_parse_report(args.sample_id, sandbox, entries, warnings))
+    write_json(parse_report_path, build_parse_report(sample_id, sandbox, entries, warnings))
     write_json(warnings_path, {
-        "sample_id": args.sample_id,
+        "sample_id": sample_id,
         "warnings": warnings,
     })
 
     manifest = build_manifest(
-        sample_id=args.sample_id,
+        sample_id=sample_id,
         sandbox_path=sandbox,
         text=text,
+        sample_root=sample_root,
+        raw_dir=raw_dir,
+        norm_dir=norm_dir,
         raw_entries_path=raw_entries_path,
         norm_entries_path=norm_entries_path,
         parse_report_path=parse_report_path,
         warnings_path=warnings_path,
         author_map_path=author_map_path,
         aliases_path=aliases_path,
+        sample_manifest_path=sample_manifest_path,
+        raw_manifest_path=raw_manifest_path,
+        project_root=project_root,
     )
-    write_json(manifest_path, manifest)
+
+    write_json(raw_manifest_path, manifest)
+    write_json(sample_manifest_path, manifest)
 
     print(f"Parsed {len(entries)} entries into {sample_root}")
+    print(f"Manifest: {sample_manifest_path}")
 
 
 if __name__ == "__main__":

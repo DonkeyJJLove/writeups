@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-03-23 17:40:20",
+  "loci_root": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI",
+  "results_root": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\results",
+  "report_dir": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\LOCI\\results\\_reports\\static_recursive_report_2026-03-23_174020",
+  "samples_count": 3,
+  "samples": [
+    {
+      "sample_id": "Sample_0003",
+      "sample_num": 3,
+      "year": 2015,
+      "network_mode": "Exploratory / Divergent",
+      "metaspace": {
+        "generations": 14,
+        "feature_count": 27,
+        "onset_generation": 2,
+        "mean_step": 3.4321262634206144,
+        "max_step": 10.157269942812565,
+        "trajectory_length": 44.61764142446799
+      },
+      "lcrt": {
+        "readiness_status": "COGNITIVE_CANDIDATE",
+        "cognitive_ready_level": "candidate",
+        "llm_ready_level": "none",
+        "first_cognitive_stable_generation": null,
+        "first_llm_ready_generation": null,
+        "candidate_cognitive_stable_generation": 12,
+        "candidate_llm_ready_generation": null,
+        "mean_groundedness": 0.16604166666666667,
+        "mean_negative_hallucination_risk": 0.32117857142857137,
+        "mean_interpretive_debt": 0.37665801004444177,
+        "mean_maturity_score": 0.4832841200289829,
+        "max_maturity_score": 0.56347
+      },
+      "narrative": "Sample_0003 jest klasyfikowany jako „Exploratory / Divergent”. Próbka jest osadzona na osi czasu w roku 2015. Relatywnie krótka trajektoria wskazuje na szybszą konwergencję i bardziej zwartą organizację procesu. Niższa długość trajektorii sugeruje bardziej skupiony ruch w metaspace. Groundedness pozostaje umiarkowany lub niski, więc artefakt nadal zostawia modelowi sporą swobodę interpretacji. Ryzyko halucynacyjne proxy jest umiarkowane lub obniżone. Poziom cognitive-ready pozostaje kandydatem. Poziom LLM-ready nie został osiągnięty.",
+      "assets": {
+        "metaspace_png": "Sample_0003_metaspace_run_2026-03-23_160211.png",
+        "lcrt_png": "Sample_0003_lcrt_2026-03-23_160040.png",
+        "metaspace_json": "Sample_0003_metaspace_run_2026-03-23_160211.json",
+        "lcrt_json": "Sample_0003_lcrt_2026-03-23_160040.json"
+      }
+    },
+    {
+      "sample_id": "Sample_0001",
+      "sample_num": 1,
+      "year": 2018,
+      "network_mode": "Exploratory / Divergent",
+      "metaspace": {
+        "generations": 142,
+        "feature_count": 27,
+        "onset_generation": 2,
+        "mean_step": 2.7900702586397097,
+        "max_step": 14.278931576668532,
+        "trajectory_length": 393.39990646819905
+      },
+      "lcrt": {
+        "readiness_status": "COGNITIVE_CANDIDATE",
+        "cognitive_ready_level": "candidate",
+        "llm_ready_level": "none",
+        "first_cognitive_stable_generation": null,
+        "first_llm_ready_generation": null,
+        "candidate_cognitive_stable_generation": 90,
+        "candidate_llm_ready_generation": null,
+        "mean_groundedness": 0.1548382929730023,
+        "mean_negative_hallucination_risk": 0.5758744131455401,
+        "mean_interpretive_debt": 0.41665694029985834,
+        "mean_maturity_score": 0.42864199662233926,
+        "max_maturity_score": 0.5490155652173913
+      },
+      "narrative": "Sample_0001 jest klasyfikowany jako „Exploratory / Divergent”. Próbka jest osadzona na osi czasu w roku 2018. Długa trajektoria wskazuje na intensywną eksplorację przestrzeni semantycznej i większą dywergencję stanów. Duża długość trajektorii sugeruje wysoką amplitudę przejść między stanami znaczeń. Groundedness pozostaje umiarkowany lub niski, więc artefakt nadal zostawia modelowi sporą swobodę interpretacji. Ryzyko halucynacyjne proxy pozostaje podwyższone, co utrudnia pełne potwierdzenie gotowości LLM-safe. Poziom cognitive-ready pozostaje kandydatem. Poziom LLM-ready nie został osiągnięty.",
+      "assets": {
+        "metaspace_png": "Sample_0001_metaspace_run_2026-03-23_160205.png",
+        "lcrt_png": "Sample_0001_lcrt_2026-03-23_022334.png",
+        "metaspace_json": "Sample_0001_metaspace_run_2026-03-23_160205.json",
+        "lcrt_json": "Sample_0001_lcrt_2026-03-23_022334.json"
+      }
+    },
+    {
+      "sample_id": "Sample_0002",
+      "sample_num": 2,
+      "year": 2026,
+      "network_mode": "Structured / Modular",
+      "metaspace": {
+        "generations": 22,
+        "feature_count": 27,
+        "onset_generation": 2,
+        "mean_step": 2.218522265628769,
+        "max_step": 10.42065867892351,
+        "trajectory_length": 46.58896757820415
+      },
+      "lcrt": {
+        "readiness_status": "COGNITIVELY_STABLE",
+        "cognitive_ready_level": "confirmed",
+        "llm_ready_level": "candidate",
+        "first_cognitive_stable_generation": 14,
+        "first_llm_ready_generation": null,
+        "candidate_cognitive_stable_generation": 13,
+        "candidate_llm_ready_generation": 13,
+        "mean_groundedness": 0.2710116499780127,
+        "mean_negative_hallucination_risk": 0.5362499999999999,
+        "mean_interpretive_debt": 0.37104551745219855,
+        "mean_maturity_score": 0.4945110149898456,
+        "max_maturity_score": 0.5950253968253969
+      },
+      "narrative": "Sample_0002 jest klasyfikowany jako „Structured / Modular”. Próbka jest osadzona na osi czasu w roku 2026. Relatywnie krótka trajektoria wskazuje na szybszą konwergencję i bardziej zwartą organizację procesu. Niższa długość trajektorii sugeruje bardziej skupiony ruch w metaspace. Groundedness osiąga poziom wskazujący na względnie zakotwiczoną strukturę poznawczą. Ryzyko halucynacyjne proxy pozostaje podwyższone, co utrudnia pełne potwierdzenie gotowości LLM-safe. Poziom cognitive-ready jest potwierdzony. Poziom LLM-ready pozostaje kandydatem.",
+      "assets": {
+        "metaspace_png": "Sample_0002_metaspace_run_2026-03-23_160209.png",
+        "lcrt_png": "Sample_0002_lcrt_2026-03-23_022318.png",
+        "metaspace_json": "Sample_0002_metaspace_run_2026-03-23_160209.json",
+        "lcrt_json": "Sample_0002_lcrt_2026-03-23_022318.json"
+      }
+    }
+  ],
+  "evolution": {
+    "title": "Recursive Evolution Analysis",
+    "narrative": "Analiza rekurencyjna wskazuje przejście od wcześniejszych próbek o charakterze „Exploratory / Divergent” do późniejszych próbek bliższych trybowi „Structured / Modular”. Proces nie dotyczy wyłącznie pojedynczych artefaktów, lecz samej ewolucji heurystycznej w czasie. Kolejne sample są traktowane jako etapy przebudowy połączeń funkcjonalnych: od większej dystrybucji, entropii i rozproszenia ku większej selektywności, modułowości i stabilizacji rdzenia poznawczego.",
+    "phases": [
+      {
+        "sample_id": "Sample_0003",
+        "year": 2015,
+        "network_mode": "Exploratory / Divergent",
+        "cognitive_ready_level": "candidate",
+        "llm_ready_level": "none",
+        "mean_maturity_score": 0.4832841200289829,
+        "mean_groundedness": 0.16604166666666667,
+        "trajectory_length": 44.61764142446799
+      },
+      {
+        "sample_id": "Sample_0001",
+        "year": 2018,
+        "network_mode": "Exploratory / Divergent",
+        "cognitive_ready_level": "candidate",
+        "llm_ready_level": "none",
+        "mean_maturity_score": 0.42864199662233926,
+        "mean_groundedness": 0.1548382929730023,
+        "trajectory_length": 393.39990646819905
+      },
+      {
+        "sample_id": "Sample_0002",
+        "year": 2026,
+        "network_mode": "Structured / Modular",
+        "cognitive_ready_level": "confirmed",
+        "llm_ready_level": "candidate",
+        "mean_maturity_score": 0.4945110149898456,
+        "mean_groundedness": 0.2710116499780127,
+        "trajectory_length": 46.58896757820415
+      }
+    ]
+  }
+}
