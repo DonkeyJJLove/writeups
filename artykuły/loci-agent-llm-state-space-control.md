@@ -150,7 +150,7 @@ Są to dwa tryby utraty sterowalności.
 
 ---
 
-Kluczowe zastrzeżenie: jest to analogia strukturalna, nie ontologiczna. Nie twierdzimy, że mózg i transformer działają identycznie, lecz że można je opisać tym samym językiem systemów dynamicznych.
+Kluczowe zastrzeżenie: jest to analogia strukturalna, nie ontologiczna. Nie twierdzę, że mózg i transformer działają identycznie, lecz że można je opisać tym samym językiem systemów dynamicznych.
 
 ---
 
