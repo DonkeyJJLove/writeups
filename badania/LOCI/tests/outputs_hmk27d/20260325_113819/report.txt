@@ -1,0 +1,36 @@
+HMK-27D OPERATOR REPORT
+=======================
+
+PARAMETERS
+kA = 1.000000
+kB = 1.000000
+kC = 1.000000
+a  = [1.2 0.8 1.8]
+b  = [0.7 1 1.4]
+c  = [0.6 1 1.5]
+dt = 0.050000
+nSteps = 200
+
+ALGEBRAIC TESTS
+symErr(H0)         = 0.000000000000e+00
+symErr(H)          = 0.000000000000e+00
+asymErr(Bmeta_in)  = 0.000000000000e+00
+minEig(H0)         = 3.061093922726e+00
+maxEig(H0)         = 1.218785924835e+01
+minEig(H)          = 3.061093922726e+00
+maxEig(H)          = 1.218785924835e+01
+isPSD(H0)          = 1
+isSPD(H0)          = 1
+cond(H0)           = 3.981537174625e+00
+cond(H)            = 3.981537174625e+00
+adjacency_ok(H0)   = 1
+
+TIME STABILITY TEST
+stable_explicit_euler = 1
+spectral_radius_A     = 8.469453038637e-01
+norm_x0               = 4.398557219663e+00
+norm_xT               = 1.978338495134e-16
+energy_x0             = 7.909113248541e+01
+energy_xT             = 5.990290208181e-32
+energy_monotone       = 1
+

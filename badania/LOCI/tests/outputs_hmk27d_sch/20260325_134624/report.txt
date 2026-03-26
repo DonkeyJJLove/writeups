@@ -1,0 +1,52 @@
+HMK27D + MINI SCHRODINGER REPORT
+================================
+
+CONFIG
+Nx                  = 540
+xMin                = -12.000000
+xMax                = 12.000000
+dt                  = 0.010000
+nSteps              = 400
+potentialScale      = 1.000000
+backgroundPotential = 0.000000
+psiCenter           = -3.000000
+psiSigma            = 0.900000
+psiK0               = 2.200000
+
+27D OPERATOR TESTS
+symErrH27              = 0.000000000000e+00
+minEigH0               = 3.054626721713e+00
+maxEigH0               = 1.189016624332e+01
+isPSD_H0               = 1
+isSPD_H0               = 1
+minEigH27              = 3.054626721713e+00
+maxEigH27              = 1.189016624332e+01
+condH27                = 3.892510387210e+00
+
+1D HAMILTONIAN TESTS
+hermitianErrHx         = 0.000000000000e+00
+norm0                  = 1.000000000000e+00
+normT                  = 1.000000000000e+00
+normAbsDrift           = 1.176836406103e-14
+normRelDrift           = 1.176836406103e-14
+normStable             = 1
+maxImagEnergyExpected  = 6.587185960577e-15
+energyReal             = 1
+probNonnegative        = 1
+
+POTENTIAL / MAPPING TESTS
+varRaw27               = 2.711152297264e-02
+varRaw27s              = 1.666093305344e-02
+varVx                  = 5.524207468906e-02
+nontrivialPotential    = 1
+mappingAlive           = 1
+
+SANITY TESTS
+noNaNInf_H27           = 1
+noNaNInf_Vx            = 1
+noNaNInf_psi           = 1
+
+FINAL VERDICT
+allCoreTestsPass       = 1
+
+STRICT MODE VERDICT: PASS
