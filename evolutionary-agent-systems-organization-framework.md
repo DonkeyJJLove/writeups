@@ -431,6 +431,10 @@ World Economic Forum. 2025. *The Future of Jobs Report 2025*. https://www.weforu
 
 World Economic Forum. 2026. *Organizational Transformation in the Age of AI*. https://www.weforum.org/publications/organizational-transformation-in-the-age-of-ai-how-organizations-maximize-ais-potential/. Dostęp: 3 sierpnia 2026.
 
-*Cywilizacja wobec AI: probabilistyczne badanie behawioryzmu, percepcji przedrozumowej, wdrożeń AI i przyszłości systemu planetarnego*. 2026. Materiał analityczny przekazany w załączniku.
+**Materiały analityczne wykorzystane w syntezie**
 
-*Atlas strategii wdrażania AI dla modeli organizacyjnych*. 2026. Materiał analityczny przekazany w załączniku.
+*Cywilizacja wobec AI: probabilistyczne badanie behawioryzmu, percepcji przedrozumowej, wdrożeń AI i przyszłości systemu planetarnego.* (2026). Autorskie opracowanie analityczne. Materiał źródłowy wykorzystany w procesie syntezy badawczej. Dostęp: https://drive.google.com/drive/folders/1b78AAzgSKwr3cOrsgRVwiQiAtj5NR_Gt (dostęp: 3 sierpnia 2026).
+
+*Atlas strategii wdrażania AI dla modeli organizacyjnych.* (2026). Autorskie opracowanie analityczne. Materiał źródłowy wykorzystany w procesie rekonstrukcji strategii wdrożeniowych, scenariuszy organizacyjnych oraz analiz probabilistycznych. Dostęp: https://drive.google.com/drive/folders/1PGmesfj6dJD_WGUNMwqKfVc-l5MlUjei (dostęp: 3 sierpnia 2026).
+
+*Cywilizacja zbudowała sztuczną inteligencję. Nie zbudowała jeszcze systemu, który potrafi ją wykonać.* (2026). Autorski artykuł syntetyzujący wyniki badań dotyczących relacji między organizacją deterministyczną a probabilistycznymi systemami AI oraz ich implikacji dla transformacji organizacyjnej. Adres publikacji: **[uzupełnić po opublikowaniu]**.
