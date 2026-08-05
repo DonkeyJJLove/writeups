@@ -7,6 +7,14 @@
 **Seed walidacji:** `20260805`  
 **Status dowodowy:** kompletny projekt mechanizmu, plan eksperymentu i walidacja obliczeniowa; brak danych z rzeczywistych prób Łobuz–Lilith–Szatan.
 
+# Relational Perceptual Protocol Bootstrap Model
+
+![Relational Perceptual Protocol Schema](images/relacyjne_protokoly_percepcyjne_pmas_schemat.png)
+
+## Abstract
+
+...
+
 ## Streszczenie
 
 Kotwiczony Protokół Reakcji Relacyjnej jest mechanizmem aktywnego wytwarzania i przekazywania jednej sekwencji behawioralnej pomiędzy trzema agentami. Łobuz `A` dotyka wspólnej kotwicy `Z`, Lilith `B` orientuje się na Łobuza i sama dotyka `Z`, a jej kontakt staje się sygnałem dla Szatana `C`. Rozwiązanie nie ogranicza się do obserwacji, czy zachowania spontanicznie współwystępują. System automatycznie wzmacnia wyłącznie prawidłową zależność relacyjną, stopniowo kształtuje pełną odpowiedź odbiorcy, chroni wcześniej utworzoną krawędź `A → B` przed wygaszeniem podczas nauki `B → C` i opóźnia wydanie nagród do zamknięcia całego okna odpowiedzi, aby dźwięk podajnika nie stał się sygnałem zastępczym.
