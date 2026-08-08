@@ -1,0 +1,108 @@
+{
+  "study": "Oczy szeroko zamknięte są — kasyno wygrywa zawsze",
+  "version": "1.1.0",
+  "overall_verdict": "B",
+  "verdict_text": "Warunkowa teoria formalno-obliczeniowa o ograniczonym zakresie i częściowym wsparciu empirycznym.",
+  "modules": {
+    "M0": "strongly supported formally and computationally",
+    "M1": "conditionally supported in the synthetic DGM and partially empirically",
+    "M2": "supported as an algorithmic construct; biological bridge incomplete",
+    "M3": "supported conditionally through exposure/edge/adaptation coupling"
+  },
+  "approx_total_trajectories": 9608080,
+  "challenge_passed": 18,
+  "challenge_total": 18,
+  "fair_game_adjudication": {
+    "replications_per_batch": 8192,
+    "batches": 16,
+    "total_replications_per_scenario": 131072,
+    "all_scenario_means_within_3_mcse": true,
+    "all_paired_effects_within_3_mcse": true,
+    "max_abs_z_scenario": 2.237899055814786,
+    "max_abs_z_effect": 1.7802870585800838,
+    "max_abs_mean_scenario_gain": 0.042236328125,
+    "max_abs_mean_effect_gain": 0.05846405029296875,
+    "max_abs_mean_delta_exposures": 407.3781509399414
+  },
+  "house_edge_thresholds": [
+    {
+      "mu": 0.005,
+      "target_probability": 0.9,
+      "minimum_odd_horizon": 65695,
+      "exact_probability_at_threshold": 0.9000023016303316
+    },
+    {
+      "mu": 0.005,
+      "target_probability": 0.95,
+      "minimum_odd_horizon": 108221,
+      "exact_probability_at_threshold": 0.9500008736107735
+    },
+    {
+      "mu": 0.005,
+      "target_probability": 0.99,
+      "minimum_odd_horizon": 216473,
+      "exact_probability_at_threshold": 0.9900000613964364
+    },
+    {
+      "mu": 0.01,
+      "target_probability": 0.9,
+      "minimum_odd_horizon": 16423,
+      "exact_probability_at_threshold": 0.9000039513036195
+    },
+    {
+      "mu": 0.01,
+      "target_probability": 0.95,
+      "minimum_odd_horizon": 27055,
+      "exact_probability_at_threshold": 0.9500044464011482
+    },
+    {
+      "mu": 0.01,
+      "target_probability": 0.99,
+      "minimum_odd_horizon": 54117,
+      "exact_probability_at_threshold": 0.9900007227448601
+    },
+    {
+      "mu": 0.02,
+      "target_probability": 0.9,
+      "minimum_odd_horizon": 4105,
+      "exact_probability_at_threshold": 0.9000105528766302
+    },
+    {
+      "mu": 0.02,
+      "target_probability": 0.95,
+      "minimum_odd_horizon": 6763,
+      "exact_probability_at_threshold": 0.9500124692405885
+    },
+    {
+      "mu": 0.02,
+      "target_probability": 0.99,
+      "minimum_odd_horizon": 13527,
+      "exact_probability_at_threshold": 0.9900010772540805
+    },
+    {
+      "mu": 0.05,
+      "target_probability": 0.9,
+      "minimum_odd_horizon": 657,
+      "exact_probability_at_threshold": 0.9002348352220646
+    },
+    {
+      "mu": 0.05,
+      "target_probability": 0.95,
+      "minimum_odd_horizon": 1081,
+      "exact_probability_at_threshold": 0.9500498969883115
+    },
+    {
+      "mu": 0.05,
+      "target_probability": 0.99,
+      "minimum_odd_horizon": 2163,
+      "exact_probability_at_threshold": 0.9900207611905602
+    }
+  ],
+  "fixed_unit_ruin_T5000": 0.9708708379633944,
+  "martingale_ruin_T5000": 0.9874666666666668,
+  "max_bandit_adaptation_delay": 186.45825,
+  "evidence_sources": 26,
+  "claim_count": 21,
+  "no_special_threshold_200": true,
+  "biological_proof": false
+}
