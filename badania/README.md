@@ -27,6 +27,12 @@ badania/
 
 ## 1. AI, SaaS, Cloud, architektura i bezpieczeństwo systemowe
 
+### Najnowsza linia: AI-Driven Security / Security Model Boundary
+
+- [`Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełne badanie falsyfikacyjne strategii bezpieczeństwa agentowego AI; obejmuje Security Model Boundary, Probabilistic–Deterministic Boundary, 1 000 000 realizacji Monte Carlo, 36 strategii, Pareto/tail-risk optimization, kontrfaktyczną falsyfikację, stress testing, adversarial search oraz model GREEN / AMBER / RED.
+- [`../AI_Driven_Security_Research_Package_2026-08-18.zip`](../AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów badawczych powiązany z raportem i write-upem.
+- [`../ai_security_model_boundary_strategy_writeup.md`](../ai_security_model_boundary_strategy_writeup.md) — publikacyjny write-up wyprowadzający z badania docelową strategię: federated enforcement, provenance, capability control, observability, deterministic execution boundary i ciągły RED/BLUE/PURPLE model expansion.
+
 - [`Agent silniejszy od modelu i pricing jako dźwignia topologii.pdf`](<Agent silniejszy od modelu i pricing jako dźwignia topologii.pdf>) — relacja możliwości agenta, topologii systemu i ekonomiki inferencji.
 - [`Anty‑wzorzec wobec SaaS w Twoim kodzie.pdf`](<Anty‑wzorzec wobec SaaS w Twoim kodzie.pdf>) — analiza kontrwzorca architektonicznego wobec SaaS.
 - [`Asymetria Twoich repozytoriów wobec ryzyk SaaS+AI w warunkach „Armageddon AI”.pdf`](<Asymetria Twoich repozytoriów wobec ryzyk SaaS+AI w warunkach „Armageddon AI”.pdf>) — scenariuszowa analiza asymetrii ryzyka.
@@ -116,6 +122,7 @@ Kod eksperymentalny rynku: [`MQL5Market/README.md`](MQL5Market/README.md).
 
 ## 7. Pakiety reprodukcyjne
 
+- [`../AI_Driven_Security_Research_Package_2026-08-18.zip`](../AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów do badania strategii bezpieczeństwa wobec AI-Driven Attacks; powiązany z raportem PDF i write-upem SMB.
 - [`KPRR_wersja_ostateczna_20000_testow.zip`](KPRR_wersja_ostateczna_20000_testow.zip) — pakiet wyników / testów KPRR.
 - [`oczy_kasyno_study_v1_with_writeup.zip`](oczy_kasyno_study_v1_with_writeup.zip) — pakiet badania wraz z write-upem i artefaktami.
 
