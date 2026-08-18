@@ -1,2 +1,29 @@
-/writeup/.idea/
-/.idea/
+# IDE / local environments
+.idea/
+.vscode/
+.venv/
+venv/
+
+# Python / tooling state
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets / local state
+.env
+.env.*
+!.env.sample
+*.log
+
+# Build / generated scratch
+build/
+dist/
+.tmp/
+tmp/
+
+# OS
+.DS_Store
+Thumbs.db
