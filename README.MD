@@ -12,12 +12,14 @@
 writeups/
 ├── README.MD                         ← jesteś tutaj
 ├── ai_security_model_boundary_strategy_writeup.md
+├── AI_Driven_Security_Research_Package_2026-08-18.zip
 ├── OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md
 ├── LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md
 ├── artykuły/
 │   └── README.md                     ← publikacje
 ├── badania/
 │   ├── README.md                     ← katalog raportów i pakietów
+│   ├── Strategia bezpieczeństwa wobec AI-Driven Attacks...pdf
 │   ├── conditional_decision_theory/
 │   │   └── README.md
 │   ├── MQL5Market/
@@ -42,6 +44,8 @@ writeups/
 | Szukasz | Zacznij tutaj |
 |---|---|
 | AI-Driven Attacks / Security Model Boundary | [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) |
+| pełne badanie Monte Carlo AI-Driven Security | [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) |
+| pakiet materiałów AI-Driven Security | [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) |
 | runtime security / observability / Linux | [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) |
 | multi-agent security / federated control / SOC | [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) |
 | publikacje | [`artykuły/README.md`](artykuły/README.md) |
@@ -70,6 +74,12 @@ A → B → C ≠ automatically safe
 ### [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md)
 
 Nadrzędny write-up strategii **Security Model Boundary**. Obejmuje falsyfikację hipotezy, Probabilistic–Deterministic Boundary, 1 000 000 realizacji Monte Carlo, porównanie 36 strategii, tail risk, adversarial stress testing, Security Observability Kernel, Security Boundary Buffer oraz GREEN / AMBER / RED autonomy lanes.
+
+Materiały źródłowe tej linii są spięte bezpośrednio:
+
+- [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełny raport badawczy;
+- [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów badawczych/reprodukcyjnych;
+- [`badania/README.md`](badania/README.md) — indeks badania w całym korpusie.
 
 ### [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md)
 
@@ -113,6 +123,12 @@ Pełny indeks: [`artykuły/README.md`](artykuły/README.md).
 Pełny katalog raportów: [`badania/README.md`](badania/README.md).
 
 Gałąź obejmuje raporty z obszarów: AI/SaaS/Cloud, Human–AI, ekonomika danych, perception/cognition, LOCI/9R–27D, OSINT/geopolityka, finanse, symulacje i pakiety reprodukcyjne.
+
+### AI-Driven Security — badanie i pakiet
+
+- [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełne badanie Monte Carlo i falsyfikacji strategii.
+- [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów powiązanych z badaniem.
+- [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) — wynik publikacyjny i architektoniczny badania.
 
 ### [`badania/conditional_decision_theory/README.md`](badania/conditional_decision_theory/README.md)
 
@@ -259,6 +275,10 @@ Przy analizach architektonicznych podobieństwo lub konwergencja nie są automat
 
 ```text
 ROOT README
+│
+├─ ai_security_model_boundary_strategy_writeup.md
+│  ├─ pełny raport PDF w badania/
+│  └─ AI_Driven_Security_Research_Package_2026-08-18.zip
 │
 ├─ konkretny write-up rootowy
 │
