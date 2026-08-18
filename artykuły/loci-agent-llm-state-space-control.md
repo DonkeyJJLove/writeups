@@ -44,49 +44,40 @@ Teza artykułu brzmi: **LOCI i agent są komplementarnymi warstwami sterowania, 
 
 Na poziomie pojedynczej generacji tekstowej stan można zdefiniować jako bieżący kontekst wraz z wygenerowanym prefiksem:
 
-$$
+```math
 s_t^{\mathrm{txt}} = \left(c_t, y_{\leq t}\right).
-$$
+```
 
 Następny token jest próbkowany z rozkładu modelu:
 
-$$
-y_{t+1} \sim p_\theta\!\left(\cdot \mid c_t, y_{\leq t}\right),
-$$
+```math
+y_{t+1} \sim p_\theta\!\left(\cdot \mid c_t, y_{\leq t}\right).
+```
 
 a stan tekstowy aktualizuje deterministyczna operacja dołączenia tokenu:
 
-$$
-s_{t+1}^{\mathrm{txt}}
-=
-\tau\!\left(s_t^{\mathrm{txt}}, y_{t+1}\right).
-$$
+```math
+s_{t+1}^{\mathrm{txt}} = \tau\!\left(s_t^{\mathrm{txt}}, y_{t+1}\right).
+```
 
 W tej skali stwierdzenie, że LLM dostarcza dynamiki przejścia, jest poprawną abstrakcją dla modelu autoregresyjnego opartego na architekturze transformera (Vaswani et al., 2017). Model wyznacza stochastyczne przejście pomiędzy kolejnymi stanami kontekstu tekstowego. Nie oznacza to jednak, że jego wewnętrzne reprezentacje zostały w tym modelu zidentyfikowane ani że stan tekstowy jest pełnym stanem obliczeniowym transformera. Jest to model wejście–wyjście wystarczający do opisu sekwencyjnej generacji.
 
 Po podłączeniu narzędzi skala zmienia się zasadniczo. Niech $x_t \in \mathcal X$ oznacza rzeczywisty stan systemu i jego otoczenia, $o_t \in \mathcal O$ obserwację dostępną agentowi, a $u_t \in \mathcal U$ działanie wykonawcze. Wtedy:
 
-$$
-o_t \sim O\!\left(\cdot \mid x_t\right),
-$$
-
-$$
-x_{t+1}
-\sim
-T\!\left(\cdot \mid x_t, u_t, w_t\right),
-$$
+```math
+\begin{aligned}
+o_t &\sim O\!\left(\cdot \mid x_t\right), \\
+x_{t+1} &\sim T\!\left(\cdot \mid x_t, u_t, w_t\right).
+\end{aligned}
+```
 
 gdzie $O$ jest modelem obserwacji, $T$ rzeczywistym jądrem przejścia środowiska, a $w_t$ reprezentuje zakłócenia i czynniki zewnętrzne. Wywołanie API, zapis pliku, odpowiedź serwera, zmiana uprawnień, błąd narzędzia albo decyzja człowieka należą do tej dynamiki. LLM może je przewidywać lub opisywać, lecz ich nie ustanawia.
 
 Na poziomie systemowym LLM lepiej modelować jako generator kandydatów na działanie:
 
-$$
-\tilde u_t
-\sim
-\pi_\theta\!\left(
-\cdot \mid \hat b_t, g_t, m_t
-\right),
-$$
+```math
+\tilde u_t \sim \pi_\theta\!\left(\cdot \mid \hat b_t, g_t, m_t\right),
+```
 
 gdzie $\hat b_t$ jest estymowanym stanem lub stanem przekonania, $g_t$ celem, a $m_t$ pamięcią roboczą. Kandydat $\tilde u_t$ nie powinien jeszcze być utożsamiany z działaniem $u_t$. Pomiędzy propozycją a wykonaniem musi istnieć warstwa walidacji, autoryzacji i ograniczeń.
 
@@ -98,95 +89,64 @@ W tym artykule nazwa LOCI odnosi się do technicznego podsystemu i proponowanej 
 
 Aktualny pipeline repozytorium realizuje przede wszystkim funkcję obserwacyjną:
 
-$$
-r_t
-\;\xrightarrow{\;F_{27}\;}\;
-\phi_t \in \mathbb R^{27},
-\qquad
-\Phi_{1:t}
-=
-\left[\phi_1,\ldots,\phi_t\right]
-\;\xrightarrow{\;R\;}\;
-\hat z_{1:t},
-$$
+```math
+\begin{aligned}
+r_t &\xrightarrow{\;F_{27}\;} \phi_t \in \mathbb R^{27}, \\
+\Phi_{1:t} &= \left[\phi_1,\ldots,\phi_t\right] \xrightarrow{\;R\;} \hat z_{1:t}.
+\end{aligned}
+```
 
 gdzie $r_t$ jest znormalizowanym rekordem Human–AI, $F_{27}$ buduje jego 27-wymiarową reprezentację cech, a $R$ tworzy projekcję sekwencji $\Phi_{1:t}$ używaną do analizy trajektorii. W obecnej implementacji cechy obejmują między innymi własności leksykalne, strukturalne i różnice pomiędzy kolejnymi rekordami. Otrzymana trajektoria $\hat z_{1:t}$ jest zatem **operacyjnym przybliżeniem stanu artefaktu**, a nie bezpośrednim pomiarem stanu latentnego modelu, intencji człowieka ani prawdziwości treści.
 
-Ta granica jest ważna. Standaryzacja cech i projekcja PCA mogą ujawnić zmianę trajektorii obserwowanych zapisów, ale same nie dowodzą istnienia określonej semantycznej rozmaitości. Jeżeli 9R ma być formalnym obiektem, a nie wyłącznie nazwą metaspace, potrzebna jest jawna mapa
+Ta granica jest ważna. Standaryzacja cech i projekcja PCA mogą ujawnić zmianę trajektorii obserwowanych zapisów, ale same nie dowodzą istnienia określonej semantycznej rozmaitości. Jeżeli 9R ma być formalnym obiektem, a nie wyłącznie nazwą metaspace, potrzebna jest jawna mapa:
 
-$$
+```math
 R_9 : \mathbb R^{27} \rightarrow \mathbb R^9,
-$$
+```
 
 wraz z definicją semantyki dziewięciu wymiarów, procedurą identyfikacji, testem stabilności i walidacją na danych niezależnych. Trójwymiarowa projekcja wizualizacyjna powinna pozostać warstwą prezentacji, a nie zastępować dowodu modelu 9R.
 
 Docelowa rola LOCI może być szersza. Niech:
 
-$$
-\left(
-\hat b_t,
-\Omega_t^x,
-\mathcal A_t,
-\rho_t
-\right)
+```math
+\left(\hat b_t,\Omega_t^x,\mathcal A_t,\rho_t\right)
 =
-\mathcal L\!\left(
-r_{\leq t},
-g_t,
-\kappa_t
-\right),
-$$
+\mathcal L\!\left(r_{\leq t},g_t,\kappa_t\right),
+```
 
 gdzie $\hat b_t$ jest estymacją stanu lub rozkładem przekonania, $\Omega_t^x$ zbiorem dopuszczalnych stanów, $\mathcal A_t$ stanowo zależnym zbiorem działań, $\rho_t$ miarą zaufania do estymacji, a $\kappa_t$ aktywnym kontraktem zadania: polityką, ograniczeniami bezpieczeństwa, budżetem, zakresem autorytetu i kryteriami zakończenia.
 
 Dopuszczalność trzeba rozdzielić na ograniczenia stanu i działania. Niech:
 
-$$
+```math
 \Omega_t^x
 =
-\left\{
-x\in\mathcal X:
-c_j^x(x;\kappa_t)\leq 0
-\;\text{dla}\;
-j=1,\ldots,m
-\right\}
-$$
+\left\{x\in\mathcal X : c_j^x(x;\kappa_t)\leq 0,\; j=1,\ldots,m\right\},
+```
 
 oznacza zbiór dopuszczalnych stanów, a:
 
-$$
+```math
 \mathcal A_t(x)
 =
-\left\{
-u\in\mathcal U:
-c_k^u(x,u;\kappa_t)\leq 0
-\;\text{dla}\;
-k=1,\ldots,n
-\right\}
-$$
+\left\{u\in\mathcal U : c_k^u(x,u;\kappa_t)\leq 0,\; k=1,\ldots,n\right\},
+```
 
 zbiór działań dozwolonych w stanie $x$. LOCI nie odpowiada wtedy na pytanie „jaka odpowiedź jest prawdziwa?”. Odpowiada na trzy węższe pytania: **co obecnie obserwujemy, jak pewna jest ta rekonstrukcja oraz jakie przejścia pozostają zgodne z kontraktem**.
 
 Przy częściowej obserwowalności nie wystarczy sprawdzić pojedynczego punktu. Bezpieczny zbiór działań powinien uwzględniać rozkład możliwych stanów, bieżące ograniczenia wykonawcze i prawdopodobny stan następny:
 
-$$
+```math
+\begin{aligned}
 \mathcal U_t^{\mathrm{safe}}(\hat b_t)
-=
-\left\{
-u\in\mathcal U:
-\Pr\!\left(
-x_t\in\Omega_t^x,
-\;
-u\in\mathcal A_t(x_t),
-\;
-x_{t+1}\in\Omega_{t+1}^x
-\mid
-\hat b_t,u
-\right)
-\geq
-1-\varepsilon_t
-\right\}.
-$$
+= \Bigl\{u\in\mathcal U :
+\Pr\bigl(&x_t\in\Omega_t^x,\;
+          u\in\mathcal A_t(x_t),\;
+          x_{t+1}\in\Omega_{t+1}^x \\
+        &\mid \hat b_t,u\bigr)
+\geq 1-\varepsilon_t\Bigr\}.
+\end{aligned}
+```
 
 Jeżeli zbiór jest pusty albo $\rho_t$ spada poniżej progu, poprawnym działaniem nie jest „najbardziej prawdopodobna kontynuacja”, lecz zatrzymanie, pozyskanie dodatkowej obserwacji, eskalacja albo przekazanie decyzji człowiekowi.
 
@@ -196,84 +156,48 @@ Redukowanie agenta do samej polityki jest użyteczne matematycznie, ale niewysta
 
 Pętla sterowania może mieć następującą postać:
 
-$$
+```math
+\begin{aligned}
 \hat b_t
-=
-\mathcal B\!\left(
-\hat b_{t-1},o_t,u_{t-1}
-\right),
-$$
-
-$$
-\left(
-\Omega_t^x,
-\mathcal A_t
-\right)
-=
-\mathcal C\!\left(
-\hat b_t,
-g_t,
-\kappa_t
-\right),
-$$
-
-$$
+&= \mathcal B\!\left(\hat b_{t-1},o_t,u_{t-1}\right), \\
+\left(\Omega_t^x,\mathcal A_t\right)
+&= \mathcal C\!\left(\hat b_t,g_t,\kappa_t\right), \\
 \tilde u_t
-\sim
-\pi_\theta\!\left(
-\cdot\mid\hat b_t,g_t,m_t
-\right),
-$$
-
-$$
+&\sim \pi_\theta\!\left(\cdot\mid\hat b_t,g_t,m_t\right), \\
 u_t
-=
-\operatorname{Shield}\!\left(
+&= \operatorname{Shield}\!\left(
 \tilde u_t;
 \mathcal U_t^{\mathrm{safe}}(\hat b_t),
 \rho_t,
 \kappa_t
-\right),
-$$
-
-$$
+\right), \\
 x_{t+1}
-\sim
-T\!\left(
-\cdot\mid x_t,u_t,w_t
-\right).
-$$
+&\sim T\!\left(\cdot\mid x_t,u_t,w_t\right).
+\end{aligned}
+```
 
 Operator `Shield` nie musi być jednym algorytmem. Może składać się z walidacji typów i argumentów, kontroli uprawnień, limitów kosztu, reguł domenowych, potwierdzenia człowieka, symulacji skutku, izolacji wykonania (sandboxingu), mechanizmu wycofania operacji (rollback) oraz blokady działania przy utracie obserwowalności. Ważne jest to, że egzekucja odbywa się poza swobodną semantyką promptu.
 
 Problem optymalizacji można zapisać jako ograniczony proces decyzyjny:
 
-$$
+```math
 \pi^\star
 \in
 \arg\min_{\pi\in\Pi}
-\mathbb E_\pi
-\left[
-\sum_{t=0}^{T}
-\gamma^t\,
-\ell(x_t,u_t)
+\mathbb E_\pi\!\left[
+\sum_{t=0}^{T}\gamma^t\,\ell(x_t,u_t)
 \right],
-$$
+```
 
 przy ograniczeniach:
 
-$$
-\mathbb E_\pi
-\left[
-\sum_{t=0}^{T}
-\gamma^t\,
-d_k(x_t,u_t)
+```math
+\mathbb E_\pi\!\left[
+\sum_{t=0}^{T}\gamma^t\,d_k(x_t,u_t)
 \right]
-\leq
-D_k,
-\qquad
-k=1,\ldots,K,
-$$
+\leq D_k,
+\qquad k=1,\ldots,K,
+```
 
 oraz przy warunku, że wykonanie nie przekracza jawnego zakresu autorytetu. Funkcja $\ell$ opisuje koszt lub błąd zadania, $d_k$ koszty ograniczeń, a $D_k$ ich budżety. Taki zapis pozwala rozdzielić skuteczność od bezpieczeństwa: polityka może optymalizować wynik, ale nie może „zapłacić” naruszeniem granicy autoryzacji, jeżeli ta granica jest twarda.
 
@@ -283,21 +207,14 @@ Nie każde lokalnie dopuszczalne działanie zachowuje dopuszczalność w przysz�
 
 Najkrótsza poprawna synteza wygląda następująco:
 
-$$
-\boxed{\text{LOCI: obserwuj, rekonstruuj i ogranicz}}
-$$
-
-$$
-\boxed{\text{agent: wybieraj, koordynuj i domykaj pętlę}}
-$$
-
-$$
-\boxed{\text{LLM: generuj rozkład kandydatów}}
-$$
-
-$$
+```math
+\begin{aligned}
+\boxed{\text{LOCI: obserwuj, rekonstruuj i ogranicz}} \\
+\boxed{\text{agent: wybieraj, koordynuj i domykaj pętlę}} \\
+\boxed{\text{LLM: generuj rozkład kandydatów}} \\
 \boxed{\text{środowisko: realizuj rzeczywiste przejścia}}
-$$
+\end{aligned}
+```
 
 LOCI i agent należą do wspólnej rodziny mechanizmów sterujących, ale nie są wymienne. LOCI kształtuje przestrzeń rozpoznanych i dopuszczalnych stanów oraz działań. Agent wybiera trajektorię w tej przestrzeni, aktualizuje ją po obserwacji skutku i decyduje o zakończeniu. LLM dostarcza elastyczności generatywnej, ale nie dostarcza gwarancji. Środowisko może zareagować inaczej, niż przewidywał model.
 
@@ -307,7 +224,7 @@ W tym sensie pierwotna intuicja pozostaje prawdziwa po doprecyzowaniu: LOCI ogra
 
 Nie każdą halucynację można wyjaśnić „zbyt szerokim zbiorem stanów dopuszczalnych”. Halucynacja może wynikać z niepewności modelu, braków danych, błędnego retrievalu, niewłaściwego dekodowania, konfliktu instrukcji albo błędnej reprezentacji zadania. Model sterowania jest użyteczny wtedy, gdy rozdziela źródła awarii zamiast sprowadzać je do jednej przyczyny.
 
-**Błąd obserwacji lub estymacji** występuje wtedy, gdy agent buduje niepoprawny obraz stanu $b_t$. Może to wynikać z niepełnych danych, zatrutego kontekstu, błędnej pamięci albo mylącego wyniku narzędzia.
+**Błąd obserwacji lub estymacji** występuje wtedy, gdy agent buduje niepoprawny obraz stanu $\hat b_t$. Może to wynikać z niepełnych danych, zatrutego kontekstu, błędnej pamięci albo mylącego wyniku narzędzia.
 
 **Błąd specyfikacji** występuje wtedy, gdy $\Omega_t^x$ albo $\mathcal A_t$ kodują niewłaściwe wymagania. System może konsekwentnie realizować źle zdefiniowany cel i pozostawać formalnie zgodny z błędnym kontraktem.
 
@@ -325,40 +242,32 @@ Ten sam schemat można przenieść z systemu agentowego na tekst. Przez **geomet
 
 Niech $\mathcal Z$ będzie przestrzenią możliwych interpretacji, a $q_t(z)$ idealizowanym rozkładem przekonań odbiorcy po przeczytaniu prefiksu $x_{\leq t}$:
 
-$$
+```math
 q_t(z)
 =
-P\!\left(
-z\mid x_{\leq t},K
-\right),
-\qquad
-z\in\mathcal Z,
-$$
+P\!\left(z\mid x_{\leq t},K\right),
+\qquad z\in\mathcal Z,
+```
 
 gdzie $K$ oznacza wiedzę uprzednią odbiorcy. Kolejny segment tekstu aktualizuje rozkład:
 
-$$
+```math
 q_{t+1}(z)
 \propto
-q_t(z)\,
-P\!\left(
-x_{t+1}\mid z,K
-\right).
-$$
+q_t(z)\,P\!\left(x_{t+1}\mid z,K\right).
+```
 
 Nie jest to twierdzenie, że autor zna rzeczywisty rozkład a posteriori czytelnika. Jest to model wyjaśniający, który pozwala mówić precyzyjnie o eliminowaniu odczytań, utrzymywaniu pojęć i korygowaniu dryfu.
 
 Niech $M^\star\subseteq\mathcal Z$ oznacza zbiór interpretacji zgodnych z zamierzoną strukturą pojęciową. Celem tekstu technicznego nie powinno być samo zmniejszenie entropii $q_t$. Niska entropia może oznaczać również bardzo pewne, lecz błędne zrozumienie. Lepszym celem jest zwiększanie masy prawdopodobieństwa na $M^\star$, przy kontroli niepożądanej wieloznaczności i kosztu poznawczego:
 
-$$
+```math
 \mathcal J_{\mathrm{text}}
 =
 -\log q_T(M^\star)
-+
-\lambda A_T
-+
-\mu L_T,
-$$
++\lambda A_T
++\mu L_T,
+```
 
 gdzie $A_T$ reprezentuje resztkową wieloznaczność poza obszarem docelowym, a $L_T$ koszt utrzymania i integrowania struktury przez odbiorcę. Wartości tych składników nie są jeszcze mierzone w tym artykule; równanie definiuje kierunek testowalnego modelu.
 
