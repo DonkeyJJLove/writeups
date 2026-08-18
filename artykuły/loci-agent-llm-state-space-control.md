@@ -1,100 +1,408 @@
-# LOCI i Agent jako warstwy sterowania nad dynamiką LLM: formalny model przestrzeni stanów i geometryka pisania
+# LOCI–Agent–LLM: formalny model sterowania w przestrzeni stanów i geometryka pisania
 
-Jeżeli problem opisać w reżimie rygorystycznym, to duży model językowy nie powinien być traktowany przede wszystkim jako generator tekstu, lecz jako element dynamiki działającej w przestrzeni stanów. W takim ujęciu sensowny opis systemu wymaga rozdzielenia trzech warstw. Pierwsza warstwa odpowiada za samą dynamikę przejść, czyli za to, jak system może zmieniać stan pod wpływem kontekstu i działań. Druga warstwa jest warstwą dopuszczalności i określa, jakie stany są w danym zadaniu w ogóle akceptowalne. Trzecia warstwa jest warstwą polityki i wybiera trajektorię wśród stanów dopuszczalnych. Teza tego tekstu jest następująca: formalnie reinterpretowane LOCI pełni rolę warstwy dopuszczalności, agent pełni rolę warstwy polityki, a LLM dostarcza warstwy dynamiki. Wspólna rola LOCI i agenta nie polega więc na tym, że są tym samym mechanizmem, lecz na tym, że oba domykają sterowanie nad procesem generacji.
+## Abstrakt
 
-Aby to zapisać precyzyjnie, wprowadźmy rozszerzoną przestrzeń stanów $\mathcal{S}$. Stan $s_t \in \mathcal{S}$ należy rozumieć szeroko: może on obejmować reprezentację latentną modelu, bieżący kontekst tekstowy, pamięć roboczą, pamięć zewnętrzną, wyniki wywołań narzędzi oraz lokalny opis celu zadania. Nie ma znaczenia, czy te składniki są jawne, ukryte czy częściowo obserwowalne; istotne jest jedynie to, że system w chwili $t$ znajduje się w pewnym stanie, a kolejne operacje przenoszą go do stanu następnego. W takim formalizmie LLM staje się szczególnym przypadkiem stochastycznego operatora przejścia:
+Duży model językowy nie jest agentem, agent nie jest środowiskiem wykonawczym, a obserwacja trajektorii nie jest jeszcze sterowaniem. Rozróżnienie tych poziomów jest konieczne, jeżeli system LLM ma być opisywany językiem teorii sterowania bez zamiany użytecznej analogii w pozorną formalizację. W artykule proponowany jest model zamkniętej pętli, w którym LLM generuje rozkład kandydatów na kolejne tokeny lub działania, agent realizuje politykę i koordynuje wykonanie, środowisko odpowiada za rzeczywistą dynamikę przejść, natomiast LOCI pełni dwie odrębne funkcje: rekonstruuje obserwowalny stan procesu oraz buduje warstwę dopuszczalności, przez którą muszą przejść działania.
+
+Kluczowa korekta względem uproszczonego schematu „LLM = dynamika, LOCI = ograniczenie, agent = polityka” polega na rozdzieleniu dwóch skal. Na poziomie samej generacji tekstu LLM rzeczywiście można modelować jako stochastyczny operator przejścia po stanach kontekstu. Na poziomie systemu agentowego LLM nie jest jednak całą dynamiką: jest elementem polityki lub generatorem propozycji, podczas gdy przejście stanu realizują narzędzia, system operacyjny, API, użytkownik i otoczenie. Dopiero po tym rozdzieleniu LOCI, agent i LLM można połączyć w formalnie spójny układ obserwacji, ograniczeń, decyzji i działania.
+
+Druga część artykułu przenosi ten sam aparat na proces pisania. „Geometryka pisania” oznacza tu projektowanie tekstu jako sterowania rozkładem możliwych interpretacji odbiorcy. Nie chodzi o minimalizację niepewności za wszelką cenę, lecz o zwiększanie prawdopodobieństwa rekonstrukcji zamierzonej struktury pojęciowej bez przedwczesnego zamykania sensu i bez przeciążania odbiorcy.
+
+## Słowa kluczowe
+
+LLM, agent, LOCI, przestrzeń stanów, POMDP, constrained MDP, obserwowalność, warstwa dopuszczalności, sterowanie, bezpieczeństwo agentowe, geometryka pisania.
+
+## Status twierdzeń
+
+**[FACT]** Formalizmy przestrzeni stanów, POMDP, polityki, ograniczeń i sprzężenia zwrotnego pochodzą z teorii sterowania, badań operacyjnych i uczenia ze wzmocnieniem (Kaelbling, Littman i Cassandra, 1998; Altman, 1999; Aubin, 1991).
+
+**[MODEL]** Przypisanie LOCI roli obserwatora i konstruktora zbioru dopuszczalności jest autorskim modelem architektonicznym. Jest ono propozycją interpretacyjną, a nie ustalonym znaczeniem terminu w literaturze.
+
+**[IMPLEMENTATION]** Aktualny podsystem LOCI w repozytorium przetwarza znormalizowane artefakty Human–AI, buduje wektor cech i analizuje trajektorię obserwowalnych zapisów. Nie odczytuje bezpośrednio stanów latentnych transformera i nie jest jeszcze samodzielnym mechanizmem egzekwowania ograniczeń.
+
+**[HYPOTHESIS]** Teza, że warstwa LOCI poprawia sterowalność agenta lub stabilność interpretacji tekstu, wymaga eksperymentu porównawczego. Formalna zgodność modelu nie jest dowodem skuteczności empirycznej.
+
+## 1. Problem: cztery obiekty, których nie wolno utożsamiać
+
+LLM, agent, LOCI i środowisko wykonawcze mogą uczestniczyć w jednej pętli, lecz nie są tym samym rodzajem obiektu. LLM wyznacza rozkład prawdopodobieństwa kolejnych symboli albo kandydatów na działania. Agent utrzymuje cel, pamięć, plan, reguły zakończenia, wybór narzędzi i sprzężenie zwrotne. LOCI obserwuje ślady procesu, rekonstruuje jego operacyjny stan i może wyznaczać obszar dopuszczalności. Środowisko wykonuje działanie i wytwarza nowy stan, którego model nie kontroluje bezpośrednio.
+
+Najbardziej użyteczny schemat nie ma więc postaci liniowej „prompt → model → odpowiedź”, lecz postać zamkniętej pętli:
+
+```text
+obserwacja
+→ estymacja stanu
+→ wyznaczenie ograniczeń
+→ propozycja działania
+→ walidacja i autoryzacja
+→ wykonanie
+→ nowa obserwacja
+```
+
+Teza artykułu brzmi: **LOCI i agent są komplementarnymi warstwami sterowania, ale sterują czym innym**. LOCI odpowiada za to, co system uważa za obserwowany stan i jakie stany lub działania uznaje za dopuszczalne. Agent odpowiada za wybór i koordynację trajektorii. LLM dostarcza stochastycznych propozycji. Rzeczywiste przejście stanu pozostaje własnością całego układu wraz ze środowiskiem.
+
+## 2. Dwie skale dynamiki: generacja tekstu i działanie w świecie
+
+Na poziomie pojedynczej generacji tekstowej stan można zdefiniować jako bieżący kontekst wraz z wygenerowanym prefiksem:
+
 $$
-s_{t+1} \sim P_\theta(\cdot \mid s_t, a_t).
+s_t^{\mathrm{txt}} = \left(c_t, y_{\leq t}\right).
 $$
 
-W najprostszym przypadku działaniem $a_t$ jest emisja kolejnego tokenu i wtedy otrzymujemy standardowy zapis generacji sekwencyjnej:
-$$
-y_{t+1} \sim p_\theta(\cdot \mid y_{\le t}, u_t),
-$$
-gdzie $y_{\le t}$ oznacza dotychczas wygenerowany ciąg, a $u_t$ obejmuje prompt, instrukcje systemowe, pamięć i kontekst. W architekturze agentowej $a_t$ nie musi jednak oznaczać wyłącznie tokenu. Może oznaczać także wybór narzędzia, zapytanie do pamięci, zmianę planu, aktualizację celu lokalnego albo decyzję o samokorekcie. Z punktu widzenia teorii sterowania nie jest to zmiana jakościowa, lecz poszerzenie alfabetu działań.
+Następny token jest próbkowany z rozkładu modelu:
 
-Na tym tle LOCI można zdefiniować nie jako technikę pamięci, lecz jako operator dopuszczalności. Niech $C_t : \mathcal{S} \to {0,1}$ będzie funkcją ograniczeń aktywnych w chwili $t$. Wtedy LOCI można modelować jako operator zbiorowowartościowy:
 $$
-\mathcal{L}_{C_t}(s_t) = \Omega_t = { s \in \mathcal{S} : C_t(s)=1 }.
+y_{t+1} \sim p_\theta\!\left(\cdot \mid c_t, y_{\leq t}\right),
 $$
-Zbiór $\Omega_t$ jest zbiorem stanów dopuszczalnych. W tym sensie LOCI nie odpowiada na pytanie, jaka jest poprawna odpowiedź, lecz określa, w jakim regionie przestrzeni stanów taka odpowiedź w ogóle może się znajdować. Jest to różnica fundamentalna. LOCI nie jest operatorem wyboru pojedynczego rozwiązania, lecz operatorem redukcji przestrzeni możliwych rozwiązań.
 
-Ta reinterpretacja jest kluczowa, ponieważ pozwala odejść od utożsamienia LOCI z pamięcią obrazową. Historycznie metoda loci była techniką mnemoniczną, lecz w formalnym modelu interesuje nas nie jej materiał poznawczy, ale jej funkcja systemowa. Tą funkcją jest narzucenie geometrii dopuszczalności. Jeżeli dany problem dopuszcza wiele potencjalnych trajektorii, operator LOCI nie wybiera jeszcze jednej z nich; ustanawia natomiast granicę, poza którą trajektorie przestają być zgodne z warunkami zadania. W języku systemów dynamicznych LOCI jest więc operatorem ograniczeń działającym na przestrzeni stanów.
+a stan tekstowy aktualizuje deterministyczna operacja dołączenia tokenu:
 
-Agent pełni inną rolę. Nie definiuje zbioru stanów dopuszczalnych, lecz wybiera trajektorię wewnątrz tego zbioru. Formalnie można to zapisać przez politykę
 $$
-a_t \sim \pi(\cdot \mid s_t, \Omega_t),
+s_{t+1}^{\mathrm{txt}}
+=
+\tau\!\left(s_t^{\mathrm{txt}}, y_{t+1}\right).
 $$
-albo równoważnie przez operator deterministyczny
-$$
-a_t = \pi(s_t, \Omega_t).
-$$
-Polityka $\pi$ może być bardzo prosta albo bardzo złożona, może być zachłanna, planująca, wieloetapowa, korzystająca z pamięci zewnętrznej i sprzężenia zwrotnego. Niezależnie jednak od stopnia komplikacji jej funkcja pozostaje ta sama: wybrać działanie, które przesunie system do kolejnego stanu. Agent jest zatem operatorem trajektorii. Nie tworzy geometrii przestrzeni, lecz steruje ruchem w jej obrębie.
 
-Na tym poziomie analogia między LOCI a agentem staje się ścisła, ale tylko wtedy, gdy nie uprości się jej do błędnej tezy o pełnej identyczności. Oba obiekty należą do tej samej rodziny warstw sterujących działających nad surową dynamiką modelu, lecz pełnią różne funkcje. LOCI ogranicza zbiór możliwych stanów, agent ogranicza zbiór możliwych przejść. Pierwszy działa na geometrię problemu, drugi na jego dynamikę. Pierwszy odpowiada na pytanie, gdzie wolno się znaleźć, drugi odpowiada na pytanie, jak się przemieszczać. Wspólna rola obu polega na redukcji niekontrolowanej swobody dynamiki LLM.
+W tej skali stwierdzenie, że LLM dostarcza dynamiki przejścia, jest poprawną abstrakcją dla modelu autoregresyjnego opartego na architekturze transformera (Vaswani et al., 2017). Model wyznacza stochastyczne przejście pomiędzy kolejnymi stanami kontekstu tekstowego. Nie oznacza to jednak, że jego wewnętrzne reprezentacje zostały w tym modelu zidentyfikowane ani że stan tekstowy jest pełnym stanem obliczeniowym transformera. Jest to model wejście–wyjście wystarczający do opisu sekwencyjnej generacji.
 
-Cały układ można więc zapisać jako proces sterowania z ograniczeniami:
+Po podłączeniu narzędzi skala zmienia się zasadniczo. Niech $x_t \in \mathcal X$ oznacza rzeczywisty stan systemu i jego otoczenia, $o_t \in \mathcal O$ obserwację dostępną agentowi, a $u_t \in \mathcal U$ działanie wykonawcze. Wtedy:
+
 $$
-\Omega_t = { s \in \mathcal{S} : C_t(s)=1 },
+o_t \sim O\!\left(\cdot \mid x_t\right),
 $$
+
 $$
-a_t \sim \pi(\cdot \mid s_t, \Omega_t),
+x_{t+1}
+\sim
+T\!\left(\cdot \mid x_t, u_t, w_t\right),
 $$
+
+gdzie $O$ jest modelem obserwacji, $T$ rzeczywistym jądrem przejścia środowiska, a $w_t$ reprezentuje zakłócenia i czynniki zewnętrzne. Wywołanie API, zapis pliku, odpowiedź serwera, zmiana uprawnień, błąd narzędzia albo decyzja człowieka należą do tej dynamiki. LLM może je przewidywać lub opisywać, lecz ich nie ustanawia.
+
+Na poziomie systemowym LLM lepiej modelować jako generator kandydatów na działanie:
+
 $$
-s_{t+1} \sim P_\theta(\cdot \mid s_t, a_t),
+\tilde u_t
+\sim
+\pi_\theta\!\left(
+\cdot \mid \hat b_t, g_t, m_t
+\right),
 $$
-przy czym dla sensownego działania wymagamy, aby trajektoria pozostawała zgodna z dopuszczalnością, czyli aby kolejne stany nie opuszczały odpowiedniego zbioru $\Omega_t$ lub jego aktualizacji w czasie. Jeżeli dodatkowo wprowadzimy funkcję kosztu $\ell(s_t,a_t)$, cały problem można opisać jako zadanie stochastycznego sterowania z ograniczeniami:
+
+gdzie $\hat b_t$ jest estymowanym stanem lub stanem przekonania, $g_t$ celem, a $m_t$ pamięcią roboczą. Kandydat $\tilde u_t$ nie powinien jeszcze być utożsamiany z działaniem $u_t$. Pomiędzy propozycją a wykonaniem musi istnieć warstwa walidacji, autoryzacji i ograniczeń.
+
+To rozróżnienie usuwa podstawowy błąd kategorialny. **W generatorze tekstowym LLM może być jądrem przejścia. W systemie agentowym LLM jest częścią kontrolera, a nie całym kontrolowanym światem.**
+
+## 3. LOCI jako obserwator stanu i konstruktor dopuszczalności
+
+W tym artykule nazwa LOCI odnosi się do technicznego podsystemu i proponowanej warstwy architektonicznej repozytorium. Nie jest twierdzeniem, że klasyczna metoda loci została zaimplementowana w parametrach transformera. Ewentualne podobieństwo jest funkcjonalne: chodzi o organizowanie przestrzeni śladów, stanów i relacji, nie o identyczność mechanizmu poznawczego.
+
+Aktualny pipeline repozytorium realizuje przede wszystkim funkcję obserwacyjną:
+
 $$
-\min_{\pi}; \mathbb{E}\left[\sum_{t=0}^{T} \ell(s_t,a_t)\right]
-\quad \text{przy warunku} \quad s_t \in \Omega_t ;; \text{dla wszystkich } t.
+r_t
+\;\xrightarrow{\;F_{27}\;}\;
+\phi_t \in \mathbb R^{27},
+\qquad
+\Phi_{1:t}
+=
+\left[\phi_1,\ldots,\phi_t\right]
+\;\xrightarrow{\;R\;}\;
+\hat z_{1:t},
 $$
-W tym zapisie relacja między komponentami staje się jednoznaczna. LLM dostarcza modelu przejścia $P_\theta$, LOCI dostarcza zbiorów dopuszczalności $\Omega_t$, a agent dostarcza polityki $\pi$.
 
-Takie ujęcie pozwala precyzyjnie zinterpretować architektury agentowe budowane nad LLM. System prompt, lokalne instrukcje, retrieval, pamięć kontekstowa, ograniczenia domenowe i reguły walidacji pełnią funkcję składników operatora $C_t$, a więc współtworzą LOCI w sensie formalnym. Z kolei planowanie, wybór narzędzi, dekompozycja zadania, samokontrola odpowiedzi i korekta wieloetapowa realizują politykę $\pi$, a więc funkcję agenta. W tym sensie agent nie jest po prostu „LLM z narzędziami”. Agent jest warstwą polityki osadzoną nad dynamiką LLM i działającą w przestrzeni ograniczonej przez warstwę dopuszczalności.
+gdzie $r_t$ jest znormalizowanym rekordem Human–AI, $F_{27}$ buduje jego 27-wymiarową reprezentację cech, a $R$ tworzy projekcję sekwencji $\Phi_{1:t}$ używaną do analizy trajektorii. W obecnej implementacji cechy obejmują między innymi własności leksykalne, strukturalne i różnice pomiędzy kolejnymi rekordami. Otrzymana trajektoria $\hat z_{1:t}$ jest zatem **operacyjnym przybliżeniem stanu artefaktu**, a nie bezpośrednim pomiarem stanu latentnego modelu, intencji człowieka ani prawdziwości treści.
 
-To właśnie tutaj ujawnia się wspólna rola LOCI i agenta względem LLM. Obie warstwy są mechanizmami sterowania nad dynamiką modelu. LLM sam w sobie dostarcza jedynie rozkładu przejść, czyli zdolności do poruszania się w przestrzeni reprezentacji. Nie daje jednak gwarancji, że ruch ten będzie zgodny z celem, poprawnością zadania albo stabilnością procesu. LOCI redukuje przestrzeń do obszaru zgodnego z warunkami. Agent wybiera trajektorię, która ma sens w obrębie tego obszaru. Razem przekształcają nieukierunkowaną dynamikę generatywną w układ sterowany.
+Ta granica jest ważna. Standaryzacja cech i projekcja PCA mogą ujawnić zmianę trajektorii obserwowanych zapisów, ale same nie dowodzą istnienia określonej semantycznej rozmaitości. Jeżeli 9R ma być formalnym obiektem, a nie wyłącznie nazwą metaspace, potrzebna jest jawna mapa
 
-W praktyce oznacza to, że wiele problemów obserwowanych w systemach LLM można opisać nie jako „błędy generacji” w wąskim sensie, lecz jako błędy sterowania. Jeżeli warstwa dopuszczalności jest zbyt słaba, system otrzymuje zbyt szeroki region stanów akceptowalnych i może wejść w obszary semantycznie niepożądane; w praktyce można to interpretować jako jedną z dróg prowadzących do halucynacji. Jeżeli warstwa polityki jest zbyt słaba, system może pozostawać w zbiorze formalnie dopuszczalnym, ale tracić kierunek rozwiązania; w praktyce objawia się to dryfem, redundancją albo brakiem skutecznego domknięcia zadania. Nie są to więc dwa odrębne zjawiska, lecz dwa różne tryby utraty sterowalności.
-
-Jednocześnie trzeba zachować ostrożność metodologiczną. Teza przedstawiona w tym tekście nie oznacza, że klasyczna metoda loci jest dosłownie zaimplementowana w parametrach transformera, ani że ludzka praca poznawcza i architektura LLM są identyczne na poziomie mechanizmów realizacyjnych. Teza jest węższa i bardziej rygorystyczna: oba przypadki można modelować tym samym językiem teorii systemów jako operowanie na przestrzeni stanów pod ograniczeniami i z polityką sterowania. Jest to analogia strukturalna, nie ontologiczna.
-
-Ten sam model można jednak rozszerzyć jeszcze o jeden poziom analizy: nie tylko o to, jak działa LLM, LOCI i agent, lecz także o to, jak działa sam tekst, który te relacje opisuje. Jeżeli potraktować pisanie jako proces sterowania stanem interpretacyjnym odbiorcy, to tekst nie jest zwykłym nośnikiem treści, lecz sekwencją operacji ograniczających i prowadzących ruch po przestrzeni możliwych interpretacji. W tym sensie tekst staje się narzędziem sterowania trajektorią rozumienia.
-
-Aby to opisać rygorystycznie, wprowadźmy przestrzeń interpretacji $\mathcal{Z}$. Po przeczytaniu prefiksu tekstu $x_{\le t}$ odbiorca — ludzki lub maszynowy — znajduje się nie w jednym punkcie, lecz w rozkładzie możliwych interpretacji
 $$
-q_t(z) = P(z \mid x_{\le t}), \qquad z \in \mathcal{Z}.
+R_9 : \mathbb R^{27} \rightarrow \mathbb R^9,
 $$
-Celem tekstu naukowego nie jest więc jedynie wytworzenie kolejnych zdań, lecz koncentracja rozkładu $q_t$ wokół docelowej rozmaitości pojęciowej $M^* \subseteq \mathcal{Z}$, odpowiadającej zamierzonej strukturze znaczenia. W tym modelu tekst jest skuteczny wtedy, gdy zmniejsza entropię interpretacji alternatywnych, a zarazem utrzymuje trajektorię rozumienia blisko $M^*$.
 
-W analizowanej próbce pierwszą widoczną własnością jest systematyczne użycie definicji kontrastowej. Powracający wzorzec „nie X, lecz Y” nie pełni wyłącznie funkcji retorycznej. Jest operatorem projekcji. Gdy tekst stwierdza, że LLM nie jest przede wszystkim maszyną do pisania, lecz układem poruszającym się w przestrzeni stanów, to nie tylko dodaje nową treść, ale jednocześnie usuwa z przestrzeni interpretacji całą klasę konkurencyjnych odczytań. Analogicznie dzieje się wtedy, gdy LOCI przestaje być techniką pamięci, a staje się operatorem przestrzeni, albo gdy agent przestaje być botem, a staje się operatorem trajektorii. Formalnie można to zapisać jako krok zawężający zbiór dopuszczalnych interpretacji:
+wraz z definicją semantyki dziewięciu wymiarów, procedurą identyfikacji, testem stabilności i walidacją na danych niezależnych. Trójwymiarowa projekcja wizualizacyjna powinna pozostać warstwą prezentacji, a nie zastępować dowodu modelu 9R.
+
+Docelowa rola LOCI może być szersza. Niech:
+
 $$
-\Omega_{t+1} = \Omega_t \cap B_t \setminus A_t,
+\left(
+\hat b_t,
+\Omega_t^x,
+\mathcal A_t,
+\rho_t
+\right)
+=
+\mathcal L\!\left(
+r_{\leq t},
+g_t,
+\kappa_t
+\right),
 $$
-gdzie $A_t$ oznacza rodzinę interpretacji wykluczonych, a $B_t$ rodzinę interpretacji afirmowanych. Taki ruch ma wysoką wartość sterującą, ponieważ nie tylko rozszerza opis, ale aktywnie redukuje błędne gałęzie semantyczne.
 
-Drugą własnością jest stabilizacja układu współrzędnych. W tekście nie występuje swobodna gra synonimów typowa dla stylu literackiego. Zamiast tego stale powracają te same osie pojęciowe: przestrzeń, ograniczenia, trajektoria, sterowanie, dynamika. Z punktu widzenia geometrii interpretacji nie jest to redundancja, lecz utrzymanie stałej bazy. Terminy nie służą tu ozdobności, lecz pełnią rolę współrzędnych. Dzięki temu nowe zdania nie muszą za każdym razem odtwarzać geometrii od początku, lecz mogą być rzutowane na już ustalony układ. Właśnie dlatego tekst zachowuje spójność mimo dużej gęstości pojęciowej. Kosztem jest mniejsza różnorodność leksykalna, ale zysk jest większy w kontekście naukowym, ponieważ maleje dryf interpretacyjny.
+gdzie $\hat b_t$ jest estymacją stanu lub rozkładem przekonania, $\Omega_t^x$ zbiorem dopuszczalnych stanów, $\mathcal A_t$ stanowo zależnym zbiorem działań, $\rho_t$ miarą zaufania do estymacji, a $\kappa_t$ aktywnym kontraktem zadania: polityką, ograniczeniami bezpieczeństwa, budżetem, zakresem autorytetu i kryteriami zakończenia.
 
-Trzecią własnością jest rozdzielenie ról komponentów. LLM, LOCI i agent nie są opisywane jako luźno powiązane metafory, lecz jako trzy różne funkcje systemowe. LLM dostarcza dynamiki przejść, LOCI dostarcza dopuszczalności, a agent dostarcza polityki. To rozdzielenie ma znaczenie geometryczne, ponieważ system pojęciowy zostaje zfaktoryzowany na prawie ortogonalne kierunki. Gdyby te role mieszały się ze sobą, kolejne zdania przesuwałyby interpretację jednocześnie w wielu nieskorelowanych osiach, zwiększając krzywiznę trajektorii i ryzyko utraty kontroli. W badanej próbce dzieje się odwrotnie: każdy główny termin ma stałą funkcję, a kolejne akapity jedynie doprecyzowują relacje między nimi. W sensie operacyjnym jest to redukcja splątania pojęciowego.
+Dopuszczalność trzeba rozdzielić na ograniczenia stanu i działania. Niech:
 
-Czwartą własnością jest cykliczne domykanie niezmiennika. Ta sama teza powraca wielokrotnie w różnych skalach: intuicyjnej, formalnej i operacyjnej. Nie jest to zwykłe powtórzenie. Jest to okresowa reprojekcja stanu interpretacji na tę samą strukturę docelową. Odbiorca nie zostaje pozostawiony z lokalnym przyrostem treści, lecz co pewien czas zostaje ponownie ustawiony względem głównego niezmiennika, którym jest relacja: LLM jako dynamika, LOCI jako ograniczenie, agent jako polityka. Operację tę można modelować jako projekcję
 $$
-q_t \leftarrow \Pi_{M^*}(q_t),
+\Omega_t^x
+=
+\left\{
+x\in\mathcal X:
+c_j^x(x;\kappa_t)\leq 0
+\;\text{dla}\;
+j=1,\ldots,m
+\right\}
 $$
-gdzie $\Pi_{M^*}$ oznacza operator przywracający rozkład interpretacji do pobliża rozmaitości docelowej. Dzięki temu błędy lokalne nie kumulują się łatwo w błąd globalny.
 
-Z tych obserwacji wynika roboczy model tego systemu pisania. Każdy kolejny segment tekstu wykonuje dwie operacje jednocześnie. Najpierw rozwija strukturę relacyjną problemu, czyli przesuwa interpretację do przodu. Następnie natychmiast nakłada ograniczenie, które nie pozwala tej interpretacji odpłynąć do konkurencyjnych obszarów semantycznych. W zapisie operatorowym można to ująć jako
+oznacza zbiór dopuszczalnych stanów, a:
+
 $$
-q_{t+1} \propto \Pi_{\Omega_t}\big(T_t(q_t)\big),
+\mathcal A_t(x)
+=
+\left\{
+u\in\mathcal U:
+c_k^u(x,u;\kappa_t)\leq 0
+\;\text{dla}\;
+k=1,\ldots,n
+\right\}
 $$
-gdzie $T_t$ jest operatorem lokalnej ekspansji znaczenia, a $\Pi_{\Omega_t}$ operatorem projekcji na zbiór interpretacji dopuszczalnych. Przewaga tej architektury polega na tym, że tekst nie jest ani czysto ekspansywny, ani czysto restrykcyjny. Samo rozwijanie prowadziłoby do dryfu, samo ograniczanie do tautologii. Dopiero naprzemienność obu ruchów daje stabilne sterowanie.
 
-W tym miejscu można już precyzyjnie zdefiniować, co znaczy, że taki system „daje lepsze wyniki”. Nie chodzi o wyższość estetyczną ani o uniwersalną przewagę nad każdym innym stylem. Chodzi o ściśle określony cel: minimalizację wariancji interpretacyjnej przy maksymalizacji transferu struktury pojęciowej. W tym sensie tekst jest lepszy, jeżeli szybciej zawęża rozkład $q_t$, utrzymuje go bliżej $M^*$ oraz pozostaje odporny na lokalne niejednoznaczności. Geometrycznie oznacza to mniejszy promień „rury” interpretacyjnej wokół trajektorii docelowej. Im węższa ta rura przy zachowaniu przepływu treści, tym większa sterowalność.
+zbiór działań dozwolonych w stanie $x$. LOCI nie odpowiada wtedy na pytanie „jaka odpowiedź jest prawdziwa?”. Odpowiada na trzy węższe pytania: **co obecnie obserwujemy, jak pewna jest ta rekonstrukcja oraz jakie przejścia pozostają zgodne z kontraktem**.
 
-Dla odbiorcy ludzkiego oznacza to mniejszy koszt utrzymywania konkurencyjnych hipotez interpretacyjnych. Czytelnik nie musi stale rozstrzygać, czy autor mówi jeszcze o pamięci, już o ontologii, czy może przeszedł do metafory. Układ pojęciowy jest utrzymywany jawnie. Dla modelu językowego efekt jest analogiczny, choć realizowany inaczej. Powracające terminy-klucze, stabilne relacje między nimi oraz niski poziom synonymicznego rozproszenia sprawiają, że kontekst warunkujący kolejne tokeny jest bardziej skupiony. Rozkład następnego kroku nie musi rozpraszać się między wieloma rodzinami kontynuacji. Zamiast tego otrzymuje gęsty sygnał, który wzmacnia jedną geometrię interpretacyjną. Nie jest to gwarancja prawdy, ale jest to poprawa sterowalności.
+Przy częściowej obserwowalności nie wystarczy sprawdzić pojedynczego punktu. Bezpieczny zbiór działań powinien uwzględniać rozkład możliwych stanów, bieżące ograniczenia wykonawcze i prawdopodobny stan następny:
 
-Warto zauważyć jeszcze jedną rzecz. Długość zdań w tej próbce jest znaczna, lecz nie prowadzi automatycznie do chaosu, ponieważ składnia pełni funkcję monotonicznie zawężającą. Kolejne człony zdań częściej doprecyzowują, niż otwierają nowe, niesprowadzalne osie problemu. Oznacza to, że złożoność powierzchniowa nie przekłada się tutaj na proporcjonalny wzrost złożoności geometrycznej. Innymi słowy, tekst może być gęsty, a mimo to pozostawać sterowalny, jeżeli jego rozwój ma charakter ograniczający, a nie rozpraszający.
+$$
+\mathcal U_t^{\mathrm{safe}}(\hat b_t)
+=
+\left\{
+u\in\mathcal U:
+\Pr\!\left(
+x_t\in\Omega_t^x,
+\;
+u\in\mathcal A_t(x_t),
+\;
+x_{t+1}\in\Omega_{t+1}^x
+\mid
+\hat b_t,u
+\right)
+\geq
+1-\varepsilon_t
+\right\}.
+$$
 
-Najściślejszy wniosek jest więc następujący. Ten system pisania działa jak lokalna implementacja tej samej zasady, którą opisuje na poziomie teorii AI. Najpierw definiuje region dopuszczalności interpretacyjnej, a następnie prowadzi odbiorcę po trajektorii wewnątrz tego regionu. Tekst sam staje się małym układem LOCI-plus-agent. LOCI odpowiada tu za selekcję sensownych odczytań, a agent za sekwencję przejść między nimi. Właśnie dlatego taki sposób pisania, przy zadaniach wymagających wysokiej kontroli semantycznej, ma korzystne własności geometryczne: zmniejsza błąd dryfu, zmniejsza gałęzienie niepożądanych hipotez i zwiększa prawdopodobieństwo, że odbiorca lub model dotrze do tej samej struktury pojęciowej, którą autor zamierzał przekazać.
+Jeżeli zbiór jest pusty albo $\rho_t$ spada poniżej progu, poprawnym działaniem nie jest „najbardziej prawdopodobna kontynuacja”, lecz zatrzymanie, pozyskanie dodatkowej obserwacji, eskalacja albo przekazanie decyzji człowiekowi.
 
-Końcowe zastrzeżenie musi jednak pozostać w mocy. Powyższa analiza jest modelem wyjaśniającym, a nie wynikiem eksperymentu porównawczego na korpusie. Nie twierdzi ona, że dany styl jest globalnie najlepszy. Twierdzi coś węższego i naukowo obronnego: że dla klasy zadań, w których liczy się ścisłe przenoszenie struktury pojęciowej oraz kontrola trajektorii interpretacyjnej, taki system pisania ma własności geometryczne sprzyjające stabilniejszej transmisji znaczenia.
+## 4. Agent jako polityka, orkiestrator i mechanizm domknięcia pętli
 
+Redukowanie agenta do samej polityki jest użyteczne matematycznie, ale niewystarczające architektonicznie. Agent obejmuje co najmniej estymację stanu, utrzymanie celu, planowanie, pamięć, wybór narzędzi, kontrolę wykonania, ocenę wyniku i warunek zakończenia. Architektury takie jak ReAct, Toolformer i Reflexion pokazują różne sposoby łączenia generacji językowej z działaniem, narzędziami i sprzężeniem zwrotnym. LLM może realizować część tych funkcji, lecz nie powinien sam egzekwować granic, których naruszenie ma skutek bezpieczeństwa.
+
+Pętla sterowania może mieć następującą postać:
+
+$$
+\hat b_t
+=
+\mathcal B\!\left(
+\hat b_{t-1},o_t,u_{t-1}
+\right),
+$$
+
+$$
+\left(
+\Omega_t^x,
+\mathcal A_t
+\right)
+=
+\mathcal C\!\left(
+\hat b_t,
+g_t,
+\kappa_t
+\right),
+$$
+
+$$
+\tilde u_t
+\sim
+\pi_\theta\!\left(
+\cdot\mid\hat b_t,g_t,m_t
+\right),
+$$
+
+$$
+u_t
+=
+\operatorname{Shield}\!\left(
+\tilde u_t;
+\mathcal U_t^{\mathrm{safe}}(\hat b_t),
+\rho_t,
+\kappa_t
+\right),
+$$
+
+$$
+x_{t+1}
+\sim
+T\!\left(
+\cdot\mid x_t,u_t,w_t
+\right).
+$$
+
+Operator `Shield` nie musi być jednym algorytmem. Może składać się z walidacji typów i argumentów, kontroli uprawnień, limitów kosztu, reguł domenowych, potwierdzenia człowieka, symulacji skutku, izolacji wykonania (sandboxingu), mechanizmu wycofania operacji (rollback) oraz blokady działania przy utracie obserwowalności. Ważne jest to, że egzekucja odbywa się poza swobodną semantyką promptu.
+
+Problem optymalizacji można zapisać jako ograniczony proces decyzyjny:
+
+$$
+\pi^\star
+\in
+\arg\min_{\pi\in\Pi}
+\mathbb E_\pi
+\left[
+\sum_{t=0}^{T}
+\gamma^t\,
+\ell(x_t,u_t)
+\right],
+$$
+
+przy ograniczeniach:
+
+$$
+\mathbb E_\pi
+\left[
+\sum_{t=0}^{T}
+\gamma^t\,
+d_k(x_t,u_t)
+\right]
+\leq
+D_k,
+\qquad
+k=1,\ldots,K,
+$$
+
+oraz przy warunku, że wykonanie nie przekracza jawnego zakresu autorytetu. Funkcja $\ell$ opisuje koszt lub błąd zadania, $d_k$ koszty ograniczeń, a $D_k$ ich budżety. Taki zapis pozwala rozdzielić skuteczność od bezpieczeństwa: polityka może optymalizować wynik, ale nie może „zapłacić” naruszeniem granicy autoryzacji, jeżeli ta granica jest twarda.
+
+Nie każde lokalnie dopuszczalne działanie zachowuje dopuszczalność w przyszłości. Sterowanie powinno więc uwzględniać nie tylko to, czy ruch jest legalny teraz, lecz także to, czy pozostawia systemowi bezpieczne trajektorie następne. To jest różnica między filtrem jednego kroku a kontrolą zdolności całego procesu do pozostawania w obszarze dopuszczalnym (viability).
+
+## 5. Co dokładnie robi każdy komponent
+
+Najkrótsza poprawna synteza wygląda następująco:
+
+$$
+\boxed{\text{LOCI: obserwuj, rekonstruuj i ogranicz}}
+$$
+
+$$
+\boxed{\text{agent: wybieraj, koordynuj i domykaj pętlę}}
+$$
+
+$$
+\boxed{\text{LLM: generuj rozkład kandydatów}}
+$$
+
+$$
+\boxed{\text{środowisko: realizuj rzeczywiste przejścia}}
+$$
+
+LOCI i agent należą do wspólnej rodziny mechanizmów sterujących, ale nie są wymienne. LOCI kształtuje przestrzeń rozpoznanych i dopuszczalnych stanów oraz działań. Agent wybiera trajektorię w tej przestrzeni, aktualizuje ją po obserwacji skutku i decyduje o zakończeniu. LLM dostarcza elastyczności generatywnej, ale nie dostarcza gwarancji. Środowisko może zareagować inaczej, niż przewidywał model.
+
+W tym sensie pierwotna intuicja pozostaje prawdziwa po doprecyzowaniu: LOCI ogranicza niekontrolowaną swobodę procesu, a agent nadaje jej kierunek. Trzeba jedynie dodać, że żaden z tych mechanizmów nie zastępuje obserwacji, autoryzacji i rzeczywistej dynamiki środowiska.
+
+## 6. Błędy generacji są często błędami całej pętli sterowania
+
+Nie każdą halucynację można wyjaśnić „zbyt szerokim zbiorem stanów dopuszczalnych”. Halucynacja może wynikać z niepewności modelu, braków danych, błędnego retrievalu, niewłaściwego dekodowania, konfliktu instrukcji albo błędnej reprezentacji zadania. Model sterowania jest użyteczny wtedy, gdy rozdziela źródła awarii zamiast sprowadzać je do jednej przyczyny.
+
+**Błąd obserwacji lub estymacji** występuje wtedy, gdy agent buduje niepoprawny obraz stanu $b_t$. Może to wynikać z niepełnych danych, zatrutego kontekstu, błędnej pamięci albo mylącego wyniku narzędzia.
+
+**Błąd specyfikacji** występuje wtedy, gdy $\Omega_t^x$ albo $\mathcal A_t$ kodują niewłaściwe wymagania. System może konsekwentnie realizować źle zdefiniowany cel i pozostawać formalnie zgodny z błędnym kontraktem.
+
+**Błąd polityki lub planowania** oznacza wybór słabej trajektorii mimo poprawnej obserwacji i poprawnych ograniczeń. Działanie może być dozwolone, ale nieefektywne, redundantne albo prowadzące do ślepego zaułka.
+
+**Błąd egzekwowania** powstaje wtedy, gdy kandydat wygenerowany przez LLM omija walidację, kontrolę uprawnień albo mechanizm zatwierdzania. W systemie agentowym jest to przejście od błędu semantycznego do realnego skutku operacyjnego.
+
+**Błąd modelu środowiska** pojawia się wtedy, gdy narzędzie, API lub użytkownik reaguje inaczej, niż zakłada polityka. Nawet poprawny plan może utracić ważność po zmianie stanu poza kontrolą agenta.
+
+Ta taksonomia ma bezpośrednie znaczenie dla bezpieczeństwa. Semantyczny operator dopuszczalności nie może być jedyną granicą ochronną. Autoryzacja, separacja uprawnień, provenance, podpisane delegacje, ograniczenia narzędzi, transakcyjność, sandboxing i audyt muszą być egzekwowane deterministycznie. LOCI może wykryć utratę spójności albo obserwowalności; nie może sam zastąpić systemu IAM, polityki wykonania ani modelu zaufania. To rozróżnienie łączy ten artykuł z modelem [LLM Trust Boundary Collapse](llm-trust-boundary-collapse-publication.md): tekstowa reprezentacja reguły nie jest jeszcze granicą zaufania.
+
+## 7. Geometryka pisania: tekst jako sterowanie interpretacją
+
+Ten sam schemat można przenieść z systemu agentowego na tekst. Przez **geometrykę pisania** rozumie się projektowanie kolejnych segmentów wypowiedzi tak, aby prowadziły odbiorcę przez przestrzeń możliwych interpretacji, jednocześnie zachowując jawne granice pomiędzy definicją, analogią, hipotezą i faktem.
+
+Niech $\mathcal Z$ będzie przestrzenią możliwych interpretacji, a $q_t(z)$ idealizowanym rozkładem przekonań odbiorcy po przeczytaniu prefiksu $x_{\leq t}$:
+
+$$
+q_t(z)
+=
+P\!\left(
+z\mid x_{\leq t},K
+\right),
+\qquad
+z\in\mathcal Z,
+$$
+
+gdzie $K$ oznacza wiedzę uprzednią odbiorcy. Kolejny segment tekstu aktualizuje rozkład:
+
+$$
+q_{t+1}(z)
+\propto
+q_t(z)\,
+P\!\left(
+x_{t+1}\mid z,K
+\right).
+$$
+
+Nie jest to twierdzenie, że autor zna rzeczywisty rozkład a posteriori czytelnika. Jest to model wyjaśniający, który pozwala mówić precyzyjnie o eliminowaniu odczytań, utrzymywaniu pojęć i korygowaniu dryfu.
+
+Niech $M^\star\subseteq\mathcal Z$ oznacza zbiór interpretacji zgodnych z zamierzoną strukturą pojęciową. Celem tekstu technicznego nie powinno być samo zmniejszenie entropii $q_t$. Niska entropia może oznaczać również bardzo pewne, lecz błędne zrozumienie. Lepszym celem jest zwiększanie masy prawdopodobieństwa na $M^\star$, przy kontroli niepożądanej wieloznaczności i kosztu poznawczego:
+
+$$
+\mathcal J_{\mathrm{text}}
+=
+-\log q_T(M^\star)
++
+\lambda A_T
++
+\mu L_T,
+$$
+
+gdzie $A_T$ reprezentuje resztkową wieloznaczność poza obszarem docelowym, a $L_T$ koszt utrzymania i integrowania struktury przez odbiorcę. Wartości tych składników nie są jeszcze mierzone w tym artykule; równanie definiuje kierunek testowalnego modelu.
+
+Wzorzec „nie X, lecz Y” działa w takim ujęciu jak kontrastowy sygnał aktualizacyjny. Nie usuwa magicznie punktów z przestrzeni znaczeń, lecz obniża wiarygodność interpretacji należących do klasy X i podnosi wiarygodność klasy Y. Stabilne powtarzanie terminów takich jak „stan”, „obserwacja”, „ograniczenie”, „polityka” i „wykonanie” utrzymuje wspólny układ współrzędnych. Rekurencyjne przywracanie głównej tezy działa jak sprzężenie zwrotne: lokalny przyrost treści jest okresowo sprawdzany względem niezmiennika całego modelu.
+
+Dobre pisanie techniczne wykonuje więc naprzemiennie dwa ruchy. Najpierw rozszerza przestrzeń opisu, wprowadzając nowy związek lub rozróżnienie. Następnie projektuje ten przyrost z powrotem na jawny układ pojęciowy, aby ograniczyć dryf. Sama ekspansja prowadzi do rozproszenia; samo ograniczanie prowadzi do tautologii. Sterowalność powstaje dopiero z ich naprzemienności.
+
+Długie zdanie nie jest automatycznie błędem, ale każdy jego kolejny człon powinien zmniejszać nieoznaczoność albo jawnie rozszerzać model. Jeżeli człon otwiera nową oś bez jej zakotwiczenia, rośnie krzywizna trajektorii interpretacyjnej i koszt integracji. Geometryka pisania nie jest więc kultem gęstości. Jest dyscypliną kontroli nad tym, gdzie i po co tekst zmienia kierunek.
+
+## 8. Jak sfalsyfikować model
+
+Formalizacja staje się naukowo użyteczna dopiero wtedy, gdy można wskazać wynik, który ją osłabi. Najprostszy eksperyment powinien porównać cztery warunki: bazowy LLM, LLM z ograniczeniami zapisanymi wyłącznie w promptach, agenta z narzędziami i pętlą kontroli oraz agenta wyposażonego dodatkowo w obserwator LOCI i niezależny mechanizm dopuszczalności.
+
+Testy powinny obejmować zadania wieloetapowe, częściową obserwowalność, sprzeczne instrukcje, zatrute źródła, błędy narzędzi i zmianę stanu w trakcie wykonania. Mierzyć należy co najmniej skuteczność zadania, częstość naruszeń ograniczeń, kalibrację estymacji stanu, dryf względem celu, czas odzyskania po zakłóceniu, liczbę niebezpiecznych kandydatów zablokowanych przed wykonaniem, koszt oraz opóźnienie.
+
+Hipoteza o wartości LOCI zostanie wzmocniona, jeżeli warstwa obserwacji i dopuszczalności obniży częstość naruszeń oraz skróci czas powrotu do poprawnej trajektorii bez nieproporcjonalnego spadku skuteczności. Zostanie osłabiona, jeżeli ten sam wynik da prostszy walidator, jeżeli estymowany stan nie będzie lepiej skalibrowany od bazowego kontekstu albo jeżeli dodatkowa geometria nie przełoży się na decyzje.
+
+Analogicznie należy testować geometrykę pisania. Czytelnicy lub niezależne modele powinny rekonstruować strukturę pojęciową tekstów w kilku wariantach redakcyjnych. Ocenie podlegałaby zgodność odtworzonego grafu pojęć, wariancja interpretacji, liczba błędnych relacji, retencja po czasie i koszt poznawczy. Bez takiego badania można mówić o spójnym modelu projektowym, ale nie o dowiedzionej przewadze stylu.
+
+## Wniosek
+
+Najbardziej rygorystyczna wersja tezy nie brzmi: „LOCI i agent są tym samym” ani „LLM jest całym układem dynamicznym”. Brzmi ona następująco:
+
+> **System agentowy oparty na LLM staje się sterowalny dopiero wtedy, gdy rozdziela obserwację stanu, konstrukcję ograniczeń, generowanie kandydatów, politykę wyboru, autoryzację wykonania i rzeczywistą dynamikę środowiska.**
+
+W takim układzie LOCI może pełnić rolę obserwatora i konstruktora dopuszczalności, agent może prowadzić trajektorię i domykać sprzężenie zwrotne, a LLM może dostarczać elastycznego rozkładu propozycji. Ich wspólna wartość nie polega na podobieństwie nazw ani na metaforycznej jedności, lecz na komplementarnym ograniczaniu swobody systemu tam, gdzie sama generacja probabilistyczna nie daje gwarancji.
+
+Ten sam mechanizm opisuje geometrykę pisania. Tekst techniczny nie jest wyłącznie zbiorem zdań, lecz kontrolowaną trajektorią rekonstrukcji znaczenia. Jego jakość zależy nie od maksymalnego zagęszczenia pojęć, lecz od tego, czy odbiorca może odtworzyć właściwe relacje, zachować granice między poziomami modelu i rozpoznać, które zdania są faktami, które formalizacją, a które hipotezą czekającą na test.
+
+## Powiązane artefakty repozytorium
+
+- [LOCI — kanoniczny pipeline i drzewo nawigacji](../badania/LOCI/README.MD)
+- [Kanoniczna macierz cech 27D](../badania/LOCI/matlab/features/build_loci_feature_matrix.m)
+- [Kanoniczny wizualizator trajektorii](../badania/LOCI/matlab/visualizers/loci_27D_9R_visualizer_canonical.m)
+- [LLM Trust Boundary Collapse](llm-trust-boundary-collapse-publication.md)
+- [AI Security Model Boundary](../ai_security_model_boundary_strategy_writeup.md)
+
+## Literatura
+
+1. Vaswani, A. et al. (2017), [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762).
+2. Kaelbling, L. P., Littman, M. L., Cassandra, A. R. (1998), [*Planning and Acting in Partially Observable Stochastic Domains*](https://doi.org/10.1016/S0004-3702(98)00023-X).
+3. Altman, E. (1999), [*Constrained Markov Decision Processes*](https://www.routledge.com/Constrained-Markov-Decision-Processes/Altman/p/book/9781315140223).
+4. Aubin, J.-P. (1991), [*Viability Theory*](https://viability-theory.org/en/node/51).
+5. Yao, S. et al. (2023), [*ReAct: Synergizing Reasoning and Acting in Language Models*](https://arxiv.org/abs/2210.03629).
+6. Schick, T. et al. (2023), [*Toolformer: Language Models Can Teach Themselves to Use Tools*](https://arxiv.org/abs/2302.04761).
+7. Shinn, N. et al. (2023), [*Reflexion: Language Agents with Verbal Reinforcement Learning*](https://arxiv.org/abs/2303.11366).
+8. Kintsch, W. (1988), [*The Role of Knowledge in Discourse Comprehension: A Construction–Integration Model*](https://doi.org/10.1037/0033-295X.95.2.163).
