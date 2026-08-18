@@ -165,7 +165,7 @@ Pętla sterowania może mieć następującą postać:
 \tilde u_t
 &\sim \pi_\theta\!\left(\cdot\mid\hat b_t,g_t,m_t\right), \\
 u_t
-&= \operatorname{Shield}\!\left(
+&= \mathrm{Shield}\!\left(
 \tilde u_t;
 \mathcal U_t^{\mathrm{safe}}(\hat b_t),
 \rho_t,
