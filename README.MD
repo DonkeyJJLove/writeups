@@ -66,9 +66,9 @@ writeups/
 | publikacje | [`artykuły/README.md`](artykuły/README.md) |
 | pełny korpus badań | [`badania/README.md`](badania/README.md) |
 | LOCI / 27D / trajektorie / badania 9R | [`badania/LOCI/README.MD`](badania/LOCI/README.MD) |
-| epistemika LLM / microcode / kontekst | [sekcja Epistemika](#epistemika-llm-kontekst-i-microcode) |
-| malware / APT / incydenty | [sekcja Cyber](#cyber-malware-apt-i-incydenty) |
-| Human–AI / organizacja / percepcja | [sekcja Human–AI](#humanai-organizacja-ekonomia-i-percepcja) |
+| epistemika LLM / microcode / kontekst | [sekcja Epistemika](#4-epistemika-llm-kontekst-i-microcode) |
+| malware / APT / incydenty | [sekcja Cyber](#5-cyber-malware-apt-i-incydenty) |
+| Human–AI / organizacja / percepcja | [sekcja Human–AI](#6-humanai-organizacja-ekonomia-i-percepcja) |
 | profil / portfolio badawcze | [`PROFILE_README.md`](PROFILE_README.md) · [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md) |
 | OSINT | [`OSINT/README.md`](OSINT/README.md) |
 | grafiki / diagramy | [`images/README.md`](images/README.md) |
