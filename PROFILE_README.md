@@ -2,12 +2,14 @@
 
 > **Profile README template and portfolio index.**  
 > This file is the canonical profile description for the research ecosystem. GitHub will render it directly on the account page after a special repository named `DonkeyJJLove/DonkeyJJLove` is created and this content is copied to its `README.md`.
+>
+> **Detailed professional / research profile:** [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md)
 
-I build and research systems at the boundary between **AI security, agentic execution, distributed systems, observability, software analysis and Human–AI interaction**. My work is centered on one recurring question:
+I build and research systems at the boundary between **cybersecurity, AI/agentic security, agentic execution, distributed systems, observability, software analysis, probabilistic modeling and Human–AI interaction**. My work is centered on one recurring question:
 
 > **How do we let probabilistic AI act faster and more autonomously without giving it uncontrolled authority over deterministic systems?**
 
-The repositories below are not isolated demos. Together they form an experimental stack: from semantic protocols and program analysis, through agent runtime and distributed infrastructure, to provenance, security gates, Monte Carlo falsification and system-level resilience.
+The repositories below are not isolated demos. Together they form an experimental stack: from offensive-security and vulnerability research, semantic protocols and program analysis, through agent runtime and distributed infrastructure, to provenance, security gates, Monte Carlo falsification and system-level resilience.
 
 ---
 
@@ -52,6 +54,17 @@ Start here: [`writeups/ai_security_model_boundary_strategy_writeup.md`](https://
 ---
 
 ## Core competencies
+
+### Cybersecurity / Offensive Research
+
+- application and infrastructure security,
+- pentesting and vulnerability research,
+- bug-bounty methodology and exploitability reconstruction,
+- web / API security,
+- Windows / Linux security,
+- Active Directory and privileged-access architectures,
+- network security and segmentation,
+- incident analysis and defensive validation.
 
 ### AI / Agentic Security
 
@@ -109,7 +122,8 @@ Start here: [`writeups/ai_security_model_boundary_strategy_writeup.md`](https://
 - Human–AI control loops,
 - epistemic status and falsification,
 - semantic drift / context provenance,
-- experimental symbolic interfaces and microcode-like control languages.
+- experimental symbolic interfaces and microcode-like control languages,
+- EEG/_neuro-inspired state-dynamics models used as analytical process structures rather than physiological measurement.
 
 ---
 
@@ -261,7 +275,7 @@ hypothesis
 
 ## Technology map
 
-`Python` · `Git` · `GitHub Actions` · `Docker` · `Kubernetes` · `Istio` · `MQTT` · `PostgreSQL` · `Jenkins` · `Elastic/Kibana` · `Splunk` · `Prometheus` · `Grafana` · `Jaeger` · `NetworkX` · `Matplotlib` · `AST` · `Semgrep` · `Bandit` · `Gitleaks` · `OSV` · `Monte Carlo` · `Sobol` · `Morris`
+`Python` · `PowerShell` · `Linux` · `Windows` · `Active Directory` · `Git` · `GitHub Actions` · `Docker` · `Kubernetes` · `Istio` · `MQTT` · `PostgreSQL` · `Jenkins` · `Elastic/Kibana` · `Splunk` · `Prometheus` · `Grafana` · `Jaeger` · `NetworkX` · `Matplotlib` · `AST` · `Semgrep` · `Bandit` · `Gitleaks` · `OSV` · `Burp Suite` · `OWASP ZAP` · `Metasploit` · `SIEM/SOC` · `SAST/DAST/IAST` · `Monte Carlo` · `Sobol` · `Morris`
 
 ---
 
