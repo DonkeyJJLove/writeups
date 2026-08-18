@@ -2,6 +2,8 @@
 
 ### Strategia wyprowadzona z falsyfikacji, 1 000 000 realizacji Monte Carlo i adversarial stress testingu
 
+> **Materiały badawcze:** [pełne badanie falsyfikacyjne Monte Carlo (PDF)](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) · [pakiet badawczy / materiały reprodukcyjne](AI_Driven_Security_Research_Package_2026-08-18.zip) · [indeks katalogu `badania/`](badania/README.md)
+
 Organizacje wdrażające AI znalazły się w położeniu, którego nie da się już opisać prostym pytaniem „czy AI jest bezpieczne?”. W rzeczywistości jednocześnie rosną dwa przeciwstawne rodzaje ryzyka. Pierwszym jest **Risk of using AI**: ryzyko wynikające z przekazywania probabilistycznym modelom dostępu do danych, narzędzi, systemów, pamięci i rzeczywistych możliwości działania. Drugim jest **Risk of not using AI**: koszt utraty produktywności, automatyzacji, przewagi konkurencyjnej, zdolności analitycznych i tempa działania wobec organizacji oraz przeciwników, którzy AI wykorzystują.
 
 Dlatego rozwiązaniem nie może być ani „AI wszędzie”, ani „AI blokujemy”. Badanie, na którym oparta jest przedstawiona tu strategia, celowo nie założyło nawet, że AI zawsze zwiększa produktywność. Przyjęto szeroką przestrzeń efektów, ponieważ przywołane wyniki empiryczne obejmowały zarówno poprawę produktywności, jak i sytuacje, w których użycie narzędzi AI spowalniało konkretnych specjalistów. Problem strategiczny brzmi więc inaczej: **jak zwiększać zdolności AI tak szybko, jak pozwala na to zdolność organizacji do kontrolowania ich konsekwencji?**
