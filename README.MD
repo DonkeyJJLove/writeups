@@ -1,8 +1,8 @@
 # Writeups — mapa całego repozytorium
 
-> 🛡️ **AI Security · Agentic Systems · Cybersecurity · Human–AI · LOCI · probabilistyka · epistemika LLM · OSINT**
+> 🛡️ **AI Security · Agentic Systems · AI-Native Enterprise · Cybersecurity · Human–AI · LOCI · probabilistyka · epistemika LLM · OSINT**
 
-**Indeks zaktualizowany: 18 sierpnia 2026**
+**Indeks zaktualizowany: 19 sierpnia 2026**
 
 `writeups` jest living research repository: przechowuje publikacyjne write-upy, architektury bezpieczeństwa, eksperymenty, raporty PDF, kod, dane, wyniki i materiały wizualne. Ten README jest **korzeniem drzewa nawigacji**. Każdy większy katalog posiada własny README z krótkimi opisami poddrzewa.
 
@@ -12,14 +12,23 @@
 writeups/
 ├── README.MD                         ← jesteś tutaj
 ├── ai_security_model_boundary_strategy_writeup.md
-├── AI_Driven_Security_Research_Package_2026-08-18.zip
+├── agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md
 ├── OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md
 ├── LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md
+├── AI_NATIVE_ENTERPRISE_RND_WRITEUP.md
+├── AI_NATIVE_ROADMAP.md
+├── PROCESS_GUARD.md
+├── REPOSITORY_AUDIT_2026-08-18.md
+├── PROFILE_README.md
+├── PROFILE_ABOUT.md
+├── AI_Driven_Security_Research_Package_2026-08-18.zip
 ├── artykuły/
 │   └── README.md                     ← publikacje
 ├── badania/
 │   ├── README.md                     ← katalog raportów i pakietów
 │   ├── Strategia bezpieczeństwa wobec AI-Driven Attacks...pdf
+│   ├── Symulacja_GITHUB/
+│   │   └── README.md                 ← sandbox amplifikacji workloadu agentowego
 │   ├── conditional_decision_theory/
 │   │   └── README.md
 │   ├── MQL5Market/
@@ -44,16 +53,23 @@ writeups/
 | Szukasz | Zacznij tutaj |
 |---|---|
 | AI-Driven Attacks / Security Model Boundary | [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) |
+| lokalna warstwa bezpieczeństwa agenta na Linuxie | [`agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md`](agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md) |
 | pełne badanie Monte Carlo AI-Driven Security | [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) |
 | pakiet materiałów AI-Driven Security | [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) |
 | runtime security / observability / Linux | [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) |
 | multi-agent security / federated control / SOC | [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) |
+| AI-Native Enterprise / dynamiczne swarms / organizacja | [`AI_NATIVE_ENTERPRISE_RND_WRITEUP.md`](AI_NATIVE_ENTERPRISE_RND_WRITEUP.md) |
+| roadmap R&D AI-Native | [`AI_NATIVE_ROADMAP.md`](AI_NATIVE_ROADMAP.md) |
+| maintenance guard / provenance / audyt repo | [`PROCESS_GUARD.md`](PROCESS_GUARD.md) |
+| audyt procesu repozytorium | [`REPOSITORY_AUDIT_2026-08-18.md`](REPOSITORY_AUDIT_2026-08-18.md) |
+| symulacja amplifikacji workloadu agentowego / GitHub | [`badania/Symulacja_GITHUB/README.md`](badania/Symulacja_GITHUB/README.md) |
 | publikacje | [`artykuły/README.md`](artykuły/README.md) |
 | pełny korpus badań | [`badania/README.md`](badania/README.md) |
-| LOCI / 27D→9R / pipeline / testy | [`badania/LOCI/README.MD`](badania/LOCI/README.MD) |
+| LOCI / 27D / trajektorie / badania 9R | [`badania/LOCI/README.MD`](badania/LOCI/README.MD) |
 | epistemika LLM / microcode / kontekst | [sekcja Epistemika](#epistemika-llm-kontekst-i-microcode) |
 | malware / APT / incydenty | [sekcja Cyber](#cyber-malware-apt-i-incydenty) |
 | Human–AI / organizacja / percepcja | [sekcja Human–AI](#humanai-organizacja-ekonomia-i-percepcja) |
+| profil / portfolio badawcze | [`PROFILE_README.md`](PROFILE_README.md) · [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md) |
 | OSINT | [`OSINT/README.md`](OSINT/README.md) |
 | grafiki / diagramy | [`images/README.md`](images/README.md) |
 
@@ -80,6 +96,10 @@ Materiały źródłowe tej linii są spięte bezpośrednio:
 - [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełny raport badawczy;
 - [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów badawczych/reprodukcyjnych;
 - [`badania/README.md`](badania/README.md) — indeks badania w całym korpusie.
+
+### [`agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md`](agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md)
+
+Koncepcja lokalnej warstwy bezpieczeństwa dla systemu agentowego na Linuxie: Planner, Authority Gateway, niezależny Authorizer, ograniczony Executor, Verifier i Execution Receipt. Wspólna zasada z pozostałą linią bezpieczeństwa brzmi: **model może proponować zmianę stanu, lecz prawo do skutku musi być mediowane poza modelem**.
 
 ### [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md)
 
@@ -114,7 +134,7 @@ Pełny indeks: [`artykuły/README.md`](artykuły/README.md).
 - [`artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md) — duży write-up teorii decyzji warunkowej i falsyfikacji.
 - [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md) — enterprise AI governance/proxy i kontrola wykonania.
 - [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md) — LLM Trust Boundary Collapse (LTBC).
-- [`artykuły/loci-agent-llm-state-space-control.md`](artykuły/loci-agent-llm-state-space-control.md) — LOCI, agenci i kontrola state-space.
+- [`artykuły/loci-agent-llm-state-space-control.md`](artykuły/loci-agent-llm-state-space-control.md) — formalny model zamkniętej pętli LOCI–Agent–LLM, rozdzielenie obserwacji, ograniczeń, polityki, autoryzacji i dynamiki środowiska oraz falsyfikowalny model geometryki pisania.
 
 ---
 
@@ -122,13 +142,17 @@ Pełny indeks: [`artykuły/README.md`](artykuły/README.md).
 
 Pełny katalog raportów: [`badania/README.md`](badania/README.md).
 
-Gałąź obejmuje raporty z obszarów: AI/SaaS/Cloud, Human–AI, ekonomika danych, perception/cognition, LOCI/9R–27D, OSINT/geopolityka, finanse, symulacje i pakiety reprodukcyjne.
+Gałąź obejmuje raporty z obszarów: AI/SaaS/Cloud, Human–AI, ekonomika danych, perception/cognition, LOCI i linia 9R/27D, OSINT/geopolityka, finanse, symulacje i pakiety reprodukcyjne.
 
 ### AI-Driven Security — badanie i pakiet
 
 - [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełne badanie Monte Carlo i falsyfikacji strategii.
 - [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów powiązanych z badaniem.
 - [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) — wynik publikacyjny i architektoniczny badania.
+
+### [`badania/Symulacja_GITHUB/README.md`](badania/Symulacja_GITHUB/README.md)
+
+Sandbox 1000 miniagentów × 100 000 realizacji Monte Carlo badający amplifikację wtórnego workloadu przy retry, fan-out, degradacji usług i współdzielonych zależnościach. Jest to **model klasy architektury**, nie dowód przyczyny konkretnej awarii GitHuba; lokalny README opisuje granicę ważności, kolejność czytania i kontrakt epistemiczny.
 
 ### [`badania/conditional_decision_theory/README.md`](badania/conditional_decision_theory/README.md)
 
@@ -140,19 +164,22 @@ Mała gałąź kodu eksperymentalnego dla researchu rynkowego.
 
 ### [`badania/LOCI/README.MD`](badania/LOCI/README.MD)
 
-Kanoniczny system LOCI:
+Kanoniczny system LOCI w aktualnym stanie implementacji:
 
 ```text
 input
 → parser
 → sample_norm
 → analytical series
-→ 27D
-→ 9R / metaspace
-→ tests
+→ 27D feature matrix
+→ standaryzacja
+→ PCA/fallback → 3D trajectory projection
+→ metrics / tests
 → results
 → static reports
 ```
+
+Linia badawcza rozwija również formalizację 9R, ale bieżącego visualizera nie należy opisywać jako gotowego mapowania `R^27 → R^9`. Lokalny README rozdziela teraz stan implementacji od docelowego modelu 9R.
 
 LOCI ma lokalne indeksy dla `parsers`, `sample`, `matlab`, `spec`, `tests`, `results` i `raports`, dzięki czemu nie trzeba przeszukiwać ręcznie dużego poddrzewa wyników.
 
@@ -243,7 +270,33 @@ Pełny korpus badań tej linii: [`badania/README.md`](badania/README.md).
 
 ---
 
-# 7. Dane pomocnicze
+# 7. AI-Native Enterprise i governance procesu badawczego
+
+### [`AI_NATIVE_ENTERPRISE_RND_WRITEUP.md`](AI_NATIVE_ENTERPRISE_RND_WRITEUP.md)
+
+Synteza repozytoriów w model **AI-Native Enterprise as a Living Mosaic**: organizacja jako stanowy graf capabilities, AgentSpec, Mosaic Cells, dynamiczne swarms, jawne kontrakty identity/context/authority/memory/observability i separacja `SEM proposal ≠ MAND authorization ≠ INF effect`.
+
+### [`AI_NATIVE_ROADMAP.md`](AI_NATIVE_ROADMAP.md)
+
+Roadmap promocji badań z `writeups` do szerszego ekosystemu AI-Native. `writeups` pozostaje warstwą R&D / Enterprise Research Memory — hipoteza, symulacja lub publikacja nie uzyskuje przez samą obecność w repo autorytetu runtime.
+
+### [`PROCESS_GUARD.md`](PROCESS_GUARD.md)
+
+Adversarial maintenance guard dla pracy nad repozytorium: provenance, source purity, delta-before-state, independent consequence gate, jawne statusy epistemiczne, obserwowalne przejścia i testowanie kompozycji zmian.
+
+### [`REPOSITORY_AUDIT_2026-08-18.md`](REPOSITORY_AUDIT_2026-08-18.md)
+
+Audyt procesu i spójności repozytorium wykonany według zasad Process Guard; artefakt punktu kontrolnego, a nie zastępstwo dla bieżącego stanu drzewa.
+
+### Profil / mapa portfolio
+
+- [`PROFILE_README.md`](PROFILE_README.md) — profilowy indeks ekosystemu repozytoriów.
+- [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md) — szczegółowy profil zawodowy i badawczy.
+- [`.github/workflows/repository-hygiene.yml`](.github/workflows/repository-hygiene.yml) — minimalna automatyczna kontrola obecności kanonicznego README i odrzucania śledzonego lokalnego/generated state.
+
+---
+
+# 8. Dane pomocnicze
 
 - [`dane_wykresu_globalnej_implementacji_2026-08-04.csv`](dane_wykresu_globalnej_implementacji_2026-08-04.csv) — dane do wykresu globalnej implementacji.
 - [`macierz_luk_architektonicznych_2026-08-04.csv`](macierz_luk_architektonicznych_2026-08-04.csv) — macierz luk architektonicznych.
@@ -253,7 +306,7 @@ Materiały graficzne: [`images/README.md`](images/README.md).
 
 ---
 
-# 8. Metodyka czytania
+# 9. Metodyka czytania
 
 Repo przechowuje różne klasy artefaktów i **nie każdy dokument jest finalnym twierdzeniem**. W badaniach stosowane są m.in. statusy:
 
@@ -280,6 +333,11 @@ ROOT README
 │  ├─ pełny raport PDF w badania/
 │  └─ AI_Driven_Security_Research_Package_2026-08-18.zip
 │
+├─ AI_NATIVE_ENTERPRISE_RND_WRITEUP.md
+├─ AI_NATIVE_ROADMAP.md
+├─ PROCESS_GUARD.md
+├─ REPOSITORY_AUDIT_2026-08-18.md
+│
 ├─ konkretny write-up rootowy
 │
 ├─ artykuły/README.md
@@ -287,6 +345,7 @@ ROOT README
 │
 ├─ badania/README.md
 │  ├─ raport PDF
+│  ├─ Symulacja_GITHUB/README.md
 │  ├─ conditional_decision_theory/README.md
 │  ├─ MQL5Market/README.md
 │  └─ LOCI/README.MD
@@ -304,13 +363,13 @@ ROOT README
 
 ---
 
-# 9. Bezpieczeństwo i zakres użycia
+# 10. Bezpieczeństwo i zakres użycia
 
 Materiały ofensywne mają charakter edukacyjny, badawczy i defensywny. Scenariusze testowe należy stosować wyłącznie w środowiskach własnych, laboratoryjnych, autoryzowanych lub zgodnych z zasadami właściwego programu bug bounty. Repozytorium nie zachęca do nieautoryzowanego dostępu ani zakłócania cudzych systemów.
 
 ---
 
-# 10. Kontakt
+# 11. Kontakt
 
 GitHub: [@DonkeyJJLove](https://github.com/DonkeyJJLove)
 
