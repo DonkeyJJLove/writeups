@@ -1,329 +1,245 @@
-# Writeups — AI Security, Agentic Systems, Cyber, Human–AI, LOCI i epistemika
+# Writeups — mapa całego repozytorium
 
-> 🛡️ **Living research repository** łączące bezpieczeństwo systemów agentowych, klasyczne cyberbezpieczeństwo, obserwowalność wykonania, Human–AI, probabilistyczne modelowanie ryzyka, LOCI, epistemikę LLM i badania nad systemami społeczno-technicznymi.
+> 🛡️ **AI Security · Agentic Systems · Cybersecurity · Human–AI · LOCI · probabilistyka · epistemika LLM · OSINT**
 
-**Stan mapy repozytorium: 18 sierpnia 2026**
+**Indeks zaktualizowany: 18 sierpnia 2026**
 
-Repozytorium nie jest pojedynczym projektem ani katalogiem luźnych artykułów. To rozwijana warstwa badawcza, w której write-upy techniczne, specyfikacje architektoniczne, eksperymenty, modele probabilistyczne, pipeline’y analityczne i teksty syntetyczne dokumentują zarówno **wyniki**, jak i **proces dochodzenia do wyników**.
+`writeups` jest living research repository: przechowuje publikacyjne write-upy, architektury bezpieczeństwa, eksperymenty, raporty PDF, kod, dane, wyniki i materiały wizualne. Ten README jest **korzeniem drzewa nawigacji**. Każdy większy katalog posiada własny README z krótkimi opisami poddrzewa.
+
+## Drzewo wejściowe
+
+```text
+writeups/
+├── README.MD                         ← jesteś tutaj
+├── ai_security_model_boundary_strategy_writeup.md
+├── OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md
+├── LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md
+├── artykuły/
+│   └── README.md                     ← publikacje
+├── badania/
+│   ├── README.md                     ← katalog raportów i pakietów
+│   ├── conditional_decision_theory/
+│   │   └── README.md
+│   ├── MQL5Market/
+│   │   └── README.md
+│   └── LOCI/
+│       ├── README.MD                 ← pipeline kanoniczny
+│       ├── parsers/README.md
+│       ├── sample/README.md
+│       ├── matlab/README.md
+│       ├── spec/README.md
+│       ├── tests/README.md
+│       ├── results/README.md
+│       └── raports/README.md
+├── OSINT/
+│   └── README.md
+└── images/
+    └── README.md
+```
+
+## Najkrótsze ścieżki wyszukiwania
+
+| Szukasz | Zacznij tutaj |
+|---|---|
+| AI-Driven Attacks / Security Model Boundary | [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) |
+| runtime security / observability / Linux | [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) |
+| multi-agent security / federated control / SOC | [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) |
+| publikacje | [`artykuły/README.md`](artykuły/README.md) |
+| pełny korpus badań | [`badania/README.md`](badania/README.md) |
+| LOCI / 27D→9R / pipeline / testy | [`badania/LOCI/README.MD`](badania/LOCI/README.MD) |
+| epistemika LLM / microcode / kontekst | [sekcja Epistemika](#epistemika-llm-kontekst-i-microcode) |
+| malware / APT / incydenty | [sekcja Cyber](#cyber-malware-apt-i-incydenty) |
+| Human–AI / organizacja / percepcja | [sekcja Human–AI](#humanai-organizacja-ekonomia-i-percepcja) |
+| OSINT | [`OSINT/README.md`](OSINT/README.md) |
+| grafiki / diagramy | [`images/README.md`](images/README.md) |
 
 ---
 
-## Spis treści
+# 1. Aktualny rdzeń: bezpieczeństwo agentowego AI
 
-- [O repozytorium](#o-repozytorium)
-- [Aktualny rdzeń badawczy: bezpieczeństwo AI na granicy wykonania](#aktualny-rdzeń-badawczy-bezpieczeństwo-ai-na-granicy-wykonania)
-- [Mapa repozytorium](#mapa-repozytorium)
-- [Ścieżki czytania](#ścieżki-czytania)
-- [AI Security i architektura wykonawcza](#ai-security-i-architektura-wykonawcza)
-- [Systemy agentowe, organizacja i kontrola](#systemy-agentowe-organizacja-i-kontrola)
-- [LOCI i badania reprodukowalne](#loci-i-badania-reprodukowalne)
-- [Epistemika LLM, kontekst i microcode](#epistemika-llm-kontekst-i-microcode)
-- [Cyber, malware, APT i incydenty](#cyber-malware-apt-i-incydenty)
-- [Human–AI, społeczeństwo, ekonomia i percepcja](#humanai-społeczeństwo-ekonomia-i-percepcja)
-- [Metodyka i status dowodowy](#metodyka-i-status-dowodowy)
-- [Konwencje artefaktów](#konwencje-artefaktów)
-- [Bezpieczeństwo i zakres użycia](#bezpieczeństwo-i-zakres-użycia)
-- [Kontakt](#kontakt)
-
----
-
-## O repozytorium
-
-`writeups` gromadzi analizy na styku kilku domen, które w praktycznych systemach coraz częściej przestają być rozłączne:
-
-- **AI Security / Agentic Security** — granice zaufania, capabilities, provenance, tool use, runtime enforcement, obserwowalność i autonomia;
-- **Cybersecurity** — malware, fileless techniques, APT, incydenty infrastrukturalne, supply chain, odporność i detekcja;
-- **Human–AI** — HITL, organizacja pracy, ekonomia błędu, poznawcze ograniczenia operatora i delegacja decyzji;
-- **Epistemika LLM** — prawda vs fikcja, kontekst, semantyka, embedding, metakod i walidacja;
-- **Probabilistic / systems research** — Monte Carlo, falsyfikacja, sensitivity analysis, trajektorie stanów, ryzyko ogonowe i systemy złożone;
-- **LOCI** — kanoniczny pipeline normalizacji, ekstrakcji cech 27D, mapowania 27D→9R, testów i raportowania;
-- **OSINT i analiza strategiczna** — przypadki geopolityczne, infrastrukturalne, ekonomiczne i systemowe.
-
-Wspólna logika repozytorium prowadzi od **źródła i obserwacji**, przez **interpretację i decyzję**, do **wykonania, skutku, telemetrii i ponownej falsyfikacji modelu**.
-
----
-
-## Aktualny rdzeń badawczy: bezpieczeństwo AI na granicy wykonania
-
-Najświeższa oś repozytorium przesuwa bezpieczeństwo AI z oceny samego modelu na ocenę **całej trajektorii wykonania**. Punktem wyjścia jest przypadek, w którym poszczególne operacje są lokalnie dozwolone, lecz ich kompozycja może naruszyć globalny invariant:
+Repozytorium rozwija obecnie linię, w której jednostką bezpieczeństwa nie jest wyłącznie komponent, lecz **trajektoria wykonania**. Lokalnie dozwolone prymitywy nie gwarantują bezpieczeństwa ich kompozycji:
 
 ```text
 A = allowed
 B = allowed
 C = allowed
 
-nie implikuje
-
-A → B → C = safe
+A → B → C ≠ automatically safe
 ```
 
-Kanonicznym wejściem do tej linii jest:
+### [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md)
 
-- [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) — strategia bezpieczeństwa na **Security Model Boundary**, wyprowadzona z falsyfikacji, 1 000 000 realizacji Monte Carlo, porównania 36 strategii i adversarial stress testingu.
+Nadrzędny write-up strategii **Security Model Boundary**. Obejmuje falsyfikację hipotezy, Probabilistic–Deterministic Boundary, 1 000 000 realizacji Monte Carlo, porównanie 36 strategii, tail risk, adversarial stress testing, Security Observability Kernel, Security Boundary Buffer oraz GREEN / AMBER / RED autonomy lanes.
 
-Badanie nie prowadzi do zasady „blokować AI”, lecz do sterowania autonomią zgodnie z consequentiality, provenance, obserwowalnością i kontrolowalnością. Praktyczny wynik rozdziela workflowy na trzy pasy:
+### [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md)
 
-- **GREEN** — read-only, reversible, low-impact: wysoka autonomia, provenance i capability control;
-- **AMBER** — write/action/trust-boundary crossing: federated enforcement i deterministic gates;
-- **RED** — critical/irreversible/high-authority: path-aware enforcement, isolation, invariants, recovery i selektywny human gate.
+Referencyjna architektura Linux, w której zdolność agenta do powodowania skutków jest uzależniona od observability, provenance, platform integrity i complete mediation. Model oddziela **action proposal** od rzeczywistego authority.
 
-Architektoniczny wzorzec tej linii można streścić jako:
+### [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md)
+
+Rozszerzenie reference monitora na populację agentów i domen: control, execution, observability, trust i SOC planes, workload identity, federacja polityk, scoped capabilities, cross-domain communication oraz containment.
+
+### [`deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md`](deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md)
+
+Tekst o deterministycznej warstwie obserwowalności i wykonania jako szkielecie kontroli nad probabilistycznym AI.
+
+### [`global_architecture_convergence_baseline_report.md`](global_architecture_convergence_baseline_report.md)
+
+Porównanie rozwijanych w repo wzorców z publicznymi architekturami agentic runtime, tracingu, approvals, identity, policy gates i execution control; rozróżnia konwergencję od wpływu przyczynowego.
+
+### [`sbom-as-sigillum-relationis_systemic-risk-control.md`](sbom-as-sigillum-relationis_systemic-risk-control.md)
+
+SBOM jako element szerszej kontroli relacji, provenance i ryzyka systemowego.
+
+### [`inwariant_llm_analiza_watkow_konwersacyjnych.md`](inwariant_llm_analiza_watkow_konwersacyjnych.md)
+
+Analiza inwariantów, ciągłości i zmian w wątkach LLM.
+
+---
+
+# 2. Publikacje
+
+Pełny indeks: [`artykuły/README.md`](artykuły/README.md).
+
+- [`artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md) — duży write-up teorii decyzji warunkowej i falsyfikacji.
+- [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md) — enterprise AI governance/proxy i kontrola wykonania.
+- [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md) — LLM Trust Boundary Collapse (LTBC).
+- [`artykuły/loci-agent-llm-state-space-control.md`](artykuły/loci-agent-llm-state-space-control.md) — LOCI, agenci i kontrola state-space.
+
+---
+
+# 3. Badania i reprodukowalność
+
+Pełny katalog raportów: [`badania/README.md`](badania/README.md).
+
+Gałąź obejmuje raporty z obszarów: AI/SaaS/Cloud, Human–AI, ekonomika danych, perception/cognition, LOCI/9R–27D, OSINT/geopolityka, finanse, symulacje i pakiety reprodukcyjne.
+
+### [`badania/conditional_decision_theory/README.md`](badania/conditional_decision_theory/README.md)
+
+Raport i wynik JSON dla badania teorii decyzji warunkowej.
+
+### [`badania/MQL5Market/README.md`](badania/MQL5Market/README.md)
+
+Mała gałąź kodu eksperymentalnego dla researchu rynkowego.
+
+### [`badania/LOCI/README.MD`](badania/LOCI/README.MD)
+
+Kanoniczny system LOCI:
 
 ```text
-Probabilistic Intelligence
-inside
-Observable + Provenance-Aware + Capability-Bounded
-+ Path-Aware + Deterministically Enforced Execution Envelope
+input
+→ parser
+→ sample_norm
+→ analytical series
+→ 27D
+→ 9R / metaspace
+→ tests
+→ results
+→ static reports
 ```
 
-Ten sam problem jest rozwijany od poziomu pojedynczego hosta do systemu wieloagentowego:
-
-- [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) — **Observability-Conditioned Reference Monitor**: authority zależne od integralności platformy, kompletności provenance i ciągłości obserwacji;
-- [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) — **Linux Multi-Agent Control Mesh**: control, data, execution, observability, trust i SOC planes dla populacji agentów;
-- [`deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md`](deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md) — deterministyczna obserwowalność jako warstwa wykonawcza nad probabilistycznym AI;
-- [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md) — model **LLM Trust Boundary Collapse (LTBC)** i analiza załamania granic DATA / INSTRUCTION / CONTEXT / AUTHORITY / MEMORY / DECISION / ACTION;
-- [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md) — warstwa governance/proxy dla wdrożeń enterprise;
-- [`global_architecture_convergence_baseline_report.md`](global_architecture_convergence_baseline_report.md) — badanie konwergencji architektur agentowych, runtime, tracingu, identity, gate’ów i execution control.
+LOCI ma lokalne indeksy dla `parsers`, `sample`, `matlab`, `spec`, `tests`, `results` i `raports`, dzięki czemu nie trzeba przeszukiwać ręcznie dużego poddrzewa wyników.
 
 ---
 
-## Mapa repozytorium
+# 4. Epistemika LLM, kontekst i microcode
 
-| Lokalizacja | Rola |
-|---|---|
-| `/*.md`, `/*.MD` | główne write-upy, architektury i teksty syntetyczne |
-| [`artykuły/`](artykuły) | teksty publikacyjne i rozbudowane opracowania tematyczne |
-| [`badania/`](badania) | duży korpus badań, raportów, PDF, danych i pakietów reprodukcyjnych |
-| [`badania/LOCI/`](badania/LOCI) | kanoniczny pipeline LOCI: parser → normalizacja → 27D → 9R → testy → raporty |
-| [`badania/conditional_decision_theory/`](badania/conditional_decision_theory) | formalizacja i wyniki badań teorii decyzji warunkowej |
-| [`OSINT/`](OSINT) | analizy OSINT i rekonstrukcje zdarzeń |
-| [`images/`](images) | ilustracje, diagramy i materiały wizualne |
-| `*.prompt` | instrumenty badawcze, epistemiczne i testowe |
-| `*.csv`, `*.json` | dane, macierze, wyniki i rejestry pomocnicze |
+### [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md)
 
-`badania/` posiada własny [`README.md`](badania/README.md), który porządkuje część korpusu jako strumienie badawcze Human–AI / HITL. LOCI posiada osobny [`badania/LOCI/README.MD`](badania/LOCI/README.MD) opisujący aktywny pipeline i kontrakty danych.
+Epistemiczny rdzeń: fakt, fikcja, kontekst i problem walidacji w systemach generatywnych.
 
----
+### [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt)
 
-## Ścieżki czytania
+Instrument klasyfikacyjny P0–P3 do oddzielania faktów, interpretacji i fikcji.
 
-### 1. AI Security / Security Architecture
+### [`magia-embeddingu-llm-slowo-w-czyn.md`](magia-embeddingu-llm-slowo-w-czyn.md)
 
-1. [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md)
-2. [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md)
-3. [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md)
-4. [`deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md`](deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md)
-5. [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md)
-6. [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md)
+Od reprezentacji semantycznej i embeddingu do konsekwencji operacyjnej.
 
-Ta ścieżka prowadzi od **modelu ryzyka**, przez **reference monitor**, do **wieloagentowego control mesh i governance**.
+### [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md)
 
-### 2. LOCI / falsyfikacja / analiza trajektorii
+Wzorce tekstowe jako semantyczne przełączniki prowadzące do klas działań.
 
-1. [`badania/LOCI/README.MD`](badania/LOCI/README.MD)
-2. [`artykuły/loci-agent-llm-state-space-control.md`](artykuły/loci-agent-llm-state-space-control.md)
-3. [`badania/conditional_decision_theory/raport_oczy_szeroko_zamkniete_badania.md`](badania/conditional_decision_theory/raport_oczy_szeroko_zamkniete_badania.md)
-4. [`artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md)
+### [`protokoly_kontekstu_chunk-chunk_facebook_case.md`](protokoly_kontekstu_chunk-chunk_facebook_case.md)
 
-To najbardziej techniczna ścieżka dla osób zainteresowanych **stanem, trajektorią, normalizacją danych, Monte Carlo, sensitivity i reprodukowalnością**.
+Case study protokołów kontekstu i mikrojęzyków.
 
-### 3. Epistemika i kontrola semantyczna
+### [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)
 
-1. [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md)
-2. [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt)
-3. [`magia-embeddingu-llm-slowo-w-czyn.md`](magia-embeddingu-llm-slowo-w-czyn.md)
-4. [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md)
-5. [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)
-6. [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md)
-7. [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md)
+Operator `‡` jako przełącznik warstwy kontekstowej.
 
-### 4. Klasyczny cyber / malware / incydenty
+### [`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`](AISec_ASCII_MC_9D_eksperyment_kontekstowy.md)
 
-1. [`fileless-malware.md`](fileless-malware.md)
-2. [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md)
-3. [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md)
-4. [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md)
-5. [`fire-sale.md`](fire-sale.md)
-6. [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md)
-7. [`malware-evolution.md`](malware-evolution.md)
-8. [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md)
+Eksperyment kontekstowy AISEC / ASCII_MC_9D.
 
-### 5. Human–AI / organizacja / systemy społeczne
+### Seria ASCII microcode
 
-1. [`badania/README.md`](badania/README.md)
-2. [`evolutionary-agent-systems-organization-framework.md`](evolutionary-agent-systems-organization-framework.md)
-3. [`relational-perceptual-protocol-bootstrap-model.md`](relational-perceptual-protocol-bootstrap-model.md)
-4. [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md)
-5. [`produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md`](produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md)
-6. [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md)
+- [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md) — fundament: znak i semantyka.
+- [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) — druga część serii.
+- [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) — trzecia część serii.
+- [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md) — synteza od znaku do microcode.
+- [`2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) — format daty i eksperyment replikowalny.
+- [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md) — deterministyczna metrologia strukturalna.
+- [`ASCII_MC_9D_MC.PROMPT`](ASCII_MC_9D_MC.PROMPT) — prompt/instrument eksperymentalny.
+- [`ASCII_MC_9D_notatka_bezpieczenstwa.md`](ASCII_MC_9D_notatka_bezpieczenstwa.md) — notatka bezpieczeństwa.
+
+### [`mental-matrix-mega-brain-coop-linux.MD`](mental-matrix-mega-brain-coop-linux.MD)
+
+Linux jako środowisko współpracy i eksperymentów Human–AI.
+
+### [`PROMPT_MOZOWANIE_V1.prompt`](PROMPT_MOZOWANIE_V1.prompt)
+
+Instrument promptowy związany z metodami badawczymi repozytorium.
 
 ---
 
-## AI Security i architektura wykonawcza
+# 5. Cyber, malware, APT i incydenty
 
-### Security Model Boundary
+- [`fileless-malware.md`](fileless-malware.md) — fileless malware, Windows i living-off-the-land.
+- [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md) — asynchroniczne powłoki i długie operacje APT.
+- [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md) — studium kampanii backdoora.
+- [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md) — analiza kampanii APT.
+- [`fire-sale.md`](fire-sale.md) — wielowarstwowy incydent infrastrukturalno-ekonomiczny.
+- [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md) — protokoły czasu, NTP/PTP i async shell.
+- [`malware-evolution.md`](malware-evolution.md) — ewolucja malware.
+- [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md) — ewolucja cyberbezpieczeństwa.
 
-[`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) opisuje zmianę podstawowej jednostki bezpieczeństwa z komponentu na **execution path**. Materiał obejmuje model SMB / SMBE, Probabilistic–Deterministic Boundary, Security Observability Kernel, Combinatorial Execution Control, Security Boundary Buffer, trzy pasy autonomii oraz strategię RED / BLUE / PURPLE.
-
-### Observability-Conditioned Reference Monitor
-
-[`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) formalizuje zasadę:
-
-```text
-OBSERVABILITY ↓
-→ AUTHORIZED STATE SPACE ↓
-```
-
-Model językowy generuje **action proposal**; niezależny PDP/PEP i lokalna warstwa wykonawcza decydują, czy propozycja może zostać zamieniona w skutek.
-
-### Linux Multi-Agent Control Mesh
-
-[`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) rozszerza kontrolę z pojedynczego agenta na populację agentów. Kluczowe rozróżnienie:
-
-```text
-network address
-≠ identity
-≠ authority
-```
-
-Mesh obejmuje płaszczyzny **CONTROL / DATA / EXECUTION / OBSERVABILITY / TRUST / SOC**, federację polityk, workload identity, provenance, effect gateways, containment i integrację SOC/SIEM/SOAR.
-
-### LTBC i governance
-
-- [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md) — granice zaufania w LLM/agent workflows;
-- [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md) — governance i mediacja wykonania;
-- [`sbom-as-sigillum-relationis_systemic-risk-control.md`](sbom-as-sigillum-relationis_systemic-risk-control.md) — SBOM / relacja / kontrola ryzyka systemowego;
-- [`inwariant_llm_analiza_watkow_konwersacyjnych.md`](inwariant_llm_analiza_watkow_konwersacyjnych.md) — analiza inwariantów i ciągłości wątków LLM.
+OSINT i rekonstrukcje mają osobny indeks: [`OSINT/README.md`](OSINT/README.md).
 
 ---
 
-## Systemy agentowe, organizacja i kontrola
+# 6. Human–AI, organizacja, ekonomia i percepcja
 
-[`evolutionary-agent-systems-organization-framework.md`](evolutionary-agent-systems-organization-framework.md) traktuje wdrożenie agentów jako **kontrolowaną współewolucję organizacji i systemu**, a nie jednorazowy rollout technologii. Badanie łączy obserwowalność, odwracalność, ownership, governance, system safety, resilience oraz ograniczenia infrastrukturalne.
-
-[`relational-perceptual-protocol-bootstrap-model.md`](relational-perceptual-protocol-bootstrap-model.md) rozwija relacyjny model protokołów percepcyjnych i bootstrapowania zachowania agentów.
-
-[`global_architecture_convergence_baseline_report.md`](global_architecture_convergence_baseline_report.md) porównuje wzorce rozwijane w repozytoriach z publicznie dokumentowanymi architekturami agentic runtime, tracingu, approvals, identity i execution control. Raport jawnie rozróżnia **konwergencję funkcjonalną / architektoniczną** od twierdzenia o wpływie przyczynowym.
-
-Pozostałe teksty tej linii obejmują m.in.:
-
-- [`granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md`](granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md) — granice wykonalności i infrastrukturalny rachunek AI;
-- [`produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md`](produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md) — produktywność i rozwój AI;
-- [`blackbox_w_kosmosie.md`](blackbox_w_kosmosie.md) — problem black-box w szerszym kontekście systemowym;
+- [`evolutionary-agent-systems-organization-framework.md`](evolutionary-agent-systems-organization-framework.md) — ewolucyjne wdrażanie agentów i współewolucja organizacji.
+- [`relational-perceptual-protocol-bootstrap-model.md`](relational-perceptual-protocol-bootstrap-model.md) — relacyjne protokoły percepcyjne / bootstrap.
+- [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md) — Social-AI i premia za kreację.
+- [`produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md`](produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md) — produktywność modelu Wioski Kosmicznej.
+- [`granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md`](granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md) — operacyjna granica wykonalności.
+- [`06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md`](06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md) — VR-first i biologiczne ograniczenia interfejsu.
+- [`manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md`](manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md) — percepcja przedrozumowa i probabilistyczna propaganda.
+- [`mokey-bissnes_k-wave-media_potencjal-naukowy.md`](mokey-bissnes_k-wave-media_potencjal-naukowy.md) — media, ekonomia i potencjał badawczy.
+- [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md) — synteza Human–AI–społeczeństwo–infrastruktura.
+- [`epistemiczna_tasma_prototypowa_figury.md`](epistemiczna_tasma_prototypowa_figury.md) — prototypowanie jako pętla falsyfikacji.
+- [`blackbox_w_kosmosie.md`](blackbox_w_kosmosie.md) — black-box w kontekście systemowym.
 - [`teoria-pojemnosci-modeli-obliczalnosc.md`](teoria-pojemnosci-modeli-obliczalnosc.md) — pojemność modeli i obliczalność.
 
----
-
-## LOCI i badania reprodukowalne
-
-### Kanoniczny pipeline LOCI
-
-[`badania/LOCI/README.MD`](badania/LOCI/README.MD) definiuje aktywny przepływ:
-
-```text
-sandbox.txt
-→ parser Python
-→ sample_norm.json
-→ adapter MATLAB
-→ seria analityczna
-→ macierz cech 27D
-→ wizualizacja 27D → 9R
-→ results/
-```
-
-W `badania/LOCI/` znajdują się m.in.:
-
-- `parsers/` — parsing, redakcja i normalizacja;
-- `matlab/adapters/` — interoperacyjność i budowa macierzy cech;
-- `matlab/features/` — warstwa cech;
-- `matlab/visualizers/` — redukcja 27D→9R/3D i wizualizacja;
-- `spec/` — kontrakty danych i kompatybilność;
-- `tests/` — testy end-to-end i komponentowe;
-- `results/` — artefakty generowane przez pipeline;
-- `raports/` — generatory i raporty rekurencyjne.
-
-Repo zawiera także działające artefakty testowe dla wielu sample oraz statyczny raport rekurencyjny.
-
-### Conditional Decision Theory / „Oczy szeroko zamknięte”
-
-Korpus obejmuje raporty, wyniki JSON i pakiety reprodukcyjne dotyczące teorii decyzji warunkowej, ekspozycji, adaptacji, coupling i closure. Punkty wejścia:
-
-- [`badania/conditional_decision_theory/`](badania/conditional_decision_theory)
-- [`artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md)
-
-### Human–AI / HITL research corpus
-
-[`badania/README.md`](badania/README.md) syntetyzuje badania nad:
-
-- ekonomią danych i kosztu błędu,
-- Human-AI-In-The-Loop,
-- kosztem poznawczym,
-- dryfem semantycznym,
-- stabilnością systemów społeczno-technicznych,
-- relacją automatyzacji, walidacji i TCO.
-
-Katalog `badania/` jest **archiwum i dziennikiem badań**; nie każdy PDF lub pakiet jest finalną publikacją.
+Pełny korpus badań tej linii: [`badania/README.md`](badania/README.md).
 
 ---
 
-## Epistemika LLM, kontekst i microcode
+# 7. Dane pomocnicze
 
-Repozytorium od początku rozwijało również problem **walidacji sensu**: LLM może tworzyć spójną narrację szybciej, niż użytkownik jest w stanie ją zweryfikować. Dlatego warstwa epistemiczna jest traktowana jako element bezpieczeństwa, a nie jako temat poboczny.
+- [`dane_wykresu_globalnej_implementacji_2026-08-04.csv`](dane_wykresu_globalnej_implementacji_2026-08-04.csv) — dane do wykresu globalnej implementacji.
+- [`macierz_luk_architektonicznych_2026-08-04.csv`](macierz_luk_architektonicznych_2026-08-04.csv) — macierz luk architektonicznych.
+- [`.gitignore`](.gitignore) — wykluczenia repozytorium.
 
-Najważniejsze materiały:
-
-- [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md) — fakt, fikcja, kontekst i status epistemiczny w LLM;
-- [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt) — praktyczny detektor P0–P3;
-- [`magia-embeddingu-llm-slowo-w-czyn.md`](magia-embeddingu-llm-slowo-w-czyn.md) — przejście od reprezentacji semantycznej do działania;
-- [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md) — wzorzec tekstowy → region embeddingów → akcja;
-- [`protokoly_kontekstu_chunk-chunk_facebook_case.md`](protokoly_kontekstu_chunk-chunk_facebook_case.md) — protokoły kontekstu;
-- [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md) — operator `‡` i zmiana klasy kontekstu;
-- [`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`](AISec_ASCII_MC_9D_eksperyment_kontekstowy.md) — AISEC / ASCII_MC_9D;
-- [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md), [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md), [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) — seria microcode;
-- [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md) — deterministyczna metrologia strukturalna;
-- [`mental-matrix-mega-brain-coop-linux.MD`](mental-matrix-mega-brain-coop-linux.MD) — Linux jako środowisko współpracy Human–AI.
+Materiały graficzne: [`images/README.md`](images/README.md).
 
 ---
 
-## Cyber, malware, APT i incydenty
+# 8. Metodyka czytania
 
-Klasyczny cyber pozostaje osobną i ważną warstwą repozytorium:
-
-- [`fileless-malware.md`](fileless-malware.md) — Windows, living-off-the-land, PowerShell, WMI, injection i detekcja;
-- [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md) — asynchroniczne powłoki i operacje rozciągnięte w czasie;
-- [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md) — analiza kampanii backdoora;
-- [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md) — case-study kampanii APT;
-- [`fire-sale.md`](fire-sale.md) — incydent wielowarstwowy na styku infrastruktury, rynków i geopolityki;
-- [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md) — czas systemowy, NTP/PTP i asynchroniczność;
-- [`malware-evolution.md`](malware-evolution.md) i [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md) — ewolucja ataku i obrony;
-- [`OSINT/`](OSINT) — materiały OSINT i rekonstrukcje zdarzeń.
-
-Celem tych materiałów nie jest wyłącznie opis technik. Są one często używane jako dane do pytań o **długie łańcuchy przyczynowe, propagację, obserwowalność, odporność i zmianę modelu bezpieczeństwa**.
-
----
-
-## Human–AI, społeczeństwo, ekonomia i percepcja
-
-Druga duża oś repozytorium dotyczy systemów, w których człowiek jest częścią pętli decyzyjnej, a nie zewnętrznym „użytkownikiem”.
-
-Najważniejsze punkty wejścia:
-
-- [`badania/README.md`](badania/README.md) — synteza badań HITL;
-- [`evolutionary-agent-systems-organization-framework.md`](evolutionary-agent-systems-organization-framework.md) — ewolucyjne wdrażanie systemów agentowych;
-- [`manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md`](manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md) — probabilistyczna propaganda i percepcja przedrozumowa;
-- [`06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md`](06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md) — biologiczne granice interfejsów VR-first;
-- [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md) — Social-AI i ekonomia kreacji;
-- [`mokey-bissnes_k-wave-media_potencjal-naukowy.md`](mokey-bissnes_k-wave-media_potencjal-naukowy.md) — media, memy, ekonomia i środowiska informacyjne;
-- [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md) — nadrzędna warstwa Human–AI–społeczeństwo–infrastruktura;
-- [`epistemiczna_tasma_prototypowa_figury.md`](epistemiczna_tasma_prototypowa_figury.md) — falsyfikacja i prototypowanie jako proces epistemiczny.
-
----
-
-## Metodyka i status dowodowy
-
-Repozytorium celowo miesza **write-upy końcowe, modele formalne, badania eksploracyjne, symulacje i hipotezy**, dlatego status epistemiczny materiału jest ważniejszy niż jego stylistyczna pewność.
-
-W dojrzałych badaniach stosowane są m.in. rozróżnienia:
+Repo przechowuje różne klasy artefaktów i **nie każdy dokument jest finalnym twierdzeniem**. W badaniach stosowane są m.in. statusy:
 
 ```text
 FACT / OBSERVED
@@ -335,67 +251,48 @@ SPECULATION
 STRESS PARAMETER
 ```
 
-oraz praktyki:
+Przy materiałach probabilistycznych obowiązuje zasada: duża liczba realizacji Monte Carlo redukuje **sampling noise danego modelu**, ale nie usuwa model risk, złej kalibracji ani brakujących danych empirycznych.
 
-- jawne oddzielanie danych empirycznych od kalibracji modelu;
-- falsyfikacja hipotezy przed jej przyjęciem;
-- Monte Carlo jako badanie konsekwencji modelu niepewności, **nie substytut danych empirycznych**;
-- analiza wrażliwości, tail risk i scenariuszy kontrfaktycznych;
-- rozdzielanie podobieństwa od dowodu wpływu przyczynowego;
-- przechowywanie danych, skryptów, wyników i kontraktów umożliwiających replikację tam, gdzie jest to wykonalne;
-- oznaczanie materiałów `NIEZWERYFIKOWANE`, roboczych albo eksploracyjnych, kiedy dowody nie wystarczają do mocniejszego wniosku.
+Przy analizach architektonicznych podobieństwo lub konwergencja nie są automatycznie dowodem wpływu przyczynowego.
 
-Przykładem tej dyscypliny jest `ai_security_model_boundary_strategy_writeup.md`: 1 000 000 realizacji redukuje sampling noise **wewnątrz przyjętego modelu**, ale nie zamienia kalibrowanego prawdopodobieństwa kompromitacji w empiryczną częstość realnego świata.
+## Kanoniczne drzewo wyszukiwania
 
----
-
-## Konwencje artefaktów
-
-W repozytorium występują przede wszystkim:
-
-- `*.md`, `*.MD` — write-upy, specyfikacje, raporty i artykuły;
-- `*.prompt` — instrumenty badawcze i epistemiczne;
-- `*.pdf` — raporty źródłowe i pełne wyniki badań;
-- `*.csv`, `*.json`, `*.mat` — dane, wyniki i formaty pośrednie;
-- `*.py`, `*.m` — kod analityczny i pipeline’y reprodukcyjne;
-- `*.zip` — pakiety badań / wyników / reprodukcji;
-- [`images/`](images) — ilustracje i wizualizacje.
-
-Nazwy plików zachowują zarówno styl publikacyjny, jak i historyczne nazwy eksperymentów. Starsze nazewnictwo jest utrzymywane tam, gdzie pełni funkcję provenance.
-
----
-
-## Status repozytorium
-
-Repozytorium ma charakter **living repository**:
-
-- część dokumentów jest domknięta i referencyjna;
-- część jest publikacyjnym write-upem wyników;
-- część jest instrumentem badawczym albo specyfikacją;
-- część dokumentuje hipotezę, proces lub etap falsyfikacji;
-- katalogi `badania/` i `badania/LOCI/` zawierają również surowe i pośrednie artefakty niezbędne do replikacji.
-
-Nie należy więc interpretować każdego pliku jako obowiązującego „stanowiska repozytorium”. W wielu przypadkach wartością jest właśnie zapis tego, **co zostało odrzucone, skorygowane albo zawężone**.
+```text
+ROOT README
+│
+├─ konkretny write-up rootowy
+│
+├─ artykuły/README.md
+│  └─ publikacja
+│
+├─ badania/README.md
+│  ├─ raport PDF
+│  ├─ conditional_decision_theory/README.md
+│  ├─ MQL5Market/README.md
+│  └─ LOCI/README.MD
+│     ├─ parsers/README.md
+│     ├─ sample/README.md
+│     ├─ matlab/README.md
+│     ├─ spec/README.md
+│     ├─ tests/README.md
+│     ├─ results/README.md
+│     └─ raports/README.md
+│
+├─ OSINT/README.md
+└─ images/README.md
+```
 
 ---
 
-## Bezpieczeństwo i zakres użycia
+# 9. Bezpieczeństwo i zakres użycia
 
-> Wszystkie materiały dotyczące cyberbezpieczeństwa, ofensywnych technik i systemów agentowych mają charakter **edukacyjny, badawczy, defensywny i analityczny**.
->
-> Scenariusze ofensywne należy odnosić wyłącznie do własnych środowisk, laboratoriów, sandboxów, autoryzowanych testów oraz działań zgodnych z zasadami właściwego programu bug bounty.
->
-> Repozytorium nie zachęca do nieautoryzowanego dostępu, zakłócania cudzych systemów ani obchodzenia prawa.
->
-> W materiałach AI/LLM należy odróżniać warstwę empiryczną, formalną, modelową i interpretacyjną. Symulacja, zgodność architektoniczna lub spójna narracja nie są automatycznie dowodem empirycznym.
+Materiały ofensywne mają charakter edukacyjny, badawczy i defensywny. Scenariusze testowe należy stosować wyłącznie w środowiskach własnych, laboratoryjnych, autoryzowanych lub zgodnych z zasadami właściwego programu bug bounty. Repozytorium nie zachęca do nieautoryzowanego dostępu ani zakłócania cudzych systemów.
 
 ---
 
-## Kontakt
+# 10. Kontakt
 
-Uwagi, dane do replikacji, korekty metodologiczne i propozycje współpracy:
-
-- GitHub: [@DonkeyJJLove](https://github.com/DonkeyJJLove)
+GitHub: [@DonkeyJJLove](https://github.com/DonkeyJJLove)
 
 ---
 
