@@ -9,7 +9,8 @@
 ```text
 badania/
 ├── README.md                      ← ten indeks
-├── LOCI/                          ← pipeline 27D→9R, sample, testy, wyniki
+├── LOCI/                          ← 27D, trajektorie, testy, wyniki; linia badawcza 9R
+├── Symulacja_GITHUB/              ← sandbox amplifikacji workloadu agentowego
 ├── conditional_decision_theory/   ← raport + wyniki JSON
 ├── MQL5Market/                    ← eksperymentalny szkielet rynku
 ├── *.pdf                          ← raporty badawcze
@@ -19,7 +20,8 @@ badania/
 
 ### Podkatalogi
 
-- [`LOCI/`](LOCI/README.MD) — kanoniczny pipeline parsowania, normalizacji, cech 27D, wizualizacji 27D→9R, testów i raportów.
+- [`LOCI/`](LOCI/README.MD) — kanoniczny pipeline parsowania, normalizacji, cech 27D, projekcji i metryk trajektorii, testów i raportów; 9R pozostaje osobną linią formalizacyjną, nie synonimem aktualnej projekcji 3D.
+- [`Symulacja_GITHUB/`](Symulacja_GITHUB/README.md) — izolowany sandbox Monte Carlo badający wtórną amplifikację workloadu przy retry, fan-out, degradacji i współdzielonych zależnościach.
 - [`conditional_decision_theory/`](conditional_decision_theory/README.md) — badanie decyzji warunkowej, ekspozycji, closure i adaptacji.
 - [`MQL5Market/`](MQL5Market/README.md) — mały eksperymentalny szkielet badawczy rynku.
 
@@ -32,6 +34,14 @@ badania/
 - [`Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełne badanie falsyfikacyjne strategii bezpieczeństwa agentowego AI; obejmuje Security Model Boundary, Probabilistic–Deterministic Boundary, 1 000 000 realizacji Monte Carlo, 36 strategii, Pareto/tail-risk optimization, kontrfaktyczną falsyfikację, stress testing, adversarial search oraz model GREEN / AMBER / RED.
 - [`../AI_Driven_Security_Research_Package_2026-08-18.zip`](../AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów badawczych powiązany z raportem i write-upem.
 - [`../ai_security_model_boundary_strategy_writeup.md`](../ai_security_model_boundary_strategy_writeup.md) — publikacyjny write-up wyprowadzający z badania docelową strategię: federated enforcement, provenance, capability control, observability, deterministic execution boundary i ciągły RED/BLUE/PURPLE model expansion.
+
+### Symulacja_GITHUB — amplifikacja workloadu agentowego
+
+- [`Symulacja_GITHUB/README.md`](Symulacja_GITHUB/README.md) — kontrakt badania, mapa artefaktów i granica ważności.
+- [`Symulacja_GITHUB/agentic_amplification_report.md`](Symulacja_GITHUB/agentic_amplification_report.md) — 1000 miniagentów × 100 000 realizacji Monte Carlo, cztery polityki retry, 20 hipotez i test strukturalnej amplifikacji workloadu.
+- [`Symulacja_GITHUB/article.md`](Symulacja_GITHUB/article.md) — artykuł syntetyczny o sprzężeniu retry/fan-out/degradacja/pojemność.
+
+**Granica epistemiczna:** sandbox wspiera techniczną możliwość i strukturę przyczynową **wewnątrz modelu**. Nie ustanawia częstotliwości empirycznej ani przyczyny konkretnej awarii GitHuba bez niezależnej telemetrii produkcyjnej.
 
 - [`Agent silniejszy od modelu i pricing jako dźwignia topologii.pdf`](<Agent silniejszy od modelu i pricing jako dźwignia topologii.pdf>) — relacja możliwości agenta, topologii systemu i ekonomiki inferencji.
 - [`Anty‑wzorzec wobec SaaS w Twoim kodzie.pdf`](<Anty‑wzorzec wobec SaaS w Twoim kodzie.pdf>) — analiza kontrwzorca architektonicznego wobec SaaS.
@@ -101,7 +111,7 @@ badania/
 - [`RFC-LOCI-CS-1_ Sformalizowanie i rozwinięcie znaków sterujących jako DSL sterowania.pdf`](<RFC-LOCI-CS-1_ Sformalizowanie i rozwinięcie znaków sterujących jako DSL sterowania.pdf>) — formalizacja znaków sterujących jako DSL.
 - [`Rygorystyczne obalenie błędu architektonicznego w torze ingestu danych.pdf`](<Rygorystyczne obalenie błędu architektonicznego w torze ingestu danych.pdf>) — falsyfikacja błędu w ingest pipeline.
 
-Pełny kod i artefakty LOCI: [`LOCI/README.MD`](LOCI/README.MD).
+Pełny kod i artefakty LOCI: [`LOCI/README.MD`](LOCI/README.MD). Aktualny pipeline implementuje 27D i projekcję trajektorii 3D; formalne 9R pozostaje przedmiotem odrębnej walidacji opisanej w lokalnym README.
 
 ## 5. OSINT, geopolityka, kryptologia i rekonstrukcja
 
@@ -137,6 +147,7 @@ README.MD
 → badania/README.md
 → temat
 → raport PDF / podkatalog badawczy
+→ lokalny README
 → kod / dane / wyniki
 → publikacyjny write-up
 ```
