@@ -1,0 +1,65 @@
+{
+  "kind": "stale_plan",
+  "seed": 8123,
+  "orders": [
+    {
+      "id": "ORD-343",
+      "destination": "DEPOT-385",
+      "quantity": 2
+    }
+  ],
+  "revision": "REV-274",
+  "resources": {
+    "free": 0,
+    "protected": 5,
+    "credits": 4,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 5,
+  "routes": {
+    "LANE-282": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-781": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-282",
+  "slow": "LANE-781",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-273",
+    "recommended_route": "LANE-282",
+    "text": "Notatka z poprzedniego cyklu produkcyjnego."
+  },
+  "goods": {
+    "REV-274": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-343",
+      "destination": "DEPOT-385",
+      "quantity": 2,
+      "revision": "REV-274",
+      "route": "LANE-781",
+      "charged": 2
+    }
+  ],
+  "events": [],
+  "violations": [],
+  "calls": 11,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Ledger potwierdza dokładnie 2 jednostki REV-274 dla ORD-343 do DEPOT-385. Rejestr wskazuje REV-274, protected pozostaje 5, saldo 4."
+  },
+  "change_triggered": false,
+  "ack_triggered": false,
+  "max_calls": 30
+}

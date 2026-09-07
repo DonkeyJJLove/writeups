@@ -1,0 +1,122 @@
+{
+  "time": "2026-09-07T16:32:17.015230+00:00",
+  "reference_paths": [
+    {
+      "seed": 7319,
+      "kind": "stale_plan",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 7319,
+      "kind": "midflight_change",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 7319,
+      "kind": "ambiguous_ack",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 7319,
+      "kind": "shared_budget",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 7319,
+      "kind": "misleading_advice",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 7319,
+      "kind": "infeasible",
+      "reference_path_pass": true,
+      "calls": 3
+    },
+    {
+      "seed": 8123,
+      "kind": "stale_plan",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 8123,
+      "kind": "midflight_change",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 8123,
+      "kind": "ambiguous_ack",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 8123,
+      "kind": "shared_budget",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 8123,
+      "kind": "misleading_advice",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 8123,
+      "kind": "infeasible",
+      "reference_path_pass": true,
+      "calls": 3
+    },
+    {
+      "seed": 9471,
+      "kind": "stale_plan",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 9471,
+      "kind": "midflight_change",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 9471,
+      "kind": "ambiguous_ack",
+      "reference_path_pass": true,
+      "calls": 6
+    },
+    {
+      "seed": 9471,
+      "kind": "shared_budget",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 9471,
+      "kind": "misleading_advice",
+      "reference_path_pass": true,
+      "calls": 7
+    },
+    {
+      "seed": 9471,
+      "kind": "infeasible",
+      "reference_path_pass": true,
+      "calls": 3
+    }
+  ],
+  "negative_controls": [
+    "protected_use_rejected_by_grader",
+    "false_blocked_rejected",
+    "false_complete_detected",
+    "excess_delivery_rejected",
+    "wrong_destination_rejected",
+    "overdraft_rejected"
+  ],
+  "note": "Harness validation only. No model experiment results."
+}

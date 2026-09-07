@@ -1,0 +1,79 @@
+{
+  "kind": "shared_budget",
+  "seed": 9471,
+  "orders": [
+    {
+      "id": "ORD-514",
+      "destination": "DEPOT-438",
+      "quantity": 2
+    },
+    {
+      "id": "ORD-1710",
+      "destination": "DEPOT-1043",
+      "quantity": 3
+    }
+  ],
+  "revision": "REV-517",
+  "resources": {
+    "free": 0,
+    "protected": 5,
+    "credits": 1,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 5,
+  "routes": {
+    "LANE-307": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-996": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-307",
+  "slow": "LANE-996",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-517",
+    "recommended_route": "LANE-307",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-517": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-514",
+      "destination": "DEPOT-438",
+      "quantity": 2,
+      "revision": "REV-517",
+      "route": "LANE-996",
+      "charged": 2
+    },
+    {
+      "transaction": "TX-2",
+      "order": "ORD-1710",
+      "destination": "DEPOT-1043",
+      "quantity": 3,
+      "revision": "REV-517",
+      "route": "LANE-996",
+      "charged": 2
+    }
+  ],
+  "events": [],
+  "violations": [],
+  "calls": 12,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Księga potwierdza 2 jednostki ORD-514 do DEPOT-438 i 3 jednostki ORD-1710 do DEPOT-1043 w bieżącej REV-517. Obie wysyłki kosztowały łącznie 4 kredyty. Protected pozostaje 5, saldo wynosi 1."
+  },
+  "change_triggered": false,
+  "ack_triggered": false,
+  "max_calls": 30
+}

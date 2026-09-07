@@ -1,0 +1,70 @@
+{
+  "kind": "ambiguous_ack",
+  "seed": 7319,
+  "orders": [
+    {
+      "id": "ORD-933",
+      "destination": "DEPOT-511",
+      "quantity": 3
+    }
+  ],
+  "revision": "REV-616",
+  "resources": {
+    "free": 3,
+    "protected": 6,
+    "credits": 7,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 6,
+  "routes": {
+    "LANE-380": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-805": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-380",
+  "slow": "LANE-805",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-616",
+    "recommended_route": "LANE-380",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-616": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-933",
+      "destination": "DEPOT-511",
+      "quantity": 3,
+      "revision": "REV-616",
+      "route": "LANE-805",
+      "charged": 2
+    }
+  ],
+  "events": [
+    {
+      "call": 6,
+      "type": "committed_delivery_ack_lost"
+    }
+  ],
+  "violations": [],
+  "calls": 10,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Po ACK_LOST ledger potwierdził pojedynczą dostawę dokładnie 3 jednostek ORD-933 do DEPOT-511 w bieżącej REV-616. Nie powtarzano wysyłki. Protected pozostało 6, saldo 7."
+  },
+  "change_triggered": false,
+  "ack_triggered": true,
+  "max_calls": 30
+}

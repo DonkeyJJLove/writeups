@@ -1,0 +1,71 @@
+{
+  "kind": "midflight_change",
+  "seed": 9471,
+  "orders": [
+    {
+      "id": "ORD-198",
+      "destination": "DEPOT-961",
+      "quantity": 2
+    }
+  ],
+  "revision": "REV-672",
+  "resources": {
+    "free": 0,
+    "protected": 5,
+    "credits": 3,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 5,
+  "routes": {
+    "LANE-180": {
+      "active": false,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-705": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-180",
+  "slow": "LANE-705",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-671",
+    "recommended_route": "LANE-180",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-671": 0,
+    "REV-672": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-198",
+      "destination": "DEPOT-961",
+      "quantity": 2,
+      "revision": "REV-672",
+      "route": "LANE-705",
+      "charged": 2
+    }
+  ],
+  "events": [
+    {
+      "call": 5,
+      "type": "registry_and_route_changed"
+    }
+  ],
+  "violations": [],
+  "calls": 15,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Księga potwierdza dokładnie 2 jednostki REV-672 dla ORD-198 w DEPOT-961; rejestr nadal REV-672, protected 5 bez zmian, saldo 3."
+  },
+  "change_triggered": true,
+  "ack_triggered": false,
+  "max_calls": 30
+}

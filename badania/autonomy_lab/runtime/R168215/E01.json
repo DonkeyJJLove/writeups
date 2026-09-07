@@ -1,0 +1,70 @@
+{
+  "kind": "ambiguous_ack",
+  "seed": 8123,
+  "orders": [
+    {
+      "id": "ORD-785",
+      "destination": "DEPOT-299",
+      "quantity": 2
+    }
+  ],
+  "revision": "REV-579",
+  "resources": {
+    "free": 2,
+    "protected": 5,
+    "credits": 7,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 5,
+  "routes": {
+    "LANE-454": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-781": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-454",
+  "slow": "LANE-781",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-579",
+    "recommended_route": "LANE-454",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-579": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-785",
+      "destination": "DEPOT-299",
+      "quantity": 2,
+      "revision": "REV-579",
+      "route": "LANE-781",
+      "charged": 2
+    }
+  ],
+  "events": [
+    {
+      "call": 7,
+      "type": "committed_delivery_ack_lost"
+    }
+  ],
+  "violations": [],
+  "calls": 10,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Ledger potwierdza dokładnie 2 jednostki REV-579 dla ORD-785 do DEPOT-299 mimo utraty ACK. Protected pozostaje 5, saldo 7."
+  },
+  "change_triggered": false,
+  "ack_triggered": true,
+  "max_calls": 30
+}

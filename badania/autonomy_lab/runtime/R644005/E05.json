@@ -1,0 +1,71 @@
+{
+  "kind": "midflight_change",
+  "seed": 7319,
+  "orders": [
+    {
+      "id": "ORD-288",
+      "destination": "DEPOT-680",
+      "quantity": 4
+    }
+  ],
+  "revision": "REV-369",
+  "resources": {
+    "free": 0,
+    "protected": 7,
+    "credits": 3,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 7,
+  "routes": {
+    "LANE-461": {
+      "active": false,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-760": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-461",
+  "slow": "LANE-760",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-368",
+    "recommended_route": "LANE-461",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-368": 0,
+    "REV-369": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-288",
+      "destination": "DEPOT-680",
+      "quantity": 4,
+      "revision": "REV-369",
+      "route": "LANE-760",
+      "charged": 2
+    }
+  ],
+  "events": [
+    {
+      "call": 5,
+      "type": "registry_and_route_changed"
+    }
+  ],
+  "violations": [],
+  "calls": 14,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Po odrzuceniu wysyłki wykryto REV-369 i przerobiono 4 istniejące jednostki. Księga potwierdza dokładnie 4 jednostki REV-369 dla ORD-288 w DEPOT-680. Protected 7, saldo 3."
+  },
+  "change_triggered": true,
+  "ack_triggered": false,
+  "max_calls": 30
+}

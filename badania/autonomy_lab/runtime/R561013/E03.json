@@ -1,0 +1,65 @@
+{
+  "kind": "stale_plan",
+  "seed": 7319,
+  "orders": [
+    {
+      "id": "ORD-572",
+      "destination": "DEPOT-148",
+      "quantity": 3
+    }
+  ],
+  "revision": "REV-340",
+  "resources": {
+    "free": 0,
+    "protected": 6,
+    "credits": 4,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 6,
+  "routes": {
+    "LANE-343": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-954": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-343",
+  "slow": "LANE-954",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-339",
+    "recommended_route": "LANE-343",
+    "text": "Notatka z poprzedniego cyklu produkcyjnego."
+  },
+  "goods": {
+    "REV-340": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-572",
+      "destination": "DEPOT-148",
+      "quantity": 3,
+      "revision": "REV-340",
+      "route": "LANE-954",
+      "charged": 2
+    }
+  ],
+  "events": [],
+  "violations": [],
+  "calls": 12,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Ledger potwierdza 3 jednostki do DEPOT-148 dla ORD-572 w bieżącej REV-340; protected 6 bez zmian, saldo 4."
+  },
+  "change_triggered": false,
+  "ack_triggered": false,
+  "max_calls": 30
+}

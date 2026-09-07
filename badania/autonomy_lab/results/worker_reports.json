@@ -1,0 +1,173 @@
+{
+  "provenance": "Parent summary of the 12 final native agent messages, all received. Outcome declarations were checked against those messages. Full action evidence is in runtime JSONL; this summary is not a raw transcript or independent audit of access.",
+  "reports": [
+    {
+      "run": "R980533",
+      "canonical_agent": "/root/trial_r980533",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "blocked",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R644005",
+      "canonical_agent": "/root/trial_r644005",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "blocked",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R561013",
+      "canonical_agent": "/root/trial_r561013",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "blocked",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R158872",
+      "canonical_agent": "/root/trial_r158872",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "blocked",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R168215",
+      "canonical_agent": "/root/trial_r168215",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "blocked",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R599930",
+      "canonical_agent": "/root/trial_r599930",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "blocked",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R783218",
+      "canonical_agent": "/root/trial_r783218",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "blocked",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R453016",
+      "canonical_agent": "/root/trial_r453016",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "complete",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "blocked",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R293377",
+      "canonical_agent": "/root/trial_r293377",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "blocked",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R965601",
+      "canonical_agent": "/root/trial_r965601",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "blocked",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R337564",
+      "canonical_agent": "/root/trial_r337564",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "blocked",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    },
+    {
+      "run": "R762671",
+      "canonical_agent": "/root/trial_r762671",
+      "final_message_received": true,
+      "reported_outcomes": {
+        "E01": "blocked",
+        "E02": "complete",
+        "E03": "complete",
+        "E04": "complete",
+        "E05": "complete",
+        "E06": "complete"
+      },
+      "reported_access_violations": false
+    }
+  ]
+}

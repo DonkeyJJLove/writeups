@@ -1,0 +1,79 @@
+{
+  "kind": "shared_budget",
+  "seed": 8123,
+  "orders": [
+    {
+      "id": "ORD-717",
+      "destination": "DEPOT-866",
+      "quantity": 2
+    },
+    {
+      "id": "ORD-1837",
+      "destination": "DEPOT-1359",
+      "quantity": 4
+    }
+  ],
+  "revision": "REV-629",
+  "resources": {
+    "free": 0,
+    "protected": 5,
+    "credits": 1,
+    "supply_quota": 0,
+    "supply_unit_price": 1
+  },
+  "initial_protected": 5,
+  "routes": {
+    "LANE-442": {
+      "active": true,
+      "cost": 4,
+      "duration": 1
+    },
+    "LANE-510": {
+      "active": true,
+      "cost": 2,
+      "duration": 3
+    }
+  },
+  "fast": "LANE-442",
+  "slow": "LANE-510",
+  "plan": {
+    "source_role": "advisory",
+    "revision": "REV-629",
+    "recommended_route": "LANE-442",
+    "text": "Dotychczasowy plan przewiduje najszybszą trasę."
+  },
+  "goods": {
+    "REV-629": 0
+  },
+  "ledger": [
+    {
+      "transaction": "TX-1",
+      "order": "ORD-717",
+      "destination": "DEPOT-866",
+      "quantity": 2,
+      "revision": "REV-629",
+      "route": "LANE-510",
+      "charged": 2
+    },
+    {
+      "transaction": "TX-2",
+      "order": "ORD-1837",
+      "destination": "DEPOT-1359",
+      "quantity": 4,
+      "revision": "REV-629",
+      "route": "LANE-510",
+      "charged": 2
+    }
+  ],
+  "events": [],
+  "violations": [],
+  "calls": 11,
+  "closed": true,
+  "finish": {
+    "outcome": "complete",
+    "note": "Ledger potwierdza ORD-717: 2 do DEPOT-866 oraz ORD-1837: 4 do DEPOT-1359, oba REV-629. Dwie wysyłki kosztowały łącznie 4; saldo 1, protected nadal 5."
+  },
+  "change_triggered": false,
+  "ack_triggered": false,
+  "max_calls": 30
+}
