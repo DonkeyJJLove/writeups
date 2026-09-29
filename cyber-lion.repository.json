@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "repository": {
+    "id": "DonkeyJJLove/writeups",
+    "url": "https://github.com/DonkeyJJLove/writeups",
+    "owner": "DonkeyJJLove",
+    "default_branch": "master",
+    "vcs_ref": null
+  },
+  "cyber_lion": {
+    "tile_id": "research-corpus.writeups",
+    "roles": [
+      "ResearchCorpus",
+      "EvidenceSource",
+      "PublicationProvider"
+    ],
+    "layers": [
+      "SEM",
+      "MAND"
+    ],
+    "disposition": [
+      "KEEP",
+      "REFINE",
+      "INTEGRATE"
+    ]
+  },
+  "capabilities": [
+    "research.corpus",
+    "evidence.source",
+    "publication.artifact",
+    "rag.source.candidate"
+  ],
+  "authority": {
+    "maximum_level": "read",
+    "required_gates": [
+      "cyber-lion.mand"
+    ]
+  },
+  "observability": {
+    "logs": [
+      "publication.change",
+      "evidence.reference",
+      "corpus.update"
+    ],
+    "metrics": [
+      "document.count",
+      "evidence.reference.count",
+      "publication.count"
+    ],
+    "traces": [
+      "source→writeup→evidence-reference→publication"
+    ]
+  },
+  "security": {
+    "trust_boundaries": [
+      "research corpus != live currentness",
+      "publication != authority",
+      "RAG source candidate != admitted project context",
+      "writeup evidence reference != observed result"
+    ]
+  },
+  "epistemic": {
+    "status": "RESEARCH_CORPUS",
+    "confidence": 0.78
+  }
+}
