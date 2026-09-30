@@ -1,5 +1,8 @@
 # LION architecture role — v1.4
 
+> **Currentness note (v1.5 federation):** this file preserves the historical R20 role statement below. The current repository now **does contain** `cyber-lion.repository.json` and `AGENTS.md`; those files are the local machine-readable/discoverability owners. Global federation architecture remains owned by `DonkeyJJLove/ai_platform`. Statements below asserting that the manifest is absent are historical and superseded.
+
+
 **Repository:** `DonkeyJJLove/writeups`  
 **R20 exact baseline:** `master @ cb7e304512566f16ed11f1a659799ec79fa5f5f6` / tree `2b82b8875f976b836af04db412483ce278e1ef95`
 
@@ -26,7 +29,7 @@ Therefore the R18 package is historical lineage, not a current repository capabi
 
 ## Federation relationship
 
-The canonical global architecture and current federation projection are owned in `DonkeyJJLove/ai_platform`. This file is repository-local complementary documentation only. It intentionally does not duplicate the global architecture and does not create a `cyber-lion.repository.json` integration contract, because adding such a machine manifest could change how registry tooling classifies this repository.
+The canonical global architecture and current federation projection are owned in `DonkeyJJLove/ai_platform`. This file is repository-local complementary documentation only. It intentionally does not duplicate the global architecture. The historical absence of `cyber-lion.repository.json` has been superseded: the repository now carries that local integration manifest, while `ai_platform` remains the global architecture owner.
 
 ## Currentness
 
