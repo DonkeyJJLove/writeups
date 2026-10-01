@@ -1,6 +1,6 @@
 # LOCI MATLAB Features — reprezentacja cech
 
-[← MATLAB](../README.md) · [← LOCI](../../README.MD)
+[← MATLAB](../README.md) · [← LOCI](../../README.md)
 
 Warstwa `features/` przechowuje logikę budowy reprezentacji cech LOCI.
 

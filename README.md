@@ -10,7 +10,7 @@
 
 ```text
 writeups/
-├── README.MD                         ← jesteś tutaj
+├── README.md                         ← jesteś tutaj
 ├── ai_security_model_boundary_strategy_writeup.md
 ├── agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md
 ├── OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md
@@ -34,7 +34,7 @@ writeups/
 │   ├── MQL5Market/
 │   │   └── README.md
 │   └── LOCI/
-│       ├── README.MD                 ← pipeline kanoniczny
+│       ├── README.md                 ← pipeline kanoniczny
 │       ├── parsers/README.md
 │       ├── sample/README.md
 │       ├── matlab/README.md
@@ -65,7 +65,7 @@ writeups/
 | symulacja amplifikacji workloadu agentowego / GitHub | [`badania/Symulacja_GITHUB/README.md`](badania/Symulacja_GITHUB/README.md) |
 | publikacje | [`artykuły/README.md`](artykuły/README.md) |
 | pełny korpus badań | [`badania/README.md`](badania/README.md) |
-| LOCI / 27D / trajektorie / badania 9R | [`badania/LOCI/README.MD`](badania/LOCI/README.MD) |
+| LOCI / 27D / trajektorie / badania 9R | [`badania/LOCI/README.md`](badania/LOCI/README.md) |
 | epistemika LLM / microcode / kontekst | [sekcja Epistemika](#4-epistemika-llm-kontekst-i-microcode) |
 | malware / APT / incydenty | [sekcja Cyber](#5-cyber-malware-apt-i-incydenty) |
 | Human–AI / organizacja / percepcja | [sekcja Human–AI](#6-humanai-organizacja-ekonomia-i-percepcja) |
@@ -162,7 +162,7 @@ Raport i wynik JSON dla badania teorii decyzji warunkowej.
 
 Mała gałąź kodu eksperymentalnego dla researchu rynkowego.
 
-### [`badania/LOCI/README.MD`](badania/LOCI/README.MD)
+### [`badania/LOCI/README.md`](badania/LOCI/README.md)
 
 Kanoniczny system LOCI w aktualnym stanie implementacji:
 
@@ -348,7 +348,7 @@ ROOT README
 │  ├─ Symulacja_GITHUB/README.md
 │  ├─ conditional_decision_theory/README.md
 │  ├─ MQL5Market/README.md
-│  └─ LOCI/README.MD
+│  └─ LOCI/README.md
 │     ├─ parsers/README.md
 │     ├─ sample/README.md
 │     ├─ matlab/README.md

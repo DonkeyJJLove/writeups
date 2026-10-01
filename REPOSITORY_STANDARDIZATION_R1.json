@@ -1,0 +1,23 @@
+{
+  "schema": "lion.repository-standardization/v1",
+  "repository": "DonkeyJJLove/writeups",
+  "baseline": {
+    "head": "124d3a9cf913cf717e04615ce6a84610ba30eeca",
+    "tree": "bc23739745fb2dee586d5d19473c84e0b09eff37"
+  },
+  "global_standard_owner": "DonkeyJJLove/ai_platform:LION/standards/README.md",
+  "rename_map": [
+    {
+      "from": "README.MD",
+      "to": "README.md"
+    },
+    {
+      "from": "badania/LOCI/README.MD",
+      "to": "badania/LOCI/README.md"
+    }
+  ],
+  "additional_repairs": [],
+  "unresolved": [],
+  "delete_effect": "NONE",
+  "authority_effect": "NONE"
+}

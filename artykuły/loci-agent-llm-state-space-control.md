@@ -299,7 +299,7 @@ Ten sam mechanizm opisuje geometrykę pisania. Tekst techniczny nie jest wyłąc
 
 ## Powiązane artefakty repozytorium
 
-- [LOCI — kanoniczny pipeline i drzewo nawigacji](../badania/LOCI/README.MD)
+- [LOCI — kanoniczny pipeline i drzewo nawigacji](../badania/LOCI/README.md)
 - [Kanoniczna macierz cech 27D](../badania/LOCI/matlab/features/build_loci_feature_matrix.m)
 - [Kanoniczny wizualizator trajektorii](../badania/LOCI/matlab/visualizers/loci_27D_9R_visualizer_canonical.m)
 - [LLM Trust Boundary Collapse](llm-trust-boundary-collapse-publication.md)

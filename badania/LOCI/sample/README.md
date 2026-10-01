@@ -1,6 +1,6 @@
 # LOCI Samples — dane wejściowe i znormalizowane
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog `sample/` przechowuje próbki używane przez kanoniczny pipeline LOCI. Każdy `Sample_000X` rozdziela materiał surowy od warstwy znormalizowanej.
 

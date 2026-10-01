@@ -1,6 +1,6 @@
 # LOCI — kanoniczny pipeline i drzewo nawigacji
 
-[← Badania](../README.md) · [← Główny katalog](../../README.MD)
+[← Badania](../README.md) · [← Główny katalog](../../README.md)
 
 `badania/LOCI/` jest technicznym podsystemem repozytorium do przetwarzania iteracyjnych artefaktów Human–AI: parsowania, normalizacji, budowy cech 27D, analizy trajektorii, projekcji wizualizacyjnej, testów i statycznego raportowania.
 
@@ -10,7 +10,7 @@
 
 ```text
 LOCI/
-├── README.MD              ← ten indeks
+├── README.md              ← ten indeks
 ├── parsers/               ← ingest, redakcja, normalizacja
 ├── sample/                ← raw + norm dla Sample_000X
 ├── matlab/
@@ -134,4 +134,4 @@ Aktualny statyczny raport rekurencyjny znajduje się pod `results/_reports/stati
 
 ---
 
-**Nawigacja kanoniczna:** `README.MD → badania/README.md → LOCI/README.MD → warstwa → plik → wynik`.
+**Nawigacja kanoniczna:** `README.md → badania/README.md → LOCI/README.md → warstwa → plik → wynik`.

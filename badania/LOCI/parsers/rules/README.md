@@ -1,6 +1,6 @@
 # LOCI Parser Rules — reguły wejścia
 
-[← Parsers](../README.md) · [← LOCI](../../README.MD)
+[← Parsers](../README.md) · [← LOCI](../../README.md)
 
 Katalog `rules/` przechowuje deklaratywne reguły używane przez warstwę ingestu LOCI.
 

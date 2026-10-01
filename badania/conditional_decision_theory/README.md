@@ -1,6 +1,6 @@
 # Conditional Decision Theory — indeks badania
 
-[← Badania](../README.md) · [← Główny katalog](../../README.MD)
+[← Badania](../README.md) · [← Główny katalog](../../README.md)
 
 Ta gałąź przechowuje zwarte artefakty badania teorii decyzji warunkowej, ekspozycji, closure i adaptacji.
 

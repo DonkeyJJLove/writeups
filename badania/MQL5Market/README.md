@@ -1,6 +1,6 @@
 # MQL5Market — indeks gałęzi
 
-[← Badania](../README.md) · [← Główny katalog](../../README.MD)
+[← Badania](../README.md) · [← Główny katalog](../../README.md)
 
 Mała gałąź badawcza dotycząca eksperymentalnego szkieletu analitycznego dla MQL5/market research.
 

@@ -1,6 +1,6 @@
 # LOCI MATLAB Adapters — kontrakt wejścia do analizy
 
-[← MATLAB](../README.md) · [← LOCI](../../README.MD)
+[← MATLAB](../README.md) · [← LOCI](../../README.md)
 
 Adaptery stanowią kanoniczny most pomiędzy rekordowym `sample_norm` a reprezentacją używaną przez warstwę analityczną MATLAB.
 

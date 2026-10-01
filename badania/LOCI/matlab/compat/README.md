@@ -1,6 +1,6 @@
 # MATLAB compatibility layer
 
-[← MATLAB](../README.md) · [← LOCI](../../README.MD)
+[← MATLAB](../README.md) · [← LOCI](../../README.md)
 
 Katalog `compat/` przechowuje **historyczne pliki kompatybilności wstecznej**. Nie jest częścią głównej ścieżki obliczeniowej LOCI i nie powinien być preferowany przy nowych sample.
 

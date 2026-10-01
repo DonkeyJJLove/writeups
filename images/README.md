@@ -1,6 +1,6 @@
 # Images — indeks materiałów wizualnych
 
-[← Główny katalog](../README.MD)
+[← Główny katalog](../README.md)
 
 Katalog `images/` przechowuje grafiki, diagramy i ilustracje używane przez write-upy i badania. Pliki są artefaktami pomocniczymi; ich znaczenie należy czytać w kontekście dokumentów, które je osadzają.
 
@@ -20,8 +20,8 @@ Katalog `images/` przechowuje grafiki, diagramy i ilustracje używane przez writ
 
 ## Powiązane dokumenty
 
-- [Epistemika i microcode](../README.MD#epistemika-llm-kontekst-i-microcode)
-- [Human–AI](../README.MD#humanai-społeczeństwo-ekonomia-i-percepcja)
+- [Epistemika i microcode](../README.md#epistemika-llm-kontekst-i-microcode)
+- [Human–AI](../README.md#humanai-społeczeństwo-ekonomia-i-percepcja)
 - [Badania](../badania/README.md)
 
 ---

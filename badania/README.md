@@ -1,6 +1,6 @@
 # Badania — katalog badawczy i drzewo nawigacji
 
-[← Główny katalog](../README.MD)
+[← Główny katalog](../README.md)
 
 `badania/` jest głównym archiwum **living research** repozytorium. Zawiera raporty PDF, wyniki eksperymentów, pakiety reprodukcyjne, kod oraz wyspecjalizowane poddrzewa. Ten README jest **indeksem nawigacyjnym**: krótkie opisy wynikają z tytułów i roli plików w repo; status dowodowy znajduje się w samych badaniach.
 
@@ -20,7 +20,7 @@ badania/
 
 ### Podkatalogi
 
-- [`LOCI/`](LOCI/README.MD) — kanoniczny pipeline parsowania, normalizacji, cech 27D, projekcji i metryk trajektorii, testów i raportów; 9R pozostaje osobną linią formalizacyjną, nie synonimem aktualnej projekcji 3D.
+- [`LOCI/`](LOCI/README.md) — kanoniczny pipeline parsowania, normalizacji, cech 27D, projekcji i metryk trajektorii, testów i raportów; 9R pozostaje osobną linią formalizacyjną, nie synonimem aktualnej projekcji 3D.
 - [`Symulacja_GITHUB/`](Symulacja_GITHUB/README.md) — izolowany sandbox Monte Carlo badający wtórną amplifikację workloadu przy retry, fan-out, degradacji i współdzielonych zależnościach.
 - [`conditional_decision_theory/`](conditional_decision_theory/README.md) — badanie decyzji warunkowej, ekspozycji, closure i adaptacji.
 - [`MQL5Market/`](MQL5Market/README.md) — mały eksperymentalny szkielet badawczy rynku.
@@ -111,7 +111,7 @@ badania/
 - [`RFC-LOCI-CS-1_ Sformalizowanie i rozwinięcie znaków sterujących jako DSL sterowania.pdf`](<RFC-LOCI-CS-1_ Sformalizowanie i rozwinięcie znaków sterujących jako DSL sterowania.pdf>) — formalizacja znaków sterujących jako DSL.
 - [`Rygorystyczne obalenie błędu architektonicznego w torze ingestu danych.pdf`](<Rygorystyczne obalenie błędu architektonicznego w torze ingestu danych.pdf>) — falsyfikacja błędu w ingest pipeline.
 
-Pełny kod i artefakty LOCI: [`LOCI/README.MD`](LOCI/README.MD). Aktualny pipeline implementuje 27D i projekcję trajektorii 3D; formalne 9R pozostaje przedmiotem odrębnej walidacji opisanej w lokalnym README.
+Pełny kod i artefakty LOCI: [`LOCI/README.md`](LOCI/README.md). Aktualny pipeline implementuje 27D i projekcję trajektorii 3D; formalne 9R pozostaje przedmiotem odrębnej walidacji opisanej w lokalnym README.
 
 ## 5. OSINT, geopolityka, kryptologia i rekonstrukcja
 
@@ -143,7 +143,7 @@ Kod eksperymentalny rynku: [`MQL5Market/README.md`](MQL5Market/README.md).
 Najpierw wybierz **temat**, potem przejdź do dokumentu, a dopiero następnie do kodu/wyników:
 
 ```text
-README.MD
+README.md
 → badania/README.md
 → temat
 → raport PDF / podkatalog badawczy

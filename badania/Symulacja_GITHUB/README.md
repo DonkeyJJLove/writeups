@@ -1,6 +1,6 @@
 # Symulacja_GITHUB — sandbox amplifikacji workloadu agentowego
 
-[← Badania](../README.md) · [← Główny katalog](../../README.MD)
+[← Badania](../README.md) · [← Główny katalog](../../README.md)
 
 `badania/Symulacja_GITHUB/` zawiera izolowane badanie symulacyjne klasy architektur, w których wiele agentów generuje intencje przechodzące przez gateway, wspólną warstwę auth/token i współdzielony backend. Celem jest zbadanie, kiedy retry, fan-out, concurrency, degradacja usług i współdzielone zależności mogą wytwarzać **wtórną pracę infrastrukturalną** oraz dodatnie sprzężenie zwrotne przy stałej liczbie pierwotnych intencji.
 
@@ -40,7 +40,7 @@ Raport traktuje jako sygnał architektoniczny kombinację amplifikacji workloadu
 
 ## Relacja do reszty repozytorium
 
-- [`../LOCI/README.MD`](../LOCI/README.MD) — analiza trajektorii i reprezentacja obserwowalnych artefaktów Human–AI.
+- [`../LOCI/README.md`](../LOCI/README.md) — analiza trajektorii i reprezentacja obserwowalnych artefaktów Human–AI.
 - [`../../ai_security_model_boundary_strategy_writeup.md`](../../ai_security_model_boundary_strategy_writeup.md) — execution-path security, consequentiality i kontrola skutku.
 - [`../../PROCESS_GUARD.md`](../../PROCESS_GUARD.md) — reguły utrzymania procesu badawczego, provenance i statusów epistemicznych.
 
