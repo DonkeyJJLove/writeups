@@ -1,6 +1,6 @@
 # LOCI Tests — walidacja pipeline’u
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog `tests/` zawiera testy komponentowe, integracyjne oraz zachowane wyniki testów i eksperymentów HMK/27D.
 

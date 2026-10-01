@@ -1,6 +1,6 @@
 # Process Guard — adversarial maintenance for the research ecosystem
 
-[← Repository map](README.MD)
+[← Repository map](README.md)
 
 This document turns the project's recurring heuristics — `_neuro`, EEG-like state inspection, 9D semantic bridges, delta-first analysis and textual lithography — into a **testable repository-maintenance protocol**.
 

@@ -1,6 +1,6 @@
 # Artykuły — indeks publikacyjny
 
-[← Główny katalog](../README.MD)
+[← Główny katalog](../README.md)
 
 Katalog `artykuły/` grupuje dłuższe teksty publikacyjne i syntetyczne wyprowadzone z badań repozytorium. Opisy poniżej są **nawigacyjne**; status dowodowy należy czytać wewnątrz poszczególnych dokumentów.
 
@@ -14,10 +14,10 @@ Katalog `artykuły/` grupuje dłuższe teksty publikacyjne i syntetyczne wyprowa
 ## Powiązane gałęzie
 
 - [Badania](../badania/README.md) — źródłowy korpus badań i artefaktów.
-- [LOCI](../badania/LOCI/README.MD) — kanoniczny pipeline ingestu, reprezentacji 27D, analizy trajektorii, testów i raportowania.
+- [LOCI](../badania/LOCI/README.md) — kanoniczny pipeline ingestu, reprezentacji 27D, analizy trajektorii, testów i raportowania.
 - [Symulacja_GITHUB](../badania/Symulacja_GITHUB/README.md) — izolowane badanie Monte Carlo amplifikacji workloadu agentowego i sprzężeń infrastrukturalnych.
 - [AI Security Model Boundary](../ai_security_model_boundary_strategy_writeup.md) — aktualna strategia bezpieczeństwa agentowego na poziomie execution path.
 
 ---
 
-**Zasada nawigacji:** `README.MD → artykuły/README.md → publikacja → badanie źródłowe / artefakt`.
+**Zasada nawigacji:** `README.md → artykuły/README.md → publikacja → badanie źródłowe / artefakt`.

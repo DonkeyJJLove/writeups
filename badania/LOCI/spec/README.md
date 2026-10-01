@@ -1,6 +1,6 @@
 # LOCI Spec — kontrakty danych i kompatybilności
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog `spec/` jest warstwą kontraktów kanonicznego pipeline’u LOCI. To tutaj należy zaczynać przy zmianie formatu danych lub interoperacyjności.
 

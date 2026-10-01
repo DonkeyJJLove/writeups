@@ -1,6 +1,6 @@
 # LOCI Parsers — wejście, redakcja i normalizacja
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Warstwa `parsers/` zamienia materiał wejściowy na kanoniczne rekordy LOCI. To pierwszy etap aktywnego pipeline’u.
 

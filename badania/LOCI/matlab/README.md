@@ -1,6 +1,6 @@
 # LOCI MATLAB — mapa warstwy obliczeniowej
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog `matlab/` zawiera aktywną warstwę przekształcania kanonicznych rekordów LOCI w serię analityczną, cechy 27D oraz projekcje i metryki trajektorii.
 

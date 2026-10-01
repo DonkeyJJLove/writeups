@@ -183,7 +183,7 @@ W takim ujęciu „magia embeddingu LLM” przestaje być metaforą. Jest to śc
 ```markdown
 [PROMPT_BUTTON][HMK-9D_README_SUMMARY]
 
-Zrób zwarte, 5-punktowe streszczenie aktualnego pliku README.MD w repozytorium `chunk-chunk` (GitHub: DonkeyJJLove/chunk-chunk). Traktuj repo jako mikroświat HMK-9D i w każdym punkcie wskaż, jaki element problemu sterowania procesami Human–AI ten protokół adresuje.
+Zrób zwarte, 5-punktowe streszczenie aktualnego pliku README.md w repozytorium `chunk-chunk` (GitHub: DonkeyJJLove/chunk-chunk). Traktuj repo jako mikroświat HMK-9D i w każdym punkcie wskaż, jaki element problemu sterowania procesami Human–AI ten protokół adresuje.
 ```
 
 [Execution Trace Proof][6]
@@ -193,7 +193,7 @@ Zrób zwarte, 5-punktowe streszczenie aktualnego pliku README.MD w repozytorium 
 
 
 
-**Wykonanie „przycisku”: streszczenie README.MD `chunk-chunk`**
+**Wykonanie „przycisku”: streszczenie README.md `chunk-chunk`**
 
 Repozytorium `chunk-chunk` definiuje Protokół HoloMozaikowej Kompresji 9D (HMK-9D) jako odpowiedź na niedostatki klasycznego ujęcia `s ∈ S → a ∈ A` z polityką `π(a|s)`, wskazując, że w systemach Human–AI kluczowa jest nie tylko sama decyzja, lecz geometria całego procesu: sposób porcjowania informacji, łączenia kroków i rozkładu błędu w czasie. ([GitHub][7])
 

@@ -1,6 +1,6 @@
 # LOCI MATLAB Visualizers — projekcja trajektorii i raportowanie
 
-[← MATLAB](../README.md) · [← LOCI](../../README.MD)
+[← MATLAB](../README.md) · [← LOCI](../../README.md)
 
 Warstwa `visualizers/` odpowiada za interpretację przygotowanej reprezentacji 27D, redukcję wymiarowości na potrzeby analizy trajektorii, obliczanie metryk oraz zapis artefaktów wynikowych.
 

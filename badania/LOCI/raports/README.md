@@ -1,6 +1,6 @@
 # LOCI Reports — generowanie raportów rekurencyjnych
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog historycznie nazwany `raports/` zawiera kod odpowiedzialny za budowę statycznych raportów na podstawie **już obliczonych artefaktów LOCI**.
 

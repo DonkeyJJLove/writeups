@@ -1,6 +1,6 @@
 # LOCI Results — generowane artefakty analityczne
 
-[← LOCI](../README.MD)
+[← LOCI](../README.md)
 
 Katalog `results/` jest warstwą **wyjściową** pipeline’u LOCI. Zawartość powinna być generowana przez narzędzia i testy, a nie ręcznie edytowana jako źródło systemu.
 
