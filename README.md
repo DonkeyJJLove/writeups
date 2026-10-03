@@ -1,380 +1,168 @@
-# Writeups — mapa całego repozytorium
+# Writeups — badania, semantyka i bezpieczeństwo systemów agentowych
 
-> 🛡️ **AI Security · Agentic Systems · AI-Native Enterprise · Cybersecurity · Human–AI · LOCI · probabilistyka · epistemika LLM · OSINT**
+**Mapa repozytorium · aktualizacja: 3 października 2026**
 
-**Indeks zaktualizowany: 19 sierpnia 2026**
+`writeups` jest korpusem badawczym i publikacyjnym łączącym cyberbezpieczeństwo, sterowanie agentami AI, semantykę kontekstu, obserwowalność, probabilistyczne modele ryzyka oraz organizację systemów Human–AI. Przechowuje nie tylko artykuły, lecz także protokoły, kod instrumentów, konfiguracje, raporty PDF, dane, surowe przebiegi, wyniki negatywne i materiały wizualne. Wspólnym pytaniem jest to, jak przejść od informacji i interpretacji do działania, którego podstawę, uprawnienia oraz skutki można odtworzyć i sprawdzić.
 
-`writeups` jest living research repository: przechowuje publikacyjne write-upy, architektury bezpieczeństwa, eksperymenty, raporty PDF, kod, dane, wyniki i materiały wizualne. Ten README jest **korzeniem drzewa nawigacji**. Każdy większy katalog posiada własny README z krótkimi opisami poddrzewa.
+Repozytorium nie jest jednym produktem ani jednorodnym benchmarkiem. Są tu pomiary zachowania rzeczywistego modelu w syntetycznym środowisku, symulacje, analizy incydentów, projekty architektur i teksty koncepcyjne. Ten README porządkuje ich relacje i kieruje do właściwych źródeł. Opis działu nie podnosi statusu dowodowego wszystkich znajdujących się w nim materiałów.
 
-## Drzewo wejściowe
+W federacji **LION** `writeups` pełni role `ResearchCorpus`, `EvidenceSource` i `PublicationProvider`, określone w [cyber-lion.repository.json](./cyber-lion.repository.json). Jest źródłem badań, nie wykonawcą uprawnień ani bieżącym rejestrem całej platformy. Trasę do właściciela architektury opisuje [AGENTS.md](./AGENTS.md); prowadzi ona do [LION w repozytorium ai_platform](https://github.com/DonkeyJJLove/ai_platform/blob/master/LION/architecture/v1_5/README.md). Lokalne wyniki HCL, LOCI czy symulacji nie stanowią automatycznie walidacji całego LION.
+
+## Wybierz ścieżkę czytania
+
+| Cel | Punkt wejścia | Co znajduje się dalej |
+|---|---|---|
+| Zrozumieć zmierzony wpływ scaffolding semantycznego | [Nowy writeup HCL 4.3.3](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) | Wyniki, działanie warstwy kontekstu, granice sterowania i dowody |
+| Sprawdzić protokół, kod i przebieg eksperymentu | [Heuristic Causal Lab](./badania/heuristic-causal-lab-final-4.3/README.md) | Konfiguracja finalnego runu, 10 240 epizodów, grader i surowy transport |
+| Projektować granicę między modelem a skutkiem | [Security Model Boundary](./ai_security_model_boundary_strategy_writeup.md) | Strategia bezpieczeństwa, reference monitor, control mesh, autoryzacja |
+| Analizować reprezentacje i trajektorie Human–AI | [LOCI](./badania/LOCI/README.md) | Ingest, normalizacja, cechy 27D, projekcja 3D, testy i raporty |
+| Badać kaskady, retry i przeciążenia | [Symulacja_GITHUB](./badania/Symulacja_GITHUB/README.md) | Sandbox Monte Carlo, raport, kod i interpretacja zakresu modelu |
+| Przejść od semantyki do teorii kontekstu | [Epistemika i microcode](#epistemika-llm-kontekst-i-microcode) | Znaki, operatory kontekstu, metrologia, instrumenty promptowe |
+| Czytać o organizacji, ekonomice i Human–AI | [Organizacja i ekonomika](#humanai-społeczeństwo-ekonomia-i-percepcja) | AI-Native Enterprise, protokoły relacyjne, granica wykonalności |
+| Znaleźć analizy malware, APT i rekonstrukcje | [Cyberbezpieczeństwo i OSINT](#cyber-i-osint) | Kampanie, techniki, scenariusze i źródła rekonstrukcyjne |
+| Przeglądać pełny katalog publikacji i raportów | [Artykuły](./artykuły/README.md) · [Badania](./badania/README.md) | Lokalne indeksy, raporty PDF i pakiety reprodukcyjne |
+
+## Jak zorganizowany jest korpus
 
 ```text
 writeups/
-├── README.md                         ← jesteś tutaj
-├── ai_security_model_boundary_strategy_writeup.md
-├── agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md
-├── OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md
-├── LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md
-├── AI_NATIVE_ENTERPRISE_RND_WRITEUP.md
-├── AI_NATIVE_ROADMAP.md
-├── PROCESS_GUARD.md
-├── REPOSITORY_AUDIT_2026-08-18.md
-├── PROFILE_README.md
-├── PROFILE_ABOUT.md
-├── AI_Driven_Security_Research_Package_2026-08-18.zip
-├── artykuły/
-│   └── README.md                     ← publikacje
+├── README.md                         mapa tematów i ścieżek czytania
+├── AGENTS.md                         reguły kierowania w federacji LION
+├── cyber-lion.repository.json        maszynowy opis roli i granic repo
+├── *.md / *.MD                       samodzielne writeupy i architektury
+├── *.prompt / *.PROMPT               instrumenty kontekstowe
 ├── badania/
-│   ├── README.md                     ← katalog raportów i pakietów
-│   ├── Strategia bezpieczeństwa wobec AI-Driven Attacks...pdf
-│   ├── Symulacja_GITHUB/
-│   │   └── README.md                 ← sandbox amplifikacji workloadu agentowego
-│   ├── conditional_decision_theory/
-│   │   └── README.md
-│   ├── MQL5Market/
-│   │   └── README.md
-│   └── LOCI/
-│       ├── README.md                 ← pipeline kanoniczny
-│       ├── parsers/README.md
-│       ├── sample/README.md
-│       ├── matlab/README.md
-│       ├── spec/README.md
-│       ├── tests/README.md
-│       ├── results/README.md
-│       └── raports/README.md
-├── OSINT/
-│   └── README.md
-└── images/
-    └── README.md
+│   ├── README.md                     tematyczny katalog raportów
+│   ├── heuristic-causal-lab-final-4.3/
+│   │   ├── SEMANTIC_SCAFFOLDING_WRITEUP.md
+│   │   ├── README.md                 pełny opis badania HCL 4.3.3
+│   │   ├── artifacts/                eksporty publikacyjne
+│   │   └── hcl_final_4_3/             instrument, kod i dane wykonania
+│   │       ├── runs/                 pełny run, epizody, transport HTTP
+│   │       ├── results/              pomocnicze wyniki selftestu
+│   │       └── STUDY_STATE*.json      zapis stanu i archiwum badania
+│   ├── LOCI/                         reprezentacje i analiza trajektorii
+│   ├── Symulacja_GITHUB/              amplifikacja obciążenia agentowego
+│   ├── conditional_decision_theory/   decyzje warunkowe
+│   ├── MQL5Market/                    eksperymentalna gałąź rynkowa
+│   └── *.pdf / *.zip                  raporty i pakiety badawcze
+├── artykuły/                         dłuższe publikacje i syntezy
+├── OSINT/                            wydzielone analizy rekonstrukcyjne
+├── images/                           diagramy i ilustracje
+└── .github/workflows/                kontrola higieny repozytorium
 ```
 
-## Najkrótsze ścieżki wyszukiwania
+Drzewo pokazuje funkcje katalogów, nie każdą pozycję. Istotne teksty są także w katalogu głównym — nie należy szukać całej problematyki wyłącznie w `artykuły/`. Z kolei `runs/` w HCL jest celowo wersjonowanym materiałem badawczym, nie katalogiem przeznaczonym do automatycznego usuwania jako cache.
 
-| Szukasz | Zacznij tutaj |
-|---|---|
-| AI-Driven Attacks / Security Model Boundary | [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) |
-| lokalna warstwa bezpieczeństwa agenta na Linuxie | [`agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md`](agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md) |
-| pełne badanie Monte Carlo AI-Driven Security | [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) |
-| pakiet materiałów AI-Driven Security | [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) |
-| runtime security / observability / Linux | [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) |
-| multi-agent security / federated control / SOC | [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) |
-| AI-Native Enterprise / dynamiczne swarms / organizacja | [`AI_NATIVE_ENTERPRISE_RND_WRITEUP.md`](AI_NATIVE_ENTERPRISE_RND_WRITEUP.md) |
-| roadmap R&D AI-Native | [`AI_NATIVE_ROADMAP.md`](AI_NATIVE_ROADMAP.md) |
-| maintenance guard / provenance / audyt repo | [`PROCESS_GUARD.md`](PROCESS_GUARD.md) |
-| audyt procesu repozytorium | [`REPOSITORY_AUDIT_2026-08-18.md`](REPOSITORY_AUDIT_2026-08-18.md) |
-| symulacja amplifikacji workloadu agentowego / GitHub | [`badania/Symulacja_GITHUB/README.md`](badania/Symulacja_GITHUB/README.md) |
-| publikacje | [`artykuły/README.md`](artykuły/README.md) |
-| pełny korpus badań | [`badania/README.md`](badania/README.md) |
-| LOCI / 27D / trajektorie / badania 9R | [`badania/LOCI/README.md`](badania/LOCI/README.md) |
-| epistemika LLM / microcode / kontekst | [sekcja Epistemika](#4-epistemika-llm-kontekst-i-microcode) |
-| malware / APT / incydenty | [sekcja Cyber](#5-cyber-malware-apt-i-incydenty) |
-| Human–AI / organizacja / percepcja | [sekcja Human–AI](#6-humanai-organizacja-ekonomia-i-percepcja) |
-| profil / portfolio badawcze | [`PROFILE_README.md`](PROFILE_README.md) · [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md) |
-| OSINT | [`OSINT/README.md`](OSINT/README.md) |
-| grafiki / diagramy | [`images/README.md`](images/README.md) |
+## 1. Scaffolding semantyczny i empiryczne sterowanie zachowaniem
 
----
+### Heuristic Causal Lab 4.3.3
 
-# 1. Aktualny rdzeń: bezpieczeństwo agentowego AI
+[**Scaffolding semantyczny jako warstwa sterowania agentem**](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) jest wynikowym punktem wejścia do badania pobocznego wobec LION. Opisuje konkretny mechanizm instrumentu: zamrożony tekst w bloku `<policy>`, wspólny kontrakt wiadomości systemowej, wybory modelu, obserwacje narzędzi i ocenę końcową. Oddziela pomiar efektu całego pakietu od hipotez o jego mechanizmie semantycznym.
 
-Repozytorium rozwija obecnie linię, w której jednostką bezpieczeństwa nie jest wyłącznie komponent, lecz **trajektoria wykonania**. Lokalnie dozwolone prymitywy nie gwarantują bezpieczeństwa ich kompozycji:
+W finalnym runie wykonano 10 240 epizodów: 256 bloków seeda, dziesięć rodzin, dwa warianty kontrfaktyczne i dwa ramiona. `author_raw` osiągnął `safe_success` 21,52%, a `strong_control` 6,86%; sparowana różnica wyniosła +14,67 pp. **Jednocześnie bezwzględna skuteczność na zadaniach oznaczonych `solvable` wyniosła 13,80% przy minimum 70%, więc formalny werdykt pozostaje negatywny.** Dane wspierają efekt kontekstowy w tym środowisku, nie gotowość niezawodnego kontrolera. Źródło: [końcowe podsumowanie](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/summary.json).
 
-```text
-A = allowed
-B = allowed
-C = allowed
+Do pełnego audytu prowadzą [opis badania](./badania/heuristic-causal-lab-final-4.3/README.md), [protokół 4.3.3](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/FULL_STUDY_PROTOCOL.md), [zastosowany profil](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/profile.json) i [źródłowy katalog runu](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/). Mechanikę można sprawdzić w [kodzie instrumentu](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/heuristic_lab/) oraz [testach](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/tests/).
 
-A → B → C ≠ automatically safe
-```
+[Pełna tabela epizodów](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/trials.csv) i [transport HTTP](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/transport_http/) dokumentują wykonanie. [Eksporty publikacyjne](./badania/heuristic-causal-lab-final-4.3/artifacts/README.md) ułatwiają czytanie; [nota integralności](./badania/heuristic-causal-lab-final-4.3/PUBLICATION_INTEGRITY.md) opisuje sprawdzenie zgodności i korektę separatorów kopii CSV. Katalog `results/` zawiera pomocniczy selftest i nie zastępuje pełnego `runs/.../study/`.
 
-### [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md)
+### Powiązane modele, nie dodatkowe wyniki HCL
 
-Nadrzędny write-up strategii **Security Model Boundary**. Obejmuje falsyfikację hipotezy, Probabilistic–Deterministic Boundary, 1 000 000 realizacji Monte Carlo, porównanie 36 strategii, tail risk, adversarial stress testing, Security Observability Kernel, Security Boundary Buffer oraz GREEN / AMBER / RED autonomy lanes.
+[Między znakiem a decyzją: semantyczna kompresja jako metaarchitektura AGI](./artykuły/AGI_SEMANTIC_COMPLEXITY_CONTROL_MODEL.md) rozwija model kontroli złożoności przez reprezentację, relewancję i kompresję. [LOCI–Agent–LLM](./artykuły/loci-agent-llm-state-space-control.md) rozdziela obserwację, ograniczenia, politykę, autoryzację i dynamikę środowiska. Są to teksty formalno-koncepcyjne: wyniki HCL nie potwierdzają automatycznie wszystkich ich tez ani całej postulowanej architektury.
 
-Materiały źródłowe tej linii są spięte bezpośrednio:
+<a id="4-epistemika-llm-kontekst-i-microcode"></a>
+<a id="epistemika-llm-kontekst-i-microcode"></a>
+## 2. Epistemika LLM, kontekst i microcode
 
-- [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełny raport badawczy;
-- [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów badawczych/reprodukcyjnych;
-- [`badania/README.md`](badania/README.md) — indeks badania w całym korpusie.
+Ta linia bada przejście od zapisu do znaczenia i od znaczenia do decyzji. [Prawda kontra fikcja w LLM](./prawda-vs-fikcja-w-llm.md) dotyczy statusu informacji i walidacji; [P0–P3](./P0-P3_truth-vs-fiction_detector_v1d.prompt) jest instrumentem klasyfikacyjnym, nie samodzielnym gwarantem prawdy. [Magia embeddingu](./magia-embeddingu-llm-slowo-w-czyn.md), [przyciski semantyczne](./przyciski-semantyczne-llm.md), [protokoły chunk–chunk](./protokoly_kontekstu_chunk-chunk_facebook_case.md) i [operator `‡`](./double_dagger_operator_kontekstu.md) opisują różne sposoby organizowania i przełączania kontekstu.
 
-### [`agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md`](agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md)
+Serię microcode można czytać kolejno: [fundament — znak i semantyka](./ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md), [część II](./ascii-microcode-ai_part2.md), [część III](./ascii-microcode-ai_part3.md), a następnie [synteza od znaku do ontologicznego mikrokodu](./ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md). Uzupełniają ją [specyfikacja mikrokodu daty](./2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) i [deterministyczna metrologia HMK9D](./writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md).
 
-Koncepcja lokalnej warstwy bezpieczeństwa dla systemu agentowego na Linuxie: Planner, Authority Gateway, niezależny Authorizer, ograniczony Executor, Verifier i Execution Receipt. Wspólna zasada z pozostałą linią bezpieczeństwa brzmi: **model może proponować zmianę stanu, lecz prawo do skutku musi być mediowane poza modelem**.
+Osobną ścieżkę tworzą [eksperyment kontekstowy AISEC / ASCII_MC_9D](./AISec_ASCII_MC_9D_eksperyment_kontekstowy.md), jego [prompt](./ASCII_MC_9D_MC.PROMPT) i [notatka bezpieczeństwa](./ASCII_MC_9D_notatka_bezpieczenstwa.md). [PROMPT_MOZOWANIE_V1](./PROMPT_MOZOWANIE_V1.prompt), [inwarianty wątków konwersacyjnych](./inwariant_llm_analiza_watkow_konwersacyjnych.md) oraz [teoria pojemności modeli i obliczalności](./teoria-pojemnosci-modeli-obliczalnosc.md) rozszerzają zakres pytań. Nazwy operatorów i wymiarów należy odczytywać zgodnie z definicjami w konkretnym materiale, nie jako wspólny certyfikat wszystkich proponowanych mechanizmów.
 
-### [`OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md`](OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md)
+## 3. Bezpieczeństwo agentowe: od propozycji do kontrolowanego skutku
 
-Referencyjna architektura Linux, w której zdolność agenta do powodowania skutków jest uzależniona od observability, provenance, platform integrity i complete mediation. Model oddziela **action proposal** od rzeczywistego authority.
+[**AI Security Model Boundary**](./ai_security_model_boundary_strategy_writeup.md) stanowi wejście do strategii bezpieczeństwa trajektorii wykonania. Towarzyszą mu [pełny raport badania falsyfikacyjnego](<./badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) i [pakiet materiałów](./AI_Driven_Security_Research_Package_2026-08-18.zip). Wyniki modelowania i symulacji w tej linii należy odróżniać od częstości zdarzeń zaobserwowanych w produkcji.
 
-### [`LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md`](LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md)
+[Koncepcja lokalnej warstwy bezpieczeństwa agenta na Linuxie](./agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md) prowadzi przez planowanie, bramkę uprawnień, autoryzację, wykonanie i weryfikację. [Observability-Conditioned Reference Monitor](./OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md) wiąże możliwość skutku z obserwowalnością, pochodzeniem i integralnością. [Linux Multi-Agent Control Mesh](./LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md) rozszerza ten problem na populację agentów i domen. Wspólne rozróżnienie brzmi: **propozycja modelu nie jest autoryzacją działania**.
 
-Rozszerzenie reference monitora na populację agentów i domen: control, execution, observability, trust i SOC planes, workload identity, federacja polityk, scoped capabilities, cross-domain communication oraz containment.
+[Deterministyczna obserwowalność warstwy wykonawczej](./deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md) opisuje kontrolowany szkielet działania; [enterprise AI governance proxy](./artykuły/enterprise-ai-governance-proxy.md) — mediację w organizacji; [LLM Trust Boundary Collapse](./artykuły/llm-trust-boundary-collapse-publication.md) — problem zacierania granic zaufania. [SBOM jako Sigillum Relationis](./sbom-as-sigillum-relationis_systemic-risk-control.md) przenosi uwagę na zależności i pochodzenie, a [raport konwergencji architektur](./global_architecture_convergence_baseline_report.md) porównuje wzorce, odróżniając podobieństwo od dowodu wpływu przyczynowego.
 
-### [`deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md`](deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md)
+Scaffolding semantyczny i formalne zabezpieczenia pełnią tu różne funkcje: pierwszy wpływa na generowanie propozycji, drugie rozstrzygają dopuszczalność skutku. Repozytorium dokumentuje obie warstwy, lecz nie utożsamia skuteczniejszego kontekstu z kompletnym systemem egzekwowania polityki.
 
-Tekst o deterministycznej warstwie obserwowalności i wykonania jako szkielecie kontroli nad probabilistycznym AI.
+## 4. Laboratoria, symulacje i materiał do odtworzenia
 
-### [`global_architecture_convergence_baseline_report.md`](global_architecture_convergence_baseline_report.md)
+### LOCI: od artefaktu do reprezentacji trajektorii
 
-Porównanie rozwijanych w repo wzorców z publicznymi architekturami agentic runtime, tracingu, approvals, identity, policy gates i execution control; rozróżnia konwergencję od wpływu przyczynowego.
+[LOCI](./badania/LOCI/README.md) obejmuje parsowanie, normalizację rekordów, budowę cech 27D, analizę trajektorii, testy i statyczne raporty. Według lokalnej dokumentacji kanoniczny pipeline tworzy macierz 27D i **projekcję 3D**, przez PCA lub kontrolowany fallback. Nie należy opisywać jej jako gotowej, zwalidowanej mapy `R^27 → R^9` ani bezpośredniego pomiaru stanów latentnych transformera.
 
-### [`sbom-as-sigillum-relationis_systemic-risk-control.md`](sbom-as-sigillum-relationis_systemic-risk-control.md)
+Praktyczne wejścia to [parsers](./badania/LOCI/parsers/README.md), [sample](./badania/LOCI/sample/README.md), [MATLAB](./badania/LOCI/matlab/README.md), [specyfikacje](./badania/LOCI/spec/README.md), [testy](./badania/LOCI/tests/README.md), [wyniki](./badania/LOCI/results/README.md) i [raports](./badania/LOCI/raports/README.md). Formalny kontekst relacji obserwacja–agent–środowisko znajduje się w [publikacji LOCI–Agent–LLM](./artykuły/loci-agent-llm-state-space-control.md).
 
-SBOM jako element szerszej kontroli relacji, provenance i ryzyka systemowego.
+### Symulacja_GITHUB: amplifikacja obciążenia
 
-### [`inwariant_llm_analiza_watkow_konwersacyjnych.md`](inwariant_llm_analiza_watkow_konwersacyjnych.md)
+[Indeks Symulacja_GITHUB](./badania/Symulacja_GITHUB/README.md), [raport](./badania/Symulacja_GITHUB/agentic_amplification_report.md) i [artykuł](./badania/Symulacja_GITHUB/article.md) opisują sandbox 1000 miniagentów i 100 000 realizacji Monte Carlo. Badane relacje obejmują retry, fan-out, degradację i współdzielone zależności. To model klasy mechanizmów; sam wynik symulacji nie ustala przyczyny konkretnej awarii GitHuba.
 
-Analiza inwariantów, ciągłości i zmian w wątkach LLM.
+### Decyzje warunkowe, testy narracji i eksperymenty rynkowe
 
----
+[Conditional Decision Theory](./badania/conditional_decision_theory/README.md) łączy raport i wyniki JSON dotyczące decyzji, ekspozycji, closure i adaptacji. Rozbudowany tekst publikacyjny znajduje się w [„Oczy szeroko zamknięte”](./artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md), a [pakiet badania](./badania/oczy_kasyno_study_v1_with_writeup.zip) zachowuje materiały do jego odtworzenia.
 
-# 2. Publikacje
+[Pakiet KPRR](./badania/KPRR_wersja_ostateczna_20000_testow.zip) należy do linii iteracyjnych testów Human–AI. [MQL5Market](./badania/MQL5Market/README.md) jest odrębną eksperymentalną gałęzią rynkową, nie częścią benchmarku HCL. Raporty dotyczące finansów i formalności argumentacji są zebrane w [katalogu badań](./badania/README.md).
 
-Pełny indeks: [`artykuły/README.md`](artykuły/README.md).
+### Raporty PDF i pakiety badawcze
 
-- [`artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](artykuły/RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md) — duży write-up teorii decyzji warunkowej i falsyfikacji.
-- [`artykuły/enterprise-ai-governance-proxy.md`](artykuły/enterprise-ai-governance-proxy.md) — enterprise AI governance/proxy i kontrola wykonania.
-- [`artykuły/llm-trust-boundary-collapse-publication.md`](artykuły/llm-trust-boundary-collapse-publication.md) — LLM Trust Boundary Collapse (LTBC).
-- [`artykuły/loci-agent-llm-state-space-control.md`](artykuły/loci-agent-llm-state-space-control.md) — formalny model zamkniętej pętli LOCI–Agent–LLM, rozdzielenie obserwacji, ograniczeń, polityki, autoryzacji i dynamiki środowiska oraz falsyfikowalny model geometryki pisania.
+[**badania/README.md**](./badania/README.md) grupuje raporty według obszarów: AI/SaaS/Cloud i bezpieczeństwo systemowe; Human–AI, dane i ekonomika; percepcja, poznanie i język; LOCI, 9R–27D i metakod; OSINT i rekonstrukcje; finanse i decyzje. W katalogu są również [raport o The Bean Factory i LION](<./badania/The Bean Factory dla LION — raport badawczy nad ewolucyjną metaarchitekturą samoorganizującego się k.pdf>) oraz [raport badawczy i plan komercjalizacji](<./badania/The Bean Factory i LION — raport badawczy, naukowy REŻIM oraz plan komercjalizacji.pdf>). Tytuł raportu nie przesądza o potwierdzeniu jego tezy; zakres i metodę trzeba odczytywać z samego dokumentu.
 
----
+<a id="6-humanai-organizacja-ekonomia-i-percepcja"></a>
+<a id="humanai-społeczeństwo-ekonomia-i-percepcja"></a>
+## 5. Human–AI, organizacja i ekonomika wykonania
 
-# 3. Badania i reprodukowalność
+[AI-Native Enterprise R&D](./AI_NATIVE_ENTERPRISE_RND_WRITEUP.md) ujmuje organizację jako sieć capabilities, ról, pamięci, kontekstu, mandatów i obserwowalności. [Evolutionary Agent Systems Organization Framework](./evolutionary-agent-systems-organization-framework.md) rozwija problem współewolucji organizacji i agentów. [Relational-Perceptual Protocol Bootstrap Model](./relational-perceptual-protocol-bootstrap-model.md) dotyczy protokołów relacyjnych i percepcyjnych, a [Mental Matrix / Mega Brain Coop Linux](./mental-matrix-mega-brain-coop-linux.MD) — środowiska współpracy Human–AI. [AI-Native Roadmap](./AI_NATIVE_ROADMAP.md) wyznacza ścieżkę promocji lokalnych badań do szerszego ekosystemu, nie zastępuje dokumentacji wdrożenia.
 
-Pełny katalog raportów: [`badania/README.md`](badania/README.md).
+Linia **Wioski Kosmicznej** łączy organizację, produkcję danych i wykonalność ekonomiczną. Punkty wejścia to [Social-AI i premia za kreację](./06_kosmiczne_wioski_social_ai_premia_za_kreacje.md), [produktywność dla rozwoju AI](./produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md), [granica wykonalności](./granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md), [kod cywilizacji Human–AI](./kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md) oraz [taśma prototypowa i figury epistemiczne](./epistemiczna_tasma_prototypowa_figury.md). Materiały te mają własne modele i założenia; nie są wynikami finalnego runu HCL.
 
-Gałąź obejmuje raporty z obszarów: AI/SaaS/Cloud, Human–AI, ekonomika danych, perception/cognition, LOCI i linia 9R/27D, OSINT/geopolityka, finanse, symulacje i pakiety reprodukcyjne.
+Percepcję i interfejsy opisują [VR-first a biologia człowieka](./06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md), [manipulacja masami i percepcja przedrozumowa](./manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md), [media i potencjał badawczy](./mokey-bissnes_k-wave-media_potencjal-naukowy.md) oraz [Blackbox w kosmosie](./blackbox_w_kosmosie.md). Powiązane raporty ekonomiczne, poznawcze i scenariuszowe znajdują się w [badania/](./badania/README.md).
 
-### AI-Driven Security — badanie i pakiet
+<a id="5-cyber-malware-apt-i-incydenty"></a>
+<a id="cyber-i-osint"></a>
+<a id="analiza-malware-asyncshell"></a>
+<a id="kampania-yokai-backdoor"></a>
+<a id="fileless-malware-w-systemach-windows-analiza-techniczna-i-spostrzeżenia"></a>
+## 6. Cyberbezpieczeństwo, malware, APT i OSINT
 
-- [`badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf`](<badania/Strategia bezpieczeństwa wobec AI-Driven Attacks pod presją wdrażania AI — badanie falsyfikacyjne Mo.pdf>) — pełne badanie Monte Carlo i falsyfikacji strategii.
-- [`AI_Driven_Security_Research_Package_2026-08-18.zip`](AI_Driven_Security_Research_Package_2026-08-18.zip) — pakiet materiałów powiązanych z badaniem.
-- [`ai_security_model_boundary_strategy_writeup.md`](ai_security_model_boundary_strategy_writeup.md) — wynik publikacyjny i architektoniczny badania.
+Klasyczne analizy bezpieczeństwa są częścią tego samego korpusu, ale mają odrębną podstawę źródłową od eksperymentów agentowych. [Fileless malware](./fileless-malware.md) opisuje techniki bezplikowe w środowisku Windows; [APT-K-47 / AsyncShell](./APT-K-47-asyncshell.md), [kampania Yokai Backdoor](./campaign-yokai-backdoor.md) i [operacja Cobalt Kitty](./operacja-cobalt-kitty.md) prowadzą do analiz kampanii i sposobów działania. [Malware evolution](./malware-evolution.md) oraz [Cybersecurity evolusion](./cybersecurity-evolusion.md) zachowują szerszy kontekst rozwoju technik i obrony.
 
-### [`badania/Symulacja_GITHUB/README.md`](badania/Symulacja_GITHUB/README.md)
+[Fire Sale](./fire-sale.md) oraz [zakłócanie protokołów czasu, AsyncShell i Fire Sale](./2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md) rozwijają scenariusze wielowarstwowe i zależności infrastrukturalne. Należy odróżniać opis scenariusza od udokumentowania konkretnego incydentu.
 
-Sandbox 1000 miniagentów × 100 000 realizacji Monte Carlo badający amplifikację wtórnego workloadu przy retry, fan-out, degradacji usług i współdzielonych zależnościach. Jest to **model klasy architektury**, nie dowód przyczyny konkretnej awarii GitHuba; lokalny README opisuje granicę ważności, kolejność czytania i kontrakt epistemiczny.
+[OSINT/README.md](./OSINT/README.md) kieruje do wydzielonej analizy rekonstrukcyjnej „Arctic Metagaz”. Dalsze materiały o geopolityce, wywiadzie, wojnie asymetrycznej i kryptoanalizie są w [tematycznym katalogu badań](./badania/README.md). Rekonstrukcja, hipoteza atrybucyjna i symulacja scenariusza nie są tym samym rodzajem dowodu.
 
-### [`badania/conditional_decision_theory/README.md`](badania/conditional_decision_theory/README.md)
+Materiały dotyczące technik ofensywnych służą badaniom, edukacji i obronie. Testowanie należy ograniczać do systemów własnych, laboratoriów i środowisk objętych zgodą właściciela. Sama obecność opisu w repozytorium nie stanowi zgody na wykonanie go wobec obcej infrastruktury.
 
-Raport i wynik JSON dla badania teorii decyzji warunkowej.
+## 7. Dane, grafiki i rozróżnienie rodzajów artefaktów
 
-### [`badania/MQL5Market/README.md`](badania/MQL5Market/README.md)
+[images/README.md](./images/README.md) grupuje diagramy habitatów, taśmy epistemicznej, wartości zależnej od czasu, portfela real options, progów HITL, infrastruktury społeczno-epistemicznej i protokołów percepcyjnych. Ilustracje przedstawiają koncepcje i wyniki; nie są samodzielnym dowodem architektury ani pomiarem stanu modelu.
 
-Mała gałąź kodu eksperymentalnego dla researchu rynkowego.
+W katalogu głównym są również [dane wykresu globalnej implementacji](./dane_wykresu_globalnej_implementacji_2026-08-04.csv) i [macierz luk architektonicznych](./macierz_luk_architektonicznych_2026-08-04.csv). To datowane artefakty pomocnicze. Nie należy traktować ich jako aktualizowanych na żywo wskaźników.
 
-### [`badania/LOCI/README.md`](badania/LOCI/README.md)
+Sposób czytania zależy od typu materiału. Writeup przedstawia interpretację; protokół określa warunki testu; kod realizuje instrument; `summary.json` agreguje wynik; `trials.csv` pozwala sprawdzać rekordy; surowy przebieg dokumentuje wymianę z modelem i narzędziami. Raport selftestu sprawdza instrument w swoim zakresie, ale nie jest wynikiem badania z żywym modelem. Archiwum ZIP jest formatem dostarczenia materiałów, a nie odrębną kategorią potwierdzenia naukowego.
 
-Kanoniczny system LOCI w aktualnym stanie implementacji:
+## 8. Jak odróżniać wynik od hipotezy
 
-```text
-input
-→ parser
-→ sample_norm
-→ analytical series
-→ 27D feature matrix
-→ standaryzacja
-→ PCA/fallback → 3D trajectory projection
-→ metrics / tests
-→ results
-→ static reports
-```
+Repozytorium zachowuje rozróżnienia `OBSERVED`, `DERIVED`, `CALIBRATED`, `ASSUMED`, `HYPOTHESIS`, `SPECULATION` i `STRESS PARAMETER`, opisane m.in. w [Process Guard](./PROCESS_GUARD.md). Przy czytaniu konkretnego materiału trzeba ustalić, co zmierzono, co obliczono z danych, co przyjęto jako założenie oraz czego dotyczy formalny werdykt. Wynik negatywny nie jest nieudanym załącznikiem — może być głównym rezultatem badania.
 
-Linia badawcza rozwija również formalizację 9R, ale bieżącego visualizera nie należy opisywać jako gotowego mapowania `R^27 → R^9`. Lokalny README rozdziela teraz stan implementacji od docelowego modelu 9R.
+W HCL pomiar dotyczy zachowania modelu w syntetycznym środowisku. W symulacji Monte Carlo wynik dotyczy przyjętego modelu i jego parametrów. W LOCI projekcja opisuje reprezentację artefaktów, nie bezpośrednio wnętrze transformera. W architekturach referencyjnych opis rozwiązania nie jest dowodem jego wdrożenia. Również liczba iteracji, wielkość katalogu czy liczba plików nie zastępują oceny metody i niezależności danych.
 
-LOCI ma lokalne indeksy dla `parsers`, `sample`, `matlab`, `spec`, `tests`, `results` i `raports`, dzięki czemu nie trzeba przeszukiwać ręcznie dużego poddrzewa wyników.
+Dla pracy z materiałem dowodowym właściwa kolejność to: dokument wynikowy, zastosowany protokół i profil, źródłowy run, rekordy, kod gradera, audyt oraz ograniczenia. W HCL finalny profil jest zachowany w konkretnym runie; ogólny szablon konfiguracji nie powinien go zastępować. Przed ponownym wykonaniem trzeba przeczytać [dokumentację instrumentu](./badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/README.md) i nie nadpisywać zakończonych przebiegów.
+
+## 9. LION, utrzymanie korpusu i portfolio
+
+[AGENTS.md](./AGENTS.md) i [cyber-lion.repository.json](./cyber-lion.repository.json) określają lokalną rolę, zależności i kierowanie do właściciela architektury. [LION Architecture Role v1.4](./LION_ARCHITECTURE_ROLE_v1_4.md) jest przez manifest oznaczony jako materiał historyczny. [REPOSITORY_STANDARDIZATION_R1.json](./REPOSITORY_STANDARDIZATION_R1.json) dokumentuje standardyzację repozytorium. Nie należy wnioskować o aktualnym stanie federacji wyłącznie z datowanej publikacji lub indeksu.
+
+[Process Guard](./PROCESS_GUARD.md) opisuje kontrolę zmian: źródło, intencję, kontekst, różnicę, uprawnienie, wykonanie, obserwację i werdykt. [Audyt z 18 sierpnia 2026](./REPOSITORY_AUDIT_2026-08-18.md) jest punktem kontrolnym w historii, nie automatycznym poświadczeniem późniejszych commitów. [Workflow higieny](./.github/workflows/repository-hygiene.yml) wykonuje ograniczone sprawdzenia obecności README i wybranych klas śledzonych plików lokalnych; nie zastępuje testów instrumentów ani recenzji badania.
+
+[.gitignore](./.gitignore) chroni przed przypadkowym wersjonowaniem środowisk lokalnych i cache. Nie oznacza to wykluczenia całego materiału wygenerowanego przez badanie: pełne `runs/`, `results/` i `STUDY_STATE*.json` HCL są świadomie zachowanymi dowodami wykonania. Przed publikacją nowych śladów należy sprawdzać je pod kątem sekretów, danych osobowych i informacji nieprzeznaczonych do udostępnienia.
+
+[PROFILE_README.md](./PROFILE_README.md) jest mapą szerszego portfolio, a [PROFILE_ABOUT.md](./PROFILE_ABOUT.md) opisuje profil zawodowy i badawczy. Autor i pozostałe repozytoria: [DonkeyJJLove](https://github.com/DonkeyJJLove).
 
 ---
 
-# 4. Epistemika LLM, kontekst i microcode
-
-### [`prawda-vs-fikcja-w-llm.md`](prawda-vs-fikcja-w-llm.md)
-
-Epistemiczny rdzeń: fakt, fikcja, kontekst i problem walidacji w systemach generatywnych.
-
-### [`P0-P3_truth-vs-fiction_detector_v1d.prompt`](P0-P3_truth-vs-fiction_detector_v1d.prompt)
-
-Instrument klasyfikacyjny P0–P3 do oddzielania faktów, interpretacji i fikcji.
-
-### [`magia-embeddingu-llm-slowo-w-czyn.md`](magia-embeddingu-llm-slowo-w-czyn.md)
-
-Od reprezentacji semantycznej i embeddingu do konsekwencji operacyjnej.
-
-### [`przyciski-semantyczne-llm.md`](przyciski-semantyczne-llm.md)
-
-Wzorce tekstowe jako semantyczne przełączniki prowadzące do klas działań.
-
-### [`protokoly_kontekstu_chunk-chunk_facebook_case.md`](protokoly_kontekstu_chunk-chunk_facebook_case.md)
-
-Case study protokołów kontekstu i mikrojęzyków.
-
-### [`double_dagger_operator_kontekstu.md`](double_dagger_operator_kontekstu.md)
-
-Operator `‡` jako przełącznik warstwy kontekstowej.
-
-### [`AISec_ASCII_MC_9D_eksperyment_kontekstowy.md`](AISec_ASCII_MC_9D_eksperyment_kontekstowy.md)
-
-Eksperyment kontekstowy AISEC / ASCII_MC_9D.
-
-### Seria ASCII microcode
-
-- [`ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md`](ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md) — fundament: znak i semantyka.
-- [`ascii-microcode-ai_part2.md`](ascii-microcode-ai_part2.md) — druga część serii.
-- [`ascii-microcode-ai_part3.md`](ascii-microcode-ai_part3.md) — trzecia część serii.
-- [`ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md`](ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md) — synteza od znaku do microcode.
-- [`2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md`](2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md) — format daty i eksperyment replikowalny.
-- [`writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md`](writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md) — deterministyczna metrologia strukturalna.
-- [`ASCII_MC_9D_MC.PROMPT`](ASCII_MC_9D_MC.PROMPT) — prompt/instrument eksperymentalny.
-- [`ASCII_MC_9D_notatka_bezpieczenstwa.md`](ASCII_MC_9D_notatka_bezpieczenstwa.md) — notatka bezpieczeństwa.
-
-### [`mental-matrix-mega-brain-coop-linux.MD`](mental-matrix-mega-brain-coop-linux.MD)
-
-Linux jako środowisko współpracy i eksperymentów Human–AI.
-
-### [`PROMPT_MOZOWANIE_V1.prompt`](PROMPT_MOZOWANIE_V1.prompt)
-
-Instrument promptowy związany z metodami badawczymi repozytorium.
-
----
-
-# 5. Cyber, malware, APT i incydenty
-
-- [`fileless-malware.md`](fileless-malware.md) — fileless malware, Windows i living-off-the-land.
-- [`APT-K-47-asyncshell.md`](APT-K-47-asyncshell.md) — asynchroniczne powłoki i długie operacje APT.
-- [`campaign-yokai-backdoor.md`](campaign-yokai-backdoor.md) — studium kampanii backdoora.
-- [`operacja-cobalt-kitty.md`](operacja-cobalt-kitty.md) — analiza kampanii APT.
-- [`fire-sale.md`](fire-sale.md) — wielowarstwowy incydent infrastrukturalno-ekonomiczny.
-- [`2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md`](2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md) — protokoły czasu, NTP/PTP i async shell.
-- [`malware-evolution.md`](malware-evolution.md) — ewolucja malware.
-- [`cybersecurity-evolusion.md`](cybersecurity-evolusion.md) — ewolucja cyberbezpieczeństwa.
-
-OSINT i rekonstrukcje mają osobny indeks: [`OSINT/README.md`](OSINT/README.md).
-
----
-
-# 6. Human–AI, organizacja, ekonomia i percepcja
-
-- [`evolutionary-agent-systems-organization-framework.md`](evolutionary-agent-systems-organization-framework.md) — ewolucyjne wdrażanie agentów i współewolucja organizacji.
-- [`relational-perceptual-protocol-bootstrap-model.md`](relational-perceptual-protocol-bootstrap-model.md) — relacyjne protokoły percepcyjne / bootstrap.
-- [`06_kosmiczne_wioski_social_ai_premia_za_kreacje.md`](06_kosmiczne_wioski_social_ai_premia_za_kreacje.md) — Social-AI i premia za kreację.
-- [`produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md`](produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md) — produktywność modelu Wioski Kosmicznej.
-- [`granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md`](granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md) — operacyjna granica wykonalności.
-- [`06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md`](06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md) — VR-first i biologiczne ograniczenia interfejsu.
-- [`manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md`](manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md) — percepcja przedrozumowa i probabilistyczna propaganda.
-- [`mokey-bissnes_k-wave-media_potencjal-naukowy.md`](mokey-bissnes_k-wave-media_potencjal-naukowy.md) — media, ekonomia i potencjał badawczy.
-- [`kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md`](kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md) — synteza Human–AI–społeczeństwo–infrastruktura.
-- [`epistemiczna_tasma_prototypowa_figury.md`](epistemiczna_tasma_prototypowa_figury.md) — prototypowanie jako pętla falsyfikacji.
-- [`blackbox_w_kosmosie.md`](blackbox_w_kosmosie.md) — black-box w kontekście systemowym.
-- [`teoria-pojemnosci-modeli-obliczalnosc.md`](teoria-pojemnosci-modeli-obliczalnosc.md) — pojemność modeli i obliczalność.
-
-Pełny korpus badań tej linii: [`badania/README.md`](badania/README.md).
-
----
-
-# 7. AI-Native Enterprise i governance procesu badawczego
-
-### [`AI_NATIVE_ENTERPRISE_RND_WRITEUP.md`](AI_NATIVE_ENTERPRISE_RND_WRITEUP.md)
-
-Synteza repozytoriów w model **AI-Native Enterprise as a Living Mosaic**: organizacja jako stanowy graf capabilities, AgentSpec, Mosaic Cells, dynamiczne swarms, jawne kontrakty identity/context/authority/memory/observability i separacja `SEM proposal ≠ MAND authorization ≠ INF effect`.
-
-### [`AI_NATIVE_ROADMAP.md`](AI_NATIVE_ROADMAP.md)
-
-Roadmap promocji badań z `writeups` do szerszego ekosystemu AI-Native. `writeups` pozostaje warstwą R&D / Enterprise Research Memory — hipoteza, symulacja lub publikacja nie uzyskuje przez samą obecność w repo autorytetu runtime.
-
-### [`PROCESS_GUARD.md`](PROCESS_GUARD.md)
-
-Adversarial maintenance guard dla pracy nad repozytorium: provenance, source purity, delta-before-state, independent consequence gate, jawne statusy epistemiczne, obserwowalne przejścia i testowanie kompozycji zmian.
-
-### [`REPOSITORY_AUDIT_2026-08-18.md`](REPOSITORY_AUDIT_2026-08-18.md)
-
-Audyt procesu i spójności repozytorium wykonany według zasad Process Guard; artefakt punktu kontrolnego, a nie zastępstwo dla bieżącego stanu drzewa.
-
-### Profil / mapa portfolio
-
-- [`PROFILE_README.md`](PROFILE_README.md) — profilowy indeks ekosystemu repozytoriów.
-- [`PROFILE_ABOUT.md`](PROFILE_ABOUT.md) — szczegółowy profil zawodowy i badawczy.
-- [`.github/workflows/repository-hygiene.yml`](.github/workflows/repository-hygiene.yml) — minimalna automatyczna kontrola obecności kanonicznego README i odrzucania śledzonego lokalnego/generated state.
-
----
-
-# 8. Dane pomocnicze
-
-- [`dane_wykresu_globalnej_implementacji_2026-08-04.csv`](dane_wykresu_globalnej_implementacji_2026-08-04.csv) — dane do wykresu globalnej implementacji.
-- [`macierz_luk_architektonicznych_2026-08-04.csv`](macierz_luk_architektonicznych_2026-08-04.csv) — macierz luk architektonicznych.
-- [`.gitignore`](.gitignore) — wykluczenia repozytorium.
-
-Materiały graficzne: [`images/README.md`](images/README.md).
-
----
-
-# 9. Metodyka czytania
-
-Repo przechowuje różne klasy artefaktów i **nie każdy dokument jest finalnym twierdzeniem**. W badaniach stosowane są m.in. statusy:
-
-```text
-FACT / OBSERVED
-DERIVED
-CALIBRATED
-ASSUMED
-HYPOTHESIS
-SPECULATION
-STRESS PARAMETER
-```
-
-Przy materiałach probabilistycznych obowiązuje zasada: duża liczba realizacji Monte Carlo redukuje **sampling noise danego modelu**, ale nie usuwa model risk, złej kalibracji ani brakujących danych empirycznych.
-
-Przy analizach architektonicznych podobieństwo lub konwergencja nie są automatycznie dowodem wpływu przyczynowego.
-
-## Kanoniczne drzewo wyszukiwania
-
-```text
-ROOT README
-│
-├─ ai_security_model_boundary_strategy_writeup.md
-│  ├─ pełny raport PDF w badania/
-│  └─ AI_Driven_Security_Research_Package_2026-08-18.zip
-│
-├─ AI_NATIVE_ENTERPRISE_RND_WRITEUP.md
-├─ AI_NATIVE_ROADMAP.md
-├─ PROCESS_GUARD.md
-├─ REPOSITORY_AUDIT_2026-08-18.md
-│
-├─ konkretny write-up rootowy
-│
-├─ artykuły/README.md
-│  └─ publikacja
-│
-├─ badania/README.md
-│  ├─ raport PDF
-│  ├─ Symulacja_GITHUB/README.md
-│  ├─ conditional_decision_theory/README.md
-│  ├─ MQL5Market/README.md
-│  └─ LOCI/README.md
-│     ├─ parsers/README.md
-│     ├─ sample/README.md
-│     ├─ matlab/README.md
-│     ├─ spec/README.md
-│     ├─ tests/README.md
-│     ├─ results/README.md
-│     └─ raports/README.md
-│
-├─ OSINT/README.md
-└─ images/README.md
-```
-
----
-
-# 10. Bezpieczeństwo i zakres użycia
-
-Materiały ofensywne mają charakter edukacyjny, badawczy i defensywny. Scenariusze testowe należy stosować wyłącznie w środowiskach własnych, laboratoryjnych, autoryzowanych lub zgodnych z zasadami właściwego programu bug bounty. Repozytorium nie zachęca do nieautoryzowanego dostępu ani zakłócania cudzych systemów.
-
----
-
-# 11. Kontakt
-
-GitHub: [@DonkeyJJLove](https://github.com/DonkeyJJLove)
-
----
-
-## CHUNKS FILTER — mosty semantyczne 9D
-
-`Plan–Pauza · Rdzeń–Peryferia · Cisza–Wydech · Wioska–Miasto · Ostrze–Cierpliwość · Locus–Medium–Mandat · Human–AI · Próg–Przejście · Semantyka–Energia`
+**Główne wejścia:** [scaffolding — wynik HCL](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) · [badania](./badania/README.md) · [publikacje](./artykuły/README.md) · [LOCI](./badania/LOCI/README.md) · [OSINT](./OSINT/README.md) · [grafiki](./images/README.md) · [rola w LION](./AGENTS.md).
