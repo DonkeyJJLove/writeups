@@ -6,7 +6,7 @@
 
 ## Heuristic Causal Lab 4.3.3 — scaffolding semantyczny
 
-[Writeup wynikowy](./heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) opisuje wpływ zamrożonego kontekstu na zachowanie agenta bez treningu modelu. W serii 10 240 epizodów safe_success wyniósł 21,52% dla author_raw i 6,86% dla aktywnej kontroli. Przewaga względna nie oznacza spełnienia progu użyteczności: formalny werdykt pozostaje negatywny.
+[Writeup wynikowy](./heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) opisuje wpływ zamrożonego kontekstu na zachowanie agenta bez treningu modelu. [Od znaku do sterowania](./heuristic-causal-lab-final-4.3/SEMANTIC_ENCODING_FROM_SIGN_TO_CONTROL.md) rozwija tę linię w stronę kodowania semantyki, relewancji, atomowej mediany semantycznej i architektury przejścia od reprezentacji tekstowej do kontrolowanego działania. W serii 10 240 epizodów safe_success wyniósł 21,52% dla author_raw i 6,86% dla aktywnej kontroli. Przewaga względna nie oznacza spełnienia progu użyteczności: formalny werdykt pozostaje negatywny.
 
 [Pełny opis](./heuristic-causal-lab-final-4.3/README.md) prowadzi do [instrumentu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/), [profilu finalnego runu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/profile.json), [surowych przebiegów](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/), [wyników i audytu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/) oraz [noty integralności eksportu](./heuristic-causal-lab-final-4.3/PUBLICATION_INTEGRITY.md). HCL jest badaniem pobocznym w kontekście LION; nie jest walidacją całej platformy.
 
