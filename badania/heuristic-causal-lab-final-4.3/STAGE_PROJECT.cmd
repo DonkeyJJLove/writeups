@@ -10,16 +10,20 @@ if not defined TOP (
 )
 
 set "P=badania\heuristic-causal-lab-final-4.3"
+set "H=%P%\hcl_final_4_3"
 
-echo Staging canonical project files. Runtime runs/results/state remain ignored...
+echo Staging full HCL research package, including runs/results/study state...
 git add -- "%P%\README.md" "%P%\.gitignore" "%P%\artifacts" "%P%\STAGE_PROJECT.cmd"
-if exist "%P%\hcl_final_4_3" git add -- "%P%\hcl_final_4_3"
+if exist "%H%" git add -- "%H%"
+if exist "%H%\runs" git add -- "%H%\runs"
+if exist "%H%\results" git add -- "%H%\results"
+for %%F in ("%H%\STUDY_STATE*.json") do if exist "%%~fF" git add -- "%%~fF"
 
 echo.
 echo HCL status after staging:
 git status --short -- "%P%"
 echo.
-echo Review the list. Then commit and push:
-echo   git commit -m "research: add Heuristic Causal Lab code and final artifacts"
+echo If the list is correct:
+echo   git commit -m "research: track HCL runs results and study state"
 echo   git push origin master
 endlocal
