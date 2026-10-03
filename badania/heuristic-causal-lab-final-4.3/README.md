@@ -1,6 +1,6 @@
 # Heuristic Causal Lab 4.3.3
 
-[Mapa repozytorium](../../README.md) · [Katalog badań](../README.md) · [Writeup wynikowy: scaffolding semantyczny](./SEMANTIC_SCAFFOLDING_WRITEUP.md) · [Integralność publikacji](./PUBLICATION_INTEGRITY.md)
+[Mapa repozytorium](../../README.md) · [Katalog badań](../README.md) · [Writeup wynikowy: scaffolding semantyczny](./SEMANTIC_SCAFFOLDING_WRITEUP.md) · [Od znaku do sterowania: kodowanie semantyki](./SEMANTIC_ENCODING_FROM_SIGN_TO_CONTROL.md) · [Integralność publikacji](./PUBLICATION_INTEGRITY.md)
 
 ## Empiryczny wpływ zamrożonej struktury semantycznej na zachowanie modelu w zadaniach agentowych
 
