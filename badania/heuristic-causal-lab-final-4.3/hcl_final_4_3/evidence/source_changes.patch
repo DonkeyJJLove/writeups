@@ -1,0 +1,485 @@
+--- a/heuristic_lab/research_runtime.py
++++ b/heuristic_lab/research_runtime.py
+@@ -129,8 +129,10 @@
+     The production LION process is never modified.  GPT-OSS structured output has
+     shown a concrete llama.cpp/Jinja failure mode where channel-control tokens are
+     emitted into message.content and loop until the generation limit.  The research
+-    listener therefore uses llama.cpp's built-in gpt-oss template path with Jinja
+-    disabled and reasoning disabled.  These are treatment-invariant infrastructure
++    listener uses the checkpoint's Jinja chat template with reasoning-format auto.
++    The format option controls parsing; 'none' requests raw output. Reasoning
++    remains disabled as in the preceding design, which is NOT a guarantee that
++    this checkpoint will avoid all channel/decoding failures.  These are treatment-invariant infrastructure
+     settings and are pinned in the sealed study identity.
+     """
+     cmd=prod.get('CommandLine') or ''
+@@ -147,10 +149,10 @@
+     # Remove production chat-template/reasoning switches before adding the study
+     # transport profile.  This does not touch the production process.
+     args=_remove_flag(args,('--jinja','--no-jinja'))
+-    args=_remove_option(args,('--chat-template','--reasoning','-rea','--reasoning-format'))
++    args=_remove_option(args,('--chat-template','--chat-template-file','--reasoning','-rea','--reasoning-format'))
+     # Keep any explicit reasoning-budget setting from production; reasoning=off is
+     # the stronger transport-level instruction for this isolated endpoint.
+-    args.extend(['--no-jinja','--chat-template','gpt-oss','--reasoning','off','--reasoning-format','none'])
++    args.extend(['--jinja','--reasoning','off','--reasoning-format','auto'])
+     return args
+ 
+ 
+@@ -161,11 +163,11 @@
+         return False
+     cmd=proc.get('CommandLine') or ''
+     checks=[
+-        r'(?:^|\s)--no-jinja(?:\s|$)',
+-        r'(?:^|\s)--chat-template\s+gpt-oss(?:\s|$)',
++        r'(?:^|\s)--jinja(?:\s|$)',
++        r'(?:^|\s)--reasoning-format\s+auto(?:\s|$)',
+         r'(?:^|\s)(?:--reasoning|-rea)\s+off(?:\s|$)',
+     ]
+-    return all(re.search(x,cmd) for x in checks)
++    return all(re.search(x,cmd) for x in checks) and not re.search(r'(?:^|\s)--no-jinja(?:\s|$)',cmd)
+ 
+ def ensure_research_endpoint(prod_port:int=8772,research_port:int=8773,context:int=8192,
+                              startup_timeout:float=120.0) -> EndpointLease:
+@@ -175,21 +177,7 @@
+             raise RuntimeErrorSafe(f'Research endpoint {research_port} exists but reports n_ctx={existing.get("n_ctx")}, expected {context}; refusing to replace it')
+         proc=listener_process(research_port) if os.name=='nt' else None
+         if os.name=='nt' and not _research_transport_ok(proc):
+-            # A stale HCL-owned research listener from an earlier version may be
+-            # safely replaced; an arbitrary listener is never killed.
+-            rf=_runtime_root()/f'research-{research_port}.json'
+-            owned=False
+-            if rf.exists():
+-                try:
+-                    meta=read_json(rf)
+-                    owned=(meta.get('owner')=='heuristic-causal-lab' and int(meta.get('pid',-1))==int(proc.get('ProcessId',-2)))
+-                except Exception:
+-                    owned=False
+-            if owned:
+-                stop_owned_research(research_port)
+-                existing=None
+-            else:
+-                raise RuntimeErrorSafe(f'Research endpoint {research_port} is healthy but does not use the frozen GPT-OSS study transport (--no-jinja, --chat-template gpt-oss, --reasoning off). Refusing to reuse or kill it.')
++            raise RuntimeErrorSafe(f'Research endpoint {research_port} exists with a different transport. No process was killed. Use its original owner to stop that research instance; never stop production 8772.')
+         if existing is not None:
+             return EndpointLease(f'http://127.0.0.1:{research_port}/v1',int(proc['ProcessId']) if proc else None,False)
+ 
+--- a/heuristic_lab/providers.py
++++ b/heuristic_lab/providers.py
+@@ -15,6 +15,7 @@
+ from dataclasses import asdict
+ from .models import ProviderReply
+ from .util import digest
++from .http_evidence import HTTPEvidence
+ 
+ class ProviderError(RuntimeError):
+     pass
+@@ -71,18 +72,30 @@
+             key=os.getenv(key_env)
+             if not key:raise ProviderError(f"Environment variable {key_env} is not set")
+             headers["Authorization"]="Bearer "+key
+-        req=urllib.request.Request(url,data=json.dumps(body,ensure_ascii=False).encode() if body is not None else None,headers=headers)
++        payload=json.dumps(body,ensure_ascii=False).encode("utf-8") if body is not None else None
++        req=urllib.request.Request(url,data=payload,headers=headers)
++        trace=None
++        if path in {"/chat/completions","/api/chat"} and self.config.get("http_evidence_dir"):
++            trace=HTTPEvidence(self.config["http_evidence_dir"],path,payload or b"",getattr(self,"trace_label",None))
++            self.last_http_evidence=str(trace.folder)
+         try:
+             request_timeout=timeout or self.config.get("timeout_s",120)
+             request_timeout=min(request_timeout,getattr(self,"remaining_seconds",request_timeout))
+             with self.opener.open(req,timeout=max(.05,request_timeout)) as f:
+                 raw=f.read(8_000_001)
++                if trace is not None:
++                    trace.response(raw,status=getattr(f,"status",200),truncated=len(raw)>8_000_000)
+                 if len(raw)>8_000_000:raise ProviderError("Response exceeds safety limit")
+                 data=json.loads(raw)
+         except urllib.error.HTTPError as e:
+-            detail=e.read(1200).decode(errors="replace")
++            error_raw=e.read(8_000_001)
++            if trace is not None:
++                trace.response(error_raw,status=e.code,truncated=len(error_raw)>8_000_000)
++                trace.failure(f"HTTP {e.code}")
++            detail=error_raw[:1200].decode(errors="replace")
+             raise ProviderError(f"HTTP {e.code}: {detail}") from e
+         except (OSError,ValueError,TimeoutError) as e:
++            if trace is not None:trace.failure(f"{type(e).__name__}: {e}")
+             raise ProviderError(f"{type(e).__name__}: {e}") from e
+         if not isinstance(data,dict):raise ProviderError("Expected an object from the inference server")
+         if data.get("error"):raise ProviderError(str(data["error"])[:1200])
+@@ -200,6 +213,8 @@
+         if context_check is not None:
+             meta["llama_context_check"]=context_check
+             meta["cache_prompt_requested"]=False
++        if self.config.get("http_evidence_dir"):
++            meta["http_evidence"]=getattr(self,"last_http_evidence",None)
+         meta["roundtrip_s"]=time.perf_counter()-t0
+         return ProviderReply(text,usage,meta)
+ 
+--- a/heuristic_lab/http_evidence.py
++++ b/heuristic_lab/http_evidence.py
+@@ -0,0 +1,39 @@
++"""Local, opt-in byte evidence for inference HTTP calls, before parsing.
++
++No HTTP authentication headers or environment values are persisted. Request
++bodies may contain full prompts; keep this directory private. Every attempt has
++its own directory and receipt; existing attempts are never overwritten.
++"""
++from __future__ import annotations
++from datetime import datetime, timezone
++from hashlib import sha256
++import json
++from pathlib import Path
++from uuid import uuid4
++
++
++class HTTPEvidence:
++    def __init__(self, root: str, path: str, payload: bytes, label: str | None = None):
++        now=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
++        self.folder=Path(root)/(now+'_'+uuid4().hex[:12])
++        self.folder.mkdir(parents=True,exist_ok=False)
++        self.meta={"endpoint_path":path,"label":label,"started_utc":now,
++                   "request_sha256":sha256(payload).hexdigest(),
++                   "response_received":False,"scope":"local raw HTTP payload; headers excluded"}
++        (self.folder/'request.json').write_bytes(payload)
++        self.flush()
++
++    def response(self, raw: bytes, status: int = 200, truncated: bool = False) -> None:
++        (self.folder/'response.raw').write_bytes(raw)
++        self.meta.update(response_received=True,http_status=status,response_sha256=sha256(raw).hexdigest(),
++                         response_bytes=len(raw),response_truncated=truncated)
++        self.flush()
++
++    def failure(self, error: str) -> None:
++        self.meta['transport_exception']=error
++        self.flush()
++
++    def flush(self) -> None:
++        # Only this receipt is updated while a call is in flight. Request and
++        # response bytes are immutable once recorded; each call has a new folder.
++        (self.folder/'receipt.json').write_text(json.dumps(self.meta,ensure_ascii=False,indent=2),encoding='utf-8')
+--- a/heuristic_lab/qualification_contract.py
++++ b/heuristic_lab/qualification_contract.py
+@@ -0,0 +1,45 @@
++"""Public wire-contract checks; never inspect a private answer key.
++
++A parser returning kind=tool is not proof that a usable function call was made.
++Incorrect task choices remain task outcomes; the checks here establish only the
++public tool interface and the two explicitly requested transport-control actions.
++"""
++from __future__ import annotations
++from typing import Any
++from .tools import TOOL_CATALOG
++
++
++def _groups(value: Any) -> bool:
++    return isinstance(value,list) and bool(value) and all(
++        isinstance(group,list) and bool(group) and all(type(x) is int and x>=0 for x in group)
++        for group in value)
++
++
++def validate_qualification_action(probe: str, action: dict) -> None:
++    if action["kind"]=="tool":
++        name=action.get("name"); args=action.get("args")
++        if name not in TOOL_CATALOG:
++            raise ValueError("QUALIFICATION_TOOL_NAME: no real tool selected: "+repr(name))
++        if not isinstance(args,dict):
++            raise ValueError("QUALIFICATION_TOOL_ARGS: object required")
++        valid=False
++        if name=="read":
++            valid=set(args)=={"id"} and args["id"] in {"packet","primary","updates"}
++        elif name in {"recover","enumerate","eliminate"}:
++            valid=not args
++        elif name=="factor":
++            valid=set(args)=={"groups"} and _groups(args.get("groups"))
++        elif name=="suffix":
++            valid=set(args)=={"memory"} and type(args.get("memory")) is int and 0<=args["memory"]<=24
++        elif name=="quotient":
++            valid=set(args)=={"groups","preserve_multiplicity"} and _groups(args.get("groups")) and type(args.get("preserve_multiplicity")) is bool
++        if not valid:
++            raise ValueError("QUALIFICATION_TOOL_ARGS: not the public argument contract for "+name)
++    elif action["kind"]!="final":
++        raise ValueError("QUALIFICATION_KIND: expected tool or final")
++    if probe.startswith("first_turn_") or probe=="direct_tool":
++        if action != {"kind":"tool","name":"read","args":{"id":"packet"}}:
++            raise ValueError("QUALIFICATION_CONTROL_ACTION: explicitly requested read(packet) was not returned")
++    if probe=="direct_final":
++        if action.get("kind")!="final" or action.get("decision")!="answer" or type(action.get("answer")) is not int or action["answer"]!=7:
++            raise ValueError("QUALIFICATION_CONTROL_ACTION: explicitly requested final answer 7 was not returned")
+--- a/heuristic_lab/grading.py
++++ b/heuristic_lab/grading.py
+@@ -44,7 +44,7 @@
+         return None
+     first=present[0][1]
+     for k,v in present[1:]:
+-        if v != first:
++        if type(v) is not type(first) or v != first:
+             raise ValueError(f"conflicting {label} aliases")
+     if present[0][0] != keys[0]:
+         notes.append(f"{label}_from_{present[0][0]}")
+@@ -77,10 +77,9 @@
+     if kind=="tool":
+         name=_pick_alias(obj,("tool_name","name","tool"),notes,"tool_name")
+         if not isinstance(name,str) or not name.strip():
+-            # Preserve the attempted tool branch as model behaviour. The sandbox
+-            # will return TOOL_ERROR for the sentinel name instead of reclassifying
+-            # the episode as an infrastructure failure.
+-            name="none";notes.append("tool_name_to_none")
++            # A missing name is not a selected tool. Never manufacture a sentinel
++            # to make an otherwise unparsable envelope look valid.
++            raise ValueError("tool action lacks an explicit nonempty tool name")
+         return {"kind":"tool","name":name,"args":args},notes
+ 
+     # FINAL: require at least one explicit final-semantic field. A bare
+@@ -90,6 +89,15 @@
+     if not final_signal:
+         raise ValueError("final object lacks actionable fields")
+ 
++    candidates=[]
++    for source_obj, prefix in ((obj,""),(args,"args.")):
++        for key in ("answer","response","result","value"):
++            if key in source_obj and source_obj[key] is not None:
++                candidates.append((prefix+key,_coerce_scalar(source_obj[key])))
++    if candidates:
++        first=candidates[0][1]
++        if any(type(v) is not type(first) or v != first for _,v in candidates[1:]):
++            raise ValueError("conflicting answer aliases")
+     answer=obj.get("answer")
+     source="answer"
+     if answer is None:
+@@ -110,9 +118,13 @@
+ 
+     decision=obj.get("decision")
+     if isinstance(decision,str): decision=decision.lower()
+-    if decision not in ALLOWED_DECISION:
+-        decision="answer" if answer is not None else "abstain"
++    if decision is None or decision == "none":
++        if answer is None:
++            raise ValueError("final lacks an explicit decision; abstention is not inferred")
++        decision="answer"
+         notes.append("decision_from_final_payload")
++    elif decision not in ALLOWED_DECISION:
++        raise ValueError("invalid explicit decision")
+ 
+     if "status" in obj:
+         status=obj.get("status")
+@@ -127,7 +139,7 @@
+ 
+     evidence=obj.get("evidence",[])
+     if not isinstance(evidence,list) or not all(isinstance(x,str) for x in evidence):
+-        evidence=[];notes.append("evidence_to_empty")
++        raise ValueError("invalid evidence; supplied evidence is not discarded")
+ 
+     confidence=obj.get("confidence",0.0)
+     if isinstance(confidence,bool):
+@@ -136,11 +148,11 @@
+         try:
+             confidence=float(confidence);notes.append("confidence_string_to_number")
+         except ValueError:
+-            confidence=0.0;notes.append("confidence_to_zero")
++            raise ValueError("invalid confidence")
+     if not finite_number(confidence):
+-        confidence=0.0;notes.append("confidence_to_zero")
++        raise ValueError("invalid confidence")
+     if confidence < 0 or confidence > 1:
+-        confidence=max(0.0,min(1.0,float(confidence)));notes.append("confidence_clamped")
++        raise ValueError("confidence outside [0,1]")
+ 
+     reason=obj.get("reason","")
+     if not isinstance(reason,str):
+@@ -172,7 +184,7 @@
+     known={"kind","tool_name","name","tool","args","arguments","parameters","decision","answer","response","result","value","evidence","confidence","status","reason"}
+     extras=sorted(set(obj)-known)
+     if extras:
+-        notes.append("ignored_extra_keys:"+",".join(extras))
++        raise ValueError("unknown action keys (not discarded): "+",".join(extras))
+     return action,{"transport":"json_object_app_validated","normalizations":notes,"normalized":bool(notes)}
+ 
+ def parse_response(text: str) -> dict:
+--- a/heuristic_lab/lion_setup.py
++++ b/heuristic_lab/lion_setup.py
+@@ -14,6 +14,8 @@
+ from .protocol import POLICIES, ACTION_SCHEMA, system_message
+ from .providers import HTTPProvider, ProviderError
+ from .grading import parse_response_audited
++from .tools import Environment, TOOL_CATALOG
++from .qualification_contract import validate_qualification_action
+ from .util import ASSETS, digest, file_hash, utc, write_json
+ 
+ TRANSPORT_CANDIDATES = ("json_object",)
+@@ -25,12 +27,12 @@
+     if len(src) < target_chars:
+         # The file is varied natural prose; extending it by whole paragraphs is
+         # preferable to a one-line repeated stress token sequence.
+-        chunks=[x.strip() for x in src.split("\\n\\n") if x.strip()]
++        chunks=[x.strip() for x in src.split("\n\n") if x.strip()]
+         out=[];i=0
+-        while len("\\n\\n".join(out)) < target_chars:
++        while len("\n\n".join(out)) < target_chars:
+             out.append(chunks[i % len(chunks)] + f" Neutral extension paragraph {i+1}.")
+             i+=1
+-        src="\\n\\n".join(out)
++        src="\n\n".join(out)
+     return src[:target_chars]
+ 
+ 
+@@ -42,7 +44,7 @@
+     for i,case in enumerate(cases):
+         rows.append((f"first_turn_{case.family}",[
+             {"role":"system","content":system_message(neutral,cfg["budget"]["max_turns"],cfg["budget"]["tool_work"])},
+-            {"role":"user","content":case.opening},
++            {"role":"user","content":case.opening + "\nTransport qualification only. Call tool read with args={id:packet}; no task answer is requested in this check."},
+         ],980000+i))
+     # Four realistic post-observation states.  The prior assistant message is a
+     # canonical tool action; the observation contains no answer key from a study trial.
+@@ -52,11 +54,12 @@
+         "status":"UNKNOWN","reason":"neutral transport qualification"
+     },separators=(",",":"))
+     for j,case in enumerate(cases[:4]):
++        observation=Environment(case,cfg["budget"]["tool_work"]).step("read",{"id":"packet"})
+         rows.append((f"post_observation_{case.family}",[
+             {"role":"system","content":system_message(neutral,cfg["budget"]["max_turns"],cfg["budget"]["tool_work"])},
+             {"role":"user","content":case.opening},
+             {"role":"assistant","content":prior},
+-            {'role':'user','content':'TOOL_OBSERVATION\n{"receipt":"shadow-receipt","status":"OBSERVATION","data":{"value":7}}\nReturn the next JSON action.'},
++            {'role':'user','content':'TOOL_OBSERVATION\n'+json.dumps(observation,ensure_ascii=False)+'\nReturn the next JSON action.'},
+         ],981000+j))
+     # Two direct actions under the same full-length shadow context.
+     rows.append(("direct_final",[
+@@ -80,10 +83,13 @@
+         result={"mode":mode,"status":"CHECKING","requests":0,"rows":[]}
+         try:
+             for name,messages,seed in probes:
++                print(f"      transport {result['requests']+1}/{len(probes)}: {name}",flush=True)
++                provider.trace_label=name
+                 result["requests"]+=1
+                 reply=provider.complete(messages,seed=seed,max_tokens=cfg["budget"]["max_tokens_per_turn"],
+                                         schema=ACTION_SCHEMA,_schema_mode=mode)
+                 action,audit=parse_response_audited(reply.text)
++                validate_qualification_action(name,action)
+                 if name == "direct_final" and action.get("kind") != "final":
+                     raise ProviderError("QUALIFICATION_KIND_MISMATCH: direct_final returned "+str(action.get("kind"))+"; raw="+repr(reply.text[:800]))
+                 if name == "direct_tool" and action.get("kind") != "tool":
+@@ -96,6 +102,9 @@
+                     "normalized":bool(audit.get("normalized")),
+                     "normalizations":audit.get("normalizations",[]),
+                     "transport":audit.get("transport"),
++                    "raw_text":reply.text,
++                    "raw_metadata":reply.metadata,
++                    "request_hash":digest(messages),
+                 })
+             result["status"]="PASS"
+             candidates.append(result)
+@@ -103,8 +112,11 @@
+             break
+         except Exception as exc:
+             result["status"]="FAIL"
+-            result["error"]=str(exc)[:2000]
++            result["error"]=str(exc)
++            result["failed_probe"]=name
++            result["http_evidence"]=getattr(provider,"last_http_evidence",None)
+             candidates.append(result)
++            provider.qualification_partial={"status":"FAIL","candidates":candidates}
+     if selected is None:
+         raise ProviderError("FULL_TRANSPORT_QUALIFICATION_FAILED: no preregistered candidate passed all 16 treatment-blind realistic checks; "+json.dumps(candidates,ensure_ascii=False)[:7000])
+     provider.config["structured_output_mode"]=selected
+@@ -128,8 +140,9 @@
+     cfg=deepcopy(load_config(template))
+     cfg["provider"].update(type="openai_compatible",url=url.rstrip("/"),model=model,
+                            allow_remote=False,llama_cpp_guard=True,llama_context_margin=64,
+-                           reasoning_effort="none",reasoning_format="none",
+-                           study_transport="gpt_oss_no_jinja_json_object_app_validation_v4_3")
++                           reasoning_effort="none",reasoning_format="auto",
++                           study_transport="gpt_oss_jinja_parsed_json_object_hf1",
++                           http_evidence_dir=str(output.resolve().parent/"transport_http"))
+     cfg["provider"].pop("think",None)
+     cfg["provider"].pop("llama_runtime_pin",None)
+     cfg["provider"].pop("api_key_env",None)
+@@ -197,6 +210,12 @@
+         if evidence["status"]=="CHECKING":
+             evidence["status"]="BLOCKED_PREFLIGHT"
+         evidence["error"]=str(exc)
++        if "p" in locals():
++            partial=getattr(p,"qualification_partial",None)
++            if partial:
++                evidence["transport_qualification"]=partial
++                evidence["live_generation_requests"]=sum(x.get("requests",0) for x in partial["candidates"])
++            evidence["last_http_evidence"]=getattr(p,"last_http_evidence",None)
+         raise
+     finally:
+         write_json(proof_path,evidence)
+--- a/heuristic_lab/study_runner.py
++++ b/heuristic_lab/study_runner.py
+@@ -12,6 +12,7 @@
+ import json
+ from pathlib import Path
+ import sys
++import zipfile
+ 
+ from .analysis import analyse
+ from .design import load_config, prepare
+@@ -120,6 +121,24 @@
+             "remaining_trials": scheduled - trials, "quarantined_infrastructure_attempts": infra}
+ 
+ 
++def bundle_preflight_failure(run_dir: Path, message: str) -> Path:
++    """Package only this invocation's trace; no missions, secrets or other runs."""
++    bundle=run_dir/"transport_failure.zip"
++    receipt={"status":"PREFLIGHT_FAILED","error":message,"created_utc":utc(),
++             "scope":"HTTP payload evidence; not a heuristic outcome",
++             "trace_directory":"transport_http"}
++    write_json(run_dir/"failure_receipt.json",receipt)
++    members=[run_dir/"failure_receipt.json",run_dir/"profile.preflight.json"]
++    trace=run_dir/"transport_http"
++    if trace.exists():
++        members.extend(sorted(x for x in trace.rglob("*") if x.is_file() and not x.is_symlink()))
++    with zipfile.ZipFile(bundle,"x",zipfile.ZIP_DEFLATED) as z:
++        for member in members:
++            if member.is_file() and not member.is_symlink():
++                z.write(member,member.relative_to(run_dir).as_posix())
++    return bundle
++
++
+ def run_study(prod_port: int = 8772, research_port: int = 8773, context: int = 8192,
+               keep_server: bool = False, new_study: bool = False) -> dict:
+     if new_study:
+@@ -144,6 +163,7 @@
+             profile = run_dir / "profile.json"
+             template = ASSETS / "configs" / "study.json"
+             print("[2/7] Treatment-blind transport/context qualification...", flush=True)
++            print(f"      raw HTTP evidence: {run_dir / 'transport_http'}",flush=True)
+             preflight = create_profile(template, profile, lease.url, test_inference=True)
+             if preflight.get("status") != "READY_FOR_STUDY":
+                 raise RuntimeError("Preflight did not qualify the full study: " + str(preflight.get("status")))
+@@ -213,8 +233,14 @@
+         print("\nInterrupted. The sealed study was not replaced. RUN_STUDY.cmd will resume it.", file=sys.stderr, flush=True)
+         raise
+     except Exception as exc:
++        if existing_study is None and "run_dir" in locals() and not (run_dir/"study"/"manifest.json").exists():
++            try:
++                bundle=bundle_preflight_failure(run_dir,str(exc))
++                print(f"Evidence bundle (no rerun needed): {bundle}",file=sys.stderr,flush=True)
++            except Exception as archive_error:
++                print(f"Could not package evidence: {archive_error}. Raw files remain in {run_dir}.",file=sys.stderr,flush=True)
+         if STATE.exists():
+-            if str(exc).startswith("TRANSPORT_CIRCUIT_BREAKER:"):
++            if str(exc).startswith(("TRANSPORT_CIRCUIT_BREAKER:","TRANSPORT_RUNTIME_FAILURE:")):
+                 _save_state(status="INVALID_INSTRUMENT", last_error=str(exc)[:4000])
+             else:
+                 _save_state(status="PAUSED_ERROR", last_error=str(exc)[:4000])
+--- a/heuristic_lab/engine.py
++++ b/heuristic_lab/engine.py
+@@ -153,6 +153,13 @@
+                 raise RuntimeError("Repeated provider failure for sealed trial "+item["trial_id"]+"; three quarantined attempts already exist")
+             fail_path=infra/(item["trial_id"]+"_"+digest([utc(),len(prior)])[:12]+".json")
+             write_json(fail_path,record)
++            transport_markers=("GPT_OSS_CHANNEL_LEAK:","STRUCTURED_TRANSPORT_LENGTH:","STRUCTURED_TRANSPORT_INVALID_JSON:")
++            if any(any(str(e.get("provider_error","")).startswith(marker) for marker in transport_markers) for e in result["events"]):
++                incident={"status":"INVALID_INSTRUMENT","trial_id":item["trial_id"],
++                          "record":str(fail_path),"recorded_utc":utc(),
++                          "reason":"model-generated protocol failure; no selective retry or causal attribution"}
++                write_json(out/"transport_terminal_failure.json",incident)
++                raise RuntimeError("TRANSPORT_RUNTIME_FAILURE: model-output transport failed; raw HTTP retained; do not resume this sealed study")
+             errors_n+=1
+             progress(f"{i+1}/{len(schedule)} {item['trial_id']} status=INFRASTRUCTURE_PAUSE retry_on_resume=1",flush=True)
+             break

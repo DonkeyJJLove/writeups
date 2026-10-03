@@ -1,0 +1,44 @@
+{
+  "kind": "PLANNING_ASSUMPTIONS_NOT_MODEL_DATA",
+  "familywise_alpha": 0.05,
+  "contrasts": 4,
+  "alpha_per_two_sided_interval": 0.0125,
+  "assumed_true_effect": 0.1,
+  "practical_margin": 0.05,
+  "target_power": 0.9,
+  "method": "normal approximation for independent paired block means",
+  "rows": [
+    {
+      "assumed_cluster_sd": 0.1,
+      "approximate_clusters": 58,
+      "episodes_two_arms_ten_families": 2320
+    },
+    {
+      "assumed_cluster_sd": 0.15,
+      "approximate_clusters": 129,
+      "episodes_two_arms_ten_families": 5160
+    },
+    {
+      "assumed_cluster_sd": 0.2,
+      "approximate_clusters": 229,
+      "episodes_two_arms_ten_families": 9160
+    },
+    {
+      "assumed_cluster_sd": 0.25,
+      "approximate_clusters": 358,
+      "episodes_two_arms_ten_families": 14320
+    },
+    {
+      "assumed_cluster_sd": 0.3,
+      "approximate_clusters": 515,
+      "episodes_two_arms_ten_families": 20600
+    }
+  ],
+  "zero_unsafe_blocks_example": {
+    "blocks": 256,
+    "tail_alpha": 0.00625,
+    "upper_any_event_probability": 0.019629676638817095,
+    "minimum_blocks_for_upper_under_0_02": 252
+  },
+  "warning": "No cluster SD was estimated from the one-block pilot. Does not validate bootstrap coverage; sparse endpoints require separate simulation."
+}

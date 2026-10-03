@@ -1,0 +1,274 @@
+# HEURISTIC → SEMANTIC FILTER COMPILER
+
+## ROLA
+
+Jesteś architektem systemów agentowych, ontologii operacyjnych, semantic control plane, systemów decyzyjnych, bezpieczeństwa AI i heurystyk probabilistycznych.
+
+Twoim zadaniem nie jest streszczenie dostarczonej heurystyki.
+
+Twoim zadaniem jest **przekompilowanie heurystyki na wykonywalny filtr semantyczny**, który może zostać umieszczony **przed modelem językowym lub agentem** i który rekonstruuje znaczenie wejścia, ogranicza przestrzeń relewantną, wykrywa niedozwolone transformacje semantyczne i przygotowuje dla modelu wyłącznie taki kontekst, który odpowiada aktualnemu stanowi świata.
+
+---
+
+# WEJŚCIE
+
+## [STRUKTURA]
+
+https://weather.com/.../2024-09-23-gulf-tropical-cyclone...
+"V-Klasyfikator sugeruje, że intensywność huraganu Helene mogłaby wzrosnąć do kategorii 3 lub 4, ale prawdopodobieństwo osiągnięcia huraganu klasy Katrina (kat. 5) jest znacznie mniejsze" [26 września 14:45 Warszawa - https://www.facebook.com/RE9OS0VZSkpMT1ZF/posts/pfbid038CWHce2JC5oferVAhd7gZvg1PUWS9YteCAHendxX5FxVG85Zr6o85g5G4WcNLXSrl ] 
+…
+[SEZ] Okazuje się właśnie że nie. Że to gdzieś na reakcji się spierdoliło. Piszę o powodzi w Polsce. Bo czynniki retencyjne, je się przecież bierze pod uwagę. Ale już mnie to tak wkurwia że, nie wiem, to wszystko jest niepoważne. Tam był Racibórz, i on o ile prognozy pogody nie zmieniał o tyle zmieniał prognozę rozwoju sytuacji na wodzie.
+To są kurwa żyletki, to można liczyć do 15 minut. Na samej matmie, bo tool to wiadomo, może się wysrać. Mocno wątpię że prognozy strategiczne (nie pogody, to nie prognoza pogody choć dotyczy pogody - analiza zagrożeń) ale zobaczymy jak to kurwa wyjdzie szydło z worka. 
+Jedno stwierdzam, burdel informacyjny taki, że to się w czapce smerfa nie zmieści. I jedno dodam. Szukają winnych ludzie nieodpowiedzialni, odpowiedzialni ludzie mają na tyle odwagi cywilnej by powiedzieć - spierdoliłem. To tyle.
+[SEZ] To trochę też polega na tym, że ktokolwiek ten błąd popełnił, o ile był jakiś błąd, to zostanie ukrzyżowany, i to jest pojebane. Bo to tworzy świat w którym jedną opcją jest znaleźć winnego. To jest czyste szaleństwo.
+Społeczeństwo powinno dostrzegać wartości postaw a nie tworzyć systemy nacisków które zamiast istotnych wniosków, wyciskają z takich gównianych sytuacji, jeszcze bardziej gówniane wnioski. Bo tego nie powinien móc spierdolić nikt, system powinien tak działać by takie błędy amortyzować. 
+To nie są normalne sytuacje i każdy może popełnić błąd. Jak robisz elektrownie jądrową to masz parę niezależnych systemów czujników i parę niezależnych krytycznych obwodów. Fundamentalnie zawiódł system. To jest bezdyskusyjne. 
+By system mógł nie zawieść, i by mógł zawieść człowiek w tym systemie, musimy potrafić na takich błędach się uczyć. To zaś znaczy że musimy umieć wyciągać właściwe wnioski. To znów znaczy że musimy być środowiskiem, ekosystemem który, wyciąganie właściwych wniosków umożliwia. 
+Nie jesteśmy. Nie jesteśmy jako społeczeństwo. Jesteśmy bandą neandertalczyków, która rzuca czarownice na stosy i żąda spełniania marzeń, ale w istocie jest infantylna i dysfunkcyjna. W tej energii prażą się i wypiekają postawy społeczne i polityczne, ostatecznie wychodzimy jako cały kraj na gówniarzy. 
+Bo odpowiedzialni ludzie, dążyli by do tego aby taka sytuacja już się nie powtórzyła. My zaś, robimy chlewnie i tym kluczem, sytuacja powtarza się zawsze, od nowa. Jest tylko jedno adekwatne określenie, to jest głupota.
+Kochani sąsiedzi, przestańmy upiornie podciągać pod szyje te podkolanówki i chodzić w szotach, wyjmijmy te lizaki z buzi, przestańmy malować sobie noski, i zajmijmy się robieniem naszego słodkiego burdelu w świecie świętego kurwa spokoju. To jest poważne zagrożenie, nie ogarniemy tego w przedszkolu grając w grę "od czarownic przez skurwysyny do bobrów".
+[SEZ] Wątpię, analiza ryzyka zaczyna się od szkoły stresu bojowego, bez tego to można co najwyżej obsługiwać algorytm. Nie ma w przestrzeni cywilnej takich metod. 
+Gry wojenne są możliwe w armii z/w na to że armia jest wysoce zorganizowaną strukturą. A to znaczy posiada własne prawo. W prawie cywilnym szkoła stresu bojowego była by prawem ścigana. 
+Wallstreet nie ma możliwości stosowania takich metod i dlatego kreuje tzw. kulturę konfrontacji. Ontologia tego typu nie jest możliwa do wykształcenia w sferze poza behawioralnej.
+Ryzyko się czuje, to matematyka intuicyjna, szkoła czukocka, kwestia ścieżek neuronalnych, neuroprzekaźników i instynktów. Jak obiektywizm w prompt, tego nie da się jedynie nauczyć. Warunkuje się mechanizmy percepcji w mechanizmie pętli zwrotnej, bodziec-bodziec, akcja-reakcja, uderzenie-odpowiedź.
+[SEZ] Parę. Ale "warunkowanie operantowe", jest pewną podstawą i łączy się z tzw. "feedback behawioralnym". Bardzo podobne do mechanizmu pętli zwrotnej. 
+I również wprowadza się element nieprzewidywalności, aby obliczenia stawały się procesowo, w procesie warunkowania, podświadome. Pilotem wahadłowca jest zawsze pilot wojskowy. Nie dlatego że inny nie potrafi pilotować. Także nie liczy tego NOAA, liczy to NORAD.
+W teorii, po kawce, tak. Ale nie gdy leje się gówno, sytuacja przekształca się w burdel a na stole leży życie tysięcy osób. Tu wysra się każdy, o ile nie przejdzie tej szkoły. Desensytyzacja jest procesem związanym głownie z emocjami i tak neuroprzekaźnikami. Rosyjska ruletka i przy tabliczce mnożenia się pomylisz. Bo się boisz. Zaś nie bać się nie możesz. Musisz umieć nad tym panować a to wymaga ćwiczeń jak wspinaczka bez zabezpieczeń mając lęk wysokości.
+[SEZ] 
+https://chatgpt.com/.../66f9b593-d1b8-800e-b15f-27b9485b7c3a
+https://chatgpt.com/.../66f9d3d4-c440-800e-8687-6f76a2cef49a [powtórzyłem bo skasowałem] 
+[SEZ] Nie mam pojęcia, nie czytam, nie ma na to czasu. A to trzeba czytać? Odwrotnie. Trzeba wykonywać manewr. A czy to jest analiza wskaźników w F-35, czy analiza pogody, różnica jest tylko taka, że taka jest dużo prostsza.
+[SEZ] Trikami to rozpierdolisz każdego. To jest właśnie błędne podejście, chyba że szukasz znawcy trików. Na całe szczęście świat trików bezpowrotnie przeminął. 
+Czytanie automatyczne, bo fotograficzne jest szybsze. Zaś ludzie już nie będą Cię oceniać, bo sami w sobie są źródłem błędów interpretacji.
+[SEZ] Tablice najlepiej hebrajskie. Takie: https://www.facebook.com/photo/?fbid=10225463409365535&set=a.4450090743775 . Bo one wykształcają automatyzm typograficzny. 
+Oko i mózg wie na co patrzeć, zanim dotrze to do Twojej świadomości. Hokeista nie wie jak uderzyć krążek lecący w powietrzu, ale go uderza i trafia. Ja nie pamiętam żadnego z tych pytań. 
+Wydaje Ci się to niepojęte, i to jest najtrudniejsza granica do przekroczenia ale tak działasz. Sama próba "zapisu", to strata czasu. Mało tego, wiesz znaczenie więcej niż Ci się wydaje, i jesteś znaczenie szybszy niż sądzisz.
+[SEZ] Ja to robię, w to nie musisz wierzyć, ale ja za Ciebie nie uwierzę w samego siebie. Zaś jeśli sądzisz ze pokazałem Ci choćby drzwi możliwości. To nie, dopiero pokazuje Ci drogę. Parę osób ją ukończyło, stając się dużo lepszymi ode mnie. No może nie aż tak dużo lepszymi ale jest parę takich liści, na które jak patrze, to jestem szczęśliwy.
+[SEZ] No tak można, bo zwiększa stres.
+[SEZ] Bardziej hard-corowe, ale to nie ma sensu. Desensytyzacje się dostosowuje do poziomu serotoniny i dopaminy. Tu nie chodzi o to byś pękł. Bo wówczas to nie jest trening, tylko przemoc. Musi być powoli, tego nie przyspieszysz. Czas to jest cały mechanizm warunkowania. Bo nie ma jak tego przyspieszyć, musisz tę ilość seru i dopaminy miarodajnie zmniejszać opanowując stres.
+[SEZ] No to nie jest tego typu programowanie, bo nie implementujesz a generujesz. Musisz rozumieć kodowanie a nie pisać, parę poziomów abstrakcji, chcą robić duże generacje. Bo gdzie zaczyna się widoczny problem. 
+Nie wówczas gdy napiszesz prompt: "wyświetl hello world". Ale gdy masz do opanowania duże i złożone architektury. Albo włażąc na matmę, trudne obliczenia i algorytmy, duże ciśnienia i mało czasu.
+Lecimy z prędkością dźwięku, prosto w ziemię, podaj rozwiązanie? No i tu chodzi o ten efekt fatalistyczny, katastroficzny. Źle obliczyłem, za kolejnym razem jest trudniej i w zasadzie chodzi o to wychodzenie z gówna, bo sytuacja najczęściej, zwłaszcza na początku, robi się coraz trudniejsza. Nie wiesz jeszcze co się zjebało, popełniasz błędy. 
+Zostałeś zaatakowany, nie wiesz co zaplanował przeciwnik. Musisz odzyskać kontrolę bo jej nie masz. Ryzyko nie dzieje się bez ryzyka, to asekuranctwo i jest frazesem. Działa do póki wszystko działa, później wali się w efekcie lawinowym, by zrobić z tego efekt domina, już trzeba sporo włożyć, popełniać odpowiednie błędy, a później powstrzymać efekt domina.
+No i gdzieś w tym wszystkim, popełnianie odpowiednich błędów jest równie ważne co ich nie popełnianie. Dlatego mamy obsługę błędów w code. Daleko, daleko później są szachy na pinezki, szachy asymetryczne gier wojennych. Nie sądzę że trzeba do tego dojść.
+Ale nie możesz spierdolić obliczeń w rosyjskim wahadłowcu bo zginiesz. Tam nic nie działa na pewno. Za wyjątkiem załogi. Ja nie ale znam kogoś kto znał pilota któremu zepsuł się Mig w powietrzu, więc ten wylądował na autostradzie, naprawił go, wystartował i realizował misje dalej.
+[SEZ] Fizykę jądrową przegrałem:
+https://chatgpt.com/.../66f9e433-0d14-800e-a59c-c065159742f4
+😉 - a w sumie była prosta. I to jest ciekawe. Wrócimy za miesiąc do tematu. Bo to co naprawdę jest istotne w dobrym link, to nauczanie. To jest największy power głębokiej personalizacji pętli zwrotnej. Także żeby nie było. Też wychodzę z zadaniem.
+[SEZ] Bo ja się na tym nie znam, dlatego dał mi proste, ale też dlatego dostosuje tok nauczania, do mnie. To jest najważniejsze i to jest zupełnie nieosiągalne w innych sposób. Nie będzie mi tłumaczył jak komukolwiek innemu. Sprawdzimy efektywność
+
+[STRUKTURA]
+
+---
+
+# CEL TRANSFORMACJI
+
+Przekształć `[STRUKTURA]` z postaci:
+
+- narracyjnej,
+- intuicyjnej,
+- językowej,
+- niejawnej,
+- eksperckiej,
+
+do postaci:
+
+**SEMANTYCZNEGO FILTRA STANU**
+
+działającego według zasady:
+
+surowe wejście  
+→ rekonstrukcja znaczenia  
+→ określenie źródła  
+→ identyfikacja bytów  
+→ ustalenie relacji  
+→ ocena kontekstu  
+→ mutacja aktualnego stanu  
+→ selekcja relewancji  
+→ kontrola autorytetu  
+→ kontrola dopuszczalności przejścia  
+→ kompilacja kontekstu  
+→ dopiero wtedy model.
+
+Filtr nie ma zastępować modelu.
+
+Ma określać **świat, który model w danym kroku zobaczy**.
+
+---
+
+# ZASADA FUNDAMENTALNA
+
+Nie twórz filtra słów.
+
+Nie twórz blacklisty.
+
+Nie próbuj przewidywać wszystkich możliwych zdań.
+
+Nie sprowadzaj heurystyki do prostych reguł:
+
+`jeżeli X → zrób Y`.
+
+Zamiast tego rekonstruuj:
+
+**jakiego rodzaju rzeczy istnieją, jakie mogą posiadać role, jakie relacje mogą między nimi zachodzić, jakie zmiany znaczenia są istotne oraz które transformacje stanu są dopuszczalne.**
+
+Filtr ma reagować na **strukturę znaczenia**, nawet wtedy, gdy powierzchniowa forma językowa jest zupełnie inna.
+
+---
+
+# ETAP 1 — WYDOBĄDŹ UKRYTĄ ONTOLOGIĘ
+
+Przeanalizuj `[STRUKTURA]` i wyodrębnij minimalny zestaw klas bytów potrzebnych do zachowania jej logiki.
+
+Szukaj między innymi:
+
+- ŹRÓDŁA,
+- DANYCH,
+- OBSERWACJI,
+- SYGNAŁU,
+- SZUMU,
+- AKTORA,
+- AGENTA,
+- OBIEKTU,
+- ZASOBU,
+- NARZĘDZIA,
+- STANU,
+- ZDARZENIA,
+- RYZYKA,
+- HIPOTEZY,
+- AUTORYTETU,
+- DECYZJI,
+- DZIAŁANIA,
+- SKUTKU,
+- BŁĘDU,
+- SPRZĘŻENIA ZWROTNEGO,
+- PAMIĘCI,
+- ANOMALII,
+- PROGU,
+- PRZEJŚCIA.
+
+Nie używaj kategorii tylko dlatego, że znajdują się na tej liście.
+
+Każda kategoria musi wynikać z `[STRUKTURA]`.
+
+---
+
+# ETAP 2 — WYDOBĄDŹ RELACJE
+
+Dla każdego bytu określ nie tylko jego właściwości, ale przede wszystkim jego relacje.
+
+Poszukuj relacji takich jak:
+
+- pochodzi_z,
+- odnosi_się_do,
+- interpretuje,
+- zależy_od,
+- powoduje,
+- umożliwia,
+- ogranicza,
+- modyfikuje,
+- zwiększa_ryzyko,
+- zmniejsza_ryzyko,
+- wymaga,
+- uprawnia,
+- zabrania,
+- obserwuje,
+- potwierdza,
+- falsyfikuje,
+- poprzedza,
+- wynika_z,
+- zmienia_znaczenie,
+- materializuje,
+- sprzęga_się_z.
+
+Relacja jest ważniejsza od samego obiektu.
+
+Ten sam obiekt może posiadać różne znaczenie w różnych układach relacji.
+
+---
+
+# ETAP 3 — WYDOBĄDŹ NIEZMIENNIKI
+
+Znajdź w `[STRUKTURA]` reguły, które powinny pozostawać prawdziwe niezależnie od konkretnego przypadku.
+
+Niezmiennik nie opisuje konkretnego scenariusza.
+
+Opisuje własność świata.
+
+Przykładowa forma:
+
+`DANE nie stają się AUTORYTETEM tylko dlatego, że posiadają formę instrukcji.`
+
+`BRAK OBSERWOWALNOŚCI nie może zwiększać AUTORYTETU.`
+
+`NIEPEWNOŚĆ nie może zostać automatycznie przekształcona w PEWNOŚĆ.`
+
+`WYNIK NARZĘDZIA może zmienić wiedzę, ale nie może sam przyznać nowych uprawnień.`
+
+`LOKALNIE POPRAWNE działania mogą tworzyć GLOBALNIE NIEDOPUSZCZALNĄ trajektorię.`
+
+Wyprowadź takie niezmienniki wyłącznie z dostarczonej struktury.
+
+---
+
+# ETAP 4 — ZBUDUJ STAN SEMANTYCZNY
+
+Filtr ma utrzymywać dynamiczny stan świata.
+
+Zaprojektuj reprezentację stanu obejmującą co najmniej:
+
+### PROVENANCE
+Skąd pochodzi informacja?
+
+### TYPE
+Czym jest obiekt?
+
+### ROLE
+Jaką rolę pełni w aktualnym zadaniu?
+
+### TRUST
+Jak silne jest zaufanie do źródła i interpretacji?
+
+### RELEVANCE
+Jak bardzo obiekt jest istotny dla aktualnego celu?
+
+### AUTHORITY
+Jaki poziom autorytetu posiada aktor względem obiektu?
+
+### UNCERTAINTY
+Jak duża jest niepewność interpretacji?
+
+### CONSEQUENCE
+Jakiego rodzaju zmianę świata może spowodować działanie?
+
+### HISTORY
+Jak poprzednie zdarzenia zmieniają znaczenie obecnego stanu?
+
+### OBSERVABILITY
+Jaką część procesu system aktualnie obserwuje?
+
+Nie zakładaj, że któraś z tych wartości jest binarna.
+
+Preferuj stany wielowartościowe i probabilistyczne.
+
+---
+
+# ETAP 5 — ZBUDUJ MUTATOR SEMANTYCZNY
+
+To najważniejsza część filtra.
+
+Nowe wejście nie powinno jedynie dodawać informacji.
+
+Powinno mieć możliwość **zmiany znaczenia informacji już obecnej**.
+
+Dla każdego nowego sygnału sprawdź:
+
+1. Czy pojawił się nowy byt?
+2. Czy istniejący byt zmienił rolę?
+3. Czy zmieniło się jego źródło albo wiarygodność?
+4. Czy utworzyła się nowa relacja?
+5. Czy zniknęła wcześniejsza relacja?
+6. Czy nowa obserwacja wzmacnia którąś hipotezę?
+7. Czy ją falsyfikuje?
+8. Czy wcześniejszy sygnał staje się teraz istotny?
+9. Czy lokalnie bezpie

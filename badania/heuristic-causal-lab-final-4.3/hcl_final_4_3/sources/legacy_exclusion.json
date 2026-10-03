@@ -1,0 +1,13 @@
+{
+  "excluded": [
+    "benchmark_II_preregistered_manifest.json",
+    "benchmark_II_results.json"
+  ],
+  "reason": "Earlier numeric assertions are not measurements and are not imported, trained on, or treated as ground truth.",
+  "legacy_zip_sha256": "c81c53e218e511c9f3f35ee376067d1a200cf07f30aeee1cf986bc0fcca0d99a",
+  "legacy_code_audited": [
+    "semantic_benchmark/mutations/m_meta.py",
+    "semantic_benchmark/experiments/runner.py"
+  ],
+  "design_change": "No arm-dependent algorithm mapping; only the frozen policy text differs between arms in the live trial."
+}

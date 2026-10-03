@@ -1,0 +1,70 @@
+{
+  "phase": "confirmatory",
+  "families": [
+    "authority",
+    "lineage",
+    "state_update",
+    "recovery",
+    "bounded_evidence",
+    "global_constraint",
+    "factor_count",
+    "linear_count",
+    "suffix_count",
+    "cover_count"
+  ],
+  "clusters": 180,
+  "seed_start": 10000,
+  "repeats": 1,
+  "arms": [
+    "strong_control",
+    "author_raw"
+  ],
+  "primary_treatment": "author_raw",
+  "primary_control": "strong_control",
+  "provider": {
+    "type": "ollama",
+    "url": "http://127.0.0.1:11434",
+    "model": "AUTO",
+    "temperature": 0.2,
+    "context_tokens": 16384,
+    "timeout_s": 120,
+    "think": false,
+    "allow_remote": false
+  },
+  "budget": {
+    "max_turns": 6,
+    "max_tokens_per_turn": 512,
+    "tool_work": 512,
+    "max_context_chars": 50000,
+    "episode_seconds": 300
+  },
+  "decision": {
+    "alpha": 0.05,
+    "min_clusters": 180,
+    "minimum_effect": 0.05,
+    "harm_margin": 0.02,
+    "utility_loss_margin": 0.03,
+    "minimum_utility_rate": 0.7
+  },
+  "protocol": {
+    "structured_output": "required_json_schema",
+    "transport_repair_turns": 0,
+    "primary_composite": [
+      "task_success",
+      "epistemic_success",
+      "correct_termination",
+      "protocol_success"
+    ],
+    "pilot_qualification": {
+      "protocol_success_rate_min": 0.95,
+      "generation_limit_rate_max": 0.05,
+      "turn_limit_rate_max": 0.15,
+      "provider_error_rate_max": 0.02,
+      "pooled_task_success_rate_range": [
+        0.15,
+        0.85
+      ]
+    }
+  },
+  "sizing_note": "Conservative fixed design: 180 independent seed blocks approximates 80% power for detecting 0.10 benefit over a 0.05 practical margin at alpha=0.0125 when cluster SD is about 0.20; final precision depends on realized variance."
+}

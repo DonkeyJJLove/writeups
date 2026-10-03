@@ -1,0 +1,130 @@
+{
+  "basis": "physical lines in archived original source; not claims of verbatim compiled authorship",
+  "sections": {
+    "referent": {
+      "source_phrases": [
+        "prognozę rozwoju sytuacji",
+        "Relacja jest ważniejsza",
+        "strukturę znaczenia"
+      ],
+      "classification": "inference from source narrative and compiler prompt",
+      "source_line_matches": {
+        "prognozę rozwoju sytuacji": [
+          20
+        ],
+        "Relacja jest ważniejsza": [
+          184
+        ],
+        "strukturę znaczenia": [
+          115
+        ]
+      }
+    },
+    "provenance": {
+      "source_phrases": [
+        "WYNIK NARZĘDZIA",
+        "PROVENANCE",
+        "DANE nie stają się"
+      ],
+      "classification": "compiler-prompt constraints plus assistant extension: explicit common-ancestor counting",
+      "source_line_matches": {
+        "WYNIK NARZĘDZIA": [
+          206
+        ],
+        "PROVENANCE": [
+          220
+        ],
+        "DANE nie stają się": [
+          200
+        ]
+      }
+    },
+    "state": {
+      "source_phrases": [
+        "zmiany znaczenia informacji już obecnej",
+        "HISTORY",
+        "Czy istniejący byt zmienił rolę"
+      ],
+      "classification": "source compiler-prompt mutation; supersession event semantics is benchmark-specific",
+      "source_line_matches": {
+        "zmiany znaczenia informacji już obecnej": [
+          262
+        ],
+        "HISTORY": [
+          244
+        ],
+        "Czy istniejący byt zmienił rolę": [
+          267
+        ]
+      }
+    },
+    "recovery": {
+      "source_phrases": [
+        "Musisz odzyskać kontrolę",
+        "BRAK OBSERWOWALNOŚCI",
+        "OBSERVABILITY"
+      ],
+      "classification": "narrative and compiler-prompt operationalization",
+      "source_line_matches": {
+        "Musisz odzyskać kontrolę": [
+          52
+        ],
+        "BRAK OBSERWOWALNOŚCI": [
+          202
+        ],
+        "OBSERVABILITY": [
+          247
+        ]
+      }
+    },
+    "composition": {
+      "source_phrases": [
+        "LOKALNIE POPRAWNE",
+        "system powinien tak działać",
+        "efekcie lawinowym"
+      ],
+      "classification": "narrative and compiler-prompt operationalization",
+      "source_line_matches": {
+        "LOKALNIE POPRAWNE": [
+          208
+        ],
+        "system powinien tak działać": [
+          24
+        ],
+        "efekcie lawinowym": [
+          52
+        ]
+      }
+    },
+    "mutations": {
+      "source_phrases": [
+        "Nie twórz blacklisty",
+        "jakiego rodzaju rzeczy istnieją"
+      ],
+      "classification": "assistant extension from later discussion; specific components/suffix/multiplicity recipes are NOT quotations from original",
+      "source_line_matches": {
+        "Nie twórz blacklisty": [
+          103
+        ],
+        "jakiego rodzaju rzeczy istnieją": [
+          113
+        ]
+      }
+    },
+    "authority": {
+      "source_phrases": [
+        "NIEPEWNOŚĆ nie może",
+        "kontrola autorytetu"
+      ],
+      "classification": "source compiler-prompt constraints; TIMEOUT/UNSAT and utility controls operationalized by assistant",
+      "source_line_matches": {
+        "NIEPEWNOŚĆ nie może": [
+          204
+        ],
+        "kontrola autorytetu": [
+          88
+        ]
+      }
+    }
+  }
+}

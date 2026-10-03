@@ -1,0 +1,34 @@
+{
+  "name": "A_repeat",
+  "http_status": 200,
+  "duration_s": 2.8130000000819564,
+  "request_sha256": "595dd101c5493deac1fedf778cb0bf2de100148a3433b51e162ae4a3745430a2",
+  "response_sha256": "ac9bbfdfd950bf1986e23d03395845835b4131de2826fae753a3ecdb7b817808",
+  "finish_reason": "length",
+  "usage": {
+    "completion_tokens": 768,
+    "prompt_tokens": 2632,
+    "total_tokens": 3400,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "fingerprint": "b10809-5266f24da",
+  "message_keys": [
+    "content",
+    "role"
+  ],
+  "content_chars": 5696,
+  "empty_analysis_blocks": 64,
+  "final_channel_count": 0,
+  "channel_markers": {
+    "<|start|>": 64,
+    "<|channel|>": 128,
+    "<|message|>": 64,
+    "<|end|>": 64,
+    "<|constrain|>": 0
+  },
+  "expected_read_action": false,
+  "json_object": false,
+  "category": "CHANNEL_MARKERS_IN_CONTENT"
+}

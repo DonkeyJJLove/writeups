@@ -1,0 +1,42 @@
+{
+  "name": "D_no_forced_budget_end_no_json_grammar",
+  "http_status": 200,
+  "duration_s": 0.5150000000139698,
+  "request_sha256": "bdd31f1966acb01a7e68cda15c7b13e6ffa9e39bb05c27b6e88b0ec18f958955",
+  "response_sha256": "32c6fa093d6a4caff1c022ed8227d946c8d867dd879f0719d3a2b1f3debd9f33",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 2632,
+    "total_tokens": 2687,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "fingerprint": "b10809-5266f24da",
+  "message_keys": [
+    "content",
+    "reasoning_content",
+    "role"
+  ],
+  "content_chars": 52,
+  "empty_analysis_blocks": 0,
+  "final_channel_count": 0,
+  "channel_markers": {
+    "<|start|>": 0,
+    "<|channel|>": 0,
+    "<|message|>": 0,
+    "<|end|>": 0,
+    "<|constrain|>": 0
+  },
+  "expected_read_action": true,
+  "json_object": true,
+  "parsed": {
+    "kind": "tool",
+    "name": "read",
+    "args": {
+      "id": "packet"
+    }
+  },
+  "category": "EXPECTED_READ_ACTION"
+}

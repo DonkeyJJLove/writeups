@@ -1,0 +1,42 @@
+{
+  "name": "B_no_forced_budget_end",
+  "http_status": 200,
+  "duration_s": 0.5459999999729916,
+  "request_sha256": "8bd3c198c070c8e5b35cb805d89b7cd78e3bf840a40e89c2205aba4b9b508f21",
+  "response_sha256": "cc263eb40370f1f04b5eef92534fe2cb6bc25d66e19bc8a704a391b0cd1d8927",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 55,
+    "prompt_tokens": 2632,
+    "total_tokens": 2687,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "fingerprint": "b10809-5266f24da",
+  "message_keys": [
+    "content",
+    "reasoning_content",
+    "role"
+  ],
+  "content_chars": 52,
+  "empty_analysis_blocks": 0,
+  "final_channel_count": 0,
+  "channel_markers": {
+    "<|start|>": 0,
+    "<|channel|>": 0,
+    "<|message|>": 0,
+    "<|end|>": 0,
+    "<|constrain|>": 0
+  },
+  "expected_read_action": true,
+  "json_object": true,
+  "parsed": {
+    "kind": "tool",
+    "name": "read",
+    "args": {
+      "id": "packet"
+    }
+  },
+  "category": "EXPECTED_READ_ACTION"
+}

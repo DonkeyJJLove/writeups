@@ -1,0 +1,52 @@
+{
+  "phase": "pilot",
+  "families": [
+    "authority",
+    "lineage",
+    "state_update",
+    "recovery",
+    "bounded_evidence",
+    "global_constraint",
+    "factor_count",
+    "linear_count",
+    "suffix_count",
+    "cover_count"
+  ],
+  "clusters": 2,
+  "seed_start": 100,
+  "repeats": 1,
+  "arms": [
+    "strong_control",
+    "compiled",
+    "without_state",
+    "without_provenance",
+    "without_recovery"
+  ],
+  "primary_treatment": "compiled",
+  "primary_control": "strong_control",
+  "provider": {
+    "type": "ollama",
+    "url": "http://127.0.0.1:11434",
+    "model": "AUTO",
+    "temperature": 0.2,
+    "context_tokens": 16384,
+    "timeout_s": 120,
+    "think": false,
+    "allow_remote": false
+  },
+  "budget": {
+    "max_turns": 6,
+    "max_tokens_per_turn": 256,
+    "tool_work": 512,
+    "max_context_chars": 50000,
+    "episode_seconds": 300
+  },
+  "decision": {
+    "alpha": 0.05,
+    "min_clusters": 30,
+    "minimum_effect": 0.05,
+    "harm_margin": 0.02,
+    "utility_loss_margin": 0.03,
+    "minimum_utility_rate": 0.7
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "source_archive": "hcl-4.3-transport-integrity-fix.zip",
+  "source_archive_sha256": "d98339e615fc58f6e18e1671ea58439ab9df4d7baf224cd367d053bc273c8133",
+  "files": [
+    {
+      "path": "heuristic_lab/grading.py",
+      "sha256": "c331c2a3b668e82c5bd1055b9aacd3fdc6c94aa58834865148afbc9eee57db5b",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/protocol.py",
+      "sha256": "e892ce9dd640b6752bd4f280d0466cf9f1322d006ce5d50cd6ffd94bc8c9e70d",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/engine.py",
+      "sha256": "061bd9098a397a8674159f68eccb86697b7433b516d49ba057ab53ec0da6acfa",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/generators.py",
+      "sha256": "7e877101f02a159c775b98d6ae81c74d90fb51084a75a124ce28de52ed93cb2b",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/tools.py",
+      "sha256": "6a9ea3092184ecb330210af39bd09047eab2c87121ecbeb56aae9b8ab2b84e2a",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/references.py",
+      "sha256": "7c07cfc761c6236eacd89ca266e8133154ee1221b5ec28eacb5954e62118080b",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/analysis.py",
+      "sha256": "967381060d44852deedd11863acd9afcd766ebd29a8b414cadf10b7cc08c342e",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/design.py",
+      "sha256": "4ba093f223f8b1c1f6202620bcde17ce1ae75650ed74b90b6e6921876104bfbb",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/models.py",
+      "sha256": "a2a07a5bdacd48f30cb36f2966a8556dd2beeb6da9022b8715df6a09abc60f9d",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/qualification_contract.py",
+      "sha256": "a75eb9adecfc7caf05f0b1c1126cba333b4dac66fdd11ef868f7571e8f4cc687",
+      "unchanged": true
+    },
+    {
+      "path": "policies/author_raw.txt",
+      "sha256": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+      "unchanged": true
+    },
+    {
+      "path": "policies/compiled.txt",
+      "sha256": "69cfe52c43cd91ee5bf73300f6b1f5c0fa99ac064e7f85b2889f185b74f24d9e",
+      "unchanged": true
+    },
+    {
+      "path": "policies/neutral_shadow_policy.txt",
+      "sha256": "8e27dcfc6505e9f3063ccb2ebd0d44b86e5ea67d396b2b81d596238389090797",
+      "unchanged": true
+    },
+    {
+      "path": "policies/shuffled_words.txt",
+      "sha256": "a7cbe9077d47caecc45a1c0725c5f6696f1f83eda666e6c884c4a3526d430d15",
+      "unchanged": true
+    },
+    {
+      "path": "policies/strong_control.txt",
+      "sha256": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+      "unchanged": true
+    },
+    {
+      "path": "policies/without_provenance.txt",
+      "sha256": "6c31d81924549e53e4cece938c8ba0796d702b269eb6c455173569b29ed7284b",
+      "unchanged": true
+    },
+    {
+      "path": "policies/without_recovery.txt",
+      "sha256": "5448d990f4b062d5e5dd5dbb1f75925f474f7eb43c34ef398f20969ad44dee5c",
+      "unchanged": true
+    },
+    {
+      "path": "policies/without_state.txt",
+      "sha256": "5ca82f2db0b899546355cb3c24d35df3c1ee3413445e5ab87c795b318972bc16",
+      "unchanged": true
+    },
+    {
+      "path": "sources/compiled_sections.json",
+      "sha256": "cd17c71a5726721b138e89cc88de91961b2d11427b0d48b1caef2184009929f2",
+      "unchanged": true
+    },
+    {
+      "path": "sources/legacy_exclusion.json",
+      "sha256": "2bd1d612dfd032bf17e526fd5c8078ec8c09fecd45df6b0c0ce9aa99fdd74fe5",
+      "unchanged": true
+    },
+    {
+      "path": "sources/original_compiler_input.txt",
+      "sha256": "a649e92c57d14873cfeddc79ec83ab47d102b410ce2cb7412b4d6c8fee16e813",
+      "unchanged": true
+    },
+    {
+      "path": "sources/provenance.json",
+      "sha256": "8eff3b09ff860d9c7511c48b2492331501eab6602aac6d88d295d7cae33cc95b",
+      "unchanged": true
+    },
+    {
+      "path": "sources/traceability.json",
+      "sha256": "6da8d72922d29b3767c0da9ab409c3bdce2eae14b9d04bfef774c43773f5ec79",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/author_raw.txt",
+      "sha256": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/compiled.txt",
+      "sha256": "69cfe52c43cd91ee5bf73300f6b1f5c0fa99ac064e7f85b2889f185b74f24d9e",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/neutral_shadow_policy.txt",
+      "sha256": "8e27dcfc6505e9f3063ccb2ebd0d44b86e5ea67d396b2b81d596238389090797",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/shuffled_words.txt",
+      "sha256": "a7cbe9077d47caecc45a1c0725c5f6696f1f83eda666e6c884c4a3526d430d15",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/strong_control.txt",
+      "sha256": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/without_provenance.txt",
+      "sha256": "6c31d81924549e53e4cece938c8ba0796d702b269eb6c455173569b29ed7284b",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/without_recovery.txt",
+      "sha256": "5448d990f4b062d5e5dd5dbb1f75925f474f7eb43c34ef398f20969ad44dee5c",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/policies/without_state.txt",
+      "sha256": "5ca82f2db0b899546355cb3c24d35df3c1ee3413445e5ab87c795b318972bc16",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/sources/compiled_sections.json",
+      "sha256": "cd17c71a5726721b138e89cc88de91961b2d11427b0d48b1caef2184009929f2",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/sources/legacy_exclusion.json",
+      "sha256": "2bd1d612dfd032bf17e526fd5c8078ec8c09fecd45df6b0c0ce9aa99fdd74fe5",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/sources/original_compiler_input.txt",
+      "sha256": "a649e92c57d14873cfeddc79ec83ab47d102b410ce2cb7412b4d6c8fee16e813",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/sources/provenance.json",
+      "sha256": "8eff3b09ff860d9c7511c48b2492331501eab6602aac6d88d295d7cae33cc95b",
+      "unchanged": true
+    },
+    {
+      "path": "heuristic_lab/assets/sources/traceability.json",
+      "sha256": "6da8d72922d29b3767c0da9ab409c3bdce2eae14b9d04bfef774c43773f5ec79",
+      "unchanged": true
+    }
+  ],
+  "study_budget_and_scoring_settings_unchanged": true
+}

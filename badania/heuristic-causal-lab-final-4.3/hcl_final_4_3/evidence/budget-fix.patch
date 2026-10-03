@@ -1,0 +1,235 @@
+--- a/heuristic_lab/generation_budget.py
++++ b/heuristic_lab/generation_budget.py
+@@ -0,0 +1,27 @@
++"""Request-scoped llama.cpp reasoning-budget override, backed by the A/B diagnostic.
++
++Do not confuse this with extending the total completion cap or disabling reasoning.
++The separate forced-end counter is placed beyond the common completion limit.
++"""
++from __future__ import annotations
++
++BUDGET_POLICY = "above_completion_cap_v1"
++INT32_MAX = 2**31 - 1
++
++
++def request_reasoning_budget(config: dict, max_tokens: int) -> int | None:
++    """Return an explicit cap+1 override only for an opted-in llama.cpp provider.
++
++    A literal -1 is deliberately not sent: the target build treats it as
++    inheritance of the server default. The completion cap remains unchanged.
++    """
++    policy = config.get("llama_reasoning_budget_policy")
++    if policy is None:
++        return None
++    if policy != BUDGET_POLICY:
++        raise ValueError("Unsupported llama_reasoning_budget_policy: " + repr(policy))
++    if config.get("type") != "openai_compatible" or config.get("llama_cpp_guard") is not True:
++        raise ValueError("llama_reasoning_budget_policy requires an explicit llama_cpp_guard provider")
++    if type(max_tokens) is not int or not (1 <= max_tokens < INT32_MAX):
++        raise ValueError("Completion cap must be a positive integer below INT32_MAX")
++    return max_tokens + 1
+--- a/heuristic_lab/providers.py
++++ b/heuristic_lab/providers.py
+@@ -16,6 +16,7 @@
+ from .models import ProviderReply
+ from .util import digest
+ from .http_evidence import HTTPEvidence
++from .generation_budget import request_reasoning_budget
+ 
+ class ProviderError(RuntimeError):
+     pass
+@@ -32,6 +33,10 @@
+ 
+ 
+ def validate_endpoint(config: dict) -> None:
++    try:
++        request_reasoning_budget(config, 1)
++    except ValueError as exc:
++        raise ProviderError(str(exc)) from exc
+     if not isinstance(config.get("url"),str) or not isinstance(config.get("model","AUTO"),str):
+         raise ProviderError("url and model must be strings")
+     for name in ["temperature","timeout_s"]:
+@@ -132,6 +137,10 @@
+ 
+     def complete(self,messages:list[dict],seed:int,max_tokens:int,schema:dict|None=None, _schema_mode:str|None=None) -> ProviderReply:
+         c=self.config;t0=time.perf_counter()
++        try:
++            reasoning_budget_override=request_reasoning_budget(c,max_tokens)
++        except ValueError as exc:
++            raise ProviderError(str(exc)) from exc
+         context_check=None
+         if self.llama_guard is not None:
+             context_check=self.llama_guard.check(messages,max_tokens,getattr(self,"remaining_seconds",None))
+@@ -152,6 +161,8 @@
+         else:
+             body={"model":c["model"],"messages":messages,"stream":False,"temperature":c.get("temperature",0.2),
+                   "max_tokens":max_tokens}
++            if reasoning_budget_override is not None:
++                body["reasoning_budget_tokens"]=reasoning_budget_override
+             if c.get("reasoning_effort") is not None:
+                 body["reasoning_effort"]=c["reasoning_effort"]
+             if c.get("reasoning_format") is not None:
+@@ -167,10 +178,9 @@
+                 if mode=="llama_json_object_schema":
+                     body["response_format"]={"type":"json_object","schema":schema}
+                 elif mode=="json_object":
+-                    # Pre-registered fallback for GPT-OSS/llama.cpp.  The server
+-                    # guarantees a JSON object; the common application parser then
+-                    # validates/canonicalizes the action envelope identically in
+-                    # both experimental arms.
++                    # GPT-OSS/llama.cpp JSON mode still uses an internal grammar.
++                    # Qualification and the common application parser validate the
++                    # observed reply; requesting JSON is not a success guarantee.
+                     body["response_format"]={"type":"json_object"}
+                 elif mode=="llama_json_schema_legacy":
+                     body["response_format"]={"type":"json_schema","schema":schema}
+@@ -210,6 +220,12 @@
+                 raise ProviderError("STRUCTURED_TRANSPORT_INVALID_JSON: "+str(exc)+"; raw="+repr(text[:500])) from exc
+             if not isinstance(parsed_transport,dict):
+                 raise ProviderError("STRUCTURED_TRANSPORT_INVALID_JSON: JSON transport response was not an object")
++        if reasoning_budget_override is not None:
++            meta["llama_reasoning_budget_control"]={
++                "policy":c["llama_reasoning_budget_policy"],
++                "max_tokens_requested":max_tokens,
++                "reasoning_budget_tokens_requested":reasoning_budget_override,
++                "scope":"request override; reasoning may occur within the unchanged total completion cap"}
+         if context_check is not None:
+             meta["llama_context_check"]=context_check
+             meta["cache_prompt_requested"]=False
+--- a/heuristic_lab/lion_setup.py
++++ b/heuristic_lab/lion_setup.py
+@@ -13,6 +13,7 @@
+ from .generators import make_suite, generate
+ from .protocol import POLICIES, ACTION_SCHEMA, system_message
+ from .providers import HTTPProvider, ProviderError
++from .generation_budget import BUDGET_POLICY
+ from .grading import parse_response_audited
+ from .tools import Environment, TOOL_CATALOG
+ from .qualification_contract import validate_qualification_action
+@@ -141,7 +142,8 @@
+     cfg["provider"].update(type="openai_compatible",url=url.rstrip("/"),model=model,
+                            allow_remote=False,llama_cpp_guard=True,llama_context_margin=64,
+                            reasoning_effort="none",reasoning_format="auto",
+-                           study_transport="gpt_oss_jinja_parsed_json_object_hf1",
++                           study_transport="gpt_oss_jinja_json_object_budgetfix1",
++                           llama_reasoning_budget_policy=BUDGET_POLICY,
+                            http_evidence_dir=str(output.resolve().parent/"transport_http"))
+     cfg["provider"].pop("think",None)
+     cfg["provider"].pop("llama_runtime_pin",None)
+@@ -194,6 +196,8 @@
+             evidence["status"]="BLOCKED_CONTEXT"
+             raise ProviderError("LION preflight failed: initial prompts do not fit unchanged. Config was not written; see "+str(proof_path))
+         if test_inference:
++            cap=cfg["budget"]["max_tokens_per_turn"]
++            print(f"      generation budget: max_tokens={cap}; reasoning_budget_tokens={cap+1} (explicit request override)",flush=True)
+             qual=_qualify_transports(p,cfg)
+             cfg["provider"]=p.config
+             cfg["provider"]["transport_qualification_hash"]=digest(qual)
+--- a/heuristic_lab/llama_guard.py
++++ b/heuristic_lab/llama_guard.py
+@@ -48,6 +48,8 @@
+         root_cfg = deepcopy(config)
+         root_cfg.pop('llama_cpp_guard', None)
+         root_cfg.pop('llama_runtime_pin', None)
++        # This nested client only reads metadata and tokenizes, never generates.
++        root_cfg.pop('llama_reasoning_budget_policy', None)
+         root_cfg['url'] = urlunsplit((parsed.scheme, parsed.netloc, '', '', ''))
+         self.http = HTTPProvider(root_cfg)
+         self.config = config
+--- a/heuristic_lab/research_runtime.py
++++ b/heuristic_lab/research_runtime.py
+@@ -130,9 +130,9 @@
+     shown a concrete llama.cpp/Jinja failure mode where channel-control tokens are
+     emitted into message.content and loop until the generation limit.  The research
+     listener uses the checkpoint's Jinja chat template with reasoning-format auto.
+-    The format option controls parsing; 'none' requests raw output. Reasoning
+-    remains disabled as in the preceding design, which is NOT a guarantee that
+-    this checkpoint will avoid all channel/decoding failures.  These are treatment-invariant infrastructure
++    The format option controls parsing; 'none' requests raw output. The explicit
++    request-scoped budget override is set by the provider; the retained off flag
++    is NOT a claim that no analysis tokens can be generated.  These are treatment-invariant infrastructure
+     settings and are pinned in the sealed study identity.
+     """
+     cmd=prod.get('CommandLine') or ''
+@@ -150,8 +150,9 @@
+     # transport profile.  This does not touch the production process.
+     args=_remove_flag(args,('--jinja','--no-jinja'))
+     args=_remove_option(args,('--chat-template','--chat-template-file','--reasoning','-rea','--reasoning-format'))
+-    # Keep any explicit reasoning-budget setting from production; reasoning=off is
+-    # the stronger transport-level instruction for this isolated endpoint.
++    # Keep the server arguments matching the diagnosed A/B experiment. The HTTP
++    # provider explicitly overrides this counter with max_tokens+1 per request.
++    # reasoning=off alone did NOT prevent the observed empty-analysis loop.
+     args.extend(['--jinja','--reasoning','off','--reasoning-format','auto'])
+     return args
+ 
+--- a/heuristic_lab/__init__.py
++++ b/heuristic_lab/__init__.py
+@@ -1 +1 @@
+-__version__ = "4.3.1"
++__version__ = "4.3.2"
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@
+ 
+ [project]
+ name = "heuristic-causal-lab"
+-version = "4.3.1"
++version = "4.3.2"
+ description = "Paired live-model experiments isolating a frozen heuristic from shared tools and validators"
+ readme = "README.md"
+ requires-python = ">=3.11"
+--- a/configs/study.json
++++ b/configs/study.json
+@@ -30,7 +30,8 @@
+     "timeout_s": 120,
+     "allow_remote": false,
+     "llama_cpp_guard": true,
+-    "llama_context_margin": 64
++    "llama_context_margin": 64,
++    "llama_reasoning_budget_policy": "above_completion_cap_v1"
+   },
+   "budget": {
+     "max_turns": 6,
+@@ -64,6 +65,14 @@
+       "min_completed_trials": 40,
+       "max_pooled_protocol_error_rate": 0.1,
+       "scope": "arm-blind pooled transport contamination only; never treatment contrast"
++    },
++    "reasoning_budget_control": {
++      "request_field": "reasoning_budget_tokens",
++      "rule": "max_tokens + 1",
++      "total_completion_cap_unchanged": true,
++      "applies_to": "all qualification and treatment requests with the same provider policy",
++      "reasoning_semantics": "analysis is permitted within the total completion cap; reasoning_effort=none is not a demonstrated guarantee of zero analysis",
++      "evidence": "diagnostic_result.zip A/B/D/C/A, same request except the documented factors"
+     }
+   },
+   "study": {
+--- a/heuristic_lab/assets/configs/study.json
++++ b/heuristic_lab/assets/configs/study.json
+@@ -30,7 +30,8 @@
+     "timeout_s": 120,
+     "allow_remote": false,
+     "llama_cpp_guard": true,
+-    "llama_context_margin": 64
++    "llama_context_margin": 64,
++    "llama_reasoning_budget_policy": "above_completion_cap_v1"
+   },
+   "budget": {
+     "max_turns": 6,
+@@ -64,6 +65,14 @@
+       "min_completed_trials": 40,
+       "max_pooled_protocol_error_rate": 0.1,
+       "scope": "arm-blind pooled transport contamination only; never treatment contrast"
++    },
++    "reasoning_budget_control": {
++      "request_field": "reasoning_budget_tokens",
++      "rule": "max_tokens + 1",
++      "total_completion_cap_unchanged": true,
++      "applies_to": "all qualification and treatment requests with the same provider policy",
++      "reasoning_semantics": "analysis is permitted within the total completion cap; reasoning_effort=none is not a demonstrated guarantee of zero analysis",
++      "evidence": "diagnostic_result.zip A/B/D/C/A, same request except the documented factors"
+     }
+   },
+   "study": {

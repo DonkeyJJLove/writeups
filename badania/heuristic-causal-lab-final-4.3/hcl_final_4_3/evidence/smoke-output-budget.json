@@ -1,0 +1,16 @@
+{
+  "mode": "HARNESS_SELFTEST_ONLY",
+  "scope": "fixtures validate software, NOT heuristic quality",
+  "episodes": 40,
+  "audit": {
+    "status": "PASS",
+    "checked": 40,
+    "scheduled": 40,
+    "missing": 0,
+    "errors": [],
+    "fully_complete": true,
+    "scope": "artifact integrity plus replay of identical tools and deterministic grading; not independent institutional certification"
+  },
+  "report": "/mnt/data/hcl_output_budget_smoke/report.html",
+  "live_model_calls": 0
+}

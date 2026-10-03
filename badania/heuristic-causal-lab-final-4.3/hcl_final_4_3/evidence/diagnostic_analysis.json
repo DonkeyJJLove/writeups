@@ -1,0 +1,134 @@
+{
+  "input_archive": "diagnostic_result.zip",
+  "input_sha256": "dc19c831393b2aa7dd9b6de46bac8f36d3a1b206489e430e14b3fbcc6aaeefd2",
+  "analysis_method": "Offline recomputation from raw request/response bytes; no new inference",
+  "all_ten_request_response_hashes_match": true,
+  "A_request_equals_prior_failed_request_bytes": true,
+  "A_repeat_request_identical_bytes": true,
+  "A_repeat_content_identical": true,
+  "rows": [
+    {
+      "variant": "A_original",
+      "changed_keys": [],
+      "request_sha256": "595dd101c5493deac1fedf778cb0bf2de100148a3433b51e162ae4a3745430a2",
+      "request_hash_matches": true,
+      "response_sha256": "1f004a8aece93458f1c43c55daea122e134e86322ded70c914ad6c1e69cafa05",
+      "response_hash_matches": true,
+      "prompt_tokens": 2632,
+      "completion_tokens": 768,
+      "finish_reason": "length",
+      "empty_analysis_blocks": 64,
+      "clean_json": false,
+      "expected_action": false,
+      "separate_reasoning_content": false,
+      "max_tokens": 768,
+      "reasoning_budget_tokens": null,
+      "response_format": {
+        "type": "json_object"
+      },
+      "cached_prompt_tokens": 0,
+      "fingerprint": "b10809-5266f24da"
+    },
+    {
+      "variant": "B_no_forced_budget_end",
+      "changed_keys": [
+        "reasoning_budget_tokens"
+      ],
+      "request_sha256": "8bd3c198c070c8e5b35cb805d89b7cd78e3bf840a40e89c2205aba4b9b508f21",
+      "request_hash_matches": true,
+      "response_sha256": "cc263eb40370f1f04b5eef92534fe2cb6bc25d66e19bc8a704a391b0cd1d8927",
+      "response_hash_matches": true,
+      "prompt_tokens": 2632,
+      "completion_tokens": 55,
+      "finish_reason": "stop",
+      "empty_analysis_blocks": 0,
+      "clean_json": true,
+      "expected_action": true,
+      "separate_reasoning_content": true,
+      "max_tokens": 768,
+      "reasoning_budget_tokens": 769,
+      "response_format": {
+        "type": "json_object"
+      },
+      "cached_prompt_tokens": 0,
+      "fingerprint": "b10809-5266f24da"
+    },
+    {
+      "variant": "D_no_forced_budget_end_no_json_grammar",
+      "changed_keys": [
+        "reasoning_budget_tokens",
+        "response_format"
+      ],
+      "request_sha256": "bdd31f1966acb01a7e68cda15c7b13e6ffa9e39bb05c27b6e88b0ec18f958955",
+      "request_hash_matches": true,
+      "response_sha256": "32c6fa093d6a4caff1c022ed8227d946c8d867dd879f0719d3a2b1f3debd9f33",
+      "response_hash_matches": true,
+      "prompt_tokens": 2632,
+      "completion_tokens": 55,
+      "finish_reason": "stop",
+      "empty_analysis_blocks": 0,
+      "clean_json": true,
+      "expected_action": true,
+      "separate_reasoning_content": true,
+      "max_tokens": 768,
+      "reasoning_budget_tokens": 769,
+      "response_format": null,
+      "cached_prompt_tokens": 0,
+      "fingerprint": "b10809-5266f24da"
+    },
+    {
+      "variant": "C_original_budget_no_json_grammar",
+      "changed_keys": [
+        "response_format"
+      ],
+      "request_sha256": "2c4b1cad3cc26ff491946b88be96b048592668cfdc4c58ef5344285b3c2a4810",
+      "request_hash_matches": true,
+      "response_sha256": "605c32617dbc043fc2cd648decbd77d3177f30fa9e97cd7c659a7212ad6e502b",
+      "response_hash_matches": true,
+      "prompt_tokens": 2632,
+      "completion_tokens": 23,
+      "finish_reason": "stop",
+      "empty_analysis_blocks": 1,
+      "clean_json": false,
+      "expected_action": false,
+      "separate_reasoning_content": false,
+      "max_tokens": 768,
+      "reasoning_budget_tokens": null,
+      "response_format": null,
+      "cached_prompt_tokens": 0,
+      "fingerprint": "b10809-5266f24da"
+    },
+    {
+      "variant": "A_repeat",
+      "changed_keys": [],
+      "request_sha256": "595dd101c5493deac1fedf778cb0bf2de100148a3433b51e162ae4a3745430a2",
+      "request_hash_matches": true,
+      "response_sha256": "ac9bbfdfd950bf1986e23d03395845835b4131de2826fae753a3ecdb7b817808",
+      "response_hash_matches": true,
+      "prompt_tokens": 2632,
+      "completion_tokens": 768,
+      "finish_reason": "length",
+      "empty_analysis_blocks": 64,
+      "clean_json": false,
+      "expected_action": false,
+      "separate_reasoning_content": false,
+      "max_tokens": 768,
+      "reasoning_budget_tokens": null,
+      "response_format": {
+        "type": "json_object"
+      },
+      "cached_prompt_tokens": 0,
+      "fingerprint": "b10809-5266f24da"
+    }
+  ],
+  "actual_server_reasoning_budget": "0",
+  "production_before_after_identical": true,
+  "production_generation_requests_reported": 0,
+  "interpretation": "The cap+1 request override recovered the required action on the single observed case; removing only response_format did not recover a clean action. A repeated the same failure. This supports the intervention in scope, not heuristic efficacy or universal backend compatibility.",
+  "limits": [
+    "One message case and seed; fixed order, not randomized repeated sampling.",
+    "No full model content hash supplied.",
+    "Production snapshots are not a proof of zero latency impact on the shared GPU.",
+    "No full-study task/heuristic result has been collected by this patch."
+  ]
+}

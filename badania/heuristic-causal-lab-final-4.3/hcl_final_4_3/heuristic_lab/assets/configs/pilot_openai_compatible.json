@@ -1,0 +1,49 @@
+{
+  "phase": "pilot",
+  "families": [
+    "authority",
+    "lineage",
+    "state_update",
+    "recovery",
+    "bounded_evidence",
+    "global_constraint",
+    "factor_count",
+    "linear_count",
+    "suffix_count",
+    "cover_count"
+  ],
+  "clusters": 1,
+  "seed_start": 100,
+  "repeats": 1,
+  "arms": [
+    "strong_control",
+    "author_raw"
+  ],
+  "primary_treatment": "author_raw",
+  "primary_control": "strong_control",
+  "provider": {
+    "type": "openai_compatible",
+    "url": "http://127.0.0.1:8001/v1",
+    "model": "AUTO",
+    "temperature": 0.2,
+    "timeout_s": 120,
+    "context_tokens": 16384,
+    "send_seed": true,
+    "allow_remote": false
+  },
+  "budget": {
+    "max_turns": 6,
+    "max_tokens_per_turn": 256,
+    "tool_work": 512,
+    "max_context_chars": 50000,
+    "episode_seconds": 300
+  },
+  "decision": {
+    "alpha": 0.05,
+    "min_clusters": 30,
+    "minimum_effect": 0.05,
+    "harm_margin": 0.02,
+    "utility_loss_margin": 0.03,
+    "minimum_utility_rate": 0.7
+  }
+}

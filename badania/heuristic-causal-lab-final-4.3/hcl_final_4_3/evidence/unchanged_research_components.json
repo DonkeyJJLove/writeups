@@ -1,0 +1,44 @@
+[
+  {
+    "path": "policies/author_raw.txt",
+    "baseline_sha256": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+    "patched_sha256": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+    "identical": true
+  },
+  {
+    "path": "policies/strong_control.txt",
+    "baseline_sha256": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+    "patched_sha256": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+    "identical": true
+  },
+  {
+    "path": "heuristic_lab/generators.py",
+    "baseline_sha256": "7e877101f02a159c775b98d6ae81c74d90fb51084a75a124ce28de52ed93cb2b",
+    "patched_sha256": "7e877101f02a159c775b98d6ae81c74d90fb51084a75a124ce28de52ed93cb2b",
+    "identical": true
+  },
+  {
+    "path": "heuristic_lab/tools.py",
+    "baseline_sha256": "6a9ea3092184ecb330210af39bd09047eab2c87121ecbeb56aae9b8ab2b84e2a",
+    "patched_sha256": "6a9ea3092184ecb330210af39bd09047eab2c87121ecbeb56aae9b8ab2b84e2a",
+    "identical": true
+  },
+  {
+    "path": "heuristic_lab/references.py",
+    "baseline_sha256": "7c07cfc761c6236eacd89ca266e8133154ee1221b5ec28eacb5954e62118080b",
+    "patched_sha256": "7c07cfc761c6236eacd89ca266e8133154ee1221b5ec28eacb5954e62118080b",
+    "identical": true
+  },
+  {
+    "path": "heuristic_lab/analysis.py",
+    "baseline_sha256": "967381060d44852deedd11863acd9afcd766ebd29a8b414cadf10b7cc08c342e",
+    "patched_sha256": "967381060d44852deedd11863acd9afcd766ebd29a8b414cadf10b7cc08c342e",
+    "identical": true
+  },
+  {
+    "path": "configs/study.json",
+    "baseline_sha256": "293148ddfddf20875a0697bc8de2c1aa5e9cd03ef6fac41e5fc935f2d293e0b3",
+    "patched_sha256": "293148ddfddf20875a0697bc8de2c1aa5e9cd03ef6fac41e5fc935f2d293e0b3",
+    "identical": true
+  }
+]
