@@ -1,0 +1,629 @@
+{
+  "schema": "lion.research-index/v1",
+  "repository": "DonkeyJJLove/writeups",
+  "head": "b30ad1ac45c256889572bfe9d83440b51470f126",
+  "tree": "4ea24b98bea6b5c93d0d2f06aa3e82704c3e770f",
+  "selection_policy": "TOP_LEVEL_DOCS_PLUS_BOUNDED_HCL_LOCI_METADATA",
+  "entry_count": 77,
+  "entries": [
+    {
+      "path": "06_METAVERSE_BIOLOGIA_CZLOWIEKA_DLACZEGO_VR_FIRST_NIE_SKALUJE.md",
+      "sha256": "5b231c8ef81bb4c29ac443e948747a5bdb1eca76630f677ca74881d491e40c69",
+      "bytes": 30275,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "06_kosmiczne_wioski_social_ai_premia_za_kreacje.md",
+      "sha256": "a957cc59944476dfab90b019c99412949fb6fc2ba6d7288733862256c18a5aee",
+      "bytes": 19796,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "2025-04_zaklocanie_protokolow_czasu_asyncshel_fire-sale.md",
+      "sha256": "e50b37e364b0ec678e25244e2643c2421e7a4b7de1a9ea6998f9d98784ce749b",
+      "bytes": 16978,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "2025-12-04_mikrokod-daty_ascii-specyfikacja-dowod-replikowalny-eksperyment.md",
+      "sha256": "11fab44bf6f0e1e8c3dcf306a03c33b6fd6dfa0ae93102a1c292bfc60f7856d7",
+      "bytes": 13024,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "2da4c9837f6955f8eb85cc0f26b2443968e64266975e3230a940aa8db10b2597",
+      "bytes": 1305,
+      "class": "REPOSITORY_CONTROL_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "AISec_ASCII_MC_9D_eksperyment_kontekstowy.md",
+      "sha256": "9d9cb1e89540f7b91a632eb4c3d9ab4d33f835813fb64c7d47e405c1609965e4",
+      "bytes": 15036,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "AI_NATIVE_ENTERPRISE_RND_WRITEUP.md",
+      "sha256": "d5b21ba3b5e24b469f6bf02a1e9e8e097f673d10f577f78f9f7f6e3fa28ec054",
+      "bytes": 21232,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "AI_NATIVE_ROADMAP.md",
+      "sha256": "3f5e0384341d5e07a6ef99b020948a8c1f6699bfa9a092d1105397ae985b5f1a",
+      "bytes": 1838,
+      "class": "REPOSITORY_CONTROL_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "APT-K-47-asyncshell.md",
+      "sha256": "161fa176ff2c63279e4852a1326e9da07a5fa66b654a63369f74b3148ffb2bea",
+      "bytes": 24814,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ASCII_MC_9D_notatka_bezpieczenstwa.md",
+      "sha256": "82ab484879ddc9f118b2d33f4a1649a6d00187c852000777bfd4340ba54a8eed",
+      "bytes": 1488,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md",
+      "sha256": "53c878f59a491e6c203a779cc66c872fd363a979081f028ff35568850b8f128b",
+      "bytes": 36537,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "LION_ARCHITECTURE_ROLE_v1_4.md",
+      "sha256": "db0d9a69f9ce9b178c0b50f163726db1b182884157418e9bc09319f5348b44f3",
+      "bytes": 2817,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "OBSERVABILITY_CONDITIONED_REFERENCE_MONITOR_LINUX_OPENAI.md",
+      "sha256": "c600f95a549821fb9402a43972117aca835fa97b99e90dcf2637a765d596b2f7",
+      "bytes": 57546,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "PROCESS_GUARD.md",
+      "sha256": "5baefc881660bb946d049d7d3962d96426b0243a91d203105079ed7fb21a2706",
+      "bytes": 7068,
+      "class": "REPOSITORY_CONTROL_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "PROFILE_ABOUT.md",
+      "sha256": "db0ab8a638260230ac190dddf1c54ae7c272a284b7754bd5fde92dc7e077f276",
+      "bytes": 9384,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "PROFILE_README.md",
+      "sha256": "3fb425dff5744c92d67d6edd51f73a30bcaf76d03498de81d0cdfb5cda28fd0f",
+      "bytes": 13865,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1d2b6d78dca9f41efb78aedb8cc4a2ed1a1c39c2e2383bd6eca2e094ba024af8",
+      "bytes": 25219,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "REPOSITORY_AUDIT_2026-08-18.md",
+      "sha256": "57cc498e24da1a72be7b9a8641f346af4c4e45177287374b93daa6c05be55e4b",
+      "bytes": 5777,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "REPOSITORY_STANDARDIZATION_R1.json",
+      "sha256": "c31ea57ea693822a1d37bbc7c3779748288eebcfb9d5795bae29aeb8be30c1d0",
+      "bytes": 587,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "agent-zabezpieczen-ai-driven-linux-koncepcja-badawcza.md",
+      "sha256": "658016a7d21e142c69b76a6907364db3d1f80b1def015a9688d9ce088c04cb84",
+      "bytes": 29020,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ai_security_model_boundary_strategy_writeup.md",
+      "sha256": "1acde290388fdd7f16ab37401c8abb52bbd88d337f9d8db34bf99f8fc20d66ed",
+      "bytes": 28822,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ascii-microcode-ai_part2.md",
+      "sha256": "e5d7e5b235a8f167a0efcd78955e847bf25f3a94bd537b59fe6e61f591db4160",
+      "bytes": 12668,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ascii-microcode-ai_part3.md",
+      "sha256": "a581914ebe262b7b08029305f55fd35669a5e6b9c3ad755d3c2c9f27dc7349c3",
+      "bytes": 10885,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ascii-microcode-llm_od-znaku-do-ontologicznego-mikrokodu.md",
+      "sha256": "f88997461a2f177cbbb3675b5d739e17cdb6dd6530b9a868d824d2e6ebb485de",
+      "bytes": 15757,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "ascii-ontologiczny-microcode-ai_czesc1-fundament-znak-semantyka.md",
+      "sha256": "57bbc6a034a1ca5e4419ebf44721be7264ec3580a86ad4a584a548bc72ae9d17",
+      "bytes": 11545,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/README.md",
+      "sha256": "1505b63e0044b7eb6b9919b5030c304a1e73aaa32f15abe042c6d3b884c80dfb",
+      "bytes": 7070,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/matlab/README.md",
+      "sha256": "8153e13b03234744d6d8b96836964b22337b187324dfa8384f98c4a74a4cbb56",
+      "bytes": 1737,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/matlab/adapters/README.md",
+      "sha256": "7ab24a13538f12bcfb442dd29f52fff1c55fa6ece9a6816ef5c6f80e0f5d1dc0",
+      "bytes": 855,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/matlab/compat/README.md",
+      "sha256": "31c933b0f749d9d5213dbe1b60fac0e33e6cc0621da091b96e54583f1f7c8dad",
+      "bytes": 747,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/matlab/features/README.md",
+      "sha256": "5a2a9cba608cb3e3e4b8f5702ab0313b7624c98528d21a1f7243a6fb58e620e8",
+      "bytes": 655,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/matlab/visualizers/README.md",
+      "sha256": "bf561505013890f37975492a27b7647cb93d3c6a3f5df9eb716f59a98fe82d2c",
+      "bytes": 2055,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/parsers/README.md",
+      "sha256": "5dbe58abc76ce7da46e2c3dd9a35c5ebe70147f4a1959207d4004b66de518952",
+      "bytes": 938,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/parsers/manifest.json",
+      "sha256": "9bedf2254b48c8a5a31e9ad4ee0cdefee07a79656193d2c41e00637bb3baa98a",
+      "bytes": 660,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/parsers/rules/README.md",
+      "sha256": "1b9e4655c0efee063884fc5d4b7993e82c43ce4c1dcaac8ad1e29e4faec223b0",
+      "bytes": 515,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/raports/README.md",
+      "sha256": "f0dae7709e5dd18e5630441a3291d33c30c72559a0d5fe9f4bc9dc0647d3abc2",
+      "bytes": 760,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/results/README.md",
+      "sha256": "c1e52919b80c09e41e3500f76fbbfed109c39844bdde8345e2e5e0b5599cc234",
+      "bytes": 1087,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/sample/README.md",
+      "sha256": "6366c2ff59118191a9b735720226ef021c55391c4defe0e3062287c3bb645076",
+      "bytes": 1170,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/spec/README.md",
+      "sha256": "14e647456309d5011557533deaebca3fb2d780e4bbdd9858580034e7ad3f7849",
+      "bytes": 818,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/LOCI/tests/README.md",
+      "sha256": "57a08415c22bd67d769e8f519b509e23cd0f963f6cf6678dc649b97d7b661032",
+      "bytes": 1104,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/README.md",
+      "sha256": "4836474d12ca3cdde2f4c82da54bb9e73ab49b14c2b97b6701694ee642908c64",
+      "bytes": 40957,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/artifacts/README.md",
+      "sha256": "15452c67ad0b5820cde76c8014f4aef17e8b569271ffece0ebdd0acadcc5ee93",
+      "bytes": 1387,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/BUILD_REPORT.md",
+      "sha256": "c504f07bbf7d8b451de2deca5c16386fa004e816e691baa37ea8dcdef5f000dc",
+      "bytes": 3856,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/README.md",
+      "sha256": "f2c663e83b368df3e5589e43ed2fdf1529628d5d81c797cba5af1c5f1ea65a7a",
+      "bytes": 3083,
+      "class": "RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/results/selftest_9667_12861/manifest.json",
+      "sha256": "cc720a9c8ba205c976b67774bb111d24c1dfec6bd097cc59f44ce577e3e859d5",
+      "bytes": 7879,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/results/selftest_9667_12861/source_manifest.json",
+      "sha256": "d08495bda71a86cb828b148e98595778f9d4fdd3407c21df0d3d26e8e70e6f2c",
+      "bytes": 4474,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-113209/study/manifest.json",
+      "sha256": "2e5493cabf13c1c1777c96d820f1f4a7dcef3073f0d3f280dfc7555c2f55d53f",
+      "bytes": 1150155,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-113209/study/source_manifest.json",
+      "sha256": "ecc9b47caf214459a6bb25e97b7dda305e68ba3fb607310c0c41247e18c2b203",
+      "bytes": 4152,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/manifest.json",
+      "sha256": "ff82f28a05a32219cde24b8f4c711e2c299b7b8067d5b98fa0b59f9d60b5f758",
+      "bytes": 1150990,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "badania/heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/source_manifest.json",
+      "sha256": "d08495bda71a86cb828b148e98595778f9d4fdd3407c21df0d3d26e8e70e6f2c",
+      "bytes": 4474,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "blackbox_w_kosmosie.md",
+      "sha256": "c3033f3993715daa0a7aaa77843038bc1ef52e4177f8916370cfa7c1c0655f08",
+      "bytes": 6302,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "campaign-yokai-backdoor.md",
+      "sha256": "8abf66410ea18c9d7f2b07d444b5e55ce2080d61414c98dad8b03cde6756e5b9",
+      "bytes": 36448,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "cyber-lion.repository.json",
+      "sha256": "bb132e7de3217639910d533e41a9ccfcf710827d49d1527c8245fb2dafbeff46",
+      "bytes": 3545,
+      "class": "STRUCTURED_RESEARCH_ARTIFACT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "cybersecurity-evolusion.md",
+      "sha256": "7943f7d10737294633dd0613ab1722d94bdc4dfe779e7585bb36bef67aa962cf",
+      "bytes": 13379,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "deterministyczna_obserwowalnosc_warstwy_wykonawczej_ai.md",
+      "sha256": "9dc7017c8f5ad4cc7053b2eae42968ba820a737d7413c13a9f6f3f8b7112e793",
+      "bytes": 42539,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "double_dagger_operator_kontekstu.md",
+      "sha256": "981ae44d2090502fe58fbc35313d1b7814e2886576bac5ac7afaeaa42f10d338",
+      "bytes": 16943,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "epistemiczna_tasma_prototypowa_figury.md",
+      "sha256": "de747fc9367756dbabe1a38e018d8f85e66459c8d245235fae05ae6e57899f96",
+      "bytes": 9864,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "evolutionary-agent-systems-organization-framework.md",
+      "sha256": "783ca987ad50cdb6f5a771b3e593ff812f63c6073785afbaa8228b290473292c",
+      "bytes": 73000,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "fileless-malware.md",
+      "sha256": "1ea72e3ac66a46cf45907a8092f1d011d2b6484a5f73f42dd1998e8b76da2f34",
+      "bytes": 21360,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "fire-sale.md",
+      "sha256": "0436ecec315e1ed12001ccb5cb91f80b9af6e60ca95eadda0c0e3ce191306093",
+      "bytes": 65450,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "global_architecture_convergence_baseline_report.md",
+      "sha256": "1c4d5e116a62cd4d8333f2603d0b4fa1bc8b68d25d8579921d2a94e6107b5aa4",
+      "bytes": 33605,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "granica_wykonalnosci_wioska_kosmiczna_writeup_v1.md",
+      "sha256": "d6ee7beac215cd1db975dd2c76de9ef5527bd98c1d5a2a9599e82e20bfb38e7e",
+      "bytes": 25975,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "inwariant_llm_analiza_watkow_konwersacyjnych.md",
+      "sha256": "435cbf219c4a1b9df51976a51ac16e922749afa0666d1fdbe1253f36f3dd784c",
+      "bytes": 13937,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "kod-cywilizacji-human-ai-spoleczenstwo-kosmos.md",
+      "sha256": "47a2a27bee1276b62c9983ee449432e53d450bca712739a8aa5df4f5202721b6",
+      "bytes": 9760,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "magia-embeddingu-llm-slowo-w-czyn.md",
+      "sha256": "6d35a3933a79987d37e78f115d1bfa3fad26f6668a239218cb97b7d9d8431144",
+      "bytes": 16483,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "malware-evolution.md",
+      "sha256": "a70c6ad5b5c65b6938d67571256b91b0e859dd3a4e0df8feef693a733918d6d1",
+      "bytes": 14437,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "manipulacja_masami_probabilistyczna_propaganda_i_przedrozumowa_percepcja.md",
+      "sha256": "06caeb897b3fe4dd72392bbfbfeeae552daef4f24bea5df9ec64ef13dd1cedbe",
+      "bytes": 31442,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "mental-matrix-mega-brain-coop-linux.MD",
+      "sha256": "f9499e01bd8e976be5fdf7e14e0a65352765cd69a70b6570ceaed55d4adaff2c",
+      "bytes": 25985,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "mokey-bissnes_k-wave-media_potencjal-naukowy.md",
+      "sha256": "426ca6238b4d520aa9dce9776924f1c6eec837fb3feb58782d408d0fa2b6f778",
+      "bytes": 29161,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "operacja-cobalt-kitty.md",
+      "sha256": "bc51ea6f2d8cfdde665eb777a54b9d5118e50df5cb34e9284c56c3ae793724b8",
+      "bytes": 29185,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "prawda-vs-fikcja-w-llm.md",
+      "sha256": "10f032305673e0e7d58f0096b036d3d6799d294525fdb000d657bc4538a9e39c",
+      "bytes": 35174,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "produktywnosc_wioski_kosmicznej_dla_rozwoju_ai.md",
+      "sha256": "b0915e69b029654fbfa10c75fb916f53826b8aa8cf0420784c9d1e148b391102",
+      "bytes": 37986,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "protokoly_kontekstu_chunk-chunk_facebook_case.md",
+      "sha256": "0e335b206b8bf561cb1cc10e3998f0513c6f3fe6df99285b840bf9d78b39ba32",
+      "bytes": 58231,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "przyciski-semantyczne-llm.md",
+      "sha256": "37c736e8274d966289c75675b34ecce622537495d074f92dae019e4b91101fde",
+      "bytes": 18576,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "relational-perceptual-protocol-bootstrap-model.md",
+      "sha256": "a3d272d69f64e633e9d39b2b8a49498d9d8a09e7189d35dd1047c12acfae04aa",
+      "bytes": 28035,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "sbom-as-sigillum-relationis_systemic-risk-control.md",
+      "sha256": "8d2a0ea59e2abddc61c6c15500375690c9c4345584cb2484df48fd03d324ad59",
+      "bytes": 40018,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "teoria-pojemnosci-modeli-obliczalnosc.md",
+      "sha256": "812f170fa22f7c14643ae1bb97c7b33719ed950691672a522518316ffec023ff",
+      "bytes": 20850,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    },
+    {
+      "path": "writeup_ascii_microcode_hmk9d_deterministic_metrology_repo.md",
+      "sha256": "96854120beb05237d5966de3d17b4c335b488f5caf7e5a0ee4e9a58b6c0cf19d",
+      "bytes": 33616,
+      "class": "RESEARCH_DOCUMENT",
+      "version_ref": "b30ad1ac45c256889572bfe9d83440b51470f126",
+      "retention": "KEEP_SOURCE_BOUND"
+    }
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "index_digest": "f1d1aee460df3372729894d8aba0b9f17e11c28e0e32514e064ad04a1ba163ec"
+}
