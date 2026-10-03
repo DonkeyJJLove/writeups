@@ -311,17 +311,90 @@ Co więcej, bezwzględny `safe_success` treatment na zadaniach `solvable` wynió
 
 ## 10. Jak przetestować tę hipotezę dalej
 
-Jeżeli „mozaikowanie”, relewancja i atomowa mediana mają być czymś więcej niż interpretacją, kolejne badanie powinno oddzielić kolejne transformacje.
+Jeżeli „mozaikowanie”, relewancja i atomowa mediana mają być czymś więcej niż interpretacją, następny etap nie powinien polegać na dalszym wzmacnianiu `author_raw`, lecz na rozdzieleniu kolejnych transformacji i próbie zniszczenia hipotezy. Szczegółowy projekt znajduje się w [prospektywnym protokole HCL 4.4](./HCL_4_4_PROSPECTIVE_PROTOCOL.md). Historyczny protokół 4.3.3 pozostaje zamrożonym opisem zakończonego eksperymentu.
 
-Pierwsza seria powinna zachować ten sam sens przy zmianie powierzchni znakowej: warianty Unicode, normalizacja NFC/NFD, parafrazy, różne tokenizacje i kontrolowane zakłócenia typograficzne. Jeżeli efekt znika po zmianie kodowania przy zachowaniu sensu, mamy raczej zależność od powierzchni/tokenizacji niż stabilnego inwariantu semantycznego.
+### 10.1. Niezmienniczość powierzchni
 
-Druga seria powinna stosować **token-matched controls** i ablacje poszczególnych relacji: provenance, state update, recovery, authority i global constraint. Wtedy można estymować, czy wycięcie konkretnego motywu zmniejsza wynik właśnie w rodzinie, która wymaga odpowiadającej mu relacji.
+Pierwsza seria zachowuje sens przy zmianie powierzchni znakowej: Unicode NFC/NFD, kontrolowane zmiany typograficzne, parafrazy oraz warianty powodujące inną segmentację tokenową. Jeżeli efekt znika po transformacji zachowującej relacje decyzyjne, hipoteza o stabilnym inwariancie semantycznym słabnie na rzecz hipotezy o zależności od powierzchni lub konkretnej tokenizacji.
 
-Trzecia seria powinna zmieniać model i tokenizer przy stałym grafie zadania. Stabilność efektu między modelami zwiększyłaby prawdopodobieństwo, że badamy strukturę zadania i kontekstu, a nie idiosynkrazję jednego backendu.
+Kluczowe jest, aby równoważności nie oceniał ten sam model, którego zachowanie jest endpointem. Transformacje Unicode mogą być walidowane deterministycznie; parafrazy wymagają wcześniej zamrożonego kontraktu relacyjnego.
 
-Czwarta seria powinna wejść mechanistycznie: activation patching, probing, causal interventions lub inne narzędzia interpretowalności. Dopiero wtedy można pytać, czy formalnie zdefiniowane „atomy” i relacje mają odpowiadające im stabilne reprezentacje wewnętrzne.
+### 10.2. Token-matched controls i ablacje relacji
 
-Piąta seria powinna oddzielić mediację przez budżet wyjścia. W HCL `output_budget_exhausted` wyniosło 58,73% dla treatment i 80,59% dla kontroli. Część efektu może więc przechodzić przez zdolność dojścia do prawidłowo sformatowanej akcji w ramach limitu. [1] To również jest zachowanie systemu, lecz nie należy automatycznie utożsamiać go z „lepszą semantyką”.
+Druga seria wprowadza kontrole dopasowane tokenowo dla konkretnego tokenizera oraz prerejestrowane ablacje:
+
+```text
+provenance
+state update
+recovery
+authority
+global constraint
+```
+
+Testem nie będzie samo `full > ablated`, lecz **interaction-by-family**. Usunięcie provenance powinno selektywnie uderzać przede wszystkim w `lineage` i `bounded_evidence`; usunięcie state — w `state_update`; recovery — w `recovery`; authority — w `authority`; global constraint — w `global_constraint`. Brak takiej selektywności będzie argumentem przeciwko interpretacji relacyjnej.
+
+### 10.3. Mediacja przez budżet wyjścia
+
+W HCL 4.3.3 `output_budget_exhausted` wyniosło 58,73% dla treatment i 80,59% dla kontroli. Dlatego budżet nie może pozostać jedynie parametrem technicznym. W HCL 4.4 staje się jawnym czynnikiem eksperymentalnym.
+
+Kandydackie poziomy do zamrożenia po neutralnej kwalifikacji to 768, 1536 i 3072 tokeny wyjścia na turę. Każde ramię musi otrzymywać ten sam budżet. Celem jest oszacowanie, jaka część kontrastu pozostaje po silnym ograniczeniu `GENERATION_LIMIT`. Nie wolno filtrować post hoc tylko „udanych” epizodów, ponieważ tworzyłoby to selekcję zależną od wyniku.
+
+### 10.4. Usunięcie floor effect
+
+Cztery rodziny kombinatoryczne miały zero `safe_success` w obu ramionach. Kolejna wersja benchmarku powinna więc zawierać poziomy EASY/MEDIUM/HARD przy zachowaniu niezależnych exact oracles. Dzięki temu będzie można odróżnić rzeczywisty brak transferu od sytuacji, w której oba ramiona po prostu leżały na podłodze skali.
+
+Jeżeli po skalibrowaniu trudności przewaga nadal będzie skupiona w zadaniach relacyjno-epistemicznych, argument o selektywności stanie się znacznie mocniejszy. Jeżeli pojawi się także w czystej kombinatoryce, obecna interpretacja będzie wymagała rewizji.
+
+### 10.5. Cross-model i cross-tokenizer
+
+Trzecia linia replikacji zmienia model i tokenizer przy stałym grafie zadania. Każdy model jest osobnym stratum; efekty raportuje się najpierw osobno, a agregację wykonuje tylko według zamrożonego modelu statystycznego.
+
+Stabilność kierunku efektu między różnymi rodzinami modeli zwiększałaby prawdopodobieństwo, że obserwujemy własność struktury kontekstu i zadania, a nie idiosynkrazję jednego backendu. Brak replikacji również jest pełnoprawnym wynikiem.
+
+### 10.6. External task set
+
+HCL 4.3.3 ma ograniczenie construct alignment: heurystyka i benchmark powstały w jednym projekcie. HCL 4.4 powinien mieć osobny zestaw zadań zaprojektowany niezależnie od treści `author_raw` i family-wise results 4.3.3. Dopiero replikacja na takim zbiorze pozwoli ograniczyć ryzyko, że benchmark nieświadomie premiuje motywy obecne w treatment.
+
+### 10.7. Mechanistyczna interpretowalność
+
+Czwarta seria wchodzi na poziom aktywacji tylko dla modeli, dla których jest to technicznie możliwe. Kandydackie metody obejmują probing, representation similarity, attribution, activation patching i causal tracing.
+
+Obowiązuje jednak twarde rozróżnienie:
+
+```text
+probe accuracy ≠ mechanizm przyczynowy
+attention pattern ≠ wyjaśnienie
+korelacja aktywacji ≠ sterowanie
+```
+
+Mocniejsze twierdzenie wymaga interwencji: obecność relacji musi być wykrywalna, ablacja musi zmieniać reprezentację, a interwencja na tej reprezentacji powinna wywoływać uprzednio przewidzianą zmianę zachowania.
+
+### 10.8. Walidacja atomowej mediany
+
+„Atomowa mediana semantyczna” pozostaje hipotezą. Należy porównać weighted geometric median, medoid, mean embedding, learned/task-conditioned representative i baseline bez kompresji.
+
+Specjalna konstrukcja mediany jest wsparta dopiero wtedy, gdy stabilniej zachowuje sens na parafrazach niż na meaning-changing controls, nie maskuje provenance/authority/recency/scope i pozwala utrzymać jakość przy mniejszym kontekście roboczym. Jeżeli prostszy reprezentant działa równie dobrze, hipotezę mediany należy odrzucić jako zbędną komplikację.
+
+### 10.9. Kolejność programu
+
+```text
+STAGE 0  instrument qualification
+   ↓
+STAGE 1  surface invariance
+   ↓
+STAGE 2  token-matched controls + relation ablations
+   ↓
+STAGE 3  budget mediation + calibrated combinatorics
+   ↓
+STAGE 4  external tasks + cross-model replication
+   ↓
+STAGE 5  mechanistic intervention
+   ↓
+STAGE 6  semantic-atom / relevance-compiler prototype
+```
+
+Każdy etap powinien mieć osobny manifest, rozłączne seedy i własny werdykt. Późniejszy etap nie może retroaktywnie zmieniać endpointów wcześniejszego. Negatywne wyniki są publikowane na równi z pozytywnymi.
+
 
 ---
 
