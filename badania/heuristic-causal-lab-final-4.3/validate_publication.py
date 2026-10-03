@@ -40,7 +40,8 @@ def as_bool(value: str) -> bool:
 def validate(source_csv: bytes, export_csv: bytes, summary: dict[str, Any],
              export_summary: dict[str, Any], profile: dict[str, Any]) -> dict[str, Any]:
     digest = hashlib.sha256(source_csv).hexdigest()
-    require(digest == CSV_SHA256, 'Source CSV differs from the documented final run')
+    git_lf_digest = hashlib.sha256(source_csv.replace(b'\r\n', b'\n')).hexdigest()
+    require(git_lf_digest == CSV_SHA256, 'Source CSV differs from the documented final run (Git LF bytes)')
     require(source_csv == export_csv, 'Publication CSV is not byte-identical to source CSV')
     require(summary == export_summary, 'Publication and source summaries differ')
     matrix = list(csv.reader(io.StringIO(source_csv.decode('utf-8'), newline='')))
@@ -108,7 +109,7 @@ def validate(source_csv: bytes, export_csv: bytes, summary: dict[str, Any],
             'Absolute utility mismatch')
     return {
         'status': 'PASS', 'scope': 'offline publication integrity and aggregate consistency; not new inference or grader replay',
-        'source_commit': SOURCE_COMMIT, 'run': RUN.as_posix(), 'source_csv_sha256': digest,
+        'source_commit': SOURCE_COMMIT, 'run': RUN.as_posix(), 'source_csv_sha256': digest, 'source_git_lf_sha256': git_lf_digest,
         'export_csv_sha256': hashlib.sha256(export_csv).hexdigest(), 'byte_identical_csv': True,
         'summaries_equal': True, 'episodes': len(rows), 'columns': 39, 'seed_blocks': len(clusters),
         'paired_cases': len(paired), 'arms': observed,

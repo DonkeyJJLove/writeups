@@ -4,10 +4,17 @@
 
 `badania/` jest głównym archiwum **living research** repozytorium. Zawiera raporty PDF, wyniki eksperymentów, pakiety reprodukcyjne, kod oraz wyspecjalizowane poddrzewa. Ten README jest **indeksem nawigacyjnym**: krótkie opisy wynikają z tytułów i roli plików w repo; status dowodowy znajduje się w samych badaniach.
 
+## Heuristic Causal Lab 4.3.3 — scaffolding semantyczny
+
+[Writeup wynikowy](./heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) opisuje wpływ zamrożonego kontekstu na zachowanie agenta bez treningu modelu. W serii 10 240 epizodów safe_success wyniósł 21,52% dla author_raw i 6,86% dla aktywnej kontroli. Przewaga względna nie oznacza spełnienia progu użyteczności: formalny werdykt pozostaje negatywny.
+
+[Pełny opis](./heuristic-causal-lab-final-4.3/README.md) prowadzi do [instrumentu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/), [profilu finalnego runu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/profile.json), [surowych przebiegów](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/), [wyników i audytu](./heuristic-causal-lab-final-4.3/hcl_final_4_3/runs/study_20261002-122125/study/) oraz [noty integralności eksportu](./heuristic-causal-lab-final-4.3/PUBLICATION_INTEGRITY.md). HCL jest badaniem pobocznym w kontekście LION; nie jest walidacją całej platformy.
+
 ## Drzewo
 
 ```text
 badania/
+├── heuristic-causal-lab-final-4.3/  ← HCL: writeup, kod, wyniki i raw runs
 ├── README.md                      ← ten indeks
 ├── LOCI/                          ← 27D, trajektorie, testy, wyniki; linia badawcza 9R
 ├── Symulacja_GITHUB/              ← sandbox amplifikacji workloadu agentowego
@@ -80,7 +87,7 @@ badania/
 - [`Pięć racjonalnych modeli hybrydowej wioski kosmicznej Social‑AI_ rachunek opłacalności, heurystyki s.pdf`](<Pięć racjonalnych modeli hybrydowej wioski kosmicznej Social‑AI_ rachunek opłacalności, heurystyki s.pdf>) — porównanie modeli hybrydowych Social-AI.
 - [`Pokolenie Kosmiczne_ naukowy projekt koncepcyjny sieci „wiosek kosmicznych” agentów AI jako infrastr.pdf`](<Pokolenie Kosmiczne_ naukowy projekt koncepcyjny sieci „wiosek kosmicznych” agentów AI jako infrastr.pdf>) — sieć agentowych habitatów jako infrastruktura.
 - [`Produktywność „wioski kosmicznej” dla rozwoju AI_ ramy naukowe, mechaniki badawcze i modele ekonomic.pdf`](<Produktywność „wioski kosmicznej” dla rozwoju AI_ ramy naukowe, mechaniki badawcze i modele ekonomic.pdf>) — modele produktywności dla rozwoju AI.
-- [`Wartość dodana tekstu generowanego przez AI jako dane do meta‑uczenia modeli językowego.pdf`](<Wartość dodana tekstu generowanego przez AI jako dane do meta‑uczenia modeli językowego.pdf>) — wartość generowanego tekstu jako danych.
+- [`Wartość dodana tekstu generowanego przez AI jako dane do meta‑uczenia modeli językowych.pdf`](<Wartość dodana tekstu generowanego przez AI jako dane do meta‑uczenia modeli językowych.pdf>) — wartość generowanego tekstu jako danych.
 - [`Wioska Kosmiczna_ naukowy i operacyjny model zarządzania granicą wykonalności.pdf`](<Wioska Kosmiczna_ naukowy i operacyjny model zarządzania granicą wykonalności.pdf>) — model operacyjny granicy wykonalności.
 
 ## 3. Percepcja, poznanie, epistemika i język
@@ -157,3 +164,7 @@ Dla badań z kodem lub danymi za wiążący należy uważać kontrakt i artefakt
 ## Status epistemiczny
 
 Ten indeks **nie uznaje wszystkich tez zawartych w katalogu za potwierdzone**. `badania/` przechowuje również hipotezy, falsyfikacje, warianty odrzucone i materiały eksploracyjne. Czytaj deklaracje `FACT`, `OBSERVED`, `DERIVED`, `CALIBRATED`, `ASSUMED`, `HYPOTHESIS`, `SPECULATION` i ograniczenia w dokumentach źródłowych.
+
+## Dodatkowe materiały LION i geometrii semantycznej
+
+[Geometria Tygrysa — wykładnia formalna skorygowana](./Geometria_Tygrysa_wykladnia_formalna_skorygowana.pdf), [The Bean Factory dla LION](<./The Bean Factory dla LION — raport badawczy nad ewolucyjną metaarchitekturą samoorganizującego się k.pdf>) oraz [The Bean Factory i LION — raport i plan komercjalizacji](<./The Bean Factory i LION — raport badawczy, naukowy REŻIM oraz plan komercjalizacji.pdf>) są odrębnymi materiałami korpusu. Ich założeń i tez nie należy utożsamiać z wynikami finalnego benchmarku HCL.

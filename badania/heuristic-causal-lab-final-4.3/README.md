@@ -1,5 +1,7 @@
 # Heuristic Causal Lab 4.3.3
 
+[Mapa repozytorium](../../README.md) · [Katalog badań](../README.md) · [Writeup wynikowy: scaffolding semantyczny](./SEMANTIC_SCAFFOLDING_WRITEUP.md) · [Integralność publikacji](./PUBLICATION_INTEGRITY.md)
+
 ## Empiryczny wpływ zamrożonej struktury semantycznej na zachowanie modelu w zadaniach agentowych
 
 ### Abstrakt
@@ -348,7 +350,7 @@ Instrument badawczy:
 - [Artefakty audytowe](./hcl_final_4_3/evidence/)
 - [Testy instrumentu](./hcl_final_4_3/tests/)
 
-Repozytorium celowo nie traktuje lokalnego stanu wykonawczego runs/, results/ ani STUDY_STATE*.json jako kanonicznego wyniku wersjonowanego. Do interpretacji badania należy używać opublikowanych artifacts oraz zamrożonego kodu instrumentu.
+Pełny [run study_20261002-122125](./hcl_final_4_3/runs/study_20261002-122125/) jest wersjonowany wraz z surowymi epizodami, transportem HTTP, profilem i manifestem. [STUDY_STATE.json](./hcl_final_4_3/STUDY_STATE.json) identyfikuje zakończone wykonanie. Katalog [results/](./hcl_final_4_3/results/) zawiera pomocniczy selftest, nie główną serię confirmatory. Eksporty w artifacts/ są warstwą publikacyjną; [nota integralności](./PUBLICATION_INTEGRITY.md) opisuje sprawdzenie ich zgodności i korektę separatorów kopii CSV. [Walidator publikacji](./validate_publication.py) pozwala powtórzyć kontrolę bez inferencji modelu.
 
 ---
 

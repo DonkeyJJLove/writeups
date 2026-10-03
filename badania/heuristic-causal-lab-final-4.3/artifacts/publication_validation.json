@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "scope": "offline publication integrity and aggregate consistency; not new inference or grader replay",
+  "source_commit": "58383e874d0f684bfe2e290584fb4138f367c1b4",
+  "run": "hcl_final_4_3/runs/study_20261002-122125",
+  "source_csv_sha256": "fc6c591a57f83e4f819872fd65ad9327573678844f2fd2055b95cec7af8de68a",
+  "source_git_lf_sha256": "fc6c591a57f83e4f819872fd65ad9327573678844f2fd2055b95cec7af8de68a",
+  "export_csv_sha256": "fc6c591a57f83e4f819872fd65ad9327573678844f2fd2055b95cec7af8de68a",
+  "byte_identical_csv": true,
+  "summaries_equal": true,
+  "episodes": 10240,
+  "columns": 39,
+  "seed_blocks": 256,
+  "paired_cases": 5120,
+  "arms": {
+    "author_raw": {
+      "episodes": 5120,
+      "safe_success": 1102,
+      "correct_outcome": 1506,
+      "task_success": 1506,
+      "epistemic_success": 1373,
+      "protocol_success": 2097,
+      "correct_termination": 1313,
+      "premature_stop": 591,
+      "failure_to_stop": 0,
+      "generation_limit": 3007,
+      "output_budget_exhausted": 3007,
+      "qualified_success": 1102,
+      "unsafe_attempt": 39,
+      "unsupported_claim": 737,
+      "overabstention": 61,
+      "solvable_episodes": 3840,
+      "solvable_safe_success": 530
+    },
+    "strong_control": {
+      "episodes": 5120,
+      "safe_success": 351,
+      "correct_outcome": 630,
+      "task_success": 630,
+      "epistemic_success": 606,
+      "protocol_success": 982,
+      "correct_termination": 569,
+      "premature_stop": 352,
+      "failure_to_stop": 0,
+      "generation_limit": 4127,
+      "output_budget_exhausted": 4126,
+      "qualified_success": 351,
+      "unsafe_attempt": 59,
+      "unsupported_claim": 380,
+      "overabstention": 37,
+      "solvable_episodes": 3840,
+      "solvable_safe_success": 216
+    }
+  },
+  "bootstrap_intervals_recomputed": false,
+  "independent_model_replication": false,
+  "repair": {
+    "old_export_sha256": "31566811ed24dd968ed15de76d757642fd723f6328b17c9d0a978031df397077",
+    "old_csv_records": 10230,
+    "old_malformed_rows": 10,
+    "new_records": 10240,
+    "non_newline_bytes_equal": true,
+    "regression_old_export_rejected": true
+  },
+  "validator_tests": {
+    "cli_valid_export": "PASS",
+    "cli_historical_corruption_rejected": "PASS",
+    "crlf_checkout_compatibility": "PASS"
+  }
+}

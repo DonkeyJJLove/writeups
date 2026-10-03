@@ -4,6 +4,12 @@
 
 Katalog `artykuły/` grupuje dłuższe teksty publikacyjne i syntetyczne wyprowadzone z badań repozytorium. Opisy poniżej są **nawigacyjne**; status dowodowy należy czytać wewnątrz poszczególnych dokumentów.
 
+## Scaffolding semantyczny: wynik i model architektoniczny
+
+[Scaffolding semantyczny jako warstwa sterowania agentem](../badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) jest writeupem wynikowym HCL 4.3.3, przechowywanym przy kodzie i danych badania. Łączy pomiar wpływu kontekstu z opisem mechanizmu sesji oraz ograniczeniami identyfikacji i użyteczności.
+
+[Między znakiem a decyzją: semantyczna kompresja jako metaarchitektura AGI](./AGI_SEMANTIC_COMPLEXITY_CONTROL_MODEL.md) przedstawia odrębny model koncepcyjny. Nie jest drugim raportem z HCL ani dowodem potwierdzenia AGI. Ścieżka do źródeł eksperymentu: [HCL](../badania/heuristic-causal-lab-final-4.3/README.md).
+
 ## Zawartość
 
 - [`RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md`](RESEARCH_WRITEUP_OCZY_SZEROKO_ZAMKNIETE.md) — rozbudowany write-up badania teorii decyzji warunkowej, ekspozycji, closure, adaptacji i falsyfikacji modelu.
