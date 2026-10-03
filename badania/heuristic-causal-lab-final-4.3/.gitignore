@@ -1,0 +1,22 @@
+# Heuristic Causal Lab — local/runtime state
+hcl_final_4_3/runs/
+hcl_final_4_3/results/
+hcl_final_4_3/studies/
+hcl_final_4_3/STUDY_STATE*.json
+hcl_final_4_3/HCL_RUNTIME_FAILURE_*.zip
+hcl_final_4_3/transport_failure*.zip
+hcl_final_4_3/**/transport_failure*.zip
+hcl_final_4_3/**/*.log.tmp
+
+# Python / IDE scratch inside the lab
+hcl_final_4_3/**/__pycache__/
+hcl_final_4_3/**/*.py[cod]
+hcl_final_4_3/**/.pytest_cache/
+hcl_final_4_3/**/.mypy_cache/
+hcl_final_4_3/**/.ruff_cache/
+hcl_final_4_3/**/.venv/
+hcl_final_4_3/**/venv/
+
+# Canonical publication artifacts stay tracked
+!artifacts/
+!artifacts/**

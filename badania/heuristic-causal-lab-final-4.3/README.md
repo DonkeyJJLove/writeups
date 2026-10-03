@@ -84,13 +84,20 @@ Nie zmieniałby samej inteligencji modelu.
 
 Projektowałby **warunki, w których ta inteligencja organizuje własne działanie**.
 
+
+## Struktura repozytorium
+
+- `artifacts/` — kanoniczne wyniki końcowego badania: raport HTML, agregaty JSON i tabela wszystkich 10 240 epizodów.
+- `hcl_final_4_3/` — kod instrumentu badawczego, konfiguracje, polityki, źródła, testy, dokumentacja i trwałe evidence.
+- `hcl_final_4_3/runs/`, `results/` oraz `STUDY_STATE*.json` — lokalny stan wykonawczy. Nie jest wersjonowany w Git; surowe ślady HTTP należy archiwizować osobno.
+
 ---
 
 ## Materiały badawcze
 
-- [Raport wynikowy — HTML](./report.html)
-- [Agregaty, kontrasty i werdykt — summary.json](./summary.json)
-- [Dane wszystkich epizodów — trials.csv](./trials.csv)
+- [Raport wynikowy — HTML](./artifacts/report.html)
+- [Agregaty, kontrasty i werdykt — summary.json](./artifacts/summary.json)
+- [Dane wszystkich epizodów — trials.csv](./artifacts/trials.csv)
 - [Pełny protokół badania](./hcl_final_4_3/FULL_STUDY_PROTOCOL.md)
 - [Dokumentacja i kod Heuristic Causal Lab](./hcl_final_4_3/README.md)
 - [Artefakty dowodowe i audytowe](./hcl_final_4_3/evidence/)
@@ -98,4 +105,3 @@ Projektowałby **warunki, w których ta inteligencja organizuje własne działan
 - [Materiały źródłowe](./hcl_final_4_3/sources/)
 - [Testy instrumentu](./hcl_final_4_3/tests/)
 
-> Uwaga: trzy pierwsze odsyłacze są przeznaczone dla kanonicznych eksportów końcowych umieszczonych obok tego pliku. Po dodaniu `report.html`, `summary.json` i `trials.csv` linki zaczną działać bez zmiany dokumentu.
