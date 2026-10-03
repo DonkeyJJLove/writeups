@@ -69,7 +69,10 @@
     "semantic_exports": [
       "research_corpus",
       "evidence_source",
-      "publication"
+      "publication",
+      "semantic_cloud_research",
+      "semantic_control_research",
+      "hcl_evidence"
     ],
     "semantic_imports": [
       "architecture",
@@ -113,6 +116,11 @@
       {
         "path": "REPOSITORY_STANDARDIZATION_R1.json",
         "class": "MACHINE_READABLE_ARCHITECTURE",
+        "currentness": "LOCAL_OWNER"
+      },
+      {
+        "path": "badania/lion-semantic-cloud/README.md",
+        "class": "RESEARCH_ARCHITECTURE",
         "currentness": "LOCAL_OWNER"
       }
     ],

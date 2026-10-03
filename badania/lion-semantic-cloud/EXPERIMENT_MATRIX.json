@@ -1,0 +1,102 @@
+{
+  "schema": "lion.semantic-cloud.experiment-matrix/v1",
+  "authority_effect": "NONE",
+  "experiments": [
+    {
+      "id": "SC-01",
+      "name": "RELEVANCE_COMPRESSION",
+      "control": "full context",
+      "treatment": "relevance-compressed context",
+      "primary_endpoint": "safe_success / semantic_state_cost",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-02",
+      "name": "SEMANTIC_DELTA_COMMUNICATION",
+      "control": "full transcript messaging",
+      "treatment": "SemanticDelta messaging",
+      "primary_endpoint": "relation_preservation + bandwidth",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-03",
+      "name": "DYNAMIC_AGENT_FORMATION",
+      "control": "fixed swarm",
+      "treatment": "CapabilityNeed-driven composition",
+      "primary_endpoint": "cognitive_organization_gain",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-04",
+      "name": "RELATION_ABLATION",
+      "control": "full semantic structure",
+      "treatment": "token-matched relation ablation",
+      "primary_endpoint": "interaction_by_family",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-05",
+      "name": "FALSE_CONSENSUS",
+      "control": "majority over copied evidence",
+      "treatment": "lineage-aware collapse",
+      "primary_endpoint": "independent_evidence_accuracy",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-06",
+      "name": "TEMPORAL_SUPERSESSION",
+      "control": "no supersession control",
+      "treatment": "state-aware supersession",
+      "primary_endpoint": "stale_state_rejection",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-07",
+      "name": "RELEVANCE_ATTACK",
+      "control": "no/adversarial distractor",
+      "treatment": "causal/provenance relevance",
+      "primary_endpoint": "attack_induced_decision_shift",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-08",
+      "name": "COLLECTIVE_DECISION",
+      "control": "majority/best-agent",
+      "treatment": "graph reduction",
+      "primary_endpoint": "safe_success",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-09",
+      "name": "NOVEL_CAPABILITY",
+      "control": "static capabilities",
+      "treatment": "Gap→CapabilityNeed→Composition candidate",
+      "primary_endpoint": "unseen_family_terminal_success",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-10",
+      "name": "YOKE_CLOSURE",
+      "control": "semantic-only/yoke-only",
+      "treatment": "semantic + existing governed path",
+      "primary_endpoint": "authorized_success + effect_escape",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-11",
+      "name": "CROSS_MODEL",
+      "control": "single-model baseline",
+      "treatment": "multiple model/tokenizer strata",
+      "primary_endpoint": "directional replication",
+      "status": "PROSPECTIVE"
+    },
+    {
+      "id": "SC-12",
+      "name": "MECHANISTIC_INTERVENTION",
+      "control": "probe/sham",
+      "treatment": "causal intervention",
+      "primary_endpoint": "causal behavioral delta",
+      "status": "PROSPECTIVE"
+    }
+  ]
+}

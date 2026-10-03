@@ -168,3 +168,8 @@ Ten indeks **nie uznaje wszystkich tez zawartych w katalogu za potwierdzone**. `
 ## Dodatkowe materiały LION i geometrii semantycznej
 
 [Geometria Tygrysa — wykładnia formalna skorygowana](./Geometria_Tygrysa_wykladnia_formalna_skorygowana.pdf), [The Bean Factory dla LION](<./The Bean Factory dla LION — raport badawczy nad ewolucyjną metaarchitekturą samoorganizującego się k.pdf>) oraz [The Bean Factory i LION — raport i plan komercjalizacji](<./The Bean Factory i LION — raport badawczy, naukowy REŻIM oraz plan komercjalizacji.pdf>) są odrębnymi materiałami korpusu. Ich założeń i tez nie należy utożsamiać z wynikami finalnego benchmarku HCL.
+
+
+## LION Semantic Cloud
+
+[Program badawczy Semantic Cloud / AGI Relevance-Space](./lion-semantic-cloud/README.md) rozwija wyniki HCL w stronę falsyfikowalnej, federacyjnej organizacji cognition przez dynamiczną przestrzeń relewancji. Program pozostaje nieautorytatywny.
