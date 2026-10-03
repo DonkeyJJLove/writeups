@@ -1,6 +1,6 @@
 # Heuristic Causal Lab 4.3.3
 
-[Mapa repozytorium](../../README.md) · [Katalog badań](../README.md) · [Writeup wynikowy: scaffolding semantyczny](./SEMANTIC_SCAFFOLDING_WRITEUP.md) · [Od znaku do sterowania: kodowanie semantyki](./SEMANTIC_ENCODING_FROM_SIGN_TO_CONTROL.md) · [Integralność publikacji](./PUBLICATION_INTEGRITY.md)
+[Mapa repozytorium](../../README.md) · [Katalog badań](../README.md) · [Writeup wynikowy: scaffolding semantyczny](./SEMANTIC_SCAFFOLDING_WRITEUP.md) · [Od znaku do sterowania: kodowanie semantyki](./SEMANTIC_ENCODING_FROM_SIGN_TO_CONTROL.md) · [Prospektywny protokół HCL 4.4](./HCL_4_4_PROSPECTIVE_PROTOCOL.md) · [Integralność publikacji](./PUBLICATION_INTEGRITY.md)
 
 ## Empiryczny wpływ zamrożonej struktury semantycznej na zachowanie modelu w zadaniach agentowych
 
@@ -288,7 +288,7 @@ Siódmym ograniczeniem jest brak niezależnej replikacji instytucjonalnej. Audit
 
 ## 17. Program falsyfikacji
 
-Najbardziej wartościowy kolejny etap nie polega na dalszym rozbudowywaniu author_raw. Polega na próbie zniszczenia hipotezy o znaczeniu jego struktury.
+Najbardziej wartościowy kolejny etap nie polega na dalszym rozbudowywaniu author_raw. Polega na próbie zniszczenia hipotezy o znaczeniu jego struktury. Szczegółowy upgrade metodologiczny został wydzielony do [prospektywnego protokołu HCL 4.4](./HCL_4_4_PROSPECTIVE_PROTOCOL.md), aby nie modyfikować historycznego protokołu ukończonego runu 4.3.3.
 
 Pierwszy test powinien oddzielić strukturę relacyjną od długości, stylu i afektu. Wymaga to kilku kontroli token-matched: tekstu zachowującego styl bez kluczowych relacji, tekstu zachowującego relacje w neutralnym stylu oraz tekstu o tej samej długości i słownictwie, ale z kontrolowanie zniszczonymi zależnościami między pojęciami.
 
