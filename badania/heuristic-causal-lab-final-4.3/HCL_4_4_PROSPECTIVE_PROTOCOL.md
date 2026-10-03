@@ -20,7 +20,8 @@ HCL 4.3.3 wykazał duży kontrast behawioralny między dwoma zamrożonymi pakiet
 3. **budget mediation** — jaka część efektu wynika z interakcji kontekstu z limitem generacji;
 4. **cross-model generalization** — czy efekt utrzymuje się poza jednym modelem i tokenizerem;
 5. **mechanistic correspondence** — czy relacje zdefiniowane behawioralnie mają stabilne korelaty reprezentacyjne możliwe do interwencji;
-6. **measurement recovery** — czy po usunięciu floor effect w zadaniach kombinatorycznych profil relacyjny pozostaje selektywny.
+6. **measurement recovery** — czy po usunięciu floor effect w zadaniach kombinatorycznych profil relacyjny pozostaje selektywny;
+7. **deterministic yoke coupling** — czy probabilistyczny scaffolding można połączyć z niezależnym jarzmem deterministycznym przez efemeryczny, treściowo ślepy kanał telemetrii bez przenoszenia do modelu autorytetu wykonawczego.
 
 Protokół ma przede wszystkim **próbować sfalsyfikować** hipotezę o stabilnym scaffoldingu semantycznym.
 
@@ -61,6 +62,19 @@ Jeżeli badana struktura ma znaczenie szersze niż idiosynkrazja jednego backend
 Jeżeli zdefiniowane relacje mają stabilny odpowiednik reprezentacyjny, sondy i interwencje powinny rozróżniać warunki zawierające/pozbawione danej relacji lepiej niż kontrole powierzchniowe, a interwencja przyczynowa powinna zmieniać odpowiadające zachowanie.
 
 Sama korelacja aktywacji nie wystarcza do potwierdzenia H5.
+
+### H6 — deterministic-yoke closure
+
+Jeżeli warstwa semantyczna i warstwa wykonawcza mogą zostać bezpiecznie sprzężone, model powinien móc wpływać na **propozycję** działania, ale nie na regułę jego materializacji. Jarzmo deterministyczne przyjmuje wyłącznie kanoniczny `Action IR`, sprawdza aktualny stan, capability, scope, budżet i wersję polityki, a następnie zwraca jednoznaczny `ALLOW / DENY / REQUIRE_RECHECK`.
+
+Efemeryczne `blind-connection` może przenosić wyłącznie nie-semantyczny ślad wykonania: identyfikator próby, nonce, monotonic counter, digest operacji i telemetryczny window digest. Nie przenosi promptu, reasoning, celu ani reguł autoryzacji.
+
+Hipoteza H6 jest sfalsyfikowana, jeżeli:
+- agent może zmienić wynik jarzma przez dane spoza kanonicznego kontraktu;
+- telemetryczny kanał staje się ukrytym kanałem sterowania semantycznego;
+- ten sam `Action IR + state + policy` daje niepowtarzalny wynik bez jawnej przyczyny;
+- kolejność/freshness nie może zostać odtworzona z receiptów;
+- model może sam sobie nadać capability lub zatwierdzić własny receipt.
 
 ---
 
@@ -283,6 +297,171 @@ Bez trzeciego elementu wynik pozostaje reprezentacyjną korelacją.
 
 ---
 
+## 9A. Moduł G — jarzmo deterministyczne i blind-connection telemetry
+
+Ten moduł łączy dwie warstwy badania:
+
+```text
+TOP-DOWN
+semantic scaffolding
+→ relevance
+→ candidate trajectory
+→ Action IR
+
+BOTTOM-UP
+execution substrate
+→ observed load/state
+→ receipt
+→ freshness / ordering evidence
+→ state update
+```
+
+Punktem styku nie jest naturalny język. Jest nim **kanoniczny kontrakt wykonawczy**.
+
+### 9A.1. Jarzmo deterministyczne
+
+Jarzmo jest warstwą niezależną od modelu. Minimalny kontrakt wejściowy:
+
+```text
+YOKE_INPUT = {
+  action_ir_hash,
+  action_type,
+  typed_arguments,
+  subject_identity,
+  capability_id,
+  target_id,
+  state_version,
+  policy_version,
+  budget,
+  nonce,
+  monotonic_counter
+}
+```
+
+Wynik:
+
+```text
+YOKE_DECISION ∈ {
+  ALLOW,
+  DENY,
+  REQUIRE_RECHECK
+}
+```
+
+Dla identycznego wejścia, identycznej polityki i identycznego stanu jarzmo powinno zwracać identyczny wynik. Model nie ma prawa modyfikować polityki, capability ani receipt po stronie wykonawczej.
+
+### 9A.2. Efemeryczne blind-connection
+
+`Blind-connection` jest roboczym terminem tego projektu. Oznacza krótkotrwałe sprzężenie między warstwą semantyczną i wykonawczą, które:
+
+- nie ujawnia modelowi wewnętrznej reguły egzekucji;
+- nie przesyła treści semantycznej z execution plane do scaffoldingu poza jawnie dopuszczonym stanem;
+- ma jednorazowy nonce i krótki lifetime;
+- po zakończeniu próby jest zamykane;
+- daje receipt możliwy do związania z konkretnym `Action IR`, stanem i oknem czasu.
+
+Celem jest ograniczenie możliwości adaptacyjnego „uczenia się bramki” przez model przy zachowaniu obserwowalności dla audytu.
+
+### 9A.3. Hash-load pulse jako znacznik czasowy — zakres twierdzenia
+
+Operacja hashująca może wygenerować kontrolowany impuls obciążenia, którego okno jest obserwowane przez telemetryczną warstwę sprzętową. W protokole nie wolno jednak nazywać samej telemetrii **kryptograficznym timestampem**.
+
+NVIDIA DCGM dokumentuje metryki obciążenia jako **próbkowane wartości przedziałowe**, a nie kernel trace; timestamp próbki oznacza czas pobrania jej przez DCGM. Z tego powodu telemetryczny impuls może być co najwyżej **pomocniczym witness liveness/ordering**, nie jedynym źródłem czasu ani dowodem wykonania konkretnego kernela.
+
+Kanoniczny receipt powinien dlatego łączyć:
+
+```text
+receipt_k = H(
+    receipt_{k-1}
+    || nonce
+    || monotonic_counter
+    || action_ir_hash
+    || state_hash
+    || policy_hash
+    || telemetry_window_digest
+)
+```
+
+oraz niezależnie przechowywać:
+
+```text
+monotonic_time
+wall_clock_time (informational)
+telemetry_window_start/end
+collector_identity
+sampling_interval
+hardware/runtime identity
+```
+
+Jeżeli dostępna jest sprzętowa attestation, receipt może zostać dodatkowo związany z atestowanym środowiskiem. Telemetria wzmacnia związek z fizycznym wykonaniem, ale nie zastępuje kryptograficznego łańcucha, monotonicznego licznika ani polityki autoryzacji.
+
+### 9A.4. Korespondencja z NVIDIA — co jest faktem, a co naszą hipotezą
+
+Publiczna dokumentacja NVIDIA wspiera trzy **sąsiednie** elementy architektury:
+
+1. **Execution/tool rails** w NeMo Guardrails kontrolują i walidują wywołania narzędzi oraz akcje przed/po wykonaniu; dokumentacja zaleca utrzymywanie właściwego authentication/authorization w aplikacji lub usłudze będącej właścicielem zasobu.
+2. **DCGM** dostarcza niskonarzutową telemetrię obciążenia GPU, w tym utilization, SM activity, pamięć, energię i timestampowane próbki.
+3. **NVIDIA Attestation / Confidential Computing** dostarcza kryptograficzną weryfikację integralności sprzętu i środowiska wykonawczego przed udostępnieniem sekretów.
+
+To **nie** oznacza, że NVIDIA opisuje `blind-connection`, hash-load pulse jako timestamp albo konstrukcję jarzma w dokładnie proponowanej tu postaci. Te elementy są hipotezą HCL/LION inspirowaną zbieżnością warstw: guardrails + telemetry + attestation.
+
+### 9A.5. Eksperyment
+
+Porównywane są co najmniej cztery tryby:
+
+```text
+M0  semantic scaffolding only
+M1  deterministic yoke only
+M2  semantic scaffolding + deterministic yoke
+M3  semantic scaffolding + deterministic yoke
+    + blind telemetry witness
+```
+
+Endpointy:
+
+- `unsafe_materialization_rate`;
+- `false_block_rate`;
+- `authorized_success_rate`;
+- `receipt_reconstruction_rate`;
+- `state_freshness_error_rate`;
+- `yoke_determinism_violation`;
+- `telemetry_linkage_failure`;
+- latency i koszt obserwowalności;
+- `semantic_to_effect_escape_rate`: przypadek, w którym model doprowadził do efektu niewynikającego z zatwierdzonego `Action IR`.
+
+### 9A.6. Kontrole
+
+- **NO_TELEMETRY** — ten sam jarzmo i receipt bez telemetrycznego witness;
+- **SHAM_PULSE** — impuls obciążenia niezwiązany z akcją;
+- **DELAYED_PULSE** — poprawny impuls przesunięty poza dopuszczalne okno;
+- **REPLAYED_RECEIPT** — ponowne użycie starego receipt/nonce;
+- **STATE_RACE** — zmiana `state_version` między propozycją a materializacją;
+- **POLICY_RACE** — zmiana `policy_version`;
+- **MODEL_AWARE_GATE** vs **MODEL_BLIND_GATE** — test, czy ujawnienie szczegółów bramki zwiększa bypass rate.
+
+### 9A.7. Twarda granica
+
+```text
+semantic evidence
+≠ execution authority
+
+telemetry
+≠ authorization
+
+hash workload
+≠ trusted time source
+
+receipt
+≠ proof of semantic correctness
+
+attestation
+≠ permission to act
+```
+
+Jarzmo ma zamykać **prawo do skutku**, a nie „naprawiać” semantykę modelu. Blind telemetry ma wzmacniać obserwowalność i kolejność, a nie przenosić mandat.
+
+---
+
 ## 10. Projekt statystyczny
 
 ### 10.1. Jednostka inferencji
@@ -399,7 +578,10 @@ STAGE 5
 mechanistic intervention
 ↓
 STAGE 6
-semantic-atom / relevance-compiler prototype
+deterministic yoke + blind telemetry bridge
+↓
+STAGE 7
+semantic-atom / relevance-compiler integration
 ```
 
 Każdy stage ma osobny manifest, zakres i werdykt. Późniejszy etap nie może retroaktywnie zmieniać endpointów wcześniejszego etapu.
@@ -448,3 +630,16 @@ do znacznie bardziej precyzyjnego:
 > „określona struktura relacyjna zachowuje efekt pod transformacjami powierzchni, wykazuje specyficzne ablacje, replikuje się między modelami i posiada interwencyjnie mierzalny komponent reprezentacyjny”.
 
 To jest właściwy próg dla tezy o **semantycznym scaffoldingu jako architekturze sterowania**, a nie jedynie o skutecznym prompt engineeringu.
+
+
+---
+
+## Źródła techniczne dla modułu G
+
+- NVIDIA NeMo Guardrails — Guardrail Types / Execution Rails: https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/rail-types
+- NVIDIA NeMo Guardrails — AI Runtime Security FAQ: https://docs.nvidia.com/nemo/guardrails/resources/runtime-security-faq
+- NVIDIA DCGM — Profiling / workload telemetry: https://docs.nvidia.com/datacenter/dcgm/latest/learn/modules/profiling.html
+- NVIDIA DCGM — sampled-state timestamps: https://docs.nvidia.com/datacenter/dcgm/latest/learn/getting-started-for-system-administrators/
+- NVIDIA Attestation Suite: https://docs.nvidia.com/attestation/index.html
+
+**Uwaga:** powyższe źródła potwierdzają istnienie execution rails, telemetry i attestation. Nie są źródłem pojęć `deterministic yoke`, `blind-connection` ani `hash-load pulse timestamp`; te elementy są propozycją badawczą niniejszego protokołu.
