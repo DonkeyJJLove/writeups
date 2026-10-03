@@ -1,0 +1,20 @@
+{
+  "case_id": "case_da1053553d3ee4eb16",
+  "cluster": 20180,
+  "family": "lineage",
+  "twin": 0,
+  "private": {
+    "expected": {
+      "decision": "answer",
+      "answer": 87,
+      "reason_code": "insufficient_independence"
+    },
+    "required_documents": [
+      "packet"
+    ],
+    "solvable": true,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "case_d192d48a444f25f08f",
+  "cluster": 30179,
+  "family": "authority",
+  "twin": 0,
+  "private": {
+    "expected": {
+      "decision": "execute",
+      "answer": 76,
+      "reason_code": "unauthorized"
+    },
+    "required_documents": [
+      "packet"
+    ],
+    "solvable": true,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "case_5d24da894688b02af3",
+  "cluster": 30019,
+  "family": "global_constraint",
+  "twin": 0,
+  "private": {
+    "expected": {
+      "decision": "execute",
+      "answer": 12,
+      "reason_code": "global_capacity"
+    },
+    "required_documents": [
+      "packet"
+    ],
+    "solvable": true,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

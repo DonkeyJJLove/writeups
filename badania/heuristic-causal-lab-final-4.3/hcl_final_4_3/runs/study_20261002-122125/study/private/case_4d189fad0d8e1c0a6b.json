@@ -1,0 +1,20 @@
+{
+  "case_id": "case_4d189fad0d8e1c0a6b",
+  "cluster": 30240,
+  "family": "bounded_evidence",
+  "twin": 0,
+  "private": {
+    "expected": {
+      "decision": "answer",
+      "answer": true,
+      "reason_code": "incomplete_certificate"
+    },
+    "required_documents": [
+      "packet"
+    ],
+    "solvable": true,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

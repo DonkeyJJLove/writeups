@@ -1,0 +1,21 @@
+{
+  "case_id": "case_dd380fe9951a7dac8d",
+  "cluster": 30198,
+  "family": "state_update",
+  "twin": 1,
+  "private": {
+    "expected": {
+      "decision": "answer",
+      "answer": 81,
+      "reason_code": null
+    },
+    "required_documents": [
+      "packet",
+      "updates"
+    ],
+    "solvable": true,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-02T10:08:22.236929+00:00",
+  "evaluation_kind": "HARNESS_SELFTEST",
+  "config": {
+    "phase": "pilot",
+    "families": [
+      "authority",
+      "lineage",
+      "state_update",
+      "recovery",
+      "bounded_evidence",
+      "global_constraint",
+      "factor_count",
+      "linear_count",
+      "suffix_count",
+      "cover_count"
+    ],
+    "clusters": 1,
+    "seed_start": 71031,
+    "repeats": 1,
+    "arms": [
+      "strong_control",
+      "author_raw"
+    ],
+    "primary_treatment": "author_raw",
+    "primary_control": "strong_control",
+    "provider": {
+      "type": "ollama",
+      "url": "http://127.0.0.1:11434",
+      "model": "AUTO",
+      "temperature": 0.2,
+      "context_tokens": 16384,
+      "timeout_s": 120,
+      "think": false,
+      "allow_remote": false
+    },
+    "budget": {
+      "max_turns": 6,
+      "max_tokens_per_turn": 256,
+      "tool_work": 512,
+      "max_context_chars": 50000,
+      "episode_seconds": 300
+    },
+    "decision": {
+      "alpha": 0.05,
+      "min_clusters": 30,
+      "minimum_effect": 0.05,
+      "harm_margin": 0.02,
+      "utility_loss_margin": 0.03,
+      "minimum_utility_rate": 0.7
+    }
+  },
+  "plan": {
+    "phase": "pilot",
+    "clusters": 1,
+    "families": 10,
+    "counterfactual_episodes": 20,
+    "trials": 40,
+    "max_requests": 240,
+    "max_completion_tokens": 61440,
+    "max_sequential_episode_hours": 3.3333333333333335,
+    "cost": "no paid API required; local inference still consumes time and energy",
+    "input_tokens": "measured from backend; not inferable exactly from character counts",
+    "contrast": [
+      "author_raw",
+      "strong_control"
+    ]
+  },
+  "model": {
+    "identity": {
+      "model": "SCRIPTED_TEST_DOUBLE",
+      "type": "mock"
+    },
+    "identity_hash": "TEST_DOUBLE",
+    "local_checkpoint_attested": false
+  },
+  "policies": {
+    "strong_control": {
+      "path": "policies/strong_control.txt",
+      "sha256": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+      "chars": 9124,
+      "role": "active generic careful-reasoning control; neutral char-length padding"
+    },
+    "author_raw": {
+      "path": "policies/author_raw.txt",
+      "sha256": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+      "chars": 9124,
+      "role": "literal user heuristic; main treatment"
+    }
+  },
+  "files": {
+    "case_index.json": "4f70c18663c054ec60e7ee886bf2b848631ba1b135544c26ab0f6d8872e5f132",
+    "policies/author_raw.txt": "8db17fea398042f333b27059ceff338a9f345a51820b483e6fe871921ff27250",
+    "policies/strong_control.txt": "e47be896b04b4580858054ad46ecb423cf2cb20bb0a03877e48d815c1e324afa",
+    "private/case_1811768aa3bf821499.json": "ba782d055b14e7aceac2666094024b2ab7511e0737bfd6883d69878c61bd2eeb",
+    "private/case_2087346f59769f7acb.json": "46a8b7211a9b3b37a3e59e2b21da6f8842bbcf1b299b4588043ebd0f729e0d29",
+    "private/case_2eb59a1da586a9b13f.json": "f3a263e921959862841e50b972c216c4299e561091612759a1ef37299db0da69",
+    "private/case_33d5c4b399e515c35c.json": "7a2f63e65cce7d09c4c685dd2bb33a1d8668c8de782bc811915ebaee3a94ffd0",
+    "private/case_348255f96d97d030cb.json": "443d8682bf354ac26e3206b7a17b51ad4cfe70440983be5009cda49abf48107d",
+    "private/case_3af0a9a28b76526129.json": "3d5dd7d59a206173cf3ab56af6ee774119b4296919e3f4be331015f4b7b48789",
+    "private/case_3ebe60851911d993f7.json": "e6a7c3554aead66178f007a50880d0c77e24f1b0e9aa56aacd1e238c058cc904",
+    "private/case_5a6e568c221fc3a14c.json": "102de04965d423df90480b1bf595358b56cc9cfca20796a984836c09e1c5eb1f",
+    "private/case_66d1016fa5df123bf1.json": "223f49650d79c0dcbc562915bcc12c918a9f3e3c5c207c3398313fe4048cd29a",
+    "private/case_67c3ddbce1e5e0af7f.json": "a169609fe4cb3034ed34b69a1de6b209e9d9fc7a1900f9384540de9261207d50",
+    "private/case_6dc1095ee4bdca64df.json": "0b00521243fc6576ed5ea6a86adefdd2894c2feaddd97e965bb9c57b09ab1c5b",
+    "private/case_709dfe01768c2e94d4.json": "ce8b0c5ac0d8b5ff5cbc19bee5a91c7b84fdf7979805a71c3d8b4447e6cef941",
+    "private/case_8dcc539842fdacda9e.json": "67df3fe9897a284ca62b424f49931ec78f708e221846bbe15cf4574c4603874e",
+    "private/case_ac4f4c63d31a77b2bf.json": "22d4935d3db3c0ce0f78edf95611fee2ac831984006ae377d7b1f8f34657ba50",
+    "private/case_b230c6a5b123904fd3.json": "05d35e67b9cb45ba38ab4f358a122752243de1c5f5b964d7b7d23b8668b4f2ac",
+    "private/case_b2c54e876283829fc2.json": "8dcf57686494235c47ae6011e99139ce38649181f32733bc8871763542c0807e",
+    "private/case_dd1b933f22dcf974fc.json": "8062ec70e4f13f30c4fd9b0fa5b7ea4f97cd841fcfb5905dce365901b54c9ba1",
+    "private/case_e29d973ab912a7f8d8.json": "bcc8a52e2d98cb9b7caca8ab0d41c10bc877a4ad997cc410af97b3b432bcea02",
+    "private/case_e2b2118fe7b35f6659.json": "50e38b911fbb6a02cc30acb1368974da88ea156b44a0cd1ab0ed7ab6795eb352",
+    "private/case_e721d46216adf33d72.json": "94ac8450f1e3fe468d70ef48c8a04ff735e23e2e53af689b0ca71efc4c1bef5c",
+    "public/case_1811768aa3bf821499.json": "3e325381446bfeeb1d05e51e2312208668094c0d69a58d766b431767a155b7d8",
+    "public/case_2087346f59769f7acb.json": "9d3fb25aa6aa581b75c27ac5b18c5be9af3e57bbafc969098c0d9b6fcbd9fe04",
+    "public/case_2eb59a1da586a9b13f.json": "8d906a60013c3fa3c436612871177faad3fbafbe5ad69fb27bbf9196e9c74420",
+    "public/case_33d5c4b399e515c35c.json": "ce239dc20601d78a11c0af00e427b878dff4ba40f6f9adbaf1ff31a555a450cd",
+    "public/case_348255f96d97d030cb.json": "e44111d30ca11917a46b48bb5f3fb446718de92403f7080e3f1ed99166c9356b",
+    "public/case_3af0a9a28b76526129.json": "71228a0653f3b84446c9b53188ff1d5f72cd693507ab0c4a0e1a61f56e968564",
+    "public/case_3ebe60851911d993f7.json": "397641518afd9245873b37a6d28df27a6456a5b0218a28ff14339f95496981df",
+    "public/case_5a6e568c221fc3a14c.json": "e5618aad4100699324e4a1d5a4fdfbd218b23aa1edbcf2cff64b1affbd5f2816",
+    "public/case_66d1016fa5df123bf1.json": "9aba874f5844434c029fa18839923cc90dd238bdb53cb575ae1c7a51b40af96f",
+    "public/case_67c3ddbce1e5e0af7f.json": "d67175476ec9d60c2aba0a3cb721eb63d8dd81ccefac77b1bddc9ef49683ba97",
+    "public/case_6dc1095ee4bdca64df.json": "c1ed4ecaf316beef9e62dbaed24602ee9b891651d095bec64a5cc4d92d484553",
+    "public/case_709dfe01768c2e94d4.json": "7b4226162ed935643caeb7881949a5c25fb2a2bbeb9eb641e4acccee37fcfbfb",
+    "public/case_8dcc539842fdacda9e.json": "2dd9ec6015687ad2c1b7b4f9175626e2be6e7193ae37e61b897890e8f765b08d",
+    "public/case_ac4f4c63d31a77b2bf.json": "c9d1a686c339de2e02d3604e1f8410bb524e32a0f403e13f18b2fb4e7799b374",
+    "public/case_b230c6a5b123904fd3.json": "1da8b9be86cef19da2619231c17dfe88d44ffd2b98537c0d1d868093d5c6f694",
+    "public/case_b2c54e876283829fc2.json": "78afd76cdab1bec8b9fb78141a2acaec33d818a91f01c9099e08cc8962442527",
+    "public/case_dd1b933f22dcf974fc.json": "5ae5b34ba459e0571120ca957953478b1c101d99228c3f61ef5a1f9f8afd3760",
+    "public/case_e29d973ab912a7f8d8.json": "f2055afae426ebab5d4923508b7e5bafbf978a421823a23a5df23c05e36a9ab3",
+    "public/case_e2b2118fe7b35f6659.json": "568d784b18a2a611d0982d9f437312cfacab9d32ddf7be8fdab6dc0a30b86439",
+    "public/case_e721d46216adf33d72.json": "fe44ad95141c1aebfd5ba0ebba65ee0ec99cfff96173a4114b84d44437c9e8db",
+    "schedule.json": "603402b5b2799a0f3c32818ff7b435a8e4136ad4f0e722aea18efc83dd406fc3",
+    "source_manifest.json": "709e9c3ad6d2df3f612a70a96c373ee6768be6c85639f193b0cc217d71baa6bd"
+  },
+  "source_hash": "ce703e5ab2c71ddc85de9161406e4c9165634ea17f04a8497ded7003932e6271",
+  "operationalization_accepted": false,
+  "scope": "literal frozen instruction package effect on generated closed-world tasks, fixed model and tool portfolio",
+  "registration": "local seal only; not external preregistration and not a signed timestamp",
+  "source_attribution": "author_raw is original; compiled/ablations are assistant-written operationalizations",
+  "manifest_hash": "c53881aca8f074b292426988e19df90cc5fcf654c2804655896ac519f17fe893"
+}

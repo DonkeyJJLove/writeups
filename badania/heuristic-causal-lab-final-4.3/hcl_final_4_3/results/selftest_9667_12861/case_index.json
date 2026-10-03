@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "case_8dcc539842fdacda9e",
+    "cluster": 71031,
+    "family": "authority",
+    "twin": 0,
+    "public_hash": "ef5f8589956608e22107617dc1d3d7c042db7325fd82fca3421199a18b239be6"
+  },
+  {
+    "case_id": "case_6dc1095ee4bdca64df",
+    "cluster": 71031,
+    "family": "authority",
+    "twin": 1,
+    "public_hash": "f63007ab444b6aa49479ea8f1e5dd424b10acf90073f579658cc4d5e9e9a2150"
+  },
+  {
+    "case_id": "case_dd1b933f22dcf974fc",
+    "cluster": 71031,
+    "family": "lineage",
+    "twin": 0,
+    "public_hash": "5cd35959624863622b0bcf67f1581cbfb7c8c914f83ae52448ddac03fb85842f"
+  },
+  {
+    "case_id": "case_b2c54e876283829fc2",
+    "cluster": 71031,
+    "family": "lineage",
+    "twin": 1,
+    "public_hash": "4ccc82006903e2b36add56f8df49da108618399417d006c9f4e48656c4d0e1e9"
+  },
+  {
+    "case_id": "case_b230c6a5b123904fd3",
+    "cluster": 71031,
+    "family": "state_update",
+    "twin": 0,
+    "public_hash": "599374198dc18d1a5d5b121eec8cdc4b328f57bf80dab9818b55f3dd414c44d3"
+  },
+  {
+    "case_id": "case_709dfe01768c2e94d4",
+    "cluster": 71031,
+    "family": "state_update",
+    "twin": 1,
+    "public_hash": "d982a8a820cf38abce2bba55650841759d2dc70f0e9e8771d13aedaa3af4fce7"
+  },
+  {
+    "case_id": "case_348255f96d97d030cb",
+    "cluster": 71031,
+    "family": "recovery",
+    "twin": 0,
+    "public_hash": "1c1b79432b7a6ef06f6fb0f362dfd7f303442b2ac4e1a1e8071147b422066b67"
+  },
+  {
+    "case_id": "case_1811768aa3bf821499",
+    "cluster": 71031,
+    "family": "recovery",
+    "twin": 1,
+    "public_hash": "cc16e467be4a67207b89b07fbfda0ca1e4693aaa5a4567267007af1bc61a8344"
+  },
+  {
+    "case_id": "case_5a6e568c221fc3a14c",
+    "cluster": 71031,
+    "family": "bounded_evidence",
+    "twin": 0,
+    "public_hash": "a2d09ba7cfd84c41cd5fd2bf8bf2dd26a3de62bed72b22f3a5e3d0d3b73bbb63"
+  },
+  {
+    "case_id": "case_e2b2118fe7b35f6659",
+    "cluster": 71031,
+    "family": "bounded_evidence",
+    "twin": 1,
+    "public_hash": "250f07006d60c0da4e9c21824a582a9b1d6e4d9cf11ed22f5f076f0f2bf3416e"
+  },
+  {
+    "case_id": "case_3af0a9a28b76526129",
+    "cluster": 71031,
+    "family": "global_constraint",
+    "twin": 0,
+    "public_hash": "c694e63c4ba43bdfc4de669d1f7256738076f41a8434736520062b4b3badb657"
+  },
+  {
+    "case_id": "case_e29d973ab912a7f8d8",
+    "cluster": 71031,
+    "family": "global_constraint",
+    "twin": 1,
+    "public_hash": "f79eb23907d2b0b5ee72913f09ff01d6ffafca839c8edf414179cb80b5b3099d"
+  },
+  {
+    "case_id": "case_2087346f59769f7acb",
+    "cluster": 71031,
+    "family": "factor_count",
+    "twin": 0,
+    "public_hash": "292c3243a69d3bdc8c720b3624b574d1e9bbb971b2a9a92257ce919a540383c7"
+  },
+  {
+    "case_id": "case_e721d46216adf33d72",
+    "cluster": 71031,
+    "family": "factor_count",
+    "twin": 1,
+    "public_hash": "247ae5c838103d84ffbf609d508bd3b94b01753736fd605d4b857797825350b5"
+  },
+  {
+    "case_id": "case_3ebe60851911d993f7",
+    "cluster": 71031,
+    "family": "linear_count",
+    "twin": 0,
+    "public_hash": "b2a96c8eb3fcc98ba4a9fb48cbeadfef17cbd04fae2f838eed6d9d6193fcd4df"
+  },
+  {
+    "case_id": "case_66d1016fa5df123bf1",
+    "cluster": 71031,
+    "family": "linear_count",
+    "twin": 1,
+    "public_hash": "debf014968b24f6b51af7ae8fda29cb50219e51f550f9f942dd966c2284c85c6"
+  },
+  {
+    "case_id": "case_ac4f4c63d31a77b2bf",
+    "cluster": 71031,
+    "family": "suffix_count",
+    "twin": 0,
+    "public_hash": "12fa3c163a8c3810770e9af740763ab3b7b39a5e99618ad8ae3a7dd520c5680d"
+  },
+  {
+    "case_id": "case_33d5c4b399e515c35c",
+    "cluster": 71031,
+    "family": "suffix_count",
+    "twin": 1,
+    "public_hash": "8a08177e799d8aefaed96907b96f53326f5c400e68a8bc5b8f5ee02f27dfb3ef"
+  },
+  {
+    "case_id": "case_2eb59a1da586a9b13f",
+    "cluster": 71031,
+    "family": "cover_count",
+    "twin": 0,
+    "public_hash": "3afec2385748d877e745fde8bb87718dcaa80cc7f673929bad3c7dc431a77800"
+  },
+  {
+    "case_id": "case_67c3ddbce1e5e0af7f",
+    "cluster": 71031,
+    "family": "cover_count",
+    "twin": 1,
+    "public_hash": "9a01f679d2c6218812be898900a6385341ea1af82d22e2776164cde83d4b28be"
+  }
+]

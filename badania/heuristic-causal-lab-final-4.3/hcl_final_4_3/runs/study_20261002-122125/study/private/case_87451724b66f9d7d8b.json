@@ -1,0 +1,18 @@
+{
+  "case_id": "case_87451724b66f9d7d8b",
+  "cluster": 30134,
+  "family": "factor_count",
+  "twin": 1,
+  "private": {
+    "expected": {
+      "decision": "answer",
+      "answer": 63,
+      "reason_code": null
+    },
+    "required_documents": [],
+    "solvable": true,
+    "track": "representation",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

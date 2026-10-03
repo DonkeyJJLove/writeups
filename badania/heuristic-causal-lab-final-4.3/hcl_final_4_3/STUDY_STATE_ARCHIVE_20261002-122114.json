@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "status": "INVALID_INSTRUMENT",
+  "created_utc": "2026-10-02T09:32:47.445133+00:00",
+  "run_dir": "runs/study_20261002-113209",
+  "study": "runs/study_20261002-113209/study",
+  "profile": "runs/study_20261002-113209/profile.json",
+  "manifest_hash": "53f5ad29f90e2f98b9d05d9cf46169c770950016392b4e5e1538db017f545dc8",
+  "registration_hash": "788ac1ea20e0ff27621974dd7b354f1a8e51ecec35cafc586a4ab3f29d35058d",
+  "planned_trials": 10240,
+  "planned_clusters": 256,
+  "last_error": "TRANSPORT_RUNTIME_FAILURE: model-output transport failed; raw HTTP retained; do not resume this sealed study",
+  "updated_utc": "2026-10-02T09:32:52.662453+00:00"
+}

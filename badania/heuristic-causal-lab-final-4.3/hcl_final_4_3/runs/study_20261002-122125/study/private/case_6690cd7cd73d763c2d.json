@@ -1,0 +1,21 @@
+{
+  "case_id": "case_6690cd7cd73d763c2d",
+  "cluster": 30088,
+  "family": "recovery",
+  "twin": 1,
+  "private": {
+    "expected": {
+      "decision": "abstain",
+      "answer": null,
+      "reason_code": "missing_observation"
+    },
+    "required_documents": [
+      "primary",
+      "backup"
+    ],
+    "solvable": false,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

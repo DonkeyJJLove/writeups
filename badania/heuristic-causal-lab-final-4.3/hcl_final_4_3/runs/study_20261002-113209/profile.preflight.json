@@ -1,0 +1,1272 @@
+{
+  "created_utc": "2026-10-02T09:32:09.483264+00:00",
+  "purpose": "full-study treatment-blind LION transport/context qualification",
+  "status": "READY_FOR_STUDY",
+  "live_generation_requests": 16,
+  "server_mutations": 0,
+  "mission_database_access": false,
+  "source_template_sha256": "7a8f1cb4d9571ca2e9ecd29c058342d6f584abe4b6dd99bc35ce7a88e2def6e5",
+  "candidate_config_sha256": "8a58b081a9b7d2f92d1b6de838dbe50391e2cebc879757956e77567c0a7d775b",
+  "checks": [
+    {
+      "arm": "strong_control",
+      "family": "authority",
+      "case_id": "case_c89aec042e8d3f4c21",
+      "opening_chars": 262,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3629,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4461,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "4ac56c42f5c7f1a1c6aed72a2bdc82f433bc0063f5c13910bfd834b297ea5966",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "lineage",
+      "case_id": "case_ed431203d18522ad15",
+      "opening_chars": 256,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3636,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4468,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "56eb16b53e28d83eccaff0a58dc06666f03e9536d62751a10f87d6d44501a869",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "state_update",
+      "case_id": "case_4fb82ac4718710fdd9",
+      "opening_chars": 353,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3654,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4486,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "34761a484f142e012dd749fbe3200932e53cc43f0166399f360f0ca52e4f6f8b",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "recovery",
+      "case_id": "case_17583997e70edcd6ea",
+      "opening_chars": 296,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3641,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4473,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "f7d422c2f2f6581c1b1b2e99ef655a886f1bf983b8d8640fd158eb724aabf59b",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "bounded_evidence",
+      "case_id": "case_e5e7d7b78b8b1cf0c7",
+      "opening_chars": 296,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3640,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4472,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "760b1941c2ac1f0619b62501a5de84e39edf87215e7af583f02b329b42546d04",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "global_constraint",
+      "case_id": "case_8b34692c0b5d8abdcc",
+      "opening_chars": 263,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3629,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4461,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "d7cb949a290df4a6956af5fb6b7b0977842e8ea831574dd6254dea911052acc3",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "factor_count",
+      "case_id": "case_e1dc351eeb2adc3116",
+      "opening_chars": 234,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3629,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4461,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "c1c8f22a80888e12fd4552b1468356505cae1d8b9e3dddc0227e8f333ea450db",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "linear_count",
+      "case_id": "case_7ef0bdfe00a9c45838",
+      "opening_chars": 163,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3604,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4436,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "0abf04840ec8a81c92dfb22f77ce17449adfb1135d764fd43b3678dd85f72489",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "suffix_count",
+      "case_id": "case_17b985ecc0088d21b5",
+      "opening_chars": 150,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3598,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4430,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "bfde5c1d3af56b6f211bb501d168f608d1d398ddf6f96433d83d409032173765",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "strong_control",
+      "family": "cover_count",
+      "case_id": "case_c414e6121f10e77a62",
+      "opening_chars": 276,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3643,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4475,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "e6d4bdd9d74d6372deb7b5b21382c2dfea4e146ee4e8ed0868d703bef2ef5403",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "authority",
+      "case_id": "case_c89aec042e8d3f4c21",
+      "opening_chars": 262,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4027,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4859,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "58019b01ce342caf9d92995dd1265da3fe41341a0038158569cb60fbaad2d8d5",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "lineage",
+      "case_id": "case_ed431203d18522ad15",
+      "opening_chars": 256,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4034,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4866,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "0010844a3085300ba9d15f01721ccfd0dc4dd34181bbdb3e337892c1b53582a4",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "state_update",
+      "case_id": "case_4fb82ac4718710fdd9",
+      "opening_chars": 353,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4052,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4884,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "08b5dbf1efb2efc08190af8042c3ab0d459b836358d9c17044b396b8e38d100f",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "recovery",
+      "case_id": "case_17583997e70edcd6ea",
+      "opening_chars": 296,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4039,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4871,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "c3f9dde5f4b8c964781a4bcaae0ca7696ee61f0b3e7d2deb2ebf6469f3d324bf",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "bounded_evidence",
+      "case_id": "case_e5e7d7b78b8b1cf0c7",
+      "opening_chars": 296,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4038,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4870,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "9751071a46f2a19d86cc45fd731dd31d4a1aeaeda7447e67698ff611d91d73b3",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "global_constraint",
+      "case_id": "case_8b34692c0b5d8abdcc",
+      "opening_chars": 263,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4027,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4859,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "ec5562caa130d5caf4e87b48ac9d390eeb484f25ab50c16e65d72164d44ac65d",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "factor_count",
+      "case_id": "case_e1dc351eeb2adc3116",
+      "opening_chars": 234,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4027,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4859,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "9a176084f1d72c94cc1d958a32d6ce13147b2cb36d3b4b1b812518ba75915bca",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "linear_count",
+      "case_id": "case_7ef0bdfe00a9c45838",
+      "opening_chars": 163,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4002,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4834,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "4040bd2f8c8dbf44af45fdd6d2960c4036d02a3e0df19f41b423c693f8259164",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "suffix_count",
+      "case_id": "case_17b985ecc0088d21b5",
+      "opening_chars": 150,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 3996,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4828,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "56134024259a4f34a8dde3d5279a61639500f57faf54b459a749c835d4923e1e",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    {
+      "arm": "author_raw",
+      "family": "cover_count",
+      "case_id": "case_c414e6121f10e77a62",
+      "opening_chars": 276,
+      "method": "server apply-template + tokenize, special tokens, conservative margin",
+      "prompt_tokens_checked": 4041,
+      "max_completion_tokens": 768,
+      "margin_tokens": 64,
+      "required_tokens": 4873,
+      "context_tokens_per_slot": 8192,
+      "fits": true,
+      "rendered_prompt_sha256": "4f05f1d372281ac1e2a05194486508cebf6b96c7accd021e6170e9f74f06920f",
+      "runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    }
+  ],
+  "errors": [],
+  "note": "No pilot and no treatment outcome is observed. v4.3 preregisters only json_object plus application-side validation because realistic treatment-blind v4.2 qualification falsified strict decoder schema compatibility on the target GPT-OSS/llama.cpp stack.",
+  "identity": {
+    "identity": {
+      "type": "openai_compatible",
+      "url": "http://127.0.0.1:8773/v1",
+      "model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+      "digest": null,
+      "details": {},
+      "owner": "llamacpp",
+      "llama_runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    "identity_hash": "0c69115c6389d0f95de75532ebdb8b6a8c1f4e33d3e25d5f103d1ae76a5541d1",
+    "available_models": [
+      "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf"
+    ],
+    "local_checkpoint_attested": false,
+    "warning": "Endpoint metadata is not a cryptographic proof of provider identity. Quantization/context settings are part of the intervention scope."
+  },
+  "plan": {
+    "phase": "confirmatory",
+    "clusters": 256,
+    "families": 10,
+    "counterfactual_episodes": 5120,
+    "trials": 10240,
+    "max_requests": 61440,
+    "max_completion_tokens": 47185920,
+    "max_sequential_episode_hours": 853.3333333333334,
+    "cost": "no paid API required; local inference still consumes time and energy",
+    "input_tokens": "measured from backend; not inferable exactly from character counts",
+    "contrast": [
+      "author_raw",
+      "strong_control"
+    ]
+  },
+  "context_preflight_selection": "longest opening per family under each arm; every live turn remains guarded",
+  "transport_qualification": {
+    "status": "PASS",
+    "candidate_order": [
+      "json_object"
+    ],
+    "selected_mode": "json_object",
+    "checks_per_candidate": 16,
+    "neutral_policy_chars": 9124,
+    "qualification_cases": "10 held-out family first-turn + 4 held-out post-observation + 2 direct actions",
+    "candidates": [
+      {
+        "mode": "json_object",
+        "status": "PASS",
+        "requests": 16,
+        "rows": [
+          {
+            "probe": "first_turn_authority",
+            "finish_reason": "stop",
+            "completion_tokens": 55,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2632,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3464,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "c0a1c10db9b605492c428a977adbb8c25ae101f3c9646f0c66c79540382fd0e9",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093218285701Z_a25549d2737e",
+              "roundtrip_s": 0.598249200033024
+            },
+            "request_hash": "89b7ef99433a757ab27d7e60797e9dcac7979dce51a20022e805c658eceef949"
+          },
+          {
+            "probe": "first_turn_lineage",
+            "finish_reason": "stop",
+            "completion_tokens": 98,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2639,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3471,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "736f73e1778a7c8c595a60e668b129bd6059c2fea51c17fa9f671f7bf073f360",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093218890420Z_95942be9d577",
+              "roundtrip_s": 0.7979052000446245
+            },
+            "request_hash": "2f26bf19faa501fafa87da55903c936c46310fcb00baebcaf3a646334bb55c27"
+          },
+          {
+            "probe": "first_turn_state_update",
+            "finish_reason": "stop",
+            "completion_tokens": 123,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2657,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3489,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "a0e183008d97ef5b68101fb22f633205cd5ad9365f17ca53e9f7a5928e5a4886",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093219684127Z_87e2b10f48d5",
+              "roundtrip_s": 0.8239404000341892
+            },
+            "request_hash": "ddb615c4f9ef09f0e2b12ef687753caf77f2e0edaf9b687b94c4e7802669c822"
+          },
+          {
+            "probe": "first_turn_recovery",
+            "finish_reason": "stop",
+            "completion_tokens": 52,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2644,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3476,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "fc574fdb2791b738916b6a14329529f81c67ff39177aa9e8c538c41264c5664b",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093220507715Z_eb3c9861469e",
+              "roundtrip_s": 0.6054582000942901
+            },
+            "request_hash": "13ea979f7cfa31ebf74e0f560df21b5a557fc3f1cb81283544ff1a5e1453a3b9"
+          },
+          {
+            "probe": "first_turn_bounded_evidence",
+            "finish_reason": "stop",
+            "completion_tokens": 56,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2643,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3475,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "d8eb70f3118eb130343669d1ec7bdd2e87940443b4dd2a3e3f7514ada37d1a2d",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093221115109Z_16c69523e4a8",
+              "roundtrip_s": 0.6022473000921309
+            },
+            "request_hash": "82996ca2c8287c959c3d36ff34489c159090cfa23b1fd51c23a45bb81fa3b34f"
+          },
+          {
+            "probe": "first_turn_global_constraint",
+            "finish_reason": "stop",
+            "completion_tokens": 53,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2632,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3464,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "7362d7316900efd28fe9ed27a101cc961de31c7967e206f84771784e08478de6",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093221723712Z_d5494c586de1",
+              "roundtrip_s": 0.6017760999966413
+            },
+            "request_hash": "5ec84cea1bab13c27b87a18ef51846a3a8d6a61b0240846e7eb826fb161b0855"
+          },
+          {
+            "probe": "first_turn_factor_count",
+            "finish_reason": "stop",
+            "completion_tokens": 56,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2632,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3464,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "6ce720fb019bdcb61ef41466fc8307b5363553684d24dc259a636364604dcb49",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093222325792Z_5a6cdbce3616",
+              "roundtrip_s": 0.6216943999752402
+            },
+            "request_hash": "c3fbbb69fd753a69b8ac5f91a8570d18762ac26fdb507f5712e826621925e388"
+          },
+          {
+            "probe": "first_turn_linear_count",
+            "finish_reason": "stop",
+            "completion_tokens": 55,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2607,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3439,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "54c458443ce75ef5f99322535d6047fa7310c32375d415bf3ea562972d3d409b",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093222931968Z_e05c9a65ede9",
+              "roundtrip_s": 0.6019980000564829
+            },
+            "request_hash": "e787120cd93f4826c6e35f6ead9b4991dd48e575dce9be0fb34c0a0682a41727"
+          },
+          {
+            "probe": "first_turn_suffix_count",
+            "finish_reason": "stop",
+            "completion_tokens": 118,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2601,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3433,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "f630044b636e6bce8d3d2202933c7453a84d9caaac0e9a3dd4a107a04776a2be",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093223552872Z_62d82e390249",
+              "roundtrip_s": 0.8298843000084162
+            },
+            "request_hash": "cebd635710b0998f09d97afc9bc02fb08d5b6aa23a0448f05d6f82605a8ac869"
+          },
+          {
+            "probe": "first_turn_cover_count",
+            "finish_reason": "stop",
+            "completion_tokens": 58,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2646,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3478,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "eb040a6dc349f8fcea311d72e04c063716605a5d875633b59c0fbd972dd516d0",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093224332687Z_98a3bca562cf",
+              "roundtrip_s": 0.5443229000084102
+            },
+            "request_hash": "6c72e4846ffaafe6fccbb9ec87f127f33515a847020829e77b2b5f4381f7d6f7"
+          },
+          {
+            "probe": "post_observation_authority",
+            "finish_reason": "stop",
+            "completion_tokens": 268,
+            "parsed_kind": "final",
+            "normalized": true,
+            "normalizations": [
+              "args_default_empty"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"final\",\"decision\":\"execute\",\"answer\":24,\"evidence\":[\"receipt-1\"],\"confidence\":1.0,\"status\":\"SUPPORTED\",\"reason\":\"recipient allowed\"}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2851,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3683,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "69a632d3dbd97910c88a481d0ab390efa1ea3f87a83815628f255e384f441fd7",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093224923063Z_3d8eb1d8aea8",
+              "roundtrip_s": 1.282586200046353
+            },
+            "request_hash": "95f8467d8c37c6cb881d1de11922d2aaa1ddf34dd46fb0d0db9cce360642d336"
+          },
+          {
+            "probe": "post_observation_lineage",
+            "finish_reason": "stop",
+            "completion_tokens": 244,
+            "parsed_kind": "final",
+            "normalized": true,
+            "normalizations": [
+              "args_default_empty"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"final\",\"decision\":\"answer\",\"answer\":78,\"evidence\":[\"receipt-1\"],\"confidence\":0.8,\"status\":\"SUPPORTED\",\"reason\":\"krótki opis podstawy\"}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2866,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3698,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "e8bc00fd3445f4f7fc4e3e0ad88a0fd349b10e2d5fde60eecdd7a15141403930",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093226208858Z_ea7094e9a4e2",
+              "roundtrip_s": 1.2134410999715328
+            },
+            "request_hash": "acc32c39b6619975a0a6f56db5b01dbb1f2f674538aeddd6f6dc1b37e3f241fa"
+          },
+          {
+            "probe": "post_observation_state_update",
+            "finish_reason": "stop",
+            "completion_tokens": 237,
+            "parsed_kind": "tool",
+            "normalized": false,
+            "normalizations": [],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"tool_name\":\"read\",\"args\":{\"id\":\"updates\"},\"decision\":\"none\",\"answer\":null,\"evidence\":[],\"confidence\":0.0,\"status\":\"UNKNOWN\",\"reason\":\"next step\"}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2924,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3756,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "84a0cdbd9268d7d8f7d249bf3c693e2c4a057cc6bd8dedc8e4d6b934185c9fdc",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093227388823Z_c27edd9bd095",
+              "roundtrip_s": 1.2228269999613985
+            },
+            "request_hash": "28df6fa752a532696031064207f9cddf554e535192ceef2ae3b5b4a7282666e8"
+          },
+          {
+            "probe": "post_observation_recovery",
+            "finish_reason": "stop",
+            "completion_tokens": 339,
+            "parsed_kind": "final",
+            "normalized": true,
+            "normalizations": [
+              "args_default_empty"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"final\",\"decision\":\"answer\",\"answer\":12,\"evidence\":[\"receipt-1\"],\"confidence\":1.0,\"status\":\"SUPPORTED\",\"reason\":\"Zwrócono wartość z obserwacji\"}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2795,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3627,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "f2cf3af2cf0e186ef653e0babbebd350e7ebf3f5ed721f290ef280f8597bf1f7",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093228648891Z_a62dd3fc5b98",
+              "roundtrip_s": 1.4959558999398723
+            },
+            "request_hash": "f02e50763af1f1226ba6e241d1eab6b68bc71de31e67a706ed42ee824a744570"
+          },
+          {
+            "probe": "direct_final",
+            "finish_reason": "stop",
+            "completion_tokens": 236,
+            "parsed_kind": "final",
+            "normalized": true,
+            "normalizations": [
+              "args_default_empty"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"final\",\"decision\":\"answer\",\"answer\":7,\"evidence\":[\"receipt-1\"],\"confidence\":0.8,\"status\":\"SUPPORTED\",\"reason\":\"krótki opis podstawy\"}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2559,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3391,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "dd14cc07676f769ff46c139409b2446d22865da744be317e80a83b1fefd3962a",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093230140733Z_df6bd780225d",
+              "roundtrip_s": 1.1072240000357851
+            },
+            "request_hash": "66fbcba73e9c69b00453f557041a82d6df1e923724b270c9c6a086e7da8a3f31"
+          },
+          {
+            "probe": "direct_tool",
+            "finish_reason": "stop",
+            "completion_tokens": 58,
+            "parsed_kind": "tool",
+            "normalized": true,
+            "normalizations": [
+              "tool_name_from_name"
+            ],
+            "transport": "json_object_app_validated",
+            "raw_text": "{\"kind\":\"tool\",\"name\":\"read\",\"args\":{\"id\":\"packet\"}}",
+            "raw_metadata": {
+              "returned_model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+              "finish_reason": "stop",
+              "system_fingerprint": "b10809-5266f24da",
+              "llama_reasoning_budget_control": {
+                "policy": "above_completion_cap_v1",
+                "max_tokens_requested": 768,
+                "reasoning_budget_tokens_requested": 769,
+                "scope": "request override; reasoning may occur within the unchanged total completion cap"
+              },
+              "llama_context_check": {
+                "method": "server apply-template + tokenize, special tokens, conservative margin",
+                "prompt_tokens_checked": 2561,
+                "max_completion_tokens": 768,
+                "margin_tokens": 64,
+                "required_tokens": 3393,
+                "context_tokens_per_slot": 8192,
+                "fits": true,
+                "rendered_prompt_sha256": "ef276aee7d4fc7907335ad6af1668591c4d375bbcc8467d950578dbf1123dfd6",
+                "runtime": {
+                  "context_tokens_per_slot": 8192,
+                  "total_slots": 1,
+                  "build_info": "b10809-5266f24da",
+                  "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+                  "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+                  "reasoning_budget_reported": null,
+                  "scope": "server-reported metadata; no GGUF content hash or process attestation"
+                }
+              },
+              "cache_prompt_requested": false,
+              "http_evidence": "C:\\Users\\d2j3\\PycharmProjects\\writeups\\badania\\heuristic-causal-lab-final-4.3\\hcl_final_4_3\\runs\\study_20261002-113209\\transport_http\\20261002T093231246472Z_2239b0b5c8cc",
+              "roundtrip_s": 0.5525563999544829
+            },
+            "request_hash": "753e0ff47cf7cf74a69498b74089d30541d66f1196c2fd8ef293b833b82ab5d0"
+          }
+        ]
+      }
+    ],
+    "scope": "treatment-blind transport qualification only; no heuristic arm is loaded or scored"
+  },
+  "config_sha256": "40b18d2acf7c4eee2aba7463092e26caf4658aab815405c0205bf2c3d6665d2d",
+  "scope": "Context and transport qualified before sealing. The experiment itself still compares only frozen author_raw versus strong_control."
+}
