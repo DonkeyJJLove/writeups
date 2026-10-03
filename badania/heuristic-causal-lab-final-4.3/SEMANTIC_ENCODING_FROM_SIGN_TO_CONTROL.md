@@ -375,7 +375,79 @@ Mocniejsze twierdzenie wymaga interwencji: obecność relacji musi być wykrywal
 
 Specjalna konstrukcja mediany jest wsparta dopiero wtedy, gdy stabilniej zachowuje sens na parafrazach niż na meaning-changing controls, nie maskuje provenance/authority/recency/scope i pozwala utrzymać jakość przy mniejszym kontekście roboczym. Jeżeli prostszy reprezentant działa równie dobrze, hipotezę mediany należy odrzucić jako zbędną komplikację.
 
-### 10.9. Kolejność programu
+### 10.9. Jarzmo deterministyczne i połączenie z dołu
+
+Dotychczasowy opis prowadził głównie **z góry na dół**:
+
+```text
+znak
+→ token
+→ kontekst
+→ relewancja
+→ graf roboczy
+→ kandydat działania
+```
+
+To nie wystarcza. Druga połowa architektury musi iść **z dołu do góry**:
+
+```text
+wykonanie
+→ rzeczywisty stan
+→ telemetria
+→ receipt
+→ freshness / ordering
+→ aktualizacja grafu roboczego
+```
+
+Pomiędzy tymi kierunkami potrzebne jest **jarzmo deterministyczne**. Nie jest ono kolejnym promptem ani modelem oceniającym model. Jest formalnym kontraktem materializacji. Otrzymuje kanoniczny `Action IR`, wersję stanu, politykę, capability, budżet i nonce. Zwraca `ALLOW`, `DENY` albo `REQUIRE_RECHECK`. Przy identycznym wejściu i stanie jego wynik powinien być deterministyczny.
+
+W tym miejscu pojawia się proponowane **efemeryczne blind-connection**: jednorazowy, krótko żyjący kanał łączący semantic plane z execution plane bez przekazywania modelowi wnętrza reguły autoryzacyjnej. Kanał nie powinien transportować reasoning ani naturalnojęzykowych wyjątków. Może przenosić jedynie znormalizowany receipt i jawnie dopuszczony stan.
+
+Jednym z eksperymentalnych znaczników takiego połączenia może być kontrolowany impuls obciążenia operacji hashujących. Jeżeli operacja tworzy przewidywalne okno obciążenia, sprzętowa telemetria może dostarczyć niezależnego, dolnego śladu, że w danym przedziale wystąpiła aktywność odpowiadająca próbie materializacji.
+
+Trzeba jednak zachować rygor terminologiczny: **sampled GPU telemetry nie jest kryptograficznym timestampem**. NVIDIA DCGM opisuje swoje metryki jako próbki i średnie przedziałowe; nie są one śladem konkretnego kernela. Dlatego impuls hashujący może być pomocniczym świadkiem liveness i kolejności, ale właściwy receipt powinien być związany kryptograficznie z nonce, monotonicznym licznikiem, `Action IR`, stanem i polityką.
+
+Robocza konstrukcja:
+
+```text
+semantic proposal
+      ↓
+   Action IR
+      ↓
+DETERMINISTIC YOKE
+      ↓
+ALLOW / DENY / RECHECK
+      ↓
+ephemeral execution
+      ↓
+hash-load pulse + telemetry window
+      ↓
+signed / chained receipt
+      ↓
+state update
+      ↺
+semantic layer
+```
+
+Można więc połączyć dwa różne typy sterowania:
+
+```text
+SEMANTIC SCAFFOLDING
+steruje przestrzenią prawdopodobnych propozycji
+
+DETERMINISTIC YOKE
+steruje przestrzenią materializowalnych skutków
+
+BLIND TELEMETRY
+wiąże propozycję z obserwowalnym wykonaniem
+bez nadawania modelowi dodatkowego autorytetu
+```
+
+To jest ważne również w odniesieniu do publicznych rozwiązań NVIDIA. NeMo Guardrails posiada execution/tool rails walidujące działania i wywołania narzędzi, a dokumentacja runtime security zaleca utrzymywanie authentication/authorization w aplikacji lub usłudze będącej właścicielem zasobu. NVIDIA DCGM zapewnia próbkowaną telemetrię workloadu, a NVIDIA Attestation dostarcza kryptograficzną weryfikację integralności środowiska. Te trzy elementy są architektonicznie zbieżne z kierunkiem **semantic proposal → deterministic enforcement → observed execution**, ale NVIDIA nie opisuje proponowanego tutaj `blind-connection` ani hash-load pulse jako timestampu. To pozostaje własną hipotezą badawczą HCL/LION.
+
+Pełna operacjonalizacja, tryby kontrolne i kryteria falsyfikacji znajdują się w [prospektywnym protokole HCL 4.4](./HCL_4_4_PROSPECTIVE_PROTOCOL.md).
+
+### 10.10. Kolejność programu
 
 ```text
 STAGE 0  instrument qualification
@@ -390,7 +462,9 @@ STAGE 4  external tasks + cross-model replication
    ↓
 STAGE 5  mechanistic intervention
    ↓
-STAGE 6  semantic-atom / relevance-compiler prototype
+STAGE 6  deterministic yoke + blind telemetry bridge
+   ↓
+STAGE 7  semantic-atom / relevance-compiler integration
 ```
 
 Każdy etap powinien mieć osobny manifest, rozłączne seedy i własny werdykt. Późniejszy etap nie może retroaktywnie zmieniać endpointów wcześniejszego. Negatywne wyniki są publikowane na równi z pozytywnymi.
@@ -428,12 +502,18 @@ L7  TRAJECTORIES
     ↓ canonicalization
 
 L8  ACTION IR
-    ↓ independent authorization
+    ↓
 
-L9  EXECUTION
-    ↓ observation
+L9  DETERMINISTIC YOKE
+    ↓ allow / deny / recheck
 
-L10 STATE UPDATE
+L10 EXECUTION
+    ↓
+
+L11 BLIND TELEMETRY + RECEIPT
+    ↓ freshness / ordering / state evidence
+
+L12 STATE UPDATE
     ↺
 ```
 
@@ -500,3 +580,16 @@ https://arxiv.org/abs/physics/0004057
 
 [11] **Farquhar et al. (2024), Detecting hallucinations in large language models using semantic entropy.** Przykład przejścia od niepewności nad powierzchniowymi ciągami do klas odpowiedzi grupowanych według znaczenia.  
 https://www.nature.com/articles/s41586-024-07421-0
+
+
+**NVIDIA NeMo Guardrails — Guardrail Types / Execution Rails.** Dokumentacja wielowarstwowych rails, w tym kontroli execution i tool calling.  
+https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/rail-types
+
+**NVIDIA NeMo Guardrails — AI Runtime Security FAQ.** Źródło dla rozdzielenia walidacji tool calls od właściwego authentication/authorization utrzymywanego przez właściciela zasobu.  
+https://docs.nvidia.com/nemo/guardrails/resources/runtime-security-faq
+
+**NVIDIA DCGM — Profiling i telemetry.** Dokumentacja niskonarzutowych, próbkowanych metryk aktywności GPU; ważna dla ograniczenia interpretacji telemetrycznego „timestampu”.  
+https://docs.nvidia.com/datacenter/dcgm/latest/learn/modules/profiling.html
+
+**NVIDIA Attestation Suite.** Kryptograficzna atestacja integralności GPU i środowiska jako możliwy niezależny fundament receiptów wykonawczych.  
+https://docs.nvidia.com/attestation/index.html
