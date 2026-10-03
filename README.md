@@ -168,3 +168,8 @@ Dla pracy z materiałem dowodowym właściwa kolejność to: dokument wynikowy, 
 ---
 
 **Główne wejścia:** [scaffolding — wynik HCL](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) · [badania](./badania/README.md) · [publikacje](./artykuły/README.md) · [LOCI](./badania/LOCI/README.md) · [OSINT](./OSINT/README.md) · [grafiki](./images/README.md) · [rola w LION](./AGENTS.md).
+
+
+### LION Semantic Cloud
+
+Program badawczy: [dynamiczna przestrzeń relewancji i organizacja chmury agentów](./badania/lion-semantic-cloud/README.md). Wyniki badawcze nie stanowią authority ani live architecture truth.
