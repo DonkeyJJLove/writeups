@@ -34,3 +34,10 @@ Research result != canonical architecture. Promocja przechodzi przez istniejący
 12. Mechanistic intervention.
 
 Canonical architecture owner pozostaje DonkeyJJLove/ai_platform.
+
+
+## Synchronizacja federacji
+
+Canonical integration report: https://github.com/DonkeyJJLove/ai_platform/blob/master/LION/architecture/v1_5/semantic_cloud/SEMANTIC_CLOUD_INTEGRATION_REPORT_LION-SEMANTIC-CLOUD-FEDERATION-INTEGRATION-TASK-R1.md
+
+Źródłem prawdy architektonicznej pozostaje ai_platform; ten katalog utrzymuje program badawczy i odsyła do raportu integracji zamiast duplikować jego treść.
