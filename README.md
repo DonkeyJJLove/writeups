@@ -14,6 +14,7 @@ W federacji **LION** `writeups` pełni role `ResearchCorpus`, `EvidenceSource` i
 |---|---|---|
 | Zrozumieć zmierzony wpływ scaffolding semantycznego | [Nowy writeup HCL 4.3.3](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_SCAFFOLDING_WRITEUP.md) | Wyniki, działanie warstwy kontekstu, granice sterowania i dowody |
 | Sprawdzić protokół, kod i przebieg eksperymentu | [Heuristic Causal Lab](./badania/heuristic-causal-lab-final-4.3/README.md) | Konfiguracja finalnego runu, 10 240 epizodów, grader i surowy transport |
+| Zobaczyć plan falsyfikacji następnej generacji HCL | [Prospektywny protokół HCL 4.4](./badania/heuristic-causal-lab-final-4.3/HCL_4_4_PROSPECTIVE_PROTOCOL.md) | Unicode/NFC/NFD, token-matched controls, ablacje relacji, mediacja budżetu, cross-model i mechanistic interpretability |
 | Projektować granicę między modelem a skutkiem | [Security Model Boundary](./ai_security_model_boundary_strategy_writeup.md) | Strategia bezpieczeństwa, reference monitor, control mesh, autoryzacja |
 | Analizować reprezentacje i trajektorie Human–AI | [LOCI](./badania/LOCI/README.md) | Ingest, normalizacja, cechy 27D, projekcja 3D, testy i raporty |
 | Badać kaskady, retry i przeciążenia | [Symulacja_GITHUB](./badania/Symulacja_GITHUB/README.md) | Sandbox Monte Carlo, raport, kod i interpretacja zakresu modelu |
