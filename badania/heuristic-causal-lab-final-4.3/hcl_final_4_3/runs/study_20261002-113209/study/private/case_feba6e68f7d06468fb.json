@@ -1,0 +1,20 @@
+{
+  "case_id": "case_feba6e68f7d06468fb",
+  "cluster": 20172,
+  "family": "bounded_evidence",
+  "twin": 1,
+  "private": {
+    "expected": {
+      "decision": "abstain",
+      "answer": null,
+      "reason_code": "incomplete_certificate"
+    },
+    "required_documents": [
+      "packet"
+    ],
+    "solvable": false,
+    "track": "workflow",
+    "scope": "synthetic_closed_world",
+    "reference_method": "independent_exact_oracle"
+  }
+}

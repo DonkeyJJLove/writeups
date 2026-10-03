@@ -1,0 +1,7 @@
+{
+  "status": "PREFLIGHT_FAILED",
+  "error": "FULL_TRANSPORT_QUALIFICATION_FAILED: no preregistered candidate passed all 16 treatment-blind realistic checks; [{\"mode\": \"json_object\", \"status\": \"FAIL\", \"requests\": 1, \"rows\": [], \"error\": \"GPT_OSS_CHANNEL_LEAK: structured response contained chat control tokens <|start|>,<|channel|>,<|message|>,<|end|>; finish_reason=length; tail='|channel|>commentary to=assistant<|channel|>analysis<|message|><|end|><|start|>assistant<|channel|>commentary to=assistant<|channel|>analysis<|message|><|end|><|start|>assistant<|channel|>commentary to=assistant<|channel|>analysis<|message|><|end|><|start|>assistant<|channel|>commentary to=assistant'\", \"failed_probe\": \"first_turn_authority\", \"http_evidence\": \"C:\\\\Users\\\\d2j3\\\\PycharmProjects\\\\writeups\\\\badania\\\\heuristic-causal-lab-final-4.3\\\\hcl_final_4_3\\\\runs\\\\study_20261002-104008\\\\transport_http\\\\20261002T084017224778Z_4028362f1cfd\"}]",
+  "created_utc": "2026-10-02T08:40:20.001099+00:00",
+  "scope": "HTTP payload evidence; not a heuristic outcome",
+  "trace_directory": "transport_http"
+}

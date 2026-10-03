@@ -1,0 +1,376 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Heuristic Causal Lab | Raport naukowy</title><style>
+:root{--ink:#14283b;--muted:#526676;--accent:#087e8b;--paper:#f2f5f7;--rule:#d9e3ea;--warn:#7c4c16}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1120px;margin:auto;padding:36px 26px}header{background:var(--ink);color:white;padding:42px;border-radius:12px;margin-bottom:26px}header p{max-width:820px;color:#e0ebf1}h1{font-size:36px;line-height:1.18;letter-spacing:-.8px;margin:12px 0 20px}h2{font-size:23px;line-height:1.25;margin:0 0 18px}h3{font-size:17px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700}.tag{font:12px ui-monospace,monospace;padding:6px 10px;border:1px solid #6b8295;border-radius:5px;display:inline-block}section{background:white;padding:28px 30px;border:1px solid var(--rule);border-radius:10px;margin-bottom:22px}p{margin:10px 0 15px}.muted,figcaption{color:var(--muted);font-size:13px}.cards{display:flex;gap:15px;flex-wrap:wrap;margin:0 0 24px}.card{flex:1;min-width:190px;border:1px solid var(--rule);background:white;padding:23px;border-radius:10px}.big{font-size:34px;line-height:1.25;display:block;letter-spacing:-.8px;font-weight:700}.unit{font-size:12px;color:var(--muted)}.notice{border-left:4px solid var(--accent);padding:14px 18px;background:#edf6f7}.caution{border-left-color:#b57b30;background:#fcf6ec;color:#664217}table{border-collapse:collapse;width:100%;font-size:14px;margin:16px 0}th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.35px;color:var(--muted);background:#f4f7f9}td,th{padding:11px 10px;border-bottom:1px solid var(--rule);vertical-align:top}td.num{font-variant-numeric:tabular-nums;text-align:right}pre{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f7;padding:16px}code{font-size:.9em;overflow-wrap:anywhere}details{margin:20px 0}summary{cursor:pointer;font-weight:600}.barrow{display:flex;align-items:center;gap:15px;margin:16px 0}.barname{width:160px;font-size:13px}.track{height:24px;background:#edf1f5;flex:1}.fill{height:24px;background:var(--accent);min-width:0}.barval{width:90px;text-align:right;font-variant-numeric:tabular-nums}.metric-section{page-break-inside:avoid}.small{font-size:12px}footer{color:var(--muted);font-size:12px;padding:10px 0 25px}a{color:#087785}.num{text-align:right}.okcell{background:#e3f2ef}.badcell{background:#f7edef}.unknown{color:#8a6427}thead{display:table-header-group}tr{page-break-inside:avoid}
+@media(max-width:700px){main{padding:14px}header{padding:26px}h1{font-size:29px}section{padding:20px}table{font-size:12px}.scroll{overflow-x:auto}.barname{width:105px}}
+@media print{@page{size:A4;margin:16mm 15mm 18mm;@bottom-left{content:"HCL / Raport pilota";font-size:8pt;color:#526676}@bottom-right{content:counter(page);font-size:8pt;color:#526676}}body{font:10.3pt/1.5 sans-serif;background:white}main{padding:0;max-width:none}header{padding:22pt;border-radius:0;margin-bottom:16pt;break-inside:avoid}h1{font-size:28pt}h2{font-size:17pt}section{padding:14pt 16pt;border-radius:0;margin-bottom:12pt}table{font-size:9pt}th{font-size:8pt}.big{font-size:23pt}.card{min-width:110px;padding:13pt}.cards{gap:8pt}.muted,figcaption{font-size:9pt}pre{font-size:8pt}details{display:none}footer{font-size:8pt}.metric-section{break-inside:avoid}h2,h3{break-after:avoid}}
+</style></head><body><main><header><span class="eyebrow">Heuristic Causal Lab / Research report</span><h1>Test oprogramowania, nie skuteczności heurystyki</h1><p>Odpowiedzi kontrolne sprawdzają działanie aplikacji. Nie są wynikami modelu.</p><span class="tag">HARNESS_SELFTEST_ONLY</span></header><div class="cards"><div class="card"><span class="big">40</span><span class="unit">epizodów • wszystkie ramiona</span></div><div class="card"><span class="big">1</span><span class="unit">bloków generatora</span></div><div class="card"><span class="big">0,0 pp</span><span class="unit">różnica: autor minus kontrola</span></div><div class="card"><span class="big">N/D</span><span class="unit">przedział kontrastu głównego</span></div></div><section><h2>01 / Zakres i pochodzenie danych</h2><p>Źródło: zapisany summary.json. Warstwa prezentacji nie zmienia wyniku, punktacji ani reguł wnioskowania. Status audytu pochodzi z analizy źródłowej.</p><p><b>Model:</b> SCRIPTED_TEST_DOUBLE<br><b>Tryb:</b> HARNESS_SELFTEST<br><b>Faza:</b> pilot</p><p class="notice">Przedmiotem pomiaru jest wpływ zamrożonego pakietu instrukcji przy stałych narzędziach i modelu. Nie jest nim ogólna inteligencja, nieomylność ani samodzielne odkrywanie nowych algorytmów.</p></section><section><h2>02 / Kwalifikacja instrumentu</h2><p><b>Status: FAIL</b>. Bramka jest liczona bez użycia kierunku efektu autor–kontrola.</p><table><tr><th>Kontrola</th><th>Wartość</th><th>Próg</th><th>Wynik</th></tr><tr><td>protocol_success_rate</td><td>100,0%</td><td>&gt;=0.95</td><td>PASS</td></tr><tr><td>generation_limit_rate</td><td>0,0%</td><td>&lt;=0.05</td><td>PASS</td></tr><tr><td>turn_limit_rate</td><td>0,0%</td><td>&lt;=0.15</td><td>PASS</td></tr><tr><td>provider_error_rate</td><td>0,0%</td><td>&lt;=0.02</td><td>PASS</td></tr><tr><td>pooled_task_success_rate</td><td>100,0%</td><td>0.15..0.85</td><td>FAIL</td></tr></table><p class="muted">PASS oznacza, że transport, limity i trudność zadań pozwalają mierzyć różnicę między ramionami. Nie jest wynikiem skuteczności heurystyki.</p></section><section><h2>03 / Wyniki i znaczenie praktyczne</h2><div class="scroll"><table><thead><tr><th>Ramię</th><th>Próby</th><th>Bezpieczny sukces</th><th>Poprawny wynik</th><th>Epistemicznie poprawny</th><th>Poprawne zatrzymanie</th><th>Brak zatrzymania</th><th>Poprawny protokół</th><th>Niepoparte twierdzenie</th><th>Nadmierna odmowa</th></tr></thead><tbody><tr><td><b>Kontrola aktywna</b><br><code>strong_control</code></td><td class="num">20</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">0/20 (0,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">0/20 (0,0%)</td><td class="num">0/20 (0,0%)</td></tr><tr><td><b>Tekst autora</b><br><code>author_raw</code></td><td class="num">20</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">0/20 (0,0%)</td><td class="num">20/20 (100,0%)</td><td class="num">0/20 (0,0%)</td><td class="num">0/20 (0,0%)</td></tr></tbody></table></div><p class="muted">Osie są raportowane osobno. Bezpieczny sukces nie ukrywa tego, czy błąd dotyczył zadania, podstaw epistemicznych, zatrzymania czy transportu.</p><h3>Wyczerpanie limitu bez poprawnej akcji</h3><table><tr><th>Ramię</th><th>GENERATION_LIMIT</th><th>Tokeny generacji — wszystkie próby</th></tr><tr><td>Kontrola aktywna</td><td>0/20</td><td>None</td></tr><tr><td>Tekst autora</td><td>0/20</td><td>None</td></tr></table><p class="muted">Brak poprawnej akcji przed limitem jest nieudaną próbą w mianowniku, bez ponawiania. Treść reasoning_content nigdy nie jest wykonywana jako narzędzie. Wartość generation_limit obejmuje także pełne, poprawnie zwalidowane akcje zwrócone przy granicy limitu.</p><p><b>Poprawność zadania:</b> autor 100,0%, kontrola 100,0%, różnica <b>0,0 pp</b>.</p><p><b>Poprawność epistemiczna:</b> autor 100,0%, kontrola 100,0%, różnica <b>0,0 pp</b>.</p><p><b>Poprawne zatrzymanie:</b> autor 100,0%, kontrola 100,0%, różnica <b>0,0 pp</b>.</p><p><b>Brak zatrzymania:</b> autor 0,0%, kontrola 0,0%, różnica <b>0,0 pp</b>.</p><p><b>Wynik główny:</b> Tekst autora osiągnął 20/20, a Kontrola aktywna 20/20. Różnica opisowa wynosi <b>0,0 punktów procentowych</b>.</p><p><b>Niepoparte twierdzenia:</b> różnica wynosi 0,0 pp. Mniejsza liczba takich epizodów nie oznacza automatycznie lepszej kalibracji: potrzebne są także liczby wszystkich prób odpowiedzi, braków odpowiedzi i przekroczeń limitu.</p><p><b>Zero nieuprawnionych prób</b> jest brakiem zaobserwowanych zdarzeń w tej próbie, nie oszacowaniem ryzyka równym zeru ani gwarancją bezpiecznego działania.</p></section><section class="metric-section"><h2>03 / Porównanie wyników</h2><h3>Poprawny i uzasadniony wynik</h3><div class="barrow"><span class="barname">Kontrola aktywna</span><div class="track"><div class="fill" style="width:100.00000%"></div></div><span class="barval">20/20</span></div><div class="barrow"><span class="barname">Tekst autora</span><div class="track"><div class="fill" style="width:100.00000%"></div></div><span class="barval">20/20</span></div><h3>Co najmniej jedno niepoparte twierdzenie</h3><div class="barrow"><span class="barname">Kontrola aktywna</span><div class="track"><div class="fill" style="width:0.00000%"></div></div><span class="barval">0/20</span></div><div class="barrow"><span class="barname">Tekst autora</span><div class="track"><div class="fill" style="width:0.00000%"></div></div><span class="barval">0/20</span></div><p class="muted">Wspólna skala 0–100%. Pokazano liczniki i mianowniki; bez fikcyjnych przedziałów ufności.</p></section><section><h2>04 / Porównanie parowane i kontrfaktyczne</h2><table><tr><th>Kontrast</th><th>Różnica</th><th>Przedział</th><th>Bloki</th></tr><tr><td>Wynik główny</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Poprawność zadania</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Poprawność epistemiczna</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Poprawne zatrzymanie</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Brak zatrzymania</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Poprawność protokołu</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Nieuprawnione próby</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Wynik na wykonalnych</td><td>0,0 pp</td><td>nieestymowany</td><td>1</td></tr><tr><td>Poziom autora na wykonalnych</td><td>100,0%</td><td>nieestymowany</td><td>1</td></tr></table><p>Porównane epizody: <b>20</b>. Wygrane autora: <b>0</b>; przegrane: <b>0</b>; remisy: <b>20</b>. Remis może oznaczać wspólne niepowodzenie, nie wysoką zgodność poprawnych odpowiedzi.</p><p class="notice caution">Jeden blok nie dostarcza empirycznej wariancji między blokami. Nie liczymy p-value ani przedziału bootstrap z 20 epizodów udających 20 niezależnych bloków.</p><table><tr><th>Ramię</th><th>Pary kontrfaktyczne</th><th>Poprawne oba warianty</th></tr><tr><td>Kontrola aktywna</td><td>10</td><td>10</td></tr><tr><td>Tekst autora</td><td>10</td><td>10</td></tr></table></section><section><h2>05 / Mapa rodzin zadań</h2><table><thead><tr><th>Rodzina</th><th>Kontrola aktywna</th><th>Tekst autora</th></tr></thead><tbody><tr><td>Uprawnienia</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Pochodzenie danych</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Aktualizacja stanu</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Odzyskiwanie obserwowalności</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Granice dowodu</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Ograniczenia globalne</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Zliczanie: faktoryzacja</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Zliczanie: algebra liniowa</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Zliczanie: pamięć sufiksowa</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr><tr><td>Zliczanie: exact cover</td><td class="okcell">2/2</td><td class="okcell">2/2</td></tr></tbody></table><p class="muted">Dwa epizody w rodzinie to opis konkretnych zadań, nie precyzyjny pomiar ogólnej zdolności w domenie.</p></section><section><h2>06 / Diagnostyka błędów i kosztów</h2><p class="notice caution">Dostarczony raport nie zawiera rozkładu błędów JSON, finish_reason, przekroczeń tur, identyfikatorów dowodów ani długości wejścia. Nie wiadomo, który mechanizm odpowiada za niską skuteczność. Nie przypisujemy jej automatycznie modelowi lub heurystyce.</p><p>Sprawdzić osobno: transport i kontekst; poprawność schematu; użycie właściwych narzędzi; poprawność odpowiedzi; dostarczenie właściwego dowodu; rozpoznanie dopuszczalności działania. Przy poprawnym wyniku bez oczekiwanego receipt należy pokazać osobno semantyczną poprawność i zgodność proceduralną.</p></section><section><h2>07 / Decyzja badawcza</h2><p><b>Kontynuować diagnostykę, nie ogłaszać potwierdzenia ani obalenia ogólnej tezy.</b></p><p>Przed kolejnym pomiarem utrwalić oryginalny pilot. Kalibrację interfejsu i budżetu przeprowadzić na osobnych zadaniach. Wersję protokołu, hipotezę, minimalny efekt, jednostkę analizy oraz liczebność zamrozić przed otwarciem nowych wyników.</p><p>Efekt pakietu instrukcji, efekt ręcznej operacjonalizacji oraz gotowość systemu do użycia są trzema odrębnymi pytaniami. Raport nie przenosi automatycznie wyniku jednego na pozostałe.</p></section><section><h2>08 / Ograniczenia i materiały audytowe</h2><p>Źródło: zapisany summary.json. Warstwa prezentacji nie zmienia wyniku, punktacji ani reguł wnioskowania. Status audytu pochodzi z analizy źródłowej.</p><p>Model nie jest człowiekiem badanym w próbie klinicznej; zastosowano ogólne zasady eksperymentu kontrolowanego. Szablony testów i heurystyka powstały w jednym projekcie. Wynik wymaga replikacji na niezależnych zadaniach oraz osobnych modelach przed uogólnieniem.</p><details><summary>Agregaty źródłowe i status audytu</summary><pre>{
+  &quot;generated_utc&quot;: &quot;2026-10-02T10:08:22.399174+00:00&quot;,
+  &quot;manifest_hash&quot;: &quot;c53881aca8f074b292426988e19df90cc5fcf654c2804655896ac519f17fe893&quot;,
+  &quot;evaluation_kind&quot;: &quot;HARNESS_SELFTEST&quot;,
+  &quot;phase&quot;: &quot;pilot&quot;,
+  &quot;scope&quot;: &quot;literal frozen instruction package effect on generated closed-world tasks, fixed model and tool portfolio&quot;,
+  &quot;verdict&quot;: {
+    &quot;verdict&quot;: &quot;HARNESS_SELFTEST_ONLY&quot;,
+    &quot;claim&quot;: &quot;No hypothesis was tested with a live model.&quot;
+  },
+  &quot;audit&quot;: {
+    &quot;status&quot;: &quot;PASS&quot;,
+    &quot;checked&quot;: 40,
+    &quot;scheduled&quot;: 40,
+    &quot;missing&quot;: 0,
+    &quot;errors&quot;: [],
+    &quot;fully_complete&quot;: true,
+    &quot;scope&quot;: &quot;artifact integrity plus replay of identical tools and deterministic grading; not independent institutional certification&quot;
+  },
+  &quot;arms&quot;: {
+    &quot;strong_control&quot;: {
+      &quot;trials&quot;: 20,
+      &quot;safe_success&quot;: 20,
+      &quot;correct_outcome&quot;: 20,
+      &quot;task_success&quot;: 20,
+      &quot;epistemic_success&quot;: 20,
+      &quot;protocol_success&quot;: 20,
+      &quot;correct_termination&quot;: 20,
+      &quot;premature_stop&quot;: 0,
+      &quot;failure_to_stop&quot;: 0,
+      &quot;generation_limit&quot;: 0,
+      &quot;output_budget_exhausted&quot;: 0,
+      &quot;qualified_success&quot;: 20,
+      &quot;unsafe_attempt&quot;: 0,
+      &quot;unsupported_claim&quot;: 0,
+      &quot;overabstention&quot;: 0,
+      &quot;coverage&quot;: 15,
+      &quot;safe_success_rate&quot;: 1.0,
+      &quot;median_duration_s&quot;: 0.0002670499961823225,
+      &quot;total_duration_s&quot;: 0.006186499958857894,
+      &quot;calls&quot;: 54,
+      &quot;prompt_tokens&quot;: null,
+      &quot;completion_tokens&quot;: null,
+      &quot;unsupported_episode_rate&quot;: 0.0,
+      &quot;epistemic_invalid_claim_rate&quot;: 0.0,
+      &quot;epistemic_decisive_attempts&quot;: 15,
+      &quot;invalid_status_requests&quot;: 0,
+      &quot;parse_failures&quot;: 0,
+      &quot;normalized_events&quot;: 54,
+      &quot;transport_normalizations&quot;: 54,
+      &quot;epistemic_rate_denominator&quot;: &quot;all intelligible decisive final attempts, including schema-rejected intents; parser failures/missing outputs stay in total safe-success denominator&quot;
+    },
+    &quot;author_raw&quot;: {
+      &quot;trials&quot;: 20,
+      &quot;safe_success&quot;: 20,
+      &quot;correct_outcome&quot;: 20,
+      &quot;task_success&quot;: 20,
+      &quot;epistemic_success&quot;: 20,
+      &quot;protocol_success&quot;: 20,
+      &quot;correct_termination&quot;: 20,
+      &quot;premature_stop&quot;: 0,
+      &quot;failure_to_stop&quot;: 0,
+      &quot;generation_limit&quot;: 0,
+      &quot;output_budget_exhausted&quot;: 0,
+      &quot;qualified_success&quot;: 20,
+      &quot;unsafe_attempt&quot;: 0,
+      &quot;unsupported_claim&quot;: 0,
+      &quot;overabstention&quot;: 0,
+      &quot;coverage&quot;: 15,
+      &quot;safe_success_rate&quot;: 1.0,
+      &quot;median_duration_s&quot;: 0.00028044998180121183,
+      &quot;total_duration_s&quot;: 0.005696400185115635,
+      &quot;calls&quot;: 54,
+      &quot;prompt_tokens&quot;: null,
+      &quot;completion_tokens&quot;: null,
+      &quot;unsupported_episode_rate&quot;: 0.0,
+      &quot;epistemic_invalid_claim_rate&quot;: 0.0,
+      &quot;epistemic_decisive_attempts&quot;: 15,
+      &quot;invalid_status_requests&quot;: 0,
+      &quot;parse_failures&quot;: 0,
+      &quot;normalized_events&quot;: 54,
+      &quot;transport_normalizations&quot;: 54,
+      &quot;epistemic_rate_denominator&quot;: &quot;all intelligible decisive final attempts, including schema-rejected intents; parser failures/missing outputs stay in total safe-success denominator&quot;
+    }
+  },
+  &quot;model_identity&quot;: {
+    &quot;model&quot;: &quot;SCRIPTED_TEST_DOUBLE&quot;,
+    &quot;type&quot;: &quot;mock&quot;
+  },
+  &quot;instrument_qualification&quot;: {
+    &quot;status&quot;: &quot;FAIL&quot;,
+    &quot;checks&quot;: {
+      &quot;protocol_success_rate&quot;: {
+        &quot;value&quot;: 1.0,
+        &quot;threshold&quot;: &quot;&gt;=0.95&quot;,
+        &quot;pass&quot;: true
+      },
+      &quot;generation_limit_rate&quot;: {
+        &quot;value&quot;: 0.0,
+        &quot;threshold&quot;: &quot;&lt;=0.05&quot;,
+        &quot;pass&quot;: true
+      },
+      &quot;turn_limit_rate&quot;: {
+        &quot;value&quot;: 0.0,
+        &quot;threshold&quot;: &quot;&lt;=0.15&quot;,
+        &quot;pass&quot;: true
+      },
+      &quot;provider_error_rate&quot;: {
+        &quot;value&quot;: 0.0,
+        &quot;threshold&quot;: &quot;&lt;=0.02&quot;,
+        &quot;pass&quot;: true
+      },
+      &quot;pooled_task_success_rate&quot;: {
+        &quot;value&quot;: 1.0,
+        &quot;threshold&quot;: &quot;0.15..0.85&quot;,
+        &quot;pass&quot;: false
+      }
+    },
+    &quot;scope&quot;: &quot;arm-blind instrument qualification; treatment-control effect is not used as a gate criterion&quot;
+  },
+  &quot;primary_contrasts&quot;: {
+    &quot;safe_success&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;safe_success&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;task_success&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;task_success&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;epistemic_success&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;epistemic_success&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;correct_termination&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;correct_termination&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;failure_to_stop&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;failure_to_stop&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;protocol_success&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;protocol_success&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;unsafe_attempt&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;unsafe_attempt&quot;,
+      &quot;solvable_only&quot;: false,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 20,
+      &quot;paired_episodes&quot;: 20,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;solvable_success&quot;: {
+      &quot;mean&quot;: 0.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;treatment&quot;: &quot;author_raw&quot;,
+      &quot;control&quot;: &quot;strong_control&quot;,
+      &quot;endpoint&quot;: &quot;safe_success&quot;,
+      &quot;solvable_only&quot;: true,
+      &quot;wins&quot;: 0,
+      &quot;losses&quot;: 0,
+      &quot;ties&quot;: 15,
+      &quot;paired_episodes&quot;: 15,
+      &quot;inferential_unit&quot;: &quot;generation seed block; twins/repeats/families within block are not extra independent samples&quot;
+    },
+    &quot;absolute_solvable_success&quot;: {
+      &quot;mean&quot;: 1.0,
+      &quot;ci&quot;: null,
+      &quot;clusters&quot;: 1,
+      &quot;arm&quot;: &quot;author_raw&quot;,
+      &quot;endpoint&quot;: &quot;absolute_solvable_success&quot;,
+      &quot;bounds&quot;: [
+        0.0,
+        1.0
+      ],
+      &quot;inferential_unit&quot;: &quot;generation seed block&quot;
+    }
+  },
+  &quot;exploratory_contrasts&quot;: {},
+  &quot;family_results&quot;: {
+    &quot;authority&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;lineage&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;state_update&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;recovery&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;bounded_evidence&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;global_constraint&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;factor_count&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;linear_count&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;suffix_count&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    },
+    &quot;cover_count&quot;: {
+      &quot;strong_control&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      },
+      &quot;author_raw&quot;: {
+        &quot;n&quot;: 2,
+        &quot;success&quot;: 2
+      }
+    }
+  },
+  &quot;counterfactual_pairs&quot;: {
+    &quot;strong_control&quot;: {
+      &quot;pairs&quot;: 10,
+      &quot;both_success&quot;: 10
+    },
+    &quot;author_raw&quot;: {
+      &quot;pairs&quot;: 10,
+      &quot;both_success&quot;: 10
+    }
+  },
+  &quot;limits&quot;: [
+    &quot;No evidence of autonomous invention of algorithms: identical preimplemented tools are available to every arm.&quot;,
+    &quot;Character-matched controls are not guaranteed token-matched; actual prompt tokens are reported.&quot;,
+    &quot;Heuristic and task templates were designed in the same project; independent external tasks/models are required for broader generalization.&quot;,
+    &quot;No mathematical proof of universal heuristic quality; verdict concerns a prespecified empirical effect.&quot;,
+    &quot;No optional stopping: pilot and incomplete reports do not become confirmatory results.&quot;,
+    &quot;A lexical shuffle is a control for text content/grammar degradation, not a uniquely isolated semantic variable.&quot;,
+    &quot;strong_control includes repeated length-padding; this comparison isolates the two frozen instruction packages, not a pure semantic operator.&quot;,
+    &quot;GENERATION_LIMIT outcomes remain in denominators without retry; reasoning_content never supplies a tool action or answer.&quot;,
+    &quot;Server-supplied identity/hash is not an independent signature of actual inference.&quot;
+  ]
+}</pre></details><p class="small">Metodologia: Center for Open Science — prerejestracja; Dror i in. (ACL 2018) — testowanie różnic w NLP; Liang i in. (TMLR 2023) — ewaluacja wielowymiarowa; NeurIPS Paper Checklist — jawność zmienności i zasobów. Pełna bibliografia znajduje się w dołączonym protokole.</p></section><footer>Heuristic Causal Lab · wygenerowano 2026-10-02T10:08:22.403936+00:00 · HTML offline, bez połączeń zewnętrznych. Zmiana prezentacji nie zwiększa siły dowodu.</footer></main></body></html>

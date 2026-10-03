@@ -8,6 +8,4 @@ dist/
 *.egg-info/
 .env
 configs/local*.json
-studies/
-results/
 *.log.tmp

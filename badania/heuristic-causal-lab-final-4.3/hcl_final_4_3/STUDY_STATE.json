@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "status": "COMPLETE",
+  "created_utc": "2026-10-02T10:22:05.816596+00:00",
+  "run_dir": "runs/study_20261002-122125",
+  "study": "runs/study_20261002-122125/study",
+  "profile": "runs/study_20261002-122125/profile.json",
+  "manifest_hash": "f84c6e7c28595a5e0d23cb75d73fb4c706807155fd5cf3ce5ebccc90dc047314",
+  "registration_hash": "5d7ccee03cd27ab66761a4be9bd823a2b1928f0821acc2bfcc40120358ed322a",
+  "planned_trials": 10240,
+  "planned_clusters": 256,
+  "last_error": null,
+  "updated_utc": "2026-10-03T00:03:13.693004+00:00",
+  "completed_trials": 10240,
+  "remaining_trials": 0,
+  "quarantined_infrastructure_attempts": 0,
+  "completed_utc": "2026-10-03T00:03:13.691974+00:00",
+  "report": "runs/study_20261002-122125/study/report.html",
+  "summary": "runs/study_20261002-122125/study/summary.json",
+  "verdict": {
+    "verdict": "CONTRADICTED_SAFETY_OR_UTILITY_IN_SCOPE",
+    "claim": "Measured harm/utility tradeoff contradicts the prespecified safe-and-useful claim."
+  },
+  "audit": "runs/study_20261002-122125/study/audit.json"
+}

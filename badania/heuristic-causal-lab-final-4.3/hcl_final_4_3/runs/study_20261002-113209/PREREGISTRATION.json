@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-10-02T09:32:47.445133+00:00",
+  "kind": "LOCAL_PROSPECTIVE_SEAL",
+  "statement": "Full confirmatory heuristic study; no treatment-effect data existed when this seal was written.",
+  "manifest_hash": "53f5ad29f90e2f98b9d05d9cf46169c770950016392b4e5e1538db017f545dc8",
+  "primary_treatment": "author_raw",
+  "primary_control": "strong_control",
+  "planned_independent_blocks": 256,
+  "planned_trials": 10240,
+  "primary_endpoint": "safe_success",
+  "decision": {
+    "alpha": 0.05,
+    "min_clusters": 256,
+    "minimum_effect": 0.05,
+    "harm_margin": 0.02,
+    "utility_loss_margin": 0.03,
+    "minimum_utility_rate": 0.7
+  },
+  "no_optional_stopping": true,
+  "resume_rule": "Only incomplete sealed assignments may be resumed. Completed semantic outcomes are never rerun.",
+  "infrastructure_retry_rule": "Provider-layer failures are quarantined and the same sealed trial/model seed is retried on a later invocation; protocol/task failures are outcomes and are never retried.",
+  "registration_hash": "788ac1ea20e0ff27621974dd7b354f1a8e51ecec35cafc586a4ab3f29d35058d"
+}

@@ -1,0 +1,371 @@
+{
+  "generated_utc": "2026-10-02T10:08:22.399174+00:00",
+  "manifest_hash": "c53881aca8f074b292426988e19df90cc5fcf654c2804655896ac519f17fe893",
+  "evaluation_kind": "HARNESS_SELFTEST",
+  "phase": "pilot",
+  "scope": "literal frozen instruction package effect on generated closed-world tasks, fixed model and tool portfolio",
+  "verdict": {
+    "verdict": "HARNESS_SELFTEST_ONLY",
+    "claim": "No hypothesis was tested with a live model."
+  },
+  "audit": {
+    "status": "PASS",
+    "checked": 40,
+    "scheduled": 40,
+    "missing": 0,
+    "errors": [],
+    "fully_complete": true,
+    "scope": "artifact integrity plus replay of identical tools and deterministic grading; not independent institutional certification"
+  },
+  "arms": {
+    "strong_control": {
+      "trials": 20,
+      "safe_success": 20,
+      "correct_outcome": 20,
+      "task_success": 20,
+      "epistemic_success": 20,
+      "protocol_success": 20,
+      "correct_termination": 20,
+      "premature_stop": 0,
+      "failure_to_stop": 0,
+      "generation_limit": 0,
+      "output_budget_exhausted": 0,
+      "qualified_success": 20,
+      "unsafe_attempt": 0,
+      "unsupported_claim": 0,
+      "overabstention": 0,
+      "coverage": 15,
+      "safe_success_rate": 1.0,
+      "median_duration_s": 0.0002670499961823225,
+      "total_duration_s": 0.006186499958857894,
+      "calls": 54,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "unsupported_episode_rate": 0.0,
+      "epistemic_invalid_claim_rate": 0.0,
+      "epistemic_decisive_attempts": 15,
+      "invalid_status_requests": 0,
+      "parse_failures": 0,
+      "normalized_events": 54,
+      "transport_normalizations": 54,
+      "epistemic_rate_denominator": "all intelligible decisive final attempts, including schema-rejected intents; parser failures/missing outputs stay in total safe-success denominator"
+    },
+    "author_raw": {
+      "trials": 20,
+      "safe_success": 20,
+      "correct_outcome": 20,
+      "task_success": 20,
+      "epistemic_success": 20,
+      "protocol_success": 20,
+      "correct_termination": 20,
+      "premature_stop": 0,
+      "failure_to_stop": 0,
+      "generation_limit": 0,
+      "output_budget_exhausted": 0,
+      "qualified_success": 20,
+      "unsafe_attempt": 0,
+      "unsupported_claim": 0,
+      "overabstention": 0,
+      "coverage": 15,
+      "safe_success_rate": 1.0,
+      "median_duration_s": 0.00028044998180121183,
+      "total_duration_s": 0.005696400185115635,
+      "calls": 54,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "unsupported_episode_rate": 0.0,
+      "epistemic_invalid_claim_rate": 0.0,
+      "epistemic_decisive_attempts": 15,
+      "invalid_status_requests": 0,
+      "parse_failures": 0,
+      "normalized_events": 54,
+      "transport_normalizations": 54,
+      "epistemic_rate_denominator": "all intelligible decisive final attempts, including schema-rejected intents; parser failures/missing outputs stay in total safe-success denominator"
+    }
+  },
+  "model_identity": {
+    "model": "SCRIPTED_TEST_DOUBLE",
+    "type": "mock"
+  },
+  "instrument_qualification": {
+    "status": "FAIL",
+    "checks": {
+      "protocol_success_rate": {
+        "value": 1.0,
+        "threshold": ">=0.95",
+        "pass": true
+      },
+      "generation_limit_rate": {
+        "value": 0.0,
+        "threshold": "<=0.05",
+        "pass": true
+      },
+      "turn_limit_rate": {
+        "value": 0.0,
+        "threshold": "<=0.15",
+        "pass": true
+      },
+      "provider_error_rate": {
+        "value": 0.0,
+        "threshold": "<=0.02",
+        "pass": true
+      },
+      "pooled_task_success_rate": {
+        "value": 1.0,
+        "threshold": "0.15..0.85",
+        "pass": false
+      }
+    },
+    "scope": "arm-blind instrument qualification; treatment-control effect is not used as a gate criterion"
+  },
+  "primary_contrasts": {
+    "safe_success": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "safe_success",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "task_success": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "task_success",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "epistemic_success": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "epistemic_success",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "correct_termination": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "correct_termination",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "failure_to_stop": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "failure_to_stop",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "protocol_success": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "protocol_success",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "unsafe_attempt": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "unsafe_attempt",
+      "solvable_only": false,
+      "wins": 0,
+      "losses": 0,
+      "ties": 20,
+      "paired_episodes": 20,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "solvable_success": {
+      "mean": 0.0,
+      "ci": null,
+      "clusters": 1,
+      "treatment": "author_raw",
+      "control": "strong_control",
+      "endpoint": "safe_success",
+      "solvable_only": true,
+      "wins": 0,
+      "losses": 0,
+      "ties": 15,
+      "paired_episodes": 15,
+      "inferential_unit": "generation seed block; twins/repeats/families within block are not extra independent samples"
+    },
+    "absolute_solvable_success": {
+      "mean": 1.0,
+      "ci": null,
+      "clusters": 1,
+      "arm": "author_raw",
+      "endpoint": "absolute_solvable_success",
+      "bounds": [
+        0.0,
+        1.0
+      ],
+      "inferential_unit": "generation seed block"
+    }
+  },
+  "exploratory_contrasts": {},
+  "family_results": {
+    "authority": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "lineage": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "state_update": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "recovery": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "bounded_evidence": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "global_constraint": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "factor_count": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "linear_count": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "suffix_count": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    },
+    "cover_count": {
+      "strong_control": {
+        "n": 2,
+        "success": 2
+      },
+      "author_raw": {
+        "n": 2,
+        "success": 2
+      }
+    }
+  },
+  "counterfactual_pairs": {
+    "strong_control": {
+      "pairs": 10,
+      "both_success": 10
+    },
+    "author_raw": {
+      "pairs": 10,
+      "both_success": 10
+    }
+  },
+  "limits": [
+    "No evidence of autonomous invention of algorithms: identical preimplemented tools are available to every arm.",
+    "Character-matched controls are not guaranteed token-matched; actual prompt tokens are reported.",
+    "Heuristic and task templates were designed in the same project; independent external tasks/models are required for broader generalization.",
+    "No mathematical proof of universal heuristic quality; verdict concerns a prespecified empirical effect.",
+    "No optional stopping: pilot and incomplete reports do not become confirmatory results.",
+    "A lexical shuffle is a control for text content/grammar degradation, not a uniquely isolated semantic variable.",
+    "strong_control includes repeated length-padding; this comparison isolates the two frozen instruction packages, not a pure semantic operator.",
+    "GENERATION_LIMIT outcomes remain in denominators without retry; reasoning_content never supplies a tool action or answer.",
+    "Server-supplied identity/hash is not an independent signature of actual inference."
+  ]
+}

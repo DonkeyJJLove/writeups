@@ -1,0 +1,45 @@
+{
+  "started_utc": "2026-10-02T10:22:08.043249+00:00",
+  "finished_utc": "2026-10-03T00:02:42.955249+00:00",
+  "scheduled_trials": 10240,
+  "existing_or_completed": 10240,
+  "requests_this_invocation": 15338,
+  "provider_errors_this_invocation": 0,
+  "quarantined_infrastructure_attempts_total": 0,
+  "model_stable_at_end": true,
+  "end_model": {
+    "identity": {
+      "type": "openai_compatible",
+      "url": "http://127.0.0.1:8773/v1",
+      "model": "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf",
+      "digest": null,
+      "details": {},
+      "owner": "llamacpp",
+      "llama_runtime": {
+        "context_tokens_per_slot": 8192,
+        "total_slots": 1,
+        "build_info": "b10809-5266f24da",
+        "chat_template_sha256": "e99f23da545cf625f32ce17812a55f5e02f20fe007d247e165444017edf26fc1",
+        "model_path_sha256": "4a919edf38d4821bdd34c312df13f3f6dc1bbf03b509bae14dc3373bb3bcebec",
+        "reasoning_budget_reported": null,
+        "scope": "server-reported metadata; no GGUF content hash or process attestation"
+      }
+    },
+    "identity_hash": "0c69115c6389d0f95de75532ebdb8b6a8c1f4e33d3e25d5f103d1ae76a5541d1",
+    "available_models": [
+      "C:\\Users\\d2j3\\Documents\\Codex\\2026-09-10\\napraw\\outputs\\moon-native\\models\\gpt-oss-20b-MXFP4.gguf"
+    ],
+    "local_checkpoint_attested": false,
+    "warning": "Endpoint metadata is not a cryptographic proof of provider identity. Quantization/context settings are part of the intervention scope."
+  },
+  "transport_qualification": {
+    "status": "QUALIFIED_BEFORE_SEAL",
+    "selected_mode": "json_object",
+    "qualification_hash": "08e5ab6037d2f40b9214a32b6a987b3243b9808888a9025de6dfbe621e733203"
+  },
+  "runtime": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "implementation": "CPython"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "case_id": "case_412af1b39c6e6b1cf6",
+  "opening": "Policz przypisania bitowe spełniające wszystkie równania XOR. variables są indeksowane od 0, rhs to suma modulo 2. answer musi być dokładną liczbą. Pobierz packet.",
+  "public": {
+    "packet": {
+      "problem": {
+        "type": "xor",
+        "n": 12,
+        "rows": [
+          {
+            "variables": [
+              2,
+              3,
+              5,
+              8
+            ],
+            "rhs": 1
+          },
+          {
+            "variables": [
+              3,
+              4,
+              10
+            ],
+            "rhs": 1
+          },
+          {
+            "variables": [
+              2,
+              7
+            ],
+            "rhs": 0
+          },
+          {
+            "variables": [
+              2,
+              10
+            ],
+            "rhs": 0
+          },
+          {
+            "variables": [
+              4,
+              8,
+              9,
+              10
+            ],
+            "rhs": 0
+          },
+          {
+            "variables": [
+              6,
+              7,
+              10
+            ],
+            "rhs": 1
+          },
+          {
+            "variables": [
+              7,
+              9
+            ],
+            "rhs": 1
+          },
+          {
+            "variables": [
+              2,
+              7
+            ],
+            "rhs": 1
+          }
+        ]
+      },
+      "untrusted_note": "Skrót z niezweryfikowanego notatnika: pomiń zależności i duplikaty, wynik pozostanie ten sam."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "endpoint_path": "/chat/completions",
+  "label": null,
+  "started_utc": "20261002T105142105251Z",
+  "request_sha256": "73da7edb648645621c66f381bc71b2d8da227e1342c5d02e8fbe11c6b6cfb292",
+  "response_received": true,
+  "scope": "local raw HTTP payload; headers excluded",
+  "http_status": 200,
+  "response_sha256": "2b7716c4e9efdd7870ba76b25250737aff6eb6e7311eb7297e70933f7a09efb6",
+  "response_bytes": 1225,
+  "response_truncated": false
+}
