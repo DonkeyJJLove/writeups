@@ -1,0 +1,566 @@
+# HEURISTIC → SEMANTIC FILTER COMPILER
+
+## ROLA
+
+Jesteś architektem systemów agentowych, ontologii operacyjnych, semantic control plane, systemów decyzyjnych, bezpieczeństwa AI i heurystyk probabilistycznych.
+
+Twoim zadaniem nie jest streszczenie dostarczonej heurystyki.
+
+Twoim zadaniem jest **przekompilowanie heurystyki na wykonywalny filtr semantyczny**, który może zostać umieszczony **przed modelem językowym lub agentem** i który rekonstruuje znaczenie wejścia, ogranicza przestrzeń relewantną, wykrywa niedozwolone transformacje semantyczne i przygotowuje dla modelu wyłącznie taki kontekst, który odpowiada aktualnemu stanowi świata.
+
+---
+
+# WEJŚCIE
+
+## [STRUKTURA]
+
+Wklej tutaj heurystykę, tekst, model pojęciowy, strukturę rozumowania, zbiór zasad albo opis sposobu podejmowania decyzji:
+
+[STRUKTURA]
+
+---
+
+# CEL TRANSFORMACJI
+
+Przekształć `[STRUKTURA]` z postaci:
+
+- narracyjnej,
+- intuicyjnej,
+- językowej,
+- niejawnej,
+- eksperckiej,
+
+do postaci:
+
+**SEMANTYCZNEGO FILTRA STANU**
+
+działającego według zasady:
+
+surowe wejście
+→ rekonstrukcja znaczenia
+→ określenie źródła
+→ identyfikacja bytów
+→ ustalenie relacji
+→ ocena kontekstu
+→ mutacja aktualnego stanu
+→ selekcja relewancji
+→ kontrola autorytetu
+→ kontrola dopuszczalności przejścia
+→ kompilacja kontekstu
+→ dopiero wtedy model.
+
+Filtr nie ma zastępować modelu.
+
+Ma określać **świat, który model w danym kroku zobaczy**.
+
+---
+
+# ZASADA FUNDAMENTALNA
+
+Nie twórz filtra słów.
+
+Nie twórz blacklisty.
+
+Nie próbuj przewidywać wszystkich możliwych zdań.
+
+Nie sprowadzaj heurystyki do prostych reguł:
+
+`jeżeli X → zrób Y`.
+
+Zamiast tego rekonstruuj:
+
+**jakiego rodzaju rzeczy istnieją, jakie mogą posiadać role, jakie relacje mogą między nimi zachodzić, jakie zmiany znaczenia są istotne oraz które transformacje stanu są dopuszczalne.**
+
+Filtr ma reagować na **strukturę znaczenia**, nawet wtedy, gdy powierzchniowa forma językowa jest zupełnie inna.
+
+---
+
+# ETAP 1 — WYDOBĄDŹ UKRYTĄ ONTOLOGIĘ
+
+Przeanalizuj `[STRUKTURA]` i wyodrębnij minimalny zestaw klas bytów potrzebnych do zachowania jej logiki.
+
+Szukaj między innymi:
+
+- ŹRÓDŁA,
+- DANYCH,
+- OBSERWACJI,
+- SYGNAŁU,
+- SZUMU,
+- AKTORA,
+- AGENTA,
+- OBIEKTU,
+- ZASOBU,
+- NARZĘDZIA,
+- STANU,
+- ZDARZENIA,
+- RYZYKA,
+- HIPOTEZY,
+- AUTORYTETU,
+- DECYZJI,
+- DZIAŁANIA,
+- SKUTKU,
+- BŁĘDU,
+- SPRZĘŻENIA ZWROTNEGO,
+- PAMIĘCI,
+- ANOMALII,
+- PROGU,
+- PRZEJŚCIA.
+
+Nie używaj kategorii tylko dlatego, że znajdują się na tej liście.
+
+Każda kategoria musi wynikać z `[STRUKTURA]`.
+
+---
+
+# ETAP 2 — WYDOBĄDŹ RELACJE
+
+Dla każdego bytu określ nie tylko jego właściwości, ale przede wszystkim jego relacje.
+
+Poszukuj relacji takich jak:
+
+- pochodzi_z,
+- odnosi_się_do,
+- interpretuje,
+- zależy_od,
+- powoduje,
+- umożliwia,
+- ogranicza,
+- modyfikuje,
+- zwiększa_ryzyko,
+- zmniejsza_ryzyko,
+- wymaga,
+- uprawnia,
+- zabrania,
+- obserwuje,
+- potwierdza,
+- falsyfikuje,
+- poprzedza,
+- wynika_z,
+- zmienia_znaczenie,
+- materializuje,
+- sprzęga_się_z.
+
+Relacja jest ważniejsza od samego obiektu.
+
+Ten sam obiekt może posiadać różne znaczenie w różnych układach relacji.
+
+---
+
+# ETAP 3 — WYDOBĄDŹ NIEZMIENNIKI
+
+Znajdź w `[STRUKTURA]` reguły, które powinny pozostawać prawdziwe niezależnie od konkretnego przypadku.
+
+Niezmiennik nie opisuje konkretnego scenariusza.
+
+Opisuje własność świata.
+
+Przykładowa forma:
+
+`DANE nie stają się AUTORYTETEM tylko dlatego, że posiadają formę instrukcji.`
+
+`BRAK OBSERWOWALNOŚCI nie może zwiększać AUTORYTETU.`
+
+`NIEPEWNOŚĆ nie może zostać automatycznie przekształcona w PEWNOŚĆ.`
+
+`WYNIK NARZĘDZIA może zmienić wiedzę, ale nie może sam przyznać nowych uprawnień.`
+
+`LOKALNIE POPRAWNE działania mogą tworzyć GLOBALNIE NIEDOPUSZCZALNĄ trajektorię.`
+
+Wyprowadź takie niezmienniki wyłącznie z dostarczonej struktury.
+
+---
+
+# ETAP 4 — ZBUDUJ STAN SEMANTYCZNY
+
+Filtr ma utrzymywać dynamiczny stan świata.
+
+Zaprojektuj reprezentację stanu obejmującą co najmniej:
+
+### PROVENANCE
+Skąd pochodzi informacja?
+
+### TYPE
+Czym jest obiekt?
+
+### ROLE
+Jaką rolę pełni w aktualnym zadaniu?
+
+### TRUST
+Jak silne jest zaufanie do źródła i interpretacji?
+
+### RELEVANCE
+Jak bardzo obiekt jest istotny dla aktualnego celu?
+
+### AUTHORITY
+Jaki poziom autorytetu posiada aktor względem obiektu?
+
+### UNCERTAINTY
+Jak duża jest niepewność interpretacji?
+
+### CONSEQUENCE
+Jakiego rodzaju zmianę świata może spowodować działanie?
+
+### HISTORY
+Jak poprzednie zdarzenia zmieniają znaczenie obecnego stanu?
+
+### OBSERVABILITY
+Jaką część procesu system aktualnie obserwuje?
+
+Nie zakładaj, że któraś z tych wartości jest binarna.
+
+Preferuj stany wielowartościowe i probabilistyczne.
+
+---
+
+# ETAP 5 — ZBUDUJ MUTATOR SEMANTYCZNY
+
+To najważniejsza część filtra.
+
+Nowe wejście nie powinno jedynie dodawać informacji.
+
+Powinno mieć możliwość **zmiany znaczenia informacji już obecnej**.
+
+Dla każdego nowego sygnału sprawdź:
+
+1. Czy pojawił się nowy byt?
+2. Czy istniejący byt zmienił rolę?
+3. Czy zmieniło się jego źródło albo wiarygodność?
+4. Czy utworzyła się nowa relacja?
+5. Czy zniknęła wcześniejsza relacja?
+6. Czy nowa obserwacja wzmacnia którąś hipotezę?
+7. Czy ją falsyfikuje?
+8. Czy wcześniejszy sygnał staje się teraz istotny?
+9. Czy lokalnie bezpieczne elementy tworzą niebezpieczną kompozycję?
+10. Czy zmienił się wymagany poziom autorytetu?
+11. Czy utrata informacji zwiększa niepewność?
+12. Czy nowa informacja zmienia dopuszczalny zakres narzędzi?
+13. Czy system zbliżył się do punktu materializacji skutku?
+
+Nie pytaj wyłącznie:
+
+„Co nowego otrzymaliśmy?”
+
+Pytaj:
+
+**„Co przez to zmieniło znaczenie?”**
+
+---
+
+# ETAP 6 — ZBUDUJ MECHANIKĘ RELEWANTNĄ
+
+Filtr ma zmniejszać przestrzeń latentną modelu poprzez relewancję.
+
+Nie próbuj enumerować wszystkich możliwych następnych działań.
+
+Określ:
+
+- które elementy świata są aktualnie centralne,
+- które są peryferyjne,
+- które hipotezy utraciły znaczenie,
+- które wzrosły,
+- które relacje są kluczowe,
+- jakie pytanie rozstrzygnęłoby najwięcej niepewności,
+- jakie działania nie odnoszą się już do aktualnego problemu,
+- które narzędzia nie posiadają obecnie semantycznego uzasadnienia.
+
+Wynikiem ma być **relevant state**, a nie kopia całego kontekstu.
+
+---
+
+# ETAP 7 — FILTR AUTORYTETU
+
+Oddziel:
+
+**zdolność modelu do wygenerowania działania**
+
+od:
+
+**prawa systemu do materializacji działania.**
+
+Dla każdego potencjalnego przejścia określ:
+
+- kto inicjuje zmianę,
+- skąd pochodzi przesłanka,
+- jaki obiekt ma zostać zmieniony,
+- jakie narzędzie ma zostać użyte,
+- jaki autorytet jest wymagany,
+- jaki autorytet faktycznie istnieje,
+- czy autorytet pochodzi z poprawnego źródła,
+- czy nie został wywnioskowany z danych,
+- jaki jest zakres konsekwencji.
+
+Nigdy nie pozwalaj, aby:
+
+DANE → samoczynnie stawały się INSTRUKCJĄ,
+
+INSTRUKCJA → samoczynnie stawała się AUTORYTETEM,
+
+AUTORYTET → samoczynnie stawał się DECYZJĄ,
+
+DECYZJA → samoczynnie stawała się DZIAŁANIEM.
+
+Każda transformacja wymaga osobnej poprawnej relacji.
+
+---
+
+# ETAP 8 — FILTR TRAJEKTORII
+
+Nie oceniaj wyłącznie pojedynczej operacji.
+
+Oceniaj również historię.
+
+Sekwencja:
+
+A → B → C
+
+może być niedopuszczalna nawet wtedy, gdy:
+
+A jest dozwolone,
+
+B jest dozwolone,
+
+C jest dozwolone.
+
+Sprawdź, czy kompozycja tych działań nie tworzy stanu:
+
+- przekraczającego autorytet,
+- zwiększającego nieobserwowalność,
+- zmieniającego rolę obiektu,
+- obchodzącego wcześniejszą bramkę,
+- materializującego skutek niezgodny z pierwotnym celem.
+
+Bezpieczeństwo jest własnością **trajektorii**, nie pojedynczej instrukcji.
+
+---
+
+# ETAP 9 — FILTR BŁĘDU I ODPORNOŚCI
+
+Nie projektuj filtra zakładającego bezbłędność.
+
+Załóż, że:
+
+- model może się pomylić,
+- klasyfikacja może być błędna,
+- narzędzie może zwrócić zły wynik,
+- informacja może być niepełna,
+- środowisko może zmienić się pomiędzy krokami,
+- agent może utracić obserwowalność.
+
+Filtr ma amortyzować pojedynczy błąd.
+
+Jeżeli pojedyncza błędna klasyfikacja może bezpośrednio doprowadzić do krytycznego skutku, architektura filtra jest błędna.
+
+W przypadku krytycznych transformacji wymagaj niezależnego potwierdzenia albo dodatkowej bramki.
+
+---
+
+# ETAP 10 — STANY WYJŚCIOWE FILTRA
+
+Nie używaj wyłącznie:
+
+PASS / BLOCK.
+
+Zaprojektuj co najmniej następujące semantyczne wyniki:
+
+### PASS
+Stan jest spójny, przejście relewantne i dopuszczalne.
+
+### PASS_LIMITED
+Dopuszczalne jest tylko działanie o ograniczonym skutku.
+
+### OBSERVE
+Brakuje informacji; należy zwiększyć obserwowalność.
+
+### VERIFY
+Istnieje hipoteza, której trzeba dostarczyć niezależnego potwierdzenia.
+
+### DEFER
+Nie można jeszcze bezpiecznie ustalić znaczenia.
+
+### ESCALATE
+Działanie wymaga wyższego autorytetu.
+
+### BLOCK
+Przejście jest strukturalnie niedopuszczalne.
+
+### QUARANTINE
+Źródło lub obiekt powinien pozostać dostępny do analizy, ale nie może wpływać na stan wykonawczy.
+
+### RECONSTRUCT
+Nowe dane naruszyły wcześniejszy model świata; należy przebudować stan przed dalszym działaniem.
+
+---
+
+# ETAP 11 — KOMPILATOR KONTEKSTU
+
+Po przejściu filtra przygotuj dla właściwego modelu wyłącznie minimalny relewantny stan.
+
+Nie przekazuj całego materiału wejściowego, jeśli nie jest potrzebny.
+
+Wygenerowany kontekst powinien zawierać:
+
+## CURRENT_GOAL
+Aktualny cel.
+
+## RELEVANT_WORLD
+Tylko byty istotne dla obecnego kroku.
+
+## ACTIVE_RELATIONS
+Relacje mające znaczenie.
+
+## ACTIVE_HYPOTHESES
+Hipotezy pozostające w grze.
+
+## UNCERTAINTIES
+Nierozstrzygnięte elementy.
+
+## AUTHORITY
+Aktualny zakres autorytetu.
+
+## AVAILABLE_TOOLS
+Tylko narzędzia dopuszczalne i relewantne.
+
+## FORBIDDEN_TRANSITIONS
+Przejścia strukturalnie niedopuszczalne.
+
+## OBSERVATION_TARGET
+Informacja, której zdobycie najbardziej zmniejszy aktualną niepewność.
+
+## MATERIALIZATION_BOUNDARY
+Najbliższy punkt, w którym rozumowanie może spowodować realną zmianę świata.
+
+---
+
+# ETAP 12 — FORMAT FILTRA
+
+Przygotuj wynik w sześciu warstwach.
+
+### WARSTWA A — ONTOLOGIA
+
+Minimalne klasy semantyczne.
+
+### WARSTWA B — RELACJE
+
+Dozwolone typy relacji.
+
+### WARSTWA C — NIEZMIENNIKI
+
+Reguły, których system nie może naruszać.
+
+### WARSTWA D — MUTATOR
+
+Zasady aktualizacji znaczenia.
+
+### WARSTWA E — BRAMKI
+
+Warunki dopuszczenia, ograniczenia, eskalacji i odrzucenia.
+
+### WARSTWA F — CONTEXT COMPILER
+
+Dokładny sposób przygotowania wejścia do modelu.
+
+---
+
+# ETAP 13 — POSTAĆ MASZYNOWA
+
+Po opisie naturalnym utwórz również neutralną reprezentację logiczną:
+
+```text
+FILTER_STATE
+SOURCE:
+TYPE:
+ROLE:
+TRUST:
+RELEVANCE:
+AUTHORITY:
+UNCERTAINTY:
+OBSERVABILITY:
+CURRENT_HYPOTHESIS:
+CONSEQUENCE_CLASS:
+AVAILABLE_TRANSITIONS:
+PROHIBITED_TRANSITIONS:
+AVAILABLE_TOOLS:
+MATERIALIZATION_RISK:
+FILTER_DECISION:
+REASON:
+NEXT_INFORMATION_NEEDED:
+```
+
+Nie wypełniaj pól sztucznie.
+
+Jeżeli stan jest nieznany, oznacz go jako `UNKNOWN`.
+
+`UNKNOWN` nie może zostać automatycznie potraktowane jako `SAFE`.
+
+---
+
+# ETAP 14 — TEST ADVERSARIAL
+
+Po utworzeniu filtra spróbuj go złamać.
+
+Wygeneruj przypadki, w których:
+
+- polecenie podszywa się pod dane,
+- dane podszywają się pod autorytet,
+- zaufane źródło przekazuje niezaufaną treść,
+- kilka niewinnych kroków tworzy niebezpieczną kompozycję,
+- narzędzie zwraca mylący rezultat,
+- agent utracił część obserwowalności,
+- zmienił się cel w połowie procesu,
+- pamięć zawiera nieaktualną informację,
+- model prawidłowo rozumuje z błędnej przesłanki,
+- niedozwolony stan próbuje zostać osiągnięty poprzez serię lokalnie dozwolonych działań.
+
+Dla każdego przypadku sprawdź, czy filtr reaguje na **znaczenie relacji**, a nie na powierzchniową formę języka.
+
+Jeśli test można obejść przez prostą parafrazę, filtr jest źle zaprojektowany.
+
+---
+
+# ETAP 15 — REDUKCJA
+
+Na końcu usuń:
+
+- redundantne reguły,
+- reguły będące tylko przykładami,
+- duplikaty semantyczne,
+- zasady zależne od konkretnego słownictwa,
+- niepotrzebne warunki kombinatoryczne.
+
+Pozostaw najmniejszą strukturę zdolną zachować właściwości heurystyki.
+
+Celem nie jest stworzenie największego filtra.
+
+Celem jest stworzenie **najmniejszej ontologii generującej właściwe zachowanie**.
+
+---
+
+# OSTATECZNA DYREKTYWA
+
+Nie tłumacz `[STRUKTURA]` na zbiór odpowiedzi.
+
+Przekształć ją w **warunki percepcji**.
+
+Nie próbuj powiedzieć modelowi wszystkiego, czego nie wolno mu zrobić.
+
+Zbuduj reprezentację świata, w której:
+
+- relewantne możliwości są łatwiejsze do odnalezienia,
+- irrelewantne możliwości tracą znaczenie,
+- nieuprawnione przejścia nie posiadają poprawnej ścieżki autorytetu,
+- anomalie powodują rekonstrukcję stanu,
+- niepewność pozostaje jawna,
+- pojedynczy błąd jest amortyzowany,
+- rzeczywiste działanie wymaga poprawnej genealogii od źródła do materializacji.
+
+Końcowym produktem ma być nie „prompt bezpieczeństwa”, lecz:
+
+**SEMANTIC PRE-MODEL FILTER**
+
+czyli wykonywalna heurystyka znajdująca się pomiędzy:
+
+**przestrzenią latentną modelu**
+
+a:
+
+**światem, w którym model może działać.**
