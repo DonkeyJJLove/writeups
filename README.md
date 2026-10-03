@@ -17,6 +17,7 @@ W federacji **LION** `writeups` pełni role `ResearchCorpus`, `EvidenceSource` i
 | Projektować granicę między modelem a skutkiem | [Security Model Boundary](./ai_security_model_boundary_strategy_writeup.md) | Strategia bezpieczeństwa, reference monitor, control mesh, autoryzacja |
 | Analizować reprezentacje i trajektorie Human–AI | [LOCI](./badania/LOCI/README.md) | Ingest, normalizacja, cechy 27D, projekcja 3D, testy i raporty |
 | Badać kaskady, retry i przeciążenia | [Symulacja_GITHUB](./badania/Symulacja_GITHUB/README.md) | Sandbox Monte Carlo, raport, kod i interpretacja zakresu modelu |
+| Przejść od znaku do kodowania semantyki i relewancji | [Od znaku do sterowania](./badania/heuristic-causal-lab-final-4.3/SEMANTIC_ENCODING_FROM_SIGN_TO_CONTROL.md) | Unicode, token, kontekst, atomowa mediana semantyczna, graf relewancji i Action IR |
 | Przejść od semantyki do teorii kontekstu | [Epistemika i microcode](#epistemika-llm-kontekst-i-microcode) | Znaki, operatory kontekstu, metrologia, instrumenty promptowe |
 | Czytać o organizacji, ekonomice i Human–AI | [Organizacja i ekonomika](#humanai-społeczeństwo-ekonomia-i-percepcja) | AI-Native Enterprise, protokoły relacyjne, granica wykonalności |
 | Znaleźć analizy malware, APT i rekonstrukcje | [Cyberbezpieczeństwo i OSINT](#cyber-i-osint) | Kampanie, techniki, scenariusze i źródła rekonstrukcyjne |
