@@ -1,0 +1,37 @@
+{
+  "schema": "lion.semantic-cloud.hypothesis-register/v1",
+  "authority_effect": "NONE",
+  "runtime_effect": "NONE",
+  "hypotheses": [
+    {
+      "id": "SC-H1",
+      "claim": "Semantically equivalent surface transformations preserve a measurable part of the context effect.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "SC-H2",
+      "claim": "Relation-specific ablations produce family-specific behavioral effects.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "SC-H3",
+      "claim": "A residual semantic-context effect remains after output-budget mediation is reduced.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "SC-H4",
+      "claim": "The direction of selected effects replicates across more than one model/tokenizer family.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "SC-H5",
+      "claim": "Dynamic relevance organization can outperform a compute-matched static swarm on selected tasks.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "SC-H6",
+      "claim": "Semantic organization can improve proposal quality without widening authority when coupled to the existing governed action path.",
+      "status": "HYPOTHESIS"
+    }
+  ]
+}

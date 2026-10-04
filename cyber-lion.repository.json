@@ -69,7 +69,10 @@
     "semantic_exports": [
       "research_corpus",
       "evidence_source",
-      "publication"
+      "publication",
+      "semantic_cloud_research",
+      "semantic_control_research",
+      "hcl_evidence"
     ],
     "semantic_imports": [
       "architecture",
@@ -91,9 +94,9 @@
         "currentness": "LOCAL_OWNER"
       },
       {
-        "path": "PROCESS_GUARD.md",
-        "class": "PROCESS_GUARD",
-        "currentness": "LOCAL_OWNER"
+        "path": "LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md",
+        "class": "RESEARCH_ARCHITECTURE",
+        "currentness": "VERSIONED_STATIC"
       },
       {
         "path": "LION_ARCHITECTURE_ROLE_v1_4.md",
@@ -101,9 +104,19 @@
         "currentness": "HISTORICAL"
       },
       {
-        "path": "LINUX_MULTI_AGENT_CONTROL_MESH_REFERENCE_ARCHITECTURE.md",
+        "path": "PROCESS_GUARD.md",
+        "class": "PROCESS_GUARD",
+        "currentness": "LOCAL_OWNER"
+      },
+      {
+        "path": "REPOSITORY_STANDARDIZATION_R1.json",
+        "class": "MACHINE_READABLE_ARCHITECTURE",
+        "currentness": "LOCAL_OWNER"
+      },
+      {
+        "path": "badania/lion-semantic-cloud/README.md",
         "class": "RESEARCH_ARCHITECTURE",
-        "currentness": "VERSIONED_STATIC"
+        "currentness": "LOCAL_OWNER"
       },
       {
         "path": "evolutionary-agent-systems-organization-framework.md",
@@ -111,8 +124,13 @@
         "currentness": "VERSIONED_STATIC"
       },
       {
-        "path": "REPOSITORY_STANDARDIZATION_R1.json",
+        "path": "research_index.json",
         "class": "MACHINE_READABLE_ARCHITECTURE",
+        "currentness": "SOURCE_BOUND"
+      },
+      {
+        "path": "tools/research_index.py",
+        "class": "CONTRACT",
         "currentness": "LOCAL_OWNER"
       }
     ],

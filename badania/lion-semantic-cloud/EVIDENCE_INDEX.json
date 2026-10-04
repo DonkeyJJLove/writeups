@@ -1,0 +1,25 @@
+{
+  "schema": "lion.semantic-cloud.evidence-index/v1",
+  "records": [
+    {
+      "id": "HCL-4.3.3",
+      "class": "OBSERVED_EXPERIMENT",
+      "path": "../heuristic-causal-lab-final-4.3/artifacts/summary.json"
+    },
+    {
+      "id": "HCL-4.3.3-PUBLICATION",
+      "class": "INTEGRITY_EVIDENCE",
+      "path": "../heuristic-causal-lab-final-4.3/artifacts/publication_validation.json"
+    },
+    {
+      "id": "SFC-V1",
+      "class": "RESEARCH_INSTRUMENT",
+      "path": "../semantic_compilers/sfc_v1.prompt"
+    },
+    {
+      "id": "HCL-4.4",
+      "class": "PROSPECTIVE_PROTOCOL",
+      "path": "../heuristic-causal-lab-final-4.3/HCL_4_4_PROSPECTIVE_PROTOCOL.md"
+    }
+  ]
+}

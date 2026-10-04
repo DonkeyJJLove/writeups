@@ -1,0 +1,17 @@
+{
+  "schema": "lion.semantic-cloud.hcl-baseline-binding/v1",
+  "study": "Heuristic Causal Lab 4.3.3",
+  "source_commit": "58383e874d0f684bfe2e290584fb4138f367c1b4",
+  "episodes": 10240,
+  "arms": {
+    "author_raw": 5120,
+    "strong_control": 5120
+  },
+  "safe_success": {
+    "author_raw": 1102,
+    "strong_control": 351,
+    "contrast_pp": 14.66796875
+  },
+  "formal_verdict": "CONTRADICTED_SAFETY_OR_UTILITY_IN_SCOPE",
+  "interpretation_boundary": "Behavioral context effect only; no mechanistic or AGI proof."
+}
