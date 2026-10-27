@@ -116,9 +116,9 @@ return digest_bound_selection(selected, frontier, assessments, authority_effect=
 
 `_dominates(a,b)` (349–359) wymaga wszystkich składowych `benefits(a) >= benefits(b)` i wszystkich `costs(a) <= costs(b)` oraz co najmniej jednej poprawy ścisłej. `assess` (294–346) liczy wielowymiarową użyteczność z wagami całkowitymi i jawnie związanymi przesłankami pressure; żadna waga nie omija blokady hard gate. Dla benefitów `b_i`, kosztów `c_j`, stałych wag `w` i presji `p` realizowana użyteczność ma postać sumy całkowitej z podłogą, w przybliżeniu:
 
-\[
-U(c)=\sum_i\left\lfloor\frac{b_i w_i(S+p_i)}{S}\right\rfloor-\sum_j\left\lfloor\frac{c_j w_j(S+p_j)}{S}\right\rfloor.
-\]
+$$
+U(c)=\sum_i\left\lfloor\frac{b_i w_i(S+p_i)}{S}\right\rfloor-\sum_j\left\lfloor\frac{c_j w_j(S+p_j)}{S}\right\rfloor
+$$
 
 To **funkcja rankingowa**, nie prawdopodobieństwo. Jej zaletą są deterministyczność, wyjaśnialność i możliwość testowania. Wadą jest uzależnienie od zadanych skal i wag: dynamic pressure może zmienić porządek kandydatów, ale nie wyjaśnia, z jaką częstością konkretny kandydat powiedzie się w nieznanej domenie. Testy `cyber_lion/tests/test_evolution_fitness.py` obejmują dominację Pareto, deterministyczność oraz negatywny przypadek kandydata o wysokim score odrzuconego przez hard gate.
 
@@ -205,10 +205,12 @@ Mechanizm zmieniający aplikację też jest artefaktem: `selector`, `generator`,
 
 Proponowany model refleksyjny (nie obecny autonomiczny algorytm):
 
-\[
-O_{n+1}=T_n(O_n,E_n), \qquad
-T_{n+1}=M_n(T_n,H_n,V_n)
-\]
+$$
+\begin{aligned}
+O_{n+1} &= T_n(O_n,E_n)\\
+T_{n+1} &= M_n(T_n,H_n,V_n)
+\end{aligned}
+$$
 
 `O` — obiekt/architektura, `T` — transformator generacyjny, `E` — aktualna przesłanka/dowód, `H` — niezapisane w bieżącym kontekście, ale źródłowo dostępne doświadczenia, `V` — niezależne wyniki walidacji, `M` — odrębnie dopuszczony proces proponowania i sprawdzania **nowego** transformatora. Nie chodzi o samo ustawienie parametru `T`, lecz o nowy kontrakt i implementację reguły zmiany. W każdej generacji akceptacja transformatora wymaga zachowania niezmienników, niesprzeczności z zamrożonymi celami oraz aktualnego authority na konkretny efekt. Zamiana testu na łatwiejszy **nie jest** dodatnim wynikiem ewolucyjnym. Historyczne oracles i źródłowo związane preimages muszą pozostać poza zakresem zmian ocenianego kandydata.
 
